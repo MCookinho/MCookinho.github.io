@@ -3,58 +3,52 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Peu Borges — MCookinho</title>
-  <meta name="description" content="Peu Borges, aka MCookinho. Engenheiro da Computação, dev, criador de jogos, e pai de golden retriever." />
+  <title>PEU BORGES // MCOOKINHO</title>
+  <meta name="description" content="Peu Borges aka MCookinho. Engenheiro da computação, dev, criador de jogos." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <div class="scanlines"></div>
+  <div class="crt"></div>
 
-  <nav class="navbar" id="navbar">
+  <nav class="nav" id="nav">
     <div class="nav-inner">
-      <a href="#" class="nav-logo">&lt;/&gt; MCookinho</a>
+      <a href="#" class="nav-logo">[ MCOOKINHO ]</a>
       <div class="nav-links" id="navLinks">
-        <a href="#about">[sobre]</a>
-        <a href="#work">[trampos]</a>
-        <a href="#games-section">[jogos]</a>
-        <a href="#blog">[blog]</a>
-        <a href="#contact">[contato]</a>
+        <a href="#about">SOBRE</a>
+        <a href="#skills">STACK</a>
+        <a href="#projetos">PROJETOS</a>
+        <a href="#jogos">JOGOS</a>
+        <a href="#galeria">GALERIA</a>
+        <a href="#blog">BLOG</a>
+        <a href="#contato">CONTATO</a>
       </div>
-      <div class="nav-actions">
-        <button class="lang-btn" id="langToggle">[ PT ]</button>
-        <button class="menu-btn" id="menuToggle">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
+      <button class="nav-toggle" id="navToggle">[=]</button>
     </div>
   </nav>
 
   <section class="hero" id="hero">
-    <div class="hero-video">
+    <div class="hero-bg">
       <video autoplay muted loop playsinline poster="assets/fotominha.jpeg">
         <source src="assets/videos/hero-bg.mp4" type="video/mp4" />
       </video>
-      <div class="hero-overlay"></div>
+      <div class="hero-bg-overlay"></div>
     </div>
-    <div class="hero-content">
-      <div class="hero-photo-frame">
-        <div class="hero-photo-pixel-bg"></div>
-        <img src="assets/fotominha.jpeg" alt="Peu Borges" class="hero-photo" />
+
+    <div class="hero-inner">
+      <div class="hero-foto-wrapper">
+        <div class="hero-foto-border"></div>
+        <img src="assets/fotominha.jpeg" alt="Peu Borges" class="hero-foto" />
       </div>
-      <h1 class="hero-title">PEU BORGES</h1>
-      <p class="hero-tagline" data-i18n="hero.tagline">engenheiro da computação &bull; dev &bull; criador de jogos</p>
-      <p class="hero-quote">"<span data-i18n="hero.quote">vivendo a vida da maneira que eu quero viver</span>"</p>
-      <div class="hero-meta">
-        <span class="hero-age" id="heroAge"></span>
-        <span class="hero-sep">//</span>
-        <span class="hero-loc">Salvador, BA</span>
-      </div>
-      <div class="hero-social">
+      <h1 class="hero-nome">PEU BORGES</h1>
+      <p class="hero-sub">ENG. DA COMPUTACAO // DEV // CRIADOR DE JOGOS</p>
+      <p class="hero-frase">"vivendo a vida da maneira que eu quero viver"</p>
+      <p class="hero-idade" id="heroIdade"></p>
+      <div class="hero-redes">
         <a href="https://github.com/MCookinho" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
         <a href="https://www.linkedin.com/in/jo%C3%A3o-pedro-borges-a16321279/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
         <a href="https://www.instagram.com/_peuborges_/" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
@@ -63,68 +57,42 @@
         <a href="https://www.twitch.tv/mistercookinho" target="_blank" rel="noopener"><i class="fab fa-twitch"></i></a>
       </div>
     </div>
-    <div class="hero-scroll">
-      <span>▼ scroll ▼</span>
-    </div>
   </section>
 
-  <div class="marquee-bar">
-    <div class="marquee-track">
-      <span>🎮 shadow the hedgehog is literally me</span>
-      <span>🐶 pai da shiva</span>
-      <span>♟️ viciado em xadrez</span>
-      <span>🎲 rpg de mesa aos domingos</span>
-      <span>☕ café > código > sono</span>
-      <span>🐧 linux user</span>
-      <span>🎮 shadow the hedgehog is literally me</span>
-      <span>🐶 pai da shiva</span>
-      <span>♟️ viciado em xadrez</span>
-      <span>🎲 rpg de mesa aos domingos</span>
-      <span>☕ café > código > sono</span>
-      <span>🐧 linux user</span>
-    </div>
-  </div>
-
-  <section class="about section" id="about">
+  <section class="section sobre" id="about">
     <div class="container">
-      <div class="about-grid">
-        <div class="about-text">
-          <span class="section-sticker">★ sobre ★</span>
-          <h2>Quem é esse doido?</h2>
+      <h2 class="sec-title">// SOBRE MIM</h2>
+      <div class="sobre-grid">
+        <div class="sobre-texto">
           <p>
-            Fala, meu nome é <strong>Peu Borges</strong> (ou <strong>MCookinho</strong> na internet, 
-            ou <strong>MisterCookinho</strong> se tu me conhece do YouTube/Twitch). 
-            Nasci em <strong>18 de abril de 2005</strong> e sou estudante de <strong>Engenharia da Computação</strong> 
-            no <strong>SENAI CIMATEC</strong> aqui em Salvador, Bahia.
+            Fala! Sou o <strong>PEU BORGES</strong>, vulgo <strong>MCOOKINHO</strong> (ou MisterCookinho se tu me conhece do YouTube/Twitch).
+            Nasci em 18/04/2005 e sou estudante de ENGENHARIA DA COMPUTACAO no SENAI CIMATEC em Salvador, BA.
           </p>
           <p>
-            Sou daqueles que não consegue parar de criar. Se não é um projeto no terminal, 
-            é um jogo indie, um bot do Twitter pra zoar amigo, um sistema de tor, 
-            ou um port de FNAF pro Linux (porque sim). <strong>Gosto de mostrar minhas ideias 
-            pro mundo</strong> — do xadrez ao RPG de mesa, de streams na Twitch a vídeos no YouTube.
+            Sou viciado em criar coisa. Se nao e um projeto no terminal, e um jogo indie, um bot
+            pra zoar amigo, um sisteminha criptografado com Tor, ou um port de FNAF pro Linux.
+            Gosto de mostrar minhas ideias pro mundo. XADREZ, RPG DE MESA, STREAMS, VIDEO.
           </p>
           <p>
-            Volume alto, risada alta, café forte. E se eu sumir, provavelmente tô 
-            jogando algo no Steam ou programando às 3 da manhã.
+            Volume alto, risada alta, cafe forte. E se eu sumir, to programando as 3 da manha
+            ou jogando algo no Steam. SHADOW THE HEDGEHOG LITERALLY SOU EU.
           </p>
-          <div class="about-badges">
-            <span class="badge badge-pink">♟️ xadrez</span>
-            <span class="badge badge-cyan">🎲 rpg de mesa</span>
-            <span class="badge badge-yellow">🎮 game dev</span>
-            <span class="badge badge-purple">🐧 linux</span>
-            <span class="badge badge-orange">☕ cafeinado</span>
+          <div class="sobre-tags">
+            <span class="tag">XADREZ</span>
+            <span class="tag">RPG DE MESA</span>
+            <span class="tag">GAME DEV</span>
+            <span class="tag">LINUX</span>
+            <span class="tag">CAFE</span>
           </div>
         </div>
-        <div class="about-shiva">
+        <div class="sobre-shiva">
           <div class="shiva-card">
-            <div class="shiva-video-wrapper">
-              <video autoplay muted loop playsinline>
-                <source src="assets/videos/shiva-walk.mp4" type="video/mp4" />
-              </video>
-            </div>
-            <div class="shiva-info">
+            <video autoplay muted loop playsinline>
+              <source src="assets/videos/shiva-walk.mp4" type="video/mp4" />
+            </video>
+            <div class="shiva-legenda">
               <h3>★ SHIVA ★</h3>
-              <p>golden retriever, a coisa mais fofa desse mundo,<br/>e minha parceira de código 🐶</p>
+              <p>GOLDEN RETRIEVER, A COISA MAIS FOFA DESSE MUNDO, MINHA PARCEIRA DE CODIGO</p>
             </div>
           </div>
         </div>
@@ -132,235 +100,210 @@
     </div>
   </section>
 
-  <section class="work section" id="work">
+  <section class="section skills" id="skills">
     <div class="container">
-      <div class="section-head">
-        <span class="section-sticker">★ projetos ★</span>
-        <h2>Coisas que eu fiz</h2>
-        <p class="section-sub">(e que tao no GitHub)</p>
+      <h2 class="sec-title">// SKILLS / STACK</h2>
+      <div class="skills-lista">
+        <div class="skill-bloco">
+          <h3>LINGUAGENS</h3>
+          <div class="skill-items">
+            <span>PYTHON</span><span>JAVA</span><span>C</span><span>C++</span><span>BASH</span><span>GML</span>
+          </div>
+        </div>
+        <div class="skill-bloco">
+          <h3>FERRAMENTAS</h3>
+          <div class="skill-items">
+            <span>GIT</span><span>LINUX</span><span>DOCKER</span><span>GODOT</span><span>ARDUINO</span><span>NCURSES</span>
+          </div>
+        </div>
+        <div class="skill-bloco">
+          <h3>VIDA</h3>
+          <div class="skill-items">
+            <span>CAFE EXTRMO</span><span>CODIGO 3AM</span><span>TERMINAL</span><span>CAOS ORGANIZADO</span>
+          </div>
+        </div>
       </div>
-      <div class="work-grid">
-        <div class="work-card">
-          <div class="work-card-header">
+    </div>
+  </section>
+
+  <section class="section projetos" id="projetos">
+    <div class="container">
+      <h2 class="sec-title">// PROJETOS</h2>
+      <div class="projetos-grid">
+        <div class="projeto-card">
+          <div class="projeto-header">
             <i class="fas fa-shield-halved"></i>
-            <span class="work-lang">Python</span>
+            <span class="projeto-lang">PYTHON</span>
           </div>
-          <h3>hexfeed</h3>
-          <p data-i18n="projects.hexfeed">Rede social privada no terminal. Criptografado, TUI minimalista, com suporte a Tor.</p>
-          <a href="https://github.com/MCookinho/hexfeed" target="_blank" rel="noopener"><i class="fab fa-github"></i> repo</a>
+          <h3>HEXFEED</h3>
+          <p>Rede social privada no terminal. Criptografado com Tor. TUI minimalista.</p>
+          <a href="https://github.com/MCookinho/hexfeed" target="_blank" rel="noopener">[ REPO ]</a>
         </div>
-        <div class="work-card">
-          <div class="work-card-header">
+        <div class="projeto-card">
+          <div class="projeto-header">
             <i class="fas fa-terminal"></i>
-            <span class="work-lang">C</span>
+            <span class="projeto-lang">C</span>
           </div>
-          <h3>shellgame</h3>
-          <p data-i18n="projects.shellgame">Coleção de jogos clássicos no terminal feitos em C com ncurses.</p>
-          <a href="https://github.com/MCookinho/shellgame" target="_blank" rel="noopener"><i class="fab fa-github"></i> repo</a>
+          <h3>SHELLGAME</h3>
+          <p>Colecao de jogos classicos no terminal com ncurses.</p>
+          <a href="https://github.com/MCookinho/shellgame" target="_blank" rel="noopener">[ REPO ]</a>
         </div>
-        <div class="work-card">
-          <div class="work-card-header">
+        <div class="projeto-card">
+          <div class="projeto-header">
             <i class="fas fa-ghost"></i>
-            <span class="work-lang">Shell</span>
+            <span class="projeto-lang">SHELL</span>
           </div>
-          <h3>fnaf-cli</h3>
-          <p data-i18n="projects.fnafcli">Five Nights at Freddy's — Edição Terminal para Linux. Port em Bash.</p>
-          <a href="https://github.com/MCookinho/fnaf-cli" target="_blank" rel="noopener"><i class="fab fa-github"></i> repo</a>
+          <h3>FNAF-CLI</h3>
+          <p>FNAF edicao terminal pra Linux. Port em Bash.</p>
+          <a href="https://github.com/MCookinho/fnaf-cli" target="_blank" rel="noopener">[ REPO ]</a>
         </div>
-        <div class="work-card">
-          <div class="work-card-header">
+        <div class="projeto-card">
+          <div class="projeto-header">
             <i class="fas fa-mug-saucer"></i>
-            <span class="work-lang">Python</span>
+            <span class="projeto-lang">PYTHON</span>
           </div>
-          <h3>mate-helper</h3>
-          <p data-i18n="projects.matehelper">Ferramenta pra preparo de mate — tecnologia resolvendo problemas sérios.</p>
-          <a href="https://github.com/MCookinho/mate-helper" target="_blank" rel="noopener"><i class="fab fa-github"></i> repo</a>
+          <h3>MATE-HELPER</h3>
+          <p>Ferramenta pra preparo de mate. Tecnologia resolvendo problemas serios.</p>
+          <a href="https://github.com/MCookinho/mate-helper" target="_blank" rel="noopener">[ REPO ]</a>
         </div>
-        <div class="work-card">
-          <div class="work-card-header">
+        <div class="projeto-card">
+          <div class="projeto-header">
             <i class="fas fa-comments"></i>
-            <span class="work-lang">Python</span>
+            <span class="projeto-lang">PYTHON</span>
           </div>
-          <h3>Bot-Zoar</h3>
-          <p data-i18n="projects.botzoar">Bot do Twitter que randomiza ideias de filme de maneira cômica. Fiz pra zoar um amigo.</p>
-          <a href="https://github.com/MCookinho/Bot-que-fiz-para-zoar-meu-amigo-PTBR" target="_blank" rel="noopener"><i class="fab fa-github"></i> repo</a>
+          <h3>BOT ZOAR</h3>
+          <p>Bot do Twitter que gera ideias de filme comicas. Fiz pra zoar amigo.</p>
+          <a href="https://github.com/MCookinho/Bot-que-fiz-para-zoar-meu-amigo-PTBR" target="_blank" rel="noopener">[ REPO ]</a>
         </div>
-        <div class="work-card">
-          <div class="work-card-header">
+        <div class="projeto-card">
+          <div class="projeto-header">
             <i class="fas fa-microchip"></i>
-            <span class="work-lang">C++</span>
+            <span class="projeto-lang">C++</span>
           </div>
-          <h3>ARDUINO-SIMON</h3>
-          <p data-i18n="projects.simon">Jogo GENIUS/SIMON com Arduino. Hardware + software na veia.</p>
-          <a href="https://github.com/MCookinho/ARDUINO-SIMON" target="_blank" rel="noopener"><i class="fab fa-github"></i> repo</a>
+          <h3>ARDUINO SIMON</h3>
+          <p>Jogo GENIUS com Arduino. Hardware + software.</p>
+          <a href="https://github.com/MCookinho/ARDUINO-SIMON" target="_blank" rel="noopener">[ REPO ]</a>
         </div>
-        <div class="work-card">
-          <div class="work-card-header">
+        <div class="projeto-card">
+          <div class="projeto-header">
             <i class="fas fa-earth-americas"></i>
-            <span class="work-lang">HTML</span>
+            <span class="projeto-lang">HTML</span>
           </div>
-          <h3>hubpad</h3>
-          <p data-i18n="projects.hubpad">O mural público de tudo e todos. Um espaço colaborativo na web.</p>
-          <a href="https://github.com/MCookinho/hubpad" target="_blank" rel="noopener"><i class="fab fa-github"></i> repo</a>
+          <h3>HUBPAD</h3>
+          <p>Mural publico de tudo e todos. Espaco colaborativo.</p>
+          <a href="https://github.com/MCookinho/hubpad" target="_blank" rel="noopener">[ REPO ]</a>
         </div>
       </div>
-      <div class="section-foot">
-        <a href="https://github.com/MCookinho?tab=repositories" target="_blank" rel="noopener" class="btn-outline">ver todos no github →</a>
+      <div class="sec-footer">
+        <a href="https://github.com/MCookinho?tab=repositories" target="_blank" rel="noopener" class="btn-pixel">VER TODOS NO GITHUB</a>
       </div>
     </div>
   </section>
 
-  <section class="skills section" id="skills">
+  <section class="section jogos" id="jogos">
     <div class="container">
-      <div class="section-head">
-        <span class="section-sticker">★ skills ★</span>
-        <h2>Stack de Guerra</h2>
+      <h2 class="sec-title">// JOGOS QUE EU FIZ</h2>
+      <div class="jogos-grid">
+        <a href="https://codecrusaders.itch.io/catfishing" target="_blank" rel="noopener" class="jogo-card">
+          <div class="jogo-img"><img src="assets/games/catfishing.png" alt="Catfishing" /></div>
+          <div class="jogo-info">
+            <h3>CATFISHING</h3>
+            <span>CODECRUSADERS</span>
+          </div>
+        </a>
+        <a href="https://codecrusaders.itch.io/natureba" target="_blank" rel="noopener" class="jogo-card">
+          <div class="jogo-img"><img src="assets/games/natureba.png" alt="Natureba" /></div>
+          <div class="jogo-info">
+            <h3>NATUREBA</h3>
+            <span>CODECRUSADERS</span>
+          </div>
+        </a>
+        <a href="https://darukee.itch.io/cabra" target="_blank" rel="noopener" class="jogo-card">
+          <div class="jogo-img"><img src="assets/games/cabra.png" alt="Cabra" /></div>
+          <div class="jogo-info">
+            <h3>CABRA</h3>
+            <span>DARUKEE</span>
+          </div>
+        </a>
+        <a href="https://github.com/MCookinho/shellgame" target="_blank" rel="noopener" class="jogo-card">
+          <div class="jogo-img"><img src="assets/games/shellgame.png" alt="Shell Game" /></div>
+          <div class="jogo-info">
+            <h3>SHELL GAME</h3>
+            <span>TERMINAL ARCADE</span>
+          </div>
+        </a>
       </div>
-      <div class="skills-zone">
-        <div class="skill-group">
-          <h3>▸ linguagens</h3>
-          <div class="skill-pills">
-            <span>Python</span><span>Java</span><span>C</span><span>C++</span>
-            <span>Bash</span><span>GML</span><span>SQL</span>
-          </div>
+      <div class="sec-footer">
+        <a href="https://mistercookinho.itch.io" target="_blank" rel="noopener" class="btn-pixel">VER NO ITCH.IO</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section galeria" id="galeria">
+    <div class="container">
+      <h2 class="sec-title">// GALERIA // SHIVA</h2>
+      <div class="galeria-grid">
+        <div class="galeria-item">
+          <video autoplay muted loop playsinline>
+            <source src="assets/videos/shiva-walk.mp4" type="video/mp4" />
+          </video>
+          <span>SHIVA ANDANDO</span>
         </div>
-        <div class="skill-group">
-          <h3>▸ ferramentas</h3>
-          <div class="skill-pills">
-            <span>Git</span><span>Linux</span><span>Docker</span>
-            <span>Godot</span><span>Arduino</span><span>ncurses</span>
-          </div>
+        <div class="galeria-item">
+          <video autoplay muted loop playsinline>
+            <source src="assets/videos/shiva-nadando.mp4" type="video/mp4" />
+          </video>
+          <span>SHIVA NADANDO</span>
         </div>
-        <div class="skill-group">
-          <h3>▸ vibes</h3>
-          <div class="skill-pills">
-            <span>café extremo</span><span>código 3am</span>
-            <span>open source</span><span>terminal >> gui</span>
-            <span>caos organizado</span>
-          </div>
+        <div class="galeria-item">
+          <video autoplay muted loop playsinline>
+            <source src="assets/videos/emas.mp4" type="video/mp4" />
+          </video>
+          <span>EMAS</span>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="games-section section" id="games-section">
+  <section class="section blog" id="blog">
     <div class="container">
-      <div class="section-head">
-        <span class="section-sticker">★ games ★</span>
-        <h2>Jogos que eu fiz</h2>
-        <p class="section-sub">(sim, eu também faço joguinhos)</p>
-      </div>
-      <div class="games-grid">
-        <a href="https://codecrusaders.itch.io/catfishing" target="_blank" rel="noopener" class="game-card">
-          <div class="game-screenshot">
-            <img src="assets/games/catfishing.png" alt="Catfishing" />
-          </div>
-          <div class="game-card-info">
-            <h3>Catfishing</h3>
-            <span class="game-tag">CodeCrusaders</span>
-          </div>
-        </a>
-        <a href="https://codecrusaders.itch.io/natureba" target="_blank" rel="noopener" class="game-card">
-          <div class="game-screenshot">
-            <img src="assets/games/natureba.png" alt="Natureba" />
-          </div>
-          <div class="game-card-info">
-            <h3>Natureba</h3>
-            <span class="game-tag">CodeCrusaders</span>
-          </div>
-        </a>
-        <a href="https://darukee.itch.io/cabra" target="_blank" rel="noopener" class="game-card">
-          <div class="game-screenshot">
-            <img src="assets/games/cabra.png" alt="Cabra" />
-          </div>
-          <div class="game-card-info">
-            <h3>Cabra</h3>
-            <span class="game-tag">Darukee</span>
-          </div>
-        </a>
-        <a href="https://github.com/MCookinho/shellgame" target="_blank" rel="noopener" class="game-card">
-          <div class="game-screenshot">
-            <img src="assets/games/shellgame.png" alt="Shell Game" />
-          </div>
-          <div class="game-card-info">
-            <h3>Shell Game</h3>
-            <span class="game-tag">Terminal Arcade</span>
-          </div>
-        </a>
-      </div>
-      <div class="section-foot">
-        <a href="https://mistercookinho.itch.io" target="_blank" rel="noopener" class="btn-outline">ver no itch.io →</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="blog section" id="blog">
-    <div class="container">
-      <div class="section-head">
-        <span class="section-sticker">★ blog ★</span>
-        <h2>Ideias Escritas</h2>
-      </div>
-      <div class="blog-empty">
+      <h2 class="sec-title">// BLOG</h2>
+      <div class="blog-vazio">
         <i class="fas fa-pen-fancy"></i>
-        <p>ainda to escrevendo meus primeiros artigos<br/>aguenta aí que logo logo sai texto bom</p>
+        <p>AINDA TO ESCREVENDO MEUS PRIMEIROS ARTIGOS<br/>AGUENTA AI QUE LOGO LOGO SAI TEXTO BOM</p>
       </div>
     </div>
   </section>
 
-  <section class="contact section" id="contact">
+  <section class="section contato" id="contato">
     <div class="container">
-      <div class="section-head">
-        <span class="section-sticker">★ contato ★</span>
-        <h2>Me acha aí</h2>
-      </div>
-      <div class="contact-grid">
-        <a href="https://github.com/MCookinho" target="_blank" rel="noopener" class="contact-card">
-          <i class="fab fa-github"></i> <span>GitHub</span> <small>@MCookinho</small>
-        </a>
-        <a href="https://www.linkedin.com/in/jo%C3%A3o-pedro-borges-a16321279/" target="_blank" rel="noopener" class="contact-card">
-          <i class="fab fa-linkedin-in"></i> <span>LinkedIn</span> <small>João Pedro Borges</small>
-        </a>
-        <a href="https://www.instagram.com/_peuborges_/" target="_blank" rel="noopener" class="contact-card">
-          <i class="fab fa-instagram"></i> <span>Instagram</span> <small>@_peuborges_</small>
-        </a>
-        <a href="https://x.com/MCookinho" target="_blank" rel="noopener" class="contact-card">
-          <i class="fab fa-x-twitter"></i> <span>Twitter / X</span> <small>@MCookinho</small>
-        </a>
-        <a href="https://www.youtube.com/@mistercookinho" target="_blank" rel="noopener" class="contact-card">
-          <i class="fab fa-youtube"></i> <span>YouTube</span> <small>MisterCookinho</small>
-        </a>
-        <a href="https://www.twitch.tv/mistercookinho" target="_blank" rel="noopener" class="contact-card">
-          <i class="fab fa-twitch"></i> <span>Twitch</span> <small>MisterCookinho</small>
-        </a>
-        <a href="https://mistercookinho.itch.io" target="_blank" rel="noopener" class="contact-card">
-          <i class="fab fa-itch-io"></i> <span>itch.io</span> <small>MisterCookinho</small>
-        </a>
-        <a href="https://steamcommunity.com/id/MCookinho/" target="_blank" rel="noopener" class="contact-card">
-          <i class="fab fa-steam"></i> <span>Steam</span> <small>MCookinho</small>
-        </a>
+      <h2 class="sec-title">// CONTATO</h2>
+      <div class="contato-grid">
+        <a href="https://github.com/MCookinho" target="_blank" rel="noopener" class="contato-card"><i class="fab fa-github"></i><span>GITHUB</span><small>@MCOOKINHO</small></a>
+        <a href="https://www.linkedin.com/in/jo%C3%A3o-pedro-borges-a16321279/" target="_blank" rel="noopener" class="contato-card"><i class="fab fa-linkedin-in"></i><span>LINKEDIN</span><small>PEU BORGES</small></a>
+        <a href="https://www.instagram.com/_peuborges_/" target="_blank" rel="noopener" class="contato-card"><i class="fab fa-instagram"></i><span>INSTAGRAM</span><small>@_PEUBORGES_</small></a>
+        <a href="https://x.com/MCookinho" target="_blank" rel="noopener" class="contato-card"><i class="fab fa-x-twitter"></i><span>TWITTER / X</span><small>@MCOOKINHO</small></a>
+        <a href="https://www.youtube.com/@mistercookinho" target="_blank" rel="noopener" class="contato-card"><i class="fab fa-youtube"></i><span>YOUTUBE</span><small>MISTERCOOKINHO</small></a>
+        <a href="https://www.twitch.tv/mistercookinho" target="_blank" rel="noopener" class="contato-card"><i class="fab fa-twitch"></i><span>TWITCH</span><small>MISTERCOOKINHO</small></a>
+        <a href="https://mistercookinho.itch.io" target="_blank" rel="noopener" class="contato-card"><i class="fab fa-itch-io"></i><span>ITCH.IO</span><small>MISTERCOOKINHO</small></a>
+        <a href="https://steamcommunity.com/id/MCookinho/" target="_blank" rel="noopener" class="contato-card"><i class="fab fa-steam"></i><span>STEAM</span><small>MCOOKINHO</small></a>
       </div>
     </div>
   </section>
 
   <footer class="footer">
-    <div class="footer-video-bg">
+    <div class="footer-bg">
       <video autoplay muted loop playsinline>
-        <source src="assets/videos/shiva-nadando.mp4" type="video/mp4" />
+        <source src="assets/videos/emas.mp4" type="video/mp4" />
       </video>
       <div class="footer-overlay"></div>
     </div>
-    <div class="container footer-content">
-      <div class="footer-quote">"vivendo a vida da maneira que eu quero viver"</div>
-      <div class="footer-social">
-        <a href="https://github.com/MCookinho" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
-        <a href="https://www.instagram.com/_peuborges_/" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
-        <a href="https://x.com/MCookinho" target="_blank" rel="noopener"><i class="fab fa-x-twitter"></i></a>
-        <a href="https://www.twitch.tv/mistercookinho" target="_blank" rel="noopener"><i class="fab fa-twitch"></i></a>
-      </div>
-      <p class="footer-copy">© 2026 Peu Borges · feito com caos e carinho</p>
+    <div class="footer-inner">
+      <p>"vivendo a vida da maneira que eu quero viver"</p>
+      <p class="footer-copy">2026 // PEU BORGES // FEITO COM CAOS E CARINHO</p>
     </div>
   </footer>
 
-  <script src="scripts.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
