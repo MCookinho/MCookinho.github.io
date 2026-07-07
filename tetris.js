@@ -29,7 +29,7 @@
   function flashEffect() {
     const el = document.createElement('div')
     el.className = 'konami-flash'
-    el.textContent = '// KONAMI ACTIVATED'
+    el.innerHTML = '<span>// KONAMI ACTIVATED</span>'
     document.body.appendChild(el)
     el.addEventListener('animationend', () => el.remove())
   }
@@ -155,8 +155,8 @@
       this.overlay.innerHTML = `
 <div class="tetris-frame">
   <div class="tetris-head">
-    <span class="tetris-title">// TETRIS</span>
-    <button class="tetris-close" id="tClose">[ X ]</button>
+    <span class="tetris-title">TETRIS</span>
+    <button class="tetris-close" id="tClose"><span>[ X ]</span></button>
   </div>
   <div class="tetris-body">
     <canvas id="tBoard" width="${this.bw}" height="${this.bh}"></canvas>

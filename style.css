@@ -466,25 +466,94 @@ body {
 /* TETRIS */
 .tetris-overlay {
   position: fixed; inset: 0; z-index: 9998;
-  background: rgba(0,0,0,0.85);
+  background: rgba(0,0,0,0.88);
   display: flex; align-items: center; justify-content: center;
   opacity: 0; visibility: hidden;
-  transition: opacity 0.3s, visibility 0.3s;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(6px);
+  transition: opacity 0.15s, visibility 0.15s;
+}
+.tetris-overlay::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.012) 40px, rgba(255,255,255,0.012) 41px),
+    repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.012) 40px, rgba(255,255,255,0.012) 41px);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.8s ease-out;
 }
 .tetris-overlay.tetris-open {
   opacity: 1; visibility: visible;
+}
+.tetris-overlay.tetris-open::before {
+  opacity: 1;
+}
+
+.tetris-overlay::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,255,200,0.015) 3px, rgba(0,255,200,0.015) 4px);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1s ease-out 0.3s;
+}
+.tetris-overlay.tetris-open::after {
+  opacity: 1;
 }
 
 .tetris-frame {
   border: 3px solid var(--pink);
   background: #0a0a0a;
-  box-shadow: 0 0 40px rgba(255,45,120,0.15), inset 0 0 60px rgba(0,0,0,0.5);
-  transform: scale(0.95);
-  transition: transform 0.3s;
+  box-shadow: 0 0 40px rgba(255,45,120,0.15), 0 0 80px rgba(0,255,200,0.05), inset 0 0 60px rgba(0,0,0,0.5);
+  transform: scale(0.7) translateY(30px);
+  opacity: 0;
+  transition: none;
+  position: relative;
+}
+.tetris-frame::before {
+  content: '';
+  position: absolute; inset: -6px;
+  border: 1px solid transparent;
+  pointer-events: none;
+  z-index: -1;
 }
 .tetris-open .tetris-frame {
-  transform: scale(1);
+  animation: tetrisBoot 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes tetrisBoot {
+  0% {
+    transform: scale(0.7) translateY(30px);
+    opacity: 0;
+    border-color: #00ff41;
+    box-shadow: 0 0 60px rgba(0,255,65,0.3), 0 0 120px rgba(0,255,65,0.1), inset 0 0 60px rgba(0,0,0,0.5);
+  }
+  15% {
+    transform: scale(1.04) translateY(0);
+    opacity: 1;
+    border-color: #00ff41;
+    box-shadow: 0 0 80px rgba(0,255,65,0.4), 0 0 160px rgba(0,255,65,0.15), inset 0 0 60px rgba(0,0,0,0.5);
+  }
+  30% {
+    transform: scale(0.97);
+    border-color: #a855f7;
+    box-shadow: 0 0 60px rgba(168,85,247,0.3), 0 0 120px rgba(168,85,247,0.1), inset 0 0 60px rgba(0,0,0,0.5);
+  }
+  50% {
+    transform: scale(1.02);
+    border-color: #00ffc8;
+    box-shadow: 0 0 70px rgba(0,255,200,0.3), 0 0 140px rgba(0,255,200,0.1), inset 0 0 60px rgba(0,0,0,0.5);
+  }
+  70% {
+    transform: scale(0.99);
+    border-color: #ff2d78;
+    box-shadow: 0 0 50px rgba(255,45,120,0.2), 0 0 100px rgba(255,45,120,0.08), inset 0 0 60px rgba(0,0,0,0.5);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+    border-color: #ff2d78;
+    box-shadow: 0 0 40px rgba(255,45,120,0.15), 0 0 80px rgba(0,255,200,0.05), inset 0 0 60px rgba(0,0,0,0.5);
+  }
 }
 
 .tetris-head {
@@ -492,11 +561,18 @@ body {
   padding: 12px 16px;
   border-bottom: 2px solid var(--border);
   background: #0d0d14;
+  opacity: 0;
+  animation: tetrisFadeIn 0.4s ease-out 0.65s forwards;
 }
 
 .tetris-title {
   font-family: var(--font); font-size: 12px; color: var(--pink);
   letter-spacing: 2px;
+  position: relative;
+}
+.tetris-title::before {
+  content: '// ';
+  color: var(--dim);
 }
 
 .tetris-close {
@@ -504,20 +580,39 @@ body {
   background: none; border: 1.5px solid var(--border);
   color: var(--dim); padding: 5px 10px; cursor: pointer;
   transition: all 0.15s;
+  position: relative;
+  overflow: hidden;
+}
+.tetris-close::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: var(--cyan);
+  transform: translateY(100%);
+  transition: transform 0.2s;
+  z-index: 0;
 }
 .tetris-close:hover {
-  border-color: var(--cyan); color: var(--cyan);
+  border-color: var(--cyan); color: #000;
+}
+.tetris-close:hover::before {
+  transform: translateY(0);
+}
+.tetris-close span {
+  position: relative; z-index: 1;
 }
 
 .tetris-body {
   display: flex; gap: 16px; padding: 16px;
   align-items: flex-start;
+  opacity: 0;
+  animation: tetrisFadeIn 0.4s ease-out 0.75s forwards;
 }
 
 #tBoard {
   border: 2px solid var(--border);
   image-rendering: pixelated;
   display: block;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
 }
 
 .tpanel {
@@ -529,6 +624,23 @@ body {
   border: 2px solid var(--border);
   padding: 10px 14px;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+.tstat:hover {
+  border-color: var(--cyan);
+}
+.tstat::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--cyan);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+.tstat:hover::after {
+  transform: scaleX(1);
 }
 
 .tlabel {
@@ -540,12 +652,17 @@ body {
 .tval {
   display: block;
   font-family: var(--font); font-size: 14px; color: var(--cyan);
+  transition: color 0.3s;
 }
 
 .tnext {
   border: 2px solid var(--border);
   padding: 10px;
   text-align: center;
+  transition: border-color 0.3s;
+}
+.tnext:hover {
+  border-color: var(--purple);
 }
 
 #tNext {
@@ -559,28 +676,59 @@ body {
   border-top: 2px solid var(--border);
   background: #0d0d14;
   flex-wrap: wrap;
+  opacity: 0;
+  animation: tetrisFadeIn 0.4s ease-out 0.85s forwards;
 }
 
 .tcontrols span {
   font-family: var(--font); font-size: 6px; color: var(--dim);
   letter-spacing: 0.5px;
+  position: relative;
+  padding-left: 10px;
+}
+.tcontrols span::before {
+  content: '>';
+  position: absolute; left: 0;
+  color: var(--purple);
+}
+
+@keyframes tetrisFadeIn {
+  0%   { opacity: 0; transform: translateY(6px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 .konami-flash {
   position: fixed; inset: 0; z-index: 10000;
   display: flex; align-items: center; justify-content: center;
   background: #000;
-  color: var(--pink);
   font-family: var(--font); font-size: 24px;
   letter-spacing: 4px;
   pointer-events: none;
-  animation: konamiFlash 0.6s forwards;
+  animation: konamiFlash 0.8s forwards;
+}
+.konami-flash span {
+  display: inline-block;
+  color: var(--pink);
+  text-shadow: 0 0 20px var(--pink), 0 0 60px rgba(255,45,120,0.3);
+  animation: konamiGlitch 0.8s steps(1);
 }
 @keyframes konamiFlash {
-  0%   { opacity: 0; transform: scale(1.2); }
-  30%  { opacity: 1; transform: scale(1); }
-  70%  { opacity: 1; }
-  100% { opacity: 0; transform: scale(0.8); }
+  0%   { opacity: 0; }
+  15%  { opacity: 1; background: #0a0a0f; }
+  35%  { opacity: 1; background: #000; }
+  50%  { opacity: 1; background: #0a0a0f; }
+  65%  { opacity: 0.9; background: #000; }
+  100% { opacity: 0; }
+}
+@keyframes konamiGlitch {
+  0%   { transform: translate(0); }
+  10%  { transform: translate(-3px, 1px); color: #00ffc8; text-shadow: 0 0 20px #00ffc8; }
+  20%  { transform: translate(3px, -1px); color: #ff2d78; text-shadow: 0 0 20px #ff2d78; }
+  30%  { transform: translate(-2px, 2px); color: #a855f7; text-shadow: 0 0 20px #a855f7; }
+  40%  { transform: translate(2px, -2px); color: #00ff41; text-shadow: 0 0 20px #00ff41; }
+  50%  { transform: translate(-1px, 0); color: #ffd000; text-shadow: 0 0 20px #ffd000; }
+  60%  { transform: translate(0); }
+  100% { transform: translate(0); }
 }
 
 @media (max-width: 768px) {
@@ -590,6 +738,7 @@ body {
   .tnext { flex: 1; min-width: 120px; }
   #tBoard { width: 280px; height: 560px; }
   .konami-flash { font-size: 16px; }
+  .tetris-title { font-size: 10px; }
 }
 
 @media (max-width: 480px) {
@@ -599,4 +748,5 @@ body {
   .tpanel { gap: 8px; }
   .tstat { padding: 8px 10px; }
   .tcontrols span { font-size: 5px; }
+  .konami-flash { font-size: 12px; letter-spacing: 2px; }
 }
