@@ -141,7 +141,6 @@
       this.hold = null
       this.canHold = true
       this.bag = []
-      this.opened = false
       this.spawnPiece()
 
       this.buildDOM()
@@ -173,10 +172,7 @@
   </div>
 </div>`
       document.body.appendChild(this.overlay)
-      requestAnimationFrame(() => {
-        this.overlay.classList.add('tetris-open')
-        this.opened = true
-      })
+      requestAnimationFrame(() => this.overlay.classList.add('tetris-open'))
 
       this.cv = document.getElementById('tBoard')
       this.ctx = this.cv.getContext('2d')
@@ -187,12 +183,8 @@
       this.overlay.onclick = (e) => { if (e.target===this.overlay) this.hide() }
     }
 
-    hide() { this.overlay.classList.remove('tetris-open', 'tetris-reopen'); this.paused=true }
-    show() {
-      this.overlay.classList.add('tetris-open')
-      this.paused = false
-      if (this.opened) this.overlay.classList.add('tetris-reopen')
-    }
+    hide() { this.overlay.classList.remove('tetris-open'); this.paused=true }
+    show() { this.overlay.classList.add('tetris-open'); this.paused=false }
 
     bagNext() {
       if (this.bag.length===0) this.bag = PIECES.slice().sort(()=>Math.random()-0.5)
@@ -280,6 +272,8 @@
       const rows = this.clearing.sort((a,b)=>b-a)
       for (const r of rows) {
         this.board.splice(r,1)
+      }
+      for (let i = 0; i < rows.length; i++) {
         this.board.unshift(Array(this.cols).fill(0))
       }
       this.clearing = null
