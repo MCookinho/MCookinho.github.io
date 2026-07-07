@@ -141,6 +141,7 @@
       this.hold = null
       this.canHold = true
       this.bag = []
+      this.opened = false
       this.spawnPiece()
 
       this.buildDOM()
@@ -172,7 +173,10 @@
   </div>
 </div>`
       document.body.appendChild(this.overlay)
-      requestAnimationFrame(() => this.overlay.classList.add('tetris-open'))
+      requestAnimationFrame(() => {
+        this.overlay.classList.add('tetris-open')
+        this.opened = true
+      })
 
       this.cv = document.getElementById('tBoard')
       this.ctx = this.cv.getContext('2d')
@@ -183,8 +187,12 @@
       this.overlay.onclick = (e) => { if (e.target===this.overlay) this.hide() }
     }
 
-    hide() { this.overlay.classList.remove('tetris-open'); this.paused=true }
-    show() { this.overlay.classList.add('tetris-open'); this.paused=false }
+    hide() { this.overlay.classList.remove('tetris-open', 'tetris-reopen'); this.paused=true }
+    show() {
+      this.overlay.classList.add('tetris-open')
+      this.paused = false
+      if (this.opened) this.overlay.classList.add('tetris-reopen')
+    }
 
     bagNext() {
       if (this.bag.length===0) this.bag = PIECES.slice().sort(()=>Math.random()-0.5)
@@ -368,7 +376,7 @@
         if (!this.collides(this.piece.shape, this.piece.x, this.piece.y+1)) {
           this.piece.y++
         } else {
-          this.lockTimer += this.dropInterval
+          this.lockTimer += dt
           if (this.lockTimer >= this.lockDelay || this.lockMoves >= this.maxLockMoves) {
             this.lock()
           }
