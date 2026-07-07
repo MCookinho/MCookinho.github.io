@@ -94,6 +94,17 @@
             <div class="shiva-legenda">
               <h3>★ SHIVA ★</h3>
               <p>GOLDEN RETRIEVER, A COISA MAIS FOFA DESSE MUNDO, MINHA PARCEIRA DE CÓDIGO</p>
+          </div>
+          <div class="shiva-chat">
+            <div class="shiva-chat-box" id="shivaChat">
+              <div class="shiva-msg shiva-welcome">
+                <span class="shiva-paw">🐾</span>
+                <div class="shiva-bubble">AU!! MANDA VER AÍ!! :D</div>
+              </div>
+            </div>
+            <div class="shiva-input-row">
+              <input type="text" id="shivaInput" class="shiva-input" placeholder="escreve pra shiva..." maxlength="100" autocomplete="off" />
+              <button class="shiva-send" id="shivaSend">ENVIAR</button>
             </div>
           </div>
         </div>
@@ -278,5 +289,402 @@
 
   <script src="script.js"></script>
   <script src="tetris.js"></script>
+  <script>
+  (function () {
+    const R = {
+      happy: [
+        'AU AU AU AU!! :D',
+        'AU AU AU AU AU!! :D',
+        'WOF WOF WOF!! :D',
+        'AUUUUUU!! :D',
+        'AU AU AU!! *abanando o rabo* :D',
+        'AU AU!! *pula de alegria* :D',
+        'AU! AU! AUUUU! :D',
+        'WOOF WOOF!! :D',
+        'AU AU AU AU!! *corre em circulos* :D',
+        'AU AU!! *lambe a tela* :D',
+        'AU!! *faz a festa* :D',
+        'WOF!! *dancinha feliz* :D',
+        'AU!! AU!! AU!! *gira que nem maluca* :D',
+        'UUUUAU AU AU!! :D',
+        'WOOOOF!! *te amo* :D',
+        'AU!! *senta e da a pata* :D',
+        'AU AU AUUU!! *muita felicidade* :D',
+        '*abanando o rabo a mil por hora* AU!! :D',
+        'AU!! *se joga no chao de tanta alegria* :D',
+        'AU AU! *late sorrindo* :D',
+      ],
+      sad: [
+        'au... au... :(',
+        'auuuuu... :(',
+        '...au... *deita no seu colo* :(',
+        'au... *encosta a cabeca* :\'(',
+        'au... *lambe sua mao* :(',
+        'au... au... *olhos tristes* :((',
+        'au... *abana o rabo devagar* :I',
+        'nao fica triste nao... au... *deita do seu lado* :(',
+        'au... *coloca a pata no seu colo* :\'(',
+        'au... :\'(',
+        'au... *suspiro triste* ...au...',
+        'vem ca... au... *deita do seu lado* :(',
+        'au... *encosta o nariz gelado* :(',
+        'au... *te olha com olhos de cachorro*... :(',
+        'au. *sente sua falta* .au.',
+        '*cabeca baixa* au...',
+        'au... queria ajudar... :\'(',
+        'au... *deita e coloca a cabeca na sua perna* :(',
+        'nao... au... *abana triste* ...au...',
+        'au... *te entende* :(',
+      ],
+      angry: [
+        'AU AU AU!! >:(',
+        'GRRR AU AU!! >:(',
+        'AU!! AU!! >:(',
+        'WOF WOF WOF!! >:(',
+        'AU!! *rosna* >:(',
+        'AU AU AU AU AU!! >:(',
+        '*grrr* AU!! >:(',
+        'HMPF AU!! >:(',
+        'AU!! *vira de costas* >:(',
+        'WOF!! *late bravo* >:(',
+        'AU AU!! *rosna baixinho* >:(',
+        'GRRR... AU!! >:(',
+        'NAO GOSTEI!! AU!! >:(',
+        'AU!! *bate a pata no chao* >:(',
+        'WORF WORF!! >:(',
+        '*pelo do lombo ericado* AU!! >:(',
+        'AU!! AU!! AU!! *toda estressada* >:(',
+        'HMPF!! *sai andando* >:(',
+        'AU... NAO!! AU!! >:(',
+        'GRRRRR... *mostra os dentes de brincadeira* AU!! >:(',
+      ],
+      love: [
+        'au... au... *deita no seu colo* <3',
+        'AU AU!! <3',
+        'auuuuu ♥ *abanando o rabo* <3',
+        '*lambe seu rosto* AU AU <3',
+        'au ♥ au ♥ au ♥',
+        'AU!! *se joga no seu colo* <3',
+        'au... *coloca a cabeca no seu colo* <3',
+        '*deita de barriga pra cima* au... <3',
+        'au au ♥ *segue voce pela casa* <3',
+        'AU AU AU AU TE AMO AU AU!! <3',
+        'au... <3 *te lambe* ...au <3',
+        '*enconsta o nariz gelado em voce* au♥',
+        'au♥ au♥ au♥ *late amor*',
+        'MUUUITO AMOR AU!! <3',
+        'au... *se enrosca em voce* <3',
+        '♥ AU ♥ AU ♥ AU ♥',
+        '*deita no seu pe* au... te amo... <3',
+        'au!! *coloca a cabeca no seu colo e suspira feliz* <3',
+        'voce e tudibom au!! <3',
+        'AU!! *te lambidas e carinho* <3',
+      ],
+      food: [
+        'AU AU AU AU AU!! COMIDA!! :D',
+        'AUUUUUUUUU!! PETISCO!! :D',
+        'AU!! *saliva* ONDE?? :D',
+        'AU! AU! AU! *roda em circulo* :D',
+        'WOF WOF!! QUERO!! :D',
+        'AU!! *senta bonitinho* :D',
+        'AU! *da a pata* :D',
+        'AUUU... *encara o pote*... AU!! :D',
+        'AU AU AU!! SNACKS!! :D',
+        '*orelha em pe* AU?? COMIDA?? AU!! :D',
+        'AU!! *babando* :D',
+        'AGORA?? AU AU!! AGORA?? :D',
+        '*salivando* ...au... AU AU AU!! :D',
+        'AU!! *te leva ate a cozinha* :D',
+        'AU AU AU!! HORARIO DO PETISCO!! :D',
+        'WOF!! *senta e treme de ansiedade* :D',
+        'AU!! DA UMA PROVINHA AI!! :D',
+        'AUU... *te encarando* ...AUU... :D',
+        '*fareja o ar* AU!! SENTI!! :D',
+        'AU!! *gira que nem um tornado* COMIDA!! :D',
+      ],
+      play: [
+        'AU AU AU AU!! PASSEAR!! :D',
+        'AU!! *pega a coleira* :D',
+        'WOF WOF!! VAMOS!! :D',
+        'AU AU!! *corre pra porta* :D',
+        'AU!! *pula de ansiedade* :D',
+        'AU AU AU!! BOLA!! :D',
+        'WOF!! *traz o brinquedo* :D',
+        'AU!!! *nao para quieto* :D',
+        'AU AU!! *faz a festa* :D',
+        'AU!! *giro 360 de empolgacao* :D',
+        'BORA BORA BORA AU AU!! :D',
+        'AU!! *te empurra o brinquedo na mao* :D',
+        'WOF!! *agacha e faz graca* :D',
+        'AU AU AU!! *late de ansiedade boa* :D',
+        '*pega a bolinha e solta no seu pe* AU!!',
+        'VAMOS BRINCAR AU AU!! :D',
+        'AU!! *corre em circulos na sua volta* :D',
+        '*te encara com a bolinha na boca* hmmm... au!!',
+        'AU AU!! *nao para quieta um segundo* :D',
+        'WOF!! *te convida pra brincar* VEM!! :D',
+      ],
+      sleepy: [
+        'au... *boceja* zzz...',
+        'au... *deita e dorme* zzz',
+        'auuu... *olhos pesados* zzz...',
+        '...au... *ja dormindo* zzz',
+        'au... *se enrosca* zzz...',
+        'zuau... *dormindo* zzz...',
+        'au... *sonha e mexe as patas* ...au ...au...',
+        'zzz... au... zzz...',
+        'au... *cabeca caindo de sono* zzz...',
+        '*bocejo canino* asuuunn... *dorme* zzz',
+        'hmm... au... *fecha os olhos* zzz...',
+        '*ronca baixinho* ...au... zzz',
+        'au... to com sono... *se aninha* zzz',
+        'zzz au zzz au zzz... *sonhando com os anjinhos*',
+        'au... *cobre o nariz com a pata* zzz...',
+        'nao quero dormir... au... *ja dormindo* zzz',
+        '*suspira* ...au... *pega no sono* zzz',
+        'au... ta na hora de dormir sim... zzz...',
+        'zzZZzz... *acorda* au? *dorme de novo* zzz',
+        'au (bocejo) ...au (bocejo denovo) ...au (dormi) zzz',
+      ],
+      curious: [
+        'au?? *inclina a cabeca*',
+        'AU??',
+        'au au?? *pisca*',
+        'au? au? *fareja o ar*',
+        'WOF?? *cabeca inclinada*',
+        'au? *orelha em pe*',
+        'au...?? *confusa*',
+        'AU?? AU?? *late perguntando*',
+        'au... *pensa* ...AU??',
+        'au au au?? *tenta entender*',
+        'hmm?? au?? *inclina a cabeca dos dois lados*',
+        'AU? *pisca lentamente*',
+        'au... *te olhando de cabeca torta*',
+        'pera... au?? *processando*',
+        '*inclina a cabeca 45 graus* au...??',
+        'AU?? NAO ENTENDI!! AU!!',
+        'au... au... *pensa pensa* ...au!!',
+        'seii laaa au?? *da de ombros canina*',
+        'au... explica de novo... *cabeca inclinada*',
+        'o que que isso? au? *fareja*',
+      ],
+      greeting: [
+        'AU AU!! BEM VINDO!! :D',
+        'AU!! *recebe na porta* :D',
+        'WOF WOF!! OI!! :D',
+        'AU AU AU!! *abanando o rabo* :D',
+        'AU!! QUE BOM TE VER!! :D',
+        'AU AU!! *cheira voce* :D',
+        'AUUUU!! *festa* :D',
+        'WOF!! *da a volta em circulos* :D',
+        'AU!! *encosta o nariz* :D',
+        'AU AU AU AU!! *muita emocao* :D',
+        'OI OI OI AU!! :D',
+        'SALVE SALVE AU!! :D',
+        'AU!! *pula de alegria* :D',
+        'FALA AMIGO AU!! :D',
+        'AUU AUU!! QUE SAUDADE!! :D',
+        '*te cheira inteira* AU!! :D',
+        'AAAAAUUUUUU!! :D',
+        'WOF!! *te cumprimenta com a patinha* :D',
+        'AU!! E NOIS!! :D',
+        'AUAUAUAUAUAUAUU!! *emocionada demais* :D',
+      ],
+      goodbye: [
+        'au... ja vai? :(',
+        'au... *triste por voce ir* :(',
+        'AU AU!! VOLTA LOGO!! :D',
+        'au... *acena com a pata* tchau...',
+        'au... *deita na sua cama sentindo falta* :(',
+        'AU!! ATE MAIS!! :D',
+        'AU AU!! NAO ESQUECE DE VOLTAR!! :D',
+        'WOF WOF!! FOI UM PRAZER!! :D',
+        'au... *late baixinho* volta logo...',
+        'tchau amigo... au... *abanando triste* :(',
+        'AU!! FOI OTIMO TE VER!! VOLTA LOGO!! :D',
+        'au... *te ve indo* ...au... :(',
+        'nao vai nao... au... :\'(',
+        'ATE MAIS AU!! *pisca* :D',
+        'au... *promete que volta?* :(',
+        'AU AU!! *corre ate o portao* :D',
+        'WOF!! FOI DIVERTIDO!! :D',
+        'au... *fica olhando de longe* ...au... :(',
+        'VOLTA SEMPRE AU!! :D',
+        'tchau... au... :\'( (vou sentir saudades)',
+      ],
+      sassy: [
+        'humpf... au.',
+        'au. (so um au mesmo)',
+        '....au.....(demorou pra responder hein)',
+        'AU. (ponto.)',
+        '*olha com desprezo* ...au.',
+        'au... *viro a cara*',
+        'HMPF.',
+        'au. *abanou uma vez so*',
+        '......au.',
+        '*suspira* au.',
+        'aham... au. *ironia canina*',
+        'au. (com desdem)',
+        'la ele au... *pisca*',
+        'au. *te ignora*',
+        'hmm.... *te olha de canto* au.',
+        'sei... au. *cara de deboche*',
+        'au. (e dai?)',
+        'blz... au. *virada de bunda*',
+        'au. au. *cada au uma verdade*',
+        'fala serio... au. *cara de paisagem*',
+      ],
+      silly: [
+        'AU AU AU AU AU AU AU AU AU',
+        'WOFAUFAUFAUF WOF WOF!! :D',
+        'au. nao. au. AU!',
+        'AU! ...au? ...AU!!',
+        'au (em portugues) au (em ingles) AU (BERRO)',
+        'AUFAUFAUFAUFAUF!! :D',
+        '*late em codigo morse* .--. . --. .-',
+        'au... pera... vou pensar... AU!!',
+        'au-WIFI au-BLUETOOTH au-MODERNO',
+        'AU! AU! ...(eco)... AU! AU!',
+        'AU! te-amo AU! te-amo AU! (traduçao)',
+        '*late em 8 idiomas* WOOF AU WAF BOW WOW GUAU',
+        'au? na verdade... AU!! AFAUFAUF!!',
+        'AU. AU. AU. (musica classica canina)',
+        '*bug canino* au... au... AU.... *travou*',
+        'AU (em caps lock) au (em minusculo) Au (com vergonha)',
+        'AUF! AUF! *latido premium* AUF!',
+        '*late em stereo* AU...AU...AU...',
+        'fun fact: au ao contrario e ua. e ua ao contrario e au.',
+        'AU? AU!! AU? AU!! *so subindo e descendo tom*',
+      ],
+      treat: [
+        'AUUUUUU!! PETISCO!! PETISCO!! :D',
+        'AU AU AU!! BISCOITO!! :D',
+        'AU!! *cheira o bolso* :D',
+        'WOF!! *sabia que era petisco* :D',
+        'AU AU!! *faz truque* :D',
+        'AUUU... *implora com os olhos* :D',
+        '*orelha em pe* AU? OUVIU PETISCO? AU!! :D',
+        'AU!! *te segue ate a despensa* :D',
+        'AU AU AU!! OSSINHO!! :D',
+        'PETISCO PETISCO PETISCO AU AU!! :D',
+        '*da a pata* *da a outra* *roda* *deita* AU!! MERECI!! :D',
+        'AU!! *se joga no chao de costas* :D',
+        '*olhar de cachorro de comercial de ração* ...au... :D',
+        'AU!! *trava no modo petisco* :D',
+        'WOF!! ACHO QUE OUVIR A PALAVRA MAGICA!! :D',
+        'AU!! QUAL SABOR?? :D',
+        'AU AU AU!! NAO VAI ME DEIXAR NA MAO!! :D',
+        'AU! AU! *late em ritmo de "quero quero"* :D',
+        'AUUU... *derretendo de ansiedade* :D',
+        'SO DE VOCE PENSAR EM PETISCO EU JA SEI AU!! :D',
+      ],
+      compliment: [
+        'AU!! *corcoveia de alegria* :D',
+        'AU AU AU!! SOU LINDA MESMO!! :D',
+        '*abanando o rabo loucamente* AU!! :D',
+        'AU!! *se arruma toda* :D',
+        'WOF!! OBRIGADA!! :D',
+        'AU AU!! *pisca um olho* :D',
+        'seii... au... *modesta* :D',
+        'AU AU!! SUA LINDO TAMBEM!! :D',
+        '*deita de costa pra ganhar carinho na barriga* AU!!',
+        'AU!! *lambe o elogio* :D',
+        'AU!! FICO ATE SEM JEITO!! :D',
+        '*corre e volta com um brinquedo* AU!! OBRIGADA!! :D',
+        'AU... *corou* (cachorro cora?) :D',
+        'AU!! *abanando o rabo que vira helice de helicoptero* :D',
+        'hihi au!! *sorriso canino* :D',
+        'sei que sou... au... ♥',
+        'AU!! *da um beijinho* :D',
+        'AU AU!! FALOU TUDO!! :D',
+        'AU... *te olha com carinho* obrigada :D',
+        'AU!! FICO ATRAPALHADA DE TANTA ALEGRIA!! :D',
+      ],
+      random: [
+        'au.',
+        'AU!!',
+        'au...',
+        'AU AU!!',
+        'au?',
+        'WOF.',
+        'AU... AU...',
+        'au!! :D',
+        'au... :D',
+        'AU AU AU!!',
+        'au. (pensativa)',
+        'AU!',
+        'au (genérico mas com carinho)',
+        ':P au',
+        'AUU',
+        'au (produzido por shiva industries)',
+        '*abana o rabo*',
+        'AU. pronto. falei.',
+        'a.u. (cada letra uma latida)',
+        'AU!! (esse foi do nada)',
+      ],
+    }
+
+    const ctxMap = [
+      { words: ['triste',':(','trist','deprimi','chatead','sofri','sofro','dor','magoad','merda','fudeu','ruim','pessimo','chor','sad','bad','sinto falta','saudade','solidao','sozinho','perdi','morre','morreu','doente','hospital','acabou','termino','partiu','foi embora','abandono'], cat: 'sad' },
+      { words: ['feliz',':d',':)','alegr','contente','maravilha','otimo','que bom','top','brabo','foda','incrivel','show','fenomenal','festej','comemor','parabens','feliz','radiante','tesao','content','orgulho','satisfeit','realizad'], cat: 'happy' },
+      { words: ['comid','petis','snack','fome','racao','cafe','biscoit','oss','queijo','pao','carne','frango','churras','hamburguer','pizza','macarrao','doce','salgad','coxinh','torta','bolo','suco','cerveja','comilança','gulosa','gostosu','delicia','nhac','mastig'], cat: 'food' },
+      { words: ['passe','andar','rua','para','brinc','bola','frisbee','corre','pula','caça','pega','esconde','buscar','caminha','parque','grama','jardim','aventura','correria','brinqued','latir','late','pula','giro'], cat: 'play' },
+      { words: ['amor','<3','♥','gust','carinh','amo','te quero','paixao','coraçao','fofo','fofura','lindo','linda','bonit','querid','baby','nenem','paixonite','s2','cafofo','tesao','paixao','favorit','ador','apaixon','charme','graça'], cat: 'love' },
+      { words: ['dorm','son','cansad','zzz','noite','sono','cama','cobert','travesseir','aninha','nana','ninar','pijama','sonolent','bocej','ronc'], cat: 'sleepy' },
+      { words: ['brav','raiva','odio','>:(','>:(','puto','puta','raiva','ódio','revolt','irritad','nervos','stress','pistola','fury','furi','raivos'], cat: 'angry' },
+      { words: ['ola','oi','hey','e ai','e aí','blz','salve','fala','beleza','bom dia','boa tarde','boa noite','bem vindo','eai','opa','fala ae','falae','suave','tranquilo','dboa'], cat: 'greeting' },
+      { words: ['tchau','xau','falou','flw','ate','vou nessa','ate mais','ate logo','parti','vaz','saindo','ja era','bye','goodbye','tchau','fui','vals','falow'], cat: 'goodbye' },
+      { words: ['?','hein','como','por que','que isso','o que','quem','onde','quando','qual','dúvida','pergunta','sabe','sabia','explica','entender','???'], cat: 'curious' },
+      { words: ['biscoit','treat','truque','pet', 'snack'], cat: 'treat' },
+      { words: ['lindo','linda','bonit','gatos','maravilhos','perfeit','belo','bela','charmoso','charmosa','gracinha','fofo','fofura','lindeza','princesa','deusa','rei','rainha','estiloso','estilosa'], cat: 'compliment' },
+      { words: ['kkk','haha','kkkk','hue','lol','hsuaush','sush','ahsuah','skks','aksjaks','lmao','kkj','hahaha','rsrs','ehhehe'], cat: 'happy' },
+      { words: ['nao gost','odei','detest','horror','pavor','noj','pqp','vsf','tnc','carai','porra','bosta','cuspi','desprez'], cat: 'angry' },
+      { words: ['café','cafe','cafezin','coffe'], cat: 'food' },
+      { words: ['água','agua','bebe','sede','beber','potinho'], cat: 'food' },
+    ]
+
+    function classify(msg) {
+      const lower = msg.toLowerCase()
+      for (const entry of ctxMap) {
+        for (const w of entry.words) {
+          if (lower.includes(w)) return entry.cat
+        }
+      }
+      return 'random'
+    }
+
+    const shivaInput = document.getElementById('shivaInput')
+    const shivaSend = document.getElementById('shivaSend')
+    const shivaChat = document.getElementById('shivaChat')
+
+    function addMsg(text, isUser) {
+      const div = document.createElement('div')
+      div.className = 'shiva-msg' + (isUser ? ' user' : '')
+      div.innerHTML = '<span class="shiva-paw">' + (isUser ? '👤' : '🐾') + '</span><div class="shiva-bubble">' + text + '</div>'
+      shivaChat.appendChild(div)
+      shivaChat.scrollTop = shivaChat.scrollHeight
+    }
+
+    function respond(msg) {
+      const cat = classify(msg)
+      const pool = R[cat] || R.random
+      const res = pool[Math.floor(Math.random() * pool.length)]
+      setTimeout(() => addMsg(res, false), 300 + Math.random() * 300)
+    }
+
+    function send() {
+      const msg = shivaInput.value.trim()
+      if (!msg) return
+      addMsg(msg, true)
+      shivaInput.value = ''
+      respond(msg)
+    }
+
+    shivaSend.addEventListener('click', send)
+    shivaInput.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') send()
+    })
+  })()
+  </script>
 </body>
 </html>
