@@ -353,7 +353,7 @@ class Game {
       return
     }
     if(item==='pedra'){
-      this.a.chain()
+      this.a.glassBreak()
       this.engine.tooltip('O espelho estilhaça! Um caco no chão.',2000)
       this.addItem('caco_vidro',false)
       this.selectedItem=null;this.renderInventory()

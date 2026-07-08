@@ -208,6 +208,25 @@ class AudioSys{
       g.gain.exponentialRampToValueAtTime(0.001,t+1.5)
     }.bind(this),{t:'lowpass',f:400,Q:2})
   }
+  glassBreak(){
+    const t=this.ctx.currentTime
+    const buf=this._buf(0.5,i=>Math.random()*2-1)
+    this._play(buf,function(g,t){
+      g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(0.18*this.volumes.sfx,t+0.02)
+      g.gain.setValueAtTime(0.08*this.volumes.sfx,t+0.1)
+      g.gain.exponentialRampToValueAtTime(0.001,t+0.5)
+    }.bind(this),{t:'highpass',f:3000,Q:2})
+    for(let i=0;i<5;i++){
+      setTimeout(()=>{
+        this._os(3000+Math.random()*4000,'sine',0.08,0.04*this.volumes.sfx,0,{t:'bandpass',f:5000,Q:8})
+        const s=this._buf(0.06,j=>Math.random()*2-1)
+        this._play(s,function(g,t2){
+          g.gain.setValueAtTime(0.03*this.volumes.sfx,t2);g.gain.exponentialRampToValueAtTime(0.001,t2+0.06)
+        }.bind(this),{t:'highpass',f:6000,Q:7})
+      },i*30)
+    }
+    this._os(60,'sine',0.3,0.07*this.volumes.sfx,40,{t:'lowpass',f:150,Q:2})
+  }
   final(){
     this._os(400,'triangle',2.5,0.1*this.volumes.sfx,800,{t:'lowpass',f:1000,Q:2})
     this._os(600,'sine',2,0.06*this.volumes.sfx,1000,{t:'lowpass',f:1200})
