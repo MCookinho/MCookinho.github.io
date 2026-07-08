@@ -1527,6 +1527,7 @@ body {
 
 @media (min-width: 1200px) {
   .container { max-width: 1200px; }
+  .nav-inner { max-width: 1200px; }
 
   .nav-links a { font-size: 10px; }
   .nav-logo { font-size: 13px; }
@@ -1591,8 +1592,9 @@ body {
 
 @media (min-width: 1600px) {
   .container { max-width: 1400px; }
+  .nav-inner { max-width: 1400px; }
 
-  .nav-links { gap: 24px; }
+  .nav-links { gap: 28px; }
   .nav-links a { font-size: 11px; }
   .nav-logo { font-size: 15px; }
 
