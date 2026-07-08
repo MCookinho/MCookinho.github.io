@@ -73,42 +73,46 @@
     A: 'ctrl-a',
   }
 
-  var buttons = document.querySelectorAll('.ctrl-btn')
-
   function dispatch(key, type) {
     document.dispatchEvent(new KeyboardEvent(type, { key: key, bubbles: true }))
   }
 
-  // Click/tap -> dispatch + visual
-  buttons.forEach(function (btn) {
-    btn.addEventListener('mousedown', function (e) {
-      e.preventDefault()
-      var key = btn.getAttribute('data-key')
-      btn.classList.add('pressed')
-      dispatch(key, 'keydown')
+  function setupControllerBtns(scope) {
+    var btns = (scope || document).querySelectorAll('.ctrl-btn')
+    btns.forEach(function (btn) {
+      btn.addEventListener('mousedown', function (e) {
+        e.preventDefault()
+        var key = btn.getAttribute('data-key')
+        btn.classList.add('pressed')
+        dispatch(key, 'keydown')
+      })
+      btn.addEventListener('mouseup', function (e) {
+        e.preventDefault()
+        var key = btn.getAttribute('data-key')
+        btn.classList.remove('pressed')
+        dispatch(key, 'keyup')
+      })
+      btn.addEventListener('mouseleave', function () {
+        btn.classList.remove('pressed')
+      })
+      btn.addEventListener('touchstart', function (e) {
+        e.preventDefault()
+        var key = btn.getAttribute('data-key')
+        btn.classList.add('pressed')
+        dispatch(key, 'keydown')
+      })
+      btn.addEventListener('touchend', function (e) {
+        e.preventDefault()
+        var key = btn.getAttribute('data-key')
+        btn.classList.remove('pressed')
+        dispatch(key, 'keyup')
+      })
     })
-    btn.addEventListener('mouseup', function (e) {
-      e.preventDefault()
-      var key = btn.getAttribute('data-key')
-      btn.classList.remove('pressed')
-      dispatch(key, 'keyup')
-    })
-    btn.addEventListener('mouseleave', function () {
-      btn.classList.remove('pressed')
-    })
-    btn.addEventListener('touchstart', function (e) {
-      e.preventDefault()
-      var key = btn.getAttribute('data-key')
-      btn.classList.add('pressed')
-      dispatch(key, 'keydown')
-    })
-    btn.addEventListener('touchend', function (e) {
-      e.preventDefault()
-      var key = btn.getAttribute('data-key')
-      btn.classList.remove('pressed')
-      dispatch(key, 'keyup')
-    })
-  })
+  }
+
+  setupControllerBtns()
+
+  window.setupControllerBtns = setupControllerBtns
 
   // Keyboard -> visual (affects all controllers)
   document.addEventListener('keydown', function (e) {

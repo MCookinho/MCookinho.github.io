@@ -171,7 +171,6 @@
     <span>← → MOVER</span><span>↑ ROTAR</span><span>↓ DESCER</span><span>SPACE SOLTAR</span><span>P PAUSA</span>
   </div>
   <div class="skills-controller tetris-controller" id="tetrisController">
-    <div class="ctrl-label">// CTRL</div>
     <div class="ctrl-body">
       <div class="ctrl-dpad">
         <button class="ctrl-btn ctrl-up" data-key="ArrowUp" aria-label="Cima">▲</button>
@@ -198,6 +197,7 @@
       this.ncv = document.getElementById('tNext')
       this.nctx = this.ncv.getContext('2d')
 
+      if (window.setupControllerBtns) window.setupControllerBtns(document.getElementById('tetrisController'))
       document.getElementById('tClose').onclick = () => this.hide()
       this.overlay.onclick = (e) => { if (e.target===this.overlay) this.hide() }
     }

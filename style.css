@@ -997,6 +997,11 @@ body {
   background: #0d0d14;
   opacity: 0;
   animation: tetrisFadeIn 0.4s ease-out 0.9s forwards;
+  width: auto;
+  min-width: 0;
+}
+.tetris-controller .ctrl-body {
+  justify-content: center;
 }
 
 @keyframes tetrisFadeIn {
