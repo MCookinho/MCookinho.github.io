@@ -63,8 +63,49 @@
   }
 
   function playJumpSnd() {
-    playTone(180, 380, 0.15, 0.04)
-    playNoise(0.08, 0.03, 400)
+    // Whoosh + effort grunt
+    try {
+      var ac = getAudioCtx()
+      var now = ac.currentTime
+      // Whoosh - filtered noise going up
+      var buf = ac.createBuffer(1, ac.sampleRate * 0.12, ac.sampleRate)
+      var data = buf.getChannelData(0)
+      for (var i = 0; i < data.length; i++) {
+        data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / data.length, 1.5)
+      }
+      var src = ac.createBufferSource()
+      src.buffer = buf
+      var bp = ac.createBiquadFilter()
+      bp.type = 'bandpass'
+      bp.frequency.setValueAtTime(300, now)
+      bp.frequency.exponentialRampToValueAtTime(600, now + 0.12)
+      bp.Q.setValueAtTime(1.5, now)
+      var g = ac.createGain()
+      g.gain.setValueAtTime(0.05, now)
+      g.gain.exponentialRampToValueAtTime(0.001, now + 0.12)
+      src.connect(bp)
+      bp.connect(g)
+      g.connect(ac.destination)
+      src.start(now)
+      // Brief low thud
+      var buf2 = ac.createBuffer(1, ac.sampleRate * 0.04, ac.sampleRate)
+      var d2 = buf2.getChannelData(0)
+      for (var j = 0; j < d2.length; j++) {
+        d2[j] = (Math.random() * 2 - 1) * Math.pow(1 - j / d2.length, 3)
+      }
+      var src2 = ac.createBufferSource()
+      src2.buffer = buf2
+      var lp = ac.createBiquadFilter()
+      lp.type = 'lowpass'
+      lp.frequency.setValueAtTime(200, now)
+      var g2 = ac.createGain()
+      g2.gain.setValueAtTime(0.06, now)
+      g2.gain.exponentialRampToValueAtTime(0.001, now + 0.04)
+      src2.connect(lp)
+      lp.connect(g2)
+      g2.connect(ac.destination)
+      src2.start(now)
+    } catch (e) {}
   }
 
   function playLandSnd() {
@@ -73,8 +114,49 @@
   }
 
   function playFlashlightSnd() {
-    playNoise(0.02, 0.04, 2000)
-    playTone(2000, 1500, 0.04, 0.02, 'square')
+    // Mechanical click - short noise burst with high-pass
+    try {
+      var ac = getAudioCtx()
+      var now = ac.currentTime
+      var buf = ac.createBuffer(1, ac.sampleRate * 0.06, ac.sampleRate)
+      var data = buf.getChannelData(0)
+      for (var i = 0; i < data.length; i++) {
+        data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / data.length, 2)
+      }
+      var source = ac.createBufferSource()
+      source.buffer = buf
+      var hp = ac.createBiquadFilter()
+      hp.type = 'highpass'
+      hp.frequency.setValueAtTime(1500, now)
+      hp.Q.setValueAtTime(2, now)
+      var gain = ac.createGain()
+      gain.gain.setValueAtTime(flashlightOn ? 0.04 : 0.06, now)
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06)
+      source.connect(hp)
+      hp.connect(gain)
+      gain.connect(ac.destination)
+      source.start(now)
+      // Click after
+      setTimeout(function () {
+        var buf2 = ac.createBuffer(1, ac.sampleRate * 0.02, ac.sampleRate)
+        var d2 = buf2.getChannelData(0)
+        for (var j = 0; j < d2.length; j++) {
+          d2[j] = (Math.random() * 2 - 1) * 0.5 * Math.pow(1 - j / d2.length, 4)
+        }
+        var src2 = ac.createBufferSource()
+        src2.buffer = buf2
+        var hp2 = ac.createBiquadFilter()
+        hp2.type = 'highpass'
+        hp2.frequency.setValueAtTime(3000, now)
+        var g2 = ac.createGain()
+        g2.gain.setValueAtTime(0.05, now + 0.07)
+        g2.gain.exponentialRampToValueAtTime(0.001, now + 0.09)
+        src2.connect(hp2)
+        hp2.connect(g2)
+        g2.connect(ac.destination)
+        src2.start(now + 0.07)
+      }, 60)
+    } catch (e) {}
   }
 
   function playItemPickup() {
@@ -108,7 +190,9 @@
   var isRunning = false
   var isCrouching = false
   var isJumping = false
-  var flashlightOn = true
+  var flashlightOn = false
+  var flashlightFound = false
+  var flashlightPickupAnim = 0
 
   var GRAVITY = -9.8
   var JUMP_SPEED = 5.0
@@ -434,6 +518,7 @@
     buildRooms()
     buildFurniture()
     placeItems()
+    placeFlashlightItem()
 
     hudEls.day = document.getElementById('hudDay')
     hudEls.daySub = document.getElementById('hudDaySub')
@@ -495,51 +580,85 @@
   // ===== FLASHLIGHT =====
   function buildFlashlight() {
     flashlight = new THREE.SpotLight(0xffeedd, 2.5)
-    flashlight.angle = 0.35
-    flashlight.penumbra = 0.5
-    flashlight.decay = 1.5
-    flashlight.distance = 12
+    flashlight.angle = 0.32
+    flashlight.penumbra = 0.6
+    flashlight.decay = 1.2
+    flashlight.distance = 14
     flashlight.castShadow = true
     flashlight.shadow.mapSize.width = 512
     flashlight.shadow.mapSize.height = 512
     flashlight.shadow.camera.near = 0.1
-    flashlight.shadow.camera.far = 12
+    flashlight.shadow.camera.far = 14
+    flashlight.intensity = 0
     scene.add(flashlight)
 
     var target = new THREE.Object3D()
     target.position.set(0, 0, -5)
-    flashlight.add(target)
+    scene.add(target)
     flashlight.target = target
 
     // Bulb mesh
     var bulbGeo = new THREE.SphereGeometry(0.04, 8, 8)
-    var bulbMat = new THREE.MeshBasicMaterial({ color: 0xffeedd })
+    var bulbMat = new THREE.MeshBasicMaterial({ color: 0x111111 })
     flashlightBulb = new THREE.Mesh(bulbGeo, bulbMat)
-    flashlightBulb.position.set(0.2, -0.15, -0.3)
-    flashlight.add(flashlightBulb)
-
-    // Glow aura
-    var glowGeo = new THREE.SphereGeometry(0.08, 8, 8)
-    var glowMat = new THREE.MeshBasicMaterial({
-      color: 0xffeedd,
-      transparent: true,
-      opacity: 0.2
-    })
-    var glow = new THREE.Mesh(glowGeo, glowMat)
-    glow.position.copy(flashlightBulb.position)
-    flashlight.add(glow)
-
-    // Attach flashlight to camera
-    camera.add(flashlight)
-    camera.add(flashlight.target)
+    flashlightBulb.position.set(0, 0, 0)
+    scene.add(flashlightBulb)
   }
 
   function toggleFlashlight() {
+    if (!flashlightFound) return
     flashlightOn = !flashlightOn
     flashlight.intensity = flashlightOn ? 2.5 : 0
     if (flashlightBulb) flashlightBulb.material.color.setHex(flashlightOn ? 0xffeedd : 0x111111)
     playFlashlightSnd()
     updateHUD()
+  }
+
+  function pickupFlashlight() {
+    if (flashlightFound) return
+    flashlightFound = true
+    flashlightPickupAnim = 0.001
+    flashlightOn = true
+    flashlight.intensity = 0
+    if (flashlightBulb) flashlightBulb.material.color.setHex(0x111111)
+    playPuzzleSolve()
+    updateHUD()
+  }
+
+  function updateFlashlight(dt) {
+    // Position flashlight at camera
+    var camPos = camera.position
+    var fwd = new THREE.Vector3(0, 0, -1)
+    fwd.applyQuaternion(camera.quaternion)
+    var flashOffset = new THREE.Vector3(0.2, -0.15, -0.3)
+    flashOffset.applyQuaternion(camera.quaternion)
+    flashlight.position.copy(camPos).add(flashOffset)
+    flashlightBulb.position.copy(flashlight.position)
+    // Target in front
+    var targetPos = camPos.clone().add(fwd.clone().multiplyScalar(5))
+    flashlight.target.position.copy(targetPos)
+
+    // Pickup animation
+    if (flashlightPickupAnim > 0 && flashlightPickupAnim < 1) {
+      flashlightPickupAnim += dt * 1.5
+      if (flashlightPickupAnim >= 1) {
+        flashlightPickupAnim = 1
+        flashlight.intensity = 2.5
+        if (flashlightBulb) flashlightBulb.material.color.setHex(0xffeedd)
+      } else {
+        // Flicker effect during pickup
+        var flicker = Math.sin(flashlightPickupAnim * 40) * 0.5 + 0.5
+        flashlight.intensity = 2.5 * flicker * easeOut(flashlightPickupAnim)
+        if (flashlightBulb) {
+          var bright = Math.floor(0xee * easeOut(flashlightPickupAnim))
+          flashlightBulb.material.color.setHex((bright << 16) | (bright << 8) | bright)
+        }
+      }
+    }
+  }
+
+  function easeOut(t) {
+    return 1 - Math.pow(1 - t, 3)
   }
 
   // ===== ROOMS =====
@@ -884,6 +1003,35 @@
   }
 
   // ===== ITEMS =====
+  function placeFlashlightItem() {
+    if (flashlightFound) return
+    var entrancePos = computeRoomPos(1, 3)
+    var geo = new THREE.BoxGeometry(0.1, 0.1, 0.2)
+    var mat = new THREE.MeshStandardMaterial({
+      color: 0x4a3a2a,
+      emissive: 0x8a6a3a,
+      emissiveIntensity: 0.3,
+      roughness: 0.5,
+      metalness: 0.4
+    })
+    var mesh = new THREE.Mesh(geo, mat)
+    mesh.position.set(entrancePos.x - 0.3, 0.15, entrancePos.z + 0.3)
+    mesh.rotation.x = 0.2
+    mesh.castShadow = true
+    mesh.userData = {
+      interactable: true,
+      icon: '🔦',
+      name: 'LANTERNA',
+      type: 'flashlight',
+      onInteract: function () {
+        if (gameState.gameOver || gameState.caught) return
+        scene.remove(mesh)
+        pickupFlashlight()
+      }
+    }
+    scene.add(mesh)
+  }
+
   function placeItems() {
     // Remove old items
     interactables.forEach(function (item) {
@@ -891,7 +1039,6 @@
     })
     interactables = []
 
-    // Place items randomly in rooms
     var itemPositions = [
       { room: 'bedroom1', offX: 0.2, offZ: 0.2, icon: '📜', name: 'CARTA', type: 'letter' },
       { room: 'kitchen', offX: -0.3, offZ: 0.4, icon: '🦴', name: 'OSSO', type: 'bone' },
@@ -902,7 +1049,6 @@
       { room: 'living', offX: -0.5, offZ: 0.5, icon: '🎵', name: 'CAIXA DE MÚSICA', type: 'musicbox' },
     ]
 
-    // Only place items for current day
     var itemsToPlace = Math.min(3 + gameState.day, itemPositions.length)
     var used = {}
     var placed = 0
@@ -911,15 +1057,14 @@
       if (used[idx]) continue
       used[idx] = true
       var ip = itemPositions[idx]
-      var roomFound = false
-      for (var r = 0; r < MAP.rows && !roomFound; r++) {
-        for (var c = 0; c < MAP.cols && !roomFound; c++) {
+      for (var r = 0; r < MAP.rows; r++) {
+        for (var c = 0; c < MAP.cols; c++) {
           if (roomAt(c, r) === ip.room) {
             var pos = computeRoomPos(c, r)
             var item = createItemMesh(pos.x + ip.offX, pos.z + ip.offZ, ip.icon, ip.name, ip.type)
             interactables.push(item)
             placed++
-            roomFound = true
+            c = MAP.cols; r = MAP.rows
           }
         }
       }
@@ -1205,6 +1350,7 @@
 
     if (!gameState.gameOver && !gameState.caught) {
       updateMovement(dt)
+      updateFlashlight(dt)
 
       gameState.hunger -= dt * 0.2
       if (gameState.hunger <= 0) {
@@ -1235,11 +1381,21 @@
       gameState.items = []
       gameState.gameOver = false
       gameState.caught = false
-    player.pos.set(6, 0, 14)
+      flashlightFound = false
+      flashlightOn = false
+      flashlightPickupAnim = 0
+      flashlight.intensity = 0
+      if (flashlightBulb) flashlightBulb.material.color.setHex(0x111111)
+      player.pos.set(6, 0, 14)
       player.velY = 0
       player.isGrounded = true
       document.getElementById('deathScreen').classList.remove('open')
       document.getElementById('retryBtn').textContent = 'TENTAR NOVAMENTE'
+      // Re-place items and flashlight
+      interactables.forEach(function (item) { if (item.parent) scene.remove(item) })
+      interactables = []
+      placeItems()
+      placeFlashlightItem()
       updateHUD()
       renderer.domElement.requestPointerLock()
     } else {
