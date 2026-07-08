@@ -65,7 +65,7 @@
     ArrowDown: 'ctrl-down',
     ArrowLeft: 'ctrl-left',
     ArrowRight: 'ctrl-right',
-    Backspace: 'ctrl-select',
+    ' ': 'ctrl-select',
     Enter: 'ctrl-start',
     b: 'ctrl-b',
     a: 'ctrl-a',
