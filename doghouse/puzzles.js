@@ -439,115 +439,136 @@ function openPuzzle(puzzleId, callback) {
   _puzzleActive = true;
   _currentPuzzleId = puzzleId;
   _puzzleCallback = callback;
-  window.engine.state.phase = 'puzzle';
+  if (window.engine && window.engine.state) {
+    window.engine.state.phase = 'puzzle';
+  }
 
   const overlay = document.getElementById('puzzle-overlay');
-  overlay.querySelector('.puzzle-title').textContent = data.title;
-  overlay.querySelector('.puzzle-hint').textContent = data.hint;
+  if (!overlay) { _puzzleActive = false; return; }
+  const titleEl = overlay.querySelector('.puzzle-title');
+  const hintEl = overlay.querySelector('.puzzle-hint');
+  if (titleEl) titleEl.textContent = data.title;
+  if (hintEl) hintEl.textContent = data.hint;
   overlay.style.display = 'block';
 
   const content = document.getElementById('puzzle-content');
+  if (!content) { _puzzleActive = false; return; }
   content.innerHTML = '';
 
   const renderer = PUZZLE_RENDERERS[puzzleId];
   if (renderer) {
-    renderer(content, (userSolution) => {
-      _checkPuzzleSolution(puzzleId, userSolution);
-    });
+    try {
+      renderer(content, (userSolution) => {
+        _checkPuzzleSolution(puzzleId, userSolution);
+      });
+    } catch(e) {
+      console.error('Puzzle render error:', e);
+      _closePuzzle(false);
+    }
   }
 }
 
 function _checkPuzzleSolution(puzzleId, userSolution) {
-  const data = PUZZLE_DATA[puzzleId];
-  if (!data) return;
+  try {
+    const data = PUZZLE_DATA[puzzleId];
+    if (!data) return;
 
-  let correct = false;
+    let correct = false;
 
-  if (puzzleId === 'cadeado_joao') {
-    correct = JSON.stringify(userSolution) === JSON.stringify(data.solution);
-  } else if (puzzleId === 'patas_sandalia') {
-    const solution = data.solution;
-    correct = userSolution.length === 5 && userSolution.every((s, i) => s === solution[i]);
-  } else if (puzzleId === 'radios_ulisses') {
-    correct = Math.abs(userSolution[0] - 87.5) < 0.2 &&
-              Math.abs(userSolution[1] - 91.3) < 0.2 &&
-              Math.abs(userSolution[2] - 104.7) < 0.2;
-  } else if (puzzleId === 'desenhos_enzo') {
-    correct = userSolution.length === 5 && userSolution.every((v, i) => v === i);
-  } else if (puzzleId === 'velas_elaine') {
-    correct = userSolution.length === 7 && userSolution.every((v, i) => v === 6 - i);
-  } else if (puzzleId === 'lapides_giulia') {
-    correct = userSolution.length === 6 && userSolution.every((p, i) => p === i);
-  }
+    if (puzzleId === 'cadeado_joao') {
+      correct = JSON.stringify(userSolution) === JSON.stringify(data.solution);
+    } else if (puzzleId === 'patas_sandalia') {
+      const solution = data.solution;
+      correct = userSolution.length === 5 && userSolution.every((s, i) => s === solution[i]);
+    } else if (puzzleId === 'radios_ulisses') {
+      correct = Math.abs(userSolution[0] - 87.5) < 0.2 &&
+                Math.abs(userSolution[1] - 91.3) < 0.2 &&
+                Math.abs(userSolution[2] - 104.7) < 0.2;
+    } else if (puzzleId === 'desenhos_enzo') {
+      correct = userSolution.length === 5 && userSolution.every((v, i) => v === i);
+    } else if (puzzleId === 'velas_elaine') {
+      correct = userSolution.length === 7 && userSolution.every((v, i) => v === 6 - i);
+    } else if (puzzleId === 'lapides_giulia') {
+      correct = userSolution.length === 6 && userSolution.every((p, i) => p === i);
+    }
 
-  if (correct) {
-    _puzzleSolved(puzzleId);
-  } else {
-    window.engine.audio.playNoise(200, 0.3, 'noise');
-    const hint = document.getElementById('puzzle-overlay').querySelector('.puzzle-hint');
-    hint.textContent = 'NÃO É ISSO. TENTE NOVAMENTE.';
-    setTimeout(() => {
-      hint.textContent = data.hint;
-    }, 1500);
+    if (correct) {
+      _puzzleSolved(puzzleId);
+    } else {
+      if (window.engine && window.engine.audio) {
+        window.engine.audio.playNoise(200, 0.3, 'noise');
+      }
+      const hint = document.getElementById('puzzle-overlay').querySelector('.puzzle-hint');
+      hint.textContent = 'NÃO É ISSO. TENTE NOVAMENTE.';
+      setTimeout(() => {
+        hint.textContent = data.hint;
+      }, 1500);
+    }
+  } catch(e) {
+    console.error('Puzzle check error:', e);
   }
 }
 
 function _puzzleSolved(puzzleId) {
-  const data = PUZZLE_DATA[puzzleId];
-  const keyIndex = data.keyIndex;
+  try {
+    const data = PUZZLE_DATA[puzzleId];
+    if (!data) return;
+    const keyIndex = data.keyIndex;
 
-  // marcar como resolvido
-  window.puzzleState.solved[keyIndex] = true;
-  window.puzzleState.keys[keyIndex] = true;
-  // add protection item if any
-  if (data.protectionItem && !window.puzzleState.protectionItems.includes(data.protectionItem)) {
-    window.puzzleState.protectionItems.push(data.protectionItem);
-    window.player.inventory.push(data.protectionItem);
-    window.player._updateInventoryHUD(window.engine);
-  }
-  // add note
-  const noteId = data.noteId;
-  if (noteId) {
-    // add item key to inventory
-    if (data.item) {
-      window.player.inventory.push(data.item);
-      window.player._updateInventoryHUD(window.engine);
+    const ps = window.puzzleState || {};
+    if (ps.solved) ps.solved[keyIndex] = true;
+    if (ps.keys) ps.keys[keyIndex] = true;
+
+    if (data.protectionItem && ps.protectionItems && !ps.protectionItems.includes(data.protectionItem)) {
+      ps.protectionItems.push(data.protectionItem);
+      if (window.player && window.player.inventory) {
+        window.player.inventory.push(data.protectionItem);
+        if (window.player._updateInventoryHUD) window.player._updateInventoryHUD(window.engine);
+      }
     }
-    // show note
+
+    if (data.noteId && data.item) {
+      if (window.player && window.player.inventory) {
+        window.player.inventory.push(data.item);
+        if (window.player._updateInventoryHUD) window.player._updateInventoryHUD(window.engine);
+      }
+      setTimeout(() => {
+        if (window.showNote) window.showNote(data.noteId);
+      }, 300);
+    }
+
+    if (window.engine) {
+      if (window.engine.audio) window.engine.audio.playPuzzleSolved();
+      if (window.engine.camera) window.engine.camera.shake(3, 0.3);
+    }
+
+    _closePuzzle(true);
+
+    if (window.shivaSystem && window.shivaSystem.onPuzzleSolved) {
+      window.shivaSystem.onPuzzleSolved(window.engine);
+    }
+
     setTimeout(() => {
-      if (window.showNote) window.showNote(noteId);
-    }, 300);
+      showDialogue([
+        'A cela se abriu.',
+        'Uma chave. Uma memória.',
+        `${(data.item || '').replace('_', ' ')} — coletado.`,
+        'Você entendeu um pouco mais.',
+      ]);
+    }, 600);
+  } catch(e) {
+    console.error('Puzzle solved error:', e);
+    _closePuzzle(false);
   }
-
-  // effects
-  window.engine.audio.playPuzzleSolved();
-  window.engine.camera.shake(3, 0.3);
-
-  // close puzzle
-  _closePuzzle(true);
-
-  // shiva reaction
-  if (window.shivaSystem) {
-    window.shivaSystem.onPuzzleSolved(window.engine);
-  }
-
-  // show dialogue
-  setTimeout(() => {
-    showDialogue([
-      'A cela se abriu.',
-      'Uma chave. Uma memória.',
-      `${data.item.replace('_', ' ')} — coletado.`,
-      'Você entendeu um pouco mais.',
-    ]);
-  }, 600);
 }
 
 function _closePuzzle(solved) {
   _puzzleActive = false;
-  document.getElementById('puzzle-overlay').style.display = 'none';
+  const overlay = document.getElementById('puzzle-overlay');
+  if (overlay) overlay.style.display = 'none';
   // cleanup keyboard handlers
   const content = document.getElementById('puzzle-content');
-  if (content._handler) {
+  if (content && content._handler) {
     document.removeEventListener('keydown', content._handler);
     delete content._handler;
   }
@@ -556,11 +577,11 @@ function _closePuzzle(solved) {
     const cb = _puzzleCallback;
     _puzzleCallback = null;
     _currentPuzzleId = null;
-    cb(solved);
+    try { cb(solved); } catch(e) { console.error('Puzzle callback error:', e); }
   }
 
   // only restore if not in note/dialogue
-  if (window.engine.state.phase === 'puzzle') {
+  if (window.engine && window.engine.state && window.engine.state.phase === 'puzzle') {
     window.engine.state.phase = 'exploration';
   }
 }

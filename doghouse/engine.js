@@ -595,6 +595,11 @@ class Audio {
     this._tone(2000, 0.03, 0.08, 'square');
   }
 
+  /* ---- NOISE BURST (puzzles) ---- */
+  playNoise(freq, dur, type) {
+    this._burst(freq, 2, dur, 0.3, type || 'bandpass');
+  }
+
   /* ---- HOWL (distant) ---- */
   playHowl() {
     try {

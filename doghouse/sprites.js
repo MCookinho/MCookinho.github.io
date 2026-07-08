@@ -1391,14 +1391,23 @@ function makePlayer(dir) {
 function makePlayerWalk(dir, frame) {
   const s = makePlayer(dir);
   const f = frame % 4;
-  if (f === 1 || f === 3) {
+  if (f === 1) {
     fill(s, 5,11, 7,14, 0);
     fill(s, 8,11, 10,14, 0);
     fill(s, 5,14, 7,15, 0);
     fill(s, 8,14, 10,15, 0);
     fill(s, 4,11, 6,14, 1);
-    fill(s, 9,11, 11,14, 1);
+    fill(s, 9,11, 10,14, 1);
     fill(s, 4,14, 6,15, 2);
+    fill(s, 9,14, 10,15, 2);
+  } else if (f === 3) {
+    fill(s, 5,11, 7,14, 0);
+    fill(s, 8,11, 10,14, 0);
+    fill(s, 5,14, 7,15, 0);
+    fill(s, 8,14, 10,15, 0);
+    fill(s, 5,11, 6,14, 1);
+    fill(s, 9,11, 11,14, 1);
+    fill(s, 5,14, 6,15, 2);
     fill(s, 9,14, 11,15, 2);
   }
   if (f === 1) {
@@ -1421,18 +1430,18 @@ function makePlayerWalk(dir, frame) {
 function makePlayerRun(dir, frame) {
   const s = makePlayer(dir);
   const f = frame % 4;
-  // lean forward: shift jacket and arms
+  // lean forward: same body position, just sleeker
   fill(s, 4,5, 11,10, 0);
   fill(s, 5,5, 10,5, 0);
   fill(s, 3,6, 3,10, 0);
   fill(s, 12,6, 12,10, 0);
-  fill(s, 5,5, 11,10, 10);
-  fill(s, 6,5, 10,5, 2);
+  fill(s, 4,5, 11,10, 10);
+  fill(s, 5,5, 10,5, 2);
   fill(s, 7,6, 8,10, 12);
-  // arms pumping
-  fill(s, 4,6, 4,8, 10);
-  fill(s, 11,6, 11,8, 10);
-  set(s, 4,8, 8); set(s, 11,8, 8);
+  // arms pumping (bent, same x positions)
+  fill(s, 3,6, 3,8, 10);
+  fill(s, 12,6, 12,8, 10);
+  set(s, 3,8, 8); set(s, 12,8, 8);
   // legs
   if (f === 0) {
     fill(s, 5,11, 7,14, 0);
@@ -1440,18 +1449,18 @@ function makePlayerRun(dir, frame) {
     fill(s, 5,14, 7,15, 0);
     fill(s, 8,14, 10,15, 0);
     fill(s, 4,11, 6,14, 1);
-    fill(s, 9,11, 11,14, 1);
+    fill(s, 9,11, 10,14, 1);
     fill(s, 4,14, 6,15, 2);
-    fill(s, 9,14, 11,15, 2);
+    fill(s, 9,14, 10,15, 2);
   } else if (f === 2) {
     fill(s, 5,11, 7,14, 0);
     fill(s, 8,11, 10,14, 0);
     fill(s, 5,14, 7,15, 0);
     fill(s, 8,14, 10,15, 0);
-    fill(s, 6,11, 8,14, 1);
-    fill(s, 7,11, 9,14, 1);
-    fill(s, 6,14, 8,15, 2);
-    fill(s, 7,14, 9,15, 2);
+    fill(s, 5,11, 6,14, 1);
+    fill(s, 9,11, 11,14, 1);
+    fill(s, 5,14, 6,15, 2);
+    fill(s, 9,14, 11,15, 2);
   }
   return s;
 }
@@ -1957,12 +1966,13 @@ class Sprites {
   _collectCategory(name, entries) {
     const sprites = [];
     entries.forEach(([label, data]) => {
-      if (Array.isArray(data)) {
+      if (!data) return;
+      if (Array.isArray(data) && (!Array.isArray(data[0]) || data[0].length === undefined)) {
         data.forEach((sprite, i) => {
-          if (sprite) sprites.push({ name: `${label}_${i}`, sprite, w: 16, h: 16 });
+          if (sprite) sprites.push({ name: `${label}_${i}`, sprite });
         });
       } else if (data) {
-        sprites.push({ name: label, sprite: data, w: data.length > 16 ? 32 : 16, h: data[0] && data[0].length > 16 ? 32 : 16 });
+        sprites.push({ name: label, sprite: data });
       }
     });
     return sprites;
@@ -1971,19 +1981,34 @@ class Sprites {
   async exportSprites() {
     let JSZip;
     try {
-      JSZip = (await import('https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js')).default;
-    } catch {
-      const dataUrl = this._makeCanvas(this._collectCategory('all', [
-        ['player_down', PLAYER_DOWN], ['player_up', PLAYER_UP],
-        ['player_left', PLAYER_LEFT], ['player_right', PLAYER_RIGHT],
-      ]).concat(
-        Object.entries(T_SPRITES).flatMap(([id, v]) => {
-          if (!v) return [];
-          if (Array.isArray(v) && Array.isArray(v[0])) return [[`tile_${id}`, v]];
-          if (Array.isArray(v)) return v.map((s, i) => [`tile_${id}_${i}`, s]);
-          return [[`tile_${id}`, v]];
-        })
-      ), 10, 2).toDataURL('image/png');
+      const mod = await import('https://esm.sh/jszip@3.10.1');
+      JSZip = mod.default || mod.JSZip;
+    } catch { /* try fallback */ }
+    if (!JSZip) JSZip = window.JSZip || null;
+    if (!JSZip) {
+      const allSprites = [
+        { sprite: PLAYER_DOWN }, { sprite: PLAYER_UP },
+        { sprite: PLAYER_LEFT }, { sprite: PLAYER_RIGHT },
+      ];
+      for (let id = 1; id <= 72; id++) {
+        const v = T_SPRITES[id];
+        if (!v) continue;
+        const isMulti = Array.isArray(v) && Array.isArray(v[0]) && Array.isArray(v[0][0]);
+        if (isMulti) {
+          v.forEach(s => { if (s) allSprites.push({ sprite: s }); });
+        } else {
+          allSprites.push({ sprite: v });
+        }
+      }
+      const itemSprites = [
+        I_LANTERN, I_KEY, I_HERBS, I_SALT, I_AMULET, I_CHALK,
+        I_MIRROR, I_NOTE, I_MEMORY, I_PHOTO, I_LETTER,
+      ];
+      itemSprites.forEach(s => { if (s) allSprites.push({ sprite: s }); });
+      allSprites.push({ sprite: UI_SLOT }, { sprite: UI_MEMORY_EMPTY }, { sprite: UI_MEMORY_FILLED });
+      const canvas = this._makeCanvas(allSprites, 12, 2);
+      if (!canvas) return;
+      const dataUrl = canvas.toDataURL('image/png');
       const link = document.createElement('a');
       link.download = 'spritesheet.png';
       link.href = dataUrl;
@@ -1992,91 +2017,83 @@ class Sprites {
     }
 
     const zip = new JSZip();
-
-    // personagens
-    const chars = zip.folder('personagens');
     const addSheet = (folder, name, sprites, cols) => {
       const canvas = this._makeCanvas(sprites, cols, 2);
       if (!canvas) return;
       folder.file(name, canvas.toDataURL('image/png').split(',')[1], { base64: true });
     };
 
-    addSheet(chars, 'player.png', [
+    const chars = zip.folder('personagens');
+    const allPlayer = [
       { sprite: PLAYER_DOWN }, { sprite: PLAYER_UP },
       { sprite: PLAYER_LEFT }, { sprite: PLAYER_RIGHT },
-    ].concat(
-      [0,1,2,3].flatMap(f => [
+    ];
+    for (let f = 0; f < 4; f++) {
+      allPlayer.push(
         { sprite: makePlayerWalk('down', f) }, { sprite: makePlayerWalk('up', f) },
         { sprite: makePlayerWalk('left', f) }, { sprite: makePlayerWalk('right', f) },
-      ]),
-      [0,1,2,3].flatMap(f => [
+      );
+    }
+    for (let f = 0; f < 4; f++) {
+      allPlayer.push(
         { sprite: makePlayerRun('down', f) }, { sprite: makePlayerRun('up', f) },
         { sprite: makePlayerRun('left', f) }, { sprite: makePlayerRun('right', f) },
-      ]),
-    ), 8);
+      );
+    }
+    addSheet(chars, 'player.png', allPlayer, 8);
 
-    addSheet(chars, 'shiva.png', [
+    const allShiva = [
       { sprite: SHIVA_DOWN }, { sprite: SHIVA_UP },
       { sprite: SHIVA_LEFT }, { sprite: SHIVA_RIGHT },
-    ].concat(
-      [0,1,2,3].flatMap(f => [
+    ];
+    for (let f = 0; f < 4; f++) {
+      allShiva.push(
         { sprite: SHIVA_WALK_DOWN[f] }, { sprite: SHIVA_WALK_UP[f] },
         { sprite: SHIVA_WALK_LEFT[f] }, { sprite: SHIVA_WALK_RIGHT[f] },
-      ]),
-    ), 8);
-
-    addSheet(chars, 'shiva_evil.png', [{ sprite: SHIVA_EVIL, w: 32, h: 32 }], 1);
+      );
+    }
+    addSheet(chars, 'shiva.png', allShiva, 8);
+    addSheet(chars, 'shiva_evil.png', [{ sprite: SHIVA_EVIL }], 1);
     addSheet(chars, 'shiva_shadow.png', [{ sprite: SHIVA_SHADOW }], 1);
     addSheet(chars, 'shiva_eyes.png', [{ sprite: SHIVA_EYES }], 1);
 
-    // moveis (tiles 14-72)
     const moveis = zip.folder('moveis');
     const furnList = [];
     for (let id = 14; id <= 72; id++) {
       const sprite = T_SPRITES[id];
       if (!sprite) continue;
-      if (Array.isArray(sprite) && Array.isArray(sprite[0])) {
-        furnList.push({ sprite });
-      } else if (Array.isArray(sprite)) {
-        sprite.forEach(v => furnList.push({ sprite: v }));
+      const isMulti = Array.isArray(sprite) && Array.isArray(sprite[0]) && Array.isArray(sprite[0][0]);
+      if (isMulti) {
+        sprite.forEach(s => { if (s) furnList.push({ sprite: s }); });
       } else {
         furnList.push({ sprite });
       }
     }
     addSheet(moveis, 'moveis.png', furnList, 8);
 
-    // mapa (tiles 1-13)
     const mapa = zip.folder('mapa');
     const tileList = [];
     for (let id = 1; id <= 13; id++) {
       const sprite = T_SPRITES[id];
       if (!sprite) continue;
-      if (Array.isArray(sprite) && Array.isArray(sprite[0])) {
-        tileList.push({ name: 'tile_'+id, sprite });
-      } else if (Array.isArray(sprite)) {
-        sprite.forEach((v, i) => tileList.push({ name: 'tile_'+id+'_'+i, sprite: v }));
+      const isMulti = Array.isArray(sprite) && Array.isArray(sprite[0]) && Array.isArray(sprite[0][0]);
+      if (isMulti) {
+        sprite.forEach(s => { if (s) tileList.push({ sprite: s }); });
       } else {
-        tileList.push({ name: 'tile_'+id, sprite });
+        tileList.push({ sprite });
       }
     }
     addSheet(mapa, 'pisos_paredes.png', tileList, 8);
 
-    // itens
     const itens = zip.folder('itens');
-    const itemList = [
-      { sprite: I_LANTERN }, { sprite: I_KEY }, { sprite: I_HERBS },
-      { sprite: I_SALT }, { sprite: I_AMULET }, { sprite: I_CHALK },
-      { sprite: I_MIRROR }, { sprite: I_NOTE }, { sprite: I_MEMORY },
-      { sprite: I_PHOTO }, { sprite: I_LETTER },
-    ];
-    addSheet(itens, 'itens.png', itemList, 5);
+    addSheet(itens, 'itens.png', [
+      I_LANTERN, I_KEY, I_HERBS, I_SALT, I_AMULET, I_CHALK,
+      I_MIRROR, I_NOTE, I_MEMORY, I_PHOTO, I_LETTER,
+    ].map(s => ({ sprite: s })), 5);
 
-    // ui
     const ui = zip.folder('ui');
     addSheet(ui, 'ui.png', [
-      { sprite: UI_SLOT, w: 14, h: 14 },
-      { sprite: UI_MEMORY_EMPTY, w: 8, h: 8 },
-      { sprite: UI_MEMORY_FILLED, w: 8, h: 8 },
+      { sprite: UI_SLOT }, { sprite: UI_MEMORY_EMPTY }, { sprite: UI_MEMORY_FILLED },
     ], 3);
 
     const blob = await zip.generateAsync({ type: 'blob' });
