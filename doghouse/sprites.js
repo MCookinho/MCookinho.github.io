@@ -273,6 +273,66 @@ function makeCeiling() {
   return s;
 }
 
+function makeBed() {
+  const s = empty(16,16);
+  // headboard
+  fill(s, 0,0, 15,2, 4);
+  fill(s, 0,0, 15,0, 5);
+  // mattress
+  fill(s, 1,2, 14,10, 14);
+  fill(s, 2,3, 13,9, 15);
+  // pillow
+  fill(s, 2,3, 5,5, 14);
+  fill(s, 3,3, 4,4, 15);
+  // blanket stripe
+  fill(s, 2,6, 13,6, 8);
+  fill(s, 2,7, 13,7, 7);
+  // footboard
+  fill(s, 0,10, 15,11, 4);
+  fill(s, 0,11, 15,11, 5);
+  // legs
+  set(s, 1,11, 3); set(s, 14,11, 3);
+  set(s, 1,15, 3); set(s, 14,15, 3);
+  fill(s, 0,12, 1,15, 3);
+  fill(s, 14,12, 15,15, 3);
+  return s;
+}
+
+function makeTable() {
+  const s = empty(16,16);
+  // table top
+  fill(s, 1,4, 14,6, 4);
+  fill(s, 2,5, 13,5, 5);
+  // top surface highlight
+  fill(s, 2,4, 13,4, 7);
+  // legs
+  fill(s, 2,6, 3,15, 3);
+  fill(s, 12,6, 13,15, 3);
+  fill(s, 2,15, 3,15, 4);
+  fill(s, 12,15, 13,15, 4);
+  // cross brace
+  fill(s, 3,11, 12,12, 3);
+  set(s, 3,11, 2); set(s, 12,11, 2);
+  return s;
+}
+
+function makePew() {
+  const s = empty(16,16);
+  // back rest
+  fill(s, 1,1, 14,5, 4);
+  fill(s, 2,2, 13,4, 5);
+  // seat
+  fill(s, 1,5, 14,7, 4);
+  fill(s, 2,6, 13,6, 7);
+  // legs
+  fill(s, 2,7, 3,15, 3);
+  fill(s, 12,7, 13,15, 3);
+  // front rail
+  fill(s, 2,10, 13,11, 3);
+  set(s, 2,10, 2); set(s, 13,10, 2);
+  return s;
+}
+
 function makeMuralho() {
   const s = empty(16,16);
   fill(s, 0,0, 15,15, 9);
@@ -291,6 +351,28 @@ function makeMuralho() {
   return s;
 }
 
+function makeCrate() {
+  const s = empty(16,16);
+  // wooden crate
+  fill(s, 0,0, 15,15, 4);
+  fill(s, 1,1, 14,14, 3);
+  // horizontal planks
+  fill(s, 1,3, 14,3, 2);
+  fill(s, 1,7, 14,7, 2);
+  fill(s, 1,11, 14,11, 2);
+  // vertical supports
+  fill(s, 4,0, 5,15, 2);
+  fill(s, 10,0, 11,15, 2);
+  // nail heads
+  set(s, 2,1, 1); set(s, 2,3, 1); set(s, 13,1, 1); set(s, 13,3, 1);
+  set(s, 2,7, 1); set(s, 13,7, 1);
+  set(s, 2,11, 1); set(s, 13,11, 1);
+  // highlight
+  set(s, 5,1, 5); set(s, 11,1, 5);
+  set(s, 5,3, 5); set(s, 11,3, 5);
+  return s;
+}
+
 /* Tile registry with variants */
 const T_SPRITES = {
   1: [makeFloor(), makeFloorB(), makeFloorC()],
@@ -306,6 +388,10 @@ const T_SPRITES = {
   11: makeWallTop(),
   12: makeCeiling(),
   13: makeMuralho(),
+  14: makeBed(),
+  15: makeTable(),
+  16: makePew(),
+  17: makeCrate(),
 };
 
 /* ================================================================
@@ -828,7 +914,7 @@ class Sprites {
       { name:'shiva_shadow', sprite:SHIVA_SHADOW, w:16, h:16 },
       { name:'shiva_eyes', sprite:SHIVA_EYES, w:16, h:16 },
     ];
-    for (let id = 1; id <= 13; id++) {
+    for (let id = 1; id <= 17; id++) {
       const sprite = T_SPRITES[id];
       if (!sprite) continue;
       if (Array.isArray(sprite) && Array.isArray(sprite[0])) {

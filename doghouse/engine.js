@@ -124,6 +124,42 @@ class Tilemap {
         this._drawTile(ctx, sprites, wallId, sx, sy, col, row);
       }
     }
+    // objetos (items, notes, puzzles, shiva events)
+    this.renderObjects(ctx, camera, sprites);
+  }
+  renderObjects(ctx, camera, sprites) {
+    const startCol = Math.max(0, Math.floor(camera.x / TILE_SIZE) - 1);
+    const startRow = Math.max(0, Math.floor(camera.y / TILE_SIZE) - 1);
+    const endCol = Math.min(this.width, Math.ceil((camera.x + CANVAS_W) / TILE_SIZE) + 1);
+    const endRow = Math.min(this.height, Math.ceil((camera.y + CANVAS_H) / TILE_SIZE) + 1);
+
+    for (let row = startRow; row < endRow; row++) {
+      for (let col = startCol; col < endCol; col++) {
+        const obj = this.getObjectAt(col, row);
+        if (!obj) continue;
+        const sx = col * TILE_SIZE - camera.x;
+        const sy = row * TILE_SIZE - camera.y;
+
+        let sprite = null;
+        if (obj.type === 'item') {
+          sprite = sprites.getItemSprite(obj.itemId);
+        } else if (obj.type === 'note') {
+          sprite = sprites.getItemSprite('note');
+        } else if (obj.type === 'puzzle') {
+          // puzzle icon - pulsing effect
+          const pulse = Math.sin(Date.now() * 0.005) * 2;
+          sprite = sprites.getItemSprite('memory');
+          if (sprite) sprites.renderSprite(ctx, sprite, sx, sy + pulse, 1);
+          continue;
+        } else if (obj.type === 'shiva_event') {
+          sprite = sprites.getCharacterSprite('shiva_shadow');
+        }
+
+        if (sprite) {
+          sprites.renderSprite(ctx, sprite, sx, sy, 1);
+        }
+      }
+    }
   }
   _drawTile(ctx, sprites, id, sx, sy, col, row) {
     const tileSprite = sprites.getTileSprite(id, col, row);
@@ -341,226 +377,265 @@ class Engine {
 class Audio {
   constructor() {
     this.ctx = null;
-    this.ambientNode = null;
+    this.ambientNodes = [];
     this.ambientGain = null;
     this.masterGain = null;
     this._unlock();
   }
   _unlock() {
     const unlock = () => {
-      if (!this.ctx) {
-        this.ctx = new (window.AudioContext || window.webkitAudioContext)();
-        this.masterGain = this.ctx.createGain();
-        this.masterGain.gain.value = 0.3;
-        this.masterGain.connect(this.ctx.destination);
-      }
-      if (this.ctx.state === 'suspended') this.ctx.resume();
+      this._ensureCtx();
     };
     document.addEventListener('click', unlock, { once: true });
     document.addEventListener('keydown', unlock, { once: true });
   }
-  getCtx() {
+  _ensureCtx() {
     if (!this.ctx) {
       this.ctx = new (window.AudioContext || window.webkitAudioContext)();
       this.masterGain = this.ctx.createGain();
-      this.masterGain.gain.value = 0.3;
+      this.masterGain.gain.value = 0.4;
       this.masterGain.connect(this.ctx.destination);
     }
     if (this.ctx.state === 'suspended') this.ctx.resume();
     return this.ctx;
   }
-  playNoise(freq, duration, type) {
+  /* ---- noise buffer helper ---- */
+  _noiseBuffer(dur) {
+    const ctx = this._ensureCtx();
+    const len = ctx.sampleRate * dur;
+    const buf = ctx.createBuffer(1, len, ctx.sampleRate);
+    const d = buf.getChannelData(0);
+    for (let i = 0; i < len; i++) d[i] = Math.random() * 2 - 1;
+    return buf;
+  }
+  /* ---- burst: filtered noise with envelope ---- */
+  _burst(freq, Q, dur, vol, type) {
     try {
-      const ctx = this.getCtx();
-      const bufferSize = ctx.sampleRate * duration;
-      const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-      const data = buffer.getChannelData(0);
-      for (let i = 0; i < bufferSize; i++) {
-        data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (bufferSize * 0.3));
-      }
-      const source = ctx.createBufferSource();
-      source.buffer = buffer;
-      const filter = ctx.createBiquadFilter();
-      filter.type = 'bandpass';
-      filter.frequency.value = freq;
-      filter.Q.value = 0.5;
-      const gain = ctx.createGain();
-      gain.gain.value = 0.4;
-      source.connect(filter);
-      filter.connect(gain);
-      gain.connect(this.masterGain);
-      source.start();
-      source.stop(ctx.currentTime + duration);
+      const ctx = this._ensureCtx();
+      const src = ctx.createBufferSource();
+      src.buffer = this._noiseBuffer(dur);
+      const flt = ctx.createBiquadFilter();
+      flt.type = type || 'bandpass';
+      flt.frequency.value = freq;
+      flt.Q.value = Q || 1;
+      const gn = ctx.createGain();
+      gn.gain.setValueAtTime(vol || 0.3, ctx.currentTime);
+      gn.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + dur);
+      src.connect(flt);
+      flt.connect(gn);
+      gn.connect(this.masterGain);
+      src.start();
+      src.stop(ctx.currentTime + dur);
     } catch(e) {}
   }
-  playTone(freq, duration, type) {
+  /* ---- tone ---- */
+  _tone(freq, dur, vol, type) {
     try {
-      const ctx = this.getCtx();
+      const ctx = this._ensureCtx();
       const osc = ctx.createOscillator();
       osc.type = type || 'sine';
       osc.frequency.value = freq;
-      const gain = ctx.createGain();
-      gain.gain.setValueAtTime(0.3, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
-      osc.connect(gain);
-      gain.connect(this.masterGain);
+      const gn = ctx.createGain();
+      gn.gain.setValueAtTime(vol || 0.25, ctx.currentTime);
+      gn.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + dur);
+      osc.connect(gn);
+      gn.connect(this.masterGain);
       osc.start();
-      osc.stop(ctx.currentTime + duration);
+      osc.stop(ctx.currentTime + dur);
     } catch(e) {}
   }
+
+  /* ---- AMBIENT ---- */
   setAmbient(type) {
     this.stopAmbient();
-    if (type === 'casa') this._startDrone(40, 60);
-    else if (type === 'rua' || type === 'externa') this._startWind();
+    if (type === 'casa') this._ambientCasa();
+    else if (type === 'rua' || type === 'externa') this._ambientRua();
   }
-  _startDrone(f1, f2) {
-    try {
-      const ctx = this.getCtx();
-      this.ambientGain = ctx.createGain();
-      this.ambientGain.gain.value = 0.08;
-      this.ambientGain.connect(this.masterGain);
-      const o1 = ctx.createOscillator();
-      o1.type = 'sine'; o1.frequency.value = f1;
-      const o2 = ctx.createOscillator();
-      o2.type = 'sine'; o2.frequency.value = f2;
-      o1.connect(this.ambientGain);
-      o2.connect(this.ambientGain);
-      o1.start(); o2.start();
-      this.ambientNode = [o1, o2];
-    } catch(e) {}
+  stopAmbient() {
+    this.ambientNodes.forEach(n => {
+      try { n.stop(); } catch(e) {}
+      try { n.disconnect(); } catch(e) {}
+    });
+    this.ambientNodes = [];
+    if (this.ambientGain) { this.ambientGain.disconnect(); this.ambientGain = null; }
   }
-  _startWind() {
+  _ambientCasa() {
     try {
-      const ctx = this.getCtx();
+      const ctx = this._ensureCtx();
       this.ambientGain = ctx.createGain();
       this.ambientGain.gain.value = 0.06;
       this.ambientGain.connect(this.masterGain);
-      const bufferSize = ctx.sampleRate * 2;
-      const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-      const data = buffer.getChannelData(0);
-      for (let i = 0; i < bufferSize; i++) {
-        data[i] = (Math.random() * 2 - 1) * Math.sin(i * 0.02) * 0.5;
-      }
-      const source = ctx.createBufferSource();
-      source.buffer = buffer;
-      source.loop = true;
-      const filter = ctx.createBiquadFilter();
-      filter.type = 'bandpass';
-      filter.frequency.value = 1000;
+      // low electrical hum
+      const hum = ctx.createOscillator();
+      hum.type = 'sine'; hum.frequency.value = 55;
+      // slight wobble
       const lfo = ctx.createOscillator();
-      lfo.type = 'sine'; lfo.frequency.value = 0.3;
-      const lfoGain = ctx.createGain();
-      lfoGain.gain.value = 800;
-      lfo.connect(lfoGain);
-      lfoGain.connect(filter.frequency);
-      source.connect(filter);
-      filter.connect(this.ambientGain);
-      source.start();
-      lfo.start();
-      this.ambientNode = [source, lfo];
+      lfo.type = 'sine'; lfo.frequency.value = 0.7;
+      const lfoG = ctx.createGain();
+      lfoG.gain.value = 3;
+      lfo.connect(lfoG); lfoG.connect(hum.frequency);
+      hum.connect(this.ambientGain);
+      hum.start(); lfo.start();
+      this.ambientNodes = [hum, lfo];
+      // occasional creak
+      const _creak = () => {
+        if (Math.random() < 0.3) return;
+        this._burst(800, 4, 0.15, 0.04, 'bandpass');
+        setTimeout(_creak, 3000 + Math.random() * 4000);
+      };
+      setTimeout(_creak, 2000);
     } catch(e) {}
   }
-  stopAmbient() {
-    if (this.ambientNode) {
-      this.ambientNode.forEach(n => {
-        try { n.stop(); } catch(e) {}
-        try { n.disconnect(); } catch(e) {}
-      });
-      this.ambientNode = null;
-    }
-    if (this.ambientGain) {
-      this.ambientGain.disconnect();
-      this.ambientGain = null;
-    }
+  _ambientRua() {
+    try {
+      const ctx = this._ensureCtx();
+      this.ambientGain = ctx.createGain();
+      this.ambientGain.gain.value = 0.05;
+      this.ambientGain.connect(this.masterGain);
+      // wind noise
+      const buf = this._noiseBuffer(4);
+      const src = ctx.createBufferSource();
+      src.buffer = buf; src.loop = true;
+      const wndFlt = ctx.createBiquadFilter();
+      wndFlt.type = 'lowpass'; wndFlt.frequency.value = 400;
+      // LFO sweeps filter
+      const lfo = ctx.createOscillator();
+      lfo.type = 'sine'; lfo.frequency.value = 0.15;
+      const lfoG = ctx.createGain();
+      lfoG.gain.value = 300;
+      lfo.connect(lfoG); lfoG.connect(wndFlt.frequency);
+      src.connect(wndFlt);
+      wndFlt.connect(this.ambientGain);
+      src.start(); lfo.start();
+      this.ambientNodes = [src, lfo];
+    } catch(e) {}
   }
+
+  /* ---- FOOTSTEPS ---- */
   playFootstep(surface) {
-    if (surface === 'casa') this.playNoise(500, 0.06, 'noise');
-    else if (surface === 'grama') this.playNoise(200, 0.08, 'noise');
-    else this.playNoise(500, 0.06, 'noise');
+    if (surface === 'casa') {
+      // wood floor thud
+      this._burst(120, 0.8, 0.05, 0.2, 'lowpass');
+      this._burst(400, 2, 0.03, 0.06, 'bandpass');
+    } else if (surface === 'grama') {
+      // soft rustle
+      this._burst(600, 1, 0.07, 0.1, 'bandpass');
+    } else {
+      // concrete tap
+      this._burst(800, 3, 0.04, 0.15, 'highpass');
+      this._burst(200, 1, 0.05, 0.08, 'lowpass');
+    }
   }
+
+  /* ---- DOOR ---- */
+  playDoorOpen() {
+    // wooden creak: sweep + resonance
+    try {
+      const ctx = this._ensureCtx();
+      const dur = 0.35;
+      const buf = this._noiseBuffer(dur);
+      const src = ctx.createBufferSource();
+      src.buffer = buf;
+      // dual filters for creaky resonance
+      const f1 = ctx.createBiquadFilter();
+      f1.type = 'bandpass'; f1.frequency.value = 600; f1.Q.value = 8;
+      const f2 = ctx.createBiquadFilter();
+      f2.type = 'bandpass'; f2.frequency.value = 1200; f2.Q.value = 5;
+      const gn = ctx.createGain();
+      gn.gain.setValueAtTime(0.25, ctx.currentTime);
+      gn.gain.linearRampToValueAtTime(0.1, ctx.currentTime + dur * 0.3);
+      gn.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + dur);
+      src.connect(f1); f1.connect(f2); f2.connect(gn);
+      gn.connect(this.masterGain);
+      src.start(); src.stop(ctx.currentTime + dur);
+      // low thud
+      this._burst(80, 2, 0.2, 0.12, 'lowpass');
+    } catch(e) {}
+  }
+
+  /* ---- SHIVA GROWL ---- */
   playShivaGrowl() {
     try {
-      const ctx = this.getCtx();
+      const ctx = this._ensureCtx();
+      // deep sawtooth + noise
       const osc = ctx.createOscillator();
       osc.type = 'sawtooth';
-      osc.frequency.setValueAtTime(90, ctx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(60, ctx.currentTime + 1);
-      const gain = ctx.createGain();
-      gain.gain.setValueAtTime(0.2, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1);
-      const noise = this._makeNoiseBuffer(0.3);
-      const noiseSource = ctx.createBufferSource();
-      noiseSource.buffer = noise;
-      const noiseFilter = ctx.createBiquadFilter();
-      noiseFilter.type = 'lowpass';
-      noiseFilter.frequency.value = 200;
-      const noiseGain = ctx.createGain();
-      noiseGain.gain.value = 0.15;
-      noiseSource.connect(noiseFilter);
-      noiseFilter.connect(noiseGain);
-      noiseGain.connect(this.masterGain);
-      osc.connect(gain);
-      gain.connect(this.masterGain);
-      osc.start(); osc.stop(ctx.currentTime + 1);
-      noiseSource.start(); noiseSource.stop(ctx.currentTime + 0.3);
+      osc.frequency.setValueAtTime(80, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(45, ctx.currentTime + 1.2);
+      // waveshaper for distortion
+      const ws = ctx.createWaveShaper();
+      ws.curve = new Float32Array([-0.8, -0.6, -0.3, 0, 0.3, 0.6, 0.8]);
+      const gn = ctx.createGain();
+      gn.gain.setValueAtTime(0.15, ctx.currentTime);
+      gn.gain.linearRampToValueAtTime(0.25, ctx.currentTime + 0.3);
+      gn.gain.linearRampToValueAtTime(0, ctx.currentTime + 1.2);
+      osc.connect(ws); ws.connect(gn); gn.connect(this.masterGain);
+      osc.start(); osc.stop(ctx.currentTime + 1.2);
+      // growly noise
+      this._burst(150, 2, 0.8, 0.08, 'lowpass');
     } catch(e) {}
   }
+
+  /* ---- PUZZLE SOLVED ---- */
   playPuzzleSolved() {
-    [400, 600, 800].forEach((f, i) => {
-      setTimeout(() => this.playTone(f, 0.1, 'sine'), i * 120);
+    [523, 659, 784, 1047].forEach((f, i) => {
+      setTimeout(() => this._tone(f, 0.15, 0.2, 'sine'), i * 100);
     });
   }
+
+  /* ---- ITEM COLLECT ---- */
   playItemCollect() {
-    try {
-      const ctx = this.getCtx();
-      const osc = ctx.createOscillator();
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(500, ctx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(1000, ctx.currentTime + 0.08);
-      const gain = ctx.createGain();
-      gain.gain.setValueAtTime(0.3, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.08);
-      osc.connect(gain);
-      gain.connect(this.masterGain);
-      osc.start(); osc.stop(ctx.currentTime + 0.08);
-    } catch(e) {}
+    this._tone(880, 0.08, 0.2, 'sine');
+    setTimeout(() => this._tone(1320, 0.1, 0.15, 'sine'), 60);
   }
-  playDoorOpen() {
-    this.playNoise(2000, 0.3, 'noise');
-  }
+
+  /* ---- LANTERN ---- */
   playLanternToggle() {
-    this.playTone(3000, 0.04, 'square');
+    this._burst(3000, 10, 0.03, 0.12, 'bandpass');
+    this._tone(2000, 0.03, 0.08, 'square');
   }
+
+  /* ---- HOWL (distant) ---- */
   playHowl() {
     try {
-      const ctx = this.getCtx();
+      const ctx = this._ensureCtx();
+      const dur = 2.5;
       const osc = ctx.createOscillator();
       osc.type = 'sine';
-      osc.frequency.setValueAtTime(200, ctx.currentTime);
-      osc.frequency.linearRampToValueAtTime(150, ctx.currentTime + 1);
-      osc.frequency.linearRampToValueAtTime(200, ctx.currentTime + 2.5);
-      const gain = ctx.createGain();
-      gain.gain.setValueAtTime(0.15, ctx.currentTime);
-      gain.gain.linearRampToValueAtTime(0.3, ctx.currentTime + 0.5);
-      gain.gain.linearRampToValueAtTime(0.001, ctx.currentTime + 3);
+      osc.frequency.setValueAtTime(280, ctx.currentTime);
+      osc.frequency.linearRampToValueAtTime(200, ctx.currentTime + 0.8);
+      osc.frequency.linearRampToValueAtTime(180, ctx.currentTime + 1.5);
+      osc.frequency.linearRampToValueAtTime(260, ctx.currentTime + dur);
+      // vibrato
+      const vib = ctx.createOscillator();
+      vib.type = 'sine'; vib.frequency.value = 5;
+      const vibG = ctx.createGain();
+      vibG.gain.value = 15;
+      vib.connect(vibG); vibG.connect(osc.frequency);
+      // envelope
+      const gn = ctx.createGain();
+      gn.gain.setValueAtTime(0.01, ctx.currentTime);
+      gn.gain.linearRampToValueAtTime(0.2, ctx.currentTime + 0.4);
+      gn.gain.linearRampToValueAtTime(0.15, ctx.currentTime + 1);
+      gn.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + dur);
+      // reverb via delay
       const delay = ctx.createDelay();
-      delay.delayTime.value = 0.3;
-      const delayGain = ctx.createGain();
-      delayGain.gain.value = 0.3;
-      osc.connect(gain);
-      gain.connect(this.masterGain);
-      gain.connect(delay);
-      delay.connect(delayGain);
-      delayGain.connect(this.masterGain);
-      osc.start(); osc.stop(ctx.currentTime + 3);
+      delay.delayTime.value = 0.25;
+      const dGn = ctx.createGain();
+      dGn.gain.value = 0.25;
+      osc.connect(gn);
+      gn.connect(this.masterGain);
+      gn.connect(delay); delay.connect(dGn); dGn.connect(this.masterGain);
+      osc.start(); osc.stop(ctx.currentTime + dur);
+      vib.start(); vib.stop(ctx.currentTime + dur);
+      // distant low rumble after
+      setTimeout(() => this._burst(60, 1, 0.5, 0.04, 'lowpass'), 600);
     } catch(e) {}
   }
-  _makeNoiseBuffer(duration) {
-    const ctx = this.getCtx();
-    const size = ctx.sampleRate * duration;
-    const buffer = ctx.createBuffer(1, size, ctx.sampleRate);
-    const data = buffer.getChannelData(0);
-    for (let i = 0; i < size; i++) data[i] = Math.random() * 2 - 1;
-    return buffer;
+
+  /* ---- SHIVA APPEAR ---- */
+  playShivaAppear() {
+    this._burst(200, 6, 0.15, 0.1, 'bandpass');
+    setTimeout(() => this._burst(100, 4, 0.2, 0.06, 'lowpass'), 100);
   }
 }
