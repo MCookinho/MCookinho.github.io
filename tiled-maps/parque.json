@@ -715,6 +715,7 @@
           "width": 16,
           "height": 16,
           "visible": true,
+          "gid": 10,
           "properties": [
             {
               "name": "puzzleId",

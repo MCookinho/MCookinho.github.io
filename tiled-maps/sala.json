@@ -742,6 +742,7 @@
           "width": 16,
           "height": 16,
           "visible": true,
+          "gid": 80,
           "properties": [
             {
               "name": "noteId",
@@ -759,6 +760,7 @@
           "width": 16,
           "height": 16,
           "visible": true,
+          "gid": 81,
           "properties": [
             {
               "name": "puzzleId",
@@ -776,6 +778,7 @@
           "width": 16,
           "height": 16,
           "visible": true,
+          "gid": 81,
           "properties": [
             {
               "name": "eventId",

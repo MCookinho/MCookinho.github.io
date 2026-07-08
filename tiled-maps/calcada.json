@@ -715,6 +715,7 @@
           "width": 16,
           "height": 16,
           "visible": true,
+          "gid": 81,
           "properties": [
             {
               "name": "eventId",

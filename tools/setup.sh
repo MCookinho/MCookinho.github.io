@@ -7,42 +7,12 @@ PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 
 echo "=== Doghouse - Setup Tiled ==="
 
-# 1. Generate tileset PNG
+# 1. Generate tileset + export maps via export-maps.js
 echo ""
-echo "[1/3] Gerando tileset PNG..."
+echo "[1/3] Gerando tileset PNG e exportando mapas..."
 cd "$PROJECT_DIR"
-node -e "
-const { createCanvas } = require('/tmp/test-canvas/node_modules/canvas');
-const fs = require('fs');
-const spritesCode = fs.readFileSync('doghouse/sprites.js', 'utf8');
-const f = new Function(spritesCode + '\nreturn { PALETTE_16, T_SPRITES, empty, fill, set };');
-const mod = f();
-const { PALETTE_16, T_SPRITES, empty } = mod;
-const COLS = 10, TILE_SIZE = 16, TOTAL_TILES = 73;
-const ROWS = Math.ceil(TOTAL_TILES / COLS);
-const canvas = createCanvas(COLS * TILE_SIZE, ROWS * TILE_SIZE);
-const ctx = canvas.getContext('2d');
-for (let y = 0; y < ROWS * TILE_SIZE; y += 8)
-  for (let x = 0; x < COLS * TILE_SIZE; x += 8)
-    ctx.fillStyle = ((Math.floor(x/8) + Math.floor(y/8)) % 2 === 0) ? '#ccc' : '#999',
-    ctx.fillRect(x, y, 8, 8);
-let idx = 0;
-for (let id = 1; id <= 72; id++) {
-  const col = idx % COLS, row = Math.floor(idx / COLS);
-  const v = T_SPRITES[id];
-  const sprite = (Array.isArray(v) && Array.isArray(v[0])) ? v[0] : v;
-  if (!sprite) continue;
-  for (let r = 0; r < sprite.length; r++)
-    for (let c = 0; c < sprite[r].length; c++) {
-      const ci = sprite[r][c];
-      if (ci && PALETTE_16[ci]) ctx.fillStyle = PALETTE_16[ci], ctx.fillRect(col*TILE_SIZE+c, row*TILE_SIZE+r, 1, 1);
-    }
-  }
-  idx++;
-}
-fs.writeFileSync('doghouse-tileset.png', canvas.toBuffer('image/png'));
-"
-echo "  -> doghouse-tileset.png gerado"
+node tools/export-maps.js
+echo "  -> tileset e mapas atualizados"
 
 # 2. Install Tiled if not present
 echo ""
