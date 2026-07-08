@@ -348,7 +348,182 @@ body {
 /* SKILLS */
 .skills { background: var(--bg2); padding: 80px 0; }
 
-.skills-lista { display: flex; flex-direction: column; gap: 28px; max-width: 600px; }
+.skills-wrapper {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.skills-lista { flex: 1; display: flex; flex-direction: column; gap: 28px; max-width: 600px; }
+
+/* NES Controller */
+.skills-controller {
+  flex-shrink: 0;
+  width: 240px;
+  padding-top: 10px;
+}
+
+.ctrl-label {
+  font-family: var(--font);
+  font-size: 7px;
+  color: var(--dim);
+  text-align: center;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.ctrl-body {
+  background: linear-gradient(145deg, #2a2a3e, #1a1a2a);
+  border: 2px solid var(--border);
+  padding: 20px 16px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  box-shadow: 0 4px 0 rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+/* D-pad */
+.ctrl-dpad {
+  display: grid;
+  grid-template-columns: 38px 38px 38px;
+  grid-template-rows: 38px 38px 38px;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.ctrl-up    { grid-column: 2; grid-row: 1; }
+.ctrl-left  { grid-column: 1; grid-row: 2; }
+.ctrl-right { grid-column: 3; grid-row: 2; }
+.ctrl-down  { grid-column: 2; grid-row: 3; }
+
+.ctrl-btn {
+  font-family: var(--font);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.08s;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.ctrl-dpad .ctrl-btn {
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(180deg, #3a3a4e, #2a2a3e);
+  border: 2px solid #1a1a2a;
+  border-radius: 0;
+  font-size: 14px;
+  color: #8888b0;
+  box-shadow: 0 2px 0 #12121a, inset 0 1px 0 rgba(255,255,255,0.08);
+  position: relative;
+  z-index: 1;
+}
+
+.ctrl-dpad .ctrl-btn:hover {
+  background: linear-gradient(180deg, #44445e, #33334a);
+}
+
+.ctrl-dpad .ctrl-btn.pressed,
+.ctrl-dpad .ctrl-btn:active {
+  background: linear-gradient(180deg, #1e1e30, #2a2a3e);
+  box-shadow: 0 0 0 #12121a, inset 0 2px 4px rgba(0,0,0,0.5);
+  transform: translateY(2px);
+  color: var(--cyan);
+}
+
+/* Mid section (Select/Start) */
+.ctrl-mid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 0 6px;
+}
+
+.ctrl-select,
+.ctrl-start {
+  font-size: 6px;
+  padding: 8px 12px;
+  background: linear-gradient(180deg, #3a3a4e, #2a2a3e);
+  border: 2px solid #1a1a2a;
+  border-radius: 0;
+  color: #8888b0;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 0 #12121a, inset 0 1px 0 rgba(255,255,255,0.08);
+  min-width: 48px;
+}
+
+.ctrl-select.pressed,
+.ctrl-select:active,
+.ctrl-start.pressed,
+.ctrl-start:active {
+  background: linear-gradient(180deg, #1e1e30, #2a2a3e);
+  box-shadow: 0 0 0 #12121a, inset 0 2px 4px rgba(0,0,0,0.5);
+  transform: translateY(2px);
+  color: var(--yellow);
+}
+
+/* A/B buttons */
+.ctrl-ab {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.ctrl-a,
+.ctrl-b {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.ctrl-b {
+  background: linear-gradient(180deg, #ff4d8a, #cc1a5c);
+  border: 2px solid #a00d40;
+  color: #fff;
+  box-shadow: 0 3px 0 #70082a, inset 0 1px 0 rgba(255,255,255,0.3);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+
+.ctrl-b.pressed,
+.ctrl-b:active {
+  background: linear-gradient(180deg, #cc1a5c, #a00d40);
+  box-shadow: 0 0 0 #70082a, inset 0 3px 6px rgba(0,0,0,0.5);
+  transform: translateY(3px);
+}
+
+.ctrl-a {
+  background: linear-gradient(180deg, #33ffd0, #00b894);
+  border: 2px solid #008060;
+  color: #003d30;
+  box-shadow: 0 3px 0 #005040, inset 0 1px 0 rgba(255,255,255,0.3);
+  text-shadow: 0 1px 1px rgba(255,255,255,0.2);
+}
+
+.ctrl-a.pressed,
+.ctrl-a:active {
+  background: linear-gradient(180deg, #00b894, #008060);
+  box-shadow: 0 0 0 #005040, inset 0 3px 6px rgba(0,0,0,0.5);
+  transform: translateY(3px);
+}
+
+@media (max-width: 768px) {
+  .skills-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+  .skills-lista { max-width: 100%; }
+  .skills-controller { width: 100%; max-width: 280px; }
+}
 
 .skill-bloco h3 {
   font-family: var(--font);

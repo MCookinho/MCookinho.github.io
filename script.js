@@ -58,3 +58,71 @@
   }
 
 })();
+
+(function () {
+  var keyMap = {
+    ArrowUp: 'ctrl-up',
+    ArrowDown: 'ctrl-down',
+    ArrowLeft: 'ctrl-left',
+    ArrowRight: 'ctrl-right',
+    Backspace: 'ctrl-select',
+    Enter: 'ctrl-start',
+    b: 'ctrl-b',
+    a: 'ctrl-a',
+    B: 'ctrl-b',
+    A: 'ctrl-a',
+  }
+
+  var buttons = document.querySelectorAll('.ctrl-btn')
+
+  function dispatch(key, type) {
+    document.dispatchEvent(new KeyboardEvent(type, { key: key, bubbles: true }))
+  }
+
+  // Click/tap -> dispatch + visual
+  buttons.forEach(function (btn) {
+    btn.addEventListener('mousedown', function (e) {
+      e.preventDefault()
+      var key = btn.getAttribute('data-key')
+      btn.classList.add('pressed')
+      dispatch(key, 'keydown')
+    })
+    btn.addEventListener('mouseup', function (e) {
+      e.preventDefault()
+      var key = btn.getAttribute('data-key')
+      btn.classList.remove('pressed')
+      dispatch(key, 'keyup')
+    })
+    btn.addEventListener('mouseleave', function () {
+      btn.classList.remove('pressed')
+    })
+    btn.addEventListener('touchstart', function (e) {
+      e.preventDefault()
+      var key = btn.getAttribute('data-key')
+      btn.classList.add('pressed')
+      dispatch(key, 'keydown')
+    })
+    btn.addEventListener('touchend', function (e) {
+      e.preventDefault()
+      var key = btn.getAttribute('data-key')
+      btn.classList.remove('pressed')
+      dispatch(key, 'keyup')
+    })
+  })
+
+  // Keyboard -> visual
+  document.addEventListener('keydown', function (e) {
+    var cls = keyMap[e.key]
+    if (cls) {
+      var el = document.querySelector('.' + cls)
+      if (el) el.classList.add('pressed')
+    }
+  })
+  document.addEventListener('keyup', function (e) {
+    var cls = keyMap[e.key]
+    if (cls) {
+      var el = document.querySelector('.' + cls)
+      if (el) el.classList.remove('pressed')
+    }
+  })
+})()
