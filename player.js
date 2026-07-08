@@ -1,40 +1,7 @@
 (function () {
-  var songs = [
-    { id: 1,  title: 'PIXEL DREAMS',       file: 'track01.mp3', dur: '3:30' },
-    { id: 2,  title: 'NEON NIGHTS',        file: 'track02.mp3', dur: '4:12' },
-    { id: 3,  title: 'RETRO WAVE',         file: 'track03.mp3', dur: '3:45' },
-    { id: 4,  title: 'CHIP TUNE SUNRISE',  file: 'track04.mp3', dur: '2:58' },
-    { id: 5,  title: 'MIDNIGHT CODE',      file: 'track05.mp3', dur: '4:01' },
-    { id: 6,  title: 'CAFÉ E BIT',         file: 'track06.mp3', dur: '3:22' },
-    { id: 7,  title: 'TERMINAL LOVE',      file: 'track07.mp3', dur: '3:55' },
-    { id: 8,  title: '8-BIT SOUL',         file: 'track08.mp3', dur: '2:44' },
-    { id: 9,  title: 'VOID WALKER',        file: 'track09.mp3', dur: '4:30' },
-    { id: 10, title: 'CYBER CITY',         file: 'track10.mp3', dur: '3:18' },
-    { id: 11, title: 'LATE NIGHT LOOP',    file: 'track11.mp3', dur: '5:02' },
-    { id: 12, title: 'GLITCH GARDEN',      file: 'track12.mp3', dur: '3:36' },
-    { id: 13, title: 'SHIVA WALK',         file: 'track13.mp3', dur: '4:15' },
-    { id: 14, title: 'PURPLE SKIES',       file: 'track14.mp3', dur: '3:42' },
-    { id: 15, title: 'ARCADE AFTERNOON',   file: 'track15.mp3', dur: '2:30' },
-    { id: 16, title: 'HEXAGON',            file: 'track16.mp3', dur: '4:48' },
-    { id: 17, title: 'BOSS FIGHT',         file: 'track17.mp3', dur: '3:08' },
-    { id: 18, title: 'MENU SCREEN',        file: 'track18.mp3', dur: '2:55' },
-    { id: 19, title: 'RAINY BYTES',        file: 'track19.mp3', dur: '5:20' },
-    { id: 20, title: 'CURSOR BLINK',       file: 'track20.mp3', dur: '3:14' },
-    { id: 21, title: 'DUNGEON DEPTHS',     file: 'track21.mp3', dur: '4:05' },
-    { id: 22, title: 'STARFIELD',          file: 'track22.mp3', dur: '6:00' },
-    { id: 23, title: 'PASSWORD SCREEN',    file: 'track23.mp3', dur: '2:18' },
-    { id: 24, title: 'FINAL LEVEL',        file: 'track24.mp3', dur: '4:33' },
-    { id: 25, title: 'CRT NOISE',          file: 'track25.mp3', dur: '3:50' },
-    { id: 26, title: 'SHELL GAME',         file: 'track26.mp3', dur: '3:27' },
-    { id: 27, title: 'EMPTY ROOM',         file: 'track27.mp3', dur: '4:44' },
-    { id: 28, title: 'LOADING...',         file: 'track28.mp3', dur: '1:55' },
-    { id: 29, title: 'SECRET AREA',        file: 'track29.mp3', dur: '5:10' },
-    { id: 30, title: 'CREDITS SCROLL',     file: 'track30.mp3', dur: '6:30' },
-    { id: 31, title: 'BOOT SEQUENCE',      file: 'track31.mp3', dur: '2:40' },
-    { id: 32, title: 'OVERWORLD',          file: 'track32.mp3', dur: '4:22' },
-    { id: 33, title: 'CAOS ORGANIZADO',    file: 'track33.mp3', dur: '3:48' },
-    { id: 34, title: 'LOOP INFINITO',      file: 'track34.mp3', dur: '5:15' },
-  ]
+  var songs = []
+  var CACHE_KEY = 'mcookinho_playlist'
+  var CACHE_TTL = 5 * 60 * 1000
 
   var audio = document.getElementById('playerAudio')
   var overlay = document.getElementById('musicOverlay')
@@ -56,6 +23,7 @@
   var playerCurrentTime = document.getElementById('playerCurrentTime')
   var playerDuration = document.getElementById('playerDuration')
   var musicClose = document.getElementById('musicClose')
+  var musicTitle = document.querySelector('.music-title')
 
   var currentIndex = -1
   var isPlaying = false
@@ -64,31 +32,116 @@
   var speedIndex = 2
   var progressInterval = null
   var overlayOpen = false
+  var loading = false
 
   function pad(n) {
     return n < 10 ? '0' + n : '' + n
   }
 
   function formatTime(s) {
-    if (isNaN(s) || !isFinite(s)) return '0:00'
+    if (isNaN(s) || !isFinite(s) || s <= 0) return '0:00'
     var m = Math.floor(s / 60)
     var sec = Math.floor(s % 60)
     return m + ':' + pad(sec)
   }
 
+  function titleFromName(name) {
+    return name
+      .replace(/\.mp3$/i, '')
+      .replace(/[-_]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .toUpperCase()
+      .trim()
+  }
+
+  function fetchPlaylist() {
+    var cached = localStorage.getItem(CACHE_KEY)
+    if (cached) {
+      try {
+        var data = JSON.parse(cached)
+        if (Date.now() - data.ts < CACHE_TTL) {
+          return Promise.resolve(data.songs)
+        }
+      } catch (e) {}
+    }
+
+    loading = true
+    updateStatus('CARREGANDO...')
+
+    return fetch('https://api.github.com/repos/MCookinho/MCookinho.github.io/contents/assets/sound/playlist')
+      .then(function (r) {
+        if (r.status === 404) throw new Error('NOT_FOUND')
+        if (r.status === 403) throw new Error('RATE_LIMIT')
+        if (!r.ok) throw new Error('FAILED')
+        return r.json()
+      })
+      .then(function (files) {
+        if (!Array.isArray(files)) throw new Error('INVALID')
+        var mp3s = files.filter(function (f) {
+          return f.name.toLowerCase().endsWith('.mp3') && f.name !== '.gitkeep'
+        })
+        mp3s.sort(function (a, b) { return a.name.localeCompare(b.name) })
+
+        var parsed = mp3s.map(function (f, i) {
+          return {
+            id: i + 1,
+            title: titleFromName(f.name),
+            file: f.name,
+            url: f.download_url,
+            dur: null
+          }
+        })
+
+        localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), songs: parsed }))
+        loading = false
+        return parsed
+      })
+      .catch(function (err) {
+        loading = false
+        // Try stale cache
+        if (cached) {
+          try {
+            var data = JSON.parse(cached)
+            return data.songs
+          } catch (e) {}
+        }
+        throw err
+      })
+  }
+
+  function updateStatus(msg) {
+    listEl.innerHTML = '<div class="music-status">' + msg + '</div>'
+  }
+
   function renderList() {
+    if (loading) {
+      updateStatus('CARREGANDO...')
+      return
+    }
+    if (songs.length === 0) {
+      updateStatus(
+        '<span class="music-status-icon">♪</span>' +
+        'ADICIONE ARQUIVOS .MP3 EM<br/><strong>ASSETS/SOUND/PLAYLIST/</strong>'
+      )
+      return
+    }
+
     listEl.innerHTML = ''
     songs.forEach(function (song, i) {
       var item = document.createElement('div')
       item.className = 'music-item'
       if (i === currentIndex) item.classList.add('active')
+
+      var durText = song.dur || '?:??'
+
       item.innerHTML =
         '<span class="music-item-num">' + pad(i + 1) + '</span>' +
         '<div class="music-item-info">' +
           '<span class="music-item-title">' + song.title + '</span>' +
         '</div>' +
-        '<span class="music-item-duration">' + song.dur + '</span>' +
+        '<span class="music-item-duration">' + durText + '</span>' +
         '<span class="music-item-play">' + (i === currentIndex && isPlaying ? '▶' : '♪') + '</span>'
+
       item.addEventListener('click', function () {
         playSong(i)
       })
@@ -96,11 +149,11 @@
     })
   }
 
-  function playSong(index, auto) {
+  function playSong(index) {
     if (index < 0 || index >= songs.length) return
     currentIndex = index
 
-    audio.src = 'assets/music/' + songs[index].file
+    audio.src = songs[index].url
     audio.load()
     audio.play().then(function () {
       isPlaying = true
@@ -117,7 +170,7 @@
 
   function togglePlay() {
     if (currentIndex < 0) {
-      playSong(0)
+      if (songs.length > 0) playSong(0)
       return
     }
     if (audio.paused) {
@@ -135,13 +188,11 @@
   }
 
   function prevSong() {
-    if (currentIndex <= 0) return
-    playSong(currentIndex - 1)
+    if (currentIndex > 0) playSong(currentIndex - 1)
   }
 
   function nextSong() {
-    if (currentIndex >= songs.length - 1) return
-    playSong(currentIndex + 1)
+    if (currentIndex < songs.length - 1) playSong(currentIndex + 1)
   }
 
   function restartSong() {
@@ -178,10 +229,10 @@
   function updateProgress() {
     if (!audio.duration || isNaN(audio.duration)) {
       playerCurrentTime.textContent = formatTime(audio.currentTime)
-      if (currentIndex >= 0 && songs[currentIndex]) {
+      if (currentIndex >= 0 && songs[currentIndex] && songs[currentIndex].dur) {
         playerDuration.textContent = songs[currentIndex].dur
       } else {
-        playerDuration.textContent = '0:00'
+        playerDuration.textContent = '?:??'
       }
       return
     }
@@ -192,7 +243,6 @@
   }
 
   function updateUI() {
-    // CD icon in navbar
     if (isPlaying) {
       cdIcon.classList.remove('cd-paused')
       cdIcon.classList.add('cd-spin')
@@ -206,7 +256,6 @@
       playerCdMini.classList.remove('spin', 'paused')
     }
 
-    // Now playing text
     if (currentIndex >= 0) {
       cdNowPlaying.textContent = songs[currentIndex].title
       cdNowPlaying.classList.add('visible')
@@ -216,21 +265,10 @@
       playerSongName.textContent = 'NENHUMA MÚSICA'
     }
 
-    // Play button
-    playerPlay.textContent = isPlaying ? '⏸' : '▶'
-
-    // Speed button
+    playerPlay.textContent = isPlaying ? '\u23F8' : '\u25B6'
     playerSpeed.textContent = playbackRate + '\u00D7'
 
-    // Active item in list
-    var items = listEl.querySelectorAll('.music-item')
-    items.forEach(function (item, i) {
-      item.classList.toggle('active', i === currentIndex)
-      var playIcon = item.querySelector('.music-item-play')
-      if (playIcon) {
-        playIcon.textContent = (i === currentIndex && isPlaying) ? '▶' : '♪'
-      }
-    })
+    renderList()
   }
 
   function showPlayerBar() {
@@ -256,10 +294,43 @@
     overlay.classList.remove('open')
   }
 
-  // Audio ended
+  function loadPlaylist() {
+    musicTitle.textContent = '// CARREGANDO...'
+
+    fetchPlaylist()
+      .then(function (list) {
+        songs = list
+        musicTitle.textContent = '// MINHA PLAYLIST'
+        if (songs.length > 0) {
+          musicTitle.textContent += ' (' + songs.length + ')'
+        }
+        renderList()
+      })
+      .catch(function (err) {
+        musicTitle.textContent = '// MINHA PLAYLIST'
+        if (err.message === 'NOT_FOUND') {
+          updateStatus(
+            '<span class="music-status-icon">✕</span>' +
+            'PASTA NÃO ENCONTRADA<br/><strong>ASSETS/SOUND/PLAYLIST/</strong>'
+          )
+        } else if (err.message === 'RATE_LIMIT') {
+          updateStatus(
+            '<span class="music-status-icon">⏳</span>' +
+            'LIMITE DA API DO GITHUB<br/>TENTE NOVAMENTE MAIS TARDE'
+          )
+        } else {
+          updateStatus(
+            '<span class="music-status-icon">✕</span>' +
+            'ERRO AO CARREGAR PLAYLIST'
+          )
+        }
+      })
+  }
+
+  // Audio events
   audio.addEventListener('ended', function () {
     if (currentIndex < songs.length - 1) {
-      playSong(currentIndex + 1, true)
+      playSong(currentIndex + 1)
     } else {
       isPlaying = false
       updateUI()
@@ -267,37 +338,34 @@
     }
   })
 
-  // Audio error
   audio.addEventListener('error', function () {
     isPlaying = false
     updateUI()
     stopProgress()
   })
 
-  // Metadata loaded
   audio.addEventListener('loadedmetadata', function () {
+    if (currentIndex >= 0 && songs[currentIndex]) {
+      var d = formatTime(audio.duration)
+      songs[currentIndex].dur = d
+      renderList()
+    }
     playerDuration.textContent = formatTime(audio.duration)
   })
 
-  // Click CD button -> toggle overlay
+  // UI events
   cdBtn.addEventListener('click', toggleOverlay)
-
-  // Close overlay
   musicClose.addEventListener('click', closeOverlay)
-
-  // Click outside panel to close
   overlay.addEventListener('click', function (e) {
     if (e.target === overlay) closeOverlay()
   })
 
-  // Player controls
   playerPlay.addEventListener('click', togglePlay)
   playerPrev.addEventListener('click', prevSong)
   playerNext.addEventListener('click', nextSong)
   playerRestart.addEventListener('click', restartSong)
   playerSpeed.addEventListener('click', cycleSpeed)
 
-  // Progress bar click
   playerProgress.addEventListener('click', function (e) {
     if (!audio.duration || isNaN(audio.duration)) return
     var rect = playerProgress.getBoundingClientRect()
@@ -306,7 +374,6 @@
     updateProgress()
   })
 
-  // Keyboard shortcut: M for music overlay
   document.addEventListener('keydown', function (e) {
     if (e.key === 'm' || e.key === 'M') {
       if (!document.querySelector('.tetris-overlay.tetris-open')) {
@@ -315,6 +382,10 @@
     }
   })
 
-  // Init
-  renderList()
+  // Add status style
+  var style = document.createElement('style')
+  style.textContent = '.music-status { padding: 40px 20px; text-align: center; font-family: var(--font); font-size: 7px; color: var(--dim); line-height: 2; } .music-status-icon { display: block; font-size: 20px; margin-bottom: 12px; color: var(--purple); } .music-status strong { color: var(--cyan); }'
+  document.head.appendChild(style)
+
+  loadPlaylist()
 })()
