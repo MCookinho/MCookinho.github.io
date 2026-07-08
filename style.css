@@ -873,3 +873,120 @@ body {
   .tcontrols span { font-size: 5px; }
   .konami-flash { font-size: 12px; letter-spacing: 2px; }
 }
+
+@media (min-width: 1200px) {
+  .container { max-width: 1200px; }
+
+  .nav-links a { font-size: 10px; }
+  .nav-logo { font-size: 13px; }
+  .nav { padding: 16px 0; }
+
+  .hero-nome { font-size: 38px; }
+  .hero-sub { font-size: 11px; }
+  .hero-frase { font-size: 9px; }
+  .hero-idade { font-size: 10px; }
+  .hero-foto-wrapper { width: 170px; height: 170px; }
+  .hero-redes a { font-size: 24px; }
+  .hero-redes { gap: 22px; }
+
+  .sec-title { font-size: 18px; margin-bottom: 50px; }
+  .section { padding: 100px 0; }
+
+  .sobre-grid { gap: 50px; }
+  .sobre-texto p { font-size: 10px; }
+  .tag { font-size: 8px; padding: 6px 12px; }
+
+  .shiva-card { max-width: 400px; }
+  .shiva-legenda h3 { font-size: 11px; }
+  .shiva-legenda p { font-size: 8px; }
+  .shiva-bubble { font-size: 8px; }
+  .shiva-input { font-size: 8px; }
+  .shiva-send { font-size: 8px; padding: 0 16px; }
+
+  .skill-bloco h3 { font-size: 11px; }
+  .skill-items span { font-size: 8px; }
+
+  .projeto-card h3 { font-size: 12px; }
+  .projeto-card p { font-size: 8px; }
+  .projeto-card { padding: 28px; }
+  .projeto-header i { font-size: 24px; }
+
+  .jogo-info h3 { font-size: 11px; }
+  .jogo-info span { font-size: 7px; }
+  .jogo-info { padding: 16px 20px; }
+
+  .galeria-item span { font-size: 9px; }
+
+  .contato-card i { font-size: 26px; }
+  .contato-card span { font-size: 10px; }
+  .contato-card small { font-size: 8px; }
+  .contato-card { padding: 24px 16px; }
+  .contato-grid { gap: 14px; }
+
+  .btn-pixel { font-size: 11px; padding: 12px 24px; }
+
+  .blog-vazio i { font-size: 36px; }
+  .blog-vazio p { font-size: 9px; padding: 0 40px; }
+
+  .footer-inner p:first-child { font-size: 10px; }
+  .footer-copy { font-size: 9px; }
+}
+
+@media (min-width: 1600px) {
+  .container { max-width: 1400px; }
+
+  .nav-links { gap: 24px; }
+  .nav-links a { font-size: 11px; }
+  .nav-logo { font-size: 15px; }
+
+  .hero-nome { font-size: 48px; letter-spacing: 4px; }
+  .hero-sub { font-size: 12px; }
+  .hero-frase { font-size: 10px; }
+  .hero-idade { font-size: 11px; }
+  .hero-foto-wrapper { width: 200px; height: 200px; }
+  .hero-inner { max-width: 700px; }
+  .hero-redes a { font-size: 28px; }
+  .hero-redes { gap: 26px; }
+
+  .sec-title { font-size: 22px; margin-bottom: 60px; }
+  .section { padding: 130px 0; }
+
+  .sobre-texto p { font-size: 11px; }
+  .tag { font-size: 9px; padding: 7px 14px; }
+  .sobre-grid { gap: 60px; }
+
+  .shiva-card { max-width: 450px; }
+  .shiva-legenda h3 { font-size: 13px; }
+  .shiva-legenda p { font-size: 9px; }
+  .shiva-bubble { font-size: 9px; }
+  .shiva-input { font-size: 9px; }
+  .shiva-send { font-size: 9px; }
+  .shiva-chat-box { max-height: 300px; }
+
+  .skill-bloco h3 { font-size: 13px; }
+  .skill-items span { font-size: 9px; padding: 8px 14px; }
+
+  .projeto-card h3 { font-size: 14px; }
+  .projeto-card p { font-size: 9px; }
+  .projeto-card { padding: 32px; }
+  .projeto-header i { font-size: 28px; }
+  .projetos-grid { gap: 24px; }
+
+  .jogo-info h3 { font-size: 12px; }
+  .jogo-info span { font-size: 8px; }
+  .jogos-grid { gap: 24px; }
+
+  .galeria-item span { font-size: 10px; }
+  .galeria-grid { gap: 24px; }
+
+  .contato-card i { font-size: 32px; }
+  .contato-card span { font-size: 11px; }
+  .contato-card small { font-size: 9px; }
+  .contato-card { padding: 30px 20px; }
+  .contato-grid { gap: 18px; }
+
+  .btn-pixel { font-size: 13px; padding: 14px 28px; }
+
+  .blog-vazio i { font-size: 40px; }
+  .blog-vazio p { font-size: 10px; }
+}
