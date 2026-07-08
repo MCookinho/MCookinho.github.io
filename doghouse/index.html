@@ -6,162 +6,104 @@
 <title>O Passeio</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-@font-face{font-family:'Serif';src:local('Georgia'),local('Palatino Linotype'),local('Times New Roman')}
 body{
-  background:#0a0505;color:#e8d4a8;font-family:'Serif',Georgia,serif;
+  background:#0a0505;color:#e8d4a8;font-family:Georgia,'Palatino','Times New Roman',serif;
   overflow:hidden;height:100vh;width:100vw;display:flex;align-items:center;justify-content:center;
   cursor:default;user-select:none;
 }
-#game-wrapper{position:relative;width:800px;height:600px;overflow:hidden}
+#game-wrapper{position:relative;width:800px;height:600px;overflow:hidden;border:1px solid #1a0a0a}
 #game-canvas{display:block;width:800px;height:600px;image-rendering:auto;cursor:pointer}
 #scanlines{
   pointer-events:none;position:absolute;top:0;left:0;width:100%;height:100%;
-  background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,0.12) 3px,rgba(0,0,0,0.12) 4px);
+  background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,0.08) 3px,rgba(0,0,0,0.08) 4px);
   z-index:10;
 }
 #vignette{
   pointer-events:none;position:absolute;top:0;left:0;width:100%;height:100%;
-  background:radial-gradient(ellipse at center,transparent 60%,rgba(10,5,5,0.7) 100%);
+  background:radial-gradient(ellipse at center,transparent 55%,rgba(10,5,5,0.8) 100%);
   z-index:9;
 }
-.overlay{
-  display:none;position:absolute;top:0;left:0;width:100%;height:100%;
-  z-index:20;align-items:center;justify-content:center;
-}
-#dialogue-overlay{
-  background:rgba(10,5,5,0.85);flex-direction:column;padding:80px;text-align:center;
-}
-#dialogue-overlay .text{font-size:20px;line-height:1.8;color:#e8d4a8;max-width:600px}
-#dialogue-overlay .sub{font-size:14px;color:#8a3a3a;margin-top:20px}
-#note-overlay{background:rgba(10,5,5,0.9);flex-direction:column}
-#note-overlay .note-bg{
-  background:#2a1010;border:2px solid #5a2a2a;padding:40px;max-width:500px;
-  max-height:400px;overflow-y:auto;position:relative;
-}
-#note-overlay .note-title{color:#c4a46c;font-size:16px;margin-bottom:16px;text-align:center}
-#note-overlay .note-text{color:#e8d4a8;font-size:14px;line-height:1.6;text-align:justify}
-#note-overlay .note-symbol{color:#5a3a5a;font-size:30px;text-align:center;margin-top:12px}
-#note-overlay .note-close{
-  margin-top:16px;text-align:center;color:#8a3a3a;cursor:pointer;font-size:13px;
-}
-#note-overlay .note-close:hover{color:#a85a3a}
-#puzzle-overlay{background:rgba(10,5,5,0.88);flex-direction:column;gap:20px}
-#puzzle-overlay .puzzle-title{color:#c4a46c;font-size:16px}
-#puzzle-overlay .puzzle-hint{color:#8a7a5a;font-size:13px;margin-bottom:10px}
-#puzzle-overlay .puzzle-ui{display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap}
-#puzzle-overlay .puzzle-msg{color:#8a3a3a;font-size:13px;min-height:20px}
-#final-overlay{background:#0a0505;flex-direction:column;padding:60px;text-align:center}
-#final-overlay .final-text{font-size:18px;line-height:2;color:#e8d4a8;max-width:600px}
-#final-overlay .final-sub{color:#8a3a3a;margin-top:30px;font-size:14px}
-#transition-overlay{background:#0a0505;z-index:30;transition:opacity 0.5s;pointer-events:none}
-#transition-overlay.active{opacity:1}
-.transition-fade{animation:fadeAnim 0.5s}
-@keyframes fadeAnim{0%{opacity:0}100%{opacity:1}}
 #hud{
   position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:5;
-  display:none;
 }
+#tooltip{
+  position:absolute;bottom:48px;left:50%;transform:translateX(-50%);
+  font-size:13px;color:#c4a46c;opacity:0;transition:opacity 0.3s;
+  text-align:center;max-width:500px;pointer-events:none;z-index:6;
+  text-shadow:0 0 10px rgba(10,5,5,0.9);
+}
+#tooltip.show{opacity:1}
 #hud-memories{
-  position:absolute;top:12px;left:12px;display:flex;gap:6px;
+  position:absolute;top:8px;left:8px;display:flex;gap:4px;z-index:6;
 }
 #hud-memories .mem-slot{
-  width:18px;height:18px;border:1px solid #3a1a1a;display:flex;align-items:center;justify-content:center;
-  font-size:12px;color:#3a1a1a;background:rgba(10,5,5,0.6);
+  width:16px;height:16px;border:1px solid #2a1010;display:flex;align-items:center;justify-content:center;
+  font-size:10px;color:#2a1010;background:rgba(10,5,5,0.8);
 }
-#hud-memories .mem-slot.filled{color:#c4a46c;border-color:#5a2a2a}
-#hud-lantern{
-  position:absolute;top:12px;right:12px;display:flex;align-items:center;gap:6px;
-  font-size:11px;color:#8a7a5a;
-}
-#hud-lantern .bar{width:40px;height:6px;background:#1a0a0a;border:1px solid #3a1a1a}
-#hud-lantern .bar .fill{height:100%;background:#a85a3a;transition:width 0.3s}
-#hud-day{position:absolute;top:12px;right:100px;font-size:11px;color:#5a3a5a}
+#hud-memories .mem-slot.filled{color:#c4a46c;border-color:#5a2a2a;background:rgba(20,10,10,0.9)}
 #hud-watching{
   position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  font-size:22px;color:#8a3a3a;opacity:0;transition:opacity 0.5s;
-  text-shadow:0 0 20px rgba(138,58,58,0.5);letter-spacing:6px;
-  animation:pulse 1.5s infinite;
+  font-size:18px;color:#8a3a3a;opacity:0;transition:opacity 0.4s;z-index:6;
+  text-shadow:0 0 30px rgba(138,58,58,0.3);letter-spacing:4px;
+  pointer-events:none;
 }
-#hud-watching.active{opacity:1}
-@keyframes pulse{0%,100%{opacity:0.4}50%{opacity:1}}
-#hud-interact{
-  position:absolute;bottom:80px;left:50%;transform:translateX(-50%);
-  font-size:15px;color:#c4a46c;opacity:0;transition:opacity 0.3s;
-}
-#hud-interact.active{opacity:1}
+#hud-watching.show{opacity:1}
 #inventory-bar{
-  position:absolute;bottom:10px;left:50%;transform:translateX(-50%);
-  display:flex;gap:4px;z-index:4;pointer-events:auto;
+  position:absolute;bottom:8px;left:50%;transform:translateX(-50%);
+  display:flex;gap:3px;z-index:6;pointer-events:auto;
 }
 #inventory-bar .slot{
-  width:32px;height:32px;border:1px solid #3a1a1a;background:rgba(10,5,5,0.8);
+  width:30px;height:30px;border:1px solid #2a1010;background:rgba(10,5,5,0.85);
   display:flex;align-items:center;justify-content:center;cursor:pointer;
-  font-size:16px;color:#8a7a5a;transition:all 0.2s;
+  font-size:15px;color:#5a3a3a;transition:all 0.2s;position:relative;
 }
-#inventory-bar .slot:hover{border-color:#5a2a2a;background:rgba(26,10,10,0.9)}
-#inventory-bar .slot.selected{border-color:#c4a46c;box-shadow:0 0 8px rgba(196,164,108,0.3)}
-#inventory-bar .slot .qty{position:absolute;bottom:0;right:2px;font-size:9px;color:#8a3a3a}
+#inventory-bar .slot:hover{border-color:#5a2a2a;background:rgba(20,10,10,0.95)}
+#inventory-bar .slot.selected{border-color:#c4a46c;box-shadow:0 0 6px rgba(196,164,108,0.2)}
 #hint-btn{
-  position:absolute;bottom:10px;right:10px;z-index:4;pointer-events:auto;
-  width:28px;height:28px;border-radius:50%;border:1px solid #3a1a1a;
-  background:rgba(10,5,5,0.8);color:#5a3a5a;font-size:14px;
-  display:flex;align-items:center;justify-content:center;cursor:pointer;
+  position:absolute;bottom:8px;right:8px;z-index:6;pointer-events:auto;
+  width:24px;height:24px;border-radius:50%;border:1px solid #2a1010;
+  background:rgba(10,5,5,0.8);color:#3a1a1a;font-size:12px;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;font-family:Georgia,serif;
 }
 #hint-btn:hover{border-color:#5a2a2a;color:#8a3a3a}
-#desc-text{
-  position:absolute;bottom:46px;left:50%;transform:translateX(-50%);
-  font-size:12px;color:#5a3a5a;z-index:4;pointer-events:none;text-align:center;
-  max-width:500px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+.note-overlay{
+  display:none;position:absolute;top:0;left:0;width:100%;height:100%;
+  z-index:20;align-items:center;justify-content:center;
+  background:rgba(10,5,5,0.92);
 }
-.loading-text{
-  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  color:#5a3a5a;font-size:18px;letter-spacing:4px;z-index:50;
+.note-overlay .note-bg{
+  background:#1a0a0a;border:1px solid #3a1a1a;padding:30px;max-width:420px;
+  position:relative;
 }
-.puz-btn{
-  padding:6px 16px;background:transparent;border:1px solid #5a2a2a;
-  color:#c4a46c;cursor:pointer;font-family:inherit;font-size:13px;transition:0.2s;
+.note-overlay .note-symbol{font-size:36px;color:#5a3a5a;text-align:center;margin-bottom:12px}
+.note-overlay .note-text{color:#c4a46c;font-size:13px;line-height:1.6;text-align:center;font-style:italic}
+.note-overlay .note-close{
+  margin-top:16px;text-align:center;color:#3a1a1a;cursor:pointer;font-size:11px;
 }
-.puz-btn:hover{background:#2a1010;border-color:#8a3a3a}
-.puz-btn:active{background:#3a1a1a}
-.puz-rotor{display:flex;flex-direction:column;align-items:center;gap:4px}
-.puz-rotor .arrow{width:24px;height:20px;display:flex;align-items:center;justify-content:center;
-  cursor:pointer;color:#8a3a3a;font-size:16px;border:1px solid transparent;
+.note-overlay .note-close:hover{color:#8a3a3a}
+#intro-overlay{
+  display:none;position:absolute;top:0;left:0;width:100%;height:100%;
+  z-index:30;align-items:center;justify-content:center;
+  background:#0a0505;flex-direction:column;padding:60px;
 }
-.puz-rotor .arrow:hover{border-color:#5a2a2a}
-.puz-rotor .digit{
-  width:30px;height:34px;border:1px solid #3a1a1a;display:flex;align-items:center;
-  justify-content:center;font-size:20px;color:#e8d4a8;background:#1a0a0a;
+#intro-overlay .intro-text{font-size:17px;line-height:2;color:#e8d4a8;max-width:550px;text-align:center}
+#intro-overlay .intro-sub{color:#3a1a1a;margin-top:24px;font-size:12px;cursor:pointer}
+#intro-overlay .intro-sub:hover{color:#8a3a3a}
+#final-overlay{
+  display:none;position:absolute;top:0;left:0;width:100%;height:100%;
+  z-index:30;align-items:center;justify-content:center;
+  background:#0a0505;flex-direction:column;padding:60px;
 }
-.puz-slot-box{
-  width:40px;height:40px;border:1px solid #3a1a1a;display:flex;align-items:center;
-  justify-content:center;font-size:20px;color:#c4a46c;cursor:pointer;
-  background:#1a0a0a;transition:0.2s;
+#final-overlay .final-title{font-size:22px;color:#8a3a3a;margin-bottom:20px}
+#final-overlay .final-text{font-size:15px;line-height:1.8;color:#e8d4a8;max-width:550px;text-align:center}
+#final-overlay .final-sub{color:#3a1a1a;margin-top:24px;font-size:12px;cursor:pointer}
+#final-overlay .final-sub:hover{color:#8a3a3a}
+#transition-overlay{
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  background:#0a0505;z-index:25;pointer-events:none;opacity:0;
+  transition:opacity 0.4s;
 }
-.puz-slot-box:hover{border-color:#5a2a2a}
-.puz-slot-box.selected{border-color:#c4a46c;box-shadow:0 0 8px rgba(196,164,108,0.3)}
-.puz-drawing{width:48px;height:48px;border:1px solid #3a1a1a;display:flex;align-items:center;
-  justify-content:center;font-size:22px;cursor:pointer;background:#1a0a0a;transition:0.2s;
-}
-.puz-drawing:hover{border-color:#8a3a3a}
-.puz-vela{width:28px;height:48px;margin:0 4px;display:flex;flex-direction:column;align-items:center;
-  cursor:pointer;transition:0.2s;}
-.puz-vela-body{width:12px;height:32px;background:#2a1010;border:1px solid #3a1a1a;border-radius:2px}
-.puz-vela-wick{width:2px;height:6px;background:#3a1a1a}
-.puz-vela-flame{width:8px;height:14px;border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
-  background:radial-gradient(at 50% 30%,#a85a3a,#8a3a3a);opacity:0;transition:opacity 0.3s}
-.puz-vela.on .puz-vela-flame{opacity:1}
-.puz-vela.on .puz-vela-body{background:#3a1a1a}
-.puz-slider{display:flex;flex-direction:column;align-items:center;gap:4px}
-.puz-slider input[type=range]{writing-mode:vertical-lr;height:80px;width:20px;appearance:slider-vertical}
-.puz-symbol-grid{display:grid;grid-template-columns:repeat(3,2);gap:8px}
-.puz-sym-btn{width:40px;height:40px;border:1px solid #3a1a1a;display:flex;align-items:center;
-  justify-content:center;font-size:20px;cursor:pointer;background:#1a0a0a;transition:0.2s;
-}
-.puz-sym-btn:hover{border-color:#8a3a3a}
-.puz-lapide{width:60px;height:50px;border:1px solid #3a1a1a;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;cursor:pointer;background:#1a0a0a;font-size:20px;gap:4px;
-}
-.puz-lapide .num{font-size:11px;color:#5a3a5a}
+#transition-overlay.active{opacity:1}
 </style>
 </head>
 <body>
@@ -169,60 +111,35 @@ body{
   <canvas id="game-canvas" width="800" height="600"></canvas>
   <div id="scanlines"></div>
   <div id="vignette"></div>
-
   <div id="hud">
     <div id="hud-memories"></div>
-    <div id="hud-day">DIA 7</div>
-    <div id="hud-lantern">
-      <span>LANTERNA</span>
-      <div class="bar"><div class="fill" style="width:100%"></div></div>
-    </div>
     <div id="hud-watching">VOCÊ ESTÁ SENDO OBSERVADO</div>
-    <div id="hud-interact">[CLIQUE]</div>
-    <div id="desc-text"></div>
+    <div id="tooltip"></div>
     <div id="inventory-bar"></div>
     <div id="hint-btn">?</div>
   </div>
-
-  <div id="dialogue-overlay" class="overlay">
-    <div class="text"></div>
-    <div class="sub">[CLIQUE PARA CONTINUAR]</div>
+  <div id="intro-overlay">
+    <div class="intro-text"></div>
+    <div class="intro-sub">[ CLIQUE PARA CONTINUAR ]</div>
   </div>
-
-  <div id="note-overlay" class="overlay">
+  <div class="note-overlay" id="note-overlay">
     <div class="note-bg">
-      <div class="note-title"></div>
-      <div class="note-text"></div>
       <div class="note-symbol"></div>
+      <div class="note-text"></div>
       <div class="note-close">[ FECHAR ]</div>
     </div>
   </div>
-
-  <div id="puzzle-overlay" class="overlay">
-    <div class="puzzle-title"></div>
-    <div class="puzzle-hint"></div>
-    <div class="puzzle-ui"></div>
-    <div class="puzzle-msg"></div>
-    <div style="display:flex;gap:12px;margin-top:10px">
-      <div class="puz-btn" id="puz-cancel">VOLTAR</div>
-      <div class="puz-btn" id="puz-confirm">CONFIRMAR</div>
-    </div>
-  </div>
-
-  <div id="final-overlay" class="overlay">
-    <div class="final-title" style="font-size:24px;color:#8a3a3a;margin-bottom:20px"></div>
+  <div id="final-overlay">
+    <div class="final-title"></div>
     <div class="final-text"></div>
-    <div class="final-sub" style="cursor:pointer"></div>
+    <div class="final-sub">[ REINICIAR ]</div>
   </div>
-
-  <div id="transition-overlay" class="overlay" style="opacity:0"></div>
-  <div class="loading-text" id="loading-text">CARREGANDO...</div>
+  <div id="transition-overlay"></div>
 </div>
 <script src="audio.js"></script>
-<script src="story.js"></script>
-<script src="dioramas.js"></script>
-<script src="art.js"></script>
 <script src="puzzles.js"></script>
+<script src="art.js"></script>
+<script src="story.js"></script>
 <script src="engine.js"></script>
 <script src="game.js"></script>
 </body>

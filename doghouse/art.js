@@ -1,482 +1,400 @@
 const PAL = {
-  bg:'#0a0505',brownD:'#1a0a0a',wineD:'#2a1010',wine:'#3a1a1a',
-  brownM:'#4a2a2a',brownL:'#5a3a3a',grayB:'#6a4a4a',blood:'#8a3a3a',
-  rust:'#a85a3a',gold:'#c4a46c',sand:'#e8d4a8',purpleD:'#2a1a3a',
-  purpleM:'#3a2a5a',purpleL:'#5a4a7a',blueD:'#1a2a3a',blueG:'#3a5a6a'
+  bg:'#0a0505',d:'#1a0a0a',w:'#2a1010',m:'#3a1a1a',
+  bm:'#4a2a2a',bl:'#5a3a3a',g:'#6a4a4a',r:'#8a3a3a',
+  o:'#a85a3a',y:'#c4a46c',s:'#e8d4a8',pd:'#2a1a3a',
+  pm:'#3a2a5a',pl:'#5a4a7a',bd:'#1a2a3a',bg2:'#3a5a6a'
 }
 
-function C(ctx){return ctx.canvas.width}
-function H(ctx){return ctx.canvas.height}
+let $ctx
+function C(){return 800}
+function H(){return 600}
+function rect(x,y,w,h,c){$ctx.fillStyle=c;$ctx.fillRect(x,y,w,h)}
+function circle(x,y,r,c){$ctx.fillStyle=c;$ctx.beginPath();$ctx.arc(x,y,r,0,Math.PI*2);$ctx.fill()}
+function grad(x1,y1,x2,y2,c1,c2){const g=$ctx.createLinearGradient(x1,y1,x2,y2);g.addColorStop(0,c1);g.addColorStop(1,c2);return g}
+function rg(x,y,r,c1,c2){const g=$ctx.createRadialGradient(x,y,0,x,y,r);g.addColorStop(0,c1);g.addColorStop(1,c2);return g}
+function rr(x,y,w,h,r2,c){$ctx.fillStyle=c;$ctx.beginPath();$ctx.moveTo(x+r2,y);$ctx.lineTo(x+w-r2,y);$ctx.quadraticCurveTo(x+w,y,x+w,y+r2);$ctx.lineTo(x+w,y+h-r2);$ctx.quadraticCurveTo(x+w,y+h,x+w-r2,y+h);$ctx.lineTo(x+r2,y+h);$ctx.quadraticCurveTo(x,y+h,x,y+h-r2);$ctx.lineTo(x,y+r2);$ctx.quadraticCurveTo(x,y,x+r2,y);$ctx.fill()}
+function ln(x1,y1,x2,y2,c,w){$ctx.strokeStyle=c;$ctx.lineWidth=w||1;$ctx.beginPath();$ctx.moveTo(x1,y1);$ctx.lineTo(x2,y2);$ctx.stroke()}
+function pl(pts,c){$ctx.fillStyle=c;$ctx.beginPath();$ctx.moveTo(pts[0][0],pts[0][1]);for(let i=1;i<pts.length;i++)$ctx.lineTo(pts[i][0],pts[i][1]);$ctx.closePath();$ctx.fill()}
+function g2(x,y,r,c,alpha){const g=rg(x,y,r,c,`rgba(10,5,5,0)`);$ctx.fillStyle=g;$ctx.beginPath();$ctx.arc(x,y,r,0,Math.PI*2);$ctx.fill()}
 
-function rect(ctx,x,y,w,h,color){
-  ctx.fillStyle=color;ctx.fillRect(x,y,w,h)
-}
-function grad(ctx,x1,y1,x2,y2,c1,c2){
-  const g=ctx.createLinearGradient(x1,y1,x2,y2)
-  g.addColorStop(0,c1);g.addColorStop(1,c2);return g
-}
-function radGrad(ctx,x,y,r,c1,c2){
-  const g=ctx.createRadialGradient(x,y,0,x,y,r)
-  g.addColorStop(0,c1);g.addColorStop(1,c2);return g
-}
-function circle(ctx,x,y,r,color){
-  ctx.fillStyle=color;ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill()
-}
-function line(ctx,x1,y1,x2,y2,color,w){
-  ctx.strokeStyle=color;ctx.lineWidth=w||1
-  ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.stroke()
-}
-function roundRect(ctx,x,y,w,h,r,color){
-  ctx.fillStyle=color;ctx.beginPath()
-  ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.quadraticCurveTo(x+w,y,x+w,y+r)
-  ctx.lineTo(x+w,y+h-r);ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h)
-  ctx.lineTo(x+r,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-r)
-  ctx.lineTo(x,y+r);ctx.quadraticCurveTo(x,y,x+r,y);ctx.fill()
-}
-function path(ctx,pts,color,close){
-  ctx.fillStyle=color;ctx.beginPath()
-  ctx.moveTo(pts[0][0],pts[0][1])
-  for(let i=1;i<pts.length;i++)ctx.lineTo(pts[i][0],pts[i][1])
-  if(close)ctx.closePath();ctx.fill()
-}
-function shadow(ctx,x,y,w,h,intensity){
-  ctx.fillStyle=`rgba(10,5,5,${intensity||0.3})`
-  ctx.fillRect(x,y,w,h)
-}
-
-function drawFloor(ctx,y,color1,color2){
-  const g=grad(ctx,0,y,0,H(ctx),color1,color2)
-  rect(ctx,0,y,C(ctx),H(ctx)-y,g)
-}
-function drawCeiling(ctx,h,color1,color2){
-  const g=grad(ctx,0,0,0,h,color1,color2)
-  rect(ctx,0,0,C(ctx),h,g)
-}
-function drawWall(ctx,color){
-  rect(ctx,0,0,C(ctx),H(ctx),color)
-}
-function drawDoor(ctx,x,y,w,h,color1,color2,frames){
-  const g=grad(ctx,x,y,x+w,y,color1,color2)
-  roundRect(ctx,x,y,w,h,3,g)
-  if(frames){
-    ctx.strokeStyle=PAL.wine;ctx.lineWidth=1
-    ctx.strokeRect(x+4,y+4,w-8,h-8)
-    ctx.beginPath();ctx.arc(x+w/2,y+h/2,8,0,Math.PI*2);ctx.stroke()
+function drawCorridor1(ctx, time) {
+  rect(0,0,C(),H(),PAL.bg)
+  const wg = grad(0,0,0,300,PAL.pd,PAL.bg)
+  rect(0,0,C(),300,wg)
+  rect(0,380,C(),220,PAL.d)
+  pl([[280,150],[520,150],[500,480],[300,480]],PAL.m)
+  pl([[290,155],[510,155],[492,476],[308,476]],PAL.d)
+  const off = 30
+  for (let i = 0; i < 3; i++) {
+    const sy = 200 + i * 90
+    rr(330 + i * 60, sy, 30, 50, 3, PAL.bm)
+    circle(345 + i * 60, sy + 25, 8, PAL.d)
+    circle(345 + i * 60, sy + 25, 4, PAL.r)
   }
-}
-function drawWindow(ctx,x,y,w,h,color1,color2,cross){
-  const g=grad(ctx,x,y,x+w,y+h,color1,color2)
-  roundRect(ctx,x,y,w,h,2,g)
-  ctx.strokeStyle=PAL.wine;ctx.lineWidth=1
-  ctx.strokeRect(x,y,w,h)
-  if(cross){
-    line(ctx,x+w/2,y,x+w/2,y+h,PAL.wine,1)
-    line(ctx,x,y+h/2,x+w,y+h/2,PAL.wine,1)
+  for (let i = 0; i < 6; i++) {
+    const ly = 80 + i * 50
+    g2(50, ly, 30, PAL.y, 0.08)
+    circle(50, ly, 4, PAL.y)
+    g2(750, ly, 30, PAL.y, 0.08)
+    circle(750, ly, 4, PAL.y)
   }
-}
-function drawGlow(ctx,x,y,r,color,intensity){
-  const g=radGrad(ctx,x,y,r,color,`rgba(10,5,5,0)`)
-  ctx.fillStyle=g
-  ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill()
+  const sw = Math.sin(time * 0.002) * 2
+  g2(400, 60, 50, PAL.o, 0.1)
+  circle(400 + sw, 60, 5, PAL.o)
+  const pts = [[350,400],[450,400],[445,420],[355,420]]
+  pl(pts, PAL.m)
+  rect(352,402,96,16,PAL.bg)
+  ctx.fillStyle = PAL.r
+  ctx.font = '9px Georgia'
+  ctx.textAlign = 'center'
+  ctx.fillText('†', 400, 412)
 }
 
-function drawCorridor1(ctx,time){
-  rect(ctx,0,0,C(ctx),H(ctx),PAL.bg)
-  const gC=grad(ctx,0,0,0,H(ctx),PAL.purpleD,PAL.bg)
-  rect(ctx,0,0,C(ctx),250,gC)
-  drawFloor(ctx,380,PAL.brownD,PAL.bg)
-  drawDoor(ctx,300,180,200,300,PAL.brownM,PAL.wineD,true)
-  for(let i=0;i<6;i++){
-    const yy=120+i*50
-    circle(ctx,50,yy,5,PAL.gold)
-    circle(ctx,750,yy,5,PAL.gold)
-    drawGlow(ctx,50,yy,30,`rgba(196,164,108,0.05)`,0.5)
+function drawCellar(ctx, time) {
+  rect(0,0,C(),H(),'#0d0606')
+  rect(0,0,C(),300,grad(0,0,0,300,PAL.bd,'#0d0606'))
+  rect(0,380,C(),220,PAL.d)
+  const dp = Math.sin(time * 0.003) * 3 + 4
+  for (let i = 0; i < 8; i++) {
+    const dx = 80 + i * 90, dy = 200 + Math.sin(time * 0.001 + i) * 4
+    rect(dx, dy, 3, 8 + Math.random() * 4, PAL.bg2)
   }
-  const wave=Math.sin(time*0.002)*3
-  circle(ctx,400,100,8,PAL.gold)
-  drawGlow(ctx,400,100,60,`rgba(196,164,108,0.08)`)
-  ctx.fillStyle=PAL.sand
-  ctx.font='11px Georgia,serif'
-  ctx.textAlign='center'
-  ctx.fillText('O PASSEIO COMEÇA ONDE A LUZ TERMINA',400,560)
+  circle(400, 420, 160, rg(400, 420, 160, PAL.bd, PAL.bg))
+  circle(400, 420, 145, PAL.d)
+  circle(400, 420, 130, PAL.bg)
+  const rx = 400 + Math.sin(time * 0.001) * 6
+  const ry = 420 + Math.cos(time * 0.0008) * 4
+  g2(rx, ry, 30, PAL.o, 0.2)
+  circle(rx, ry, 6, PAL.o)
+  const pts = [[340,250],[460,250],[450,280],[350,280]]
+  pl(pts, PAL.m)
+  rect(345,252,110,26,PAL.bg)
+  ctx.fillStyle = PAL.bl
+  ctx.font = '8px Georgia'
+  ctx.textAlign = 'center'
+  ctx.fillText('⦿', 400, 270)
 }
 
-function drawCellar(ctx,time){
-  rect(ctx,0,0,C(ctx),H(ctx),PAL.bg)
-  drawWall(ctx,`#0d0808`)
-  const drip=Math.sin(time*0.003)*2
-  for(let i=0;i<20;i++){
-    const xx=30+Math.random()*740|0,yy=Math.random()*300|0
-    if(Math.random()>0.98)rect(ctx,xx,yy,2,6+Math.random()*4,PAL.blueG)
+function drawCorridor2(ctx, time) {
+  rect(0,0,C(),H(),PAL.bg)
+  rect(0,0,C(),180,grad(0,0,0,180,PAL.w,PAL.bg))
+  rect(0,390,C(),210,PAL.d)
+  for (let i = 0; i < 6; i++) {
+    const sy = 250 + i * 25
+    rect(280 + Math.sin(time * 0.002 + i) * 2, sy, 240, 6, PAL.bm)
+    rect(280 + Math.sin(time * 0.002 + i) * 2, sy + 1, 240, 2, PAL.m)
   }
-  const gW=radGrad(ctx,400,420,180,PAL.blueD,PAL.bg)
-  circle(ctx,400,420,180,gW)
-  circle(ctx,400,420,170,PAL.brownD)
-  circle(ctx,400,420,160,PAL.bg)
-  const rTime=time*0.001
-  const rx=400+Math.sin(rTime)*5,ry=420+Math.cos(rTime*0.7)*3
-  circle(ctx,rx,ry,8,PAL.rust)
-  drawGlow(ctx,rx,ry,25,`rgba(168,90,58,0.15)`)
-  rect(ctx,300,200,200,4,PAL.wine)
-  rect(ctx,300,200,4,60,PAL.wine)
-  rect(ctx,496,200,4,60,PAL.wine)
-  for(let i=0;i<4;i++){
-    rect(ctx,304+i*48,204,44,3,PAL.brownM)
-  }
-  drawDoor(ctx,350,450,100,150,PAL.brownM,PAL.wine)
-  ctx.fillStyle=PAL.blueG;ctx.font='10px Georgia';ctx.textAlign='center'
-  ctx.fillText('• • •',400,drip+100)
-}
-
-function drawCorridor2(ctx,time){
-  rect(ctx,0,0,C(ctx),H(ctx),PAL.bg)
-  const gC=grad(ctx,0,0,0,200,PAL.wineD,PAL.bg)
-  rect(ctx,0,0,C(ctx),200,gC)
-  drawFloor(ctx,400,PAL.brownD,PAL.bg)
-  const steps=[300,330,360,390,420,450]
-  steps.forEach((y,i)=>{
-    rect(ctx,280,y,240,8,PAL.brownM)
-    rect(ctx,280+Math.sin(time*0.002+i)*2,y,240,3,PAL.wineD)
-  })
-  drawDoor(ctx,350,150,100,200,PAL.brownM,PAL.wineD,true)
-  drawWindow(ctx,620,100,60,80,PAL.blueD,PAL.bg)
-  for(let i=0;i<3;i++){
-    const fX=650+Math.sin(time*0.002+i)*10
-    ctx.fillStyle=PAL.blood;ctx.font='10px Georgia'
-    ctx.fillText('~',fX,110+i*20)
+  pl([[340,160],[460,160],[440,380],[360,380]], PAL.bm)
+  pl([[345,162],[455,162],[437,378],[363,378]], PAL.d)
+  rect(390,165,20,20,PAL.bg)
+  ctx.fillStyle = PAL.o
+  ctx.font = '10px Georgia'
+  ctx.fillText('×', 400, 180)
+  rect(620,100,50,60,PAL.bd)
+  rect(625,105,40,50,PAL.bg)
+  for (let i = 0; i < 3; i++) {
+    ctx.fillStyle = PAL.r
+    ctx.font = '8px Georgia'
+    ctx.fillText('~', 645, 120 + i * 18)
   }
 }
 
-function drawKitchen(ctx,time){
-  rect(ctx,0,0,C(ctx),H(ctx),PAL.brownD)
-  drawWall(ctx,PAL.wineD)
-  drawFloor(ctx,400,PAL.brownM,PAL.bg)
-  const stoveX=80,stoveY=200
-  rect(ctx,stoveX,stoveY,160,200,PAL.brownM)
-  rect(ctx,stoveX+10,stoveY+10,140,180,PAL.bg)
-  circle(ctx,stoveX+80,stoveY+60,30,PAL.brownD)
-  for(let i=0;i<3;i++){
-    circle(ctx,stoveX+30+i*40,stoveY+30,18,PAL.bg)
-    circle(ctx,stoveX+30+i*40,stoveY+30,12,PAL.brownD)
+function drawKitchen(ctx, time) {
+  rect(0,0,C(),H(),PAL.w)
+  rect(0,0,C(),200,grad(0,0,0,200,PAL.m,PAL.w))
+  rect(0,420,C(),180,PAL.d)
+  rect(60,200,140,200,PAL.bm)
+  rect(70,210,120,180,PAL.bg)
+  for (let i = 0; i < 3; i++) {
+    circle(100 + i * 30, 230, 14, PAL.d)
+    circle(100 + i * 30, 230, 8, PAL.bg)
   }
-  const radioX=550,radioY=280
-  rect(ctx,radioX,radioY,120,80,PAL.brownM)
-  rect(ctx,radioX+10,radioY+10,100,60,PAL.bg)
-  circle(ctx,radioX+60,radioY+30,18,PAL.brownD)
-  line(ctx,radioX+60,radioY+30,radioX+60+Math.cos(time*0.001)*15,radioY+30-8,PAL.rust,1)
-  rect(ctx,radioX+40,radioY+55,40,8,PAL.wineD)
-  const sinkX=280,sinkY=300
-  rect(ctx,sinkX,sinkY,100,100,PAL.brownM)
-  rect(ctx,sinkX+10,sinkY+15,80,40,PAL.blueD)
-  const drop=Math.sin(time*0.005)*20
-  circle(ctx,sinkX+50,sinkY+40+drop,3,PAL.blueG)
-  drawDoor(ctx,350,430,100,170,PAL.brownM,PAL.wineD)
-  rect(ctx,520,430,60,170,PAL.wineD)
-  ctx.fillStyle=Math.sin(time*0.003)>0?PAL.rust:PAL.bg
-  ctx.font='8px Georgia';ctx.textAlign='center'
-  ctx.fillText('TOC... TOC... TOC...',sinkX+50,sinkY+100)
+  const rx = 550, ry = 270
+  rect(rx, ry, 110, 70, PAL.bm)
+  rect(rx + 8, ry + 8, 94, 54, PAL.d)
+  circle(rx + 55, ry + 30, 16, PAL.bg)
+  ln(rx + 55, ry + 30, rx + 55 + Math.cos(time * 0.001) * 12, ry + 30 - 6, PAL.o, 1.5)
+  rect(rx + 40, ry + 52, 30, 6, PAL.m)
+  rect(280, 300, 100, 100, PAL.bm)
+  rect(290, 310, 80, 30, PAL.bd)
+  const tp = Math.sin(time * 0.004) * 15
+  g2(330, 325 + tp, 10, PAL.bg2, 0.3)
+  circle(330, 325 + tp, 2, PAL.bg2)
+  rect(600, 300, 30, 50, PAL.bm)
+  rect(605, 305, 20, 40, PAL.bg)
+  circle(615, 325, 4, PAL.r)
+  rect(360, 420, 80, 60, PAL.bm)
+  rect(365, 425, 70, 50, PAL.m)
 }
 
-function drawPantry(ctx,time){
-  rect(ctx,0,0,C(ctx),H(ctx),PAL.brownD)
-  drawWall(ctx,PAL.wine)
-  drawFloor(ctx,420,PAL.brownM,PAL.bg)
-  for(let i=0;i<5;i++){
-    const sx=100+i*140
-    rect(ctx,sx,150,120,20,PAL.brownM)
-    rect(ctx,sx+10,170,100,14,PAL.wineD)
-    rect(ctx,sx+10,184,100,14,PAL.wineD)
+function drawCorridor3(ctx, time) {
+  rect(0,0,C(),H(),PAL.bg)
+  rect(0,0,C(),150,grad(0,0,0,150,PAL.pd,PAL.bg))
+  rect(0,390,C(),210,PAL.d)
+  pl([[300,120],[500,120],[480,400],[320,400]],PAL.pm)
+  pl([[308,125],[492,125],[476,396],[324,396]],PAL.d)
+  circle(400,130,12,PAL.y)
+  g2(400,130,40,PAL.y,0.08)
+  ctx.fillStyle = PAL.y
+  ctx.font = '20px Georgia'
+  ctx.textAlign = 'center'
+  ctx.fillText('†', 400, 140)
+  for (let i = 0; i < 5; i++) {
+    g2(80 + i * 160, 170, 25, PAL.y, 0.05)
+    circle(80 + i * 160, 170, 2, PAL.y)
   }
-  const shX=420,shY=200
-  rect(ctx,shX,shY,80,60,PAL.brownM)
-  rect(ctx,shX+10,shY+10,60,40,PAL.bg)
-  circle(ctx,shX+40,shY+20,15,`rgba(90,58,58,0.6)`)
-  rect(ctx,550,360,80,150,PAL.brownM)
-  rect(ctx,555,365,70,140,PAL.wineD)
-  drawDoor(ctx,350,430,100,170,PAL.brownM,PAL.wineD)
+  rect(580, 350, 40, 25, PAL.bm)
+  rect(585, 355, 30, 15, PAL.r)
+  rect(640, 360, 30, 35, PAL.bm)
+  rect(645, 365, 20, 25, PAL.r)
 }
 
-function drawCorridor3(ctx,time){
-  rect(ctx,0,0,C(ctx),H(ctx),PAL.bg)
-  const gC=grad(ctx,0,0,0,180,PAL.purpleD,PAL.bg)
-  rect(ctx,0,0,C(ctx),180,gC)
-  drawFloor(ctx,380,PAL.brownD,PAL.bg)
-  drawDoor(ctx,300,130,200,300,PAL.purpleM,PAL.wineD,true)
-  ctx.fillStyle=PAL.gold;ctx.font='16px Georgia'
-  ctx.textAlign='center';ctx.fillText('†',400,100)
-  for(let i=0;i<5;i++){
-    const bX=50+i*170
-    if(bX<900){
-      circle(ctx,bX,160,4,PAL.gold)
-      drawGlow(ctx,bX,160,20,`rgba(196,164,108,0.06)`)
-    }
-  }
+function drawChurch(ctx, time) {
+  rect(0,0,C(),H(),PAL.pd)
+  rect(0,0,C(),250,grad(0,0,0,250,PAL.pm,PAL.pd))
+  rect(0,420,C(),180,PAL.d)
+  const pts = [[340,280],[460,280],[430,350],[370,350]]
+  pl(pts, PAL.bm)
+  rect(350,285,100,25,PAL.bg)
+  circle(400, 305, 20, PAL.d)
+  circle(360, 430, 25, PAL.m)
+  circle(400, 430, 25, PAL.m)
+  circle(440, 430, 25, PAL.m)
+  circle(360, 425, 6, PAL.r)
+  circle(400, 425, 6, PAL.r)
+  circle(440, 425, 6, PAL.r)
+  const cx = 400 + Math.sin(time * 0.002) * 15
+  const cy = 240 + Math.sin(time * 0.001) * 20
+  g2(cx, cy, 40, PAL.y, 0.1)
+  ctx.fillStyle = PAL.y
+  ctx.font = '22px Georgia'
+  ctx.fillText('✦', cx, cy)
+  rect(360, 480, 80, 60, PAL.bm)
+  rect(365, 485, 70, 50, PAL.m)
 }
 
-function drawChurch(ctx,time){
-  rect(ctx,0,0,C(ctx),H(ctx),PAL.purpleD)
-  const gWall=grad(ctx,0,0,0,H(ctx),PAL.purpleD,PAL.bg)
-  rect(ctx,0,0,C(ctx),300,gWall)
-  drawFloor(ctx,400,PAL.brownD,PAL.bg)
-  const pulse=Math.sin(time*0.001)*5
-  path(ctx,[
-    [350,280+pulse],[450,280+pulse],[420,350+pulse],[380,350+pulse]
-  ],PAL.brownM,true)
-  rect(ctx,360,290+pulse,80,30,PAL.bg)
-  circle(ctx,400,310+pulse,25,PAL.wine)
-  circle(ctx,360,420,25,PAL.brownM);circle(ctx,400,420,25,PAL.brownM);circle(ctx,440,420,25,PAL.brownM)
-  for(let i=0;i<3;i++){
-    circle(ctx,360+i*40,415,8,PAL.blood)
-  }
-  const cX=400+Math.sin(time*0.002)*20
-  const cY=250+Math.sin(time*0.001)*30
-  ctx.fillStyle=PAL.gold;ctx.font='20px Georgia';ctx.textAlign='center'
-  ctx.fillText('✦',cX,cY)
-  drawGlow(ctx,cX,cY,30,`rgba(196,164,108,0.08)`)
-  drawDoor(ctx,350,430,100,170,PAL.brownM,PAL.wineD)
-}
-
-function drawCorridor4(ctx,time){
-  rect(ctx,0,0,C(ctx),H(ctx),PAL.bg)
-  const gC=grad(ctx,0,0,0,160,PAL.blueD,PAL.bg)
-  rect(ctx,0,0,C(ctx),160,gC)
-  drawFloor(ctx,360,PAL.brownD,PAL.bg)
-  drawDoor(ctx,340,140,120,250,PAL.brownM,PAL.wine,true)
-  ctx.fillStyle='#15202a'
-  rect(ctx,0,180,C(ctx),180)
-  for(let i=0;i<3;i++){
-    const fX=100+Math.random()*600|0,fY=200+Math.random()*140|0
-    ctx.fillStyle=`rgba(90,58,58,${0.1+Math.random()*0.15})`
-    ctx.font=`${10+Math.random()*8|0}px Georgia`
-    ctx.fillText('♢',fX,fY)
-  }
-  ctx.fillStyle=PAL.grayB;ctx.font='10px Georgia';ctx.textAlign='center'
-  ctx.fillText('⟡',600,300)
-}
-
-function drawGraveyard(ctx,time){
-  rect(ctx,0,0,C(ctx),H(ctx),PAL.blueD)
-  drawCeiling(ctx,200,PAL.blueD,PAL.bg)
-  drawFloor(ctx,380,PAL.brownD,PAL.bg)
-  const fogX=Math.sin(time*0.0005)*20
-  for(let i=0;i<6;i++){
-    const gx=80+i*120,fgy=340+Math.sin(time*0.002+i)*5
-    rect(ctx,gx,fgy,100,70,PAL.brownM)
-    rect(ctx,gx+10,fgy+10,80,50,PAL.wineD)
-    const arc=Math.sin(time*0.001+i)*2
-    ctx.fillStyle=PAL.brownL;ctx.beginPath()
-    ctx.arc(gx+50,fgy,40,Math.PI,0)
+function drawCorridor4(ctx, time) {
+  rect(0,0,C(),H(),PAL.bg)
+  rect(0,0,C(),140,grad(0,0,0,140,PAL.bd,PAL.bg))
+  rect(0,380,C(),220,PAL.d)
+  pl([[320,120],[480,120],[460,390],[340,390]],PAL.bm)
+  pl([[328,125],[472,125],[455,386],[345,386]],PAL.d)
+  for (let i = 0; i < 8; i++) {
+    ctx.fillStyle = `rgba(90,74,122,${0.05 + Math.random() * 0.1})`
+    ctx.beginPath()
+    ctx.arc(100 + Math.random() * 600, 200 + Math.random() * 150, 2 + Math.random() * 3, 0, Math.PI * 2)
     ctx.fill()
-    ctx.fillStyle=PAL.wine;ctx.font='9px Georgia';ctx.textAlign='center'
-    const labels=['MEMÓRIA','TEMPO','NOME','MEDO','DESEJO','???']
-    ctx.fillText(labels[i],gx+50,fgy+45)
   }
-  drawDoor(ctx,350,50,100,150,PAL.brownM,PAL.wineD)
-  for(let i=0;i<8;i++){
-    const cx=Math.random()*800|0,cy=Math.random()*200|0
-    ctx.fillStyle=`rgba(90,74,122,${0.1+Math.random()*0.2})`
-    ctx.beginPath();ctx.arc(cx,cy,2+Math.random()*3,0,Math.PI*2);ctx.fill()
+  ctx.fillStyle = PAL.g
+  ctx.font = '10px Georgia'
+  ctx.textAlign = 'center'
+  ctx.fillText('⟡', 600, 300)
+  rect(360, 480, 80, 60, PAL.bm)
+  rect(365, 485, 70, 50, PAL.m)
+}
+
+function drawGraveyard(ctx, time) {
+  rect(0,0,C(),H(),PAL.bd)
+  rect(0,0,C(),180,grad(0,0,0,180,PAL.pd,PAL.bd))
+  rect(0,400,C(),200,PAL.d)
+  for (let i = 0; i < 6; i++) {
+    const gx = 60 + i * 115, gy = 320 + Math.sin(time * 0.001 + i * 1.5) * 3
+    rect(gx, gy, 100, 65, PAL.bm)
+    rect(gx + 8, gy + 8, 84, 48, PAL.m)
+    ctx.strokeStyle = PAL.bm
+    ctx.lineWidth = 1
+    ctx.strokeRect(gx + 10, gy + 10, 80, 44)
+    ctx.fillStyle = PAL.bl
+    ctx.font = '8px Georgia'
+    ctx.textAlign = 'center'
+    const lbs = ['MEMÓRIA', 'TEMPO', 'NOME', 'MEDO', 'DESEJO', '???']
+    ctx.fillText(lbs[i], gx + 50, gy + 38)
   }
-  const cX=300,trunkY=380
-  rect(ctx,cX,trunkY,12,60,PAL.brownM)
-  for(let i=0;i<5;i++){
-    const angle=Math.PI/4+Math.sin(time*0.001+i)*0.2
-    ctx.strokeStyle=PAL.brownM;ctx.lineWidth=3
-    ctx.beginPath();ctx.moveTo(cX+6,trunkY+i*12)
-    const ex=cX+6+Math.cos(angle)*50,ey=trunkY+i*12-Math.sin(angle)*40
-    ctx.lineTo(ex,ey);ctx.stroke()
-    ctx.fillStyle=PAL.blood;ctx.font='6px Georgia'
-    ctx.fillText('~',ex,ey)
+  rect(360, 80, 80, 60, PAL.bm)
+  rect(365, 85, 70, 50, PAL.m)
+  for (let i = 0; i < 20; i++) {
+    ctx.fillStyle = `rgba(90,74,122,${0.05 + Math.random() * 0.1})`
+    ctx.beginPath()
+    ctx.arc(Math.random() * 800, Math.random() * 200, 1 + Math.random() * 2, 0, Math.PI * 2)
+    ctx.fill()
+  }
+  rect(280, 380, 8, 60, PAL.bm)
+  for (let i = 0; i < 4; i++) {
+    const a = Math.PI / 4 + Math.sin(time * 0.001 + i) * 0.2
+    ln(284, 390 + i * 12, 284 + Math.cos(a) * 35, 390 + i * 12 - Math.sin(a) * 30, PAL.bm, 2)
+    ctx.fillStyle = PAL.r
+    ctx.font = '6px Georgia'
+    ctx.fillText('~', 284 + Math.cos(a) * 35, 390 + i * 12 - Math.sin(a) * 30)
   }
 }
 
-function drawCorridor5(ctx,time){
-  rect(ctx,0,0,C(ctx),H(ctx),PAL.bg)
-  const gC=grad(ctx,0,0,0,200,PAL.brownL,PAL.bg)
-  rect(ctx,0,0,C(ctx),200,gC)
-  drawFloor(ctx,380,PAL.brownM,PAL.bg)
-  drawDoor(ctx,310,120,180,300,PAL.brownM,PAL.wine,true)
-  for(let i=0;i<6;i++){
-    const yy=100+i*50
-    circle(ctx,80,yy,4,PAL.gold)
-    circle(ctx,720,yy,4,PAL.gold)
-    drawGlow(ctx,80,yy,25,`rgba(196,164,108,0.05)`)
+function drawCorridor5(ctx, time) {
+  rect(0,0,C(),H(),PAL.bg)
+  rect(0,0,C(),180,grad(0,0,0,180,PAL.bl,PAL.bg))
+  rect(0,390,C(),210,PAL.d)
+  pl([[310,110],[490,110],[470,400],[330,400]],PAL.bm)
+  pl([[318,115],[482,115],[464,396],[336,396]],PAL.d)
+  for (let i = 0; i < 6; i++) {
+    g2(60, 80 + i * 50, 25, PAL.y, 0.06)
+    circle(60, 80 + i * 50, 3, PAL.y)
+    g2(740, 80 + i * 50, 25, PAL.y, 0.06)
+    circle(740, 80 + i * 50, 3, PAL.y)
   }
-  for(let i=0;i<3;i++){
-    const ts=Math.sin(time*0.002+i*2)*3
-    ctx.fillStyle=PAL.gold;ctx.font='10px Georgia'
-    ctx.fillText('✧',400+ts*5,160+i*80)
-  }
+  rect(200, 420, 400, 20, PAL.m)
+  ctx.fillStyle = PAL.y
+  ctx.font = '12px Georgia'
+  ctx.textAlign = 'center'
+  ctx.fillText('✧', 400, 170)
 }
 
-function drawMansion(ctx,time){
-  rect(ctx,0,0,C(ctx),H(ctx),PAL.wineD)
-  drawWall(ctx,PAL.wine)
-  drawFloor(ctx,380,PAL.brownM,PAL.bg)
-  const mirrorX=280,mirrorY=80
-  rect(ctx,mirrorX,mirrorY,240,300,PAL.gold)
-  rect(ctx,mirrorX+10,mirrorY+10,220,280,PAL.blueD)
-  const delay=Math.sin(time*0.001)*10
-  const rX=mirrorX+110+delay
-  ctx.fillStyle=PAL.brownD;ctx.beginPath()
-  ctx.arc(rX,mirrorY+140,30,0,Math.PI*2);ctx.fill()
-  ctx.fillStyle=PAL.rust;ctx.beginPath()
-  ctx.arc(mirrorX+110,mirrorY+140,30,0,Math.PI*2);ctx.fill()
-  rect(ctx,mirrorX+95,mirrorY+170,30,50,PAL.brownD)
-  ctx.strokeStyle=PAL.gold;ctx.lineWidth=1
-  ctx.strokeRect(mirrorX,mirrorY,240,300)
-  ctx.strokeRect(mirrorX+5,mirrorY+5,230,290)
-  const clockX=560,clockY=120
-  rect(ctx,clockX,clockY,60,80,PAL.brownM)
-  circle(ctx,clockX+30,clockY+40,22,PAL.gold)
-  line(ctx,clockX+30,clockY+40,clockX+30,clockY+30,PAL.brownD,1)
-  line(ctx,clockX+30,clockY+40,clockX+45,clockY+40,PAL.brownD,1)
-  rect(ctx,600,350,80,120,PAL.brownM)
-  for(let i=0;i<4;i++){
-    rect(ctx,605,355+i*28,70,24,PAL.wineD)
+function drawMansion(ctx, time) {
+  rect(0,0,C(),H(),PAL.m)
+  rect(0,0,C(),200,grad(0,0,0,200,PAL.w,PAL.m))
+  rect(0,420,C(),180,PAL.d)
+  rr(270, 70, 260, 310, 4, PAL.g)
+  rr(280, 80, 240, 290, 2, PAL.bd)
+  const delay = Math.sin(time * 0.0008) * 12
+  const rx = 390 + delay
+  circle(rx, 220, 30, PAL.d)
+  circle(400, 220, 30, PAL.m)
+  rect(395, 250, 10, 30, PAL.d)
+  rr(560, 110, 55, 75, 3, PAL.bm)
+  circle(587, 148, 18, PAL.y)
+  ln(587, 148, 587, 135, PAL.d, 1.5)
+  ln(587, 148, 600, 148, PAL.d, 1.5)
+  for (let i = 0; i < 4; i++) {
+    rect(40 + i * 80, 180, 60, 75, PAL.bm)
+    rect(45 + i * 80, 185, 50, 65, PAL.m)
+    circle(70 + i * 80, 200, 6, PAL.r)
   }
-  drawDoor(ctx,350,430,100,170,PAL.brownM,PAL.wineD)
-  rect(ctx,620,450,60,130,PAL.wineD)
-  for(let i=0;i<3;i++){
-    const pX=50+i*80
-    rect(ctx,pX,180,60,80,PAL.brownM)
-    rect(ctx,pX+5,185,50,70,PAL.wine)
-    ctx.fillStyle=PAL.blood;ctx.beginPath()
-    ctx.arc(pX+30,200,8,0,Math.PI*2);ctx.fill()
-    ctx.fillStyle=PAL.bg;ctx.beginPath()
-    ctx.arc(pX+30,200,3,0,Math.PI*2);ctx.fill()
-  }
+  rect(360, 480, 80, 60, PAL.bm)
+  rect(365, 485, 70, 50, PAL.m)
 }
 
-function drawLibrary(ctx,time){
-  rect(ctx,0,0,C(ctx),H(ctx),PAL.brownD)
-  drawWall(ctx,PAL.wineD)
-  drawFloor(ctx,400,PAL.brownM,PAL.bg)
-  for(let i=0;i<4;i++){
-    const sx=40+i*190
-    rect(ctx,sx,100,170,300,PAL.brownM)
-    for(let j=0;j<6;j++){
-      const by=sx+10+j*28
-      rect(ctx,by,110+Math.sin(time*0.001+i+j)*5,150,24,PAL.wineD)
-      rect(ctx,by+3,113,144,18,PAL.wine)
+function drawLibrary(ctx, time) {
+  rect(0,0,C(),H(),PAL.w)
+  rect(0,0,C(),180,grad(0,0,0,180,PAL.d,PAL.w))
+  rect(0,420,C(),180,PAL.d)
+  for (let i = 0; i < 4; i++) {
+    const sx = 40 + i * 190
+    rect(sx, 90, 170, 310, PAL.bm)
+    for (let j = 0; j < 6; j++) {
+      rect(sx + 8, 100 + j * 48, 154, 42, PAL.m)
+      rect(sx + 12 + Math.sin(time * 0.001 + i + j) * 2, 104 + j * 48, 146, 34, PAL.w)
     }
   }
-  rect(ctx,250,370,300,20,PAL.brownM)
-  rect(ctx,270,250,160,120,PAL.brownM)
-  rect(ctx,280,260,140,100,PAL.wineD)
-  ctx.fillStyle=PAL.sand;ctx.font='10px Georgia';ctx.textAlign='center'
-  ctx.fillText('Cérbero: Guardião do Subumano',310,290)
-  ctx.fillText('Três cabeças: ciúme, vigilância, punição',310,310)
-  ctx.fillText('Sua filha, Shiva, herdou o dever',310,330)
-  drawDoor(ctx,50,430,80,170,PAL.brownM,PAL.wineD)
-  for(let i=0;i<6;i++){
-    ctx.fillStyle=`rgba(196,164,108,${0.03+Math.sin(time*0.001+i)*0.02})`
-    ctx.fillRect(40+i*190,105,170,290)
-  }
+  rr(270, 250, 160, 100, 4, PAL.bm)
+  rr(280, 260, 140, 80, 2, PAL.d)
+  ctx.fillStyle = PAL.s
+  ctx.font = '10px Georgia'
+  ctx.textAlign = 'center'
+  ctx.fillText('Cérbero: Guardião do Subumano', 350, 290)
+  ctx.fillText('Três cabeças: ciúme, vigilância, punição', 350, 310)
+  ctx.fillText('Shiva herdou o dever', 350, 330)
+  rect(60, 470, 60, 60, PAL.bm)
+  rect(65, 475, 50, 50, PAL.m)
 }
 
-function drawCorridor6(ctx,time){
-  rect(ctx,0,0,C(ctx),H(ctx),PAL.purpleD)
-  const spiral=time*0.005
-  for(let i=0;i<40;i++){
-    const angle=spiral+i*0.3
-    const rad=100+i*8
-    const sx=400+Math.cos(angle)*Math.min(rad,350)
-    const sy=300+Math.sin(angle)*Math.min(rad,200)
-    ctx.fillStyle=PAL.purpleM
-    ctx.beginPath();ctx.arc(sx,sy,2,0,Math.PI*2);ctx.fill()
+function drawCorridor6(ctx, time) {
+  rect(0,0,C(),H(),PAL.pd)
+  rect(0,0,C(),150,grad(0,0,0,150,PAL.pm,PAL.pd))
+  rect(0,400,C(),200,PAL.d)
+  const sp = time * 0.003
+  for (let i = 0; i < 30; i++) {
+    const a = sp + i * 0.25, r = 80 + i * 9
+    const sx = 400 + Math.cos(a) * Math.min(r, 300)
+    const sy = 280 + Math.sin(a) * Math.min(r, 160)
+    circle(sx, sy, 1.5, PAL.pm)
   }
-  drawDoor(ctx,340,80,120,200,PAL.purpleM,PAL.wineD)
-  rect(ctx,200,380,400,80,PAL.brownD)
-  rect(ctx,390,400,20,40,PAL.purpleM)
-  ctx.fillStyle=PAL.gold;ctx.font='18px Georgia';ctx.textAlign='center'
-  ctx.fillText('◈',400,350)
-  drawGlow(ctx,400,350,40,`rgba(196,164,108,0.06)`)
-  ctx.fillStyle=PAL.blood;ctx.font='9px Georgia'
-  ctx.fillText('VOCÊ ESTÁ DIFERENTE',400,560)
+  pl([[320,70],[480,70],[460,280],[340,280]],PAL.pm)
+  pl([[328,75],[472,75],[454,276],[346,276]],PAL.d)
+  circle(400, 280, 15, PAL.y)
+  g2(400, 280, 40, PAL.y, 0.08)
+  ctx.fillStyle = PAL.y
+  ctx.font = '16px Georgia'
+  ctx.textAlign = 'center'
+  ctx.fillText('◈', 400, 290)
+  rect(360, 480, 80, 60, PAL.bm)
+  rect(365, 485, 70, 50, PAL.m)
 }
 
-function drawTower(ctx,time){
-  rect(ctx,0,0,C(ctx),H(ctx),PAL.purpleD)
-  const gT=radGrad(ctx,400,200,400,PAL.purpleM,PAL.purpleD)
-  rect(ctx,0,0,C(ctx),350,gT)
-  drawFloor(ctx,400,PAL.brownD,PAL.bg)
-  rect(ctx,200,120,400,280,PAL.wineD)
-  rect(ctx,220,140,360,240,PAL.wine)
-  rect(ctx,300,200,200,120,PAL.brownM)
-  for(let i=0;i<6;i++){
-    const cy=230+i*14
-    rect(ctx,310,cy,180,10,PAL.purpleD)
-    circle(ctx,400,cy+5,Math.sin(time*0.002+i)>0?4:2,PAL.rust)
+function drawTower(ctx, time) {
+  rect(0,0,C(),H(),PAL.pd)
+  rect(0,0,C(),200,grad(0,0,0,200,PAL.pm,PAL.pd))
+  rect(0,420,C(),180,PAL.d)
+  rr(260, 130, 280, 260, 4, PAL.m)
+  rr(270, 140, 260, 240, 2, PAL.w)
+  for (let i = 0; i < 6; i++) {
+    const cy = 160 + i * 35
+    rect(290, cy, 220, 28, PAL.pd)
+    g2(400, cy + 14, 15, PAL.o, 0.15)
+    circle(400, cy + 14, Math.sin(time * 0.002 + i) > 0 ? 5 : 2, PAL.o)
   }
-  const eyeX=400+Math.sin(time*0.001)*5
-  const eyeY=260+Math.sin(time*0.0007)*3
-  circle(ctx,eyeX,eyeY,30,PAL.bg)
-  circle(ctx,eyeX,eyeY,20,PAL.blood)
-  circle(ctx,eyeX,eyeY,8,PAL.bg)
-  circle(ctx,eyeX,eyeY,4,PAL.gold)
-  rect(ctx,300,80,200,40,PAL.brownM)
-  ctx.fillStyle=PAL.gold;ctx.font='12px Georgia';ctx.textAlign='center'
-  ctx.fillText('☾',400,105)
-  drawDoor(ctx,330,420,140,180,PAL.brownM,PAL.wineD)
+  const ex = 400 + Math.sin(time * 0.001) * 4
+  const ey = 300 + Math.sin(time * 0.0007) * 2
+  circle(ex, ey, 25, PAL.bg)
+  circle(ex, ey, 16, PAL.r)
+  circle(ex, ey, 6, PAL.bg)
+  circle(ex, ey, 3, PAL.y)
+  ctx.fillStyle = PAL.y
+  ctx.font = '12px Georgia'
+  ctx.textAlign = 'center'
+  ctx.fillText('☾', 400, 105)
+  rect(360, 480, 80, 60, PAL.bm)
+  rect(365, 485, 70, 50, PAL.m)
+  ctx.fillStyle = PAL.r
+  ctx.font = '8px Georgia'
+  ctx.fillText('◎', 400, 400)
 }
 
-function drawTunnel(ctx,time){
-  rect(ctx,0,0,C(ctx),H(ctx),PAL.bg)
-  const pulse=Math.sin(time*0.001)*0.5+0.5
-  for(let i=0;i<10;i++){
-    const rx=200+i*40,ry=100
-    const alpha=0.05+pulse*0.08
-    ctx.strokeStyle=`rgba(138,58,58,${alpha})`
-    ctx.lineWidth=1
-    ctx.beginPath();ctx.arc(400,350,rx,0,Math.PI*2);ctx.stroke()
+function drawTunnel(ctx, time) {
+  rect(0,0,C(),H(),PAL.bg)
+  const p = Math.sin(time * 0.001) * 0.5 + 0.5
+  for (let i = 0; i < 8; i++) {
+    ctx.strokeStyle = `rgba(138,58,58,${0.04 + p * 0.06})`
+    ctx.lineWidth = 1
+    ctx.beginPath()
+    ctx.arc(400, 350, 150 + i * 30, 0, Math.PI * 2)
+    ctx.stroke()
   }
-  drawGlow(ctx,400,300,100,`rgba(138,58,58,${0.05+pulse*0.08})`)
-  rect(ctx,350,280,100,120,PAL.brownM)
-  rect(ctx,360,290,80,100,PAL.wineD)
-  circle(ctx,400,320,25,PAL.bg)
-  for(let i=0;i<3;i++){
-    circle(ctx,370+i*30,315,6,PAL.blood)
+  g2(400, 300, 120, PAL.r, 0.06 + p * 0.06)
+  rr(340, 270, 120, 120, 4, PAL.m)
+  rr(350, 280, 100, 100, 2, PAL.d)
+  circle(400, 310, 20, PAL.bg)
+  for (let i = 0; i < 3; i++) {
+    circle(375 + i * 25, 305, 5, PAL.r)
   }
-  const eR=20+Math.sin(time*0.002)*5
-  circle(ctx,400,200,eR,PAL.blood)
-  circle(ctx,400,200,eR*0.7,PAL.rust)
-  circle(ctx,400,200,eR*0.3,PAL.gold)
-  drawGlow(ctx,400,200,80,`rgba(138,58,58,0.1)`)
-  const lightPulse=0.3+Math.sin(time*0.002)*0.2
-  ctx.fillStyle=`rgba(196,164,108,${lightPulse})`
+  const er = 18 + Math.sin(time * 0.002) * 4
+  circle(400, 180, er, PAL.r)
+  circle(400, 180, er * 0.6, PAL.o)
+  circle(400, 180, er * 0.3, PAL.y)
+  g2(400, 180, 70, PAL.r, 0.1)
+  const lp = 0.3 + Math.sin(time * 0.002) * 0.15
+  ctx.fillStyle = `rgba(196,164,108,${lp})`
   ctx.beginPath()
-  ctx.moveTo(700,200);ctx.lineTo(780,100);ctx.lineTo(780,300)
+  ctx.moveTo(680, 180)
+  ctx.lineTo(750, 100)
+  ctx.lineTo(750, 260)
   ctx.fill()
-  drawDoor(ctx,0,430,100,170,PAL.brownM,PAL.wineD)
-  ctx.fillStyle=PAL.blood;ctx.font='10px Georgia';ctx.textAlign='center'
-  ctx.fillText('⟳',400,550)
+  rect(360, 480, 80, 60, PAL.bm)
+  rect(365, 485, 70, 50, PAL.m)
 }
 
-const DRAW_FUNCS = {
-  corridor_1:drawCorridor1,
-  cellar:drawCellar,
-  corridor_2:drawCorridor2,
-  kitchen:drawKitchen,
-  pantry:drawPantry,
-  corridor_3:drawCorridor3,
-  church:drawChurch,
-  corridor_4:drawCorridor4,
-  graveyard:drawGraveyard,
-  corridor_5:drawCorridor5,
-  mansion:drawMansion,
-  library:drawLibrary,
-  corridor_6:drawCorridor6,
-  tower:drawTower,
-  tunnel:drawTunnel
-}
-
-function drawDiorama(ctx,scene,time){
-  const fn=DRAW_FUNCS[scene]
-  if(fn)fn(ctx,time)
-  else{
-    rect(ctx,0,0,C(ctx),H(ctx),PAL.bg)
-    ctx.fillStyle=PAL.blood;ctx.font='30px Georgia';ctx.textAlign='center'
-    ctx.fillText('◈',400,300)
+function drawScene(ctx, sceneId, time) {
+  $ctx = ctx
+  const fns = {
+    corridor_1: drawCorridor1, cellar: drawCellar,
+    corridor_2: drawCorridor2, kitchen: drawKitchen,
+    corridor_3: drawCorridor3, church: drawChurch,
+    corridor_4: drawCorridor4, graveyard: drawGraveyard,
+    corridor_5: drawCorridor5, mansion: drawMansion,
+    library: drawLibrary, corridor_6: drawCorridor6,
+    tower: drawTower, tunnel: drawTunnel
   }
+  if (fns[sceneId]) fns[sceneId](ctx, time)
+  else { rect(0, 0, 800, 600, PAL.bg)
+    ctx.fillStyle = PAL.r
+    ctx.font = '30px Georgia'
+    ctx.textAlign = 'center'
+    ctx.fillText('◈', 400, 300) }
 }

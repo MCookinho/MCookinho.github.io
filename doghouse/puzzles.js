@@ -1,279 +1,594 @@
-class PuzzleSystem{
-  constructor(game){
-    this.g=game
-    this.puzzles={}
-    this._initAll()
-  }
-  _initAll(){
-    this._add('gate',{
-      title:'PORTÃO DE FERRO',
-      hint:'Três fechaduras. Três símbolos. Você encontrou as chaves?',
-      type:'key_slot',slots:3,keys:['cellar_key','kitchen_key','church_key'],
-      placed:[],onComplete:()=>{this.g.a.unlock();return true}
-    })
-    this._add('cellar_well',{
-      title:'O POÇO',
-      hint:'A superfície da água reflete algo. Toque na água.',
-      type:'click',maxClicks:1,clicks:0,
-      onComplete:(g)=>{
-        if(g.flags.cellar_well_done)return false
-        g.flags.cellar_well_done=true;g.a.water()
-        g.showDialogue(['Você toca a água fria. Seus dedos fecham em torno de algo duro.','Você puxa: uma chave enferrujada.'])
+const PUZZLES = {
+  gate: {
+    id: 'gate', title: 'PORTÃO',
+    init: function(){this.slots=[false,false,false];this.solved=false},
+    render: function(ctx, time, g) {
+      ctx.fillStyle='rgba(5,2,2,0.85)'
+      ctx.fillRect(0,0,800,600)
+      ctx.fillStyle=PAL.m
+      ctx.fillRect(250,120,300,360)
+      ctx.fillStyle=PAL.d
+      ctx.fillRect(260,130,280,340)
+      ctx.fillStyle=PAL.bm
+      ctx.font='14px Georgia'
+      ctx.textAlign='center'
+      ctx.fillText('TRÊS FECHADURAS',400,170)
+      for(let i=0;i<3;i++){
+        const fx=310+i*80,fy=220
+        ctx.fillStyle=PAL.m
+        ctx.fillRect(fx,fy,40,80)
+        ctx.fillStyle=this.slots[i]?PAL.y:PAL.bg
+        ctx.fillRect(fx+5,fy+5,30,30)
+        ctx.fillStyle=this.slots[i]?PAL.y:PAL.r
+        ctx.font='18px Georgia'
+        ctx.fillText(this.slots[i]?'●':'○',fx+20,fy+30)
+        ctx.fillStyle=PAL.bm
+        ctx.font='10px Georgia'
+        ctx.fillText(i===0?'CELA 1':i===1?'CELA 2':'CELA 3',fx+20,fy+100)
+      }
+      ctx.fillStyle=PAL.r
+      ctx.font='11px Georgia'
+      ctx.fillText('SELECIONE UMA CHAVE E CLIQUE NA FECHADURA',400,400)
+      if(this.solved){
+        ctx.fillStyle=PAL.y
+        ctx.font='18px Georgia'
+        ctx.fillText('O PORTÃO SE ABRE',400,450)
+      }
+    },
+    click: function(x,y,g){
+      for(let i=0;i<3;i++){
+        const fx=310+i*80,fy=220
+        if(x>=fx&&x<=fx+40&&y>=fy&&y<=fy+80&&!this.slots[i]){
+          if(g.selectedItem!==null){
+            const item=g.inventory[g.selectedItem]
+            if((i===0&&item==='cellar_key')||(i===1&&item==='kitchen_key')||(i===2&&item==='church_key')){
+              this.slots[i]=true
+              g.removeItem(g.selectedItem)
+              g.selectedItem=null
+              g.engine.tooltip('Chave encaixada.')
+              g.a.key()
+              if(this.slots.every(Boolean)){
+                this.solved=true
+                g.a.unlock()
+                g.engine.tooltip('Todas as fechaduras abertas!',3000)
+                setTimeout(()=>{
+                  g.engine.closePuzzle()
+                  g.engine.tooltip('O portão range. Você pode passar.',3000)
+                },1500)
+              }
+              return
+            }
+          }
+          g.engine.tooltip('Chave errada.')
+          g.a.wrong()
+          return
+        }
+      }
+    }
+  },
+  cellar_well: {
+    id: 'cellar_well', solved: false,
+    click: function(x,y,g){
+      if(this.solved){g.engine.tooltip('Já fez isso.');return}
+      if(x>=300&&x<=500&&y>=300&&y<=500){
+        this.solved=true
+        g.a.water()
+        g.obtained('cellar_key')
         g.addItem('cellar_key',true)
-        return true
+        g.engine.tooltip('Uma chave enferrujada emerge da água.',3000)
       }
-    })
-    this._add('cellar_vent',{
-      title:'VENTILAÇÃO',
-      hint:'As barras estão enferrujadas. Talvez algo fino possa alavancá-las.',
-      type:'use_item',item:'wax',used:false,
-      onUse:(g)=>{
-        if(g.flags.cellar_vent_done)return false
-        g.flags.cellar_vent_done=true
-        g.showDialogue(['A cera amolece entre as barras. Você empurra e a grade cede.','Dentro: uma nota amassada.'])
-        g.addNote('cellar')
-        return true
+    }
+  },
+  cellar_vent: {
+    id: 'cellar_vent', solved: false,
+    click: function(x,y,g){
+      if(this.solved){g.engine.tooltip('Já fez isso.');return}
+      if(x>=600&&x<=660&&y>=200&&y<=260&&g.selectedItem!==null){
+        const item=g.inventory[g.selectedItem]
+        if(item==='wax'){
+          this.solved=true
+          g.removeItem(g.selectedItem)
+          g.selectedItem=null
+          g.a.unlock()
+          g.engine.tooltip('A cera amolece as barras. Uma nota cai.',2000)
+          setTimeout(()=>g.addNote('cellar'),500)
+        }
       }
-    })
-    this._add('kitchen_stove',{
-      title:'FOGÃO',
-      hint:'As cinzas estão frias. Sopre para revelar o que está oculto.',
-      type:'click',maxClicks:1,clicks:0,
-      onComplete:(g)=>{
-        if(g.flags.stove_done)return false
-        g.flags.stove_done=true;g.a.wind()
-        g.showDialogue(['Você sopra as cinzas. Elas se espalham no ar.','No fundo do fogão: gravado na pedra — o símbolo da nota do porão.','E uma chave está escondida nas cinzas.'])
+    }
+  },
+  kitchen_stove: {
+    id: 'kitchen_stove', solved: false,
+    click: function(x,y,g){
+      if(this.solved){g.engine.tooltip('Já fez isso.');return}
+      if(x>=60&&x<=240&&y>=200&&y<=400){
+        this.solved=true
+        g.a.wind()
+        g.obtained('kitchen_key')
         g.addItem('kitchen_key',true)
-        return true
+        g.engine.tooltip('As cinzas se dissipam. Uma chave brilha.',2000)
       }
-    })
-    this._add('kitchen_radio',{
-      title:'RÁDIO',
-      hint:'O dial está solto. Encontre a frequência certa.',
-      type:'dial',target:88.5,current:60,min:60,max:120,
-      onCheck:(g,val)=>{
-        if(Math.abs(val-88.5)<0.5){
+    }
+  },
+  kitchen_radio: {
+    id: 'kitchen_radio', solved: false, freq: 60, dragging: false, msg: '',
+    render: function(ctx, time, g){
+      ctx.fillStyle='rgba(5,2,2,0.85)'
+      ctx.fillRect(0,0,800,600)
+      const rx=300,ry=200
+      ctx.fillStyle=PAL.bm
+      ctx.fillRect(rx,ry,200,180)
+      ctx.fillStyle=PAL.d
+      ctx.fillRect(rx+10,ry+10,180,160)
+      ctx.fillStyle=PAL.bg
+      ctx.fillRect(rx+30,ry+30,140,50)
+      ctx.fillStyle=PAL.y
+      ctx.font='24px Georgia'
+      ctx.textAlign='center'
+      ctx.fillText('MHz',rx+100,ry+25)
+      ctx.fillStyle=PAL.s
+      ctx.font='14px Georgia'
+      ctx.fillText(this.freq.toFixed(1),rx+100,ry+60)
+      ctx.fillStyle=PAL.bl
+      ctx.fillRect(rx+30,ry+100,140,8)
+      ctx.fillStyle=PAL.o
+      const pos=(this.freq-60)/60*130
+      ctx.fillRect(rx+30+pos,ry+96,4,16)
+      ctx.fillStyle=PAL.g
+      ctx.font='9px Georgia'
+      ctx.fillText('60',rx+30,ry+130)
+      ctx.fillText('120',rx+150,ry+130)
+      if(this.msg){
+        ctx.fillStyle=PAL.r
+        ctx.font='11px Georgia'
+        ctx.fillText(this.msg,rx+100,ry+165)
+      }
+    },
+    click: function(x,y,g){
+      const rx=300,ry=200
+      if(x>=rx&&x<=rx+200&&y>=ry&&y<=ry+180){
+        this.freq=60+((x-rx-30)/140)*60
+        this.freq=Math.max(60,Math.min(120,this.freq))
+        if(Math.abs(this.freq-88.5)<0.5&&!this.solved){
+          this.solved=true
           g.a.radio(880)
-          g.showDialogue(['...estático... "Shiva... a terceira cabeça... vê tudo..." ...estático...','... "a hora do passeio se aproxima"...','O rádio chia. Um medalhão cai do compartimento da pilha.'])
+          this.msg='...Shiva... três cabeças...'
+          g.obtained('medallion')
           g.addItem('medallion',true)
-          return true
+          g.engine.tooltip('Um medalhão cai do rádio.',3000)
+          setTimeout(()=>{g.engine.closePuzzle();this.msg=''},2000)
         }
-        return false
       }
-    })
-    this._add('kitchen_sink',{
-      title:'PIA',
-      hint:'A água pinga em um padrão. Conte as gotas.',
-      type:'sequence',sequence:[3,5,2,4,1],pos:0,labels:['1 GOTA','2 GOTAS','3 GOTAS','4 GOTAS','5 GOTAS'],
-      onInput:(g,val)=>{
-        const p=this.get('kitchen_sink')
-        const expected=p.sequence[p.pos]
-        if(val===expected){
-          p.pos++
-          if(p.pos>=p.sequence.length){
-            g.a.water();g.showDialogue(['O ritmo está correto. O cano range.','Algo cai na pia. Uma chave suja de gordura.'])
-            g.addItem('church_key',true)
-            return true
+    }
+  },
+  kitchen_sink: {
+    id: 'kitchen_sink', solved: false, seq: [3,5,2,4,1], pos: 0, err: false, ok: false,
+    click: function(x,y,g){
+      if(this.solved||this.ok){g.engine.tooltip('Já fez isso.');return}
+      const btn={
+        '1':{x:270,y:430,w:60,h:30},'2':{x:340,y:430,w:60,h:30},
+        '3':{x:410,y:430,w:60,h:30},'4':{x:480,y:430,w:60,h:30},
+        '5':{x:550,y:430,w:60,h:30}
+      }
+      for(let k in btn){
+        const b=btn[k]
+        if(x>=b.x&&x<=b.x+b.w&&y>=b.y&&y<=b.y+b.h){
+          const v=parseInt(k)
+          if(v===this.seq[this.pos]){
+            this.pos++
+            g.a.water()
+            if(this.pos>=this.seq.length){
+              this.solved=true
+              g.obtained('church_key')
+              g.addItem('church_key',true)
+              g.engine.tooltip('O ritmo está correto! Uma chave cai.',3000)
+            }
+          }else{
+            this.pos=0
+            this.err=true
+            g.a.wrong()
+            g.engine.tooltip('Ritmo errado. Recomece.')
+            setTimeout(()=>this.err=false,500)
           }
-          return false
-        }else{
-          p.pos=0;g.a.wrong()
-          return false
+          return
         }
       }
-    })
-    this._add('church_altar',{
-      title:'ALTAR DA CAPELA',
-      hint:'Três cavidades. Três oferendas. Ciúme, vigilância, punição.',
-      type:'offering',slots:3,accepted:['medallion','bell','feather'],placed:[],
-      onComplete:(g)=>{
-        g.a.chime();g.showDialogue(['As oferendas se encaixam perfeitamente. O altar treme.','Uma passagem se abre. Você sente o peso de seis olhos sobre você.'])
-        g.flags.church_altar_done=true
-        return true
+    }
+  },
+  church_altar: {
+    id: 'church_altar', solved: false, slots: [null,null,null],
+    render: function(ctx, time, g){
+      ctx.fillStyle='rgba(5,2,2,0.85)'
+      ctx.fillRect(0,0,800,600)
+      ctx.fillStyle=PAL.pd
+      ctx.fillRect(250,180,300,240)
+      ctx.fillStyle=PAL.pm
+      ctx.fillRect(260,190,280,220)
+      ctx.fillStyle=PAL.y
+      ctx.font='14px Georgia'
+      ctx.textAlign='center'
+      ctx.fillText('OFERENDAS',400,220)
+      for(let i=0;i<3;i++){
+        const ox=290+i*100,oy=250
+        ctx.fillStyle=PAL.m
+        ctx.fillRect(ox,oy,60,60)
+        ctx.fillStyle=PAL.d
+        ctx.fillRect(ox+5,oy+5,50,50)
+        if(this.slots[i]){
+          ctx.fillStyle=PAL.y
+          ctx.font='20px Georgia'
+          ctx.fillText(this.slots[i]==='medallion'?'📿':this.slots[i]==='bell'?'🔔':'🪶',ox+30,oy+35)
+        }else{
+          ctx.fillStyle=PAL.bl
+          ctx.font='24px Georgia'
+          ctx.fillText('○',ox+30,oy+35)
+        }
       }
-    })
-    this._add('graveyard_1',{
-      title:'TÚMULO 1 — MEMÓRIA',
-      hint:'O que veio primeiro?',
-      type:'click',maxClicks:1,clicks:0,
-      onComplete:(g)=>{
-        if(g.flags.grave1_done)return false
-        g.flags.grave1_done=true;g.a.grave()
-        g.showDialogue(['Você escava a terra fofa. Sob a terra: um osso. Dentro do osso: uma chave.'])
-        g.addItem('graveyard_key',true)
-        return true
+      if(this.solved){
+        ctx.fillStyle=PAL.y
+        ctx.font='18px Georgia'
+        ctx.fillText('✧ O ALTAR SE ABRE ✧',400,370)
+      }else{
+        ctx.fillStyle=PAL.g
+        ctx.font='10px Georgia'
+        ctx.fillText('Clique em um slot para colocar uma oferenda',400,410)
       }
-    })
-    this._add('graveyard_2',{
-      title:'TÚMULO 2 — TEMPO',
-      hint:'O tempo está parado aqui.',
-      type:'click',maxClicks:1,clicks:0,
-      onComplete:(g)=>{
-        if(g.flags.grave2_done)return false
-        g.flags.grave2_done=true;g.a.grave()
-        g.showDialogue(['Você cava. Sob a terra: um relógio de bolso parado. Dentro: uma foto.'])
-        g.addItem('photo',true)
-        return true
+    },
+    click: function(x,y,g){
+      if(this.solved)return
+      for(let i=0;i<3;i++){
+        const ox=290+i*100,oy=250
+        if(x>=ox&&x<=ox+60&&y>=oy&&y<=oy+60&&!this.slots[i]){
+          if(g.selectedItem!==null){
+            const item=g.inventory[g.selectedItem]
+            if(['medallion','bell','feather'].includes(item)){
+              this.slots[i]=item
+              g.removeItem(g.selectedItem)
+              g.selectedItem=null
+              g.a.chime()
+              if(this.slots.every(Boolean)){
+                this.solved=true
+                g.engine.tooltip('As oferendas se encaixam. O altar treme.',3000)
+                g.flags.church_altar_done=true
+                setTimeout(()=>g.engine.closePuzzle(),1500)
+              }
+              return
+            }
+          }
+          g.engine.tooltip('Isso não serve como oferenda.')
+        }
       }
-    })
-    this._add('graveyard_3',{
-      title:'TÚMULO 3 — NOME',
-      hint:'Qual o seu nome?',
-      type:'text_input',answer:'SHIVA',tries:0,
-      onCorrect:(g)=>{
-        g.a.grave();g.showDialogue(['Você sussurra o nome. A terra se move.','Algo sobe à superfície: uma fita vermelha manchada.'])
-        g.addItem('ribbon',true)
-        return true
-      },
-      onWrong:(g)=>{g.a.wrong();g.showDialogue(['Não é esse o nome. Tente novamente.'])}
-    })
-    this._add('graveyard_4',{
-      title:'TÚMULO 4 — MEDO',
-      hint:'Enfrente seu medo.',
-      type:'click',maxClicks:1,clicks:0,
-      onComplete:(g)=>{
-        if(g.flags.grave4_done)return false
-        g.flags.grave4_done=true;g.a.grave()
-        g.showDialogue(['Você enfia a mão na terra escura. Algo toca seus dedos. Uma chave.'])
-        g.addItem('mansion_key',true)
-        return true
+    }
+  },
+  graveyard_tomb: {
+    id: 'graveyard_tomb', solved: false, active: -1,
+    graves: [
+      {id:0,name:'MEMÓRIA',item:'graveyard_key',done:false},
+      {id:1,name:'TEMPO',item:'photo',done:false},
+      {id:2,name:'NOME',item:'ribbon',type:'text',done:false},
+      {id:3,name:'MEDO',item:'mansion_key',done:false},
+      {id:4,name:'DESEJO',item:'flower',done:false},
+      {id:5,name:'???',item:null,note:true,done:false}
+    ],
+    click: function(x,y,g){
+      if(this.solved)return
+      for(let i=0;i<6;i++){
+        const gx=60+i*115,gy=320
+        if(x>=gx&&x<=gx+100&&y>=gy&&y<=gy+65&&!this.graves[i].done){
+          const gr=this.graves[i]
+          if(gr.type==='text'){
+            const name=prompt('Qual o nome?')
+            if(name&&name.toUpperCase()==='SHIVA'){
+              gr.done=true;g.a.grave()
+              g.obtained(gr.item);g.addItem(gr.item,true)
+              g.engine.tooltip('A terra se move. Uma fita emerge.',2000)
+              if(this.graves.filter(g=>g.done).length>=6){
+                this.solved=true;g.engine.tooltip('Todos os túmulos abertos.',3000)
+              }
+            }else{g.a.wrong();g.engine.tooltip('Nome errado.')}
+          }else if(gr.note){
+            gr.done=true;g.addNote('graveyard')
+            g.engine.tooltip('Uma nota revela seu símbolo.',2000)
+          }else{
+            gr.done=true;g.a.grave()
+            g.obtained(gr.item);g.addItem(gr.item,true)
+            g.engine.tooltip('Algo emerge da terra.',2000)
+            if(this.graves.filter(g=>g.done).length>=6){
+              this.solved=true;g.engine.tooltip('Todos os túmulos abertos.',3000)
+            }
+          }
+        }
       }
-    })
-    this._add('graveyard_5',{
-      title:'TÚMULO 5 — DESEJO',
-      hint:'O que você mais quer?',
-      type:'click',maxClicks:1,clicks:0,
-      onComplete:(g)=>{
-        if(g.flags.grave5_done)return false
-        g.flags.grave5_done=true;g.a.grave()
-        g.showDialogue(['Você cava. Não há nada. Você cava mais fundo.','Uma caixa. Dentro: uma flor preta fria como metal.'])
-        g.addItem('flower',true)
-        return true
+    }
+  },
+  mansion_mirror: {
+    id: 'mansion_mirror', solved: false, watching: false, tick: 0,
+    render: function(ctx, time, g){
+      ctx.fillStyle='rgba(5,2,2,0.85)'
+      ctx.fillRect(0,0,800,600)
+      ctx.fillStyle=PAL.g
+      ctx.fillRect(200,100,400,350)
+      ctx.fillStyle=PAL.bd
+      ctx.fillRect(210,110,380,330)
+      const delay=Math.sin(time*0.002)*10
+      ctx.fillStyle=PAL.d
+      ctx.beginPath()
+      ctx.arc(400+delay,270,35,0,Math.PI*2)
+      ctx.fill()
+      ctx.fillStyle=PAL.m
+      ctx.beginPath()
+      ctx.arc(400,270,35,0,Math.PI*2)
+      ctx.fill()
+      ctx.fillStyle=PAL.r
+      ctx.font='12px Georgia'
+      ctx.textAlign='center'
+      ctx.fillText('CLIQUE QUANDO O REFLEXO SE DISTANCIAR',400,500)
+      if(this.watching){
+        ctx.fillStyle=PAL.y
+        ctx.font='16px Georgia'
+        ctx.fillText('AGORA!',400,530)
       }
-    })
-    this._add('mansion_mirror',{
-      title:'O ESPELHO',
-      hint:'Seu reflexo está atrasado. Toque quando ele estiver mais distante.',
-      type:'timed_click',solved:false,
-      onCheck:(g,time)=>{
-        const eTime=time-g.puzzleOpenTime
-        const delay=1000+Math.sin(time*0.002)*300+200
-        if(eTime>delay+100&&eTime<delay+400){
-          g.a.chime();g.showDialogue(['O vidro se distorce. Você atravessa a mão.','Do outro lado, alguém deixou cair uma chave.'])
+    },
+    click: function(x,y,g){
+      if(this.solved)return
+      const now=performance.now()
+      const eTime=now-g.engine.puzzleStartTime
+      const delay=1000+Math.sin(now*0.002)*300+200
+      if(x>=200&&x<=600&&y>=100&&y<=450){
+        if(eTime>delay+100&&eTime<delay+500){
+          this.solved=true
+          g.a.chime()
+          g.obtained('tower_key')
           g.addItem('tower_key',true)
-          return true
-        }
-        g.a.wrong();return false
-      }
-    })
-    this._add('mansion_cabinet',{
-      title:'ARMÁRIO DE GAVETAS',
-      hint:'6 celas — 6 chaves — 6 símbolos',
-      type:'combo',length:3,digits:[0,0,0],target:[6,6,6],
-      onCheck:(g,digits)=>{
-        if(digits[0]===6&&digits[1]===6&&digits[2]===6){
-          g.a.unlock();g.showDialogue(['As gavetas se abrem. Dentro: uma coleira quebrada e um anel de prata.'])
-          g.addItem('collar',true);g.addItem('ring',true)
-          return true
-        }
-        g.a.wrong();return false
-      }
-    })
-    this._add('mansion_clock',{
-      title:'RELÓGIO DE PÊNDULO',
-      hint:'O pêndulo está solto. Use algo para dar corda.',
-      type:'use_item',item:'ribbon',used:false,
-      onUse:(g)=>{
-        g.a.clock();g.showDialogue(['Você amarra o pêndulo com a fita. Ele começa a balançar.','O relógio bate seis vezes. Uma gaveta secreta se abre.','Dentro: uma nota.'])
-        g.addNote('mansion')
-        return true
-      }
-    })
-    this._add('library_shelf',{
-      title:'ESTANTE DA BIBLIOTECA',
-      hint:'Vermelho, azul, roxo, dourado, preto.',
-      type:'order',items:[
-        {label:'VERMELHO',color:'#8a3a3a'},
-        {label:'AZUL',color:'#1a2a3a'},
-        {label:'ROXO',color:'#3a2a5a'},
-        {label:'DOURADO',color:'#c4a46c'},
-        {label:'PRETO',color:'#0a0505'}
-      ],slotCount:5,placed:[],solved:false,
-      onComplete:(g)=>{
-        g.a.bell()
-        g.showDialogue(['Os livros se alinham. A estante range.','Um compartimento secreto se revela. Dentro: uma pena preta e uma chave.'])
-        g.addItem('feather',true);g.addItem('tower_key',true)
-        return true
-      }
-    })
-    this._add('tower_shrine',{
-      title:'SANTUÁRIO DE SHIVA',
-      hint:'Subterrâneo, fogo, tempo, morte, vaidade, altura.',
-      type:'candle_order',sequence:[0,1,2,3,4,5],current:0,candles:[
-        {label:'PORÃO',lit:false},{label:'COZINHA',lit:false},
-        {label:'CAPELA',lit:false},{label:'CEMITÉRIO',lit:false},
-        {label:'SALÃO',lit:false},{label:'TORRE',lit:false}
-      ],
-      onLight:(g,idx)=>{
-        const p=this.get('tower_shrine')
-        const order=p.sequence
-        if(idx===order[p.current]){
-          p.current++;p.candles[idx].lit=true;g.a.candle()
-          if(p.current>=p.sequence.length){
-            g.a.chime();g.showDialogue(['As seis velas acendem. A chama forma um círculo.','O santuário se abre. A chave dourada está lá.','E uma nota — a última.'])
-            g.addItem('key6',true);g.addNote('tower')
-            g.flags.shrine_done=true
-            return true
-          }
-        }else{
-          p.current=0;p.candles.forEach(c=>c.lit=false);g.a.wrong()
-        }
-        return false
-      }
-    })
-    this._add('final_altar',{
-      title:'ALTAR FINAL',
-      hint:'Três oferendas para três cabeças.',
-      type:'offering',slots:3,accepted:['collar','ring','flower'],placed:[],
-      onComplete:(g)=>{
-        if(g.flags.final_done)return false
-        const hasKeys=['cellar_key','kitchen_key','church_key','graveyard_key','mansion_key','tower_key','key6']
-          .filter(k=>g.obtained.includes(k)).length
-        const hasNotes=['note_cellar','note_kitchen','note_church','note_graveyard','note_mansion','note_tower']
-          .filter(n=>g.obtained.includes(n)).length
-        const hasProt=['photo','medallion','bell','feather','collar','ring','shard','lantern']
-          .filter(p=>g.obtained.includes(p)).length
-        if(hasKeys>=7&&hasNotes>=6&&hasProt>=5){
-          g.a.final()
-          g.endGame('walk')
-        }else if(hasKeys>=7&&hasProt>=3){
-          g.a.final()
-          g.endGame('collar')
+          g.engine.tooltip('O vidro se distorce. Uma chave cai.',3000)
+          setTimeout(()=>g.engine.closePuzzle(),1500)
         }else{
           g.a.wrong()
-          g.showDialogue(['Nada acontece. Faltam oferendas. Faltam chaves. Falta memória.','Você não está pronto para o Passeio.'])
-          return false
+          g.engine.tooltip('Muito cedo...')
         }
-        return true
       }
-    })
-  }
-  _add(id,config){this.puzzles[id]=config}
-  get(id){return this.puzzles[id]}
-  isSolved(id){
-    const p=this.puzzles[id]
-    if(!p)return false
-    if(p.type==='click')return p.clicks>=p.maxClicks
-    if(p.type==='key_slot')return p.placed.length>=p.slots
-    if(p.type==='use_item')return p.used
-    if(p.type==='sequence')return p.pos>=p.sequence.length
-    if(p.type==='offering')return p.placed.length>=p.slots
-    if(p.type==='dial')return p.solved||false
-    if(p.type==='combo')return p.solved||false
-    if(p.type==='order')return p.solved||false
-    if(p.type==='candle_order')return p.current>=p.sequence.length
-    if(p.type==='text_input')return p.solved||false
-    if(p.type==='timed_click')return false
-    return false
+    },
+    onOpen: function(e,g){
+      this.watching=false
+      e.puzzleStartTime=performance.now()
+      setTimeout(()=>this.watching=true,delayCalc()+100)
+    }
+  },
+  mansion_cabinet: {
+    id: 'mansion_cabinet', solved: false, digits:[0,0,0],
+    render: function(ctx, time, g){
+      ctx.fillStyle='rgba(5,2,2,0.85)'
+      ctx.fillRect(0,0,800,600)
+      ctx.fillStyle=PAL.bm
+      ctx.fillRect(250,200,300,200)
+      ctx.fillStyle=PAL.d
+      ctx.fillRect(260,210,280,180)
+      ctx.fillStyle=PAL.y
+      ctx.font='14px Georgia'
+      ctx.textAlign='center'
+      ctx.fillText('COMBINAÇÃO',400,245)
+      for(let i=0;i<3;i++){
+        ctx.fillStyle=PAL.bg
+        ctx.fillRect(280+i*90,270,60,60)
+        ctx.fillStyle=PAL.s
+        ctx.font='28px Georgia'
+        ctx.fillText(this.digits[i],310+i*90,310)
+        ctx.fillStyle=PAL.bl
+        ctx.font='11px Georgia'
+        ctx.fillText('▲',310+i*90,270)
+        ctx.fillText('▼',310+i*90,340)
+      }
+      ctx.fillStyle=PAL.g
+      ctx.font='10px Georgia'
+      ctx.fillText('6 celas · 6 chaves · 6 símbolos',400,410)
+    },
+    click: function(x,y,g){
+      if(this.solved)return
+      for(let i=0;i<3;i++){
+        if(x>=280+i*90&&x<=340+i*90&&y>=270&&y<=330){
+          if(y>=270&&y<=290)this.digits[i]=(this.digits[i]+1)%10
+          else if(y>=310&&y<=330)this.digits[i]=(this.digits[i]+9)%10
+          if(this.digits.every(d=>d===6)){
+            this.solved=true
+            g.a.unlock()
+            g.obtained('collar');g.obtained('ring')
+            g.addItem('collar',true);g.addItem('ring',true)
+            g.engine.tooltip('As gavetas se abrem!',3000)
+            setTimeout(()=>g.engine.closePuzzle(),1500)
+          }
+          return
+        }
+      }
+    }
+  },
+  mansion_clock: {
+    id: 'mansion_clock', solved: false,
+    click: function(x,y,g){
+      if(this.solved){g.engine.tooltip('Já fez isso.');return}
+      if(x>=560&&x<=640&&y>=100&&y<=200&&g.selectedItem!==null){
+        if(g.inventory[g.selectedItem]==='ribbon'){
+          this.solved=true
+          g.removeItem(g.selectedItem)
+          g.selectedItem=null
+          g.a.clock()
+          g.addNote('mansion')
+          g.engine.tooltip('O pêndulo balança. Uma nota cai.',3000)
+        }
+      }
+    }
+  },
+  library_shelf: {
+    id: 'library_shelf', solved: false, order:[], target:[0,1,2,3,4],
+    render: function(ctx, time, g){
+      ctx.fillStyle='rgba(5,2,2,0.85)'
+      ctx.fillRect(0,0,800,600)
+      ctx.fillStyle=PAL.bm
+      ctx.fillRect(100,100,600,320)
+      ctx.fillStyle=PAL.d
+      ctx.fillRect(110,110,580,300)
+      const labels=['V','A','R','D','P']
+      const colors=[PAL.r,PAL.bd,PAL.pm,PAL.y,PAL.bg]
+      for(let i=0;i<5;i++){
+        const bx=150+i*110,by=140
+        ctx.fillStyle=colors[i]
+        ctx.fillRect(bx,by,80,150)
+        ctx.fillStyle=PAL.s
+        ctx.font='24px Georgia'
+        ctx.textAlign='center'
+        ctx.fillText(labels[i],bx+40,by+90)
+        if(this.order.includes(i)){
+          ctx.fillStyle=PAL.y
+          ctx.font='14px Georgia'
+          ctx.fillText('✓',bx+40,by+40)
+        }
+      }
+      const seq=this.target.map(i=>labels[i]).join(' → ')
+      ctx.fillStyle=PAL.g
+      ctx.font='10px Georgia'
+      ctx.fillText('Vermelho → Azul → Roxo → Dourado → Preto',400,500)
+      ctx.fillStyle=PAL.g
+      ctx.font='9px Georgia'
+      ctx.fillText('Clique nos livros na ordem correta',400,520)
+    },
+    click: function(x,y,g){
+      if(this.solved)return
+      for(let i=0;i<5;i++){
+        const bx=150+i*110
+        if(x>=bx&&x<=bx+80&&y>=140&&y<=290&&!this.order.includes(i)){
+          this.order.push(i)
+          g.a.click()
+          const idx=this.order.length-1
+          if(this.order[idx]!==this.target[idx]){
+            this.order=[]
+            g.a.wrong()
+            g.engine.tooltip('Ordem errada. Recomece.')
+          }else if(this.order.length>=5){
+            this.solved=true
+            g.a.bell()
+            g.obtained('feather');g.obtained('tower_key')
+            g.addItem('feather',true);g.addItem('tower_key',true)
+            g.engine.tooltip('A estante range. Um compartimento secreto!',3000)
+            setTimeout(()=>g.engine.closePuzzle(),1500)
+          }
+          return
+        }
+      }
+    }
+  },
+  tower_shrine: {
+    id: 'tower_shrine', solved: false, current:0, order:[0,1,2,3,4,5],
+    render: function(ctx, time, g){
+      ctx.fillStyle='rgba(5,2,2,0.85)'
+      ctx.fillRect(0,0,800,600)
+      ctx.fillStyle=PAL.pd
+      ctx.fillRect(150,100,500,350)
+      const labels=['PORÃO','COZINHA','CAPELA','CEMITÉRIO','SALÃO','TORRE']
+      const litStates=[]
+      for(let i=0;i<6;i++)litStates.push(i<this.current)
+      for(let i=0;i<6;i++){
+        const cx=180+i*80,cy=200
+        ctx.fillStyle=PAL.m
+        ctx.fillRect(cx,cy,50,120)
+        ctx.fillStyle=litStates[i]?PAL.o:PAL.bg
+        ctx.beginPath()
+        ctx.arc(cx+25,cy+20,12,0,Math.PI*2)
+        ctx.fill()
+        if(litStates[i]){
+          ctx.fillStyle=PAL.o
+          g2(cx+25,cy+20,25,PAL.o,0.3)
+        }
+        ctx.fillStyle=PAL.bl
+        ctx.font='8px Georgia'
+        ctx.textAlign='center'
+        ctx.fillText(labels[i],cx+25,cy+115)
+      }
+      ctx.fillStyle=PAL.g
+      ctx.font='10px Georgia'
+      ctx.fillText('Subterrâneo → Fogo → Tempo → Morte → Vaidade → Altura',400,530)
+    },
+    click: function(x,y,g){
+      if(this.solved)return
+      for(let i=0;i<6;i++){
+        const cx=180+i*80
+        if(x>=cx&&x<=cx+50&&y>=200&&y<=320&&i<this.current===false){
+          if(i===this.order[this.current]){
+            this.current++
+            g.a.candle()
+            if(this.current>=6){
+              this.solved=true
+              g.a.chime()
+              g.obtained('key6')
+              g.addItem('key6',true)
+              g.addNote('tower')
+              g.engine.tooltip('As seis velas acendem! A chave dourada...',3000)
+              setTimeout(()=>g.engine.closePuzzle(),1500)
+            }
+          }else{
+            this.current=0
+            g.a.wrong()
+            g.engine.tooltip('Ordem errada. Recomece.')
+          }
+          return
+        }
+      }
+    }
+  },
+  final_altar: {
+    id: 'final_altar', solved: false, slots:[null,null,null],
+    render: function(ctx, time, g){
+      ctx.fillStyle='rgba(5,2,2,0.85)'
+      ctx.fillRect(0,0,800,600)
+      ctx.fillStyle=PAL.bm
+      ctx.fillRect(250,200,300,220)
+      ctx.fillStyle=PAL.d
+      ctx.fillRect(260,210,280,200)
+      ctx.fillStyle=PAL.y
+      ctx.font='14px Georgia'
+      ctx.textAlign='center'
+      ctx.fillText('ALTAR FINAL',400,240)
+      for(let i=0;i<3;i++){
+        const ox=290+i*100,oy=270
+        ctx.fillStyle=PAL.m
+        ctx.fillRect(ox,oy,60,60)
+        ctx.fillStyle=PAL.d
+        ctx.fillRect(ox+5,oy+5,50,50)
+        if(this.slots[i]){
+          ctx.fillStyle=PAL.y
+          ctx.font='20px Georgia'
+          ctx.fillText(this.slots[i]==='collar'?'📿':this.slots[i]==='ring'?'💍':'🌺',ox+30,oy+35)
+        }else{
+          ctx.fillStyle=PAL.bl
+          ctx.font='24px Georgia'
+          ctx.fillText('○',ox+30,oy+35)
+        }
+      }
+      ctx.fillStyle=PAL.g
+      ctx.font='10px Georgia'
+      ctx.fillText('Três oferendas para três cabeças',400,420)
+    },
+    click: function(x,y,g){
+      if(this.solved)return
+      for(let i=0;i<3;i++){
+        const ox=290+i*100,oy=270
+        if(x>=ox&&x<=ox+60&&y>=oy&&y<=oy+60&&!this.slots[i]){
+          if(g.selectedItem!==null){
+            const item=g.inventory[g.selectedItem]
+            if(['collar','ring','flower'].includes(item)){
+              this.slots[i]=item
+              g.removeItem(g.selectedItem)
+              g.selectedItem=null
+              g.a.chime()
+              if(this.slots.every(Boolean)){
+                this.solved=true
+                setTimeout(()=>g.checkEndings(),500)
+              }
+              return
+            }
+          }
+          g.engine.tooltip('Isso não serve.')
+        }
+      }
+    }
   }
 }
+
+function delayCalc(){return 1000+Math.sin(performance.now()*0.002)*300+200}
