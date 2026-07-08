@@ -8,7 +8,6 @@ class Engine {
     this.puzzle=null
     this.tooltipTimer=null
     this.tooltipEl=document.getElementById('tooltip')
-    this.dirHint=document.getElementById('dir-hint')
     this.transitionEl=document.getElementById('transition-overlay')
     this.setupEvents()
   }
@@ -69,18 +68,23 @@ class Engine {
     if(this.state===S.INTRO||this.state===S.PLAYING||this.state===S.FINAL){
       const views=['north','east','south','west','ceiling']
       const vk=views[g.view]||'north'
-      const fn=VIEW_DRAW[vk]
-      if(fn)fn(ctx,t)
+
+      if(vk==='ceiling'&&g.lanternOn){
+        drCeilingLantern(ctx,t,g)
+      }else{
+        const fn=VIEW_DRAW[vk]
+        if(fn)fn(ctx,t)
+      }
 
       if(g.candleLit)drawCandleLight(ctx,t,true)
+      if(g.lanternOn)drawLanternLight(ctx,t,true)
 
       if(g.shivaActive&&this.state===S.PLAYING){
         $ctx=ctx
-        drawShivaAppearance(ctx,g.view,performance.now()*0.001,t)
+        drawShivaAppearance(ctx,g.view,g.shivaPhase||0,t)
       }
 
       this.drawNavArrows(g,ctx,t)
-
     }
     if(this.state===S.PUZZLE&&this.puzzle&&this.puzzle.render){
       this.puzzle.render(ctx,t)
@@ -140,7 +144,7 @@ class Engine {
   }
 
   drawNavArrows(g,ctx,t){
-    const alpha=0.25+Math.sin(t*0.003)*0.1
+    const alpha=0.2+Math.sin(t*0.003)*0.08
     ctx.fillStyle=`rgba(110,90,70,${alpha})`
     ctx.font='18px Georgia'
     ctx.textAlign='center'
