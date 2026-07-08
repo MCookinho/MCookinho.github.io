@@ -41,83 +41,26 @@ class AudioSys{
     o.connect(g);g.connect(this.ctx.destination)
     o.start(t);o.stop(t+dur)
   }
-
-  /* ---- sfx ---- */
   click(){this._n(0.015,0.04,{t:'highpass',f:3000,Q:3})}
-  pickup(){
-    this._o(1200,'sine',0.06,0.07,1500)
-    this._n(0.03,0.03,{t:'bandpass',f:2000,Q:6})
-  }
-  wrong(){
-    this._n(0.12,0.06,{t:'lowpass',f:250,Q:2})
-    this._o(150,'sawtooth',0.15,0.06,80)
-  }
-  unlock(){
-    this._o(600,'triangle',0.08,0.06,750)
-    setTimeout(()=>{
-      this._o(800,'sine',0.12,0.05,900)
-      this._n(0.04,0.03,{t:'bandpass',f:1200,Q:5})
-    },120)
-  }
-  door(){
-    this._n(0.25,0.07,{t:'lowpass',f:350,Q:2})
-    this._o(130,'sine',0.3,0.08,80)
-  }
+  pickup(){this._o(1200,'sine',0.06,0.07,1500);this._n(0.03,0.03,{t:'bandpass',f:2000,Q:6})}
+  wrong(){this._n(0.12,0.06,{t:'lowpass',f:250,Q:2});this._o(150,'sawtooth',0.15,0.06,80)}
+  unlock(){this._o(600,'triangle',0.08,0.06,750);setTimeout(()=>{this._o(800,'sine',0.12,0.05,900);this._n(0.04,0.03,{t:'bandpass',f:1200,Q:5})},120)}
+  door(){this._n(0.25,0.07,{t:'lowpass',f:350,Q:2});this._o(130,'sine',0.3,0.08,80)}
   step(){this._n(0.05,0.03,{t:'bandpass',f:180,Q:3})}
-  key(){
-    this._o(2000,'sine',0.25,0.06,1800)
-    this._o(2500,'sine',0.15,0.04,2300)
-    this._n(0.02,0.02,{t:'highpass',f:4000,Q:5})
-  }
+  key(){this._o(2000,'sine',0.25,0.06,1800);this._o(2500,'sine',0.15,0.04,2300);this._n(0.02,0.02,{t:'highpass',f:4000,Q:5})}
   paper(){this._n(0.12,0.02,{t:'bandpass',f:4000,Q:3})}
-  shiva(){
-    this._o(50,'sawtooth',2,0.06,35)
-    this._n(2,0.03,{t:'lowpass',f:150,Q:2})
-    this._o(800,'sine',0.4,0.02,900)
-  }
-  radio(freq){
-    this._n(0.1,0.03,{t:'bandpass',f:(freq||400),Q:30})
-    if(freq)this._o(freq,'sine',0.15,0.05,freq*1.01)
-  }
-  clock(){
-    this._n(0.03,0.04,{t:'bandpass',f:2500,Q:10})
-    this._o(350,'triangle',0.2,0.06,500)
-    setTimeout(()=>{this._o(500,'sine',0.3,0.04,700);this._n(0.02,0.02,{t:'bandpass',f:2000,Q:8})},150)
-  }
-  heart(){
-    this._o(160,'sine',0.15,0.06,200)
-    setTimeout(()=>this._o(180,'sine',0.15,0.04,220),200)
-  }
-  chime(){
-    [880,1100,1320,1760].forEach((f,i)=>{
-      this._o(f,'sine',0.6-i*0.06,0.06-i*0.01,f*1.003)
-    })
-    this._n(0.02,0.02,{t:'highpass',f:5000,Q:5})
-  }
+  shiva(){this._o(50,'sawtooth',2,0.06,35);this._n(2,0.03,{t:'lowpass',f:150,Q:2});this._o(800,'sine',0.4,0.02,900)}
+  clock(){this._n(0.03,0.04,{t:'bandpass',f:2500,Q:10});this._o(350,'triangle',0.2,0.06,500);setTimeout(()=>{this._o(500,'sine',0.3,0.04,700);this._n(0.02,0.02,{t:'bandpass',f:2000,Q:8})},150)}
+  chime(){[880,1100,1320,1760].forEach((f,i)=>{this._o(f,'sine',0.6-i*0.06,0.06-i*0.01,f*1.003)});this._n(0.02,0.02,{t:'highpass',f:5000,Q:5})}
   candle(){this._n(0.15,0.02,{t:'bandpass',f:500,Q:4})}
-  grave(){
-    this._n(0.4,0.06,{t:'lowpass',f:120,Q:3})
-    this._o(70,'sawtooth',0.4,0.06,45)
-  }
+  grave(){this._n(0.4,0.06,{t:'lowpass',f:120,Q:3});this._o(70,'sawtooth',0.4,0.06,45)}
   water(){this._n(0.5,0.03,{t:'bandpass',f:400,Q:3})}
   wind(){this._n(1.2,0.02,{t:'lowpass',f:250,Q:2})}
-  crow(){
-    this._o(450,'square',0.1,0.05,350)
-    setTimeout(()=>this._o(300,'square',0.12,0.04,250),120)
-  }
-  bell(){
-    [600,750,900,1200].forEach((f,i)=>{
-      this._o(f,'sine',1-i*0.1,0.05-i*0.008,f*1.002)
-    })
-    this._n(0.02,0.015,{t:'highpass',f:6000,Q:5})
-  }
-  final(){
-    this._o(400,'triangle',2,0.08,800)
-    this._o(600,'sine',1.5,0.04,1000)
-    this._n(2,0.03,{t:'lowpass',f:400,Q:3})
-  }
+  bell(){[600,750,900,1200].forEach((f,i)=>{this._o(f,'sine',1-i*0.1,0.05-i*0.008,f*1.002)});this._n(0.02,0.015,{t:'highpass',f:6000,Q:5})}
+  final(){this._o(400,'triangle',2,0.08,800);this._o(600,'sine',1.5,0.04,1000);this._n(2,0.03,{t:'lowpass',f:400,Q:3})}
+  combine(){this._o(500,'triangle',0.1,0.06,700);setTimeout(()=>this._o(800,'triangle',0.08,0.05,900),80)}
+  dig(){this._n(0.3,0.05,{t:'lowpass',f:200,Q:2})}
 
-  /* ---- musica tema procedural ---- */
   startDrone(sceneId){
     if(!this.ctx||this.muted)return
     this.stopDrone()
@@ -126,6 +69,7 @@ class AudioSys{
       cellar:{n:'Porao',bpm:45,scale:[0,3,5,7,10],root:44,pat:'arp'},
       kitchen:{n:'Cozinha',bpm:60,scale:[0,2,3,5,7],root:65,pat:'arp'},
       church:{n:'Capela',bpm:40,scale:[0,3,5,7,8,10],root:110,pat:'pad'},
+      crypt:{n:'Cripta',bpm:35,scale:[0,2,3,6,7,10],root:49,pat:'arp'},
       graveyard:{n:'Cemiterio',bpm:38,scale:[0,3,5,6,8,10],root:41,pat:'arp'},
       mansion:{n:'Solar',bpm:42,scale:[0,3,5,7,8,10],root:98,pat:'pad'},
       library:{n:'Biblioteca',bpm:35,scale:[0,2,4,5,7,9],root:73,pat:'pad'},

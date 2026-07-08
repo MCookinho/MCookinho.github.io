@@ -9,121 +9,124 @@
 *{margin:0;padding:0;box-sizing:border-box}
 @keyframes pulse{0%,100%{opacity:0.3}50%{opacity:0.6}}
 @keyframes flicker{0%,100%{opacity:1}50%{opacity:0.97}25%,75%{opacity:0.99}}
-@keyframes breathe{0%,100%{text-shadow:0 0 20px rgba(10,5,5,0.9),0 0 40px rgba(10,5,5,0.5)}50%{text-shadow:0 0 30px rgba(10,5,5,0.95),0 0 60px rgba(10,5,5,0.3)}}
+@keyframes breathe{0%,100%{text-shadow:0 0 10px rgba(42,31,20,0.8)}50%{text-shadow:0 0 20px rgba(42,31,20,0.5)}}
 body{
-  background:#0a0505;color:#e8d4a8;font-family:'Crimson Text',Georgia,'Palatino','Times New Roman',serif;
-  overflow:hidden;height:100vh;width:100vw;
-  cursor:default;user-select:none;
+  background:#2a1f14;color:#e8d4a8;font-family:'Crimson Text',Georgia,'Palatino','Times New Roman',serif;
+  overflow:hidden;height:100vh;width:100vw;cursor:default;user-select:none;
 }
 #game-wrapper{
   position:absolute;top:0;left:0;width:100vw;height:100vh;overflow:hidden;
-  box-shadow:inset 0 0 80px rgba(10,5,5,0.5);
+  box-shadow:inset 0 0 100px rgba(42,31,20,0.8);
 }
-#game-canvas{display:block;width:100%;height:100%;image-rendering:auto;cursor:pointer;animation:flicker 0.15s infinite}
+#game-canvas{display:block;width:100%;height:100%;image-rendering:auto;cursor:pointer}
 #scanlines{
   pointer-events:none;position:absolute;top:0;left:0;width:100%;height:100%;
-  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.06) 2px,rgba(0,0,0,0.06) 3px);
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(42,31,20,0.04) 2px,rgba(42,31,20,0.04) 3px);
   z-index:10;
 }
 #vignette{
   pointer-events:none;position:absolute;top:0;left:0;width:100%;height:100%;
-  background:radial-gradient(ellipse at center,transparent 50%,rgba(10,5,5,0.85) 100%);
+  background:radial-gradient(ellipse at center,transparent 50%,rgba(42,31,20,0.7) 100%);
   z-index:9;
 }
 #hud{
   position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:5;
 }
 #tooltip{
-  position:absolute;bottom:48px;left:50%;transform:translateX(-50%);
-  font-size:13px;color:#c4a46c;opacity:0;transition:opacity 0.3s;
+  position:absolute;bottom:52px;left:50%;transform:translateX(-50%);
+  font-size:13px;color:#8a7050;opacity:0;transition:opacity 0.3s;
   text-align:center;max-width:500px;pointer-events:none;z-index:6;
-  text-shadow:0 0 10px rgba(10,5,5,0.9);
+  text-shadow:0 0 10px rgba(42,31,20,0.9);
 }
 #tooltip.show{opacity:1}
 #hud-memories{
-  position:absolute;top:8px;left:8px;display:flex;gap:4px;z-index:6;
-  opacity:0.6;
+  position:absolute;top:8px;left:50%;transform:translateX(-50%);display:flex;gap:4px;z-index:6;
+  opacity:0.5;
 }
 #hud-memories .mem-slot{
-  width:14px;height:14px;border:1px solid #2a1010;display:flex;align-items:center;justify-content:center;
-  font-size:8px;color:#1a0a0a;background:rgba(5,2,2,0.9);
+  width:18px;height:18px;border:1px solid #4a3a2a;display:flex;align-items:center;justify-content:center;
+  font-size:10px;color:#4a3a2a;background:rgba(42,31,20,0.9);
 }
-#hud-memories .mem-slot.filled{color:#c4a46c;border-color:#5a2a2a;background:rgba(20,10,10,0.95)}
+#hud-memories .mem-slot.filled{color:#8a7050;border-color:#8a7050;background:rgba(58,42,26,0.95)}
 #room-label{
-  position:absolute;top:8%;left:50%;transform:translateX(-50%);
-  font-size:22px;color:#1a0a0a;letter-spacing:10px;z-index:4;pointer-events:none;
+  position:absolute;top:5%;left:50%;transform:translateX(-50%);
+  font-size:20px;color:#3a2a1a;letter-spacing:8px;z-index:4;pointer-events:none;
   font-family:'Crimson Text',Georgia,serif;font-style:italic;
-  text-shadow:0 0 20px rgba(10,5,5,0.9);transition:opacity 0.8s;
-  animation:breathe 4s ease-in-out infinite;
+  text-shadow:0 0 15px rgba(42,31,20,0.8);
 }
 #dir-hint{
-  display:none;
+  position:absolute;top:10%;left:50%;transform:translateX(-50%);
+  font-size:10px;color:#4a3a2a;z-index:4;pointer-events:none;
+  font-family:'Crimson Text',Georgia,serif;
 }
 #hud-watching{
   position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  font-size:16px;color:#8a3a3a;opacity:0;transition:opacity 0.8s;z-index:6;
-  text-shadow:0 0 40px rgba(138,58,58,0.4),0 0 80px rgba(138,58,58,0.15);letter-spacing:6px;
+  font-size:14px;color:#8a4a2a;opacity:0;transition:opacity 0.8s;z-index:6;
+  text-shadow:0 0 40px rgba(138,74,42,0.3),0 0 80px rgba(138,74,42,0.1);letter-spacing:6px;
   pointer-events:none;font-weight:600;
 }
 #hud-watching.show{opacity:1}
 #inventory-bar{
-  position:absolute;bottom:12px;left:50%;transform:translateX(-50%);
+  position:absolute;bottom:8px;left:50%;transform:translateX(-50%);
   display:flex;gap:2px;z-index:6;pointer-events:auto;
-  padding:4px 6px;border:1px solid #1a0a0a;background:rgba(5,2,2,0.7);
+  padding:4px 6px;border:1px solid #3a2a1a;background:rgba(42,31,20,0.85);
+  max-width:80vw;overflow-x:auto;white-space:nowrap;
 }
+#inventory-bar::-webkit-scrollbar{height:3px}
+#inventory-bar::-webkit-scrollbar-thumb{background:#4a3a2a;border-radius:2px}
 #inventory-bar .slot{
-  width:28px;height:28px;border:1px solid #1a0a0a;background:rgba(5,2,2,0.9);
+  width:32px;height:32px;min-width:32px;border:1px solid #3a2a1a;background:rgba(42,31,20,0.9);
   display:flex;align-items:center;justify-content:center;cursor:pointer;
-  font-size:13px;color:#3a1a1a;transition:all 0.25s;position:relative;
+  font-size:14px;color:#5a4a30;transition:all 0.25s;position:relative;
 }
-#inventory-bar .slot:hover{border-color:#3a1a1a;background:rgba(15,5,5,0.95)}
-#inventory-bar .slot.selected{border-color:#5a3a3a;background:rgba(20,10,10,0.95);box-shadow:inset 0 0 8px rgba(90,58,58,0.15)}
-#inventory-bar .slot .slot-key{
-  position:absolute;top:-7px;right:-4px;font-size:7px;color:#2a1010;
-}
+#inventory-bar .slot:hover{border-color:#5a4a30;background:rgba(58,42,26,0.95)}
+#inventory-bar .slot.selected{border-color:#8a7050;background:rgba(74,58,42,0.95);box-shadow:inset 0 0 8px rgba(138,112,80,0.15)}
+#inventory-bar .slot.drag-over{border-color:#8a7050;background:rgba(74,58,42,0.9)}
 #hint-btn{
-  position:absolute;bottom:12px;right:12px;z-index:6;pointer-events:auto;
-  width:22px;height:22px;border:1px solid #1a0a0a;
-  background:rgba(5,2,2,0.8);color:#2a1010;font-size:10px;
+  position:absolute;bottom:52px;right:12px;z-index:6;pointer-events:auto;
+  width:24px;height:24px;border:1px solid #3a2a1a;
+  background:rgba(42,31,20,0.8);color:#4a3a2a;font-size:11px;
   display:flex;align-items:center;justify-content:center;cursor:pointer;font-family:'Crimson Text',Georgia,serif;
   opacity:0.5;transition:all 0.3s;
 }
-#hint-btn:hover{border-color:#3a1a1a;color:#5a3a3a;opacity:1}
-.note-overlay{
+#hint-btn:hover{border-color:#5a4a30;color:#8a7050;opacity:1}
+#puzzle-overlay{
+  display:none;position:absolute;top:0;left:0;width:100%;height:100%;
+  z-index:20;pointer-events:auto;cursor:pointer;
+}
+#note-overlay{
   display:none;position:absolute;top:0;left:0;width:100%;height:100%;
   z-index:20;align-items:center;justify-content:center;
-  background:rgba(10,5,5,0.92);
+  background:rgba(42,31,20,0.95);
 }
-.note-overlay .note-bg{
-  background:#1a0a0a;border:1px solid #3a1a1a;padding:30px;max-width:420px;
+#note-overlay .note-bg{
+  background:#2a1f14;border:1px solid #4a3a2a;padding:30px;max-width:420px;
   position:relative;
 }
-.note-overlay .note-symbol{font-size:36px;color:#5a3a5a;text-align:center;margin-bottom:12px}
-.note-overlay .note-text{color:#c4a46c;font-size:13px;line-height:1.6;text-align:center;font-style:italic}
-.note-overlay .note-close{
-  margin-top:16px;text-align:center;color:#3a1a1a;cursor:pointer;font-size:11px;
-}
-.note-overlay .note-close:hover{color:#8a3a3a}
+#note-overlay .note-symbol{font-size:36px;color:#5a4a30;text-align:center;margin-bottom:12px}
+#note-overlay .note-text{color:#8a7050;font-size:13px;line-height:1.6;text-align:center;font-style:italic}
+#note-overlay .note-close{margin-top:16px;text-align:center;color:#4a3a2a;cursor:pointer;font-size:11px}
+#note-overlay .note-close:hover{color:#8a7050}
 #intro-overlay{
   display:none;position:absolute;top:0;left:0;width:100%;height:100%;
   z-index:30;align-items:center;justify-content:center;
-  background:#0a0505;flex-direction:column;padding:60px;
+  background:#2a1f14;flex-direction:column;padding:60px;
 }
-#intro-overlay .intro-text{font-size:17px;line-height:2;color:#e8d4a8;max-width:550px;text-align:center}
-#intro-overlay .intro-sub{color:#3a1a1a;margin-top:24px;font-size:12px;cursor:pointer}
-#intro-overlay .intro-sub:hover{color:#8a3a3a}
+#intro-overlay .intro-text{font-size:17px;line-height:2;color:#8a7050;max-width:550px;text-align:center}
+#intro-overlay .intro-sub{color:#4a3a2a;margin-top:24px;font-size:12px;cursor:pointer}
+#intro-overlay .intro-sub:hover{color:#8a7050}
 #final-overlay{
   display:none;position:absolute;top:0;left:0;width:100%;height:100%;
   z-index:30;align-items:center;justify-content:center;
-  background:#0a0505;flex-direction:column;padding:60px;
+  background:#2a1f14;flex-direction:column;padding:60px;
 }
-#final-overlay .final-title{font-size:22px;color:#8a3a3a;margin-bottom:20px}
-#final-overlay .final-text{font-size:15px;line-height:1.8;color:#e8d4a8;max-width:550px;text-align:center}
-#final-overlay .final-sub{color:#3a1a1a;margin-top:24px;font-size:12px;cursor:pointer}
-#final-overlay .final-sub:hover{color:#8a3a3a}
+#final-overlay .final-title{font-size:22px;color:#8a4a2a;margin-bottom:20px}
+#final-overlay .final-text{font-size:15px;line-height:1.8;color:#8a7050;max-width:550px;text-align:center}
+#final-overlay .final-sub{color:#4a3a2a;margin-top:24px;font-size:12px;cursor:pointer}
+#final-overlay .final-sub:hover{color:#8a7050}
 #transition-overlay{
   position:absolute;top:0;left:0;width:100%;height:100%;
-  background:#0a0505;z-index:25;pointer-events:none;opacity:0;
+  background:#2a1f14;z-index:25;pointer-events:none;opacity:0;
   transition:opacity 0.4s;
 }
 #transition-overlay.active{opacity:1}
@@ -143,11 +146,12 @@ body{
     <div id="inventory-bar"></div>
     <div id="hint-btn">?</div>
   </div>
+  <div id="puzzle-overlay"></div>
   <div id="intro-overlay">
     <div class="intro-text"></div>
     <div class="intro-sub">[ CLIQUE OU TECLE ENTER PARA CONTINUAR ]</div>
   </div>
-  <div class="note-overlay" id="note-overlay">
+  <div id="note-overlay">
     <div class="note-bg">
       <div class="note-symbol"></div>
       <div class="note-text"></div>
@@ -162,9 +166,9 @@ body{
   <div id="transition-overlay"></div>
 </div>
 <script src="audio.js"></script>
-<script src="puzzles.js"></script>
 <script src="art.js"></script>
 <script src="story.js"></script>
+<script src="puzzles.js"></script>
 <script src="engine.js"></script>
 <script src="game.js"></script>
 </body>
