@@ -642,6 +642,10 @@
 
   function classify(msg) {
     var lower = msg.toLowerCase()
+    // Easter egg: detect "passear" to start
+    if (lower.indexOf('passear') !== -1 || lower.indexOf('passea') !== -1 || lower.indexOf('passeio') !== -1) {
+      return 'passear'
+    }
     for (var i = 0; i < ctxMap.length; i++) {
       var entry = ctxMap[i]
       for (var j = 0; j < entry.words.length; j++) {
@@ -650,6 +654,16 @@
     }
     return 'random'
   }
+
+  var EGG_SEQUENCE = [
+    'AU AU AU!!',
+    'AU AU AU!!!',
+    'AU AU AU?',
+    'AU AU AU??',
+    'AU?',
+    '...',
+    ':)'
+  ]
 
   function shivaInit() {
     var input = document.getElementById('shivaInput')
@@ -669,7 +683,57 @@
     }
 
     function respond(msg) {
+      var H = window.Horror
+
+      if (H && H.isEggActive()) {
+        var step = H.advanceEgg()
+        if (step < EGG_SEQUENCE.length) {
+          var res = EGG_SEQUENCE[step]
+          if (step === 3) {
+            H.stopMusic()
+            H.fadeDim(0, 0.3, 1500)
+          } else if (step === 4) {
+            setTimeout(function () { H.startStatic(0.1) }, 300)
+          } else if (step === 5) {
+            H.setStaticVolume(0.5)
+            H.fadeDim(0.3, 0.6, 2000)
+          } else if (step === 6) {
+            H.fadeDim(0.6, 0, 2000)
+            setTimeout(function () { H.stopStatic() }, 2200)
+            H.lockChat()
+            H.endEgg()
+            setTimeout(function () {
+              H.playCreakDoor()
+              setTimeout(function () {
+                H.playDogBark()
+                H.animateTear(function () {
+                  window.location.hash = '#doghouse'
+                })
+              }, 600)
+            }, 10000)
+          }
+          var delay = 400 + Math.random() * 600
+          typing.style.display = 'flex'
+          chat.scrollTop = chat.scrollHeight
+          setTimeout(function () { addMsg(res, false) }, delay)
+          return
+        }
+      }
+
       var cat = classify(msg)
+      if (cat === 'passear' && H && !H.isEggActive()) {
+        H.startEgg()
+        H.setEggStep(0)
+        var res = EGG_SEQUENCE[0]
+        var delay = 400 + Math.random() * 600
+        typing.style.display = 'flex'
+        chat.scrollTop = chat.scrollHeight
+        setTimeout(function () { addMsg(res, false) }, delay)
+        return
+      }
+
+      if (H && H.isChatLocked()) return
+
       var pool = R[cat] || R.random
       var res = pool[Math.floor(Math.random() * pool.length)]
       var delay = 400 + Math.random() * 600
@@ -681,6 +745,7 @@
     function sendMsg() {
       var msg = input.value.trim()
       if (!msg) return
+      if (window.Horror && window.Horror.isChatLocked()) return
       addMsg(msg, true)
       input.value = ''
       respond(msg)

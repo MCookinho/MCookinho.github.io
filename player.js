@@ -485,4 +485,10 @@
   // Init volume
   audio.volume = parseFloat(playerVolume.value)
   playerVolBtn.textContent = '♪'
+
+  // Allow external stop
+  window.playerAudio = audio
+  window.addEventListener('horrorStopMusic', function () {
+    if (currentIndex >= 0 || isPlaying) stopSong()
+  })
 })()
