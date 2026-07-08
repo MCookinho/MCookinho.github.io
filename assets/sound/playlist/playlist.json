@@ -1,0 +1,127 @@
+{
+  "songs": [
+    {
+      "title": "LOFI CHILL",
+      "file": "Lofi Chill.mp3",
+      "folder": null,
+      "artist": null
+    },
+    {
+      "title": "PIXEL DREAMS",
+      "file": "OUTRAS MUSICAS/Pixel Dreams.mp3",
+      "folder": "OUTRAS MUSICAS",
+      "artist": "OUTRAS MUSICAS"
+    },
+    {
+      "title": "PIXEL FANTASIA",
+      "file": "OUTRAS MUSICAS/Pixel Fantasia.mp3",
+      "folder": "OUTRAS MUSICAS",
+      "artist": "OUTRAS MUSICAS"
+    },
+    {
+      "title": "BASTION SOUNDTRACK   SETTING SAIL, COMING HOME (END THEME)",
+      "file": "MUSICAS DE JOGOS QUE EU GOSTO/Bastion Soundtrack - Setting Sail, Coming Home (End Theme).mp3",
+      "folder": "MUSICAS DE JOGOS QUE EU GOSTO",
+      "artist": "MUSICAS DE JOGOS QUE EU GOSTO"
+    },
+    {
+      "title": "CRYPT OF THE NECRODANCER OST   DISCO DESCENT (SHOPKEEPER)",
+      "file": "MUSICAS DE JOGOS QUE EU GOSTO/Crypt of the NecroDancer OST - Disco Descent (Shopkeeper).mp3",
+      "folder": "MUSICAS DE JOGOS QUE EU GOSTO",
+      "artist": "MUSICAS DE JOGOS QUE EU GOSTO"
+    },
+    {
+      "title": "DELTARUNE   ATTACK OF THE KILLER QUEEN",
+      "file": "MUSICAS DE JOGOS QUE EU GOSTO/Deltarune - Attack of the Killer Queen.mp3",
+      "folder": "MUSICAS DE JOGOS QUE EU GOSTO",
+      "artist": "MUSICAS DE JOGOS QUE EU GOSTO"
+    },
+    {
+      "title": "DELTARUNE   CHAOS KING",
+      "file": "MUSICAS DE JOGOS QUE EU GOSTO/Deltarune - Chaos King.mp3",
+      "folder": "MUSICAS DE JOGOS QUE EU GOSTO",
+      "artist": "MUSICAS DE JOGOS QUE EU GOSTO"
+    },
+    {
+      "title": "DELTARUNE   HOLIDAY STUDIO",
+      "file": "MUSICAS DE JOGOS QUE EU GOSTO/Deltarune - Holiday Studio.mp3",
+      "folder": "MUSICAS DE JOGOS QUE EU GOSTO",
+      "artist": "MUSICAS DE JOGOS QUE EU GOSTO"
+    },
+    {
+      "title": "DELTARUNE   YOU CAN ALWAYS COME HOME",
+      "file": "MUSICAS DE JOGOS QUE EU GOSTO/Deltarune - You Can Always Come Home.mp3",
+      "folder": "MUSICAS DE JOGOS QUE EU GOSTO",
+      "artist": "MUSICAS DE JOGOS QUE EU GOSTO"
+    },
+    {
+      "title": "FEZ   ORIGINAL GAME SOUNDTRACK   ADVENTURE [HD]",
+      "file": "MUSICAS DE JOGOS QUE EU GOSTO/Fez - Original Game Soundtrack - Adventure [HD].mp3",
+      "folder": "MUSICAS DE JOGOS QUE EU GOSTO",
+      "artist": "MUSICAS DE JOGOS QUE EU GOSTO"
+    },
+    {
+      "title": "SHOVEL KNIGHT OST   THE RIVAL (BLACK KNIGHT   FIRST BATTLE)",
+      "file": "MUSICAS DE JOGOS QUE EU GOSTO/Shovel Knight OST - The Rival (Black Knight - First Battle).mp3",
+      "folder": "MUSICAS DE JOGOS QUE EU GOSTO",
+      "artist": "MUSICAS DE JOGOS QUE EU GOSTO"
+    },
+    {
+      "title": "SUPER MEAT BOY!   DIGITAL SPECIAL EDITION SOUNDTRACK   06 BETUS BLUES (CH 2 LIGHT WORLD)",
+      "file": "MUSICAS DE JOGOS QUE EU GOSTO/Super Meat Boy! - Digital Special Edition Soundtrack - 06 Betus Blues (Ch 2 Light World).mp3",
+      "folder": "MUSICAS DE JOGOS QUE EU GOSTO",
+      "artist": "MUSICAS DE JOGOS QUE EU GOSTO"
+    },
+    {
+      "title": "TO THE MOON   MAIN THEME",
+      "file": "MUSICAS DE JOGOS QUE EU GOSTO/To the Moon - Main Theme.mp3",
+      "folder": "MUSICAS DE JOGOS QUE EU GOSTO",
+      "artist": "MUSICAS DE JOGOS QUE EU GOSTO"
+    },
+    {
+      "title": "TOWERFALL ASCENSION OST   TITLE",
+      "file": "MUSICAS DE JOGOS QUE EU GOSTO/TowerFall Ascension OST - Title.mp3",
+      "folder": "MUSICAS DE JOGOS QUE EU GOSTO",
+      "artist": "MUSICAS DE JOGOS QUE EU GOSTO"
+    },
+    {
+      "title": "TRANSISTOR OST   OLD FRIENDS",
+      "file": "MUSICAS DE JOGOS QUE EU GOSTO/Transistor OST - Old Friends.mp3",
+      "folder": "MUSICAS DE JOGOS QUE EU GOSTO",
+      "artist": "MUSICAS DE JOGOS QUE EU GOSTO"
+    },
+    {
+      "title": "VVVVVV SOUNDTRACK 07⧸16 ＂POSITIVE FORCE＂",
+      "file": "MUSICAS DE JOGOS QUE EU GOSTO/VVVVVV Soundtrack 07⧸16 ＂Positive Force＂.mp3",
+      "folder": "MUSICAS DE JOGOS QUE EU GOSTO",
+      "artist": "MUSICAS DE JOGOS QUE EU GOSTO"
+    }
+  ],
+  "folders": [
+    {
+      "name": "MUSICAS DE JOGOS QUE EU GOSTO",
+      "songs": [
+        "MUSICAS DE JOGOS QUE EU GOSTO/Bastion Soundtrack - Setting Sail, Coming Home (End Theme).mp3",
+        "MUSICAS DE JOGOS QUE EU GOSTO/Crypt of the NecroDancer OST - Disco Descent (Shopkeeper).mp3",
+        "MUSICAS DE JOGOS QUE EU GOSTO/Deltarune - Attack of the Killer Queen.mp3",
+        "MUSICAS DE JOGOS QUE EU GOSTO/Deltarune - Chaos King.mp3",
+        "MUSICAS DE JOGOS QUE EU GOSTO/Deltarune - Holiday Studio.mp3",
+        "MUSICAS DE JOGOS QUE EU GOSTO/Deltarune - You Can Always Come Home.mp3",
+        "MUSICAS DE JOGOS QUE EU GOSTO/Fez - Original Game Soundtrack - Adventure [HD].mp3",
+        "MUSICAS DE JOGOS QUE EU GOSTO/Shovel Knight OST - The Rival (Black Knight - First Battle).mp3",
+        "MUSICAS DE JOGOS QUE EU GOSTO/Super Meat Boy! - Digital Special Edition Soundtrack - 06 Betus Blues (Ch 2 Light World).mp3",
+        "MUSICAS DE JOGOS QUE EU GOSTO/To the Moon - Main Theme.mp3",
+        "MUSICAS DE JOGOS QUE EU GOSTO/TowerFall Ascension OST - Title.mp3",
+        "MUSICAS DE JOGOS QUE EU GOSTO/Transistor OST - Old Friends.mp3",
+        "MUSICAS DE JOGOS QUE EU GOSTO/VVVVVV Soundtrack 07⧸16 ＂Positive Force＂.mp3"
+      ]
+    },
+    {
+      "name": "OUTRAS MUSICAS",
+      "songs": [
+        "OUTRAS MUSICAS/Pixel Dreams.mp3",
+        "OUTRAS MUSICAS/Pixel Fantasia.mp3"
+      ]
+    }
+  ]
+}

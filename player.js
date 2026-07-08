@@ -75,6 +75,12 @@
     })
   }
 
+  var RAW_BASE = 'https://raw.githubusercontent.com/MCookinho/MCookinho.github.io/main/assets/sound/playlist'
+
+  function buildUrl(file) {
+    return RAW_BASE + '/' + file.split('/').map(encodeURIComponent).join('/')
+  }
+
   function fetchDynamicPlaylist() {
     var cached = localStorage.getItem(CACHE_KEY)
     if (cached) {
@@ -88,20 +94,45 @@
       } catch (e) {}
     }
 
+    return fetch('assets/sound/playlist/playlist.json').then(function (r) {
+      if (!r.ok) throw new Error('NO_MANIFEST')
+      return r.json().then(function (manifest) {
+        var allSongs = manifest.songs.map(function (s) {
+          return {
+            title: s.title,
+            file: s.file,
+            url: buildUrl(s.file),
+            dur: null,
+            folder: s.folder,
+            artist: s.artist
+          }
+        })
+        var allFolders = (manifest.folders || []).map(function (f) {
+          return {
+            name: f.name,
+            songs: f.songs.map(function (fp) {
+              return allSongs.find(function (s) { return s.file === fp })
+            }).filter(Boolean)
+          }
+        })
+        var playlist = { songs: allSongs, folders: allFolders }
+        localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), playlist: playlist }))
+        return playlist
+      })
+    }).catch(function () {
+      return fetchFromAPI()
+    })
+  }
+
+  function fetchFromAPI() {
     return fetchDir('assets/sound/playlist').then(function (items) {
       if (!Array.isArray(items)) throw new Error('INVALID')
-
-      var mp3s = items.filter(function (f) {
-        return f.name.toLowerCase().endsWith('.mp3')
-      })
+      var mp3s = items.filter(function (f) { return f.name.toLowerCase().endsWith('.mp3') })
       if (mp3s.length === 0) return null
-
       var dirs = items.filter(function (f) { return f.type === 'dir' })
-
       var rootSongs = mp3s.map(function (f) {
         return { title: titleFromName(f.name), file: f.name, url: f.download_url, dur: null, folder: null, artist: null }
       })
-
       var dirPromises = dirs.map(function (dir) {
         return fetchDir(dir.path).then(function (subItems) {
           if (!Array.isArray(subItems)) return { name: dir.name, songs: [] }
@@ -114,7 +145,6 @@
           }
         })
       })
-
       return Promise.all(dirPromises).then(function (folderData) {
         var allSongs = rootSongs.slice()
         var allFolders = []
@@ -124,14 +154,11 @@
             allSongs = allSongs.concat(f.songs)
           }
         })
-
         var playlist = { songs: allSongs, folders: allFolders }
         localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), playlist: playlist }))
         return playlist
       })
-    }).catch(function () {
-      return null
-    })
+    }).catch(function () { return null })
   }
 
   function updateStatus(msg) {
