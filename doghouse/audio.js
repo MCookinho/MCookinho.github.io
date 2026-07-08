@@ -1,8 +1,7 @@
 class AudioSys{
   constructor(){
     this.ctx=null;this.initialized=false
-    this.volumes={sfx:0.18,amb:0.04,bg:0.03}
-    this.ambients={};this.drone=null;this.droneGain=0
+    this.volumes={sfx:0.18}
   }
   init(){
     if(this.initialized)return
@@ -118,66 +117,126 @@ class AudioSys{
     this._n(2,0.03,{t:'lowpass',f:400,Q:3})
   }
 
-  /* ---- drone ambiental sutil ---- */
+  /* ---- musica tema procedural ---- */
   startDrone(sceneId){
     if(!this.ctx||this.muted)return
     this.stopDrone()
-    const cfg={
-      cellar:{f:50,type:'sine'},corridor_1:{f:45,type:'sine'},
-      corridor_2:{f:52,type:'sine'},kitchen:{f:60,type:'sine'},
-      corridor_3:{f:58,type:'sine'},church:{f:100,type:'sine'},
-      corridor_4:{f:55,type:'sine'},graveyard:{f:42,type:'sine'},
-      corridor_5:{f:65,type:'sine'},mansion:{f:90,type:'sine'},
-      corridor_6:{f:70,type:'sine'},library:{f:80,type:'triangle'},
-      tower:{f:110,type:'triangle'},tunnel:{f:38,type:'sawtooth'},
-      default:{f:50,type:'sine'}
+    const themes={
+      corridor_1:{n:'Intro',bpm:50,scale:[0,2,3,5,7,8,10],root:55,pat:'bass'},
+      corridor_2:{n:'Patamar',bpm:55,scale:[0,2,4,7,9],root:49,pat:'bass'},
+      cellar:{n:'Porao',bpm:45,scale:[0,3,5,7,10],root:44,pat:'arp'},
+      kitchen:{n:'Cozinha',bpm:60,scale:[0,2,3,5,7],root:65,pat:'arp'},
+      corridor_3:{n:'Antessala',bpm:50,scale:[0,2,4,7,9],root:55,pat:'bass'},
+      church:{n:'Capela',bpm:40,scale:[0,3,5,7,8,10],root:110,pat:'pad'},
+      corridor_4:{n:'Patio',bpm:48,scale:[0,2,3,5,7,9],root:49,pat:'bass'},
+      graveyard:{n:'Cemiterio',bpm:38,scale:[0,3,5,6,8,10],root:41,pat:'arp'},
+      corridor_5:{n:'Salao',bpm:52,scale:[0,2,4,7,9],root:58,pat:'bass'},
+      mansion:{n:'Solar',bpm:42,scale:[0,3,5,7,8,10],root:98,pat:'pad'},
+      corridor_6:{n:'Escada',bpm:46,scale:[0,2,3,5,7,9,10],root:65,pat:'bass'},
+      library:{n:'Biblioteca',bpm:35,scale:[0,2,4,5,7,9],root:73,pat:'pad'},
+      tower:{n:'Torre',bpm:30,scale:[0,2,3,5,7,8,10,12],root:130,pat:'arp'},
+      tunnel:{n:'Tunel',bpm:25,scale:[0,1,3,4,6,7,9,10],root:38,pat:'arp'},
+      default:{n:'Vazio',bpm:40,scale:[0,3,5,7],root:50,pat:'bass'}
     }
-    const c=cfg[sceneId]||cfg.default
-    const gDrone=this.ctx.createGain()
-    gDrone.gain.value=0
-    this.droneGain=gDrone
-    gDrone.connect(this.ctx.destination)
-    const oscs=[]
-    const freqs=[c.f*1,c.f*1.01,c.f*0.99]
-    for(let i=0;i<3;i++){
-      const o=this.ctx.createOscillator();o.type=c.type
-      o.frequency.value=freqs[i]+(Math.random()-0.5)*0.5
-      const g=this.ctx.createGain()
-      g.gain.value=this.volumes.bg*(0.5-i*0.15)
-      const lfo=this.ctx.createOscillator();lfo.type='sine';lfo.frequency.value=0.08+Math.random()*0.15
-      const lfoG=this.ctx.createGain();lfoG.gain.value=freqs[i]*0.01
-      lfo.connect(lfoG);lfoG.connect(o.frequency);lfo.start()
-      o.connect(g);g.connect(gDrone);o.start()
-      oscs.push({o,g,lfo})
+    const th=themes[sceneId]||themes.default
+    const bpmMs=60000/th.bpm
+    const gMaster=this.ctx.createGain()
+    gMaster.gain.value=0
+    this.masterGain=gMaster
+    gMaster.connect(this.ctx.destination)
+    const voices=[];let step=0
+    const tick=(ba=0)=>{
+      if(!this.masterGain)return
+      const t=this.ctx.currentTime+ba
+      const notes=th.scale
+      if(th.pat==='arp'){
+        const ni=step%notes.length
+        const n=notes[ni],freq=th.root*Math.pow(2,n/12)
+        const o=this.ctx.createOscillator();o.type='triangle'
+        o.frequency.setValueAtTime(freq,t)
+        const g=this.ctx.createGain()
+        g.gain.setValueAtTime(0,t)
+        g.gain.linearRampToValueAtTime(0.04,t+0.05)
+        g.gain.exponentialRampToValueAtTime(0.001,t+bpmMs/1000*0.8)
+        const lfo=this.ctx.createOscillator();lfo.type='sine';lfo.frequency.value=0.1
+        const lfoG=this.ctx.createGain();lfoG.gain.value=freq*0.003
+        lfo.connect(lfoG);lfoG.connect(o.frequency);lfo.start(t);lfo.stop(t+bpmMs/1000)
+        o.connect(g);g.connect(gMaster);o.start(t);o.stop(t+bpmMs/1000)
+        voices.push({o,g,lfo})
+        if(ni===0){
+          const o2=this.ctx.createOscillator();o2.type='sine'
+          o2.frequency.setValueAtTime(th.root/2,t)
+          const g2=this.ctx.createGain()
+          g2.gain.setValueAtTime(0.03,t)
+          g2.gain.linearRampToValueAtTime(0.01,t+bpmMs/1000*4)
+          g2.gain.exponentialRampToValueAtTime(0.001,t+bpmMs/1000*8)
+          o2.connect(g2);g2.connect(gMaster);o2.start(t);o2.stop(t+bpmMs/1000*8)
+          voices.push({o:o2,g:g2})
+        }
+        step++
+        const nextMs=bpmMs/4+(Math.random()-0.5)*20
+        this.musicTimer=setTimeout(()=>tick(),nextMs)
+      }else if(th.pat==='bass'){
+        const ni=step%notes.length
+        const n=notes[ni],freq=th.root*Math.pow(2,n/12)
+        const o=this.ctx.createOscillator();o.type='sawtooth'
+        o.frequency.setValueAtTime(freq/2,t)
+        const g=this.ctx.createGain()
+        g.gain.setValueAtTime(0,t)
+        g.gain.linearRampToValueAtTime(0.02,t+0.1)
+        g.gain.exponentialRampToValueAtTime(0.001,t+bpmMs/1000*1.5)
+        const flt=this.ctx.createBiquadFilter();flt.type='lowpass';flt.frequency.value=200
+        o.connect(flt);flt.connect(g);g.connect(gMaster);o.start(t);o.stop(t+bpmMs/1000*1.5)
+        voices.push({o,g})
+        if(ni%2===0){
+          const o2=this.ctx.createOscillator();o2.type='triangle'
+          o2.frequency.setValueAtTime(freq*1.5,t)
+          const g2=this.ctx.createGain()
+          g2.gain.setValueAtTime(0.008,t)
+          g2.gain.exponentialRampToValueAtTime(0.001,t+bpmMs/1000*2)
+          o2.connect(g2);g2.connect(gMaster);o2.start(t);o2.stop(t+bpmMs/1000*2)
+          voices.push({o:o2,g:g2})
+        }
+        step++
+        const nextMs=bpmMs/2+(Math.random()-0.5)*30
+        this.musicTimer=setTimeout(()=>tick(),nextMs)
+      }else{
+        notes.forEach((n,i)=>{
+          const freq=th.root*Math.pow(2,n/12)
+          const o=this.ctx.createOscillator();o.type='sine'
+          o.frequency.setValueAtTime(freq,t)
+          const g=this.ctx.createGain()
+          const attack=0.5+i*0.3
+          g.gain.setValueAtTime(0,t)
+          g.gain.linearRampToValueAtTime(0.015,t+attack)
+          g.gain.setValueAtTime(0.015,t+4)
+          g.gain.exponentialRampToValueAtTime(0.001,t+6)
+          const lfo=this.ctx.createOscillator();lfo.type='sine';lfo.frequency.value=0.05+Math.random()*0.1
+          const lfoG=this.ctx.createGain();lfoG.gain.value=freq*0.005
+          lfo.connect(lfoG);lfoG.connect(o.frequency);lfo.start(t);lfo.stop(t+6)
+          o.connect(g);g.connect(gMaster);o.start(t);o.stop(t+6)
+          voices.push({o,g,lfo})
+        })
+        step++
+        this.musicTimer=setTimeout(()=>tick(),bpmMs*4+(Math.random()-0.5)*500)
+      }
     }
-    const amb=this.ctx.createBufferSource()
-    amb.buffer=(()=>{
-      const sr=this.ctx.sampleRate,len=sr*6
-      const buf=this.ctx.createBuffer(1,len,sr),d=buf.getChannelData(0)
-      for(let i=0;i<len;i++)d[i]=Math.random()*2-1
-      return buf
-    })()
-    amb.loop=true
-    const ambF=this.ctx.createBiquadFilter()
-    ambF.type='lowpass';ambF.frequency.value=100+c.f*0.5;ambF.Q.value=1.5
-    const ambG=this.ctx.createGain()
-    ambG.gain.value=this.volumes.amb*0.6
-    const ambLfo=this.ctx.createOscillator();ambLfo.type='sine';ambLfo.frequency.value=0.03
-    const ambLfoG=this.ctx.createGain();ambLfoG.gain.value=50
-    ambLfo.connect(ambLfoG);ambLfoG.connect(ambF.frequency);ambLfo.start()
-    amb.connect(ambF);ambF.connect(ambG);ambG.connect(gDrone);amb.start()
-    gDrone.gain.linearRampToValueAtTime(1,this.ctx.currentTime+3)
-    this.drone={oscs,amb,ambLfo,g:gDrone}
+    gMaster.gain.linearRampToValueAtTime(0.5,this.ctx.currentTime+4)
+    tick(0.5)
+    this.musicVoices=voices;this.musicTheme=th
   }
   stopDrone(){
-    if(!this.drone)return
-    if(this.drone.g)this.drone.g.gain.linearRampToValueAtTime(0,this.ctx.currentTime+0.5)
+    if(this.musicTimer){clearTimeout(this.musicTimer);this.musicTimer=null}
+    if(this.masterGain){
+      try{this.masterGain.gain.linearRampToValueAtTime(0,this.ctx.currentTime+1)}
+      catch(e){}
+    }
     setTimeout(()=>{
-      if(!this.drone)return
-      this.drone.oscs.forEach(o=>{try{o.o.stop()}catch(e){};try{o.lfo.stop()}catch(e){}})
-      try{this.drone.amb.stop()}catch(e){}
-      try{this.drone.ambLfo.stop()}catch(e){}
-      this.drone=null
-    },500)
+      if(this.musicVoices)this.musicVoices.forEach(v=>{
+        try{v.o.stop()}catch(e){}
+        try{if(v.lfo)v.lfo.stop()}catch(e){}
+      })
+      this.musicVoices=null;this.masterGain=null;this.musicTheme=null
+    },1200)
   }
 }

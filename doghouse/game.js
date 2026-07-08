@@ -153,6 +153,21 @@ const SCENES = {
   }
 }
 
+const ROOM_GRID = {
+  corridor_1:[0,0], cellar:[1,0],
+  corridor_2:[1,1], kitchen:[1,2],
+  corridor_3:[0,2], church:[0,3],
+  corridor_4:[1,3], graveyard:[1,4],
+  corridor_5:[0,4], mansion:[0,5],
+  corridor_6:[1,5], library:[1,6],
+  tower:[0,6], tunnel:[0,7]
+}
+const GRID_ROOMS={};for(const[id,[x,y]]of Object.entries(ROOM_GRID))GRID_ROOMS[x+','+y]=id
+function getNeighbor(id,dx,dy){
+  const p=ROOM_GRID[id];if(!p)return null
+  return GRID_ROOMS[(p[0]+dx)+','+(p[1]+dy)]||null
+}
+
 const HITBOXES = {
   door_front:{x:280,y:150,w:240,h:330},
   lamp_c1:{x:380,y:20,w:40,h:80},
@@ -257,6 +272,8 @@ class Game {
     this.engine.state=S.INTRO
     this.a.init()
     this.initHUD()
+    this.showingWatching=false
+    this.watchTimer=null
     this.loop()
     setTimeout(()=>{this.startIntro();this.a.startDrone('corridor_1')},100)
   }
@@ -375,6 +392,20 @@ class Game {
     if(p.onOpen)p.onOpen(this.engine,this)
     this.engine.openPuzzle(p)
   }
+  flashWatching(dur){
+    this.showingWatching=true
+    if(this.watchTimer)clearTimeout(this.watchTimer)
+    this.watchTimer=setTimeout(()=>{this.showingWatching=false},dur||3000)
+  }
+  showWatching(){
+    this.showingWatching=true
+    if(this.watchTimer)clearTimeout(this.watchTimer)
+    this.watchTimer=null
+  }
+  hideWatching(){
+    this.showingWatching=false
+    if(this.watchTimer){clearTimeout(this.watchTimer);this.watchTimer=null}
+  }
   goTo(target){
     if(this.sceneId==='tunnel'&&target==='end'){
       this.endGame('bone')
@@ -391,25 +422,27 @@ class Game {
       const sc=SCENES[target]
       this.a.startDrone(target)
       if(sc.day&&sc.day!==this.day){this.day=sc.day;this.updateDay()}
-      if(sc.id==='tunnel')this.engine.tooltip('O ar muda. Shiva está aqui.',3000)
+      if(target==='tunnel'){this.showWatching();this.engine.tooltip('O ar muda. Shiva está aqui.',3000)}
+      else if(target==='tower')this.showWatching()
+      else if(target==='church')this.flashWatching(2000)
+      else this.hideWatching()
     })
   }
-  goForward(){
-    const objs=SCENES[this.sceneId].objects
-    for(let i=objs.length-1;i>=0;i--){
-      const o=objs[i]
-      if(o.type==='exit'&&o.target!==this.prevScene){this.goTo(o.target);return}
-    }
+  goNorth(){
+    const t=getNeighbor(this.sceneId,0,-1)
+    if(t)this.goTo(t);else this.engine.tooltip('Não há saída ao norte.')
   }
-  goBack(){
-    if(this.prevScene&&SCENES[this.prevScene]){this.goTo(this.prevScene);return}
-    const objs=SCENES[this.sceneId].objects
-    for(let i=0;i<objs.length;i++){
-      if(objs[i].type==='exit'){this.goTo(objs[i].target);return}
-    }
+  goSouth(){
+    const t=getNeighbor(this.sceneId,0,1)
+    if(t)this.goTo(t);else this.engine.tooltip('Não há saída ao sul.')
   }
-  interactFocused(){
-    this.handleClick(400,300)
+  goWest(){
+    const t=getNeighbor(this.sceneId,-1,0)
+    if(t)this.goTo(t);else this.engine.tooltip('Não há saída a oeste.')
+  }
+  goEast(){
+    const t=getNeighbor(this.sceneId,1,0)
+    if(t)this.goTo(t);else this.engine.tooltip('Não há saída ao leste.')
   }
   updateDay(){}
   checkEndings(){

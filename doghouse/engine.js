@@ -13,6 +13,7 @@ class Engine {
     this.scene=null; this.puzzle=null; this.puzzleData=null
     this.time=0; this.tooltipTimer=0; this.tooltipText=''
     this.mouseX=0; this.mouseY=0
+    this.scrX=0; this.scrY=0; this._hintHidden=false
     this._resize()
     this._bindEvents()
   }
@@ -37,12 +38,14 @@ class Engine {
     this.canvas.addEventListener('click', e => {
       if(this.state===S.TRANSITION)return
       const r=this.canvas.getBoundingClientRect()
-      const p=this._scrToCanvas(e.clientX-r.left,e.clientY-r.top)
-      this._handleClick(p.x,p.y,e.clientX-r.left)
+      const sx=e.clientX-r.left,sy=e.clientY-r.top
+      const p=this._scrToCanvas(sx,sy)
+      this._handleClick(p.x,p.y,sx,sy)
     })
     this.canvas.addEventListener('mousemove', e => {
       const r=this.canvas.getBoundingClientRect()
-      const p=this._scrToCanvas(e.clientX-r.left,e.clientY-r.top)
+      this.scrX=e.clientX-r.left;this.scrY=e.clientY-r.top
+      const p=this._scrToCanvas(this.scrX,this.scrY)
       this.mouseX=p.x;this.mouseY=p.y
     })
     document.getElementById('note-overlay').addEventListener('click', e => {
@@ -78,22 +81,28 @@ class Engine {
       return
     }
     if(this.state===S.EXPLORE){
-      if(e.key==='ArrowRight'||e.key==='d'||e.key==='ArrowUp'||e.key==='w'){g.goForward();e.preventDefault();return}
-      if(e.key==='ArrowLeft'||e.key==='a'||e.key==='ArrowDown'||e.key==='s'){g.goBack();e.preventDefault();return}
+      if(e.key==='ArrowUp'||e.key==='w'){g.goNorth();e.preventDefault();return}
+      if(e.key==='ArrowDown'||e.key==='s'){g.goSouth();e.preventDefault();return}
+      if(e.key==='ArrowLeft'||e.key==='a'){g.goWest();e.preventDefault();return}
+      if(e.key==='ArrowRight'||e.key==='d'){g.goEast();e.preventDefault();return}
       const n=parseInt(e.key)
       if(n>=1&&n<=7){g.selectItem(n-1);e.preventDefault();return}
       if(e.key==='Enter'||e.key===' '){this._handleClick(this.LW/2,this.LH/2);e.preventDefault();return}
     }
   }
-  _handleClick(x, y, scrX) {
+  _handleClick(x, y, scrX, scrY) {
     const g = window.__game
     if (!g) return
     if(g.a)g.a.resume()
     if (this.state===S.EXPLORE) {
-      if(this.scene){
-        const w=this.cw
-        if(scrX!==undefined&&scrX<w*0.15){g.goBack();return}
-        if(scrX!==undefined&&scrX>w*0.85){g.goForward();return}
+      this._hintHidden=true
+      setTimeout(()=>{if(this._hintHidden!==undefined)this._hintHidden=false},600)
+      if(this.scene&&scrX!==undefined){
+        const edge=80
+        if(scrY<edge){g.goNorth();return}
+        if(scrY>this.ch-edge){g.goSouth();return}
+        if(scrX<edge){g.goWest();return}
+        if(scrX>this.cw-edge){g.goEast();return}
       }
       g.handleClick(x, y)
     } else if (this.state===S.PUZZLE && this.puzzle) {
@@ -168,16 +177,98 @@ class Engine {
     ctx.beginPath(); ctx.rect(0,0,this.LW,this.LH); ctx.clip()
     if(drawScene)drawScene(ctx,this.scene,now)
     else{ctx.fillStyle='#0a0505';ctx.fillRect(0,0,this.LW,this.LH)}
-    const isWatching=this.scene==='tower'||this.scene==='tunnel'||
-      (['corridor_1','corridor_3','corridor_5','cellar','church','graveyard'].includes(this.scene)&&Math.sin(now*0.0008)>0.85)
-    document.getElementById('hud-watching').classList.toggle('show',isWatching)
     if(this.state===S.PUZZLE&&this.puzzle){
       ctx.fillStyle='rgba(5,2,2,0.7)'
       ctx.fillRect(0,0,this.LW,this.LH)
       if(this.puzzle.render)this.puzzle.render(ctx,now)
     }
     ctx.restore()
+    if(this.state===S.EXPLORE)this._drawMinimap(ctx)
+    this._drawRoomLabel()
+    this._drawEdgeHints()
+    document.getElementById('hud-watching').classList.toggle('show', window.__game && window.__game.showingWatching)
     if(this.tooltipTimer>0){this.tooltipTimer-=16;if(this.tooltipTimer<=0)this.clearTooltip()}
+  }
+  _drawMinimap(ctx){
+    if(!window.__game)return
+    const g=window.__game,id=g.sceneId
+    const p=ROOM_GRID[id];if(!p)return
+    const ms=18,gap=4,ox=20,oy=20,rad=5
+    const minX=Math.min(...Object.values(ROOM_GRID).map(v=>v[0]))
+    const minY=Math.min(...Object.values(ROOM_GRID).map(v=>v[1]))
+    const maxX=Math.max(...Object.values(ROOM_GRID).map(v=>v[0]))
+    const maxY=Math.max(...Object.values(ROOM_GRID).map(v=>v[1]))
+    const cols=maxX-minX+1,rows=maxY-minY+1
+    const mw=cols*(ms+gap)-gap,mh=rows*(ms+gap)-gap
+    const bx=ox,by=oy
+    ctx.save()
+    ctx.fillStyle='rgba(10,5,5,0.85)'
+    ctx.fillRect(bx-6,by-6,mw+12,mh+12)
+    ctx.strokeStyle='#2a1010';ctx.lineWidth=1
+    ctx.strokeRect(bx-6,by-6,mw+12,mh+12)
+    for(const[rid,[rx,ry]]of Object.entries(ROOM_GRID)){
+      const cx=bx+(rx-minX)*(ms+gap)+ms/2
+      const cy=by+(ry-minY)*(ms+gap)+ms/2
+      const isCurrent=rid===id
+      const isConnected=getNeighbor(id,0,-1)===rid||getNeighbor(id,0,1)===rid||
+                       getNeighbor(id,-1,0)===rid||getNeighbor(id,1,0)===rid
+      ctx.fillStyle=isCurrent?'#c4a46c':isConnected?'#5a3a3a':'#2a1010'
+      ctx.fillRect(cx-ms/2+2,cy-ms/2+2,ms-4,ms-4)
+      if(isCurrent){
+        ctx.strokeStyle='#e8d4a8';ctx.lineWidth=1.5
+        ctx.strokeRect(cx-ms/2+1,cy-ms/2+1,ms-2,ms-2)
+      }
+    }
+    ctx.fillStyle='#3a1a1a'
+    ctx.font='7px Georgia'
+    ctx.textAlign='left'
+    ctx.fillText('⊙ MAPA',bx+2,by+mh+12)
+    ctx.restore()
+  }
+  _drawRoomLabel(){
+    if(!window.__game||this.state!==S.EXPLORE)return
+    const scene=SCENES[window.__game.sceneId]
+    if(!scene)return
+    const el=document.getElementById('room-label')
+    if(!el)return
+    el.textContent=scene.name
+    el.style.display='block'
+  }
+  _drawEdgeHints(){
+    if(!window.__game||this.state!==S.EXPLORE)return
+    const ctx=this.ctx,g=window.__game,id=g.sceneId
+    const edge=80,aSize=16
+    const dirs=[
+      {d:'n',dx:0,dy:-1,x:this.cw/2,y:edge/2,label:'N'},
+      {d:'s',dx:0,dy:1,x:this.cw/2,y:this.ch-edge/2,label:'S'},
+      {d:'w',dx:-1,dy:0,x:edge/2,y:this.ch/2,label:'O'},
+      {d:'e',dx:1,dy:0,x:this.cw-edge/2,y:this.ch/2,label:'L'}
+    ]
+    const mouseNear=80
+    const nearEdge=dirs.find(d=>{
+      if(d.d==='n')return this.scrY<mouseNear
+      if(d.d==='s')return this.scrY>this.ch-mouseNear
+      if(d.d==='w')return this.scrX<mouseNear
+      if(d.d==='e')return this.scrX>this.cw-mouseNear
+    })
+    ctx.save()
+    for(const d of dirs){
+      const hasExit=getNeighbor(id,d.dx,d.dy)
+      if(!hasExit)continue
+      const isHover=nearEdge&&nearEdge.d===d.d&&!this._hintHidden
+      const alpha=isHover?0.9:0.25
+      ctx.fillStyle=`rgba(196,164,108,${alpha})`
+      ctx.font=`${isHover?14:10}px Georgia`
+      ctx.textAlign='center';ctx.textBaseline='middle'
+      ctx.fillText(d.label,d.x,d.y)
+      if(isHover){
+        ctx.font='11px Georgia'
+        ctx.fillStyle='rgba(196,164,108,0.5)'
+        const name=SCENES[hasExit]?.name||''
+        ctx.fillText(name,d.x,d.y+(d.d==='n'?18:-18))
+      }
+    }
+    ctx.restore()
   }
   findHit(x,y){
     const scene=SCENES[this.scene]
