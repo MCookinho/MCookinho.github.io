@@ -795,8 +795,8 @@
       var tex = getRoomTex(room.type)
       var fMat = new THREE.MeshStandardMaterial({ map: tex.floor, roughness: 0.8 })
       var cMat = new THREE.MeshStandardMaterial({ map: tex.ceil, roughness: 0.9 })
-      addBox(cx, 0.05, cz, rw - 0.1, 0.1, rh - 0.1, fMat, 0)
-      addBox(cx, WALL_HEIGHT - 0.02, cz, rw - 0.1, 0.05, rh - 0.1, cMat, 0)
+      addBox(cx, 0.05, cz, rw - 0.1, 0.1, rh - 0.1, fMat, 0, false)
+      addBox(cx, WALL_HEIGHT - 0.02, cz, rw - 0.1, 0.05, rh - 0.1, cMat, 0, false)
     }
 
     for (var row = 0; row < GRID_ROWS; row++) {
@@ -813,7 +813,7 @@
     if (garage) {
       var gx = (garage.col + 0.5) * CELL_SIZE, gz = (garage.row + 0.5) * CELL_SIZE
       var gMat = new THREE.MeshStandardMaterial({ map: getRoomTex('garage').floor, roughness: 0.9 })
-      addBox(gx, -0.25, gz, CELL_SIZE - 0.1, 0.1, CELL_SIZE - 0.1, gMat, 0)
+      addBox(gx, -0.25, gz, CELL_SIZE - 0.1, 0.1, CELL_SIZE - 0.1, gMat, 0, false)
     }
 
     var entranceR = getRoomById('entrance')
@@ -1004,8 +1004,8 @@
         var ftex = getRoomTex(fRoom.type)
         var ffMat = new THREE.MeshStandardMaterial({ map: ftex.floor, roughness: 0.8 })
         var fcMat = new THREE.MeshStandardMaterial({ map: ftex.ceil, roughness: 0.9 })
-        addBox(fcx, yOff2 + 0.05, fcz, frw - 0.1, 0.1, frh - 0.1, ffMat, 0)
-        addBox(fcx, yOff2 + wallH2 - 0.02, fcz, frw - 0.1, 0.05, frh - 0.1, fcMat, 0)
+        addBox(fcx, yOff2 + 0.05, fcz, frw - 0.1, 0.1, frh - 0.1, ffMat, 0, false)
+        addBox(fcx, yOff2 + wallH2 - 0.02, fcz, frw - 0.1, 0.05, frh - 0.1, fcMat, 0, false)
         for (var rr = fRoom.row; rr < fRoom.row + fRoom.h; rr++) {
           for (var cc = fRoom.col; cc < fRoom.col + fRoom.w; cc++) {
             var edges = [[cc,rr,cc,rr-1],[cc,rr,cc,rr+1],[cc,rr,cc-1,rr],[cc,rr,cc+1,rr]]
