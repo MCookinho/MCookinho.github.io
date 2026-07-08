@@ -19,6 +19,7 @@
   var playerPlay = document.getElementById('playerPlay')
   var playerPrev = document.getElementById('playerPrev')
   var playerNext = document.getElementById('playerNext')
+  var playerStop = document.getElementById('playerStop')
   var playerRestart = document.getElementById('playerRestart')
   var playerSpeed = document.getElementById('playerSpeed')
   var playerProgress = document.getElementById('playerProgress')
@@ -199,7 +200,10 @@
     listEl.querySelectorAll('.music-item').forEach(function (item) {
       var idx = parseInt(item.getAttribute('data-idx'), 10)
       if (!isNaN(idx)) {
-        item.addEventListener('click', function () { playSong(idx) })
+        item.addEventListener('click', function () {
+          if (idx === currentIndex && isPlaying) { stopSong() }
+          else { playSong(idx) }
+        })
       }
     })
   }
@@ -257,6 +261,16 @@
         updateUI()
       }).catch(function () {})
     }
+  }
+
+  function stopSong() {
+    if (currentIndex < 0) return
+    audio.pause()
+    audio.currentTime = 0
+    currentIndex = -1
+    isPlaying = false
+    updateUI()
+    hidePlayerBar()
   }
 
   function cycleSpeed() {
@@ -374,6 +388,7 @@
   playerPlay.addEventListener('click', togglePlay)
   playerPrev.addEventListener('click', prevSong)
   playerNext.addEventListener('click', nextSong)
+  playerStop.addEventListener('click', stopSong)
   playerRestart.addEventListener('click', restartSong)
   playerSpeed.addEventListener('click', cycleSpeed)
 
