@@ -1,602 +1,279 @@
-/* ===== PUZZLES.JS ===== */
-/* Lógica dos 6 puzzles + estado global */
-
-// helpers runtime (preenchidos pelo game.js)
-const $e = () => window.engine;
-const $p = () => window.player;
-const $ps = () => window.puzzleState;
-
-const PUZZLE_DATA = {
-  cadeado_joao: {
-    title: 'CADEADO — CELA 1',
-    hint: 'Fotos na parede. Uma data marcada.',
-    solution: [1,8,0,4],
-    item: 'chave_praca',
-    noteId: 'nota_joao',
-    keyIndex: 0,
-    protectionItem: null,
-  },
-  patas_sandalia: {
-    title: 'MARCAS — CELA 2',
-    hint: 'Siga o rastro. Do maior para o menor.',
-    solution: ['grande','medio','pequeno1','pequeno2','menor'],
-    item: 'amuleto_osso',
-    noteId: 'nota_sandalia',
-    keyIndex: 1,
-    protectionItem: 'amuleto',
-  },
-  radios_ulisses: {
-    title: 'RÁDIOS — CELA 3',
-    hint: 'Números no pó dos móveis.',
-    solution: [87.5, 91.3, 104.7],
-    item: 'sal_grosso',
-    noteId: 'nota_ulisses',
-    keyIndex: 2,
-    protectionItem: 'sal',
-  },
-  desenhos_enzo: {
-    title: 'DESENHOS — CELA 4',
-    hint: 'A ordem do dia.',
-    solution: [0,1,2,3,4],
-    item: 'giz_cera',
-    noteId: 'nota_enzo',
-    keyIndex: 3,
-    protectionItem: 'giz',
-  },
-  velas_elaine: {
-    title: 'VELAS — CELA 5',
-    hint: 'Domingo ao contrário.',
-    solution: [6,5,4,3,2,1,0],
-    item: 'ervas',
-    noteId: 'nota_elaine',
-    keyIndex: 4,
-    protectionItem: 'ervas',
-  },
-  lapides_giulia: {
-    title: 'LÁPIDES — CELA 6',
-    hint: 'Símbolos na ordem das celas.',
-    solution: ['☽','⌵','⌂','☆','🔥','◇'],
-    item: 'espelho',
-    noteId: 'nota_giulia',
-    keyIndex: 5,
-    protectionItem: 'espelho',
-  },
-};
-
-// Callback store
-let _puzzleCallback = null;
-let _currentPuzzleId = null;
-let _puzzleActive = false;
-
-/* ===== PUZZLE 1: Cadeado ===== */
-function renderCadeado(container, solve) {
-  const digits = [0,0,0,0];
-  let selected = 0;
-
-  container.innerHTML = '';
-  const title = document.createElement('div');
-  title.style.cssText = 'color:#a87850;font-size:10px;margin-bottom:12px;';
-  title.textContent = 'DIGITE A SENHA:';
-  container.appendChild(title);
-
-  const digitRow = document.createElement('div');
-  digitRow.style.cssText = 'display:flex;gap:8px;justify-content:center;margin-bottom:16px;';
-
-  const digitEls = [];
-  for (let i = 0; i < 4; i++) {
-    const d = document.createElement('div');
-    d.style.cssText = 'width:32px;height:40px;background:#1a0a0a;border:2px solid #3a1a1a;' +
-      'display:flex;align-items:center;justify-content:center;font-size:16px;color:#aaa878;cursor:pointer;';
-    d.textContent = '0';
-    d.addEventListener('click', () => {
-      selected = i;
-      _highlightDigit(digitEls, selected);
-    });
-    digitRow.appendChild(d);
-    digitEls.push(d);
+class PuzzleSystem{
+  constructor(game){
+    this.g=game
+    this.puzzles={}
+    this._initAll()
   }
-  container.appendChild(digitRow);
-  _highlightDigit(digitEls, 0);
-
-  // botoes +/-
-  const btnRow = document.createElement('div');
-  btnRow.style.cssText = 'display:flex;gap:8px;justify-content:center;margin-bottom:16px;';
-  const up = document.createElement('button');
-  up.style.cssText = 'background:#2a1010;border:2px solid #5a2a2a;color:#aaa878;padding:4px 12px;font-family:inherit;cursor:pointer;';
-  up.textContent = '+';
-  up.addEventListener('click', () => {
-    digits[selected] = (digits[selected] + 1) % 10;
-    digitEls[selected].textContent = digits[selected];
-  });
-  const down = document.createElement('button');
-  down.style.cssText = up.style.cssText;
-  down.textContent = '-';
-  down.addEventListener('click', () => {
-    digits[selected] = (digits[selected] + 9) % 10;
-    digitEls[selected].textContent = digits[selected];
-  });
-  btnRow.appendChild(down);
-  btnRow.appendChild(up);
-  container.appendChild(btnRow);
-
-  // confirm
-  const confirm = document.createElement('button');
-  confirm.style.cssText = 'background:#3a1a1a;border:2px solid #5a2a2a;color:#aaa878;padding:8px 24px;font-family:inherit;cursor:pointer;';
-  confirm.textContent = 'CONFIRMAR [ENTER]';
-  confirm.addEventListener('click', () => solve(digits));
-  container.appendChild(confirm);
-
-  // keyboard
-  const handler = (e) => {
-    if (e.key === 'ArrowLeft') { selected = Math.max(0, selected-1); _highlightDigit(digitEls, selected); }
-    if (e.key === 'ArrowRight') { selected = Math.min(3, selected+1); _highlightDigit(digitEls, selected); }
-    if (e.key === 'ArrowUp') { digits[selected] = (digits[selected] + 1) % 10; digitEls[selected].textContent = digits[selected]; }
-    if (e.key === 'ArrowDown') { digits[selected] = (digits[selected] + 9) % 10; digitEls[selected].textContent = digits[selected]; }
-    if (e.key === 'Enter') { solve(digits); }
-  };
-  document.addEventListener('keydown', handler);
-  container._handler = handler;
-}
-
-function _highlightDigit(els, idx) {
-  els.forEach((el, i) => {
-    el.style.borderColor = i === idx ? '#a87850' : '#3a1a1a';
-  });
-}
-
-/* ===== PUZZLE 2: Patas ===== */
-function renderPatas(container, solve) {
-  container.innerHTML = '';
-  const title = document.createElement('div');
-  title.style.cssText = 'color:#a87850;font-size:10px;margin-bottom:12px;';
-  title.textContent = 'PISE NAS PATAS NA ORDEM:';
-  container.appendChild(title);
-
-  const grid = document.createElement('div');
-  grid.style.cssText = 'display:grid;grid-template-columns:repeat(5,1fr);gap:8px;max-width:300px;margin:0 auto;';
-
-  const sizes = ['grande', 'medio', 'pequeno1', 'pequeno2', 'menor'];
-  const order = [];
-  const btns = [];
-
-  sizes.forEach((s, i) => {
-    const btnSize = [60, 48, 36, 36, 24][i];
-    const btn = document.createElement('div');
-    btn.style.cssText = `width:${btnSize}px;height:${btnSize}px;background:#3a1a1a;border:2px solid #5a2a2a;` +
-      'border-radius:50%;cursor:pointer;margin:0 auto;display:flex;align-items:center;justify-content:center;' +
-      'color:#aaa878;font-size:8px;';
-    btn.textContent = s === 'grande' ? '1' : s === 'medio' ? '2' : '';
-    btn.dataset.size = s;
-    btn.addEventListener('click', () => {
-      if (order.includes(i)) return;
-      order.push(i);
-      btn.style.borderColor = '#a87850';
-      btn.textContent = order.length;
-      if (order.length === 5) {
-        const solution = sizes.map(s => s);
-        const userOrder = order.map(idx => sizes[idx]);
-        const correct = userOrder.every((s, j) => s === solution[j]);
-        solve(userOrder);
+  _initAll(){
+    this._add('gate',{
+      title:'PORTÃO DE FERRO',
+      hint:'Três fechaduras. Três símbolos. Você encontrou as chaves?',
+      type:'key_slot',slots:3,keys:['cellar_key','kitchen_key','church_key'],
+      placed:[],onComplete:()=>{this.g.a.unlock();return true}
+    })
+    this._add('cellar_well',{
+      title:'O POÇO',
+      hint:'A superfície da água reflete algo. Toque na água.',
+      type:'click',maxClicks:1,clicks:0,
+      onComplete:(g)=>{
+        if(g.flags.cellar_well_done)return false
+        g.flags.cellar_well_done=true;g.a.water()
+        g.showDialogue(['Você toca a água fria. Seus dedos fecham em torno de algo duro.','Você puxa: uma chave enferrujada.'])
+        g.addItem('cellar_key',true)
+        return true
       }
-    });
-    grid.appendChild(btn);
-    btns.push(btn);
-  });
-  container.appendChild(grid);
-}
-
-/* ===== PUZZLE 3: Rádios ===== */
-function renderRadios(container, solve) {
-  container.innerHTML = '';
-  const title = document.createElement('div');
-  title.style.cssText = 'color:#a87850;font-size:10px;margin-bottom:12px;';
-  title.textContent = 'SINTONIZE OS 3 RÁDIOS:';
-  container.appendChild(title);
-
-  const freqs = [87.0, 87.0, 87.0];
-  const sliders = [];
-
-  for (let i = 0; i < 3; i++) {
-    const row = document.createElement('div');
-    row.style.cssText = 'display:flex;align-items:center;gap:12px;margin-bottom:8px;';
-
-    const label = document.createElement('div');
-    label.style.cssText = 'color:#5a5a3a;font-size:8px;width:40px;';
-    label.textContent = `R ${i+1}`;
-    row.appendChild(label);
-
-    const slider = document.createElement('input');
-    slider.type = 'range';
-    slider.min = 870;
-    slider.max = 1080;
-    slider.value = 870;
-    slider.step = 1;
-    slider.style.cssText = 'width:200px;';
-    const valDisplay = document.createElement('div');
-    valDisplay.style.cssText = 'color:#aaa878;font-size:8px;width:50px;';
-    valDisplay.textContent = '87.0';
-
-    slider.addEventListener('input', () => {
-      freqs[i] = slider.value / 10;
-      valDisplay.textContent = freqs[i].toFixed(1);
-    });
-
-    row.appendChild(slider);
-    row.appendChild(valDisplay);
-    container.appendChild(row);
-    sliders.push(slider);
-  }
-
-  const confirm = document.createElement('button');
-  confirm.style.cssText = 'margin-top:16px;background:#3a1a1a;border:2px solid #5a2a2a;color:#aaa878;padding:8px 24px;font-family:inherit;cursor:pointer;';
-  confirm.textContent = 'CONFIRMAR [ENTER]';
-  confirm.addEventListener('click', () => solve(freqs));
-  container.appendChild(confirm);
-
-  const handler = (e) => {
-    if (e.key === 'Enter') solve(freqs);
-  };
-  document.addEventListener('keydown', handler);
-  container._handler = handler;
-}
-
-/* ===== PUZZLE 4: Desenhos ===== */
-function renderDesenhos(container, solve) {
-  container.innerHTML = '';
-  const title = document.createElement('div');
-  title.style.cssText = 'color:#a87850;font-size:10px;margin-bottom:12px;';
-  title.textContent = 'ORDENE OS DESENHOS:';
-  container.appendChild(title);
-
-  const symbols = ['☀️', '🌙', '⭐', '🔥', '🏠'];
-  const names = ['SOL', 'LUA', 'ESTRELA', 'FOGO', 'CASA'];
-  // ordem correta: 0,1,2,3,4 (sol, lua, estrela, fogo, casa)
-  const order = [];
-  const slots = [];
-
-  const grid = document.createElement('div');
-  grid.style.cssText = 'display:flex;gap:8px;justify-content:center;flex-wrap:wrap;max-width:300px;margin:0 auto;';
-
-  symbols.forEach((sym, i) => {
-    const btn = document.createElement('div');
-    btn.style.cssText = 'width:48px;height:48px;background:#1a0a0a;border:2px solid #3a1a1a;' +
-      'display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer;';
-    btn.textContent = sym;
-    btn.title = names[i];
-    btn.addEventListener('click', () => {
-      order.push(i);
-      btn.style.borderColor = '#a87850';
-      btn.style.opacity = '0.5';
-      slots.push(btn);
-      // show order number
-      btn.textContent = sym + '\n' + order.length;
-      if (order.length === 5) {
-        const correct = order.every((val, idx) => val === idx);
-        solve(order);
+    })
+    this._add('cellar_vent',{
+      title:'VENTILAÇÃO',
+      hint:'As barras estão enferrujadas. Talvez algo fino possa alavancá-las.',
+      type:'use_item',item:'wax',used:false,
+      onUse:(g)=>{
+        if(g.flags.cellar_vent_done)return false
+        g.flags.cellar_vent_done=true
+        g.showDialogue(['A cera amolece entre as barras. Você empurra e a grade cede.','Dentro: uma nota amassada.'])
+        g.addNote('cellar')
+        return true
       }
-    });
-    grid.appendChild(btn);
-  });
-  container.appendChild(grid);
-
-  // reset button
-  const reset = document.createElement('button');
-  reset.style.cssText = 'margin-top:12px;background:#2a1010;border:1px solid #5a2a2a;color:#5a5a3a;padding:4px 12px;font-family:inherit;cursor:pointer;font-size:10px;';
-  reset.textContent = 'REINICIAR';
-  reset.addEventListener('click', () => {
-    order.length = 0;
-    Array.from(grid.children).forEach((el, i) => {
-      el.style.borderColor = '#3a1a1a';
-      el.style.opacity = '1';
-      el.textContent = symbols[i];
-    });
-  });
-  container.appendChild(reset);
-}
-
-/* ===== PUZZLE 5: Velas ===== */
-function renderVelas(container, solve) {
-  container.innerHTML = '';
-  const title = document.createElement('div');
-  title.style.cssText = 'color:#a87850;font-size:10px;margin-bottom:12px;';
-  title.textContent = 'ACENDA AS VELAS NA ORDEM:';
-  container.appendChild(title);
-
-  const days = ['DOM', 'SÁB', 'SEX', 'QUI', 'QUA', 'TER', 'SEG'];
-  const order = [];
-  const velas = [];
-
-  const grid = document.createElement('div');
-  grid.style.cssText = 'display:flex;gap:6px;justify-content:center;flex-wrap:wrap;max-width:300px;margin:0 auto;';
-
-  days.forEach((day, i) => {
-    const vela = document.createElement('div');
-    vela.style.cssText = 'width:36px;height:60px;background:#1a0a0a;border:2px solid #3a1a1a;' +
-      'display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:8px;' +
-      'cursor:pointer;font-size:6px;color:#5a5a3a;';
-    vela.innerHTML = `<span style="font-size:16px;margin-bottom:4px;">🕯️</span>${day}`;
-
-    vela.addEventListener('click', () => {
-      if (order.includes(i)) return;
-      order.push(i);
-      vela.style.borderColor = '#a85a3a';
-      vela.style.background = '#2a1010';
-      vela.style.color = '#aaa878';
-      if (order.length === 7) {
-        // solution is reverse order: 6,5,4,3,2,1,0
-        const correct = order.every((val, idx) => val === 6 - idx);
-        solve(order);
+    })
+    this._add('kitchen_stove',{
+      title:'FOGÃO',
+      hint:'As cinzas estão frias. Sopre para revelar o que está oculto.',
+      type:'click',maxClicks:1,clicks:0,
+      onComplete:(g)=>{
+        if(g.flags.stove_done)return false
+        g.flags.stove_done=true;g.a.wind()
+        g.showDialogue(['Você sopra as cinzas. Elas se espalham no ar.','No fundo do fogão: gravado na pedra — o símbolo da nota do porão.','E uma chave está escondida nas cinzas.'])
+        g.addItem('kitchen_key',true)
+        return true
       }
-    });
-    grid.appendChild(vela);
-    velas.push(vela);
-  });
-  container.appendChild(grid);
-
-  const reset = document.createElement('button');
-  reset.style.cssText = 'margin-top:12px;background:#2a1010;border:1px solid #5a2a2a;color:#5a5a3a;padding:4px 12px;font-family:inherit;cursor:pointer;font-size:10px;';
-  reset.textContent = 'REINICIAR';
-  reset.addEventListener('click', () => {
-    order.length = 0;
-    velas.forEach((v, i) => {
-      v.style.borderColor = '#3a1a1a';
-      v.style.background = '#1a0a0a';
-      v.style.color = '#5a5a3a';
-    });
-  });
-  container.appendChild(reset);
-}
-
-/* ===== PUZZLE 6: Lápides ===== */
-function renderLapides(container, solve) {
-  container.innerHTML = '';
-  const title = document.createElement('div');
-  title.style.cssText = 'color:#a87850;font-size:10px;margin-bottom:12px;';
-  title.textContent = 'COLOQUE OS SÍMBOLOS NAS LÁPIDES:';
-  container.appendChild(title);
-
-  const symbols = ['☽', '⌵', '⌂', '☆', '🔥', '◇'];
-  const lapideSlots = [];
-  const placements = [null, null, null, null, null, null];
-  let selectedSymbol = 0;
-
-  const mainRow = document.createElement('div');
-  mainRow.style.cssText = 'display:flex;gap:8px;justify-content:center;margin-bottom:16px;';
-
-  // lapides 1-6
-  for (let i = 0; i < 6; i++) {
-    const lap = document.createElement('div');
-    lap.style.cssText = 'width:48px;height:64px;background:#1a0a0a;border:2px solid #3a1a1a;' +
-      'display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:16px;' +
-      'cursor:pointer;font-size:8px;color:#5a5a3a;';
-    lap.innerHTML = `<span style="font-size:10px;">${i+1}</span><span style="font-size:16px;margin-top:4px;">⬜</span>`;
-    lap.addEventListener('click', () => {
-      if (placements[i] !== null) return;
-      placements[i] = selectedSymbol;
-      lap.innerHTML = `<span style="font-size:10px;">${i+1}</span><span style="font-size:16px;margin-top:4px;">${symbols[selectedSymbol]}</span>`;
-      lap.style.borderColor = '#a87850';
-      // check if all placed
-      if (placements.every(p => p !== null)) {
-        const correct = placements.every((p, idx) => p === idx);
-        solve(placements);
+    })
+    this._add('kitchen_radio',{
+      title:'RÁDIO',
+      hint:'O dial está solto. Encontre a frequência certa.',
+      type:'dial',target:88.5,current:60,min:60,max:120,
+      onCheck:(g,val)=>{
+        if(Math.abs(val-88.5)<0.5){
+          g.a.radio(880)
+          g.showDialogue(['...estático... "Shiva... a terceira cabeça... vê tudo..." ...estático...','... "a hora do passeio se aproxima"...','O rádio chia. Um medalhão cai do compartimento da pilha.'])
+          g.addItem('medallion',true)
+          return true
+        }
+        return false
       }
-    });
-    mainRow.appendChild(lap);
-    lapideSlots.push(lap);
-  }
-  container.appendChild(mainRow);
-
-  // symbol selector
-  const symRow = document.createElement('div');
-  symRow.style.cssText = 'display:flex;gap:8px;justify-content:center;';
-  const symEls = [];
-  symbols.forEach((sym, i) => {
-    const s = document.createElement('div');
-    s.style.cssText = 'width:32px;height:32px;background:#1a0a0a;border:2px solid #3a1a1a;' +
-      'display:flex;align-items:center;justify-content:center;font-size:14px;cursor:pointer;';
-    s.textContent = sym;
-    s.addEventListener('click', () => {
-      selectedSymbol = i;
-      symEls.forEach((el, j) => {
-        el.style.borderColor = j === i ? '#a87850' : '#3a1a1a';
-      });
-    });
-    symRow.appendChild(s);
-    symEls.push(s);
-  });
-  container.appendChild(symRow);
-  symEls[0].style.borderColor = '#a87850';
-
-  const reset = document.createElement('button');
-  reset.style.cssText = 'margin-top:12px;background:#2a1010;border:1px solid #5a2a2a;color:#5a5a3a;padding:4px 12px;font-family:inherit;cursor:pointer;font-size:10px;';
-  reset.textContent = 'REINICIAR';
-  reset.addEventListener('click', () => {
-    for (let i = 0; i < 6; i++) placements[i] = null;
-    lapideSlots.forEach((lap, i) => {
-      lap.innerHTML = `<span style="font-size:10px;">${i+1}</span><span style="font-size:16px;margin-top:4px;">⬜</span>`;
-      lap.style.borderColor = '#3a1a1a';
-    });
-  });
-  container.appendChild(reset);
-}
-
-/* ===== PUZZLE RENDER MAP ===== */
-const PUZZLE_RENDERERS = {
-  cadeado_joao: renderCadeado,
-  patas_sandalia: renderPatas,
-  radios_ulisses: renderRadios,
-  desenhos_enzo: renderDesenhos,
-  velas_elaine: renderVelas,
-  lapides_giulia: renderLapides,
-};
-
-/* ===== OPEN PUZZLE ===== */
-function openPuzzle(puzzleId, callback) {
-  if (_puzzleActive) return;
-  const data = PUZZLE_DATA[puzzleId];
-  if (!data) return;
-
-  _puzzleActive = true;
-  _currentPuzzleId = puzzleId;
-  _puzzleCallback = callback;
-  if (window.engine && window.engine.state) {
-    window.engine.state.phase = 'puzzle';
-  }
-
-  const overlay = document.getElementById('puzzle-overlay');
-  if (!overlay) { _puzzleActive = false; return; }
-  const titleEl = overlay.querySelector('.puzzle-title');
-  const hintEl = overlay.querySelector('.puzzle-hint');
-  if (titleEl) titleEl.textContent = data.title;
-  if (hintEl) hintEl.textContent = data.hint;
-  overlay.style.display = 'block';
-
-  const content = document.getElementById('puzzle-content');
-  if (!content) { _puzzleActive = false; return; }
-  content.innerHTML = '';
-
-  const renderer = PUZZLE_RENDERERS[puzzleId];
-  if (renderer) {
-    try {
-      renderer(content, (userSolution) => {
-        _checkPuzzleSolution(puzzleId, userSolution);
-      });
-    } catch(e) {
-      console.error('Puzzle render error:', e);
-      _closePuzzle(false);
-    }
-  }
-}
-
-function _checkPuzzleSolution(puzzleId, userSolution) {
-  try {
-    const data = PUZZLE_DATA[puzzleId];
-    if (!data) return;
-
-    let correct = false;
-
-    if (puzzleId === 'cadeado_joao') {
-      correct = JSON.stringify(userSolution) === JSON.stringify(data.solution);
-    } else if (puzzleId === 'patas_sandalia') {
-      const solution = data.solution;
-      correct = userSolution.length === 5 && userSolution.every((s, i) => s === solution[i]);
-    } else if (puzzleId === 'radios_ulisses') {
-      correct = Math.abs(userSolution[0] - 87.5) < 0.2 &&
-                Math.abs(userSolution[1] - 91.3) < 0.2 &&
-                Math.abs(userSolution[2] - 104.7) < 0.2;
-    } else if (puzzleId === 'desenhos_enzo') {
-      correct = userSolution.length === 5 && userSolution.every((v, i) => v === i);
-    } else if (puzzleId === 'velas_elaine') {
-      correct = userSolution.length === 7 && userSolution.every((v, i) => v === 6 - i);
-    } else if (puzzleId === 'lapides_giulia') {
-      correct = userSolution.length === 6 && userSolution.every((p, i) => p === i);
-    }
-
-    if (correct) {
-      _puzzleSolved(puzzleId);
-    } else {
-      if (window.engine && window.engine.audio) {
-        window.engine.audio.playNoise(200, 0.3, 'noise');
+    })
+    this._add('kitchen_sink',{
+      title:'PIA',
+      hint:'A água pinga em um padrão. Conte as gotas.',
+      type:'sequence',sequence:[3,5,2,4,1],pos:0,labels:['1 GOTA','2 GOTAS','3 GOTAS','4 GOTAS','5 GOTAS'],
+      onInput:(g,val)=>{
+        const p=this.get('kitchen_sink')
+        const expected=p.sequence[p.pos]
+        if(val===expected){
+          p.pos++
+          if(p.pos>=p.sequence.length){
+            g.a.water();g.showDialogue(['O ritmo está correto. O cano range.','Algo cai na pia. Uma chave suja de gordura.'])
+            g.addItem('church_key',true)
+            return true
+          }
+          return false
+        }else{
+          p.pos=0;g.a.wrong()
+          return false
+        }
       }
-      const hint = document.getElementById('puzzle-overlay').querySelector('.puzzle-hint');
-      hint.textContent = 'NÃO É ISSO. TENTE NOVAMENTE.';
-      setTimeout(() => {
-        hint.textContent = data.hint;
-      }, 1500);
-    }
-  } catch(e) {
-    console.error('Puzzle check error:', e);
-  }
-}
-
-function _puzzleSolved(puzzleId) {
-  try {
-    const data = PUZZLE_DATA[puzzleId];
-    if (!data) return;
-    const keyIndex = data.keyIndex;
-
-    const ps = window.puzzleState || {};
-    if (ps.solved && ps.solved[keyIndex]) return; // already solved
-    if (ps.solved) ps.solved[keyIndex] = true;
-    if (ps.keys) ps.keys[keyIndex] = true;
-
-    if (data.protectionItem && ps.protectionItems && !ps.protectionItems.includes(data.protectionItem)) {
-      ps.protectionItems.push(data.protectionItem);
-      if (window.player && window.player.inventory) {
-        window.player.inventory.push(data.protectionItem);
-        if (window.player._updateInventoryHUD) window.player._updateInventoryHUD(window.engine);
+    })
+    this._add('church_altar',{
+      title:'ALTAR DA CAPELA',
+      hint:'Três cavidades. Três oferendas. Ciúme, vigilância, punição.',
+      type:'offering',slots:3,accepted:['medallion','bell','feather'],placed:[],
+      onComplete:(g)=>{
+        g.a.chime();g.showDialogue(['As oferendas se encaixam perfeitamente. O altar treme.','Uma passagem se abre. Você sente o peso de seis olhos sobre você.'])
+        g.flags.church_altar_done=true
+        return true
       }
-    }
-
-    if (data.noteId && data.item) {
-      if (window.player && window.player.inventory) {
-        window.player.inventory.push(data.item);
-        if (window.player._updateInventoryHUD) window.player._updateInventoryHUD(window.engine);
+    })
+    this._add('graveyard_1',{
+      title:'TÚMULO 1 — MEMÓRIA',
+      hint:'O que veio primeiro?',
+      type:'click',maxClicks:1,clicks:0,
+      onComplete:(g)=>{
+        if(g.flags.grave1_done)return false
+        g.flags.grave1_done=true;g.a.grave()
+        g.showDialogue(['Você escava a terra fofa. Sob a terra: um osso. Dentro do osso: uma chave.'])
+        g.addItem('graveyard_key',true)
+        return true
       }
-      setTimeout(() => {
-        if (window.showNote) window.showNote(data.noteId);
-      }, 300);
-    }
-
-    if (window.engine) {
-      if (window.engine.audio) window.engine.audio.playPuzzleSolved();
-      if (window.engine.camera) window.engine.camera.shake(3, 0.3);
-    }
-
-    _closePuzzle(true);
-
-    if (window.shivaSystem && window.shivaSystem.onPuzzleSolved) {
-      window.shivaSystem.onPuzzleSolved(window.engine);
-    }
-
-    setTimeout(() => {
-      showDialogue([
-        'A cela se abriu.',
-        'Uma chave. Uma memória.',
-        `${(data.item || '').replace('_', ' ')} — coletado.`,
-        'Você entendeu um pouco mais.',
-      ]);
-    }, 600);
-  } catch(e) {
-    console.error('Puzzle solved error:', e);
-    _closePuzzle(false);
+    })
+    this._add('graveyard_2',{
+      title:'TÚMULO 2 — TEMPO',
+      hint:'O tempo está parado aqui.',
+      type:'click',maxClicks:1,clicks:0,
+      onComplete:(g)=>{
+        if(g.flags.grave2_done)return false
+        g.flags.grave2_done=true;g.a.grave()
+        g.showDialogue(['Você cava. Sob a terra: um relógio de bolso parado. Dentro: uma foto.'])
+        g.addItem('photo',true)
+        return true
+      }
+    })
+    this._add('graveyard_3',{
+      title:'TÚMULO 3 — NOME',
+      hint:'Qual o seu nome?',
+      type:'text_input',answer:'SHIVA',tries:0,
+      onCorrect:(g)=>{
+        g.a.grave();g.showDialogue(['Você sussurra o nome. A terra se move.','Algo sobe à superfície: uma fita vermelha manchada.'])
+        g.addItem('ribbon',true)
+        return true
+      },
+      onWrong:(g)=>{g.a.wrong();g.showDialogue(['Não é esse o nome. Tente novamente.'])}
+    })
+    this._add('graveyard_4',{
+      title:'TÚMULO 4 — MEDO',
+      hint:'Enfrente seu medo.',
+      type:'click',maxClicks:1,clicks:0,
+      onComplete:(g)=>{
+        if(g.flags.grave4_done)return false
+        g.flags.grave4_done=true;g.a.grave()
+        g.showDialogue(['Você enfia a mão na terra escura. Algo toca seus dedos. Uma chave.'])
+        g.addItem('mansion_key',true)
+        return true
+      }
+    })
+    this._add('graveyard_5',{
+      title:'TÚMULO 5 — DESEJO',
+      hint:'O que você mais quer?',
+      type:'click',maxClicks:1,clicks:0,
+      onComplete:(g)=>{
+        if(g.flags.grave5_done)return false
+        g.flags.grave5_done=true;g.a.grave()
+        g.showDialogue(['Você cava. Não há nada. Você cava mais fundo.','Uma caixa. Dentro: uma flor preta fria como metal.'])
+        g.addItem('flower',true)
+        return true
+      }
+    })
+    this._add('mansion_mirror',{
+      title:'O ESPELHO',
+      hint:'Seu reflexo está atrasado. Toque quando ele estiver mais distante.',
+      type:'timed_click',solved:false,
+      onCheck:(g,time)=>{
+        const eTime=time-g.puzzleOpenTime
+        const delay=1000+Math.sin(time*0.002)*300+200
+        if(eTime>delay+100&&eTime<delay+400){
+          g.a.chime();g.showDialogue(['O vidro se distorce. Você atravessa a mão.','Do outro lado, alguém deixou cair uma chave.'])
+          g.addItem('tower_key',true)
+          return true
+        }
+        g.a.wrong();return false
+      }
+    })
+    this._add('mansion_cabinet',{
+      title:'ARMÁRIO DE GAVETAS',
+      hint:'6 celas — 6 chaves — 6 símbolos',
+      type:'combo',length:3,digits:[0,0,0],target:[6,6,6],
+      onCheck:(g,digits)=>{
+        if(digits[0]===6&&digits[1]===6&&digits[2]===6){
+          g.a.unlock();g.showDialogue(['As gavetas se abrem. Dentro: uma coleira quebrada e um anel de prata.'])
+          g.addItem('collar',true);g.addItem('ring',true)
+          return true
+        }
+        g.a.wrong();return false
+      }
+    })
+    this._add('mansion_clock',{
+      title:'RELÓGIO DE PÊNDULO',
+      hint:'O pêndulo está solto. Use algo para dar corda.',
+      type:'use_item',item:'ribbon',used:false,
+      onUse:(g)=>{
+        g.a.clock();g.showDialogue(['Você amarra o pêndulo com a fita. Ele começa a balançar.','O relógio bate seis vezes. Uma gaveta secreta se abre.','Dentro: uma nota.'])
+        g.addNote('mansion')
+        return true
+      }
+    })
+    this._add('library_shelf',{
+      title:'ESTANTE DA BIBLIOTECA',
+      hint:'Vermelho, azul, roxo, dourado, preto.',
+      type:'order',items:[
+        {label:'VERMELHO',color:'#8a3a3a'},
+        {label:'AZUL',color:'#1a2a3a'},
+        {label:'ROXO',color:'#3a2a5a'},
+        {label:'DOURADO',color:'#c4a46c'},
+        {label:'PRETO',color:'#0a0505'}
+      ],slotCount:5,placed:[],solved:false,
+      onComplete:(g)=>{
+        g.a.bell()
+        g.showDialogue(['Os livros se alinham. A estante range.','Um compartimento secreto se revela. Dentro: uma pena preta e uma chave.'])
+        g.addItem('feather',true);g.addItem('tower_key',true)
+        return true
+      }
+    })
+    this._add('tower_shrine',{
+      title:'SANTUÁRIO DE SHIVA',
+      hint:'Subterrâneo, fogo, tempo, morte, vaidade, altura.',
+      type:'candle_order',sequence:[0,1,2,3,4,5],current:0,candles:[
+        {label:'PORÃO',lit:false},{label:'COZINHA',lit:false},
+        {label:'CAPELA',lit:false},{label:'CEMITÉRIO',lit:false},
+        {label:'SALÃO',lit:false},{label:'TORRE',lit:false}
+      ],
+      onLight:(g,idx)=>{
+        const p=this.get('tower_shrine')
+        const order=p.sequence
+        if(idx===order[p.current]){
+          p.current++;p.candles[idx].lit=true;g.a.candle()
+          if(p.current>=p.sequence.length){
+            g.a.chime();g.showDialogue(['As seis velas acendem. A chama forma um círculo.','O santuário se abre. A chave dourada está lá.','E uma nota — a última.'])
+            g.addItem('key6',true);g.addNote('tower')
+            g.flags.shrine_done=true
+            return true
+          }
+        }else{
+          p.current=0;p.candles.forEach(c=>c.lit=false);g.a.wrong()
+        }
+        return false
+      }
+    })
+    this._add('final_altar',{
+      title:'ALTAR FINAL',
+      hint:'Três oferendas para três cabeças.',
+      type:'offering',slots:3,accepted:['collar','ring','flower'],placed:[],
+      onComplete:(g)=>{
+        if(g.flags.final_done)return false
+        const hasKeys=['cellar_key','kitchen_key','church_key','graveyard_key','mansion_key','tower_key','key6']
+          .filter(k=>g.obtained.includes(k)).length
+        const hasNotes=['note_cellar','note_kitchen','note_church','note_graveyard','note_mansion','note_tower']
+          .filter(n=>g.obtained.includes(n)).length
+        const hasProt=['photo','medallion','bell','feather','collar','ring','shard','lantern']
+          .filter(p=>g.obtained.includes(p)).length
+        if(hasKeys>=7&&hasNotes>=6&&hasProt>=5){
+          g.a.final()
+          g.endGame('walk')
+        }else if(hasKeys>=7&&hasProt>=3){
+          g.a.final()
+          g.endGame('collar')
+        }else{
+          g.a.wrong()
+          g.showDialogue(['Nada acontece. Faltam oferendas. Faltam chaves. Falta memória.','Você não está pronto para o Passeio.'])
+          return false
+        }
+        return true
+      }
+    })
+  }
+  _add(id,config){this.puzzles[id]=config}
+  get(id){return this.puzzles[id]}
+  isSolved(id){
+    const p=this.puzzles[id]
+    if(!p)return false
+    if(p.type==='click')return p.clicks>=p.maxClicks
+    if(p.type==='key_slot')return p.placed.length>=p.slots
+    if(p.type==='use_item')return p.used
+    if(p.type==='sequence')return p.pos>=p.sequence.length
+    if(p.type==='offering')return p.placed.length>=p.slots
+    if(p.type==='dial')return p.solved||false
+    if(p.type==='combo')return p.solved||false
+    if(p.type==='order')return p.solved||false
+    if(p.type==='candle_order')return p.current>=p.sequence.length
+    if(p.type==='text_input')return p.solved||false
+    if(p.type==='timed_click')return false
+    return false
   }
 }
-
-function _closePuzzle(solved) {
-  _puzzleActive = false;
-  const overlay = document.getElementById('puzzle-overlay');
-  if (overlay) overlay.style.display = 'none';
-  // cleanup keyboard handlers
-  const content = document.getElementById('puzzle-content');
-  if (content && content._handler) {
-    document.removeEventListener('keydown', content._handler);
-    delete content._handler;
-  }
-
-  if (_puzzleCallback) {
-    const cb = _puzzleCallback;
-    _puzzleCallback = null;
-    _currentPuzzleId = null;
-    try { cb(solved); } catch(e) { console.error('Puzzle callback error:', e); }
-  }
-
-  // only restore if not in note/dialogue
-  if (window.engine && window.engine.state && window.engine.state.phase === 'puzzle') {
-    window.engine.state.phase = 'exploration';
-  }
-}
-
-// close puzzle with Escape
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && _puzzleActive) {
-    _closePuzzle(false);
-  }
-});
-
-// expose
-window.openPuzzle = openPuzzle;
-window.onPuzzleSolved = (puzzleId) => {
-  // called from game.js when puzzle object is interacted with
-  // handled internally now
-};

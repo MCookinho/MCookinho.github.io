@@ -1,319 +1,171 @@
-/* ===== STORY.JS ===== */
-/* Diálogos, notas, lore, textos dos 3 finais */
-
-/* ===== SISTEMA DE DIÁLOGO ===== */
-let _dialogueCallback = null;
-let _dialogueLines = [];
-let _dialogueIndex = 0;
-let _dialogueCharIndex = 0;
-let _dialogueInterval = null;
-let _dialogueActive = false;
-
-function showDialogue(lines, callback) {
-  if (_dialogueActive) return;
-  _dialogueActive = true;
-  _dialogueLines = lines;
-  _dialogueIndex = 0;
-  _dialogueCallback = callback || null;
-  if (window.engine) window.engine.state.phase = 'dialogue';
-
-  const overlay = document.getElementById('dialogue-overlay');
-  overlay.style.display = 'block';
-  document.getElementById('dialogue-overlay').querySelector('.speaker').textContent = '';
-
-  _typeLine();
-}
-
-function _typeLine() {
-  if (_dialogueIndex >= _dialogueLines.length) {
-    _finishDialogue();
-    return;
-  }
-
-  const line = _dialogueLines[_dialogueIndex];
-  const textEl = document.getElementById('dialogue-overlay').querySelector('.text');
-  textEl.textContent = '';
-  _dialogueCharIndex = 0;
-
-  if (_dialogueInterval) clearInterval(_dialogueInterval);
-  _dialogueInterval = setInterval(() => {
-    if (_dialogueCharIndex < line.length) {
-      textEl.textContent += line[_dialogueCharIndex];
-      _dialogueCharIndex++;
-    } else {
-      clearInterval(_dialogueInterval);
-      _dialogueInterval = null;
-    }
-  }, 30);
-}
-
-function _advanceDialogue() {
-  if (_dialogueInterval) {
-    // skip to end of current line
-    clearInterval(_dialogueInterval);
-    _dialogueInterval = null;
-    const line = _dialogueLines[_dialogueIndex];
-    document.getElementById('dialogue-overlay').querySelector('.text').textContent = line;
-    return;
-  }
-  _dialogueIndex++;
-  if (_dialogueIndex >= _dialogueLines.length) {
-    _finishDialogue();
-  } else {
-    _typeLine();
-  }
-}
-
-function _finishDialogue() {
-  _dialogueActive = false;
-  const overlay = document.getElementById('dialogue-overlay');
-  overlay.style.display = 'none';
-  if (window.engine) window.engine.state.phase = 'exploration';
-  if (_dialogueCallback) {
-    const cb = _dialogueCallback;
-    _dialogueCallback = null;
-    cb();
-  }
-}
-
-// Enter avança diálogo
-document.addEventListener('keydown', (e) => {
-  const key = e.key.toLowerCase();
-  if (key === 'enter' && _dialogueActive) {
-    e.preventDefault();
-    _advanceDialogue();
-  }
-  if (key === 'enter' && _noteActive) {
-    e.preventDefault();
-    _closeNote();
-  }
-  if (key === 'enter' && _finalActive) {
-    e.preventDefault();
-    _advanceFinal();
-  }
-});
-
-/* ===== SISTEMA DE ESCOLHA ===== */
-function showChoice(question, options) {
-  return new Promise((resolve) => {
-    const lines = [question, '---'];
-    options.forEach((opt, i) => {
-      lines.push(`[${i+1}] ${opt.text}`);
-    });
-    showDialogue(lines, () => {
-      // wait for keypress
-      const handler = (e) => {
-        const num = parseInt(e.key);
-        if (num >= 1 && num <= options.length) {
-          document.removeEventListener('keydown', handler);
-          resolve(num - 1);
-        }
-      };
-      document.addEventListener('keydown', handler);
-    });
-  });
-}
-
-/* ===== SISTEMA DE NOTAS ===== */
-let _noteActive = false;
-
-const NOTES_DATA = {
-  peu_bilhete: {
-    title: '/// BILHETE NA PAREDE ///',
-    text: '"Cuide dela pra mim, vou viajar. Passeia com ela todo dia, ela gosta. Volto semana que vem. — Peu"\n\nTEM UM NÚMERO RABISCADO: 18\nDEBAIXO TEM OUTRO: 04',
-  },
-  nota_joao: {
-    title: '/// CELA 1 — JOÃO MARCELO ///',
-    text: 'Eu não entendi no começo. Eu só via ela me olhando do canto.\n\nQuando eu abraçava o Peu, ela se sentava na porta. Quando eu ria, ela saía do quarto.\n\nNo dia do meu aniversário — 18 de abril — ela me encarou por uma hora sem piscar.\n\nNaquela noite, eu acordei aqui.\n\nPela fresta da porta, eu vi o rabo dela sumindo no escuro.\n\nEla não gostava de dividir.\n\nEu não era o problema. Eu era só o alvo.\n\nSÍMBOLO: ☽',
-  },
-  nota_sandalia: {
-    title: '/// CELA 2 — SANDÁLIA ///',
-    text: 'Eu era só um gato. Eu não sabia que tinha dono.\n\nEla me via todo dia na porta, recebendo carinho. Eu sentia o cheiro dela em tudo — mas ela nunca chegava perto. Só olhava. De longe.\n\nUm dia eu passei perto dela e ela rosnou. Eu corri.\n\nNão adiantou.\n\nAgora eu fico aqui, neste beco que não termina, andando em círculos.\n\nEu acho que ela quer que eu canse. Mas gato não cansa.\n\nSÍMBOLO: ⌵',
-  },
-  nota_ulisses: {
-    title: '/// CELA 3 — SEU ULISSES ///',
-    text: 'Eu nunca gostei de cachorro. Sempre tive medo.\n\nQuando o Peu apareceu com aquela golden, eu já sabia. Ela me olhava de um jeito que não era normal.\n\nUma noite eu xinguei o Peu na janela — o som do portão, o latido dele, a cara de assustado do menino.\n\nNo dia seguinte eu acordei aqui.\n\nOs rádios não param de tocar. Estático. Vozes.\n\nEu escuto ela latir às vezes. De longe.\n\nEla sabe que eu tenho medo. E ela se alimenta disso.\n\nSÍMBOLO: ⌂',
-  },
-  nota_enzo: {
-    title: '/// CELA 4 — ENZO ///',
-    text: 'Eu gosto de fazer barulho. Minha mãe fala que eu sou elétrico.\n\nEu corro, grito, bato palma, rio alto.\n\nEla não gostava. Eu via ela sair de perto quando eu chegava.\n\nAchar que cachorro não gosta de criança é normal. Mas ela não é normal.\n\nUma noite eu estava gritando no corredor e ela apareceu na minha frente. Não rosnou. Não latiu. Só olhou.\n\nEu acordei aqui.\n\nOs desenhos na parede mudam sozinhos. O sol sempre volta pro começo.\n\nSÍMBOLO: ☆',
-  },
-  nota_elaine: {
-    title: '/// CELA 5 — ELAINE ///',
-    text: 'Eu adoro a Shiva. Desde filhote.\n\nEu dava biscoito, petisco, um brinquedo novo toda semana. Ela comia tudo.\n\nNo começo ela abanava o rabo. Depois, ela só olhava.\n\nDepois, ela começou a virar de costas quando eu chegava. Eu achei que era enjoo.\n\nMas não. Ela estava ficando gorda. Lenta. Ela me culpava.\n\nEu vi nos olhos dela no dia em que ela me prendeu: "Você me deixou feia".\n\nEu juro, eu só queria agradar.\n\nSÍMBOLO: 🔥',
-  },
-  nota_giulia: {
-    title: '/// CELA 6 — GIULIA L. ///',
-    text: 'Eu não devia estar aqui. Eu não fiz nada.\n\nEu só vi.\n\nEra tarde da noite, eu tinha ido na casa do Peu buscar um livro. A luz do corredor estava apagada.\n\nMas tinha uma sombra.\n\nTrês cabeças. Seis olhos vermelhos.\n\nEla me olhou.\n\nEu gritei. Eu não gritei de medo — eu gritei porque eu sabia que não era pra eu ter visto.\n\nQuando eu abri os olhos, já estava aqui.\n\nEntre as lápides. Andando. Sempre andando. Procurando a saída que não existe.\n\nSÍMBOLO: ◇',
-  },
-};
-
-function showNote(noteId) {
-  const data = NOTES_DATA[noteId];
-  if (!data) return;
-
-  _noteActive = true;
-  if (window.engine) window.engine.state.phase = 'note';
-
-  const overlay = document.getElementById('note-overlay');
-  overlay.querySelector('.note-title').textContent = data.title;
-  // format text with line breaks
-  const textEl = overlay.querySelector('.note-text');
-  textEl.innerHTML = data.text.replace(/\n/g, '<br>');
-  overlay.style.display = 'block';
-
-  // mark as read in journal
-  if (noteId.startsWith('nota_')) {
-    const idx = ['joao','sandalia','ulisses','enzo','elaine','giulia'].indexOf(noteId.replace('nota_', ''));
-    if (idx !== -1 && window.puzzleState && !window.puzzleState.notesRead[idx]) {
-      window.puzzleState.notesRead[idx] = true;
-      if (window.journal) window.journal.readCount++;
-      // update HUD memories
-      const memEl = document.getElementById('hud-memories');
-      if (memEl && memEl.children[idx]) {
-        memEl.children[idx].classList.add('filled');
-      }
-      // check all read
-      if (window.journal && window.journal.readCount >= 6) {
-        setTimeout(() => {
-          showDialogue([
-            'AS 6 CELAS ESTÃO ABERTAS.',
-            'A porta dourada te espera no parque.'
-          ]);
-        }, 500);
-      }
-    }
-  }
-}
-
-function _closeNote() {
-  _noteActive = false;
-  if (window.engine) window.engine.state.phase = 'exploration';
-  document.getElementById('note-overlay').style.display = 'none';
-}
-
-// expoe globalmente
-window.showNote = showNote;
-
-/* ===== FINAIS ===== */
-let _finalActive = false;
-let _finalLines = [];
-let _finalIndex = 0;
-let _finalInterval = null;
-
-function showFinal(type) {
-  _finalActive = true;
-  if (window.engine) window.engine.state.phase = 'final';
-
-  const texts = {
-    bad: {
-      title: '/// O OSSO ///',
-      lines: [
-        'Você parou.',
-        'O palácio é grande demais.',
-        'Você senta no chão.',
-        'O eco dos próprios passos te engole.',
-        'Você nunca vai sair daqui.',
-        'Ela está em toda parte.',
-        'E em nenhuma.',
-        'Você prometeu. Não cumpriu.',
-        'Aqui não existe tempo.',
-        'Não existe porta.',
-        'Só o silêncio.',
-        'E o peso de uma promessa quebrada.',
-      ],
+const STORY={
+  intro:[
+    'Você acorda em um quarto escuro. Não sabe seu nome. Não sabe quanto tempo passou. Só sabe que precisa sair.',
+    'Há uma coleira no seu pescoço. O metal é frio. O nome gravado está gasto — ilegível.',
+    'À sua frente, uma porta de aço com três fechaduras. Do outro lado, alguém — ou algo — respira.',
+    'Você sente seis presenças. Seis consciências presas como você. Seis celas. Esse é o número do seu castigo.',
+    'Shiva não fala. Shiva apenas observa. Filha de Cérbero — ciumenta, vigilante, punitiva. Você precisa provar seu valor.',
+    'Para escapar, você precisa de seis chaves. Mas chaves não bastam. Precisa de proteção. Precisa de memória.',
+    'Colete notas. Elas contêm os símbolos que você perdeu. Encontre proteção. E não deixe a lanterna apagar.',
+    '— O Passeio está prestes a começar.'
+  ],
+  endings:{
+    bone:{
+      title:'O OSSO',
+      text:[
+        'Você escapou. As correntes se romperam. A porta cedeu.',
+        'Mas você estava nu. Sem proteção. Sem memória.',
+        'Shiva olha para você. Seu olhar não é de julgamento — é de piedade.',
+        'Na sua mão, apenas um osso roído. Você é um animal de estimação. Sempre foi.',
+        'No mundo lá fora, seus pulmões queimam. Você nunca foi feito para a liberdade.',
+        'Você se arrasta de volta para a casinha. O osso range entre os dentes. A coleira está intacta.',
+        'O Passeio acabou antes de começar.',
+        'FINAL: O OSSO.'
+      ]
     },
-    neutral: {
-      title: '/// A COLEIRA ///',
-      lines: [
-        'A porta se abriu.',
-        'Você voltou pro mundo real.',
-        'Mas algo mudou.',
-        'Você sente quando alguém mente.',
-        'Sente o medo das pessoas como um gosto.',
-        'Você virou o novo porteiro.',
-        'Agora Shiva usa você.',
-        'Pra sentir quem merece ser preso.',
-        'Ela não precisa mais do palácio.',
-        'Ela tem você.',
-        'E você nunca mais vai dormir tranquilo.',
-      ],
+    collar:{
+      title:'A COLEIRA',
+      text:[
+        'Você conseguiu as chaves. Conseguiu proteção.',
+        'Mas faltava alguma coisa. As notas. A memória.',
+        'Shiva te observa passar. Seus olhos dizem: "Você ainda não entendeu."',
+        'Lá fora, o cemitério se estende até o horizonte. Você está livre?',
+        'Você olha para baixo. A coleira ainda está lá. O nome ainda está gasto.',
+        'Você nunca saberá quem era. A coleira é sua identidade agora.',
+        'Você anda. As correntes arrastam atrás de você. Shiva observa do portão.',
+        'Talvez no próximo passeio você lembre.',
+        'FINAL: A COLEIRA.'
+      ]
     },
-    good: {
-      title: '/// O PASSEIO ///',
-      lines: [
-        'O sol nasceu.',
-        'Você sentiu o vento no rosto pela primeira vez em dias.',
-        'Shiva está na sua frente.',
-        'Não deusa. Não monstro.',
-        'Só uma golden retriever.',
-        'Ela abaixa a cabeça.',
-        'Você entende.',
-        'Você se ajoelha. Prende a coleira.',
-        'O palácio se desfaz ao redor de vocês.',
-        'Vocês acordam no mundo real.',
-        'Na calçada de casa.',
-        'O sol está nascendo de verdade.',
-        'Uma senhora acena do portão.',
-        'Um gato cruza o caminho.',
-        'Shiva olha. Mas não persegue.',
-        'Ela lambe sua mão.',
-        'Você cumpriu.',
-        'O Passeio.',
-      ],
-    },
-  };
-
-  const data = texts[type];
-  if (!data) return;
-
-  _finalLines = data.lines;
-  _finalIndex = 0;
-
-  const overlay = document.getElementById('final-overlay');
-  overlay.querySelector('.final-title').textContent = data.title;
-  overlay.querySelector('.final-text').textContent = '';
-  overlay.style.display = 'block';
-
-  const canvas = document.getElementById('game-canvas');
-  canvas.style.display = 'none';
-
-  _typeFinalLine();
-}
-
-function _typeFinalLine() {
-  if (_finalIndex >= _finalLines.length) return;
-
-  const textEl = document.getElementById('final-overlay').querySelector('.final-text');
-  textEl.textContent = '';
-  let ci = 0;
-  const line = _finalLines[_finalIndex];
-
-  if (_finalInterval) clearInterval(_finalInterval);
-  _finalInterval = setInterval(() => {
-    if (ci < line.length) {
-      textEl.textContent += line[ci];
-      ci++;
-    } else {
-      clearInterval(_finalInterval);
-      _finalInterval = null;
-      _finalIndex++;
+    walk:{
+      title:'O PASSEIO',
+      text:[
+        'Todas as portas se abrem. Seis chaves. Cinco proteções. Seis notas.',
+        'Shiva se levanta. Pela primeira vez, algo muda em seu rosto.',
+        'Ela não está brava. Ela está... satisfeita.',
+        '"Você lembrou." A voz não sai da boca dela. Sai de dentro de você.',
+        'O túnel se ilumina. Do outro lado, o mundo. O mundo real.',
+        'Você tira a coleira. Ela cai na poeira.',
+        'Antes de sair, você olha para trás. Shiva está de pé. Seis pares de olhos brilham na escuridão.',
+        'Você acena. Ela não acena de volta. Mas um dos olhos — o olho do meio — parece piscar.',
+        'Você sai. O ar é fresco. O céu está limpo.',
+        'O Passeio finalmente começou.',
+        'FINAL: O PASSEIO.'
+      ]
     }
-  }, 40);
-}
-
-function _advanceFinal() {
-  if (_finalInterval) {
-    // skip
-    clearInterval(_finalInterval);
-    _finalInterval = null;
-    const textEl = document.getElementById('final-overlay').querySelector('.final-text');
-    textEl.textContent = _finalLines[_finalIndex];
-    _finalIndex++;
-    return;
+  },
+  notes:{
+    cellar:{
+      title:'NOTA 1 — O PORÃO',
+      text:'A primeira cela fica no ponto mais fundo. Onde a água acumula e as paredes suam. Procure no escuro, onde a luz não alcança. O primeiro símbolo está na umidade, na ferrugem, no silêncio. Toque a parede. Sinta a textura. O símbolo é uma curva que se morde — como uma cobra sem cabeça nem cauda.',
+      symbol:'⦿'
+    },
+    kitchen:{
+      title:'NOTA 2 — A COZINHA',
+      text:'O fogo guarda segredos que a água não pode lavar. Não procure na panela. Não procure no armário. O fogo está apagado, mas a cinza ainda guarda a forma da chama. Sopre as cinzas. O símbolo aparece: três linhas que se encontram no centro, como pegadas de um pássaro que nunca pousou.',
+      symbol:'⫸'
+    },
+    church:{
+      title:'NOTA 3 — A CAPELA',
+      text:'O tempo está enferrujado neste lugar. O sino não toca há décadas. Mas há uma ordem nas coisas, mesmo na decadência. O banco. O altar. A confissão. Três oferendas para três cabeças. Coloque cada coisa em seu lugar. O símbolo aparece na luz que passa pelo vitral quebrado: um triângulo que contém um círculo que contém nada.',
+      symbol:'◈'
+    },
+    graveyard:{
+      title:'NOTA 4 — O CEMITÉRIO',
+      text:'Os mortos guardam o que os vivos esqueceram. Seis túmulos, seis nomes apagados. Um deles é seu. Como saber qual? Siga a ordem do sofrimento. O primeiro a chegar, o primeiro a partir. O símbolo está na terra fofa do túmulo mais novo: um "X" com uma linha atravessando — como ossos cruzados quebrados ao meio.',
+      symbol:'⚔'
+    },
+    mansion:{
+      title:'NOTA 5 — O SALÃO',
+      text:'A vaidade é o pecado mais antigo. O espelho mostra o que você quer ver, não o que está lá. Desvie o olhar do seu reflexo. Olhe através. O que está atrás de você no reflexo não está atrás de você na realidade. O símbolo está gravado no caixilho do espelho: uma espiral que se desfaz em ondas.',
+      symbol:'꩜'
+    },
+    tower:{
+      title:'NOTA 6 — A TORRE',
+      text:'O ponto mais alto. Shiva mora aqui. Não nos aposentos dela — no topo, onde o vento uiva e o céu toca o chão. Suba os degraus que não existem. Conte as batidas que você não ouve. O símbolo está no piso onde o círculo se fecha com o quadrado, onde o quadrado engole o triângulo: um olho dentro de outro olho.',
+      symbol:'◎'
+    }
+  },
+  descriptions:{
+    cellar_door:'Uma porta enferrujada. Há uma fechadura estranha — símbolos em vez de dentes.',
+    cellar_water:'Poço escuro. A superfície da água reflete algo... não é seu rosto.',
+    cellar_wall:'Parede de pedra úmida. Uma inscrição está gravada aqui.',
+    cellar_chain:'Corrente grossa presa na parede. A outra ponta desaparece na escuridão.',
+    cellar_vent:'Uma ventilação estreita. Não dá para passar. Mas algo brilha lá dentro.',
+    kitchen_stove:'Fogão antigo a lenha. Cinzas frias. Algo está enterrado nelas.',
+    kitchen_cabinet:'Armário de madeira rangendo. Pratos empilhados, todos trincados.',
+    kitchen_door:'Porta para a cela 2. A maçaneta está fria.',
+    kitchen_sink:'Pia de ferro. A água nunca para de pingar. Toc... toc... toc...',
+    kitchen_radio:'Rádio antigo. O dial está solto.',
+    kitchen_knife:'Uma faca cravada na tábua. O cabo tem forma de osso.',
+    church_altar:'Altar de pedra. Três marcas circulares — como se algo estivesse ali antes.',
+    church_pew:'Banco rachado. Alguém gravou "Lembre-se" no encosto.',
+    church_statue:'Estátua de um cão de três cabeças. Uma das cabeças está quebrada.',
+    church_door:'Porta pesada de madeira. O som do outro lado é... respiração.',
+    church_window:'Vitral quebrado. A luz forma padrões no chão.',
+    church_offering:'Uma bandeja de oferendas vazia.',
+    graveyard_fence:'Cercado de ferro. Os ganchos têm formato de dedos.',
+    graveyard_door:'Portal do cemitério. Uma caveira está entalhada na chave.',
+    graveyard_grave1:'Túmulo: "Aqui jaz a memória".',
+    graveyard_grave2:'Túmulo: "Aqui jaz o tempo".',
+    graveyard_grave3:'Túmulo: "Aqui jaz o nome".',
+    graveyard_grave4:'Túmulo: "Aqui jaz o medo".',
+    graveyard_grave5:'Túmulo: "Aqui jaz o desejo".',
+    graveyard_grave6:'Túmulo sem inscrição.',
+    graveyard_tree:'Árvore seca. Os galhos parecem braços.',
+    mansion_door:'Porta do salão. Madeira escura com entalhes de videiras.',
+    mansion_mirror:'Espelho enorme em moldura dourada. Seu reflexo está desfazado no tempo.',
+    mansion_portrait:'Retrato de uma mulher com três cães. O rosto dela está raspado.',
+    mansion_cabinet:'Armário com gavetas. Algo range dentro.',
+    mansion_lamp:'Abajur de pé. A luz é fraca e azulada.',
+    mansion_clock:'Relógio de pêndulo. O pêndulo não se move. Mas o tic-tac continua.',
+    tower_stairs:'Escada em espiral. Não há degraus — apenas sombras.',
+    tower_door:'Porta forrada de veludo. Há um buraco de fechadura.',
+    tower_window:'Janela alta. O céu está cheio de olhos.',
+    tower_bed:'Cama com dossel. Os lençóis estão quentes, como se alguém tivesse acabado de sair.',
+    tower_shrine:'Santinho com velas. A imagem é de uma mulher com cabeça de cadela.',
+    tunnel_path:'Um túnel escuro. Lá longe, uma luz.',
+    tunnel_wall:'As paredes do túnel são cobertas de runas.',
+    tunnel_chain:'Corrente pesada no chão. Você segue ela.',
+    tunnel_light:'Uma luz fraca no fim do túnel.',
+    tunnel_offer:'Uma pequena abertura na parede. Como um nicho de oferendas.',
+    tunnel_altar:'Altar de pedra com três cavidades.',
+    tunnel_eye:'Um olho enorme abre na parede. Ele te encara.',
+    obj_rusty_key:'Chave enferrujada. Ela range.',
+    obj_cellar_key:'Chave do porão. Está fria e úmida.',
+    obj_kitchen_key:'Chave da cozinha. Cheira a gordura.',
+    obj_church_key:'Chave da capela. Tem forma de cruz.',
+    obj_graveyard_key:'Chave do cemitério. A ponta parece um osso.',
+    obj_mansion_key:'Chave do salão. Entalhada com folhas.',
+    obj_tower_key:'Chave da torre. É quente ao toque.',
+    obj_match:'Fósforos. Só resta um.',
+    obj_wax:'Pedaço de vela. Meio derretido.',
+    obj_photo:'Fotografia antiga. Uma mulher, um homem, três cães. Os rostos estão borrados.',
+    obj_medallion:'Medalhão. Dentro, um fio de cabelo negro e uma inscrição: "Para Shiva".',
+    obj_bell:'Sino pequeno de bronze. O som é estranhamente grave.',
+    obj_feather:'Pena preta. Muito grande para ser de um pássaro normal.',
+    obj_skull:'Caveira pequena. Na testa, três marcas de dentes.',
+    obj_collar:'Coleira de couro. A argola está quebrada.',
+    obj_ribbon:'Fita vermelha. Manchada de terra.',
+    obj_shard:'Caco de espelho. O reflexo mostra outra época.',
+    obj_flower:'Flor preta. As pétalas são frias como metal.',
+    obj_ring:'Anel de prata. Dentro: "Sempre sua."',
+    obj_mirror:'Espelho de mão. A moldura tem forma de olho.',
+    obj_candle:'Vela inteira. A cera é preta.',
+    obj_lantern:'Lanterna a óleo. A chama está quase apagando.',
+    obj_rope:'Corda de sisal. Manchas escuras.',
+    obj_key6:'Chave dourada. A cabeça tem três dentes.',
+    obj_heart:'Coração de pedra. Ainda pulsa.',
+    radio_message:'...estático... "Shiva... guardiã... três cabeças..." ...estático... "...a hora do passeio se aproxima..."',
+    shiva_appear:'Uma presença. Um peso no ar. Ela está aqui.',
+    shiva_watch:'Você sente os olhos de Shiva na sua nuca.',
+    shiva_leave:'O peso se foi. Por enquanto.',
+    memory_fill:'Uma memória retorna. Imagens fragmentadas de uma vida anterior.',
+    default_look:'Não há nada de especial aqui.',
+    default_use:'Nada acontece.',
+    locked:'Trancado. Você precisa de uma chave.',
+    wrong_key:'A chave não encaixa.',
+    no_lantern:'Está escuro demais. Sua lanterna não tem combustível.',
+    hint_generic:'Explore cada canto. Olhe para tudo. As respostas estão no ambiente.'
   }
-  if (_finalIndex >= _finalLines.length) return;
-  _typeFinalLine();
 }
-
-window.showFinal = showFinal;
