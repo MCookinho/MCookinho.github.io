@@ -349,18 +349,28 @@
       </div>
     </div>
     <div class="player-right">
+      <div class="player-volume-wrap">
+        <button class="player-btn player-vol-btn" id="playerVolBtn" aria-label="Volume">♪</button>
+        <div class="player-volume-slider" id="playerVolumeSlider">
+          <div class="vol-slider-header">
+            <span class="vol-label">VOL</span>
+            <span class="vol-pct" id="volPct">70%</span>
+          </div>
+          <div class="vol-slider-track">
+            <input type="range" id="playerVolume" min="0" max="1" step="0.05" value="0.7">
+          </div>
+          <div class="vol-slider-footer">
+            <span class="vol-icon">×</span>
+            <span class="vol-icon">♪</span>
+          </div>
+        </div>
+      </div>
       <button class="player-btn" id="playerPrev" aria-label="Anterior">&lt;</button>
       <button class="player-btn" id="playerStop" aria-label="Parar">■</button>
       <button class="player-btn" id="playerRestart" aria-label="Reiniciar">↺</button>
       <button class="player-btn player-play-btn" id="playerPlay" aria-label="Play/Pause">▶</button>
       <button class="player-btn" id="playerNext" aria-label="Próxima">&gt;</button>
       <button class="player-btn player-speed-btn" id="playerSpeed" aria-label="Velocidade">1×</button>
-      <div class="player-volume-wrap">
-        <button class="player-btn player-vol-btn" id="playerVolBtn" aria-label="Volume">♪</button>
-        <div class="player-volume-slider" id="playerVolumeSlider">
-          <input type="range" id="playerVolume" min="0" max="1" step="0.05" value="0.7">
-        </div>
-      </div>
     </div>
   </div>
 

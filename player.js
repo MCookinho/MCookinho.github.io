@@ -29,6 +29,7 @@
   var playerVolume = document.getElementById('playerVolume')
   var playerVolBtn = document.getElementById('playerVolBtn')
   var playerVolumeSlider = document.getElementById('playerVolumeSlider')
+  var volPct = document.getElementById('volPct')
   var musicClose = document.getElementById('musicClose')
   var musicTitle = document.querySelector('.music-title')
 
@@ -437,6 +438,7 @@
     var v = parseFloat(playerVolume.value)
     audio.volume = v
     playerVolBtn.textContent = v === 0 ? '×' : v < 0.4 ? '♩' : '♪'
+    volPct.textContent = Math.round(v * 100) + '%'
   })
 
   playerVolBtn.addEventListener('click', function () {
