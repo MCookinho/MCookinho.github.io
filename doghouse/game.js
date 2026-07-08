@@ -98,6 +98,7 @@ class Game {
     this.shivaTimer=null
     this.diaryRead=false
     this.bellRung=false
+    this.lastWallView=0
     this.introStep=0
     this.flags={}
     this.a.init()
@@ -196,11 +197,11 @@ class Game {
 
   handleClick(x,y){
     if(this.view===4){
-      if(y>570)return this.goToView(0)
+      if(y>570)return this.goDown()
     }else{
-      if(y<30)return this.goToView(4)
-      if(x<50)return this.goToView(this.view-1)
-      if(x>750)return this.goToView(this.view+1)
+      if(y<30)return this.goUp()
+      if(x<50)return this.goLeft()
+      if(x>750)return this.goRight()
     }
 
     const vk=['north','east','south','west','ceiling'][this.view]
@@ -432,14 +433,26 @@ class Game {
   }
 
   /* ─── VIEW NAVIGATION ─── */
-  goToView(idx){
-    if(idx<0)idx=4
-    else if(idx>4)idx=0
-    if(idx===this.view)return
-    this.engine.flashView(()=>{
-      this.view=idx
-      this.a.step()
-    })
+  goLeft(){
+    if(this.view===4)return
+    let idx=this.view-1
+    if(idx<0)idx=3
+    this.engine.flashView(()=>{this.view=idx;this.a.step()})
+  }
+  goRight(){
+    if(this.view===4)return
+    let idx=this.view+1
+    if(idx>3)idx=0
+    this.engine.flashView(()=>{this.view=idx;this.a.step()})
+  }
+  goUp(){
+    if(this.view===4)return
+    this.lastWallView=this.view
+    this.engine.flashView(()=>{this.view=4;this.a.step()})
+  }
+  goDown(){
+    if(this.view!==4)return
+    this.engine.flashView(()=>{this.view=this.lastWallView;this.a.step()})
   }
 
   /* ─── SHIVA TIMER ─── */

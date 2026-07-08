@@ -19,9 +19,11 @@ class Engine {
       return {x:(e.clientX-r.left)/r.width*800,y:(e.clientY-r.top)/r.height*600}
     }
     this.canvas.addEventListener('click',e=>{
+      const g=window.__game
+      if(g&&g.a){g.a.init();g.a.resume()}
       const p=getPos(e)
       if(this.state===S.INTRO)this.handleIntroClick()
-      else if(this.state===S.PLAYING)window.__game.handleClick(p.x,p.y)
+      else if(this.state===S.PLAYING)g.handleClick(p.x,p.y)
     })
     document.getElementById('puzzle-overlay').addEventListener('click',e=>{
       if(this.state!==S.PUZZLE||!this.puzzle)return
@@ -38,10 +40,10 @@ class Engine {
       if(this.state===S.INTRO&&(e.key==='Enter'||e.key===' ')){this.handleIntroClick();return}
       if(this.state!==S.PLAYING)return
       const g=window.__game
-      if(e.key==='ArrowLeft'||e.key==='a')g.goToView(g.view-1)
-      else if(e.key==='ArrowRight'||e.key==='d')g.goToView(g.view+1)
-      else if(e.key==='ArrowUp'||e.key==='w')g.goToView(4)
-      else if(e.key==='ArrowDown'||e.key==='s')g.goToView(g.view===4?0:g.view)
+      if(e.key==='ArrowLeft'||e.key==='a')g.goLeft()
+      else if(e.key==='ArrowRight'||e.key==='d')g.goRight()
+      else if(e.key==='ArrowUp'||e.key==='w')g.goUp()
+      else if(e.key==='ArrowDown'||e.key==='s')g.goDown()
       else if(e.key>='1'&&e.key<='9'){const i=parseInt(e.key)-1;g.selectItem(i)}
     })
     this.canvas.addEventListener('contextmenu',e=>{e.preventDefault()})
@@ -77,23 +79,12 @@ class Engine {
         drawShivaAppearance(ctx,g.view,performance.now()*0.001,t)
       }
 
+      this.drawNavArrows(g,ctx,t)
+
     }
     if(this.state===S.PUZZLE&&this.puzzle&&this.puzzle.render){
       this.puzzle.render(ctx,t)
     }
-  }
-
-  drawDirHint(g){
-    const el=this.dirHint
-    const views=['NORTE','LESTE','SUL','OESTE','TETO']
-    let hint=''
-    if(g.view>0)hint+='◀ '
-    hint+=views[g.view]
-    if(g.view<4)hint+=' ▶'
-    if(g.view!==4)hint+='  ↑TETO'
-    if(g.view!==0)hint+='  ↓CHÃO'
-    el.textContent=hint
-    el.style.display='block'
   }
 
   openPuzzle(p){
@@ -146,6 +137,20 @@ class Engine {
     const ov=document.getElementById('intro-overlay')
     ov.style.display='flex'
     ov.querySelector('.intro-text').textContent=texts[0]
+  }
+
+  drawNavArrows(g,ctx,t){
+    const alpha=0.25+Math.sin(t*0.003)*0.1
+    ctx.fillStyle=`rgba(110,90,70,${alpha})`
+    ctx.font='18px Georgia'
+    ctx.textAlign='center'
+    if(g.view===4){
+      ctx.fillText('▼',400,585)
+    }else{
+      ctx.fillText('◀',14,310)
+      ctx.fillText('▶',786,310)
+      ctx.fillText('▲',400,22)
+    }
   }
 
   showFinal(title,texts){
