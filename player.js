@@ -264,11 +264,14 @@
   }
 
   function stopSong() {
-    if (currentIndex < 0) return
+    if (currentIndex < 0 && !isPlaying) return
     audio.pause()
     audio.currentTime = 0
     currentIndex = -1
     isPlaying = false
+    playerProgressFill.style.width = '0%'
+    playerCurrentTime.textContent = '0:00'
+    playerDuration.textContent = '0:00'
     updateUI()
     hidePlayerBar()
   }
