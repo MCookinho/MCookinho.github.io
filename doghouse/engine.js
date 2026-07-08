@@ -142,7 +142,7 @@ class Tilemap {
 
         let sprite = null;
         if (obj.type === 'item') {
-          sprite = sprites.getItemSprite(obj.itemId);
+          sprite = sprites.getItemSprite(obj.item);
         } else if (obj.type === 'note') {
           sprite = sprites.getItemSprite('note');
         } else if (obj.type === 'puzzle') {

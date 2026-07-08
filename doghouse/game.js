@@ -15,6 +15,7 @@ class Player {
     this.moving = false;
     this.walkFrame = 0;
     this.walkTimer = 0;
+    this.running = false;
     this.inventory = [];
     this.hasLantern = false;
     this.interacting = false;
@@ -31,7 +32,8 @@ class Player {
       return;
     }
 
-    const speed = input.isDown('shift') ? PLAYER_SPRINT : PLAYER_SPEED;
+    const shiftDown = input.isDown('shift');
+    const speed = shiftDown ? PLAYER_SPRINT : PLAYER_SPEED;
     let dx = 0, dy = 0;
 
     if (input.isDown('w') || input.isDown('arrowup')) { dy = -1; this.dir = 'up'; }
@@ -40,10 +42,13 @@ class Player {
     else if (input.isDown('d') || input.isDown('arrowright')) { dx = 1; this.dir = 'right'; }
 
     this.moving = (dx !== 0 || dy !== 0);
+    this.running = this.moving && shiftDown;
     if (this.moving) {
       this.walkTimer += dt;
-      if (this.walkTimer > 0.2) {
-        this.walkFrame = (this.walkFrame + 1) % 2;
+      const frameCount = this.running ? 4 : 4;
+      const interval = this.running ? 0.1 : 0.2;
+      if (this.walkTimer > interval) {
+        this.walkFrame = (this.walkFrame + 1) % frameCount;
         this.walkTimer = 0;
       }
       // move X
@@ -249,7 +254,8 @@ class Player {
   render(ctx, camera) {
     const sx = this.x - camera.x;
     const sy = this.y - camera.y;
-    const sprite = spriteManager.getCharacterSprite('player', this.dir, this.moving ? this.walkFrame : undefined);
+    const animType = this.running ? 'run' : (this.moving ? 'walk' : 'idle');
+    const sprite = spriteManager.getCharacterSprite('player', this.dir, animType, this.walkFrame);
     if (sprite) {
       spriteManager.renderSprite(ctx, sprite, sx - 2, sy - 2, 1);
     }
@@ -542,6 +548,6 @@ window.addEventListener('load', () => {
 document.addEventListener('keydown', (e) => {
   if (e.key === 'F1') {
     e.preventDefault();
-    spriteManager.exportSpritesheet();
+    spriteManager.exportSprites();
   }
 });

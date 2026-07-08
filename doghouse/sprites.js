@@ -887,6 +887,373 @@ function makeOven() {
   return s;
 }
 
+/* ================================================================
+   NOVOS TILES (47–80)
+   ================================================================ */
+
+function makeTileFloor() {
+  const s = empty(16,16);
+  fill(s, 0,0, 15,15, 14);
+  for (let y = 0; y < 16; y += 2)
+    for (let x = 0; x < 16; x += 2)
+      fill(s, x, y, x, y, 15);
+  return s;
+}
+
+function makeCarpet() {
+  const s = empty(16,16);
+  fill(s, 0,0, 15,15, 6);
+  fill(s, 1,1, 14,14, 5);
+  for (let y = 2; y < 14; y += 3)
+    for (let x = 2; x < 14; x += 3)
+      set(s, x, y, 4);
+  return s;
+}
+
+function makeHedge() {
+  const s = empty(16,16);
+  fill(s, 0,0, 15,15, 11);
+  fill(s, 1,1, 14,14, 6);
+  for (let y = 0; y < 16; y += 3)
+    for (let x = 1; x < 15; x += 4)
+      set(s, x, y, 11);
+  return s;
+}
+
+function makeBathtub() {
+  const s = empty(16,16);
+  fill(s, 1,2, 14,12, 14);
+  fill(s, 2,3, 13,11, 15);
+  fill(s, 3,4, 12,10, 10);
+  fill(s, 1,2, 14,2, 7);
+  fill(s, 1,12, 14,13, 7);
+  set(s, 1,3, 7); set(s, 14,3, 7);
+  set(s, 1,11, 7); set(s, 14,11, 7);
+  fill(s, 5,1, 10,1, 7);
+  set(s, 7,0, 7); set(s, 8,0, 7);
+  set(s, 5,2, 7); set(s, 10,2, 7);
+  set(s, 3,13, 7); set(s, 12,13, 7);
+  set(s, 3,14, 3); set(s, 12,14, 3);
+  return s;
+}
+
+function makeShoeRack() {
+  const s = empty(16,16);
+  fill(s, 1,3, 14,14, 4);
+  fill(s, 2,4, 13,13, 7);
+  fill(s, 1,6, 14,6, 4);
+  fill(s, 1,9, 14,9, 4);
+  fill(s, 1,12, 14,12, 4);
+  set(s, 3,5, 2); set(s, 4,5, 5); set(s, 5,5, 2); set(s, 6,5, 5);
+  set(s, 8,5, 2); set(s, 9,5, 5); set(s, 10,5, 2); set(s, 11,5, 5);
+  set(s, 3,8, 2); set(s, 4,8, 5); set(s, 5,8, 2);
+  set(s, 9,8, 2); set(s, 10,8, 5); set(s, 11,8, 2);
+  set(s, 3,11, 2); set(s, 4,11, 5);
+  set(s, 10,11, 2); set(s, 11,11, 5);
+  return s;
+}
+
+function makeCoatRack() {
+  const s = empty(16,16);
+  fill(s, 7,2, 8,14, 7);
+  set(s, 7,15, 3); set(s, 8,15, 3);
+  set(s, 4,1, 7); set(s, 6,1, 7);
+  set(s, 8,1, 7); set(s, 10,1, 7);
+  fill(s, 3,2, 5,7, 5);
+  fill(s, 9,2, 11,7, 6);
+  fill(s, 5,3, 7,8, 4);
+  set(s, 6,0, 7); set(s, 7,0, 7); set(s, 8,0, 7);
+  set(s, 9,0, 7); set(s, 5,0, 7);
+  return s;
+}
+
+function makeDeskPc() {
+  const s = empty(16,16);
+  fill(s, 1,8, 14,12, 4);
+  fill(s, 2,9, 13,11, 7);
+  fill(s, 4,2, 11,7, 2);
+  fill(s, 5,3, 10,6, 10);
+  set(s, 7,3, 14); set(s, 8,3, 14);
+  fill(s, 7,7, 8,8, 2);
+  fill(s, 4,9, 8,10, 1);
+  fill(s, 5,9, 7,10, 15);
+  set(s, 3,12, 3); set(s, 12,12, 3);
+  set(s, 3,15, 3); set(s, 12,15, 3);
+  return s;
+}
+
+function makeDiningTable() {
+  const s = empty(16,16);
+  fill(s, 2,6, 13,9, 4);
+  fill(s, 3,7, 12,8, 7);
+  set(s, 7,7, 8); set(s, 8,7, 8);
+  fill(s, 3,9, 4,14, 3);
+  fill(s, 11,9, 12,14, 3);
+  set(s, 3,15, 3); set(s, 12,15, 3);
+  return s;
+}
+
+function makeStool() {
+  const s = empty(16,16);
+  fill(s, 3,6, 12,8, 4);
+  fill(s, 4,7, 11,7, 7);
+  set(s, 4,8, 3); set(s, 7,8, 3); set(s, 11,8, 3);
+  fill(s, 4,9, 4,14, 3);
+  fill(s, 11,9, 11,14, 3);
+  set(s, 7,9, 3); fill(s, 7,10, 7,14, 3);
+  return s;
+}
+
+function makeCabinet() {
+  const s = empty(16,16);
+  fill(s, 1,0, 14,14, 4);
+  fill(s, 2,1, 13,13, 7);
+  fill(s, 2,1, 6,13, 7);
+  fill(s, 9,1, 13,13, 7);
+  set(s, 4,7, 5); set(s, 11,7, 5);
+  set(s, 6,7, 5); set(s, 9,7, 5);
+  return s;
+}
+
+function makeArmchair() {
+  const s = empty(16,16);
+  fill(s, 1,2, 14,12, 6);
+  fill(s, 2,3, 13,11, 5);
+  fill(s, 1,2, 14,5, 6);
+  fill(s, 2,3, 13,4, 5);
+  fill(s, 1,3, 2,10, 6);
+  fill(s, 13,3, 14,10, 6);
+  fill(s, 3,6, 12,9, 5);
+  fill(s, 4,7, 11,8, 4);
+  set(s, 3,12, 3); set(s, 12,12, 3);
+  set(s, 3,15, 3); set(s, 12,15, 3);
+  return s;
+}
+
+function makeFloorLamp() {
+  const s = empty(16,16);
+  fill(s, 7,0, 8,14, 7);
+  fill(s, 5,13, 10,14, 3);
+  set(s, 5,15, 3); set(s, 10,15, 3);
+  fill(s, 4,0, 11,1, 7);
+  fill(s, 5,0, 10,0, 8);
+  fill(s, 6,1, 9,3, 15);
+  return s;
+}
+
+function makeVaseFlowers() {
+  const s = empty(16,16);
+  fill(s, 6,8, 9,13, 7);
+  fill(s, 7,9, 8,12, 8);
+  set(s, 6,5, 6); set(s, 5,6, 6); set(s, 7,6, 6);
+  set(s, 8,5, 5); set(s, 9,6, 5); set(s, 7,4, 5);
+  set(s, 6,7, 11); set(s, 8,7, 11);
+  set(s, 6,6, 11); set(s, 7,5, 11); set(s, 8,6, 11);
+  set(s, 7,7, 11); set(s, 8,7, 11);
+  return s;
+}
+
+function makeTallPlant() {
+  const s = empty(16,16);
+  fill(s, 6,7, 9,14, 7);
+  fill(s, 7,8, 8,13, 8);
+  fill(s, 5,7, 10,7, 7);
+  fill(s, 2,1, 4,8, 11);
+  fill(s, 11,2, 13,9, 11);
+  fill(s, 6,0, 9,2, 11);
+  fill(s, 4,2, 6,6, 11);
+  fill(s, 9,1, 11,5, 11);
+  fill(s, 3,2, 3,5, 6);
+  fill(s, 12,3, 12,6, 6);
+  set(s, 7,0, 6); set(s, 8,0, 6);
+  return s;
+}
+
+function makeBox() {
+  const s = empty(16,16);
+  fill(s, 2,2, 13,13, 4);
+  fill(s, 3,3, 12,12, 7);
+  fill(s, 3,5, 12,5, 4);
+  fill(s, 3,8, 12,8, 4);
+  fill(s, 3,11, 12,11, 4);
+  set(s, 3,3, 3); set(s, 12,3, 3);
+  set(s, 3,12, 3); set(s, 12,12, 3);
+  return s;
+}
+
+function makeBarrel() {
+  const s = empty(16,16);
+  fill(s, 2,2, 13,13, 3);
+  fill(s, 3,3, 12,12, 7);
+  fill(s, 3,3, 12,4, 4);
+  fill(s, 3,11, 12,12, 4);
+  fill(s, 2,5, 13,6, 3);
+  fill(s, 2,9, 13,10, 3);
+  fill(s, 4,2, 11,2, 4);
+  return s;
+}
+
+function makeWallMirror() {
+  const s = empty(16,16);
+  fill(s, 3,2, 12,13, 7);
+  fill(s, 4,3, 11,12, 14);
+  fill(s, 4,3, 11,12, 15);
+  set(s, 7,4, 8); set(s, 8,4, 8);
+  set(s, 7,8, 8); set(s, 8,8, 8);
+  set(s, 6,5, 1); set(s, 9,5, 1);
+  return s;
+}
+
+function makeRadio() {
+  const s = empty(16,16);
+  fill(s, 1,2, 14,12, 4);
+  fill(s, 2,3, 13,11, 7);
+  fill(s, 2,4, 7,10, 2);
+  for (let y = 4; y < 11; y += 2)
+    for (let x = 2; x < 8; x += 2)
+      set(s, x, y, 1);
+  fill(s, 9,4, 12,6, 15);
+  fill(s, 10,5, 11,5, 2);
+  set(s, 9,4, 2); set(s, 12,4, 2);
+  set(s, 9,6, 2); set(s, 12,6, 2);
+  set(s, 9,9, 5); set(s, 10,9, 5);
+  set(s, 11,9, 5); set(s, 12,9, 5);
+  set(s, 9,10, 5); set(s, 12,10, 5);
+  set(s, 7,1, 7); set(s, 8,1, 7);
+  set(s, 7,0, 7);
+  set(s, 3,12, 3); set(s, 12,12, 3);
+  return s;
+}
+
+function makeFan() {
+  const s = empty(16,16);
+  fill(s, 6,4, 9,14, 7);
+  set(s, 6,15, 3); set(s, 9,15, 3);
+  fill(s, 4,12, 11,13, 3);
+  set(s, 5,14, 3); set(s, 10,14, 3);
+  fill(s, 6,4, 9,7, 3);
+  fill(s, 7,5, 8,6, 7);
+  fill(s, 7,1, 8,3, 14);
+  fill(s, 7,8, 8,10, 14);
+  fill(s, 3,5, 5,6, 14);
+  fill(s, 10,5, 12,6, 14);
+  set(s, 7,1, 15); set(s, 8,1, 15);
+  set(s, 7,10, 15); set(s, 8,10, 15);
+  set(s, 3,5, 15); set(s, 12,5, 15);
+  fill(s, 3,3, 12,8, 7);
+  fill(s, 4,4, 11,7, 0);
+  return s;
+}
+
+function makeWallClock() {
+  const s = empty(16,16);
+  fill(s, 3,2, 12,13, 7);
+  fill(s, 4,3, 11,12, 15);
+  fill(s, 5,4, 10,11, 14);
+  set(s, 7,4, 2); set(s, 8,4, 2);
+  set(s, 11,7, 2); set(s, 11,8, 2);
+  set(s, 7,11, 2); set(s, 8,11, 2);
+  set(s, 4,7, 2); set(s, 4,8, 2);
+  fill(s, 7,5, 7,9, 2);
+  fill(s, 7,7, 10,7, 2);
+  set(s, 7,7, 3);
+  set(s, 7,13, 7); set(s, 8,13, 7);
+  set(s, 7,14, 5); set(s, 8,14, 5);
+  return s;
+}
+
+function makeCandelabra() {
+  const s = empty(16,16);
+  fill(s, 6,6, 9,13, 7);
+  fill(s, 7,7, 8,12, 8);
+  fill(s, 3,6, 5,7, 7);
+  fill(s, 10,6, 12,7, 7);
+  fill(s, 3,3, 4,6, 15);
+  fill(s, 10,3, 11,6, 15);
+  fill(s, 7,2, 8,6, 15);
+  set(s, 3,2, 6); set(s, 4,2, 6);
+  set(s, 10,2, 6); set(s, 11,2, 6);
+  set(s, 7,1, 6); set(s, 8,1, 6);
+  set(s, 3,1, 15); set(s, 10,1, 15);
+  set(s, 7,0, 15);
+  fill(s, 5,12, 10,13, 3);
+  set(s, 6,14, 3); set(s, 9,14, 3);
+  return s;
+}
+
+function makeFlowerBed() {
+  const s = empty(16,16);
+  fill(s, 0,0, 15,15, 11);
+  fill(s, 0,0, 15,3, 0);
+  fill(s, 0,12, 15,15, 0);
+  fill(s, 0,0, 3,15, 0);
+  fill(s, 12,0, 15,15, 0);
+  set(s, 3,3, 6); set(s, 5,3, 5);
+  set(s, 9,4, 6); set(s, 11,3, 5);
+  set(s, 4,7, 15); set(s, 8,7, 15);
+  set(s, 6,10, 6); set(s, 10,10, 5);
+  set(s, 3,9, 8); set(s, 12,9, 15);
+  set(s, 5,5, 11); set(s, 7,5, 11);
+  set(s, 11,5, 11); set(s, 5,9, 11);
+  return s;
+}
+
+function makeManhole() {
+  const s = empty(16,16);
+  fill(s, 0,0, 15,15, 1);
+  fill(s, 2,2, 13,13, 2);
+  fill(s, 3,3, 12,12, 3);
+  set(s, 3,3, 0); set(s, 12,3, 0);
+  set(s, 3,12, 0); set(s, 12,12, 0);
+  fill(s, 7,3, 8,12, 2);
+  fill(s, 3,7, 12,8, 2);
+  set(s, 7,7, 0); set(s, 8,7, 0);
+  set(s, 4,4, 7); set(s, 11,4, 7);
+  set(s, 4,11, 7); set(s, 11,11, 7);
+  return s;
+}
+
+function makeTrafficLight() {
+  const s = empty(16,16);
+  fill(s, 7,2, 8,15, 3);
+  fill(s, 7,2, 8,14, 7);
+  fill(s, 5,2, 10,7, 3);
+  fill(s, 6,2, 9,7, 2);
+  set(s, 7,3, 6); set(s, 8,3, 6);
+  set(s, 7,5, 15); set(s, 8,5, 15);
+  set(s, 7,7, 11); set(s, 8,7, 11);
+  set(s, 7,4, 0); set(s, 8,6, 0);
+  fill(s, 7,2, 8,3, 6);
+  return s;
+}
+
+function makeLectern() {
+  const s = empty(16,16);
+  fill(s, 4,2, 11,10, 4);
+  fill(s, 5,3, 10,9, 7);
+  fill(s, 4,2, 11,3, 7);
+  fill(s, 5,3, 10,3, 8);
+  fill(s, 5,4, 10,5, 6);
+  fill(s, 6,4, 9,5, 5);
+  fill(s, 5,10, 10,11, 4);
+  set(s, 6,12, 3); set(s, 9,12, 3);
+  set(s, 6,15, 3); set(s, 9,15, 3);
+  return s;
+}
+
+function makeParkLamp() {
+  const s = empty(16,16);
+  fill(s, 7,3, 8,14, 3);
+  fill(s, 7,3, 8,13, 7);
+  fill(s, 5,0, 10,2, 3);
+  fill(s, 6,0, 9,2, 7);
+  fill(s, 6,2, 9,2, 15);
+  fill(s, 6,3, 9,4, 15);
+  fill(s, 5,13, 10,14, 3);
+  set(s, 5,15, 3); set(s, 10,15, 3);
+  return s;
+}
+
 /* Tile registry with variants */
 const T_SPRITES = {
   1: [makeFloor(), makeFloorB(), makeFloorC()],
@@ -934,7 +1301,33 @@ const T_SPRITES = {
   43: makeWashingMachine(),
   44: makeShower(),
   45: makeBedside(),
-  46: makeOven(),
+   46: makeOven(),
+  47: [makeTileFloor(), makeTileFloor()],
+  48: makeCarpet(),
+  49: makeHedge(),
+  50: makeBathtub(),
+  51: makeShoeRack(),
+  52: makeCoatRack(),
+  53: makeDeskPc(),
+  54: makeDiningTable(),
+  55: makeStool(),
+  56: makeCabinet(),
+  57: makeArmchair(),
+  58: makeFloorLamp(),
+  59: makeVaseFlowers(),
+  60: makeTallPlant(),
+  61: makeBox(),
+  62: makeBarrel(),
+  63: makeWallMirror(),
+  64: makeRadio(),
+  65: makeFan(),
+  66: makeWallClock(),
+  67: makeCandelabra(),
+  68: makeFlowerBed(),
+  69: makeManhole(),
+  70: makeTrafficLight(),
+  71: makeLectern(),
+  72: makeParkLamp(),
 };
 
 /* ================================================================
@@ -997,8 +1390,8 @@ function makePlayer(dir) {
 
 function makePlayerWalk(dir, frame) {
   const s = makePlayer(dir);
-  if (frame === 1) {
-    // alternate leg positions
+  const f = frame % 4;
+  if (f === 1 || f === 3) {
     fill(s, 5,11, 7,14, 0);
     fill(s, 8,11, 10,14, 0);
     fill(s, 5,14, 7,15, 0);
@@ -1008,6 +1401,58 @@ function makePlayerWalk(dir, frame) {
     fill(s, 4,14, 6,15, 2);
     fill(s, 9,14, 11,15, 2);
   }
+  if (f === 1) {
+    fill(s, 3,6, 3,9, 0);
+    fill(s, 12,6, 12,9, 0);
+    fill(s, 13,6, 13,8, 10);
+    fill(s, 2,6, 2,7, 10);
+    set(s, 2,7, 8); set(s, 13,8, 8);
+  }
+  if (f === 3) {
+    fill(s, 3,6, 3,9, 0);
+    fill(s, 12,6, 12,9, 0);
+    fill(s, 2,6, 2,8, 10);
+    fill(s, 13,6, 13,7, 10);
+    set(s, 2,8, 8); set(s, 13,7, 8);
+  }
+  return s;
+}
+
+function makePlayerRun(dir, frame) {
+  const s = makePlayer(dir);
+  const f = frame % 4;
+  // lean forward: shift jacket and arms
+  fill(s, 4,5, 11,10, 0);
+  fill(s, 5,5, 10,5, 0);
+  fill(s, 3,6, 3,10, 0);
+  fill(s, 12,6, 12,10, 0);
+  fill(s, 5,5, 11,10, 10);
+  fill(s, 6,5, 10,5, 2);
+  fill(s, 7,6, 8,10, 12);
+  // arms pumping
+  fill(s, 4,6, 4,8, 10);
+  fill(s, 11,6, 11,8, 10);
+  set(s, 4,8, 8); set(s, 11,8, 8);
+  // legs
+  if (f === 0) {
+    fill(s, 5,11, 7,14, 0);
+    fill(s, 8,11, 10,14, 0);
+    fill(s, 5,14, 7,15, 0);
+    fill(s, 8,14, 10,15, 0);
+    fill(s, 4,11, 6,14, 1);
+    fill(s, 9,11, 11,14, 1);
+    fill(s, 4,14, 6,15, 2);
+    fill(s, 9,14, 11,15, 2);
+  } else if (f === 2) {
+    fill(s, 5,11, 7,14, 0);
+    fill(s, 8,11, 10,14, 0);
+    fill(s, 5,14, 7,15, 0);
+    fill(s, 8,14, 10,15, 0);
+    fill(s, 6,11, 8,14, 1);
+    fill(s, 7,11, 9,14, 1);
+    fill(s, 6,14, 8,15, 2);
+    fill(s, 7,14, 9,15, 2);
+  }
   return s;
 }
 
@@ -1015,10 +1460,14 @@ const PLAYER_DOWN = makePlayer('down');
 const PLAYER_UP = makePlayer('up');
 const PLAYER_LEFT = makePlayer('left');
 const PLAYER_RIGHT = makePlayer('right');
-const PLAYER_WALK_DOWN = [PLAYER_DOWN, makePlayerWalk('down', 1)];
-const PLAYER_WALK_UP = [PLAYER_UP, makePlayerWalk('up', 1)];
-const PLAYER_WALK_LEFT = [PLAYER_LEFT, makePlayerWalk('left', 1)];
-const PLAYER_WALK_RIGHT = [PLAYER_RIGHT, makePlayerWalk('right', 1)];
+const PLAYER_WALK_DOWN = [makePlayerWalk('down', 0), makePlayerWalk('down', 1), makePlayerWalk('down', 2), makePlayerWalk('down', 3)];
+const PLAYER_WALK_UP = [makePlayerWalk('up', 0), makePlayerWalk('up', 1), makePlayerWalk('up', 2), makePlayerWalk('up', 3)];
+const PLAYER_WALK_LEFT = [makePlayerWalk('left', 0), makePlayerWalk('left', 1), makePlayerWalk('left', 2), makePlayerWalk('left', 3)];
+const PLAYER_WALK_RIGHT = [makePlayerWalk('right', 0), makePlayerWalk('right', 1), makePlayerWalk('right', 2), makePlayerWalk('right', 3)];
+const PLAYER_RUN_DOWN = [makePlayerRun('down', 0), makePlayerRun('down', 1), makePlayerRun('down', 2), makePlayerRun('down', 3)];
+const PLAYER_RUN_UP = [makePlayerRun('up', 0), makePlayerRun('up', 1), makePlayerRun('up', 2), makePlayerRun('up', 3)];
+const PLAYER_RUN_LEFT = [makePlayerRun('left', 0), makePlayerRun('left', 1), makePlayerRun('left', 2), makePlayerRun('left', 3)];
+const PLAYER_RUN_RIGHT = [makePlayerRun('right', 0), makePlayerRun('right', 1), makePlayerRun('right', 2), makePlayerRun('right', 3)];
 
 /* Shiva — golden retriever */
 function makeShiva(dir) {
@@ -1088,10 +1537,14 @@ const SHIVA_DOWN = makeShiva('down');
 const SHIVA_UP = makeShiva('up');
 const SHIVA_LEFT = makeShiva('left');
 const SHIVA_RIGHT = makeShiva('right');
-const SHIVA_WALK_DOWN = [SHIVA_DOWN, makeShiva('down')];
-const SHIVA_WALK_UP = [SHIVA_UP, makeShiva('up')];
-const SHIVA_WALK_LEFT = [SHIVA_LEFT, makeShiva('left')];
-const SHIVA_WALK_RIGHT = [SHIVA_RIGHT, makeShiva('right')];
+const SHIVA_WALK_DOWN = [SHIVA_DOWN, makeShiva('down'), SHIVA_DOWN, makeShiva('down')];
+const SHIVA_WALK_UP = [SHIVA_UP, makeShiva('up'), SHIVA_UP, makeShiva('up')];
+const SHIVA_WALK_LEFT = [SHIVA_LEFT, makeShiva('left'), SHIVA_LEFT, makeShiva('left')];
+const SHIVA_WALK_RIGHT = [SHIVA_RIGHT, makeShiva('right'), SHIVA_RIGHT, makeShiva('right')];
+const SHIVA_RUN_DOWN = SHIVA_WALK_DOWN;
+const SHIVA_RUN_UP = SHIVA_WALK_UP;
+const SHIVA_RUN_LEFT = SHIVA_WALK_LEFT;
+const SHIVA_RUN_RIGHT = SHIVA_WALK_RIGHT;
 
 /* Shiva evil (32×32) — three-headed form */
 function makeShivaEvil() {
@@ -1336,6 +1789,34 @@ const I_MEMORY = (() => {
   return s;
 })();
 
+const I_PHOTO = (() => {
+  const s = empty(16,16);
+  fill(s, 2,2, 13,13, 14);
+  fill(s, 3,3, 12,12, 15);
+  fill(s, 3,3, 12,5, 8);
+  fill(s, 4,4, 11,4, 6);
+  fill(s, 3,6, 12,8, 11);
+  fill(s, 3,9, 12,12, 7);
+  return s;
+})();
+
+const I_LETTER = (() => {
+  const s = empty(16,16);
+  fill(s, 2,3, 13,12, 15);
+  fill(s, 3,4, 12,11, 14);
+  // envelope flap
+  fill(s, 5,3, 10,3, 8);
+  fill(s, 4,4, 11,4, 8);
+  set(s, 7,5, 8); set(s, 8,5, 8);
+  // address lines
+  set(s, 5,8, 3); set(s, 6,8, 3); set(s, 7,8, 3);
+  set(s, 5,9, 3); set(s, 6,9, 3);
+  // stamp
+  set(s, 10,5, 6); set(s, 11,5, 6);
+  set(s, 10,6, 6); set(s, 11,6, 6);
+  return s;
+})();
+
 /* ================================================================
    UI
    ================================================================ */
@@ -1387,22 +1868,30 @@ class Sprites {
     return sprite;
   }
 
-  getCharacterSprite(name, direction, walkFrame) {
-    const key = `${name}_${direction}_${walkFrame || 0}`;
+  getCharacterSprite(name, direction, animType, frame) {
+    const key = `${name}_${direction}_${animType || 'idle'}_${frame || 0}`;
     if (this.cache[key]) return this.cache[key];
 
     let sprite;
+    const d = direction || 'down';
+    const f = frame || 0;
+
     if (name === 'player') {
-      if (walkFrame !== undefined) {
-        const anims = { down: PLAYER_WALK_DOWN, up: PLAYER_WALK_UP, left: PLAYER_WALK_LEFT, right: PLAYER_WALK_RIGHT };
-        sprite = (anims[direction] || PLAYER_WALK_DOWN)[walkFrame % 2];
-      } else {
-        const sprites = { down: PLAYER_DOWN, up: PLAYER_UP, left: PLAYER_LEFT, right: PLAYER_RIGHT };
-        sprite = sprites[direction] || PLAYER_DOWN;
-      }
+      const anims = {
+        idle: { down: PLAYER_DOWN, up: PLAYER_UP, left: PLAYER_LEFT, right: PLAYER_RIGHT },
+        walk: { down: PLAYER_WALK_DOWN, up: PLAYER_WALK_UP, left: PLAYER_WALK_LEFT, right: PLAYER_WALK_RIGHT },
+        run:  { down: PLAYER_RUN_DOWN, up: PLAYER_RUN_UP, left: PLAYER_RUN_LEFT, right: PLAYER_RUN_RIGHT },
+      };
+      const arr = (anims[animType] || anims.idle)[d] || PLAYER_WALK_DOWN;
+      sprite = Array.isArray(arr) ? arr[f % arr.length] : arr;
     } else if (name === 'shiva') {
-      const sprites = { down: SHIVA_DOWN, up: SHIVA_UP, left: SHIVA_LEFT, right: SHIVA_RIGHT };
-      sprite = sprites[direction] || SHIVA_DOWN;
+      const anims = {
+        idle: { down: SHIVA_DOWN, up: SHIVA_UP, left: SHIVA_LEFT, right: SHIVA_RIGHT },
+        walk: { down: SHIVA_WALK_DOWN, up: SHIVA_WALK_UP, left: SHIVA_WALK_LEFT, right: SHIVA_WALK_RIGHT },
+        run:  { down: SHIVA_RUN_DOWN, up: SHIVA_RUN_UP, left: SHIVA_RUN_LEFT, right: SHIVA_RUN_RIGHT },
+      };
+      const arr = (anims[animType] || anims.idle)[d] || SHIVA_WALK_DOWN;
+      sprite = Array.isArray(arr) ? arr[f % arr.length] : arr;
     } else if (name === 'shiva_evil') {
       sprite = SHIVA_EVIL;
     } else if (name === 'shiva_shadow') {
@@ -1418,7 +1907,9 @@ class Sprites {
     const items = {
       lantern: I_LANTERN, key: I_KEY, herbs: I_HERBS, salt: I_SALT,
       amulet: I_AMULET, chalk: I_CHALK, mirror: I_MIRROR, note: I_NOTE,
-      memory: I_MEMORY
+      memory: I_MEMORY, photo: I_PHOTO, letter: I_LETTER,
+      chave_praca: I_KEY, amuleto_osso: I_AMULET, sal_grosso: I_SALT,
+      giz_cera: I_CHALK, ervas: I_HERBS, espelho: I_MIRROR,
     };
     return items[name] || null;
   }
@@ -1443,60 +1934,157 @@ class Sprites {
     }
   }
 
-  generateSpritesheet() {
-    const allSprites = [
-      { name:'player_down', sprite:PLAYER_DOWN, w:16, h:16 },
-      { name:'player_up', sprite:PLAYER_UP, w:16, h:16 },
-      { name:'player_left', sprite:PLAYER_LEFT, w:16, h:16 },
-      { name:'player_right', sprite:PLAYER_RIGHT, w:16, h:16 },
-      { name:'shiva_down', sprite:SHIVA_DOWN, w:16, h:16 },
-      { name:'shiva_up', sprite:SHIVA_UP, w:16, h:16 },
-      { name:'shiva_left', sprite:SHIVA_LEFT, w:16, h:16 },
-      { name:'shiva_right', sprite:SHIVA_RIGHT, w:16, h:16 },
-      { name:'shiva_evil', sprite:SHIVA_EVIL, w:32, h:32 },
-      { name:'shiva_shadow', sprite:SHIVA_SHADOW, w:16, h:16 },
-      { name:'shiva_eyes', sprite:SHIVA_EYES, w:16, h:16 },
-    ];
-    for (let id = 1; id <= 46; id++) {
+  _makeCanvas(sprites, cols, cellScale) {
+    if (!sprites.length) return null;
+    cols = cols || Math.ceil(Math.sqrt(sprites.length));
+    const rows = Math.ceil(sprites.length / cols);
+    const cw = 16 * cellScale + 4;
+    const ch = 16 * cellScale + 4;
+    const canvas = document.createElement('canvas');
+    canvas.width = cols * cw;
+    canvas.height = rows * ch;
+    const ctx = canvas.getContext('2d');
+    sprites.forEach((s, i) => {
+      const cx = (i % cols) * cw + 2;
+      const cy = Math.floor(i / cols) * ch + 2;
+      ctx.fillStyle = '#0a0505';
+      ctx.fillRect(cx - 2, cy - 2, cw, ch);
+      this.renderSprite(ctx, s.sprite, cx, cy, cellScale);
+    });
+    return canvas;
+  }
+
+  _collectCategory(name, entries) {
+    const sprites = [];
+    entries.forEach(([label, data]) => {
+      if (Array.isArray(data)) {
+        data.forEach((sprite, i) => {
+          if (sprite) sprites.push({ name: `${label}_${i}`, sprite, w: 16, h: 16 });
+        });
+      } else if (data) {
+        sprites.push({ name: label, sprite: data, w: data.length > 16 ? 32 : 16, h: data[0] && data[0].length > 16 ? 32 : 16 });
+      }
+    });
+    return sprites;
+  }
+
+  async exportSprites() {
+    let JSZip;
+    try {
+      JSZip = (await import('https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js')).default;
+    } catch {
+      const dataUrl = this._makeCanvas(this._collectCategory('all', [
+        ['player_down', PLAYER_DOWN], ['player_up', PLAYER_UP],
+        ['player_left', PLAYER_LEFT], ['player_right', PLAYER_RIGHT],
+      ]).concat(
+        Object.entries(T_SPRITES).flatMap(([id, v]) => {
+          if (!v) return [];
+          if (Array.isArray(v) && Array.isArray(v[0])) return [[`tile_${id}`, v]];
+          if (Array.isArray(v)) return v.map((s, i) => [`tile_${id}_${i}`, s]);
+          return [[`tile_${id}`, v]];
+        })
+      ), 10, 2).toDataURL('image/png');
+      const link = document.createElement('a');
+      link.download = 'spritesheet.png';
+      link.href = dataUrl;
+      link.click();
+      return;
+    }
+
+    const zip = new JSZip();
+
+    // personagens
+    const chars = zip.folder('personagens');
+    const addSheet = (folder, name, sprites, cols) => {
+      const canvas = this._makeCanvas(sprites, cols, 2);
+      if (!canvas) return;
+      folder.file(name, canvas.toDataURL('image/png').split(',')[1], { base64: true });
+    };
+
+    addSheet(chars, 'player.png', [
+      { sprite: PLAYER_DOWN }, { sprite: PLAYER_UP },
+      { sprite: PLAYER_LEFT }, { sprite: PLAYER_RIGHT },
+    ].concat(
+      [0,1,2,3].flatMap(f => [
+        { sprite: makePlayerWalk('down', f) }, { sprite: makePlayerWalk('up', f) },
+        { sprite: makePlayerWalk('left', f) }, { sprite: makePlayerWalk('right', f) },
+      ]),
+      [0,1,2,3].flatMap(f => [
+        { sprite: makePlayerRun('down', f) }, { sprite: makePlayerRun('up', f) },
+        { sprite: makePlayerRun('left', f) }, { sprite: makePlayerRun('right', f) },
+      ]),
+    ), 8);
+
+    addSheet(chars, 'shiva.png', [
+      { sprite: SHIVA_DOWN }, { sprite: SHIVA_UP },
+      { sprite: SHIVA_LEFT }, { sprite: SHIVA_RIGHT },
+    ].concat(
+      [0,1,2,3].flatMap(f => [
+        { sprite: SHIVA_WALK_DOWN[f] }, { sprite: SHIVA_WALK_UP[f] },
+        { sprite: SHIVA_WALK_LEFT[f] }, { sprite: SHIVA_WALK_RIGHT[f] },
+      ]),
+    ), 8);
+
+    addSheet(chars, 'shiva_evil.png', [{ sprite: SHIVA_EVIL, w: 32, h: 32 }], 1);
+    addSheet(chars, 'shiva_shadow.png', [{ sprite: SHIVA_SHADOW }], 1);
+    addSheet(chars, 'shiva_eyes.png', [{ sprite: SHIVA_EYES }], 1);
+
+    // moveis (tiles 14-72)
+    const moveis = zip.folder('moveis');
+    const furnList = [];
+    for (let id = 14; id <= 72; id++) {
       const sprite = T_SPRITES[id];
       if (!sprite) continue;
       if (Array.isArray(sprite) && Array.isArray(sprite[0])) {
-        allSprites.push({ name:'tile_'+id, sprite, w:16, h:16 });
+        furnList.push({ sprite });
       } else if (Array.isArray(sprite)) {
-        sprite.forEach((v, i) => allSprites.push({ name:'tile_'+id+'_'+i, sprite:v, w:16, h:16 }));
+        sprite.forEach(v => furnList.push({ sprite: v }));
+      } else {
+        furnList.push({ sprite });
       }
     }
-    const items = { lantern:I_LANTERN, key:I_KEY, herbs:I_HERBS, salt:I_SALT,
-      amulet:I_AMULET, chalk:I_CHALK, mirror:I_MIRROR, note:I_NOTE };
-    for (const [name, sprite] of Object.entries(items)) {
-      allSprites.push({ name:'item_'+name, sprite, w:16, h:16 });
+    addSheet(moveis, 'moveis.png', furnList, 8);
+
+    // mapa (tiles 1-13)
+    const mapa = zip.folder('mapa');
+    const tileList = [];
+    for (let id = 1; id <= 13; id++) {
+      const sprite = T_SPRITES[id];
+      if (!sprite) continue;
+      if (Array.isArray(sprite) && Array.isArray(sprite[0])) {
+        tileList.push({ name: 'tile_'+id, sprite });
+      } else if (Array.isArray(sprite)) {
+        sprite.forEach((v, i) => tileList.push({ name: 'tile_'+id+'_'+i, sprite: v }));
+      } else {
+        tileList.push({ name: 'tile_'+id, sprite });
+      }
     }
+    addSheet(mapa, 'pisos_paredes.png', tileList, 8);
 
-    const cols = 10;
-    const rows = Math.ceil(allSprites.length / cols);
-    const cellW = 32;
-    const cellH = 32;
-    const canvas = document.createElement('canvas');
-    canvas.width = cols * cellW;
-    canvas.height = rows * cellH;
-    const ctx = canvas.getContext('2d');
+    // itens
+    const itens = zip.folder('itens');
+    const itemList = [
+      { sprite: I_LANTERN }, { sprite: I_KEY }, { sprite: I_HERBS },
+      { sprite: I_SALT }, { sprite: I_AMULET }, { sprite: I_CHALK },
+      { sprite: I_MIRROR }, { sprite: I_NOTE }, { sprite: I_MEMORY },
+      { sprite: I_PHOTO }, { sprite: I_LETTER },
+    ];
+    addSheet(itens, 'itens.png', itemList, 5);
 
-    allSprites.forEach((s, i) => {
-      const cx = (i % cols) * cellW;
-      const cy = Math.floor(i / cols) * cellH;
-      ctx.fillStyle = '#0a0505';
-      ctx.fillRect(cx, cy, cellW, cellH);
-      this.renderSprite(ctx, s.sprite, cx + (cellW - s.w)/2, cy + (cellH - s.h)/2, 2);
-    });
-    return canvas.toDataURL('image/png');
-  }
+    // ui
+    const ui = zip.folder('ui');
+    addSheet(ui, 'ui.png', [
+      { sprite: UI_SLOT, w: 14, h: 14 },
+      { sprite: UI_MEMORY_EMPTY, w: 8, h: 8 },
+      { sprite: UI_MEMORY_FILLED, w: 8, h: 8 },
+    ], 3);
 
-  exportSpritesheet() {
-    const dataUrl = this.generateSpritesheet();
+    const blob = await zip.generateAsync({ type: 'blob' });
     const link = document.createElement('a');
-    link.download = 'spritesheet.png';
-    link.href = dataUrl;
+    link.href = URL.createObjectURL(blob);
+    link.download = 'sprites.zip';
     link.click();
+    URL.revokeObjectURL(link.href);
   }
 }
 
