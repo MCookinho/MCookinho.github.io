@@ -120,6 +120,8 @@ class Game {
     this.shivaOffered={eye:false,mouth:false,paw:false}
     this.ceilingPuzzleSolved=false
     this.flags={}
+    this.closeUp=null
+    this.anim=null
     this.a.init()
     this.setupUI()
     this.loop()
@@ -174,7 +176,9 @@ class Game {
       this.inventory.push(id)
       this.a.pickup()
       this.renderInventory()
-      if(!silent)this.engine.tooltip(ITEMS_NAME[id]+' — pego.')
+      if(!silent)this.engine.tooltip(ITEMS_NAME[id]+' — pego.',3000)
+      // pickup toast animation
+      this.anim={type:'pickup',item:id,icon:ITEMS_ICON[id]||'·',name:ITEMS_NAME[id]||id,startTime:performance.now(),duration:1000,xOff:0}
     }else if(!silent)this.engine.tooltip('Já tem isso.')
     return true
   }
@@ -333,13 +337,13 @@ class Game {
     else this.engine.tooltip(ITEMS_NAME[item]+' não quebra a grade.')
   }
 
-  /* ─── SHELF ─── */
+  /* ─── SHELF (opens close-up) ─── */
   interactShelf(item){
     if(this.hasObtained('vela')){
       this.engine.tooltip('A prateleira está vazia.')
       return
     }
-    this.addItem('vela',false)
+    this.openCloseUp('shelf')
   }
 
   /* ─── MIRROR ─── */
@@ -490,6 +494,36 @@ class Game {
     this.engine.showNote('📖',STORY.diary.join('\n\n'))
   }
 
+  /* ─── CLOSE-UP SYSTEM ─── */
+  openCloseUp(type){
+    this.closeUp={type,step:0,stepTime:performance.now()}
+    this.engine.state=S.CLOSEUP
+  }
+  closeCloseUp(){
+    this.closeUp=null
+    this.engine.state=S.PLAYING
+  }
+  handleCloseUpClick(x,y){
+    if(!this.closeUp)return
+    const cup=this.closeUp
+    if(cup.type==='shelf'){
+      if(cup.step===0){
+        cup.step=1
+        cup.stepTime=performance.now()
+        this.a.dig()
+      }else if(cup.step===1){
+        cup.step=2
+        cup.stepTime=performance.now()
+        this.addItem('vela',true)
+        this.anim={type:'pickup',item:'vela',icon:ITEMS_ICON.vela||'·',name:ITEMS_NAME.vela||'Vela',startTime:performance.now(),duration:1000,xOff:0}
+        this.engine.tooltip('Vela — pega!',2000)
+      }else{
+        this.closeCloseUp()
+        this.anim=null
+      }
+    }
+  }
+
   /* ─── PUZZLE ─── */
   startPuzzle(id){
     const p=PUZZLES[id]
@@ -542,7 +576,10 @@ class Game {
 
   /* ─── GAME LOOP ─── */
   loop(){
-    this.engine.render(performance.now())
+    const now=performance.now()
+    // Auto-cleanup expired animation
+    if(this.anim&&now-this.anim.startTime>=this.anim.duration)this.anim=null
+    this.engine.render(now)
     requestAnimationFrame(()=>this.loop())
   }
 }

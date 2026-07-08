@@ -1,4 +1,4 @@
-const S = { INTRO:0, PLAYING:1, PUZZLE:2, NOTE:3, FINAL:4 }
+const S = { INTRO:0, PLAYING:1, PUZZLE:2, NOTE:3, FINAL:4, CLOSEUP:5 }
 
 class Engine {
   constructor(){
@@ -23,6 +23,7 @@ class Engine {
       const p=getPos(e)
       if(this.state===S.INTRO)this.handleIntroClick()
       else if(this.state===S.PLAYING)g.handleClick(p.x,p.y)
+      else if(this.state===S.CLOSEUP)g.handleCloseUpClick(p.x,p.y)
     })
     document.getElementById('puzzle-overlay').addEventListener('click',e=>{
       if(this.state!==S.PUZZLE||!this.puzzle)return
@@ -65,6 +66,16 @@ class Engine {
 
   render(t){
     const ctx=this.ctx,g=window.__game
+
+    if(this.state===S.CLOSEUP){
+      if(g.closeUp&&g.closeUp.type==='shelf'){
+        drShelfCloseup(ctx,t,g.closeUp)
+      }
+      // Draw pickup animation overlay on top
+      if(g.anim)drawPickupToast(ctx,t,g.anim)
+      return
+    }
+
     if(this.state===S.INTRO||this.state===S.PLAYING||this.state===S.FINAL){
       const views=['north','east','south','west','ceiling']
       const vk=views[g.view]||'north'
@@ -85,6 +96,9 @@ class Engine {
       }
 
       this.drawNavArrows(g,ctx,t)
+
+      // Pickup animation overlay
+      if(g.anim)drawPickupToast(ctx,t,g.anim)
     }
     if(this.state===S.PUZZLE&&this.puzzle&&this.puzzle.render){
       this.puzzle.render(ctx,t)

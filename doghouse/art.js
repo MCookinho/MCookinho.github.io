@@ -82,6 +82,8 @@ function stoneWall(t){
 /* ─── FLOOR ─── */
 function floor(t){
   rect(0,430,800,170,PAL.ink_m)
+  rect(0,428,800,2,PAL.shadow_d)
+  rect(0,430,800,1,PAL.ink)
   for(let row=0;row<6;row++){
     for(let col=0;col<12;col++){
       const fx=col*70+(row%2)*35, fy=430+row*30
@@ -178,6 +180,20 @@ function drNorth(ctx,t){
     wln(dx-5,cy,dx+dw+5,cy+Math.sin(i)*8,PAL.rust,1.5,t)
     for(let j=0;j<4;j++)circle(dx-10+j*70,cy+Math.sin(i+j)*3,3,PAL.rust_l)
   }
+
+  // Door shadow on floor (perspective fix)
+  $ctx.fillStyle='rgba(0,0,0,0.25)'
+  $ctx.beginPath()
+  $ctx.moveTo(dx+10,430);$ctx.lineTo(dx+dw-10,430)
+  $ctx.lineTo(dx+dw+20,480);$ctx.lineTo(dx-20,480);$ctx.closePath()
+  $ctx.fill()
+  // darker line at door base
+  $ctx.strokeStyle='rgba(0,0,0,0.4)'
+  $ctx.lineWidth=2
+  $ctx.beginPath()
+  $ctx.moveTo(dx,430);$ctx.lineTo(dx+dw,430)
+  $ctx.stroke()
+
   // padlock on center chain
   circle(dx+130,dy+320,10,PAL.rust)
   circle(dx+130,dy+320,6,PAL.rust_l)
@@ -233,7 +249,23 @@ function drEast(ctx,t){
   // items on shelves
   rect(80,85,30,40,PAL.paper_d) // book
   rect(120,95,45,30,PAL.paper_l) // book
-  rect(190,90,25,35,PAL.sepia_d) // candle spot
+  // Candle (visible)
+  const cx=202, cy=107
+  // glow
+  $ctx.fillStyle=rgrad(cx,cy,35,'rgba(255,200,100,0.12)','rgba(255,200,100,0)')
+  $ctx.beginPath();$ctx.arc(cx,cy,35,0,Math.PI*2);$ctx.fill()
+  // body
+  rect(cx-5,cy-12,10,30,PAL.sepia_d)
+  rect(cx-6,cy-8,3,10,PAL.sepia)
+  rect(cx+4,cy-4,3,8,PAL.sepia)
+  // wick
+  ln(cx,cy-12,cx,cy-16,PAL.ink,1)
+  // flame
+  const fl=0.6+Math.sin(t*0.005)*0.2
+  $ctx.fillStyle=`rgba(255,180,60,${fl})`
+  $ctx.beginPath();$ctx.ellipse(cx,cy-20,4,8,0,0,Math.PI*2);$ctx.fill()
+  $ctx.fillStyle=`rgba(255,220,160,${fl*0.5})`
+  $ctx.beginPath();$ctx.ellipse(cx,cy-22,2,4,0,0,Math.PI*2);$ctx.fill()
   rect(260,92,30,33,PAL.dark) // box
   rect(80,185,50,35,PAL.paper_d)
   rect(150,190,35,30,PAL.sepia_d)
@@ -362,10 +394,18 @@ function drSouth(ctx,t){
   circle(250,480,2,PAL.rust_l)
   circle(350,480,2,PAL.rust_l)
 
-  // Stone (item)
+  // Stone (item) — visible
   pl([[95,465],[145,468],[140,498],[90,495]],PAL.stone_l)
-  wln(95,465,140,498,PAL.ink_l,0.5,t)
-  wln(140,468,90,495,PAL.ink_l,0.5,t)
+  pl([[100,470],[130,472],[128,480],[98,478]],'rgba(58,50,36,0.6)')
+  wln(95,465,145,468,PAL.ink_l,0.8,t)
+  wln(145,468,140,498,PAL.ink_l,0.8,t)
+  wln(140,498,90,495,PAL.ink_l,0.8,t)
+  wln(90,495,95,465,PAL.ink_l,0.8,t)
+  // shadow under stone
+  $ctx.fillStyle='rgba(0,0,0,0.2)'
+  $ctx.beginPath()
+  $ctx.ellipse(117,500,28,6,0,0,Math.PI*2)
+  $ctx.fill()
 
   // Shadows
   rect(0,0,30,600,PAL.shadow_d)
@@ -883,6 +923,97 @@ function drawLanternLight(ctx,t,on){
   // Extra warm tint
   ctx.fillStyle=`rgba(255,180,80,${flicker*0.03})`
   ctx.fillRect(0,0,800,600)
+}
+
+/* ─── SHELF CLOSE-UP ─── */
+function drShelfCloseup(ctx,t,cup){
+  $ctx=ctx
+  rect(0,0,800,600,PAL.ink)
+  rect(80,80,640,420,PAL.ink_l)
+  rect(85,85,630,410,PAL.ink)
+  rect(80,280,640,12,PAL.ink_l)
+  wln(80,280,720,280,PAL.ink_m,0.8,t)
+  for(let i=0;i<8;i++)wln(100,290+i*5,700,290+i*5,PAL.ink_m,0.3,t,0.3)
+
+  rect(80,80,640,60,grad(80,80,80,140,'rgba(0,0,0,0.6)','rgba(0,0,0,0)'))
+  rect(80,460,640,40,grad(80,460,80,500,'rgba(0,0,0,0)','rgba(0,0,0,0.6)'))
+
+  if(cup.step<2){
+    const cg=rgrad(400,230,70,'rgba(255,200,100,0.2)','rgba(255,200,100,0)')
+    $ctx.fillStyle=cg
+    $ctx.beginPath();$ctx.arc(400,230,70,0,Math.PI*2);$ctx.fill()
+    $ctx.fillStyle=rgrad(400,230,35,'rgba(255,200,100,0.12)','rgba(255,200,100,0)')
+    $ctx.beginPath();$ctx.arc(400,230,35,0,Math.PI*2);$ctx.fill()
+    rect(394,210,12,48,PAL.sepia_d)
+    rect(392,218,4,12,PAL.sepia)
+    rect(408,222,3,10,PAL.sepia)
+    $ctx.fillStyle=PAL.sepia
+    $ctx.beginPath()
+    $ctx.ellipse(394,225,3,5,0,0,Math.PI*2)
+    $ctx.fill()
+    ln(400,210,400,203,PAL.ink,1.5)
+    const fl=0.7+Math.sin(t*0.006)*0.2
+    $ctx.fillStyle=`rgba(255,180,60,${fl})`
+    $ctx.beginPath();$ctx.ellipse(400,198,6,12,0,0,Math.PI*2);$ctx.fill()
+    $ctx.fillStyle=`rgba(255,220,160,${fl*0.5})`
+    $ctx.beginPath();$ctx.ellipse(400,194,3,7,0,0,Math.PI*2);$ctx.fill()
+  }
+
+  if(cup.step===1){
+    const elapsed=Math.min(1,(t-cup.stepTime)/600)
+    const handOff=80*(1-elapsed)
+    $ctx.strokeStyle=PAL.sepia_d
+    $ctx.lineWidth=10
+    $ctx.lineCap='round'
+    $ctx.beginPath()
+    $ctx.moveTo(400,80+handOff)
+    $ctx.quadraticCurveTo(430,90+handOff,400,120+handOff)
+    $ctx.stroke()
+    $ctx.lineWidth=4
+    $ctx.beginPath()
+    $ctx.moveTo(396,108+handOff)
+    $ctx.quadraticCurveTo(390,115+handOff,396,122+handOff)
+    $ctx.stroke()
+    $ctx.beginPath()
+    $ctx.moveTo(404,108+handOff)
+    $ctx.quadraticCurveTo(410,115+handOff,404,122+handOff)
+    $ctx.stroke()
+    $ctx.fillStyle=PAL.sepia_d
+    $ctx.beginPath()
+    $ctx.ellipse(400,125+handOff,12,8,0,0,Math.PI*2)
+    $ctx.fill()
+  }
+
+  if(cup.step===0){
+    const ha=0.35+Math.sin(t*0.003)*0.1
+    $ctx.fillStyle=`rgba(184,160,128,${ha})`
+    $ctx.font='15px Georgia'
+    $ctx.textAlign='center'
+    $ctx.fillText('[ Clique para pegar a vela ]',400,560)
+  }
+
+  paperGrain(3)
+  vignette(ctx)
+}
+
+function drawPickupToast(ctx,t,anim){
+  if(!anim)return
+  const elapsed=t-anim.startTime
+  const dur=anim.duration||800
+  const progress=Math.min(1,elapsed/dur)
+  if(progress>=1)return
+  const alpha=1-progress
+  const yOff=-40*progress
+  ctx.save()
+  ctx.globalAlpha=alpha
+  ctx.font='24px Georgia'
+  ctx.textAlign='center'
+  ctx.fillStyle=PAL.gold
+  ctx.fillText('+ '+(anim.icon||'·'),400+(anim.xOff||0),280+yOff)
+  ctx.font='14px Georgia'
+  ctx.fillStyle=PAL.sepia_l
+  ctx.fillText(anim.name||'Item',400+(anim.xOff||0),305+yOff)
+  ctx.restore()
 }
 
 const VIEW_DRAW = {
