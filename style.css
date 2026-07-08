@@ -121,25 +121,27 @@ body {
 .cd-icon {
   width: 22px;
   height: 22px;
-  border-radius: 50%;
-  background: conic-gradient(from 0deg, #444, #888, #bbb, #888, #444, #222, #444, #888, #bbb, #888, #444);
-  border: 1px solid #666;
+  background: var(--purple);
   position: relative;
   display: inline-block;
   flex-shrink: 0;
   transition: box-shadow 0.3s;
 }
+.cd-icon::before {
+  content: '';
+  position: absolute;
+  top: 3px; left: 3px;
+  width: 16px;
+  height: 16px;
+  background: var(--card);
+}
 .cd-icon::after {
   content: '';
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #111;
-  transform: translate(-50%, -50%);
-  border: 1px solid #444;
+  top: 9px; left: 9px;
+  width: 4px;
+  height: 4px;
+  background: var(--pink);
 }
 .cd-icon.cd-spin {
   animation: cdSpin 2s linear infinite;
@@ -1298,23 +1300,25 @@ body {
 .player-cd-mini {
   width: 28px;
   height: 28px;
-  border-radius: 50%;
-  background: conic-gradient(from 0deg, #444, #888, #bbb, #888, #444, #222, #444, #888, #bbb, #888, #444);
-  border: 1px solid #666;
+  background: var(--purple);
   position: relative;
   flex-shrink: 0;
+}
+.player-cd-mini::before {
+  content: '';
+  position: absolute;
+  top: 4px; left: 4px;
+  width: 20px;
+  height: 20px;
+  background: var(--card);
 }
 .player-cd-mini::after {
   content: '';
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 11px; left: 11px;
   width: 6px;
   height: 6px;
-  border-radius: 50%;
-  background: #111;
-  transform: translate(-50%, -50%);
-  border: 1px solid #444;
+  background: var(--pink);
 }
 .player-cd-mini.spin {
   animation: cdSpin 2s linear infinite;
