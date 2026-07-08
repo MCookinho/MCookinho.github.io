@@ -472,11 +472,11 @@
     '.music-status-icon { display: block; font-size: 20px; margin-bottom: 12px; color: var(--purple); }' +
     '.music-status strong { color: var(--cyan); }' +
     '.music-folder { border-bottom: 1px solid rgba(42,42,62,0.4); }' +
-    '.music-folder-header { display: flex; align-items: center; gap: 8px; padding: 10px 18px; cursor: pointer; transition: background 0.15s; }' +
+    '.music-folder-header { display: flex; align-items: center; gap: 10px; padding: 14px 20px; cursor: pointer; transition: background 0.15s; }' +
     '.music-folder-header:hover { background: rgba(168,85,247,0.06); }' +
-    '.music-folder-arrow { font-size: 8px; color: var(--cyan); min-width: 14px; }' +
-    '.music-folder-name { font-family: var(--font); font-size: 7px; color: var(--purple); letter-spacing: 1px; }' +
-    '.music-folder-count { font-family: var(--font); font-size: 6px; color: var(--dim); margin-left: auto; }' +
+    '.music-folder-arrow { font-size: 10px; color: var(--cyan); min-width: 16px; }' +
+    '.music-folder-name { font-family: var(--font); font-size: 9px; color: var(--purple); letter-spacing: 1px; }' +
+    '.music-folder-count { font-family: var(--font); font-size: 8px; color: var(--dim); margin-left: auto; }' +
     '.music-folder-songs { border-top: 1px solid rgba(42,42,62,0.2); }'
   document.head.appendChild(style)
 
