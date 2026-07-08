@@ -170,6 +170,25 @@
   <div class="tcontrols">
     <span>← → MOVER</span><span>↑ ROTAR</span><span>↓ DESCER</span><span>SPACE SOLTAR</span><span>P PAUSA</span>
   </div>
+  <div class="skills-controller tetris-controller" id="tetrisController">
+    <div class="ctrl-label">// CTRL</div>
+    <div class="ctrl-body">
+      <div class="ctrl-dpad">
+        <button class="ctrl-btn ctrl-up" data-key="ArrowUp" aria-label="Cima">▲</button>
+        <button class="ctrl-btn ctrl-left" data-key="ArrowLeft" aria-label="Esquerda">◀</button>
+        <button class="ctrl-btn ctrl-right" data-key="ArrowRight" aria-label="Direita">▶</button>
+        <button class="ctrl-btn ctrl-down" data-key="ArrowDown" aria-label="Baixo">▼</button>
+      </div>
+      <div class="ctrl-mid">
+        <button class="ctrl-btn ctrl-select" data-key=" " aria-label="Select">SEL</button>
+        <button class="ctrl-btn ctrl-start" data-key="Enter" aria-label="Start">STA</button>
+      </div>
+      <div class="ctrl-ab">
+        <button class="ctrl-btn ctrl-b" data-key="b" aria-label="Botao B">B</button>
+        <button class="ctrl-btn ctrl-a" data-key="a" aria-label="Botao A">A</button>
+      </div>
+    </div>
+  </div>
 </div>`
       document.body.appendChild(this.overlay)
       requestAnimationFrame(() => this.overlay.classList.add('tetris-open'))

@@ -110,19 +110,17 @@
     })
   })
 
-  // Keyboard -> visual
+  // Keyboard -> visual (affects all controllers)
   document.addEventListener('keydown', function (e) {
     var cls = keyMap[e.key]
     if (cls) {
-      var el = document.querySelector('.' + cls)
-      if (el) el.classList.add('pressed')
+      document.querySelectorAll('.' + cls).forEach(function (el) { el.classList.add('pressed') })
     }
   })
   document.addEventListener('keyup', function (e) {
     var cls = keyMap[e.key]
     if (cls) {
-      var el = document.querySelector('.' + cls)
-      if (el) el.classList.remove('pressed')
+      document.querySelectorAll('.' + cls).forEach(function (el) { el.classList.remove('pressed') })
     }
   })
 })()
