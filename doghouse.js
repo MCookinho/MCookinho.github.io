@@ -1,9 +1,8 @@
 ;(function () {
-  var scene, camera, renderer
-  var raycaster, mouse
-  var clock = new THREE.Clock()
+  var scene, camera, renderer, raycaster, clock
+  var isPointerLocked = false, lastTime = 0, dirLight = null, memoryFlags = 0, keys = {}
+  clock = new THREE.Clock()
 
-  // ===== SOUND SYSTEM =====
   var audioCtx = null
   var footstepTimer = 0
   var wasMoving = false
@@ -14,16 +13,13 @@
     return audioCtx
   }
 
-  function playNoise(duration, volume, freq, type) {
+  function playNoise(duration, volume, freq) {
     try {
-      var ac = getAudioCtx()
-      var now = ac.currentTime
+      var ac = getAudioCtx(), now = ac.currentTime
       var bufSize = Math.floor(ac.sampleRate * duration)
       var buf = ac.createBuffer(1, bufSize, ac.sampleRate)
       var data = buf.getChannelData(0)
-      for (var i = 0; i < bufSize; i++) {
-        data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / bufSize, 2)
-      }
+      for (var i = 0; i < bufSize; i++) data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / bufSize, 2)
       var source = ac.createBufferSource()
       source.buffer = buf
       var gain = ac.createGain()
@@ -41,8 +37,7 @@
 
   function playTone(freqStart, freqEnd, duration, volume, type) {
     try {
-      var ac = getAudioCtx()
-      var now = ac.currentTime
+      var ac = getAudioCtx(), now = ac.currentTime
       var osc = ac.createOscillator()
       osc.type = type || 'sine'
       osc.frequency.setValueAtTime(freqStart, now)
@@ -63,16 +58,11 @@
   }
 
   function playJumpSnd() {
-    // Whoosh + effort grunt
     try {
-      var ac = getAudioCtx()
-      var now = ac.currentTime
-      // Whoosh - filtered noise going up
+      var ac = getAudioCtx(), now = ac.currentTime
       var buf = ac.createBuffer(1, ac.sampleRate * 0.12, ac.sampleRate)
       var data = buf.getChannelData(0)
-      for (var i = 0; i < data.length; i++) {
-        data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / data.length, 1.5)
-      }
+      for (var i = 0; i < data.length; i++) data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / data.length, 1.5)
       var src = ac.createBufferSource()
       src.buffer = buf
       var bp = ac.createBiquadFilter()
@@ -87,12 +77,9 @@
       bp.connect(g)
       g.connect(ac.destination)
       src.start(now)
-      // Brief low thud
       var buf2 = ac.createBuffer(1, ac.sampleRate * 0.04, ac.sampleRate)
       var d2 = buf2.getChannelData(0)
-      for (var j = 0; j < d2.length; j++) {
-        d2[j] = (Math.random() * 2 - 1) * Math.pow(1 - j / d2.length, 3)
-      }
+      for (var j = 0; j < d2.length; j++) d2[j] = (Math.random() * 2 - 1) * Math.pow(1 - j / d2.length, 3)
       var src2 = ac.createBufferSource()
       src2.buffer = buf2
       var lp = ac.createBiquadFilter()
@@ -114,15 +101,11 @@
   }
 
   function playFlashlightSnd() {
-    // Mechanical click - short noise burst with high-pass
     try {
-      var ac = getAudioCtx()
-      var now = ac.currentTime
+      var ac = getAudioCtx(), now = ac.currentTime
       var buf = ac.createBuffer(1, ac.sampleRate * 0.06, ac.sampleRate)
       var data = buf.getChannelData(0)
-      for (var i = 0; i < data.length; i++) {
-        data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / data.length, 2)
-      }
+      for (var i = 0; i < data.length; i++) data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / data.length, 2)
       var source = ac.createBufferSource()
       source.buffer = buf
       var hp = ac.createBiquadFilter()
@@ -136,13 +119,10 @@
       hp.connect(gain)
       gain.connect(ac.destination)
       source.start(now)
-      // Click after
       setTimeout(function () {
         var buf2 = ac.createBuffer(1, ac.sampleRate * 0.02, ac.sampleRate)
         var d2 = buf2.getChannelData(0)
-        for (var j = 0; j < d2.length; j++) {
-          d2[j] = (Math.random() * 2 - 1) * 0.5 * Math.pow(1 - j / d2.length, 4)
-        }
+        for (var j = 0; j < d2.length; j++) d2[j] = (Math.random() * 2 - 1) * 0.5 * Math.pow(1 - j / d2.length, 4)
         var src2 = ac.createBufferSource()
         src2.buffer = buf2
         var hp2 = ac.createBiquadFilter()
@@ -175,115 +155,159 @@
     playTone(200, 80, 0.4, 0.1, 'sawtooth')
   }
 
-  // ===== PLAYER =====
-  var player = {
-    height: 1.6,
-    speed: 3,
-    pos: new THREE.Vector3(6, 0, 14),
-    velY: 0,
-    isGrounded: true
-  }
+  var GRAVITY = -9.8, JUMP_SPEED = 5.0
+  var GRID_COLS = 5, GRID_ROWS = 4, CELL_SIZE = 4, WALL_HEIGHT = 2.8
+  var DAY_DURATION = 300, DAWN_SLEEP = 120
+
+  var player = { height: 1.6, speed: 3, pos: new THREE.Vector3(8, 0, 14), velY: 0, isGrounded: true, yaw: 0, pitch: 0 }
   var euler = { x: 0, y: 0 }
   var vel = new THREE.Vector3()
   var moveDir = { fwd: 0, right: 0 }
-  var isLocked = false
-  var isRunning = false
-  var isCrouching = false
-  var isJumping = false
-  var flashlightOn = false
-  var flashlightFound = false
-  var flashlightPickupAnim = 0
+  var isLocked = false, isRunning = false, isCrouching = false, isJumping = false
+  var flashlightOn = false, flashlightFound = false, flashlightPickupAnim = 0
 
-  var GRAVITY = -9.8
-  var JUMP_SPEED = 5.0
-
-  // ===== GAME STATE =====
   var gameState = {
-    day: 1,
-    maxDays: 5,
-    items: [],
-    memories: 0,
-    maxMemories: 5,
-    hunger: 100,
-    caught: false,
-    gameOver: false,
-    won: false,
-    dayItems: [],
-    puzzlesSolved: 0
+    day: 1, maxDays: 5, dayTimer: 0, timeOfDay: 0, dayLength: DAY_DURATION,
+    hunger: 100, memories: 0, maxMemories: 6,
+    captures: 0, maxCaptures: 5, caught: false, gameOver: false, won: false,
+    secondFloorUnlocked: false
   }
+  var playerItems = []
+  var memoryFlags = 0
 
   var itemIcons = {
-    key: '🔑',
-    photo: '📷',
-    letter: '📜',
-    medallion: '🏅',
-    bone: '🦴',
-    candle: '🕯️',
-    musicbox: '🎵',
-    mirror: '🪞',
-    clock: '⏰',
-    flower: '🌸',
-    ring: '💍',
-    book: '📕',
-    coin: '🪙',
-    feather: '🪶',
-    jar: '🏺'
+    key: '\uD83D\uDD11', photo: '\uD83D\uDCF7', letter: '\uD83D\uDCDC', medallion: '\uD83C\uDFC5',
+    bone: '\uD83E\uDDB4', candle: '\uD83D\uDD6F', musicbox: '\uD83C\uDFB5', mirror: '\uD83E\uDE9E',
+    clock: '\u23F0', flower: '\uD83C\uDF38', ring: '\uD83D\uDC8D', book: '\uD83D\uDCD5',
+    coin: '\uD83E\uDE99', feather: '\uD83E\uDEB6', jar: '\uD83C\uDFFA',
+    miranteKey: '\uD83D\uDDDD', alecrim: '\uD83C\uDF3F', hortela: '\uD83C\uDF31',
+    salGrosso: '\uD83E\uDDCA', poProtetor: '\u2728', papelEnzo: '\uD83D\uDCC4',
+    tocaKey: '\uD83D\uDD11', diario: '\uD83D\uDCD3', ervasSecas: '\uD83C\uDF3E',
+    passo: '\uD83D\uDC3E'
   }
 
-  // ===== MAP =====
-  var MAP = {
-    cols: 4,
-    rows: 4,
-    data: [
-      ['bedroom1', 'bathroom1', 'hall',     'kitchen'],
-      ['bedroom2', 'living',    'dining',   'pantry'],
-      ['study',    'hall2',     'bedroom3', 'bathroom2'],
-      ['garage',   'entrance',  'void',     'void']
-    ]
-  }
+  var ROOMS = [
+    { id:'bedroom1',  col:0, row:0, w:1, h:1, type:'bedroom' },
+    { id:'bathroom1', col:1, row:0, w:1, h:1, type:'bathroom' },
+    { id:'hall',      col:2, row:0, w:3, h:2, type:'hall' },
+    { id:'bedroom2',  col:0, row:1, w:1, h:1, type:'bedroom' },
+    { id:'study',     col:1, row:1, w:1, h:1, type:'study' },
+    { id:'living',    col:0, row:2, w:2, h:1, type:'living' },
+    { id:'dining',    col:2, row:2, w:1, h:1, type:'dining' },
+    { id:'kitchen',   col:3, row:2, w:2, h:1, type:'kitchen' },
+    { id:'garage',    col:0, row:3, w:1, h:1, type:'garage' },
+    { id:'entrance',  col:1, row:3, w:2, h:1, type:'entrance' },
+    { id:'pantry',    col:3, row:3, w:1, h:1, type:'pantry' },
+    { id:'bathroom2', col:4, row:3, w:1, h:1, type:'bathroom' },
+    { id:'attic',     col:2, row:0, w:2, h:2, type:'attic', yOffset:3.0 },
+    { id:'loft',      col:4, row:0, w:1, h:2, type:'loft', yOffset:3.0 }
+  ]
+
+  var DOOR_CONNECTIONS = [
+    ['bedroom1','hall'], ['bedroom2','study'], ['bedroom2','living'],
+    ['bathroom1','hall'], ['study','hall'], ['study','living'],
+    ['hall','kitchen'], ['hall','dining'], ['living','dining'],
+    ['living','entrance'], ['dining','kitchen'], ['dining','pantry'],
+    ['garage','entrance'], ['entrance','pantry'], ['pantry','bathroom2']
+  ]
 
   var ROOM_NAMES = {
-    bedroom1: 'QUARTO 1', bedroom2: 'QUARTO 2', bedroom3: 'QUARTO 3',
-    bathroom1: 'BANHEIRO', bathroom2: 'BANHEIRO 2',
-    hall: 'CORREDOR', hall2: 'CORREDOR 2',
-    kitchen: 'COZINHA', living: 'SALA', dining: 'SALA DE JANTAR',
-    pantry: 'DESPENSA', study: 'ESCRITÓRIO',
-    garage: 'GARAGEM', entrance: 'ENTRADA',
-    void: null
+    bedroom1: 'QUARTO 1', bedroom2: 'QUARTO 2', bathroom1: 'BANHEIRO', bathroom2: 'BANHEIRO 2',
+    hall: 'CORREDOR', kitchen: 'COZINHA', living: 'SALA', dining: 'SALA DE JANTAR',
+    pantry: 'DESPENSA', study: 'ESCRIT\u00D3RIO', garage: 'GARAGEM', entrance: 'ENTRADA',
+    attic: 'SOT\u00C3O', loft: 'SOBRADO'
   }
 
-  var WALL_HEIGHT = 2.8
-  var ROOM_SIZE = 4
+  var VICTIM_NOTES = {
+    joao: {
+      id:'joao', victim:'Jo\u00E3o Marcelo', room:'bedroom1',
+      title:'// CARTA \u2014 JO\u00C3O MARCELO', icon:'\u2709\uFE0F',
+      text:'Peu, se voc\u00EA ler isso... ela n\u00E3o \u00E9 um cachorro normal.\nEu juro que vi ela mudar de forma na minha frente.\nOlhos vermelhos, dentes que n\u00E3o cabiam na boca.\nEla sabe quando a gente mente.\n\nN\u00E3o tente fugir \u2014 encontre a porta dourada.\nEla est\u00E1 no andar de cima, atr\u00E1s do arm\u00E1rio.\n\n\u2014 Jo\u00E3o',
+      memoryId:0, pos:{x:2, z:2}
+    },
+    sandalia: {
+      id:'sandalia', victim:'Sand\u00E1lia', room:'hall',
+      title:'// MARCAS \u2014 SAND\u00C1LIA', icon:'\uD83D\uDC3E',
+      text:null, memoryId:1, pos:{x:10, z:4}
+    },
+    ulisses: {
+      id:'ulisses', victim:'Seu Ulisses', room:'garage',
+      title:'// BILHETE \u2014 SEU ULISSES', icon:'\uD83D\uDCDD',
+      text:'VOC\u00CA TAMB\u00C9M?\nAchou que ia ser s\u00F3 um passeio?\n\nA casa muda. Preste aten\u00E7\u00E3o nos dias.\nDia 1 ela fica no corredor.\nDia 2 ela j\u00E1 vai pra cozinha.\n\nE no dia 5? Ela n\u00E3o dorme.\n\nE outra coisa: N\u00C3O CONFIE NO QUE VOC\u00CA V\u00CA.\nAs paredes mentem.\n\n\u2014 Seu Ulisses (sim, O VIZINHO CHATO)',
+      memoryId:2, pos:{x:2, z:14}
+    },
+    enzo: {
+      id:'enzo', victim:'Enzo', room:'study',
+      title:'// DESENHOS \u2014 ENZO', icon:'\uD83C\uDFA8',
+      text:'[Desenho infantil: uma figura canina gigante com 3 cabe\u00E7as, olhos vermelhos, cercada de fogo. No canto: uma porta dourada.]\n\nA tia do fogo disse pra n\u00E3o abrir a porta grande.\nEla mora l\u00E1 dentro.\n\n\u2600\uFE0F\uD83C\uDF19\u2B50\uD83D\uDD25\n\n[Letra de crian\u00E7a] O sol vem antes da lua,\na estrela brilha depois do fogo,\no fogo queima antes do sol dormir.',
+      memoryId:3, pos:{x:6, z:6}
+    },
+    elaine: {
+      id:'elaine', victim:'Elaine', room:'kitchen',
+      title:'// CADERNO \u2014 ELAINE', icon:'\uD83D\uDCD6',
+      text:'Receita da V\u00F3 \u2014 Caldo Protetor\n\nIngredientes que afastam o MAL:\n- Alecrim seco (confunde o faro)\n- Hortel\u00E3 fresca (acalma os esp\u00EDritos)\n- Sal grosso (barreira)\n\nModo de preparo:\nMisture tudo e espalhe na entrada.\nEla hesita. D\u00E1 tempo de fugir.\n\nDeixei escondido pela casa.\nDeus tenha piedade de quem vier depois.\n\n\u2014 Elaine',
+      memoryId:4, pos:{x:14, z:10}
+    },
+    giulia: {
+      id:'giulia', victim:'Giulia L.', room:'bathroom2',
+      title:'// ANOTA\u00C7\u00D5ES \u2014 GIULIA L.', icon:'\uD83D\uDD0D',
+      text:'Consegui decifrar parte do padr\u00E3o.\n\n\u25B3 = 1\n\u25CB = 2\n\u25FB = 3\n\u2726 = 4\n\nA sequ\u00EAncia no espelho: \u25FB \u25B3 \u2726 \u25CB\n\nO cofre atr\u00E1s do quadro... tem a chave.\nA chave da toca.\n\nL\u00E1 dentro tem a verdade.\n\nSe voc\u00EA est\u00E1 lendo isso, ainda d\u00E1 tempo.\nN\u00C3O FA\u00C7A O QUE ELA PEDE.\n\n\u2014 Giulia',
+      memoryId:5, pos:{x:18, z:14}
+    }
+  }
+
+  var puzzleState = {
+    drawerSolved: false, herbsCollected: 0, herbsUsed: false,
+    drawingSeq: [], drawingSolved: false, safeSolved: false,
+    brickFound: false, brickPassageOpen: false, diaryRead: false,
+    scratchCount: 0, scratchSolved: false
+  }
+
   var wallObjects = []
-  var doorObjects = []
   var interactables = []
+  var scratchMarks = []
+  var noteMeshes = []
+  var drawingMeshes = []
   var hudEls = {}
+  var currentInteractTarget = null
+  var brickWallMesh = null
+  var goldenDoorMesh = null
+  var stairTeleportUp = null
+  var stairTeleportDown = null
+  var isOnSecondFloor = false
+  var proShieldTimer = 0
+  var shivaAlertActive = false
 
   var flashlight = null
   var flashlightBulb = null
 
-  // ===== TEXTURE GENERATION =====
+  var shiva = null
+
+  var shivaState = {
+    mesh: null, pos: new THREE.Vector3(10, 0, 4), targetRoom: null,
+    waypoints: [], currentWP: 0, speed: 1.5, state: 'patrol',
+    alertDistance: 6, chaseDistance: 2, patrolTimer: 0,
+    sleepTimer: 0, isSleeping: true, proximityTimer: 0,
+    lastPlayerDist: 999, anger: 0, sleepPos: new THREE.Vector3(12, 0, 14),
+    sleeping: false, wanderDir: 0, lastKnownPos: null, sleepDuration: 0
+  }
+
+  var cellRoom = []
+
   function makeCanvas(w, h, drawFn) {
     var c = document.createElement('canvas')
-    c.width = w || 128
-    c.height = h || 128
-    var ctx = c.getContext('2d')
-    drawFn(ctx, c.width, c.height)
+    c.width = w || 128; c.height = h || 128
+    drawFn(c.getContext('2d'), c.width, c.height)
     return c
   }
 
   function createWallpaperTex(baseColor, patternColor, patternFn) {
     var c = makeCanvas(128, 128, function (ctx, w, h) {
-      ctx.fillStyle = baseColor
-      ctx.fillRect(0, 0, w, h)
+      ctx.fillStyle = baseColor; ctx.fillRect(0, 0, w, h)
       if (patternFn) patternFn(ctx, w, h, patternColor)
-      // subtle noise
       for (var i = 0; i < 200; i++) {
-        var x = Math.random() * w
-        var y = Math.random() * h
-        var a = Math.random() * 0.06
-        ctx.fillStyle = 'rgba(255,255,255,' + a + ')'
-        ctx.fillRect(x, y, 1, 1)
+        ctx.fillStyle = 'rgba(255,255,255,' + (Math.random() * 0.06) + ')'
+        ctx.fillRect(Math.random() * w, Math.random() * h, 1, 1)
       }
     })
     var tex = new THREE.CanvasTexture(c)
@@ -294,141 +318,160 @@
 
   function createVerticalStripes(ctx, w, h, color) {
     ctx.fillStyle = color
-    for (var x = 0; x < w; x += 16) {
-      ctx.fillRect(x, 0, 4, h)
-    }
+    for (var x = 0; x < w; x += 16) ctx.fillRect(x, 0, 4, h)
   }
 
   function createHorizontalBoards(ctx, w, h, color) {
     ctx.fillStyle = color
     for (var y = 0; y < h; y += 12) {
-      ctx.fillRect(0, y, w, 2)
-      ctx.fillRect(0, y + 8, w, 1)
+      ctx.fillRect(0, y, w, 2); ctx.fillRect(0, y + 8, w, 1)
     }
   }
 
   function createDiamondPattern(ctx, w, h, color) {
-    ctx.fillStyle = color
-    var s = 16
+    ctx.fillStyle = color; var s = 16
     for (var x = 0; x < w + s; x += s) {
       for (var y = 0; y < h + s; y += s) {
-        var dx = (x / s) % 2
-        var dy = (y / s) % 2
-        if (dx !== dy) {
-          ctx.fillRect(x, y, s, s)
-        }
+        if (((x / s) % 2) !== ((y / s) % 2)) ctx.fillRect(x, y, s, s)
       }
     }
   }
 
   function createBrickPattern(ctx, w, h, color) {
-    ctx.strokeStyle = color
-    ctx.lineWidth = 1
-    var bh = 16
-    var bw = 32
+    ctx.strokeStyle = color; ctx.lineWidth = 1
+    var bh = 16, bw = 32
     for (var row = 0; row < h / bh + 1; row++) {
       var offX = (row % 2) * (bw / 2)
       for (var col = -1; col < w / bw + 2; col++) {
-        var bx = col * bw + offX
-        var by = row * bh
-        ctx.strokeRect(bx, by, bw, bh)
-        // inner brick texture
+        ctx.strokeRect(col * bw + offX, row * bh, bw, bh)
         ctx.fillStyle = 'rgba(255,255,255,0.02)'
-        ctx.fillRect(bx + 2, by + 2, bw - 4, bh - 4)
+        ctx.fillRect(col * bw + offX + 2, row * bh + 2, bw - 4, bh - 4)
       }
     }
   }
 
   function createFloorPlanks(color1, color2) {
     var c = makeCanvas(128, 128, function (ctx, w, h) {
-      ctx.fillStyle = color1
-      ctx.fillRect(0, 0, w, h)
-      // plank lines
-      ctx.strokeStyle = color2
-      ctx.lineWidth = 1
+      ctx.fillStyle = color1; ctx.fillRect(0, 0, w, h)
+      ctx.strokeStyle = color2; ctx.lineWidth = 1
       for (var y = 0; y < h; y += 12) {
-        ctx.beginPath()
-        ctx.moveTo(0, y)
-        ctx.lineTo(w, y)
-        ctx.stroke()
-        // random plank end joints
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke()
         if (y % 24 < 2) {
           var jx = Math.random() * w * 0.6 + w * 0.2
-          ctx.beginPath()
-          ctx.moveTo(jx, y)
-          ctx.lineTo(jx, y + 12)
-          ctx.stroke()
+          ctx.beginPath(); ctx.moveTo(jx, y); ctx.lineTo(jx, y + 12); ctx.stroke()
         }
       }
-      // wood grain
-      ctx.strokeStyle = 'rgba(0,0,0,0.04)'
-      ctx.lineWidth = 0.5
+      ctx.strokeStyle = 'rgba(0,0,0,0.04)'; ctx.lineWidth = 0.5
       for (var i = 0; i < 30; i++) {
-        var gx = Math.random() * w
-        var gy = Math.random() * h
-        ctx.beginPath()
-        ctx.moveTo(gx, gy)
+        var gx = Math.random() * w, gy = Math.random() * h
+        ctx.beginPath(); ctx.moveTo(gx, gy)
         ctx.quadraticCurveTo(gx + (Math.random() - 0.5) * 10, gy + (Math.random() - 0.5) * 5, gx + (Math.random() - 0.5) * 15, gy + (Math.random() - 0.5) * 10)
         ctx.stroke()
       }
     })
     var tex = new THREE.CanvasTexture(c)
-    tex.wrapS = tex.wrapT = THREE.RepeatWrapping
-    tex.repeat.set(2, 2)
+    tex.wrapS = tex.wrapT = THREE.RepeatWrapping; tex.repeat.set(2, 2)
     return tex
   }
 
   function createTileFloor(color1, color2) {
     var c = makeCanvas(128, 128, function (ctx, w, h) {
-      ctx.fillStyle = color1
-      ctx.fillRect(0, 0, w, h)
-      var s = 16
-      ctx.strokeStyle = color2
-      ctx.lineWidth = 1
+      ctx.fillStyle = color1; ctx.fillRect(0, 0, w, h); var s = 16
+      ctx.strokeStyle = color2; ctx.lineWidth = 1
       for (var x = 0; x < w; x += s) {
         for (var y = 0; y < h; y += s) {
           ctx.strokeRect(x, y, s, s)
           if (((x / s) + (y / s)) % 2 === 0) {
-            ctx.fillStyle = 'rgba(0,0,0,0.05)'
-            ctx.fillRect(x + 1, y + 1, s - 2, s - 2)
+            ctx.fillStyle = 'rgba(0,0,0,0.05)'; ctx.fillRect(x + 1, y + 1, s - 2, s - 2)
           }
         }
       }
     })
     var tex = new THREE.CanvasTexture(c)
-    tex.wrapS = tex.wrapT = THREE.RepeatWrapping
-    tex.repeat.set(2, 2)
+    tex.wrapS = tex.wrapT = THREE.RepeatWrapping; tex.repeat.set(2, 2)
     return tex
   }
 
   function createCeilTex() {
     var c = makeCanvas(128, 128, function (ctx, w, h) {
-      ctx.fillStyle = '#0a0a12'
-      ctx.fillRect(0, 0, w, h)
+      ctx.fillStyle = '#0a0a12'; ctx.fillRect(0, 0, w, h)
       ctx.fillStyle = 'rgba(255,255,255,0.02)'
-      for (var i = 0; i < 300; i++) {
-        ctx.fillRect(Math.random() * w, Math.random() * h, 1, 1)
-      }
+      for (var i = 0; i < 300; i++) ctx.fillRect(Math.random() * w, Math.random() * h, 1, 1)
     })
     var tex = new THREE.CanvasTexture(c)
-    tex.wrapS = tex.wrapT = THREE.RepeatWrapping
-    tex.repeat.set(2, 2)
+    tex.wrapS = tex.wrapT = THREE.RepeatWrapping; tex.repeat.set(2, 2)
     return tex
   }
 
   function createTrimTex() {
     var c = makeCanvas(32, 32, function (ctx, w, h) {
-      ctx.fillStyle = '#1a1410'
-      ctx.fillRect(0, 0, w, h)
-      ctx.fillStyle = '#2a1e18'
-      ctx.fillRect(0, 0, w, 3)
-      ctx.fillStyle = '#0e0a08'
-      ctx.fillRect(0, h - 4, w, 4)
-      ctx.strokeStyle = '#3a2820'
-      ctx.lineWidth = 0.5
-      ctx.strokeRect(1, 1, w - 2, h - 2)
+      ctx.fillStyle = '#1a1410'; ctx.fillRect(0, 0, w, h)
+      ctx.fillStyle = '#2a1e18'; ctx.fillRect(0, 0, w, 3)
+      ctx.fillStyle = '#0e0a08'; ctx.fillRect(0, h - 4, w, 4)
+      ctx.strokeStyle = '#3a2820'; ctx.lineWidth = 0.5; ctx.strokeRect(1, 1, w - 2, h - 2)
     })
     return new THREE.CanvasTexture(c)
+  }
+
+  function createWornWoodTex() {
+    var c = makeCanvas(128, 128, function (ctx, w, h) {
+      ctx.fillStyle = '#1a1010'; ctx.fillRect(0, 0, w, h)
+      ctx.strokeStyle = '#2a1a1a'; ctx.lineWidth = 1
+      for (var y = 0; y < h; y += 16) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke() }
+      ctx.fillStyle = 'rgba(30,20,20,0.3)'
+      for (var i = 0; i < 40; i++) ctx.fillRect(Math.random() * w, Math.random() * h, 2 + Math.random() * 8, 1)
+      ctx.strokeStyle = 'rgba(10,5,5,0.5)'; ctx.lineWidth = 0.5
+      for (var j = 0; j < 15; j++) {
+        var sx = Math.random() * w, sy = Math.random() * h
+        ctx.beginPath(); ctx.moveTo(sx, sy)
+        ctx.lineTo(sx + (Math.random() - 0.5) * 6, sy + (Math.random() - 0.5) * 6); ctx.stroke()
+      }
+    })
+    var tex = new THREE.CanvasTexture(c)
+    tex.wrapS = tex.wrapT = THREE.RepeatWrapping; tex.repeat.set(2, 2)
+    return tex
+  }
+
+  function createLightWoodTex() {
+    var c = makeCanvas(128, 128, function (ctx, w, h) {
+      ctx.fillStyle = '#2a2018'; ctx.fillRect(0, 0, w, h)
+      ctx.strokeStyle = '#3a2a20'; ctx.lineWidth = 1
+      for (var y = 0; y < h; y += 10) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke() }
+      ctx.strokeStyle = 'rgba(50,40,30,0.15)'; ctx.lineWidth = 0.5
+      for (var i = 0; i < 25; i++) {
+        var gx = Math.random() * w, gy = Math.random() * h
+        ctx.beginPath(); ctx.moveTo(gx, gy)
+        ctx.quadraticCurveTo(gx + (Math.random() - 0.5) * 12, gy + (Math.random() - 0.5) * 6, gx + (Math.random() - 0.5) * 18, gy + (Math.random() - 0.5) * 12)
+        ctx.stroke()
+      }
+    })
+    var tex = new THREE.CanvasTexture(c)
+    tex.wrapS = tex.wrapT = THREE.RepeatWrapping; tex.repeat.set(2, 2)
+    return tex
+  }
+
+  function createDustyFloorTex() {
+    var c = makeCanvas(128, 128, function (ctx, w, h) {
+      ctx.fillStyle = '#1a1510'; ctx.fillRect(0, 0, w, h)
+      ctx.fillStyle = 'rgba(30,25,20,0.4)'
+      for (var i = 0; i < 100; i++) ctx.fillRect(Math.random() * w, Math.random() * h, 3 + Math.random() * 10, 1 + Math.random() * 3)
+    })
+    var tex = new THREE.CanvasTexture(c)
+    tex.wrapS = tex.wrapT = THREE.RepeatWrapping; tex.repeat.set(2, 2)
+    return tex
+  }
+
+  function createConcreteTileTex() {
+    var c = makeCanvas(128, 128, function (ctx, w, h) {
+      ctx.fillStyle = '#1a1a1a'; ctx.fillRect(0, 0, w, h)
+      var s = 24; ctx.strokeStyle = '#2a2a2a'; ctx.lineWidth = 1
+      for (var x = 0; x < w; x += s) { for (var y = 0; y < h; y += s) { ctx.strokeRect(x, y, s, s) } }
+      ctx.fillStyle = 'rgba(255,255,255,0.02)'
+      for (var i = 0; i < 150; i++) ctx.fillRect(Math.random() * w, Math.random() * h, 1, 1)
+    })
+    var tex = new THREE.CanvasTexture(c)
+    tex.wrapS = tex.wrapT = THREE.RepeatWrapping; tex.repeat.set(2, 2)
+    return tex
   }
 
   var roomTextures = {}
@@ -437,61 +480,95 @@
     if (roomTextures[roomType]) return roomTextures[roomType]
     var t = {}
     switch (roomType) {
-      case 'bedroom1':
-      case 'bedroom2':
-      case 'bedroom3':
+      case 'bedroom':
         t.wall = createWallpaperTex('#1a1518', '#2a1a20', createVerticalStripes)
-        t.floor = createFloorPlanks('#2a1e18', '#1a1008')
-        break
-      case 'bathroom1':
-      case 'bathroom2':
+        t.floor = createFloorPlanks('#2a1e18', '#1a1008'); break
+      case 'bathroom':
         t.wall = createWallpaperTex('#12151a', '#1a2030', createDiamondPattern)
-        t.floor = createTileFloor('#1a2028', '#0a1018')
-        break
+        t.floor = createTileFloor('#1a2028', '#0a1018'); break
       case 'hall':
-      case 'hall2':
         t.wall = createWallpaperTex('#1a1815', '#2a2218', createVerticalStripes)
-        t.floor = createFloorPlanks('#2a2218', '#1a1408')
-        break
+        t.floor = createFloorPlanks('#2a2218', '#1a1408'); break
       case 'kitchen':
         t.wall = createWallpaperTex('#1a1812', '#2a2818', createDiamondPattern)
-        t.floor = createTileFloor('#2a2420', '#1a1410')
-        break
+        t.floor = createTileFloor('#2a2420', '#1a1410'); break
       case 'living':
         t.wall = createWallpaperTex('#181218', '#2a1828', createHorizontalBoards)
-        t.floor = createFloorPlanks('#2a1e18', '#1a1008')
-        break
+        t.floor = createFloorPlanks('#2a1e18', '#1a1008'); break
       case 'dining':
         t.wall = createWallpaperTex('#1a1512', '#2a2018', createBrickPattern)
-        t.floor = createFloorPlanks('#2a2218', '#1a1408')
-        break
+        t.floor = createFloorPlanks('#2a2218', '#1a1408'); break
       case 'pantry':
         t.wall = createWallpaperTex('#121210', '#1a1a10', createHorizontalBoards)
-        t.floor = createTileFloor('#1a1a14', '#0e0e08')
-        break
+        t.floor = createTileFloor('#1a1a14', '#0e0e08'); break
       case 'study':
         t.wall = createWallpaperTex('#121016', '#1a1024', createHorizontalBoards)
-        t.floor = createFloorPlanks('#1a1410', '#0e0808')
-        break
+        t.floor = createFloorPlanks('#1a1410', '#0e0808'); break
       case 'garage':
         t.wall = createWallpaperTex('#101012', '#18181a', createBrickPattern)
-        t.floor = createTileFloor('#141414', '#0a0a0a')
-        break
+        t.floor = createConcreteTileTex(); break
       case 'entrance':
         t.wall = createWallpaperTex('#1a1815', '#2a2218', createBrickPattern)
-        t.floor = createTileFloor('#2a241e', '#1a140e')
-        break
+        t.floor = createConcreteTileTex(); break
+      case 'attic':
+        t.wall = createWornWoodTex(); t.floor = createDustyFloorTex(); break
+      case 'loft':
+        t.wall = createLightWoodTex(); t.floor = createFloorPlanks('#2a2018', '#1a1408'); break
       default:
         t.wall = createWallpaperTex('#1a1a1a', '#2a2a2a', createVerticalStripes)
         t.floor = createFloorPlanks('#2a1e18', '#1a1008')
     }
-    t.ceil = createCeilTex()
-    t.trim = createTrimTex()
+    t.ceil = createCeilTex(); t.trim = createTrimTex()
     roomTextures[roomType] = t
     return t
   }
 
-  // ===== INIT =====
+  function makeMat(color, rough, metalness) {
+    return new THREE.MeshStandardMaterial({ color: color, roughness: rough || 0.8, metalness: metalness || 0 })
+  }
+
+  function addBox(x, y, z, w, h, d, mat, rotY, addToWalls) {
+    var geo = new THREE.BoxGeometry(w, h, d)
+    var mesh = new THREE.Mesh(geo, mat)
+    mesh.position.set(x, y, z)
+    if (rotY) mesh.rotation.y = rotY
+    mesh.castShadow = true; mesh.receiveShadow = true
+    scene.add(mesh)
+    if (addToWalls !== false) wallObjects.push(mesh)
+    return mesh
+  }
+
+  function getRoomById(id) {
+    for (var i = 0; i < ROOMS.length; i++) { if (ROOMS[i].id === id) return ROOMS[i] }
+    return null
+  }
+
+  function getRoomAtCell(col, row) {
+    for (var i = 0; i < ROOMS.length; i++) {
+      var r = ROOMS[i]
+      if (col >= r.col && col < r.col + r.w && row >= r.row && row < r.row + r.h) return r
+    }
+    return null
+  }
+
+  function isDoorConnection(r1, r2) {
+    for (var i = 0; i < DOOR_CONNECTIONS.length; i++) {
+      var dc = DOOR_CONNECTIONS[i]
+      if ((dc[0] === r1 && dc[1] === r2) || (dc[0] === r2 && dc[1] === r1)) return true
+    }
+    return false
+  }
+
+  function buildCellRoomGrid() {
+    for (var row = 0; row < GRID_ROWS; row++) {
+      cellRoom[row] = []
+      for (var col = 0; col < GRID_COLS; col++) {
+        var r = getRoomAtCell(col, row)
+        cellRoom[row][col] = r ? r.id : null
+      }
+    }
+  }
+
   function init() {
     scene = new THREE.Scene()
     scene.background = new THREE.Color(0x020204)
@@ -511,14 +588,18 @@
     document.body.prepend(renderer.domElement)
 
     raycaster = new THREE.Raycaster()
-    mouse = new THREE.Vector2()
+    raycaster.far = 3
 
+    buildCellRoomGrid()
     buildLighting()
     buildFlashlight()
     buildRooms()
     buildFurniture()
-    placeItems()
-    placeFlashlightItem()
+    buildNotes()
+    buildPuzzles()
+    buildShiva()
+    buildStairTeleports()
+    buildGoldenDoor()
 
     hudEls.day = document.getElementById('hudDay')
     hudEls.daySub = document.getElementById('hudDaySub')
@@ -533,6 +614,7 @@
     setupControls()
     setupPointerLock()
     updateHUD()
+    placeFlashlightItem()
 
     setTimeout(function () {
       var ls = document.getElementById('loadingScreen')
@@ -542,67 +624,45 @@
     animate()
   }
 
-  // ===== LIGHTING =====
   function buildLighting() {
     var amb = new THREE.AmbientLight(0x222244, 0.5)
     scene.add(amb)
-
+    dirLight = new THREE.DirectionalLight(0xffaa44, 0.0)
+    dirLight.position.set(0, 10, 0)
+    scene.add(dirLight)
     var moon = new THREE.DirectionalLight(0x4444aa, 0.4)
     moon.position.set(-5, 8, 3)
     moon.castShadow = true
-    moon.shadow.mapSize.width = 512
-    moon.shadow.mapSize.height = 512
-    var d = 8
-    moon.shadow.camera.left = -d
-    moon.shadow.camera.right = d
-    moon.shadow.camera.top = d
-    moon.shadow.camera.bottom = -d
-    moon.shadow.camera.near = 1
-    moon.shadow.camera.far = 20
+    moon.shadow.mapSize.width = 512; moon.shadow.mapSize.height = 512
+    var d2 = 8
+    moon.shadow.camera.left = -d2; moon.shadow.camera.right = d2
+    moon.shadow.camera.top = d2; moon.shadow.camera.bottom = -d2
+    moon.shadow.camera.near = 1; moon.shadow.camera.far = 20
     scene.add(moon)
-
-    // Dim ceiling lights in each room (subtle)
-    var lightPositions = []
-    for (var row = 0; row < MAP.rows; row++) {
-      for (var col = 0; col < MAP.cols; col++) {
-        if (!isWalkable(col, row)) continue
-        var p = computeRoomPos(col, row)
-        lightPositions.push([p.x, 2.4, p.z])
-      }
-    }
-    lightPositions.forEach(function (p) {
-      var pl = new THREE.PointLight(0xff8844, 0.08, 4)
-      pl.position.set(p[0], p[1], p[2])
+    for (var i = 0; i < ROOMS.length; i++) {
+      var r = ROOMS[i]
+      if (r.yOffset) continue
+      var cx = (r.col + r.w / 2) * CELL_SIZE, cz = (r.row + r.h / 2) * CELL_SIZE
+      var pl = new THREE.PointLight(0xff8844, 0.08, 5)
+      pl.position.set(cx, WALL_HEIGHT - 0.4, cz)
       scene.add(pl)
-    })
+    }
   }
 
-  // ===== FLASHLIGHT =====
   function buildFlashlight() {
     flashlight = new THREE.SpotLight(0xffeedd, 2.5)
-    flashlight.angle = 0.32
-    flashlight.penumbra = 0.6
-    flashlight.decay = 1.2
-    flashlight.distance = 14
-    flashlight.castShadow = true
-    flashlight.shadow.mapSize.width = 512
-    flashlight.shadow.mapSize.height = 512
-    flashlight.shadow.camera.near = 0.1
-    flashlight.shadow.camera.far = 14
+    flashlight.angle = 0.32; flashlight.penumbra = 0.6; flashlight.decay = 1.2
+    flashlight.distance = 14; flashlight.castShadow = true
+    flashlight.shadow.mapSize.width = 512; flashlight.shadow.mapSize.height = 512
+    flashlight.shadow.camera.near = 0.1; flashlight.shadow.camera.far = 14
     flashlight.intensity = 0
     scene.add(flashlight)
-
     var target = new THREE.Object3D()
-    target.position.set(0, 0, -5)
-    scene.add(target)
+    target.position.set(0, 0, -5); scene.add(target)
     flashlight.target = target
-
-    // Bulb mesh
     var bulbGeo = new THREE.SphereGeometry(0.04, 8, 8)
-    var bulbMat = new THREE.MeshBasicMaterial({ color: 0x111111 })
-    flashlightBulb = new THREE.Mesh(bulbGeo, bulbMat)
-    flashlightBulb.position.set(0, 0, 0)
-    scene.add(flashlightBulb)
+    flashlightBulb = new THREE.Mesh(bulbGeo, new THREE.MeshBasicMaterial({ color: 0x111111 }))
+    flashlightBulb.position.set(0, 0, 0); scene.add(flashlightBulb)
   }
 
   function toggleFlashlight() {
@@ -616,9 +676,7 @@
 
   function pickupFlashlight() {
     if (flashlightFound) return
-    flashlightFound = true
-    flashlightPickupAnim = 0.001
-    flashlightOn = true
+    flashlightFound = true; flashlightPickupAnim = 0.001; flashlightOn = true
     flashlight.intensity = 0
     if (flashlightBulb) flashlightBulb.material.color.setHex(0x111111)
     playPuzzleSolve()
@@ -626,7 +684,6 @@
   }
 
   function updateFlashlight(dt) {
-    // Position flashlight at camera
     var camPos = camera.position
     var fwd = new THREE.Vector3(0, 0, -1)
     fwd.applyQuaternion(camera.quaternion)
@@ -634,19 +691,13 @@
     flashOffset.applyQuaternion(camera.quaternion)
     flashlight.position.copy(camPos).add(flashOffset)
     flashlightBulb.position.copy(flashlight.position)
-    // Target in front
-    var targetPos = camPos.clone().add(fwd.clone().multiplyScalar(5))
-    flashlight.target.position.copy(targetPos)
-
-    // Pickup animation
+    flashlight.target.position.copy(camPos.clone().add(fwd.clone().multiplyScalar(5)))
     if (flashlightPickupAnim > 0 && flashlightPickupAnim < 1) {
       flashlightPickupAnim += dt * 1.5
       if (flashlightPickupAnim >= 1) {
-        flashlightPickupAnim = 1
-        flashlight.intensity = 2.5
+        flashlightPickupAnim = 1; flashlight.intensity = 2.5
         if (flashlightBulb) flashlightBulb.material.color.setHex(0xffeedd)
       } else {
-        // Flicker effect during pickup
         var flicker = Math.sin(flashlightPickupAnim * 40) * 0.5 + 0.5
         flashlight.intensity = 2.5 * flicker * easeOut(flashlightPickupAnim)
         if (flashlightBulb) {
@@ -655,760 +706,1159 @@
         }
       }
     }
-  }
-
-  function easeOut(t) {
-    return 1 - Math.pow(1 - t, 3)
-  }
-
-  // ===== ROOMS =====
-  function roomAt(col, row) {
-    if (row < 0 || row >= MAP.rows || col < 0 || col >= MAP.cols) return null
-    return MAP.data[row][col]
-  }
-
-  function isWalkable(col, row) {
-    var r = roomAt(col, row)
-    return r && r !== 'void'
-  }
-
-  function computeRoomPos(col, row) {
-    return {
-      x: col * ROOM_SIZE + ROOM_SIZE / 2,
-      z: row * ROOM_SIZE + ROOM_SIZE / 2
+    if (shivaAlertActive && flashlightOn && flashlight.intensity > 0) {
+      var vib = Math.sin(Date.now() * 0.02) * 0.15 + 0.75
+      var targetI = shiva.state === 'chase' ? 0.3 : 0.6
+      flashlight.intensity = flashlight.intensity * (1 - dt * 2) + targetI * vib * dt * 2
     }
   }
 
-  function hasDoorBetween(c1, r1, c2, r2) {
-    return isWalkable(c1, r1) && isWalkable(c2, r2)
-  }
+  function easeOut(t) { return 1 - Math.pow(1 - t, 3) }
 
   function buildRooms() {
     var trimTex = createTrimTex()
     var trimMat = new THREE.MeshStandardMaterial({ map: trimTex, roughness: 0.9 })
+    var edgeBuilt = {}
 
-    function addBox(x, y, z, w, h, d, mat, rotY) {
-      var geo = new THREE.BoxGeometry(w, h, d)
-      var mesh = new THREE.Mesh(geo, mat)
-      mesh.position.set(x, y, z)
-      if (rotY) mesh.rotation.y = rotY
-      mesh.castShadow = true
-      mesh.receiveShadow = true
-      scene.add(mesh)
-      wallObjects.push(mesh)
-      return mesh
+    function edgeKey(c1, r1, c2, r2) {
+      if (c1 > c2 || (c1 === c2 && r1 > r2)) return c2 + '-' + r2 + '_' + c1 + '-' + r1
+      return c1 + '-' + r1 + '_' + c2 + '-' + r2
     }
 
-    function addWall(x, y, z, w, h, d, mat, rotY) {
-      return addBox(x, y, z, w, h, d, mat, rotY)
+    function buildSolidWall(wx, wz, ww, wd, yOff, wh) {
+      wh = wh || WALL_HEIGHT; yOff = yOff || 0
+      var mat = new THREE.MeshStandardMaterial({ color: 0x1a1818, roughness: 0.85 })
+      addBox(wx, yOff + wh / 2, wz, ww, wh, wd, mat, 0)
+      addBox(wx, yOff + 0.05, wz, ww + 0.04, 0.1, wd + 0.04, trimMat, 0)
+      addBox(wx, yOff + wh - 0.03, wz, ww + 0.04, 0.06, wd + 0.04, trimMat, 0)
     }
 
-    function addFloor(x, z, mat) {
-      return addBox(x, 0.05, z, ROOM_SIZE - 0.15, 0.1, ROOM_SIZE - 0.15, mat)
-    }
-
-    function addCeiling(x, z, mat) {
-      return addBox(x, WALL_HEIGHT - 0.02, z, ROOM_SIZE - 0.15, 0.05, ROOM_SIZE - 0.15, mat)
-    }
-
-    function addBaseboard(x, y, z, w, d, rotY) {
-      return addBox(x, y, z, w, 0.1, d, trimMat, rotY)
-    }
-
-    function addCrown(x, y, z, w, d, rotY) {
-      return addBox(x, y, z, w, 0.06, d, trimMat, rotY)
-    }
-
-    var wallTex = createWallpaperTex('#1a1818', '#2a2222', createVerticalStripes)
-
-    for (var row = 0; row < MAP.rows; row++) {
-      for (var col = 0; col < MAP.cols; col++) {
-        var room = roomAt(col, row)
-        if (!room || room === 'void') continue
-
-        var pos = computeRoomPos(col, row)
-        var x = pos.x
-        var z = pos.z
-        var hw = ROOM_SIZE / 2
-
-        var tex = getRoomTex(room)
-        var wMat = new THREE.MeshStandardMaterial({ map: tex.wall, roughness: 0.85 })
-        var fMat = new THREE.MeshStandardMaterial({ map: tex.floor, roughness: 0.8 })
-        var cMat = new THREE.MeshStandardMaterial({ map: tex.ceil, roughness: 0.9 })
-
-        addFloor(x, z, fMat)
-        addCeiling(x, z, cMat)
-
-        // Check neighbors
-        var hasN = hasDoorBetween(col, row - 1, col, row)
-        var hasS = hasDoorBetween(col, row + 1, col, row)
-        var hasW = hasDoorBetween(col - 1, row, col, row)
-        var hasE = hasDoorBetween(col + 1, row, col, row)
-
-        var doorW = 0.9
-        var doorH = 2.2
-
-        function makeWallSegment(x1, z1, w1, h1, d1, rot, isDoor) {
-          var wx = x1, wz = z1
-          if (isDoor) {
-            // Wall with door opening: 3 pieces
-            var sideW = (w1 - doorW) / 2
-            // Left piece
-            addWall(wx - doorW / 2 - sideW / 2, h1 / 2, wz, sideW, h1, d1, wMat, rot)
-            // Right piece
-            addWall(wx + doorW / 2 + sideW / 2, h1 / 2, wz, sideW, h1, d1, wMat, rot)
-            // Top piece above door
-            addWall(wx, h1 - (h1 - doorH) / 2, wz, doorW, h1 - doorH, d1, wMat, rot)
-          } else {
-            addWall(wx, h1 / 2, wz, w1, h1, d1, wMat, rot)
-          }
-
-          // Baseboard
-          var bbH = 0.1
-          if (isDoor) {
-            var sideW2 = (w1 - doorW) / 2
-            if (sideW2 > 0) {
-              addBaseboard(wx - doorW / 2 - sideW2 / 2, bbH / 2, wz, sideW2, d1 + 0.08, rot)
-              addBaseboard(wx + doorW / 2 + sideW2 / 2, bbH / 2, wz, sideW2, d1 + 0.08, rot)
-            }
-          } else {
-            addBaseboard(wx, bbH / 2, wz, w1, d1 + 0.08, rot)
-          }
-
-          // Crown molding
-          var crH = WALL_HEIGHT - 0.03
-          if (isDoor) {
-            var sideW3 = (w1 - doorW) / 2
-            if (sideW3 > 0) {
-              addCrown(wx - doorW / 2 - sideW3 / 2, crH, wz, sideW3, d1 + 0.06, rot)
-              addCrown(wx + doorW / 2 + sideW3 / 2, crH, wz, sideW3, d1 + 0.06, rot)
-            }
-          } else {
-            addCrown(wx, crH, wz, w1, d1 + 0.06, rot)
-          }
-
-          // Door frame if door
-          if (isDoor) {
-            var frameMat = new THREE.MeshStandardMaterial({ color: 0x2a1e18, roughness: 0.7 })
-            // Left post
-            addBox(wx - doorW / 2 - 0.02, doorH / 2, wz, 0.06, doorH, d1 + 0.1, frameMat, rot)
-            // Right post
-            addBox(wx + doorW / 2 + 0.02, doorH / 2, wz, 0.06, doorH, d1 + 0.1, frameMat, rot)
-            // Top header
-            addBox(wx, doorH + 0.04, wz, doorW + 0.04, 0.06, d1 + 0.1, frameMat, rot)
-          }
+    function buildDoorWall(wx, wz, ww, wd, yOff, wh) {
+      wh = wh || WALL_HEIGHT; yOff = yOff || 0
+      var doorW = 0.9, doorH = 2.2
+      var mat = new THREE.MeshStandardMaterial({ color: 0x1a1818, roughness: 0.85 })
+      var frameMat = new THREE.MeshStandardMaterial({ color: 0x2a1e18, roughness: 0.7 })
+      if (ww > wd) {
+        var sideW = (ww - doorW) / 2
+        if (sideW > 0) {
+          addBox(wx - doorW / 2 - sideW / 2, yOff + wh / 2, wz, sideW, wh, wd, mat, 0)
+          addBox(wx + doorW / 2 + sideW / 2, yOff + wh / 2, wz, sideW, wh, wd, mat, 0)
+          addBox(wx - doorW / 2 - sideW / 2, yOff + 0.05, wz, sideW, 0.1, wd + 0.04, trimMat, 0)
+          addBox(wx + doorW / 2 + sideW / 2, yOff + 0.05, wz, sideW, 0.1, wd + 0.04, trimMat, 0)
+          addBox(wx - doorW / 2 - sideW / 2, yOff + wh - 0.03, wz, sideW, 0.06, wd + 0.04, trimMat, 0)
+          addBox(wx + doorW / 2 + sideW / 2, yOff + wh - 0.03, wz, sideW, 0.06, wd + 0.04, trimMat, 0)
         }
-
-        // North wall
-        if (!hasN) {
-          makeWallSegment(x, z - hw, ROOM_SIZE, WALL_HEIGHT, 0.12, 0, false)
-        } else {
-          makeWallSegment(x, z - hw, ROOM_SIZE, WALL_HEIGHT, 0.12, 0, true)
+        addBox(wx, yOff + wh - (wh - doorH) / 2, wz, doorW, wh - doorH, wd, mat, 0)
+        addBox(wx - doorW / 2 - 0.02, yOff + doorH / 2, wz, 0.06, doorH, wd + 0.1, frameMat, 0)
+        addBox(wx + doorW / 2 + 0.02, yOff + doorH / 2, wz, 0.06, doorH, wd + 0.1, frameMat, 0)
+        addBox(wx, yOff + doorH + 0.04, wz, doorW + 0.04, 0.06, wd + 0.1, frameMat, 0)
+      } else {
+        var sideD = (wd - doorW) / 2
+        if (sideD > 0) {
+          addBox(wx, yOff + wh / 2, wz - doorW / 2 - sideD / 2, ww, wh, sideD, mat, 0)
+          addBox(wx, yOff + wh / 2, wz + doorW / 2 + sideD / 2, ww, wh, sideD, mat, 0)
+          addBox(wx, yOff + 0.05, wz - doorW / 2 - sideD / 2, ww + 0.04, 0.1, sideD, trimMat, 0)
+          addBox(wx, yOff + 0.05, wz + doorW / 2 + sideD / 2, ww + 0.04, 0.1, sideD, trimMat, 0)
+          addBox(wx, yOff + wh - 0.03, wz - doorW / 2 - sideD / 2, ww + 0.04, 0.06, sideD, trimMat, 0)
+          addBox(wx, yOff + wh - 0.03, wz + doorW / 2 + sideD / 2, ww + 0.04, 0.06, sideD, trimMat, 0)
         }
-
-        // South wall
-        if (!hasS) {
-          makeWallSegment(x, z + hw, ROOM_SIZE, WALL_HEIGHT, 0.12, 0, false)
-        } else {
-          makeWallSegment(x, z + hw, ROOM_SIZE, WALL_HEIGHT, 0.12, 0, true)
-        }
-
-        // West wall
-        if (!hasW) {
-          makeWallSegment(x - hw, z, 0.12, WALL_HEIGHT, ROOM_SIZE, 0, false)
-        } else {
-          makeWallSegment(x - hw, z, 0.12, WALL_HEIGHT, ROOM_SIZE, 0, true)
-        }
-
-        // East wall
-        if (!hasE) {
-          makeWallSegment(x + hw, z, 0.12, WALL_HEIGHT, ROOM_SIZE, 0, false)
-        } else {
-          makeWallSegment(x + hw, z, 0.12, WALL_HEIGHT, ROOM_SIZE, 0, true)
-        }
+        addBox(wx, yOff + wh - (wh - doorH) / 2, wz, ww, wh - doorH, doorW, mat, 0)
+        addBox(wx, yOff + doorH / 2, wz - doorW / 2 - 0.02, ww + 0.1, doorH, 0.06, frameMat, 0)
+        addBox(wx, yOff + doorH / 2, wz + doorW / 2 + 0.02, ww + 0.1, doorH, 0.06, frameMat, 0)
+        addBox(wx, yOff + doorH + 0.04, wz, ww + 0.1, 0.06, doorW + 0.04, frameMat, 0)
       }
     }
 
-    // Outer boundary walls
-    var totalW = MAP.cols * ROOM_SIZE
-    var totalD = MAP.rows * ROOM_SIZE
-    var outerMat = new THREE.MeshStandardMaterial({ color: 0x08080a, roughness: 1 })
-    var outerH = WALL_HEIGHT + 0.5
-    addBox(totalW / 2, outerH / 2, -0.1, totalW, outerH, 0.2, outerMat)
-    addBox(totalW / 2, outerH / 2, totalD + 0.1, totalW, outerH, 0.2, outerMat)
-    addBox(-0.1, outerH / 2, totalD / 2, 0.2, outerH, totalD, outerMat)
-    addBox(totalW + 0.1, outerH / 2, totalD / 2, 0.2, outerH, totalD, outerMat)
+    function processEdge(col, row, ncol, nrow) {
+      var r = cellRoom[row][col]
+      if (!r) return
+      var key = edgeKey(col, row, ncol, nrow)
+      if (edgeBuilt[key]) return
+      edgeBuilt[key] = true
+      var nr = null
+      if (ncol >= 0 && ncol < GRID_COLS && nrow >= 0 && nrow < GRID_ROWS) nr = cellRoom[nrow][ncol]
+      if (nr === r) return
+      var isDoor2 = nr && isDoorConnection(r, nr)
+      var wx, wz, ww, wd
+      if (ncol !== col) {
+        wx = Math.max(col, ncol) * CELL_SIZE; wz = (Math.min(row, nrow) + 0.5) * CELL_SIZE
+        ww = 0.12; wd = CELL_SIZE
+      } else {
+        wx = (Math.min(col, ncol) + 0.5) * CELL_SIZE; wz = Math.max(row, nrow) * CELL_SIZE
+        ww = CELL_SIZE; wd = 0.12
+      }
+      if (isDoor2) buildDoorWall(wx, wz, ww, wd)
+      else buildSolidWall(wx, wz, ww, wd)
+    }
 
-    // Outer ceiling (beyond boundaries - hide the void)
-    addBox(totalW / 2, WALL_HEIGHT - 0.02, totalD / 2, totalW + 0.5, 0.05, totalD + 0.5, outerMat)
+    for (var ri = 0; ri < ROOMS.length; ri++) {
+      var room = ROOMS[ri]
+      if (room.yOffset || room.type === 'attic' || room.type === 'loft') continue
+      var cx = (room.col + room.w / 2) * CELL_SIZE, cz = (room.row + room.h / 2) * CELL_SIZE
+      var rw = room.w * CELL_SIZE, rh = room.h * CELL_SIZE
+      var tex = getRoomTex(room.type)
+      var fMat = new THREE.MeshStandardMaterial({ map: tex.floor, roughness: 0.8 })
+      var cMat = new THREE.MeshStandardMaterial({ map: tex.ceil, roughness: 0.9 })
+      addBox(cx, 0.05, cz, rw - 0.1, 0.1, rh - 0.1, fMat, 0)
+      addBox(cx, WALL_HEIGHT - 0.02, cz, rw - 0.1, 0.05, rh - 0.1, cMat, 0)
+    }
+
+    for (var row = 0; row < GRID_ROWS; row++) {
+      for (var col = 0; col < GRID_COLS; col++) {
+        if (!cellRoom[row][col]) continue
+        processEdge(col, row, col, row - 1)
+        processEdge(col, row, col, row + 1)
+        processEdge(col, row, col - 1, row)
+        processEdge(col, row, col + 1, row)
+      }
+    }
+
+    var garage = getRoomById('garage')
+    if (garage) {
+      var gx = (garage.col + 0.5) * CELL_SIZE, gz = (garage.row + 0.5) * CELL_SIZE
+      var gMat = new THREE.MeshStandardMaterial({ map: getRoomTex('garage').floor, roughness: 0.9 })
+      addBox(gx, -0.25, gz, CELL_SIZE - 0.1, 0.1, CELL_SIZE - 0.1, gMat, 0)
+    }
+
+    var entranceR = getRoomById('entrance')
+    if (entranceR) {
+      var ex = (entranceR.col + entranceR.w / 2) * CELL_SIZE
+      var ez = (entranceR.row + entranceR.h / 2) * CELL_SIZE
+      var sMat = makeMat(0x3a2a1a, 0.8)
+      addBox(ex - 0.5, 0.075, ez + 0.5, 0.6, 0.15, 0.3, sMat, 0)
+    }
   }
 
-  // ===== FURNITURE =====
   function buildFurniture() {
-    function makeMat(color, rough, metalness) {
-      return new THREE.MeshStandardMaterial({
-        color: color,
-        roughness: rough || 0.8,
-        metalness: metalness || 0
-      })
-    }
-
-    function placeBox(cx, cz, w, h, d, mat, colOff, rowOff) {
-      var x = cx * ROOM_SIZE + ROOM_SIZE / 2 + (colOff || 0)
-      var z = cz * ROOM_SIZE + ROOM_SIZE / 2 + (rowOff || 0)
+    function placeBox(cx, cz, w, h, d, mat) {
       var geo = new THREE.BoxGeometry(w, h, d)
       var mesh = new THREE.Mesh(geo, mat)
-      mesh.position.set(x, h / 2, z)
-      mesh.castShadow = true
-      mesh.receiveShadow = true
+      mesh.position.set(cx, h / 2, cz)
+      mesh.castShadow = true; mesh.receiveShadow = true
       scene.add(mesh)
       return mesh
     }
-
-    // Living room - fireplace
-    var lx = 2 * ROOM_SIZE + ROOM_SIZE / 2
-    var lz = 1 * ROOM_SIZE + ROOM_SIZE / 2
-    var fMat = makeMat(0x1a1010, 0.9)
-    // Fireplace base
-    var fp = new THREE.Mesh(new THREE.BoxGeometry(0.8, 0.6, 0.3), fMat)
-    fp.position.set(lx - 0.8, 0.3, lz - 0.5)
-    fp.castShadow = true
-    fp.receiveShadow = true
-    scene.add(fp)
-    // Fireplace column L
-    var fc = new THREE.Mesh(new THREE.BoxGeometry(0.12, 1.0, 0.3), fMat)
-    fc.position.set(lx - 1.12, 0.8, lz - 0.5)
-    fc.castShadow = true
-    scene.add(fc)
-    // Fireplace column R
-    var fc2 = fc.clone()
-    fc2.position.set(lx - 0.48, 0.8, lz - 0.5)
-    scene.add(fc2)
-    // Mantel
-    var mt = new THREE.Mesh(new THREE.BoxGeometry(0.9, 0.06, 0.35), makeMat(0x2a1a10, 0.7))
-    mt.position.set(lx - 0.8, 1.3, lz - 0.5)
-    mt.castShadow = true
-    scene.add(mt)
-    // Fire glow
-    var fl = new THREE.PointLight(0xff4400, 0.3, 3)
-    fl.position.set(lx - 0.8, 0.3, lz - 0.5)
-    scene.add(fl)
-
-    // Living room - couch
-    var couchMat = makeMat(0x2a1820, 0.85)
-    placeBox(2, 1, 1.2, 0.5, 0.7, couchMat, 0.2, 1.2)
-    placeBox(2, 1, 1.2, 0.3, 0.7, makeMat(0x1a1018, 0.9), 0.2, 1.2)
-    // couch arms
-    placeBox(2, 1, 0.12, 0.6, 0.7, couchMat, -0.4, 1.2)
-    placeBox(2, 1, 0.12, 0.6, 0.7, couchMat, 0.8, 1.2)
-
-    // Coffee table
-    placeBox(2, 1, 0.6, 0.3, 0.4, makeMat(0x3a2a1a, 0.7), 0.2, 0.8)
-
-    // Kitchen - counters
-    var counterMat = makeMat(0x2a2a38, 0.6)
-    // L-shaped counter
-    placeBox(3, 0, 0.5, 0.9, 1.2, counterMat, 0.6, -0.2)
-    placeBox(3, 0, 1.0, 0.9, 0.5, counterMat, 0.6, 1.1)
-    // Counter top (wood)
-    var ctMat = makeMat(0x3a2818, 0.5)
-    placeBox(3, 0, 0.5, 0.06, 1.2, ctMat, 0.6, -0.2)
-    placeBox(3, 0, 1.0, 0.06, 0.5, ctMat, 0.6, 1.1)
-
-    // Dining room - table
-    var tableMat = makeMat(0x2a1e14, 0.7)
-    placeBox(2, 2, 0.9, 0.75, 0.6, tableMat, 0, 0)
-    placeBox(2, 2, 0.9, 0.05, 0.6, makeMat(0x3a2a1a, 0.5), 0, 0)
-
-    // Chairs
+    var wMat = makeMat(0x2a1e18, 0.8), dMat = makeMat(0x2a1e14, 0.7)
+    var cMat = makeMat(0x2a1820, 0.85), ctMat = makeMat(0x3a2818, 0.5)
+    var fMat = makeMat(0x1a1010, 0.9), pillMat = makeMat(0x1a1818, 0.9)
     var chairMat = makeMat(0x1a1410, 0.85)
-    placeBox(2, 2, 0.3, 0.45, 0.3, chairMat, 0.7, 0.7)
-    placeBox(2, 2, 0.3, 0.45, 0.3, chairMat, -0.7, 0.7)
-    placeBox(2, 2, 0.3, 0.45, 0.3, chairMat, 0.7, -0.7)
-    placeBox(2, 2, 0.3, 0.45, 0.3, chairMat, -0.7, -0.7)
 
-    // Study - desk and bookshelf
-    var deskMat = makeMat(0x1a1412, 0.8)
-    placeBox(0, 2, 0.7, 0.75, 0.4, deskMat, 0, 0.3)
-    // Bookshelf
-    var shelfMat = makeMat(0x1a1210, 0.9)
-    var sh = new THREE.Mesh(new THREE.BoxGeometry(0.4, 1.2, 1.0), shelfMat)
-    sh.position.set(0 * ROOM_SIZE + 0.2, 0.6, 2 * ROOM_SIZE + ROOM_SIZE / 2 - 0.8)
-    sh.castShadow = true
-    sh.receiveShadow = true
-    scene.add(sh)
-    // Shelf dividers
-    for (var si = 0; si < 4; si++) {
-      var sd = new THREE.Mesh(new THREE.BoxGeometry(0.35, 0.02, 0.9), makeMat(0x2a1e14, 0.7))
-      sd.position.set(0 * ROOM_SIZE + 0.2, 0.2 + si * 0.3, 2 * ROOM_SIZE + ROOM_SIZE / 2 - 0.8)
-      sd.castShadow = true
-      scene.add(sd)
+    var b1 = getRoomById('bedroom1')
+    if (b1) {
+      var b1x = (b1.col + 0.5) * CELL_SIZE, b1z = (b1.row + 0.5) * CELL_SIZE
+      placeBox(b1x, b1z - 0.3, 0.8, 0.4, 1.0, makeMat(0x2a1e20, 0.85))
+      placeBox(b1x, b1z - 0.3, 0.8, 0.15, 0.8, makeMat(0x1a1218, 0.9))
+      placeBox(b1x - 0.6, b1z + 0.5, 0.25, 0.1, 0.25, makeMat(0x1a1810, 0.7))
+      placeBox(b1x + 0.7, b1z - 0.2, 0.4, 1.2, 0.3, makeMat(0x1a1410, 0.85))
     }
 
-    // Bathroom 1 - bathtub
-    var bathMat = makeMat(0x1a1a28, 0.4, 0.3)
-    placeBox(1, 0, 0.7, 0.3, 1.2, bathMat, 0, 0.2)
-    // Bathtub interior
-    placeBox(1, 0, 0.5, 0.15, 0.9, makeMat(0x0a0a18, 0.3, 0.5), 0, 0.2)
-
-    // Garage - workbench
-    var wbMat = makeMat(0x2a2818, 0.9)
-    placeBox(0, 3, 1.2, 0.5, 0.6, wbMat, 0, 0)
-
-    // Entrance - coat rack
-    var rackMat = makeMat(0x1a1a1a, 0.6, 0.3)
-    placeBox(1, 3, 0.06, 1.0, 0.06, rackMat, 0.4, 0)
-    placeBox(1, 3, 0.06, 0.8, 0.06, rackMat, -0.4, 0)
-    placeBox(1, 3, 0.06, 0.8, 0.06, rackMat, 0, 0.4)
-    placeBox(1, 3, 0.06, 0.8, 0.06, rackMat, 0, -0.4)
-    // Top hook
-    placeBox(1, 3, 0.5, 0.06, 0.5, rackMat, 0, 0)
-
-    // Staircase model in hall (visual only, no upper floor)
-    var stairMat = makeMat(0x2a1e14, 0.85)
-    for (var step = 0; step < 6; step++) {
-      var sh2 = 0.12 + step * 0.08
-      placeBox(2, 0, 0.3, sh2, 0.5, stairMat, 0.1 + step * 0.1, -0.5 + step * 0.15)
+    var b2 = getRoomById('bedroom2')
+    if (b2) {
+      var b2x = (b2.col + 0.5) * CELL_SIZE, b2z = (b2.row + 0.5) * CELL_SIZE
+      placeBox(b2x, b2z - 0.3, 0.8, 0.4, 1.0, makeMat(0x2a2018, 0.85))
+      placeBox(b2x, b2z - 0.3, 0.8, 0.15, 0.8, makeMat(0x1a1410, 0.9))
+      placeBox(b2x + 0.5, b2z + 0.2, 0.6, 0.75, 0.35, makeMat(0x1a1412, 0.8))
+      placeBox(b2x + 0.5, b2z + 0.2, 0.6, 0.05, 0.35, makeMat(0x2a1e14, 0.5))
+      placeBox(b2x + 0.5, b2z - 0.3, 0.2, 0.4, 0.2, chairMat)
     }
-    // Railing posts
-    for (var rp = 0; rp < 4; rp++) {
-      placeBox(2, 0, 0.04, 0.5 + rp * 0.1, 0.04, makeMat(0x1a1410, 0.8), 0.3 + rp * 0.15, -0.4)
+
+    var ba1 = getRoomById('bathroom1')
+    if (ba1) {
+      var ba1x = (ba1.col + 0.5) * CELL_SIZE, ba1z = (ba1.row + 0.5) * CELL_SIZE
+      placeBox(ba1x, ba1z + 0.2, 0.6, 0.3, 1.0, makeMat(0x1a1a28, 0.4, 0.3))
+      placeBox(ba1x, ba1z + 0.2, 0.4, 0.12, 0.7, makeMat(0x0a0a18, 0.3, 0.5))
+      placeBox(ba1x - 0.5, ba1z - 0.5, 0.3, 0.5, 0.3, makeMat(0x1a1a22, 0.5))
+      placeBox(ba1x + 0.5, ba1z - 0.5, 0.25, 0.4, 0.25, makeMat(0x1a1a1e, 0.6))
     }
-    // Railing rail
-    placeBox(2, 0, 0.6, 0.04, 0.04, makeMat(0x2a1e14, 0.7), 0.4, -0.4)
 
-    // Hall 2 - small table with lamp
-    placeBox(1, 2, 0.3, 0.6, 0.3, tableMat, 0, 0.3)
-    // Lamp glow
-    var lampLight = new THREE.PointLight(0xff8844, 0.15, 2.5)
-    lampLight.position.set(1 * ROOM_SIZE + 0.3, 0.9, 2 * ROOM_SIZE + ROOM_SIZE / 2 + 0.3)
-    scene.add(lampLight)
-
-    // Kitchen - stove (simple)
-    placeBox(3, 0, 0.4, 0.8, 0.4, makeMat(0x1a1a22, 0.4, 0.5), 0.6, -0.7)
-
-    // Pillars in living/dining open area
-    var pillarMat = new THREE.MeshStandardMaterial({ color: 0x1a1818, roughness: 0.9 })
-    function addPillar(px, pz) {
-      var p = new THREE.Mesh(new THREE.BoxGeometry(0.12, WALL_HEIGHT, 0.12), pillarMat)
-      p.position.set(px, WALL_HEIGHT / 2, pz)
-      p.castShadow = true
-      scene.add(p)
-      wallObjects.push(p)
+    var ba2 = getRoomById('bathroom2')
+    if (ba2) {
+      var ba2x = (ba2.col + 0.5) * CELL_SIZE, ba2z = (ba2.row + 0.5) * CELL_SIZE
+      placeBox(ba2x - 0.3, ba2z - 0.3, 0.3, 0.5, 0.3, makeMat(0x1a1a22, 0.5))
+      placeBox(ba2x + 0.3, ba2z - 0.3, 0.25, 0.4, 0.25, makeMat(0x1a1a1e, 0.6))
     }
-    addPillar(1 * ROOM_SIZE + ROOM_SIZE, 1 * ROOM_SIZE + ROOM_SIZE)
-    addPillar(2 * ROOM_SIZE, 1 * ROOM_SIZE + ROOM_SIZE)
-    addPillar(1 * ROOM_SIZE + ROOM_SIZE, 2 * ROOM_SIZE)
-    addPillar(2 * ROOM_SIZE, 2 * ROOM_SIZE)
-  }
 
-  // ===== ITEMS =====
-  function placeFlashlightItem() {
-    if (flashlightFound) return
-    var entrancePos = computeRoomPos(1, 3)
-    var geo = new THREE.BoxGeometry(0.1, 0.1, 0.2)
-    var mat = new THREE.MeshStandardMaterial({
-      color: 0x4a3a2a,
-      emissive: 0x8a6a3a,
-      emissiveIntensity: 0.3,
-      roughness: 0.5,
-      metalness: 0.4
-    })
-    var mesh = new THREE.Mesh(geo, mat)
-    mesh.position.set(entrancePos.x - 0.3, 0.15, entrancePos.z + 0.3)
-    mesh.rotation.x = 0.2
-    mesh.castShadow = true
-    mesh.userData = {
-      interactable: true,
-      icon: '🔦',
-      name: 'LANTERNA',
-      type: 'flashlight',
-      onInteract: function () {
-        if (gameState.gameOver || gameState.caught) return
-        scene.remove(mesh)
-        pickupFlashlight()
+    var hall = getRoomById('hall')
+    if (hall) {
+      var hx = (hall.col + hall.w / 2) * CELL_SIZE, hz = (hall.row + hall.h / 2) * CELL_SIZE
+      placeBox(8, 1.5, 0.3, 0.6, 0.3, dMat)
+      var lampLight = new THREE.PointLight(0xff8844, 0.15, 2.5)
+      lampLight.position.set(8, 0.9, 1.5)
+      scene.add(lampLight)
+      for (var pi = 0; pi < 3; pi++) {
+        var pp = new THREE.Mesh(new THREE.BoxGeometry(0.12, WALL_HEIGHT, 0.12), pillMat)
+        pp.position.set(8 + (pi - 1) * 2, WALL_HEIGHT / 2, 3.5)
+        pp.castShadow = true; scene.add(pp); wallObjects.push(pp)
       }
     }
-    scene.add(mesh)
-  }
 
-  function placeItems() {
-    // Remove old items
-    interactables.forEach(function (item) {
-      if (item.parent) scene.remove(item)
-    })
-    interactables = []
+    var living = getRoomById('living')
+    if (living) {
+      var lx = (living.col + living.w / 2) * CELL_SIZE, lz = (living.row + living.h / 2) * CELL_SIZE
+      placeBox(lx - 0.8, lz - 0.5, 0.8, 0.6, 0.3, fMat)
+      placeBox(lx - 1.12, 0.8, lz - 0.5, 0.12, 1.0, 0.3, fMat)
+      placeBox(lx - 0.48, 0.8, lz - 0.5, 0.12, 1.0, 0.3, fMat)
+      placeBox(lx - 0.8, 1.3, lz - 0.5, 0.9, 0.06, 0.35, makeMat(0x2a1a10, 0.7))
+      var fl = new THREE.PointLight(0xff4400, 0.3, 3)
+      fl.position.set(lx - 0.8, 0.3, lz - 0.5)
+      scene.add(fl)
+      placeBox(lx + 0.3, lz + 1.1, 1.0, 0.5, 0.7, cMat)
+      placeBox(lx + 0.3, lz + 1.1, 1.0, 0.3, 0.7, makeMat(0x1a1018, 0.9))
+      placeBox(lx - 0.2, lz + 1.1, 0.12, 0.6, 0.7, cMat)
+      placeBox(lx + 0.8, lz + 1.1, 0.12, 0.6, 0.7, cMat)
+      placeBox(lx + 0.3, lz + 0.8, 0.5, 0.3, 0.35, makeMat(0x3a2a1a, 0.7))
+      placeBox(lx - 1.0, lz + 0.8, 0.03, 0.4, 0.5, makeMat(0x0a0a0a, 0.3, 0.3))
+    }
 
-    var itemPositions = [
-      { room: 'bedroom1', offX: 0.2, offZ: 0.2, icon: '📜', name: 'CARTA', type: 'letter' },
-      { room: 'kitchen', offX: -0.3, offZ: 0.4, icon: '🦴', name: 'OSSO', type: 'bone' },
-      { room: 'study', offX: 0.3, offZ: -0.3, icon: '📕', name: 'LIVRO', type: 'book' },
-      { room: 'bathroom1', offX: -0.2, offZ: -0.2, icon: '🪞', name: 'ESPELHO', type: 'mirror' },
-      { room: 'garage', offX: 0, offZ: 0.3, icon: '🔑', name: 'CHAVE', type: 'key' },
-      { room: 'dining', offX: 0.4, offZ: -0.4, icon: '🕯️', name: 'VELA', type: 'candle' },
-      { room: 'living', offX: -0.5, offZ: 0.5, icon: '🎵', name: 'CAIXA DE MÚSICA', type: 'musicbox' },
-    ]
+    var dining = getRoomById('dining')
+    if (dining) {
+      var dx = (dining.col + 0.5) * CELL_SIZE, dz = (dining.row + 0.5) * CELL_SIZE
+      placeBox(dx, dz, 0.9, 0.75, 0.6, dMat)
+      placeBox(dx, dz, 0.9, 0.05, 0.6, makeMat(0x3a2a1a, 0.5))
+      placeBox(dx + 0.7, dz + 0.7, 0.3, 0.45, 0.3, chairMat)
+      placeBox(dx - 0.7, dz + 0.7, 0.3, 0.45, 0.3, chairMat)
+      placeBox(dx + 0.7, dz - 0.7, 0.3, 0.45, 0.3, chairMat)
+      placeBox(dx - 0.7, dz - 0.7, 0.3, 0.45, 0.3, chairMat)
+    }
 
-    var itemsToPlace = Math.min(3 + gameState.day, itemPositions.length)
-    var used = {}
-    var placed = 0
-    while (placed < itemsToPlace) {
-      var idx = Math.floor(Math.random() * itemPositions.length)
-      if (used[idx]) continue
-      used[idx] = true
-      var ip = itemPositions[idx]
-      for (var r = 0; r < MAP.rows; r++) {
-        for (var c = 0; c < MAP.cols; c++) {
-          if (roomAt(c, r) === ip.room) {
-            var pos = computeRoomPos(c, r)
-            var item = createItemMesh(pos.x + ip.offX, pos.z + ip.offZ, ip.icon, ip.name, ip.type)
-            interactables.push(item)
-            placed++
-            c = MAP.cols; r = MAP.rows
+    var kitchen = getRoomById('kitchen')
+    if (kitchen) {
+      var kx = (kitchen.col + kitchen.w / 2) * CELL_SIZE, kz = (kitchen.row + kitchen.h / 2) * CELL_SIZE
+      var cMat2 = makeMat(0x2a2a38, 0.6)
+      placeBox(kx - 0.8, kz - 0.5, 0.5, 0.9, 1.2, cMat2)
+      placeBox(kx - 0.3, kz + 0.8, 1.0, 0.9, 0.5, cMat2)
+      placeBox(kx - 0.8, kz - 0.5, 0.5, 0.06, 1.2, ctMat)
+      placeBox(kx - 0.3, kz + 0.8, 1.0, 0.06, 0.5, ctMat)
+      placeBox(kx + 1.0, kz - 1.0, 0.4, 0.8, 0.4, makeMat(0x1a1a22, 0.4, 0.5))
+      placeBox(kx + 1.3, kz + 0.5, 0.4, 1.2, 0.4, makeMat(0x1a1a1a, 0.7))
+    }
+
+    var study = getRoomById('study')
+    if (study) {
+      var sx = (study.col + 0.5) * CELL_SIZE, sz = (study.row + 0.5) * CELL_SIZE
+      placeBox(sx + 0.2, sz + 0.3, 0.7, 0.75, 0.4, makeMat(0x1a1412, 0.8))
+      var shelfMat = makeMat(0x1a1210, 0.9)
+      var sh = new THREE.Mesh(new THREE.BoxGeometry(0.35, 1.2, 1.0), shelfMat)
+      sh.position.set(sx - 0.5, 0.6, sz - 0.5)
+      sh.castShadow = true; sh.receiveShadow = true; scene.add(sh)
+      for (var si = 0; si < 4; si++) {
+        var sd = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.02, 0.9), makeMat(0x2a1e14, 0.7))
+        sd.position.set(sx - 0.5, 0.2 + si * 0.3, sz - 0.5)
+        sd.castShadow = true; scene.add(sd)
+      }
+      var lampL = new THREE.PointLight(0xff8844, 0.12, 2)
+      lampL.position.set(sx + 0.5, 0.7, sz + 0.2)
+      scene.add(lampL)
+      placeBox(sx + 0.5, sz + 0.2, 0.15, 0.3, 0.15, makeMat(0x2a2a1a, 0.6))
+    }
+
+    var garageR = getRoomById('garage')
+    if (garageR) {
+      var gx = (garageR.col + 0.5) * CELL_SIZE, gz = (garageR.row + 0.5) * CELL_SIZE
+      placeBox(gx, gz, 1.0, 0.5, 0.6, makeMat(0x2a2818, 0.9))
+      placeBox(gx + 0.8, gz - 0.5, 0.3, 0.3, 0.3, makeMat(0x3a2a1a, 0.8))
+      placeBox(gx - 0.6, gz + 0.4, 0.3, 0.4, 0.3, makeMat(0x2a1a1a, 0.85))
+    }
+
+    var entranceR2 = getRoomById('entrance')
+    if (entranceR2) {
+      var ex2 = (entranceR2.col + entranceR2.w / 2) * CELL_SIZE
+      var ez2 = (entranceR2.row + entranceR2.h / 2) * CELL_SIZE
+      var rackMat = makeMat(0x1a1a1a, 0.6, 0.3)
+      placeBox(ex2 - 0.6, ez2, 0.06, 1.0, 0.06, rackMat)
+      placeBox(ex2 - 0.6, ez2 - 0.5, 0.5, 0.06, 0.5, rackMat)
+      placeBox(ex2 + 0.3, ez2, 0.3, 0.6, 0.3, dMat)
+    }
+
+    var pantry = getRoomById('pantry')
+    if (pantry) {
+      var px = (pantry.col + 0.5) * CELL_SIZE, pz = (pantry.row + 0.5) * CELL_SIZE
+      placeBox(px - 0.4, pz, 0.3, 1.3, 0.8, makeMat(0x1a1410, 0.9))
+      placeBox(px + 0.4, pz, 0.3, 1.3, 0.8, makeMat(0x1a1410, 0.9))
+    }
+
+    var attR = getRoomById('attic')
+    if (attR) {
+      // Staircase
+      var stairMat = makeMat(0x2a1e14, 0.8)
+      for (var step = 0; step < 8; step++) {
+        var t = step / 7
+        var sy = 3.0 * t, sh = 0.12 + 3.0 * t * 0.5
+        var sx2 = 10 + t * 0.8, sz2 = 2.5 + t * 0.8
+        addBox(sx2, sy + sh / 2, sz2, 0.9, sh, 0.5, stairMat, 0)
+      }
+      var railMat = makeMat(0x1a1410, 0.8)
+      for (var rp = 0; rp < 5; rp++) {
+        var rt = rp / 4
+        addBox(10 + rt * 0.8, 0.6 + rt * 2.4, 2 + rt * 0.8, 0.04, 0.5 + rt * 2.0, 0.04, railMat, 0)
+      }
+      addBox(10.4, 1.2, 1.9, 1.0, 0.04, 0.04, makeMat(0x2a1e14, 0.7), 0)
+
+      // Second floor rooms: attic + loft
+      var floorRooms = ['attic', 'loft']
+      var wallH2 = 2.2, yOff2 = 3.0
+      for (var fi = 0; fi < floorRooms.length; fi++) {
+        var fRoom = null
+        for (var ri2 = 0; ri2 < ROOMS.length; ri2++) {
+          if (ROOMS[ri2].type === floorRooms[fi]) { fRoom = ROOMS[ri2]; break }
+        }
+        if (!fRoom) continue
+        var fcx = (fRoom.col + fRoom.w / 2) * CELL_SIZE, fcz = (fRoom.row + fRoom.h / 2) * CELL_SIZE
+        var frw = fRoom.w * CELL_SIZE, frh = fRoom.h * CELL_SIZE
+        var ftex = getRoomTex(fRoom.type)
+        var ffMat = new THREE.MeshStandardMaterial({ map: ftex.floor, roughness: 0.8 })
+        var fcMat = new THREE.MeshStandardMaterial({ map: ftex.ceil, roughness: 0.9 })
+        addBox(fcx, yOff2 + 0.05, fcz, frw - 0.1, 0.1, frh - 0.1, ffMat, 0)
+        addBox(fcx, yOff2 + wallH2 - 0.02, fcz, frw - 0.1, 0.05, frh - 0.1, fcMat, 0)
+        for (var rr = fRoom.row; rr < fRoom.row + fRoom.h; rr++) {
+          for (var cc = fRoom.col; cc < fRoom.col + fRoom.w; cc++) {
+            var edges = [[cc,rr,cc,rr-1],[cc,rr,cc,rr+1],[cc,rr,cc-1,rr],[cc,rr,cc+1,rr]]
+            for (var ei = 0; ei < edges.length; ei++) {
+              var e = edges[ei], nc = e[2], nr = e[3]
+              var tRoom = cellRoom[rr] ? cellRoom[rr][cc] : null
+              var nbRoom = (nc >= 0 && nc < GRID_COLS && nr >= 0 && nr < GRID_ROWS && cellRoom[nr]) ? cellRoom[nr][nc] : null
+              if (nbRoom === tRoom) continue
+              var isDr = nbRoom && isDoorConnection(tRoom, nbRoom)
+              var wwx, wwz, www, wwd
+              if (nc !== cc) { wwx = Math.max(cc, nc) * CELL_SIZE; wwz = (Math.min(rr, nr) + 0.5) * CELL_SIZE; www = 0.12; wwd = CELL_SIZE }
+              else { wwx = (Math.min(cc, nc) + 0.5) * CELL_SIZE; wwz = Math.max(rr, nr) * CELL_SIZE; www = CELL_SIZE; wwd = 0.12 }
+              var wMat2 = new THREE.MeshStandardMaterial({ color: 0x1a1818, roughness: 0.85 })
+              if (isDr) {
+                var dw2 = 0.9, dh2 = 2.0
+                if (www > wwd) {
+                  var sw = (www - dw2) / 2
+                  if (sw > 0) {
+                    addBox(wwx - dw2 / 2 - sw / 2, yOff2 + wallH2 / 2, wwz, sw, wallH2, wwd, wMat2, 0)
+                    addBox(wwx + dw2 / 2 + sw / 2, yOff2 + wallH2 / 2, wwz, sw, wallH2, wwd, wMat2, 0)
+                  }
+                  addBox(wwx, yOff2 + wallH2 - (wallH2 - dh2) / 2, wwz, dw2, wallH2 - dh2, wwd, wMat2, 0)
+                } else {
+                  var sd2 = (wwd - dw2) / 2
+                  if (sd2 > 0) {
+                    addBox(wwx, yOff2 + wallH2 / 2, wwz - dw2 / 2 - sd2 / 2, www, wallH2, sd2, wMat2, 0)
+                    addBox(wwx, yOff2 + wallH2 / 2, wwz + dw2 / 2 + sd2 / 2, www, wallH2, sd2, wMat2, 0)
+                  }
+                  addBox(wwx, yOff2 + wallH2 - (wallH2 - dh2) / 2, wwz, www, wallH2 - dh2, dw2, wMat2, 0)
+                }
+              } else addBox(wwx, yOff2 + wallH2 / 2, wwz, www, wallH2, wwd, wMat2, 0)
+            }
           }
         }
       }
-    }
-  }
-
-  function createItemMesh(x, z, icon, name, type) {
-    var color = 0x8a5a3a
-    var geo = new THREE.BoxGeometry(0.15, 0.15, 0.15)
-    var mat = new THREE.MeshStandardMaterial({
-      color: color,
-      emissive: 0x3a1a0a,
-      emissiveIntensity: 0.2,
-      roughness: 0.6,
-      metalness: 0.3
-    })
-    var mesh = new THREE.Mesh(geo, mat)
-    mesh.position.set(x, 0.2, z)
-    mesh.castShadow = true
-    mesh.userData = {
-      interactable: true,
-      icon: icon,
-      name: name,
-      type: type,
-      onInteract: function (obj) {
-        if (gameState.gameOver || gameState.caught) return
-        pickupItem(obj)
+      // Wall between attic and loft
+      for (var rw2 = 0; rw2 < 2; rw2++) {
+        var wwz2 = (rw2 + 0.5) * CELL_SIZE
+        if (cellRoom[rw2] && cellRoom[rw2][4] === 'loft') {
+          addBox(4 * CELL_SIZE, yOff2 + wallH2 / 2, wwz2, 0.12, wallH2, CELL_SIZE, new THREE.MeshStandardMaterial({ color: 0x1a1818, roughness: 0.85 }), 0)
+        }
       }
     }
-    scene.add(mesh)
-    return mesh
+
+    var loftR = getRoomById('loft')
+    if (loftR) {
+      var lx2 = (loftR.col + 0.5) * CELL_SIZE, lz2 = (loftR.row + 0.5) * CELL_SIZE
+      var winMat = new THREE.MeshStandardMaterial({ color: 0x224488, emissive: 0x4488cc, emissiveIntensity: 0.3 })
+      addBox(lx2 + 0.5, 4.2, lz2, 0.06, 1.2, 0.8, winMat, 0, false)
+    }
   }
 
-  function pickupItem(mesh) {
-    if (gameState.items.length >= 6) return
-    gameState.items.push(mesh.userData.type)
-    scene.remove(mesh)
+  function buildNotes() {
+    var noteNames = Object.keys(VICTIM_NOTES)
+    for (var ni = 0; ni < noteNames.length; ni++) {
+      var nd = VICTIM_NOTES[noteNames[ni]]
+      if (nd.id === 'sandalia') { buildScratchMarks(nd); continue }
+      var geo = new THREE.BoxGeometry(0.1, 0.1, 0.1)
+      var mat = new THREE.MeshStandardMaterial({ color: 0x8a6a3a, emissive: 0x5a3a1a, emissiveIntensity: 0.3, roughness: 0.5, metalness: 0.4 })
+      var mesh = new THREE.Mesh(geo, mat)
+      mesh.position.set(nd.pos.x, 0.2, nd.pos.z)
+      mesh.castShadow = true
+      mesh.userData = {
+        interactable: true, icon: nd.icon, name: nd.title, type: 'note', noteId: nd.id,
+        onInteract: function (obj) {
+          if (gameState.gameOver || gameState.caught) return
+          showNote(obj.userData.noteId)
+        }
+      }
+      scene.add(mesh)
+      noteMeshes.push(mesh)
+      interactables.push(mesh)
+    }
+  }
+
+  function buildScratchMarks(noteData) {
+    var positions = [{x:10,z:1.5},{x:11,z:4},{x:13,z:3},{x:12,z:1},{x:14,z:2}]
+    var scratchMat = new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0x888888, emissiveIntensity: 0.1 })
+    for (var si = 0; si < positions.length; si++) {
+      var group = new THREE.Object3D()
+      var pp = positions[si]
+      for (var ci = 0; ci < 3; ci++) {
+        var line = new THREE.Mesh(new THREE.BoxGeometry(0.01, 0.01, 0.04 + Math.random() * 0.06), scratchMat)
+        line.position.set((Math.random() - 0.5) * 0.1, 0.01, (Math.random() - 0.5) * 0.1)
+        line.rotation.y = (Math.random() - 0.5) * 0.8
+        group.add(line)
+      }
+      group.position.set(pp.x, 0, pp.z)
+      group.userData = {
+        interactable: true, icon: '\uD83D\uDC3E', name: 'MARCAS DE GARRAS', type: 'scratch', scratchIdx: si,
+        onInteract: function (obj) {
+          if (gameState.gameOver || gameState.caught) return
+          onScratchInteract(obj)
+        }
+      }
+      scene.add(group)
+      scratchMarks.push(group)
+      interactables.push(group)
+    }
+  }
+
+  function onScratchInteract(obj) {
+    var idx = obj.userData.scratchIdx
+    if (idx === puzzleState.scratchCount && !puzzleState.scratchSolved) {
+      puzzleState.scratchCount++
+      playItemPickup()
+      if (puzzleState.scratchCount >= 5) {
+        puzzleState.scratchSolved = true
+        playerItems.push('ervasSecas')
+        showNote('sandalia')
+        updateHUD()
+      } else {
+        var directions = ['NORTE', 'LESTE', 'SUL', 'OESTE', 'SUL']
+        document.getElementById('puzzleTitle').textContent = '// MARCAS'
+        document.getElementById('puzzleDisplay').textContent = directions[idx] || '?'
+        document.getElementById('puzzleOverlay').classList.add('open')
+        playPuzzleSolve()
+        setTimeout(function () { document.getElementById('puzzleOverlay').classList.remove('open') }, 1000)
+      }
+    }
+  }
+
+  function showNote(noteId) {
+    var nd = VICTIM_NOTES[noteId]
+    if (!nd) return
+    if (nd.text) {
+      document.getElementById('noteVictim').textContent = nd.victim
+      document.getElementById('noteTitle').textContent = nd.title
+      document.getElementById('noteText').innerHTML = nd.text.replace(/\n/g, '<br>')
+      document.getElementById('noteOverlay').classList.add('open')
+    }
+    var bit = 1 << nd.memoryId
+    if (!(memoryFlags & bit)) {
+      memoryFlags |= bit
+      gameState.memories++
+      playPuzzleSolve()
+      var mf = document.getElementById('memoryFlash')
+      mf.classList.add('active')
+      setTimeout(function () { mf.classList.remove('active') }, 300)
+      updateHUD()
+    }
+  }
+
+  function closeNote() {
+    document.getElementById('noteOverlay').classList.remove('open')
+  }
+
+  function buildPuzzles() {
+    var studyR = getRoomById('study')
+    if (studyR) {
+      var sx = (studyR.col + 0.5) * CELL_SIZE, sz = (studyR.row + 0.5) * CELL_SIZE
+      var drawerMat = makeMat(0x2a1e18, 0.8)
+      for (var di = 0; di < 3; di++) {
+        var dm = new THREE.Mesh(new THREE.BoxGeometry(0.25, 0.12, 0.25), drawerMat)
+        dm.position.set(sx + (di - 1) * 0.3, 0.06, sz + 0.6)
+        dm.castShadow = true; scene.add(dm)
+        if (di === 1) {
+          dm.userData = {
+            interactable: true, icon: '\uD83D\uDD11', name: 'GAVETA (meio)', type: 'puzzle', puzzleId: 'drawer',
+            onInteract: function () { onDrawerInteract() }
+          }
+          interactables.push(dm)
+        }
+      }
+    }
+
+    var alecrimMat = new THREE.MeshStandardMaterial({ color: 0x3a5a2a, emissive: 0x1a3a0a, emissiveIntensity: 0.15 })
+    var alecrim = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.08, 0.08), alecrimMat)
+    alecrim.position.set(11, 0.04, 2)
+    alecrim.userData = {
+      interactable: true, icon: '\uD83C\uDF3F', name: 'ALECRIM SECO', type: 'herb', herb: 'alecrim',
+      onInteract: function (obj) { collectHerb(obj, 'alecrim') }
+    }
+    scene.add(alecrim); interactables.push(alecrim)
+
+    var hortelaMat = new THREE.MeshStandardMaterial({ color: 0x2a5a2a, emissive: 0x1a3a0a, emissiveIntensity: 0.15 })
+    var hortela = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.08, 0.08), hortelaMat)
+    hortela.position.set(15, 0.04, 9)
+    hortela.userData = {
+      interactable: true, icon: '\uD83C\uDF31', name: 'HORTELA FRESCA', type: 'herb', herb: 'hortela',
+      onInteract: function (obj) { collectHerb(obj, 'hortela') }
+    }
+    scene.add(hortela); interactables.push(hortela)
+
+    var salMat = new THREE.MeshStandardMaterial({ color: 0x8a8a8a, emissive: 0x4a4a4a, emissiveIntensity: 0.1 })
+    var sal = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.08, 0.08), salMat)
+    sal.position.set(13, 0.7, 12.5)
+    sal.userData = {
+      interactable: true, icon: '\uD83E\uDDCA', name: 'SAL GROSSO', type: 'herb', herb: 'salGrosso',
+      onInteract: function (obj) { collectHerb(obj, 'salGrosso') }
+    }
+    scene.add(sal); interactables.push(sal)
+
+    var drawData = [
+      {pos:{x:2,z:4},sym:'\u2600\uFE0F',col:'#ff6600',name:'DESENHO: SOL'},
+      {pos:{x:3,z:10},sym:'\uD83C\uDF19',col:'#8888ff',name:'DESENHO: LUA'},
+      {pos:{x:5,z:6},sym:'\u2B50',col:'#ffff44',name:'DESENHO: ESTRELA'},
+      {pos:{x:9,z:2},sym:'\uD83D\uDD25',col:'#ff3300',name:'DESENHO: FOGO'}
+    ]
+    for (var dwi = 0; dwi < drawData.length; dwi++) {
+      var dd = drawData[dwi]
+      ;(function(sym, col, name, px, pz) {
+        var c2 = document.createElement('canvas')
+        c2.width = 64; c2.height = 64
+        var ctx2 = c2.getContext('2d')
+        ctx2.fillStyle = '#1a1010'; ctx2.fillRect(0, 0, 64, 64)
+        ctx2.fillStyle = col; ctx2.font = '40px serif'; ctx2.textAlign = 'center'; ctx2.textBaseline = 'middle'
+        ctx2.fillText(sym, 32, 32)
+        var dTex = new THREE.CanvasTexture(c2)
+        var dm = new THREE.Mesh(new THREE.PlaneGeometry(0.3, 0.3), new THREE.MeshBasicMaterial({ map: dTex, side: THREE.DoubleSide }))
+        dm.position.set(px, 1.5, pz)
+        dm.userData = {
+          interactable: true, icon: '\uD83C\uDFA8', name: name, type: 'drawing', symbol: sym,
+          onInteract: function (obj2) { onDrawingInteract(obj2) }
+        }
+        scene.add(dm)
+        drawingMeshes.push(dm)
+        interactables.push(dm)
+      })(dd.sym, dd.col, dd.name, dd.pos.x, dd.pos.z)
+    }
+
+    var diningR = getRoomById('dining')
+    if (diningR) {
+      var dpx = (diningR.col + 0.5) * CELL_SIZE, dpz = (diningR.row + 0.5) * CELL_SIZE
+      var paintMat = new THREE.MeshStandardMaterial({ color: 0x2a1a1a })
+      var paint = new THREE.Mesh(new THREE.BoxGeometry(0.4, 0.3, 0.02), paintMat)
+      paint.position.set(dpx, 1.4, dpz - 1.9)
+      paint.userData = {
+        interactable: true, icon: '\uD83D\uDDBC\uFE0F', name: 'QUADRO NA PAREDE', type: 'painting',
+        onInteract: function () {
+          if (!puzzleState.diaryRead) {
+            document.getElementById('puzzleMsg').textContent = 'O QUADRO ESTA PRESO...'
+            document.getElementById('puzzleOverlay').classList.add('open')
+            setTimeout(function () { document.getElementById('puzzleOverlay').classList.remove('open') }, 1200)
+            return
+          }
+          showSafePuzzle()
+        }
+      }
+      scene.add(paint); interactables.push(paint)
+    }
+
+    var brickMat2 = new THREE.MeshStandardMaterial({ color: 0x2a2818, roughness: 0.9 })
+    var brickMesh = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.08, 0.04), brickMat2)
+    brickMesh.position.set(10, 1.0, 0.3)
+    brickMesh.userData = {
+      interactable: true, icon: '\uD83E\uDDF1', name: 'TIJOLO SOLTO', type: 'brick',
+      onInteract: function () {
+        if (puzzleState.brickFound) {
+          document.getElementById('puzzleMsg').textContent = 'A PASSAGEM JA ESTA ABERTA.'
+          document.getElementById('puzzleOverlay').classList.add('open')
+          setTimeout(function () { document.getElementById('puzzleOverlay').classList.remove('open') }, 1000)
+          return
+        }
+        puzzleState.brickFound = true
+        if (brickWallMesh) {
+          scene.remove(brickWallMesh)
+          for (var wi = wallObjects.length - 1; wi >= 0; wi--) {
+            if (wallObjects[wi] === brickWallMesh) { wallObjects.splice(wi, 1); break }
+          }
+          brickWallMesh = null
+        }
+        puzzleState.brickPassageOpen = true
+        playPuzzleSolve()
+        document.getElementById('puzzleMsg').textContent = 'UMA PASSAGEM SECRETA SE ABRIU!'
+        document.getElementById('puzzleOverlay').classList.add('open')
+        setTimeout(function () { document.getElementById('puzzleOverlay').classList.remove('open') }, 1500)
+      }
+    }
+    scene.add(brickMesh); interactables.push(brickMesh)
+
+    var diaryMat2 = new THREE.MeshStandardMaterial({ color: 0x3a2a1a, emissive: 0x1a0a00, emissiveIntensity: 0.2 })
+    var diaryMesh = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.06, 0.08), diaryMat2)
+    diaryMesh.position.set(10.5, 0.03, 0.3)
+    diaryMesh.userData = {
+      interactable: true, icon: '\uD83D\uDCD3', name: 'DIARIO DE ULISSES', type: 'diary',
+      onInteract: function () {
+        if (puzzleState.diaryRead) return
+        puzzleState.diaryRead = true
+        document.getElementById('noteVictim').textContent = VICTIM_NOTES.ulisses.victim
+        document.getElementById('noteTitle').textContent = '// DIARIO \u2014 SEU ULISSES'
+        document.getElementById('noteText').innerHTML = (
+          'Ela dorme ao amanhecer.<br>' +
+          '2 minutos. Nao mais.<br><br>' +
+          'Encontrei isso na garagem, escondido atras da bancada.<br>' +
+          'O quarto selado... a passagem no corredor...<br>' +
+          'Tudo faz sentido agora.<br><br>' +
+          'A porta dourada so abre com a chave certa.<br>' +
+          'E a chave... esta com quem entendeu os simbolos.'
+        )
+        document.getElementById('noteOverlay').classList.add('open')
+        playPuzzleSolve()
+        playerItems.push('diario')
+        updateHUD()
+      }
+    }
+    scene.add(diaryMesh); interactables.push(diaryMesh)
+  }
+
+  function collectHerb(obj, herbType) {
+    if (puzzleState.herbsCollected >= 3) return
+    for (var hi = 0; hi < playerItems.length; hi++) { if (playerItems[hi] === herbType) return }
+    playerItems.push(herbType)
+    puzzleState.herbsCollected++
+    scene.remove(obj)
+    for (var ii = interactables.length - 1; ii >= 0; ii--) {
+      if (interactables[ii] === obj) { interactables.splice(ii, 1); break }
+    }
     playItemPickup()
     updateHUD()
+    if (puzzleState.herbsCollected >= 3 && !puzzleState.herbsUsed) {
+      document.getElementById('puzzleMsg').textContent = 'TODOS OS INGREDIENTES COLETADOS! USE NA COZINHA.'
+      document.getElementById('puzzleOverlay').classList.add('open')
+      setTimeout(function () { document.getElementById('puzzleOverlay').classList.remove('open') }, 2000)
+    }
   }
 
-  // ===== CONTROLS =====
-  function setupControls() {
-    document.addEventListener('keydown', function (e) {
-      if (gameState.gameOver || gameState.caught) return
-      switch (e.key) {
-        case 'w': case 'W': moveDir.fwd = 1; e.preventDefault(); break
-        case 's': case 'S': moveDir.fwd = -1; e.preventDefault(); break
-        case 'a': case 'A': moveDir.right = 1; e.preventDefault(); break
-        case 'd': case 'D': moveDir.right = -1; e.preventDefault(); break
-        case 'Shift': isRunning = true; e.preventDefault(); break
-        case 'Control': isCrouching = true; e.preventDefault(); break
-        case ' ': 
-          e.preventDefault()
-          if (player.isGrounded && !isJumping) {
-            player.velY = JUMP_SPEED
-            player.isGrounded = false
-            isJumping = true
-            playJumpSnd()
-          }
-          break
-        case 'f': case 'F': toggleFlashlight(); e.preventDefault(); break
+  function onDrawingInteract(obj) {
+    if (puzzleState.drawingSolved) return
+    var sym = obj.userData.symbol
+    var order = ['\u2600\uFE0F', '\uD83C\uDF19', '\u2B50', '\uD83D\uDD25']
+    var idx = puzzleState.drawingSeq.length
+    if (sym === order[idx]) {
+      puzzleState.drawingSeq.push(sym)
+      playItemPickup()
+      if (puzzleState.drawingSeq.length >= 4) {
+        puzzleState.drawingSolved = true
+        playerItems.push('papelEnzo')
+        playPuzzleSolve()
+        document.getElementById('puzzleMsg').textContent = 'SEQUENCIA CORRETA! VOCE GANHOU: PAPEL DO ENZO'
+        document.getElementById('puzzleOverlay').classList.add('open')
+        setTimeout(function () { document.getElementById('puzzleOverlay').classList.remove('open') }, 2000)
+        updateHUD()
       }
+    } else {
+      puzzleState.drawingSeq = []
+      playCaughtSnd()
+      document.getElementById('puzzleMsg').textContent = 'SEQUENCIA ERRADA! TENTE NOVAMENTE.'
+      document.getElementById('puzzleOverlay').classList.add('open')
+      setTimeout(function () { document.getElementById('puzzleOverlay').classList.remove('open') }, 1500)
+    }
+  }
+
+  function onDrawerInteract() {
+    if (puzzleState.drawerSolved) return
+    if (gameState.memories < 1) {
+      document.getElementById('puzzleMsg').textContent = 'A GAVETA ESTA TRANCADA. PRECISA DE UMA PISTA...'
+      document.getElementById('puzzleOverlay').classList.add('open')
+      setTimeout(function () { document.getElementById('puzzleOverlay').classList.remove('open') }, 2000)
+      return
+    }
+    showLockPuzzle()
+  }
+
+  function showLockPuzzle() {
+    var attempt = []
+    var overlay = document.getElementById('puzzleOverlay')
+    var title = document.getElementById('puzzleTitle')
+    var display = document.getElementById('puzzleDisplay')
+    var keys = document.getElementById('puzzleKeys')
+    var msg = document.getElementById('puzzleMsg')
+    title.textContent = '// CADEADO \u2014 3 DIGITOS'
+    display.textContent = '_ _ _'
+    msg.textContent = 'DIGITE O CODIGO (7-3-1)'
+    keys.innerHTML = ''
+    for (var k = 0; k <= 9; k++) {
+      (function(n) {
+        var btn = document.createElement('div')
+        btn.className = 'pkey'
+        btn.textContent = n
+        btn.onclick = function() {
+          if (attempt.length >= 3) return
+          attempt.push(n)
+          var txt = ''
+          for (var ai = 0; ai < 3; ai++) txt += (attempt[ai] !== undefined ? attempt[ai] : '_') + ' '
+          display.textContent = txt.trim()
+          if (attempt.length >= 3) {
+            if (attempt[0] === 7 && attempt[1] === 3 && attempt[2] === 1) {
+              msg.textContent = 'CORRETO! CHAVE DO MIRANTE OBTIDA!'
+              puzzleState.drawerSolved = true
+              gameState.secondFloorUnlocked = true
+              playerItems.push('miranteKey')
+              playPuzzleSolve()
+              updateHUD()
+              setTimeout(function () { overlay.classList.remove('open') }, 1500)
+            } else {
+              msg.textContent = 'CODIGO ERRADO. TENTE NOVAMENTE.'
+              attempt = []
+              setTimeout(function () { display.textContent = '_ _ _' }, 500)
+              playCaughtSnd()
+            }
+          }
+        }
+        keys.appendChild(btn)
+      })(k)
+    }
+    overlay.classList.add('open')
+  }
+
+  function showSafePuzzle() {
+    var dials = [1, 1, 1, 1]
+    var code = [3, 1, 4, 2]
+    var overlay = document.getElementById('puzzleOverlay')
+    var title = document.getElementById('puzzleTitle')
+    var display = document.getElementById('puzzleDisplay')
+    var keys = document.getElementById('puzzleKeys')
+    var msg = document.getElementById('puzzleMsg')
+    title.textContent = '// COFRE \u2014 4 DIALS'
+    msg.textContent = 'AJUSTE OS DIALS (1-4)'
+    keys.innerHTML = ''
+    display.textContent = dials.join(' ')
+    for (var di2 = 0; di2 < 4; di2++) {
+      (function(idx, dArr) {
+        var wrap = document.createElement('div')
+        wrap.style.cssText = 'display:flex;flex-direction:column;align-items:center;gap:4px'
+        var upBtn = document.createElement('div')
+        upBtn.className = 'pkey'; upBtn.textContent = '\u25B2'
+        var valBtn = document.createElement('div')
+        valBtn.className = 'pkey'; valBtn.textContent = dArr[idx]; valBtn.style.fontSize = '16px'
+        var downBtn = document.createElement('div')
+        downBtn.className = 'pkey'; downBtn.textContent = '\u25BC'
+        function updateVal() { valBtn.textContent = dArr[idx] }
+        function checkSafe2() {
+          if (puzzleState.safeSolved) return
+          for (var ci2 = 0; ci2 < 4; ci2++) { if (dArr[ci2] !== code[ci2]) return }
+          puzzleState.safeSolved = true
+          playerItems.push('tocaKey')
+          msg.textContent = 'COFRE ABERTO! CHAVE DA TOCA OBTIDA!'
+          playPuzzleSolve()
+          updateHUD()
+          setTimeout(function () { overlay.classList.remove('open') }, 1500)
+        }
+        upBtn.onclick = function() {
+          dArr[idx] = dArr[idx] >= 4 ? 1 : dArr[idx] + 1
+          display.textContent = dArr.join(' '); updateVal(); checkSafe2()
+        }
+        downBtn.onclick = function() {
+          dArr[idx] = dArr[idx] <= 1 ? 4 : dArr[idx] - 1
+          display.textContent = dArr.join(' '); updateVal(); checkSafe2()
+        }
+        wrap.appendChild(upBtn); wrap.appendChild(valBtn); wrap.appendChild(downBtn)
+        keys.appendChild(wrap)
+      })(di2, dials)
+    }
+    overlay.classList.add('open')
+  }
+
+  function closePuzzle() {
+    document.getElementById('puzzleOverlay').classList.remove('open')
+  }
+
+  function buildGoldenDoor() {
+    var gdMat = new THREE.MeshStandardMaterial({ color: 0x8a7a3a, emissive: 0x6a5a2a, emissiveIntensity: 0.4, metalness: 0.6, roughness: 0.3 })
+    var attic = getRoomById('attic')
+    if (attic) {
+      var ax = (attic.col + attic.w / 2) * CELL_SIZE, az = (attic.row + attic.h / 2) * CELL_SIZE
+      goldenDoorMesh = new THREE.Mesh(new THREE.BoxGeometry(0.9, 2.0, 0.06), gdMat)
+      goldenDoorMesh.position.set(ax, 4.0, az + 1.5)
+      goldenDoorMesh.userData = {
+        interactable: true, icon: '\uD83D\uDEAA', name: 'PORTA DOURADA', type: 'goldenDoor',
+        onInteract: function () {
+          if (gameState.memories >= gameState.maxMemories && puzzleState.safeSolved) {
+            showEnding('good')
+          } else {
+            var falta = gameState.maxMemories - gameState.memories
+            document.getElementById('puzzleMsg').textContent = 'A PORTA NAO ABRE. FALTAM ' + falta + ' MEMORIAS...'
+            document.getElementById('puzzleOverlay').classList.add('open')
+            setTimeout(function () { document.getElementById('puzzleOverlay').classList.remove('open') }, 2000)
+          }
+        }
+      }
+      scene.add(goldenDoorMesh)
+      interactables.push(goldenDoorMesh)
+    }
+  }
+
+  function buildStairTeleports() {
+    stairTeleportUp = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.1, 0.5), new THREE.MeshBasicMaterial({ color: 0x444422, transparent: true, opacity: 0.3 }))
+    stairTeleportUp.position.set(10.3, 0.1, 2.5)
+    stairTeleportUp.userData = {
+      interactable: true, icon: '\u2B06\uFE0F', name: 'SUBIR ESCADA', type: 'stairsUp',
+      onInteract: function () {
+        if (!gameState.secondFloorUnlocked) {
+          document.getElementById('puzzleMsg').textContent = 'O ANDAR DE CIMA ESTA TRANCADO.'
+          document.getElementById('puzzleOverlay').classList.add('open')
+          setTimeout(function () { document.getElementById('puzzleOverlay').classList.remove('open') }, 1500)
+          return
+        }
+        isOnSecondFloor = true
+        player.pos.set(10.3, 3.0, 2.5); player.velY = 0; player.isGrounded = true
+        camera.position.set(10.3, player.height + 3.0, 2.5)
+      }
+    }
+    scene.add(stairTeleportUp); interactables.push(stairTeleportUp)
+
+    stairTeleportDown = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.1, 0.5), new THREE.MeshBasicMaterial({ color: 0x224444, transparent: true, opacity: 0.3 }))
+    stairTeleportDown.position.set(10.3, 3.1, 2.5)
+    stairTeleportDown.userData = {
+      interactable: true, icon: '\u2B07\uFE0F', name: 'DESCER ESCADA', type: 'stairsDown',
+      onInteract: function () {
+        isOnSecondFloor = false
+        player.pos.set(10.3, 0, 2.5); player.velY = 0; player.isGrounded = true
+        camera.position.set(10.3, player.height, 2.5)
+      }
+    }
+    scene.add(stairTeleportDown); interactables.push(stairTeleportDown)
+  }
+
+  function setupControls() {
+    keys = { w: false, a: false, s: false, d: false, space: false, shift: false, e: false, esc: false, tab: false }
+    document.addEventListener('keydown', function (e) {
+      var k = e.key.toLowerCase()
+      if (k === 'w' || k === 'a' || k === 's' || k === 'd') { keys[k] = true; e.preventDefault() }
+      if (k === ' ') { keys.space = true; e.preventDefault() }
+      if (k === 'shift') { keys.shift = true; e.preventDefault() }
+      if (k === 'e') { keys.e = true; e.preventDefault() }
+      if (k === 'escape') { keys.esc = true }
+      if (k === 'tab') { keys.tab = true; e.preventDefault() }
     })
     document.addEventListener('keyup', function (e) {
-      switch (e.key) {
-        case 'w': case 'W': if (moveDir.fwd > 0) moveDir.fwd = 0; break
-        case 's': case 'S': if (moveDir.fwd < 0) moveDir.fwd = 0; break
-        case 'a': case 'A': if (moveDir.right > 0) moveDir.right = 0; break
-        case 'd': case 'D': if (moveDir.right < 0) moveDir.right = 0; break
-        case 'Shift': isRunning = false; break
-        case 'Control': isCrouching = false; break
-        case ' ': isJumping = false; break
-      }
-    })
-    document.addEventListener('keydown', function (e) {
-      if ((e.key === 'e' || e.key === 'E') && !gameState.gameOver && !gameState.caught) interact()
-    })
-    document.addEventListener('mousedown', function () {
-      if (isLocked && !gameState.gameOver && !gameState.caught) interact()
+      var k = e.key.toLowerCase()
+      if (k === 'w' || k === 'a' || k === 's' || k === 'd') { keys[k] = false; e.preventDefault() }
+      if (k === ' ') { keys.space = false; e.preventDefault() }
+      if (k === 'shift') { keys.shift = false; e.preventDefault() }
+      if (k === 'e') { keys.e = false; e.preventDefault() }
+      if (k === 'escape') { keys.esc = false }
+      if (k === 'tab') { keys.tab = false; e.preventDefault() }
     })
   }
 
   function setupPointerLock() {
-    renderer.domElement.addEventListener('click', function () {
-      if (!isLocked) {
-        renderer.domElement.requestPointerLock()
-      }
+    document.addEventListener('mousemove', function (e) {
+      if (!isPointerLocked) return
+      var sens = 0.002
+      player.yaw -= e.movementX * sens
+      player.pitch -= e.movementY * sens
+      player.pitch = Math.max(-Math.PI / 2 + 0.1, Math.min(Math.PI / 2 - 0.1, player.pitch))
     })
     document.addEventListener('pointerlockchange', function () {
-      isLocked = document.pointerLockElement === renderer.domElement
+      isPointerLocked = document.pointerLockElement === renderer.domElement
+      var ch = document.getElementById('crosshair')
+      if (ch) ch.style.display = isPointerLocked ? 'none' : 'block'
     })
-    document.addEventListener('mousemove', function (e) {
-      if (!isLocked) return
-      euler.y -= e.movementX * 0.002
-      euler.x -= e.movementY * 0.002
-      euler.x = Math.max(-Math.PI / 2.2, Math.min(Math.PI / 2.2, euler.x))
+    renderer.domElement.addEventListener('click', function () {
+      if (!isPointerLocked) { renderer.domElement.requestPointerLock() }
+      else if (!gameState.gameOver && !gameState.caught) { tryInteract() }
     })
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && isLocked) {
-        document.exitPointerLock()
-      }
+    window.addEventListener('resize', function () {
+      camera.aspect = window.innerWidth / window.innerHeight
+      camera.updateProjectionMatrix()
+      renderer.setSize(window.innerWidth, window.innerHeight)
     })
   }
 
-  // ===== PHYSICS =====
-  function updateMovement(dt) {
+  function buildShiva() {
+    var group = new THREE.Object3D()
+    var bodyMat = new THREE.MeshStandardMaterial({ color: 0x111111, emissive: 0x440000, emissiveIntensity: 0.3, roughness: 0.8 })
+    var eyeMat = new THREE.MeshStandardMaterial({ color: 0xff0000, emissive: 0xff0000, emissiveIntensity: 1.0 })
+    // Body
+    var body = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.25, 0.7), bodyMat)
+    body.position.y = 0.3
+    body.castShadow = true
+    group.add(body)
+    // Head
+    var head = new THREE.Mesh(new THREE.BoxGeometry(0.25, 0.2, 0.25), bodyMat)
+    head.position.set(0, 0.45, -0.35)
+    head.castShadow = true
+    group.add(head)
+    // Eyes (two red spheres)
+    for (var ei = -1; ei <= 1; ei += 2) {
+      var eye = new THREE.Mesh(new THREE.SphereGeometry(0.04, 6, 6), eyeMat)
+      eye.position.set(ei * 0.08, 0.48, -0.42)
+      group.add(eye)
+    }
+    // 2 front legs
+    for (var li = -1; li <= 1; li += 2) {
+      var leg = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.2, 0.06), bodyMat)
+      leg.position.set(li * 0.15, 0.1, -0.25)
+      group.add(leg)
+    }
+    // 2 back legs
+    for (var li = -1; li <= 1; li += 2) {
+      var leg = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.2, 0.06), bodyMat)
+      leg.position.set(li * 0.15, 0.1, 0.25)
+      group.add(leg)
+    }
+    // Tail
+    var tail = new THREE.Mesh(new THREE.BoxGeometry(0.03, 0.15, 0.03), bodyMat)
+    tail.position.set(0, 0.45, 0.35)
+    group.add(tail)
+    group.position.set(5, 0, 5)
+    scene.add(group)
+    shiva = group
+    shivaState.sleepPos = new THREE.Vector3(12, 0, 14)
+  }
+
+  function placeFlashlightItem() {
+    flashlightOn = true
+    if (hudEls.flashlightInd) hudEls.flashlightInd.classList.add('on')
+    if (flashlight) flashlight.intensity = 2.5
+  }
+
+  function updatePlayer(dt) {
     if (gameState.gameOver || gameState.caught) return
-
-    var speed = player.speed
-    if (isRunning) speed *= 1.8
-    if (isCrouching) speed *= 0.4
-
-    // Horizontal movement
-    var fwd = new THREE.Vector3(-Math.sin(euler.y), 0, -Math.cos(euler.y))
-    var right = new THREE.Vector3(fwd.z, 0, -fwd.x)
-    fwd.multiplyScalar(moveDir.fwd)
-    right.multiplyScalar(moveDir.right)
-    vel.copy(fwd).add(right)
-    if (vel.length() > 0) {
-      vel.normalize().multiplyScalar(speed * dt)
-      var newPos = player.pos.clone().add(vel)
-      if (!checkCollision(newPos)) {
-        player.pos.copy(newPos)
-      } else {
-        var slideX = new THREE.Vector3(vel.x, 0, 0)
-        var testX = player.pos.clone().add(slideX)
-        if (!checkCollision(testX)) player.pos.x = testX.x
-        var slideZ = new THREE.Vector3(0, 0, vel.z)
-        var testZ = player.pos.clone().add(slideZ)
-        if (!checkCollision(testZ)) player.pos.z = testZ.z
-      }
-
-      // Footstep sounds
-      if (player.isGrounded) {
-        footstepTimer += dt
-        var stepInterval = isRunning ? 0.3 : 0.5
-        if (footstepTimer >= stepInterval) {
-          footstepTimer = 0
-          playFootstep()
-        }
-      }
-      wasMoving = true
-    } else {
-      footstepTimer = 0
-      wasMoving = false
+    var spd = keys.shift ? player.speed * 1.6 : player.speed
+    var forward = new THREE.Vector3(-Math.sin(player.yaw), 0, -Math.cos(player.yaw))
+    var right = new THREE.Vector3(forward.z, 0, -forward.x)
+    var move = new THREE.Vector3(0, 0, 0)
+    if (keys.w) move.add(forward)
+    if (keys.s) move.sub(forward)
+    if (keys.a) move.sub(right)
+    if (keys.d) move.add(right)
+    if (move.length() > 0) {
+      move.normalize().multiplyScalar(spd * dt)
+      var nx = player.pos.x + move.x, nz = player.pos.z + move.z
+      if (!checkCollision(nx, nz)) { player.pos.x = nx; player.pos.z = nz }
     }
-
-    // Gravity
-    if (!player.isGrounded) {
-      player.velY += GRAVITY * dt
-      player.pos.y += player.velY * dt
-      if (player.pos.y <= 0) {
-        player.pos.y = 0
-        player.velY = 0
-        player.isGrounded = true
-        if (!wasGrounded) {
-          playLandSnd()
-        }
-      }
-    }
-
-    // Track grounded state for landing sound
-    if (player.isGrounded && !wasGrounded) {
-      // landing sound already played above
-    }
-    wasGrounded = player.isGrounded
-
-    // Update camera
-    camera.position.copy(player.pos)
-    camera.position.y = player.height - (isCrouching ? 0.4 : 0)
-    var qx = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1, 0, 0), euler.x)
-    var qy = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0, 1, 0), euler.y)
-    camera.quaternion.copy(qy.multiply(qx))
+    player.velY += GRAVITY * dt
+    player.pos.y += player.velY * dt
+    var floorY = isOnSecondFloor ? 3.0 : 0
+    if (player.pos.y <= floorY) {
+      player.pos.y = floorY; player.velY = 0; player.isGrounded = true
+    } else { player.isGrounded = false }
+    if (keys.space && player.isGrounded) { player.velY = JUMP_SPEED; player.isGrounded = false }
+    camera.position.set(player.pos.x, player.pos.y + player.height, player.pos.z)
+    var euler = new THREE.Euler(player.pitch, player.yaw, 0, 'YXZ')
+    camera.quaternion.setFromEuler(euler)
   }
 
-  function checkCollision(pos) {
-    var playerR = 0.2
-    var testY = 0.5
-    for (var i = 0; i < wallObjects.length; i++) {
-      var w = wallObjects[i]
-      var box = new THREE.Box3().setFromObject(w)
-      var minY = box.min.y
-      var maxY = box.max.y
-      // Only collide if player is in same height range
-      if (pos.y + player.height * 0.5 < minY || pos.y + 0.2 > maxY) continue
-      var pBox = new THREE.Box3(
-        new THREE.Vector3(pos.x - playerR, pos.y - 0.3, pos.z - playerR),
-        new THREE.Vector3(pos.x + playerR, pos.y + 0.3, pos.z + playerR)
+  function checkCollision(nx, nz) {
+    for (var ci = 0; ci < wallObjects.length; ci++) {
+      var bb = new THREE.Box3().setFromObject(wallObjects[ci])
+      var halfSize = 0.2
+      var testBox = new THREE.Box3(
+        new THREE.Vector3(nx - halfSize, -1, nz - halfSize),
+        new THREE.Vector3(nx + halfSize, 5, nz + halfSize)
       )
-      if (box.intersectsBox(pBox)) return true
+      if (bb.intersectsBox(testBox)) return true
     }
     return false
   }
 
-  // ===== INTERACTION =====
-  function interact() {
-    raycaster.setFromCamera({ x: 0, y: 0 }, camera)
-    var intersects = raycaster.intersectObjects(scene.children, true)
-    if (intersects.length > 0) {
-      var obj = intersects[0].object
-      if (obj.userData && obj.userData.interactable) {
-        obj.userData.onInteract(obj)
+  function tryInteract() {
+    var ray = new THREE.Raycaster()
+    ray.setFromCamera(new THREE.Vector2(0, 0), camera)
+    var hits = ray.intersectObjects(interactables)
+    if (hits.length > 0) {
+      var hit = hits[0].object
+      if (hit.userData && hit.userData.interactable && hit.userData.onInteract) {
+        hit.userData.onInteract(hit)
       }
     }
   }
 
-  // ===== HUD =====
   function updateHUD() {
-    // Day
-    hudEls.day.textContent = 'DIA ' + gameState.day
-    hudEls.day.dataset.text = 'DIA ' + gameState.day
-    hudEls.daySub.textContent = '// ' + (gameState.maxDays - gameState.day + 1) + ' DIAS RESTAM'
-
-    // Memories
-    var memHtml = ''
-    for (var mi = 0; mi < gameState.maxMemories; mi++) {
-      memHtml += '<span class="mem-slot' + (mi < gameState.memories ? ' filled' : '') + '" data-i="' + mi + '"></span>'
-    }
-    hudEls.memories.innerHTML = memHtml
-
-    // Hunger
-    var hungerPct = Math.max(0, gameState.hunger)
-    hudEls.hungerFill.style.width = hungerPct + '%'
-    hudEls.hungerPct.textContent = Math.floor(hungerPct) + '%'
-
-    // Items
-    var allSlots = hudEls.itemSlots
-    for (var si = 0; si < allSlots.length; si++) {
-      var slot = allSlots[si]
-      var existingIcon = slot.querySelector('.item-icon')
-      if (existingIcon) slot.removeChild(existingIcon)
-      if (si < gameState.items.length) {
-        slot.classList.add('filled')
-        var iconSpan = document.createElement('span')
-        iconSpan.className = 'item-icon'
-        var type = gameState.items[si]
-        iconSpan.textContent = itemIcons[type] || '?'
-        slot.appendChild(iconSpan)
+    var dayEl = document.getElementById('hudDay')
+    if (dayEl) dayEl.textContent = 'DIA ' + gameState.day
+    var hudMem = document.getElementById('hudMemories')
+    if (hudMem) hudMem.textContent = gameState.memories + '/' + gameState.maxMemories
+    var slots = document.querySelectorAll('.item-slot')
+    for (var si = 0; si < slots.length; si++) {
+      var slot = slots[si]
+      if (si < playerItems.length) {
+        var icons = { 'ervasSecas': '\uD83C\uDF3F\u200D\u2620\uFE0F', 'alecrim': '\uD83C\uDF3F', 'hortela': '\uD83C\uDF31', 'salGrosso': '\uD83E\uDDCA', 'miranteKey': '\uD83D\uDD11', 'tocaKey': '\uD83D\uDDDD\uFE0F', 'diario': '\uD83D\uDCD3', 'papelEnzo': '\uD83D\uDCC4', 'pocao': '\uD83E\uDDEA' }
+        slot.innerHTML = (icons[playerItems[si]] || '\u2753')
+        slot.className = 'item-slot filled'
       } else {
-        slot.classList.remove('filled')
+        slot.innerHTML = ''; slot.className = 'item-slot'
       }
     }
+  }
 
-    // Flashlight indicator
-    if (hudEls.flashlightInd) {
-      hudEls.flashlightInd.textContent = flashlightOn ? '🔦 LANTERNA: LIGADA' : '🔦 LANTERNA: DESLIGADA'
-      hudEls.flashlightInd.className = flashlightOn ? 'on' : ''
+  function updateShiva(dt) {
+    if (!shiva) return
+    if (gameState.gameOver || gameState.caught) return
+    if (gameState.day < 5 && gameState.timeOfDay < 30) { shivaState.sleeping = true; return }
+    else { shivaState.sleeping = false }
+    shivaState.anger = Math.min(1, shivaState.anger + dt * 0.0005 * gameState.day)
+    var tgt = player.pos.clone()
+    if (shivaState.sleeping) {
+      shiva.position.copy(shivaState.sleepPos)
+      shiva.rotation.y = 0
+      return
+    }
+    var dx = tgt.x - shiva.position.x, dz = tgt.z - shiva.position.z
+    var dist = Math.sqrt(dx * dx + dz * dz)
+    var speed = 1.5 + gameState.day * 0.3
+    if (dist < 3) {
+      gameState.caught = true; shivaState.anger = 0.3
+      showCaughtScreen()
+      return
+    }
+    var noise = Math.sin(Date.now() * 0.001 + shiva.position.x) * 0.3
+    var wanderChance = 0.98
+    if (dist > 8 && Math.random() > wanderChance) {
+      shivaState.wanderDir = (shivaState.wanderDir || 0) + (Math.random() - 0.5) * 0.5
+      shiva.position.x += Math.sin(shivaState.wanderDir) * speed * dt * 0.5
+      shiva.position.z += Math.cos(shivaState.wanderDir) * speed * dt * 0.5
+    } else {
+      var angle = Math.atan2(dx, dz)
+      shiva.position.x += Math.sin(angle + noise) * speed * dt
+      shiva.position.z += Math.cos(angle + noise) * speed * dt
+    }
+    shiva.position.y = isOnSecondFloor ? 3.0 : 0
+    shiva.rotation.y = Math.atan2(dx, dz)
+    shivaState.lastKnownPos = tgt.clone()
+    var alert = document.getElementById('shivaAlert')
+    if (alert) { alert.classList.toggle('active', dist < 6 && !shivaState.sleeping) }
+  }
+
+  function showCaughtScreen() {
+    gameState.captures++
+    if (gameState.captures >= 5) { showEnding('bad'); return }
+    var ds = document.getElementById('deathScreen')
+    if (ds) ds.style.display = 'flex'
+    var lostItems = []
+    for (var li = playerItems.length - 1; li >= 0; li--) {
+      var item = playerItems[li]
+      if (item !== 'miranteKey' && item !== 'tocaKey' && item !== 'diario') {
+        lostItems.push(item); playerItems.splice(li, 1)
+      }
+    }
+    updateHUD()
+    resetPlayerPosition()
+    setTimeout(function () {
+      if (ds) ds.style.display = 'none'
+      gameState.caught = false
+    }, 2000)
+  }
+
+  function showEnding(type) {
+    gameState.gameOver = true
+    var es = document.getElementById('endingScreen')
+    if (es) es.style.display = 'flex'
+    var title = document.getElementById('endingTitle')
+    var text = document.getElementById('endingText')
+    if (type === 'good') {
+      es.className = 'endingGood'; if (title) title.textContent = 'O SOL VOLTOU'
+      if (text) text.textContent = 'Voce abriu a porta dourada. A luz invade o sotao, e pela primeira vez em decadas, a casa inteira range como se estivesse respirando. O cheiro de mofo evapora. As paredes param de suar. Shiva uiva ao longe, mas nao e mais um grito de fome. E um adeus.'
+    } else if (type === 'bad') {
+      es.className = 'endingBad'; if (title) title.textContent = 'O SOL SE APAGOU'
+      if (text) text.textContent = 'Cinco vezes. Cinco almas. A casa se alimentou de voce. Sua historia vira mais uma mancha na parede, mais um nome no diario de seu Ulisses. A porta dourada enferruja. Shiva jamais dormira de novo.'
+    } else {
+      es.className = 'endingNeutral'; if (title) title.textContent = 'O SOL NUNCA NASCEU'
+      if (text) text.textContent = 'Os dias passaram. As memorias se foram. A casa nao te prende mais — simplesmente te ignorou. Voce e agora parte do mobiliario, um fantasma entre fantasmas. Talvez alguem ache suas anotacoes um dia.'
+    }
+    setTimeout(function () {
+      if (confirm('Reiniciar?')) location.reload()
+    }, 5000)
+  }
+
+  function resetPlayerPosition() {
+    player.pos.set(8, 0, 14); player.velY = 0; player.isGrounded = true
+    isOnSecondFloor = false
+    camera.position.set(8, player.height, 14)
+  }
+
+  function updateDayNight(dt) {
+    if (gameState.gameOver) return
+    gameState.timeOfDay += dt
+    if (gameState.timeOfDay >= gameState.dayLength) {
+      gameState.timeOfDay = 0; gameState.day++
+      updateHUD()
+      if (gameState.day > 5) { showEnding('neutral'); return }
+    }
+    var t = gameState.timeOfDay / gameState.dayLength
+    var amb = 0.05 + t * 0.25
+    if (amb > 0.3) amb = 0.3
+    if (scene.fog) scene.fog.color.setHSL(0.05, 0.3, amb)
+    var sunH = Math.sin(t * Math.PI) * 0.5
+    if (dirLight) {
+      dirLight.position.set(0, sunH * 20, 0)
+      dirLight.intensity = 0.3 + t * 0.5
+    }
+    if (shiva && !shivaState.sleeping) {
+      shiva.material.color.setHSL(0, 0, 0.2 + t * 0.3)
     }
   }
 
-  // ===== DEATH / WIN =====
-  function showDeathScreen() {
-    gameState.caught = true
-    playCaughtSnd()
-    document.getElementById('deathScreen').classList.add('open')
-    document.getElementById('deathText').innerHTML =
-      'VOCÊ PERDEU TODOS OS ITENS DO DIA ' + gameState.day + '.<br>TENTE NOVAMENTE...'
-    if (document.pointerLockElement) document.exitPointerLock()
+  function updateInteractionPrompt() {
+    var prompt = document.getElementById('interactPrompt')
+    if (!prompt) return
+    if (gameState.gameOver || gameState.caught) { prompt.style.display = 'none'; return }
+    var ray = new THREE.Raycaster()
+    ray.setFromCamera(new THREE.Vector2(0, 0), camera)
+    var hits = ray.intersectObjects(interactables)
+    if (hits.length > 0) {
+      var obj = hits[0].object
+      if (obj.userData && obj.userData.interactable) {
+        prompt.style.display = 'block'
+        prompt.innerHTML = (obj.userData.icon || '') + ' ' + (obj.userData.name || '')
+        return
+      }
+    }
+    prompt.style.display = 'none'
   }
 
-  function nextDay() {
-    document.getElementById('deathScreen').classList.remove('open')
-    gameState.day++
-    gameState.items = []
-    gameState.dayItems = []
-    gameState.caught = false
-    gameState.puzzlesSolved = 0
-    player.pos.set(13, 0, 13)
-    player.velY = 0
-    player.isGrounded = true
-    camera.position.copy(player.pos)
-    camera.position.y = player.height
-    placeItems()
-    updateHUD()
-    renderer.domElement.requestPointerLock()
+  function isOnStove() {
+    return player.pos.x > 6 && player.pos.x < 10 && player.pos.z > 4 && player.pos.z < 8
   }
 
-  // ===== ANIMATION LOOP =====
+  function useHerbsOnStove() {
+    if (puzzleState.herbsUsed) return
+    puzzleState.herbsUsed = true
+    var hasAlecrim = false, hasHortela = false, hasSal = false
+    for (var hi = 0; hi < playerItems.length; hi++) {
+      if (playerItems[hi] === 'alecrim') hasAlecrim = true
+      if (playerItems[hi] === 'hortela') hasHortela = true
+      if (playerItems[hi] === 'salGrosso') hasSal = true
+    }
+    if (hasAlecrim && hasHortela && hasSal) {
+      playerItems.push('pocao')
+      document.getElementById('puzzleMsg').textContent = 'A POCAO FOI PREPARADA! SHIVA DORMIRA POR MAIS TEMPO.'
+      document.getElementById('puzzleOverlay').classList.add('open')
+      setTimeout(function () { document.getElementById('puzzleOverlay').classList.remove('open') }, 2000)
+      playPuzzleSolve()
+      shivaState.sleepDuration = (shivaState.sleepDuration || 0) + 60
+      updateHUD()
+    }
+  }
+
   function animate() {
     requestAnimationFrame(animate)
-    var dt = Math.min(clock.getDelta(), 0.05)
-
-    if (!gameState.gameOver && !gameState.caught) {
-      updateMovement(dt)
-      updateFlashlight(dt)
-
-      gameState.hunger -= dt * 0.2
-      if (gameState.hunger <= 0) {
-        gameState.gameOver = true
-        showDeathScreen()
-        document.getElementById('deathText').innerHTML =
-          'VOCÊ MORREU DE FOME APÓS ' + gameState.day + ' DIAS.'
-        document.getElementById('retryBtn').textContent = 'REINICIAR'
-      }
-
-      updateHUD()
+    var now = Date.now()
+    if (lastTime === 0) { lastTime = now; return }
+    var dt = Math.min((now - lastTime) / 1000, 0.05)
+    lastTime = now
+    updateDayNight(dt)
+    updateFlashlight(dt)
+    updatePlayer(dt)
+    updateShiva(dt)
+    updateHUD()
+    if (!gameState.gameOver && keys.e) { keys.e = false; tryInteract() }
+    if (!gameState.gameOver && keys.tab) {
+      keys.tab = false
+      if (puzzleState.herbsCollected >= 3 && !puzzleState.herbsUsed && isOnStove()) { useHerbsOnStove() }
     }
-
-    // Rotate items gently
-    for (var i = 0; i < interactables.length; i++) {
-      interactables[i].rotation.y += dt * 0.5
-    }
-
     renderer.render(scene, camera)
+    updateInteractionPrompt()
   }
 
-  // ===== EVENT BINDINGS =====
-  document.getElementById('retryBtn').addEventListener('click', function () {
-    if (gameState.gameOver) {
-      gameState.day = 1
-      gameState.hunger = 100
-      gameState.memories = 0
-      gameState.items = []
-      gameState.gameOver = false
-      gameState.caught = false
-      flashlightFound = false
-      flashlightOn = false
-      flashlightPickupAnim = 0
-      flashlight.intensity = 0
-      if (flashlightBulb) flashlightBulb.material.color.setHex(0x111111)
-      player.pos.set(6, 0, 14)
-      player.velY = 0
-      player.isGrounded = true
-      document.getElementById('deathScreen').classList.remove('open')
-      document.getElementById('retryBtn').textContent = 'TENTAR NOVAMENTE'
-      // Re-place items and flashlight
-      interactables.forEach(function (item) { if (item.parent) scene.remove(item) })
-      interactables = []
-      placeItems()
-      placeFlashlightItem()
-      updateHUD()
-      renderer.domElement.requestPointerLock()
-    } else {
-      nextDay()
-    }
-  })
+  document.getElementById('noteClose').onclick = function () { document.getElementById('noteOverlay').classList.remove('open') }
+  document.getElementById('puzzleClose').onclick = function () { document.getElementById('puzzleOverlay').classList.remove('open') }
+  document.getElementById('retryBtn').onclick = function () {
+    gameState.caught = false
+    document.getElementById('deathScreen').style.display = 'none'
+    resetPlayerPosition()
+  }
+  document.getElementById('endingBtn').onclick = function () { location.reload() }
 
-  window.addEventListener('resize', function () {
-    camera.aspect = window.innerWidth / window.innerHeight
-    camera.updateProjectionMatrix()
-    renderer.setSize(window.innerWidth, window.innerHeight)
-  })
-
-  // ===== START =====
-  init()
-})()
+  window.onload = init
+})();
