@@ -168,7 +168,7 @@
     </div>
   </div>
   <div class="tcontrols">
-    <span>← → MOVER</span><span>↑ ROTAR</span><span>↓ DESCER</span><span>SPACE SOLTAR</span><span>P PAUSA</span>
+    <span>← → MOVER</span><span>↑ ROTAR</span><span>↓ DESCER</span><span>SPACE SOLTAR</span><span>P PAUSA</span><span>ENTER REINICIAR</span>
   </div>
   <div class="skills-controller tetris-controller" id="tetrisController">
     <div class="ctrl-body">
@@ -485,7 +485,7 @@
         ctx.fillText('GAME OVER', this.bw/2, this.bh/2-20)
         ctx.fillStyle = '#fff'
         ctx.font = '8px "Press Start 2P"'
-        ctx.fillText('PRESSIONE R PARA REINICIAR', this.bw/2, this.bh/2+20)
+        ctx.fillText('PRESSIONE ENTER', this.bw/2, this.bh/2+20)
       }
 
       // pause overlay
@@ -586,7 +586,7 @@
           case 'b': case 'B': e.preventDefault(); this.rotate(1); break
           case ' ': e.preventDefault(); this.hardDrop(); break
           case 'p': case 'P': e.preventDefault(); this.paused=!this.paused; if(this.paused)this.overlay.classList.remove('tetris-open'); else this.overlay.classList.add('tetris-open'); break
-          case 'r': case 'R': e.preventDefault(); if(this.gameOver)this.restart(); break
+          case 'Enter': e.preventDefault(); if(this.gameOver)this.restart(); break
           case 'c': case 'C': e.preventDefault(); this.holdPiece(); break
         }
       })
