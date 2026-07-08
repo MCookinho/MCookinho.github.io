@@ -35,7 +35,8 @@ function makeGrid(fill) {
 }
 
 /* ================================================================
-   MAPA 01 — QUARTO
+   MAPA 01 — QUARTO (Bedroom)
+   Cama, criado-mudo, escrivaninha, guarda-roupa, tapete, brinquedos
    ================================================================ */
 (function() {
   const tiles = makeGrid(0);
@@ -50,17 +51,32 @@ function makeGrid(fill) {
       else
         tiles[y][x] = 1;
 
-  // cama (canto sup esq)
-  fillRect(tiles, 4, 3, 7, 5, 14);
-  fillRect(wall, 4, 3, 7, 3, 5);
-  // mesa (canto inf dir)
-  fillRect(tiles, 14, 10, 16, 12, 15);
-  // porta p/ corredor na parede direita
-  wall[7][17] = 10; coll[7][17] = true;
+  // cama (2 tiles na horizontal, encostada na parede esquerda)
+  tiles[6][3] = 14; tiles[6][4] = 14; coll[6][3] = true; coll[6][4] = true;
+  // criado-mudo ao lado da cama
+  tiles[6][5] = 45; coll[6][5] = true;
+  // abajur sobre o criado-mudo
+  tiles[5][5] = 29; coll[5][5] = true;
+  // guarda-roupa (canto inferior esquerdo)
+  tiles[10][3] = 24; tiles[11][3] = 24; coll[10][3] = true; coll[11][3] = true;
+  // escrivaninha (canto superior direito, 2 tiles)
+  tiles[4][15] = 15; tiles[4][16] = 15; coll[4][15] = true; coll[4][16] = true;
+  // cadeira da escrivaninha
+  tiles[5][15] = 28; coll[5][15] = true;
+  // tapete (2 tiles)
+  tiles[8][9] = 30; tiles[8][10] = 30;
+  // brinquedos no chão
+  tiles[11][13] = 42;
+  // quadro na parede
+  wall[2][10] = 26;
+  // cortina na janela (parede esquerda simulada)
+  wall[4][2] = 31; wall[6][2] = 31;
+  // porta para corredor (na parede direita)
+  wall[7][18] = 10; coll[7][18] = true;
 
   const objects = [
-    { type:'item', x:15, y:11, item:'lanterna', collected:false },
-    { type:'door', x:17, y:7, targetMap:'corredor', targetX:1, targetY:7 },
+    { type:'item', x:16, y:4, item:'lanterna', collected:false },
+    { type:'door', x:18, y:7, targetMap:'corredor', targetX:1, targetY:7 },
   ];
 
   window.MAP_DATA_quarto = makeMapData('quarto', 'Quarto', {
@@ -70,37 +86,65 @@ function makeGrid(fill) {
 })();
 
 /* ================================================================
-   MAPA 02 — CORREDOR
-   Layout: corredor horizontal com portas nas paredes.
-   Parede vertical em x=7 com porta no meio (y=7).
+   MAPA 02 — CORREDOR (Hallway em L)
+   Formato L: braço curto horizontal, braço longo vertical.
    ================================================================ */
 (function() {
   const tiles = makeGrid(0);
   const wall = makeGrid(0);
   const coll = makeGrid(false);
 
-  // paredes superior e inferior
-  for (let y = 0; y < 15; y++)
-    for (let x = 0; x < 20; x++)
-      if (y < 2 || y >= 12)
-        { wall[y][x] = 5; coll[y][x] = true; }
-      else
-        tiles[y][x] = 1;
+  // corredor horizontal (braço curto): y=7, x=0..9
+  // corredor vertical (braço longo): x=10, y=2..11
+  // formando um L
 
-  // parede vertical no meio (separa lado esquerdo do direito)
-  for (let y = 2; y < 12; y++)
-    if (y !== 7) { wall[y][7] = 5; coll[y][7] = true; }
-  // abertura em y=7 é a porta (já é chão 1)
+  // piso de madeira em todo o corredor
+  for (let y = 2; y < 12; y++) {
+    for (let x = 0; x < 12; x++) {
+      // Horizontal: y=5..8, x=0..9  (4 tiles de altura)
+      // Vertical: y=2..11, x=9..11  (3 tiles de largura)
+      const inH = (y >= 5 && y <= 8 && x >= 0 && x <= 9);
+      const inV = (y >= 2 && y <= 11 && x >= 9 && x <= 11);
+      if (inH || inV) {
+        tiles[y][x] = 1;
+      }
+    }
+  }
+
+  // paredes externas do L
+  // parede superior horizontal
+  for (let x = 0; x <= 9; x++) { wall[5][x] = 5; coll[5][x] = true; }
+  // parede inferior horizontal
+  for (let x = 0; x <= 9; x++) { wall[8][x] = 5; coll[8][x] = true; }
+  // parede esquerda horizontal
+  for (let y = 5; y <= 8; y++) { wall[y][0] = 5; coll[y][0] = true; }
+  // parede direita horizontal (incluindo acima da porta)
+  for (let y = 2; y <= 6; y++) { wall[y][9] = 5; coll[y][9] = true; }
+  // parede inferior vertical
+  for (let y = 8; y <= 11; y++) { wall[y][9] = 5; coll[y][9] = true; }
+  // parede direita vertical
+  for (let y = 2; y <= 11; y++) { wall[y][11] = 5; coll[y][11] = true; }
+  // parede superior vertical
+  for (let x = 9; x <= 11; x++) { wall[2][x] = 5; coll[2][x] = true; }
+  // parede inferior vertical
+  for (let x = 9; x <= 11; x++) { wall[11][x] = 5; coll[11][x] = true; }
 
   // portas
-  wall[7][0] = 10; coll[7][0] = true;  // esquerda → quarto
-  wall[7][7] = 10; coll[7][7] = true;  // meio → sala
-  wall[7][19] = 10; coll[7][19] = true; // direita → (futuro)
+  wall[7][0] = 10; coll[7][0] = true;   // → quarto (esquerda)
+  wall[7][9] = 10; coll[7][9] = true;   // → sala (direita do braço horizontal)
+  wall[11][10] = 10; coll[11][10] = true; // fundo do vertical → (futuro, bloqueada)
+
+  // mesa pequena com vaso
+  tiles[7][5] = 15; coll[7][5] = true;
+  tiles[6][5] = 27; coll[6][5] = true;  // vaso em cima da mesa
+
+  // quadro na parede
+  wall[5][5] = 26;
 
   const objects = [
-    { type:'door', x:0, y:7, targetMap:'quarto', targetX:16, targetY:7 },
-    { type:'door', x:7, y:7, targetMap:'sala', targetX:2, targetY:7 },
-    { type:'shiva_event', x:14, y:4, eventId:'silhueta_corredor', triggered:false },
+    { type:'door', x:0, y:7, targetMap:'quarto', targetX:17, targetY:7 },
+    { type:'door', x:9, y:7, targetMap:'sala', targetX:1, targetY:7 },
+    { type:'shiva_event', x:10, y:5, eventId:'silhueta_corredor', triggered:false },
   ];
 
   window.MAP_DATA_corredor = makeMapData('corredor', 'Corredor', {
@@ -110,51 +154,98 @@ function makeGrid(fill) {
 })();
 
 /* ================================================================
-   MAPA 03 — SALA + GARAGEM
-   Sala à esquerda, garagem à direita, abertura entre elas.
+   MAPA 03 — SALA + GARAGEM (Living Room + Kitchen + Garage)
+   Sala à esquerda (sofá, TV, estante), cozinha no centro,
+   garagem/área de serviço à direita.
    ================================================================ */
 (function() {
   const tiles = makeGrid(0);
   const wall = makeGrid(0);
   const coll = makeGrid(false);
 
-  // sala (x 0-9)
-  for (let y = 2; y < 13; y++)
-    for (let x = 0; x < 10; x++)
-      if (y === 2 || y === 12 || x === 0 || x === 9)
-        { wall[y][x] = 5; coll[y][x] = true; }
-      else
-        tiles[y][x] = 1;
+  // Espaço total amplo: x=0..18, y=2..12 (aberturas internas)
 
-  // garagem (x 11-18)
-  for (let y = 2; y < 13; y++)
-    for (let x = 11; x < 19; x++)
-      if (y === 2 || y === 12 || x === 18)
-        { wall[y][x] = 5; coll[y][x] = true; }
-      else if (x === 11)
-        { wall[y][x] = 5; coll[y][x] = true; }
-      else
-        tiles[y][x] = 2;
+  // Sala (x=0..9, aberto): piso de madeira
+  for (let y = 3; y <= 11; y++)
+    for (let x = 0; x <= 9; x++)
+      tiles[y][x] = 1;
 
-  // abertura sala ↔ garagem (x=9 e x=11 têm parede; x=10 é a abertura)
-  wall[6][9] = 0; coll[6][9] = false;
-  wall[7][9] = 0; coll[7][9] = false;
-  wall[8][9] = 0; coll[8][9] = false;
-  wall[6][11] = 0; coll[6][11] = false;
-  wall[7][11] = 0; coll[7][11] = false;
-  wall[8][11] = 0; coll[8][11] = false;
-  tiles[6][10] = 1; tiles[7][10] = 1; tiles[8][10] = 1;
+  // Cozinha (x=7..13, aberto): piso de concreto/cerâmica (tile 2)
+  for (let y = 3; y <= 11; y++)
+    for (let x = 7; x <= 13; x++)
+      tiles[y][x] = 2;
 
-  // portas
+  // Garagem (x=13..18): piso de concreto (tile 2)
+  for (let y = 3; y <= 11; y++)
+    for (let x = 13; x <= 18; x++)
+      tiles[y][x] = 2;
+
+  // Paredes externas
+  // Superior
+  for (let x = 0; x <= 18; x++) { wall[3][x] = 5; coll[3][x] = true; }
+  // Inferior
+  for (let x = 0; x <= 18; x++) { wall[11][x] = 5; coll[11][x] = true; }
+  // Esquerda
+  for (let y = 3; y <= 11; y++) { wall[y][0] = 5; coll[y][0] = true; }
+  // Direita (garagem)
+  for (let y = 3; y <= 11; y++) { wall[y][18] = 5; coll[y][18] = true; }
+
+  // Parede divisória sala/cozinha parcial (x=6, y=3..6)
+  for (let y = 3; y <= 6; y++) { wall[y][6] = 5; coll[y][6] = true; }
+  // Parede divisória cozinha/garagem parcial (x=13, y=3..11)
+  for (let y = 3; y <= 6; y++) { wall[y][13] = 5; coll[y][13] = true; }
+  for (let y = 9; y <= 11; y++) { wall[y][13] = 5; coll[y][13] = true; }
+  // Abertura na cozinha/garagem (y=7..8, x=13 está aberto)
+
+  // SOFÁ (sala, 2 tiles)
+  tiles[5][3] = 18; tiles[5][4] = 18; coll[5][3] = true; coll[5][4] = true;
+  // TV (sala, contra a parede)
+  tiles[4][6] = 19; coll[4][6] = true;
+  // ESTANTE (sala, 2 tiles de altura)
+  tiles[5][9] = 25; tiles[6][9] = 25; coll[5][9] = true; coll[6][9] = true;
+  // MESA DE CENTRO (sala)
+  tiles[7][4] = 15; coll[7][4] = true;
+  // CADEIRA (sala)
+  tiles[5][7] = 28; coll[5][7] = true;
+  // TAPETE (sala)
+  tiles[7][3] = 30;
+  // QUADRO NA PAREDE (sala)
+  wall[3][3] = 26;
+  wall[3][7] = 26;
+
+  // GELADEIRA (cozinha)
+  tiles[4][10] = 20; coll[4][10] = true;
+  // FOGÃO (cozinha, 2 tiles)
+  tiles[6][10] = 21; tiles[6][11] = 21; coll[6][10] = true; coll[6][11] = true;
+  // PIA (cozinha)
+  tiles[9][10] = 22; coll[9][10] = true;
+  // MICROONDAS (cozinha)
+  tiles[4][12] = 33; coll[4][12] = true;
+
+  // LIXEIRA (cozinha)
+  tiles[10][9] = 32; coll[10][9] = true;
+  // PLANTA (cozinha)
+  tiles[10][11] = 27; coll[10][11] = true;
+
+  // MÁQUINA DE LAVAR (garagem)
+  tiles[5][16] = 43; coll[5][16] = true;
+  // CAIXOTES (garagem)
+  tiles[7][15] = 17; coll[7][15] = true;
+  tiles[10][16] = 17; coll[10][16] = true;
+  // BANCADA (garagem)
+  tiles[4][15] = 15; coll[4][15] = true;
+  tiles[5][15] = 15; coll[5][15] = true;
+
+  // Portas
   wall[7][0] = 10; coll[7][0] = true;   // → corredor
   wall[7][18] = 10; coll[7][18] = true;  // → calçada
 
   const objects = [
     { type:'door', x:0, y:7, targetMap:'corredor', targetX:8, targetY:7 },
-    { type:'door', x:18, y:7, targetMap:'calcada', targetX:2, targetY:4 },
-    { type:'note', x:4, y:5, noteId:'peu_bilhete', read:false },
-    { type:'puzzle', x:15, y:8, puzzleId:'cadeado_joao', solved:false },
-    { type:'shiva_event', x:12, y:5, eventId:'rabo_porta', triggered:false },
+    { type:'door', x:18, y:7, targetMap:'calcada', targetX:3, targetY:4 },
+    { type:'note', x:5, y:3, noteId:'peu_bilhete', read:false },
+    { type:'puzzle', x:15, y:10, puzzleId:'cadeado_joao', solved:false },
+    { type:'shiva_event', x:12, y:4, eventId:'rabo_porta', triggered:false },
   ];
 
   window.MAP_DATA_sala = makeMapData('sala', 'Sala', {
@@ -164,7 +255,8 @@ function makeGrid(fill) {
 })();
 
 /* ================================================================
-   MAPA 04 — CALÇADA
+   MAPA 04 — CALÇADA (Sidewalk outside the house)
+   Porta da casa, poste, arbustos, placa de rua, lixeira
    ================================================================ */
 (function() {
   const tiles = makeGrid(0);
@@ -173,17 +265,27 @@ function makeGrid(fill) {
 
   for (let y = 0; y < 15; y++)
     for (let x = 0; x < 20; x++) {
-      if (y < 3) tiles[y][x] = 4;        // grama
-      else if (y < 6) tiles[y][x] = 2;   // calçada superior
+      if (y < 2) tiles[y][x] = 4;        // grama superior
+      else if (y < 6) tiles[y][x] = 2;   // calçada
       else if (y < 11) tiles[y][x] = 3;  // asfalto
       else tiles[y][x] = 4;              // grama inferior
     }
 
-  // porta da casa (na calçada superior)
+  // porta da casa
   wall[4][2] = 10; coll[4][2] = true;
 
-  // poste
-  wall[7][13] = 8; coll[7][13] = true;
+  // poste de luz
+  wall[4][13] = 8; coll[4][13] = true;
+
+  // arbustos na grama
+  tiles[1][3] = 27; tiles[1][8] = 27; tiles[1][15] = 27;
+  tiles[12][3] = 27; tiles[12][10] = 27; tiles[12][16] = 27;
+
+  // placa de rua
+  wall[2][6] = 40;
+
+  // lixeira na calçada
+  tiles[4][7] = 32; coll[4][7] = true;
 
   const objects = [
     { type:'door', x:2, y:4, targetMap:'sala', targetX:17, targetY:7 },
@@ -200,7 +302,8 @@ function makeGrid(fill) {
 })();
 
 /* ================================================================
-   MAPA 05 — RUA
+   MAPA 05 — RUA (Street)
+   Postes, muros, fachadas, puzzle radios_ulisses
    Conexões: esquerda→calcada, direita→portao, cima→praca
    ================================================================ */
 (function() {
@@ -220,12 +323,23 @@ function makeGrid(fill) {
     wall[py][px] = 8; coll[py][px] = true;
   });
 
+  // arbustos na grama
+  tiles[1][5] = 27; tiles[1][13] = 27;
+  tiles[13][6] = 27; tiles[13][14] = 27;
+
+  // placas
+  wall[2][12] = 40;
+
   // muros/fachadas
   for (let x = 0; x < 3; x++) { wall[2][x] = 5; coll[2][x] = true; }
   for (let x = 7; x < 10; x++) { wall[2][x] = 5; coll[2][x] = true; }
   for (let x = 14; x < 17; x++) { wall[2][x] = 5; coll[2][x] = true; }
   for (let x = 4; x < 7; x++) { wall[12][x] = 5; coll[12][x] = true; }
   for (let x = 11; x < 14; x++) { wall[12][x] = 5; coll[12][x] = true; }
+
+  // lixeira
+  tiles[4][7] = 32; coll[4][7] = true;
+  tiles[10][14] = 32; coll[10][14] = true;
 
   const connections = [
     { dir:'left', map:'calcada', x:19, y:4 },
@@ -244,8 +358,8 @@ function makeGrid(fill) {
 })();
 
 /* ================================================================
-   MAPA 06 — PORTÃO
-   Portão que verifica se jogador tem chave_praca no inventário.
+   MAPA 06 — PORTÃO (Gate)
+   Portão com grade que verifica chave_praca no inventário.
    ================================================================ */
 (function() {
   const tiles = makeGrid(0);
@@ -266,6 +380,15 @@ function makeGrid(fill) {
   }
   wall[7][9] = 7; coll[7][9] = true; // portão (trancado até ter chave_praca)
 
+  // poste ao lado
+  wall[4][4] = 8; coll[4][4] = true;
+
+  // placa
+  wall[2][14] = 40;
+
+  // arbustos
+  tiles[1][5] = 27; tiles[13][14] = 27;
+
   const objects = [
     { type:'gate', x:9, y:7, requiredItem:'chave_praca', targetMap:'praca', targetX:10, targetY:8 },
   ];
@@ -280,30 +403,51 @@ function makeGrid(fill) {
 })();
 
 /* ================================================================
-   MAPA 07 — PRAÇA
+   MAPA 07 — PRAÇA (Square)
+   Playground cercado, bancos, bebedouro, árvores, puzzle desenhos_enzo
    ================================================================ */
 (function() {
   const tiles = makeGrid(4);
   const wall = makeGrid(0);
   const coll = makeGrid(false);
 
-  // caminhos
+  // caminhos (cruz)
   for (let y = 4; y < 11; y++)
     for (let x = 7; x < 13; x++)
       tiles[y][x] = 2;
+  for (let y = 6; y < 9; y++)
+    for (let x = 4; x < 7; x++)
+      tiles[y][x] = 2;
+  for (let y = 6; y < 9; y++)
+    for (let x = 13; x < 16; x++)
+      tiles[y][x] = 2;
 
-  // playground cercado
+  // playground (cercado)
   for (let y = 2; y < 6; y++)
     for (let x = 14; x < 18; x++) {
       tiles[y][x] = 2;
       if (y === 2 || y === 5 || x === 14 || x === 17)
         { wall[y][x] = 6; coll[y][x] = true; }
     }
+  // playground equipment
+  tiles[3][15] = 34; coll[3][15] = true;
+  tiles[3][16] = 34; coll[3][16] = true;
 
   // árvores
-  [[3,2],[4,8],[2,12],[8,3],[8,17],[12,5],[11,11]].forEach(([ax, ay]) => {
+  [[3,2],[4,8],[2,12],[8,3],[8,17],[12,5],[11,11],[6,1],[6,18]].forEach(([ax, ay]) => {
     wall[ay][ax] = 9; coll[ay][ax] = true;
   });
+
+  // bancos da praça
+  tiles[5][10] = 38; tiles[5][11] = 38; coll[5][10] = true; coll[5][11] = true;
+  tiles[9][5] = 38; tiles[9][6] = 38; coll[9][5] = true; coll[9][6] = true;
+  tiles[4][12] = 38; tiles[4][13] = 38; coll[4][12] = true; coll[4][13] = true;
+
+  // bebedouro
+  tiles[8][10] = 39; coll[8][10] = true;
+
+  // placas
+  wall[7][15] = 40;
 
   const objects = [
     { type:'puzzle', x:16, y:4, puzzleId:'desenhos_enzo', solved:false },
@@ -322,7 +466,8 @@ function makeGrid(fill) {
 })();
 
 /* ================================================================
-   MAPA 08 — BECO
+   MAPA 08 — BECO (Alley)
+   Caixotes, lixeiras, puzzle patas_sandalia, shiva event
    ================================================================ */
 (function() {
   const tiles = makeGrid(2);
@@ -335,10 +480,23 @@ function makeGrid(fill) {
     wall[13][x] = 5; coll[13][x] = true;
   }
 
-  // caixotes/lixo
-  [[4,4],[6,9],[14,4],[16,9]].forEach(([lx, ly]) => {
+  // caixotes
+  [[4,4],[6,9],[14,4],[16,9],[3,12],[10,3],[15,12]].forEach(([lx, ly]) => {
     wall[ly][lx] = 17; coll[ly][lx] = true;
   });
+
+  // lixeiras
+  tiles[6][7] = 32; coll[6][7] = true;
+  tiles[10][11] = 32; coll[10][11] = true;
+
+  // poste
+  wall[3][8] = 8; coll[3][8] = true;
+
+  // contêiner de lixo grande (canto)
+  wall[10][3] = 17; wall[11][3] = 17; coll[10][3] = true; coll[11][3] = true;
+
+  // placa
+  wall[1][15] = 40;
 
   const objects = [
     { type:'puzzle', x:10, y:7, puzzleId:'patas_sandalia', solved:false },
@@ -356,7 +514,8 @@ function makeGrid(fill) {
 })();
 
 /* ================================================================
-   MAPA 09 — IGREJA
+   MAPA 09 — IGREJA (Church)
+   Altar com cruz, bancos, castiçais, velas
    ================================================================ */
 (function() {
   const tiles = makeGrid(1);
@@ -364,45 +523,56 @@ function makeGrid(fill) {
   const coll = makeGrid(false);
 
   // paredes
-  for (let y = 1; y < 14; y++) {
+  for (let y = 2; y < 13; y++) {
     wall[y][1] = 5; coll[y][1] = true;
     wall[y][18] = 5; coll[y][18] = true;
   }
   for (let x = 1; x < 19; x++) {
-    wall[1][x] = 5; coll[1][x] = true;
-    wall[13][x] = 5; coll[13][x] = true;
+    wall[2][x] = 5; coll[2][x] = true;
+    wall[12][x] = 5; coll[12][x] = true;
   }
 
-  // altar central
-  for (let y = 4; y < 10; y++)
-    for (let x = 9; x < 11; x++)
-      { wall[y][x] = 5; coll[y][x] = true; }
+  // altar (centro, fundo)
+  tiles[4][9] = 35; tiles[4][10] = 35; coll[4][9] = true; coll[4][10] = true;
+  // cruz NA PAREDE atrás do altar
+  wall[3][9] = 36; wall[3][10] = 36;
+  // velas nos cantos do altar
+  tiles[5][8] = 37; tiles[5][11] = 37; coll[5][8] = true; coll[5][11] = true;
 
-  // bancos (pews)
-  [[5,4],[5,5],[5,14],[5,15],[10,4],[10,5],[10,14],[10,15]].forEach(([by, bx]) => {
-    tiles[by][bx] = 16;
-  });
+  // bancos (pews, 2 fileiras de 2 tiles)
+  tiles[6][4] = 16; tiles[6][5] = 16; coll[6][4] = true; coll[6][5] = true;
+  tiles[8][4] = 16; tiles[8][5] = 16; coll[8][4] = true; coll[8][5] = true;
+  tiles[6][14] = 16; tiles[6][15] = 16; coll[6][14] = true; coll[6][15] = true;
+  tiles[8][14] = 16; tiles[8][15] = 16; coll[8][14] = true; coll[8][15] = true;
+
+  // castiçais de pé (ao lado do altar)
+  tiles[5][7] = 37; tiles[5][12] = 37; coll[5][7] = true; coll[5][12] = true;
+
+  // vitrais nas paredes laterais
+  wall[5][1] = 26; wall[7][1] = 26;
+  wall[5][18] = 26; wall[7][18] = 26;
 
   // portas
-  wall[7][1] = 10; coll[7][1] = true;    // entrada lateral (vinda do beco)
-  wall[7][18] = 10; coll[7][18] = true;   // → beco
-  wall[3][10] = 10; coll[3][10] = true;    // → cemitério (atrás do altar)
+  wall[9][1] = 10; coll[9][1] = true;   // entrada lateral (vinda do beco)
+  wall[9][18] = 10; coll[9][18] = true;  // → beco (lado oposto)
+  wall[3][10] = 10; coll[3][10] = true;   // → cemitério (atrás do altar)
 
   const objects = [
-    { type:'puzzle', x:10, y:7, puzzleId:'velas_elaine', solved:false },
-    { type:'door', x:1, y:7, targetMap:'beco', targetX:18, targetY:7 },
-    { type:'door', x:18, y:7, targetMap:'beco', targetX:1, targetY:7 },
+    { type:'puzzle', x:10, y:6, puzzleId:'velas_elaine', solved:false },
+    { type:'door', x:1, y:9, targetMap:'beco', targetX:18, targetY:7 },
+    { type:'door', x:18, y:9, targetMap:'beco', targetX:1, targetY:7 },
     { type:'door', x:10, y:3, targetMap:'cemiterio', targetX:10, targetY:2 },
   ];
 
   window.MAP_DATA_igreja = makeMapData('igreja', 'Igreja', {
     tiles, wall, collision: coll, objects, connections:[],
-    ambient:'casa', light:0.35, playerStart:{ x:5*16, y:7*16 }
+    ambient:'casa', light:0.35, playerStart:{ x:5*16, y:10*16 }
   });
 })();
 
 /* ================================================================
-   MAPA 10 — CEMITÉRIO
+   MAPA 10 — CEMITÉRIO (Cemetery)
+   Lápides, cruzes, caminho central, muros de pedra
    ================================================================ */
 (function() {
   const tiles = makeGrid(4);
@@ -411,10 +581,10 @@ function makeGrid(fill) {
 
   // caminho central
   for (let y = 2; y < 13; y++)
-    for (let x = 8; x < 12; x++)
+    for (let x = 7; x < 13; x++)
       tiles[y][x] = 2;
 
-  // muros
+  // muros de pedra
   for (let y = 0; y < 2; y++)
     for (let x = 0; x < 20; x++)
       { wall[y][x] = 13; coll[y][x] = true; }
@@ -426,10 +596,22 @@ function makeGrid(fill) {
     wall[y][19] = 13; coll[y][19] = true;
   }
 
-  // lápides
-  [[3,3],[3,6],[3,10],[3,13],[6,4],[6,7],[6,10],[6,13],[10,3],[10,6],[10,11],[10,14]].forEach(([ly, lx]) => {
-    tiles[ly][lx] = 2;
-    wall[ly][lx] = 8;
+  // lápides (post/wall types)
+  [[3,3],[3,6],[3,10],[3,14],[6,4],[6,7],[6,11],[6,14],[9,3],[9,7],[9,11],[9,14]].forEach(([ly, lx]) => {
+    wall[ly][lx] = 8; coll[ly][lx] = true;
+  });
+
+  // cruzes de madeira entre as lápides
+  [[4,5],[4,12],[7,5],[7,12],[10,5],[10,12]].forEach(([cy, cx]) => {
+    wall[cy][cx] = 36; coll[cy][cx] = true;
+  });
+
+  // velas em algumas lápides
+  tiles[3][14] = 37; tiles[6][11] = 37; tiles[9][7] = 37; coll[3][14] = true; coll[6][11] = true; coll[9][7] = true;
+
+  // árvores nos cantos
+  [[1,1],[1,18],[13,1],[13,18],[2,8],[2,11],[11,4],[11,15]].forEach(([tx, ty]) => {
+    wall[ty][tx] = 9; coll[ty][tx] = true;
   });
 
   // portão (→ parque) e porta (→ igreja)
@@ -449,7 +631,8 @@ function makeGrid(fill) {
 })();
 
 /* ================================================================
-   MAPA 11 — PARQUE (FINAL)
+   MAPA 11 — PARQUE (Park — Final)
+   Árvores, caminho, portal dourado, final do jogo
    ================================================================ */
 (function() {
   const tiles = makeGrid(4);
@@ -461,13 +644,20 @@ function makeGrid(fill) {
     for (let x = 7; x < 13; x++)
       tiles[y][x] = 2;
 
-  // árvores
-  [[2,2],[2,8],[2,15],[5,2],[5,17],[9,2],[9,17],[12,2],[12,8],[12,15],[2,18]].forEach(([ax, ay]) => {
+  // banco do parque
+  tiles[10][6] = 38; tiles[10][7] = 38; coll[10][6] = true; coll[10][7] = true;
+
+  // árvores (muitas)
+  [[2,2],[2,8],[2,15],[5,2],[5,17],[9,2],[9,17],[12,2],[12,8],[12,15],[2,18],[6,5],[6,14],[8,4],[8,15]].forEach(([ax, ay]) => {
     wall[ay][ax] = 9; coll[ay][ax] = true;
   });
 
-  // porta dourada
+  // portal dourado (centro)
+  wall[7][10] = 7; coll[7][10] = true;
+  wall[7][9] = 7; coll[7][9] = true;
   tiles[7][10] = 2; tiles[7][9] = 2;
+
+  // portão de entrada (vindo do cemitério)
   wall[7][0] = 10; coll[7][0] = true;
 
   const objects = [

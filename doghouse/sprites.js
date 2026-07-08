@@ -373,6 +373,520 @@ function makeCrate() {
   return s;
 }
 
+/* ===== FURNITURE (tiles 18-42) ===== */
+
+function makeSofa() {
+  const s = empty(16,16);
+  fill(s, 1,7, 14,14, 5);     // seat cushion
+  fill(s, 2,8, 13,13, 7);     // seat top
+  fill(s, 1,3, 3,14, 5);      // left armrest
+  fill(s, 12,3, 14,14, 5);    // right armrest
+  fill(s, 0,2, 3,4, 5); fill(s, 12,2, 15,4, 5);
+  fill(s, 4,2, 11,7, 7);      // backrest
+  fill(s, 5,3, 10,6, 8);
+  fill(s, 1,14, 14,15, 3);    // base
+  set(s, 2,14, 2); set(s, 13,14, 2);
+  return s;
+}
+
+function makeTV() {
+  const s = empty(16,16);
+  fill(s, 2,2, 13,11, 1);     // screen bg
+  fill(s, 3,3, 12,10, 10);    // screen
+  fill(s, 4,4, 11,9, 12);     // screen glow
+  set(s, 7,5, 14); set(s, 8,5, 14);
+  // stand
+  fill(s, 6,11, 9,12, 2);
+  fill(s, 7,12, 8,14, 2);
+  fill(s, 5,14, 10,15, 3);
+  return s;
+}
+
+function makeFridge() {
+  const s = empty(16,16);
+  fill(s, 1,0, 14,15, 14);    // body
+  fill(s, 2,1, 13,14, 15);
+  // freezer door
+  fill(s, 3,1, 12,5, 14);
+  fill(s, 4,2, 11,4, 15);
+  // main door
+  fill(s, 3,6, 12,14, 14);
+  fill(s, 4,7, 11,13, 15);
+  // handle
+  fill(s, 12,3, 13,4, 1);
+  fill(s, 12,9, 13,12, 1);
+  // bottom vent
+  fill(s, 4,14, 11,15, 1);
+  return s;
+}
+
+function makeStove() {
+  const s = empty(16,16);
+  fill(s, 1,0, 14,15, 2);     // body
+  fill(s, 2,1, 13,14, 1);
+  // burners
+  fill(s, 3,1, 6,3, 0); set(s, 4,2, 3); set(s, 5,2, 3);
+  fill(s, 9,1, 12,3, 0); set(s, 10,2, 3); set(s, 11,2, 3);
+  // oven door
+  fill(s, 3,7, 12,12, 2);
+  fill(s, 4,8, 11,11, 3);
+  // knob
+  set(s, 4,5, 7); set(s, 6,5, 7); set(s, 8,5, 7); set(s, 10,5, 7);
+  // legs
+  set(s, 2,15, 2); set(s, 13,15, 2);
+  return s;
+}
+
+function makeSink() {
+  const s = empty(16,16);
+  fill(s, 1,2, 14,13, 2);     // counter
+  fill(s, 2,3, 13,12, 14);
+  // basin
+  fill(s, 4,4, 11,9, 1);
+  fill(s, 5,5, 10,8, 0);
+  // faucet
+  fill(s, 7,1, 8,3, 7);
+  set(s, 7,0, 7); set(s, 8,0, 7);
+  // cabinet doors
+  fill(s, 3,10, 7,12, 3);
+  fill(s, 8,10, 12,12, 3);
+  set(s, 5,11, 7); set(s, 10,11, 7);
+  return s;
+}
+
+function makeToilet() {
+  const s = empty(16,16);
+  // tank
+  fill(s, 5,1, 10,4, 14);
+  fill(s, 6,2, 9,3, 15);
+  // bowl
+  fill(s, 4,4, 11,11, 14);
+  fill(s, 5,5, 10,10, 15);
+  fill(s, 6,6, 9,9, 1);  // water
+  // seat
+  fill(s, 5,4, 10,4, 15);
+  fill(s, 4,4, 4,11, 15);
+  fill(s, 11,4, 11,11, 15);
+  // base
+  fill(s, 5,11, 10,14, 14);
+  set(s, 6,14, 2); set(s, 9,14, 2);
+  return s;
+}
+
+function makeWardrobe() {
+  const s = empty(16,16);
+  fill(s, 0,0, 15,15, 4);     // body
+  fill(s, 1,1, 14,14, 5);
+  // doors
+  fill(s, 2,1, 7,14, 7);
+  fill(s, 8,1, 13,14, 7);
+  // door panels
+  fill(s, 3,2, 6,6, 8);
+  fill(s, 9,2, 12,6, 8);
+  fill(s, 3,8, 6,13, 8);
+  fill(s, 9,8, 12,13, 8);
+  // handles
+  set(s, 7,7, 15); set(s, 8,7, 15);
+  // base
+  fill(s, 0,14, 15,15, 3);
+  return s;
+}
+
+function makeBookshelf() {
+  const s = empty(16,16);
+  fill(s, 0,0, 15,15, 4);     // frame
+  fill(s, 1,1, 14,14, 2);
+  // shelves
+  fill(s, 1,3, 14,3, 4);
+  fill(s, 1,7, 14,7, 4);
+  fill(s, 1,11, 14,11, 4);
+  // books
+  set(s, 2,1, 6); set(s, 3,1, 6); set(s, 5,1, 8); set(s, 6,1, 5);
+  set(s, 8,1, 6); set(s, 9,1, 8); set(s, 11,1, 5); set(s, 12,1, 6);
+  set(s, 2,4, 5); set(s, 3,4, 8); set(s, 5,4, 6); set(s, 6,4, 6);
+  set(s, 8,4, 8); set(s, 9,4, 5); set(s, 11,4, 6);
+  set(s, 2,8, 8); set(s, 3,8, 6); set(s, 5,8, 5); set(s, 6,8, 8);
+  set(s, 8,8, 6); set(s, 9,8, 6); set(s, 11,8, 5); set(s, 12,8, 8);
+  // vase on top
+  set(s, 13,1, 11); set(s, 14,1, 11); set(s, 13,2, 3); set(s, 14,2, 3);
+  return s;
+}
+
+function makePainting() {
+  const s = empty(16,16);
+  fill(s, 2,1, 13,14, 4);     // frame
+  fill(s, 3,2, 12,13, 8);
+  // landscape
+  fill(s, 3,8, 12,13, 11);    // grass
+  fill(s, 3,4, 12,8, 12);     // sky
+  set(s, 5,5, 15); set(s, 6,5, 15); // cloud
+  fill(s, 7,6, 9,10, 3);      // tree
+  fill(s, 6,5, 10,7, 11);
+  // wire
+  set(s, 1,0, 1); set(s, 2,0, 1);
+  return s;
+}
+
+function makePlant() {
+  const s = empty(16,16);
+  // pot
+  fill(s, 4,10, 11,14, 5);
+  fill(s, 5,11, 10,13, 6);
+  fill(s, 5,14, 10,15, 3);
+  // leaves
+  set(s, 7,3, 11); set(s, 8,3, 11);
+  set(s, 6,4, 11); set(s, 7,4, 11); set(s, 8,4, 11); set(s, 9,4, 11);
+  set(s, 5,5, 11); set(s, 6,5, 3); set(s, 7,5, 3); set(s, 8,5, 3); set(s, 9,5, 3); set(s, 10,5, 11);
+  set(s, 5,6, 3); set(s, 6,6, 11); set(s, 7,6, 3); set(s, 8,6, 3); set(s, 9,6, 11); set(s, 10,6, 3);
+  set(s, 6,7, 3); set(s, 7,7, 11); set(s, 8,7, 11); set(s, 9,7, 3);
+  set(s, 7,8, 3); set(s, 8,8, 3);
+  // stem
+  set(s, 7,9, 3); set(s, 8,9, 3);
+  return s;
+}
+
+function makeChair() {
+  const s = empty(16,16);
+  fill(s, 3,2, 12,5, 4);      // backrest
+  fill(s, 4,3, 11,4, 7);
+  fill(s, 2,5, 13,6, 4);      // seat
+  fill(s, 3,6, 12,6, 7);
+  // legs
+  fill(s, 2,6, 3,14, 3);
+  fill(s, 12,6, 13,14, 3);
+  fill(s, 7,6, 8,14, 3);
+  set(s, 2,14, 2); set(s, 12,14, 2); set(s, 7,14, 2); set(s, 8,14, 2);
+  return s;
+}
+
+function makeLamp() {
+  const s = empty(16,16);
+  // base
+  fill(s, 6,13, 9,14, 7);
+  fill(s, 5,14, 10,15, 3);
+  // pole
+  fill(s, 7,4, 8,13, 7);
+  // shade
+  fill(s, 4,1, 11,4, 5);
+  fill(s, 5,2, 10,3, 7);
+  // light glow
+  set(s, 7,2, 15); set(s, 8,2, 15);
+  set(s, 6,3, 15); set(s, 9,3, 15);
+  return s;
+}
+
+function makeRug() {
+  const s = empty(16,16);
+  fill(s, 0,2, 15,13, 6);     // rug body
+  fill(s, 1,3, 14,12, 5);
+  // border
+  fill(s, 0,2, 15,2, 3);
+  fill(s, 0,13, 15,13, 3);
+  fill(s, 0,2, 0,13, 3);
+  fill(s, 15,2, 15,13, 3);
+  // pattern
+  set(s, 4,5, 15); set(s, 5,5, 15); set(s, 10,5, 15); set(s, 11,5, 15);
+  set(s, 4,6, 15); set(s, 11,6, 15);
+  set(s, 7,8, 15); set(s, 8,8, 15);
+  set(s, 7,9, 15); set(s, 8,9, 15);
+  set(s, 4,10, 15); set(s, 11,10, 15);
+  set(s, 4,11, 15); set(s, 5,11, 15); set(s, 10,11, 15); set(s, 11,11, 15);
+  return s;
+}
+
+function makeCurtain() {
+  const s = empty(16,16);
+  fill(s, 0,0, 15,15, 6);     // curtain
+  fill(s, 1,1, 14,14, 5);
+  // folds
+  for (let x = 2; x < 14; x += 3) {
+    fill(s, x,1, x,14, 4);
+  }
+  // rod
+  fill(s, 0,0, 15,0, 3);
+  fill(s, 0,0, 0,2, 3);
+  fill(s, 15,0, 15,2, 3);
+  return s;
+}
+
+function makeTrash() {
+  const s = empty(16,16);
+  fill(s, 4,2, 11,13, 10);    // bin body
+  fill(s, 3,1, 12,2, 10);
+  fill(s, 5,3, 10,12, 9);
+  // lid
+  fill(s, 3,0, 12,0, 10);
+  fill(s, 4,0, 11,0, 9);
+  // handle
+  set(s, 7,0, 7); set(s, 8,0, 7);
+  // base rim
+  fill(s, 4,13, 11,14, 2);
+  return s;
+}
+
+function makeMicrowave() {
+  const s = empty(16,16);
+  fill(s, 1,2, 14,12, 14);    // body
+  fill(s, 2,3, 13,11, 15);
+  // window
+  fill(s, 3,3, 12,7, 1);
+  fill(s, 4,4, 11,6, 0);
+  // panel
+  fill(s, 3,8, 12,11, 2);
+  set(s, 4,9, 7); set(s, 6,9, 7); set(s, 8,9, 7);
+  set(s, 10,9, 7);
+  return s;
+}
+
+function makePlayground() {
+  const s = empty(16,16);
+  // structure
+  fill(s, 1,1, 2,10, 7);      // left post
+  fill(s, 13,1, 14,10, 7);    // right post
+  // top bar
+  fill(s, 1,0, 14,1, 7);
+  // swing chains
+  set(s, 5,2, 7); set(s, 5,3, 7); set(s, 5,4, 7); set(s, 5,5, 7);
+  set(s, 10,2, 7); set(s, 10,3, 7); set(s, 10,4, 7); set(s, 10,5, 7);
+  // swing seat
+  fill(s, 4,6, 6,6, 3);
+  fill(s, 9,6, 11,6, 3);
+  // slide
+  fill(s, 8,7, 14,10, 6);
+  fill(s, 8,8, 13,9, 7);
+  // ground
+  fill(s, 0,11, 15,15, 2);
+  fill(s, 1,12, 14,14, 3);
+  return s;
+}
+
+function makeAltar() {
+  const s = empty(16,16);
+  fill(s, 2,4, 13,12, 8);     // table top
+  fill(s, 3,5, 12,11, 7);
+  // cloth
+  fill(s, 4,5, 11,11, 6);
+  fill(s, 5,6, 10,10, 5);
+  // cross on altar
+  fill(s, 7,2, 8,6, 7);
+  fill(s, 6,3, 9,4, 7);
+  // candle holders
+  set(s, 4,4, 7); set(s, 5,4, 7);
+  set(s, 10,4, 7); set(s, 11,4, 7);
+  // base
+  fill(s, 4,12, 11,13, 3);
+  set(s, 2,12, 3); set(s, 13,12, 3);
+  return s;
+}
+
+function makeCross() {
+  const s = empty(16,16);
+  // cross
+  fill(s, 6,1, 9,14, 7);      // vertical
+  fill(s, 3,3, 12,6, 7);      // horizontal
+  // outline
+  fill(s, 6,0, 9,0, 4);
+  fill(s, 6,14, 9,15, 4);
+  fill(s, 5,1, 5,14, 4);
+  fill(s, 10,1, 10,14, 4);
+  fill(s, 3,3, 3,6, 4);
+  fill(s, 12,3, 12,6, 4);
+  fill(s, 3,3, 12,3, 4);
+  fill(s, 3,6, 12,6, 4);
+  // corpus detail
+  set(s, 7,4, 14); set(s, 8,4, 14); // hands
+  set(s, 7,9, 8); set(s, 8,9, 8);   // feet
+  return s;
+}
+
+function makeCandle() {
+  const s = empty(16,16);
+  // candle body
+  fill(s, 7,4, 8,12, 14);
+  fill(s, 7,4, 8,12, 15);
+  // wax drips
+  set(s, 6,8, 15); set(s, 9,10, 15);
+  // holder
+  fill(s, 6,12, 9,13, 7);
+  fill(s, 5,13, 10,14, 3);
+  // flame
+  set(s, 7,3, 6); set(s, 8,3, 6);
+  set(s, 7,2, 15); set(s, 8,2, 15);
+  set(s, 7,1, 15); set(s, 8,1, 15);
+  return s;
+}
+
+function makeParkBench() {
+  const s = empty(16,16);
+  // seat
+  fill(s, 1,7, 14,8, 4);
+  fill(s, 2,7, 13,7, 7);
+  // backrest
+  fill(s, 1,3, 14,6, 4);
+  fill(s, 2,4, 13,5, 7);
+  // legs
+  fill(s, 2,8, 3,14, 3);
+  fill(s, 12,8, 13,14, 3);
+  fill(s, 5,8, 6,11, 3);
+  fill(s, 9,8, 10,11, 3);
+  set(s, 2,14, 2); set(s, 12,14, 2);
+  return s;
+}
+
+function makeFountain() {
+  const s = empty(16,16);
+  // base
+  fill(s, 3,10, 12,14, 9);
+  fill(s, 4,11, 11,13, 8);
+  // column
+  fill(s, 7,5, 8,10, 9);
+  fill(s, 7,5, 8,10, 8);
+  // upper basin
+  fill(s, 4,4, 11,5, 9);
+  fill(s, 5,4, 10,4, 8);
+  // water
+  fill(s, 5,11, 10,12, 12);
+  set(s, 6,11, 14); set(s, 7,11, 14);
+  set(s, 8,12, 14); set(s, 9,12, 14);
+  // water stream
+  set(s, 7,3, 12); set(s, 8,3, 12);
+  set(s, 7,2, 14); set(s, 8,2, 14);
+  return s;
+}
+
+function makeSign() {
+  const s = empty(16,16);
+  // post
+  fill(s, 7,6, 8,15, 7);
+  fill(s, 7,6, 8,15, 8);
+  // sign board
+  fill(s, 2,1, 13,5, 4);
+  fill(s, 3,2, 12,4, 7);
+  // text lines
+  fill(s, 4,2, 11,2, 1);
+  fill(s, 4,3, 9,3, 1);
+  // arrow
+  set(s, 10,3, 6); set(s, 11,3, 6);
+  return s;
+}
+
+function makeCrib() {
+  const s = empty(16,16);
+  fill(s, 1,4, 14,12, 7);     // body
+  fill(s, 2,5, 13,11, 8);
+  // bars
+  for (let x = 2; x < 14; x += 2) {
+    fill(s, x,4, x,13, 7);
+  }
+  // mattress
+  fill(s, 3,9, 12,11, 15);
+  fill(s, 4,10, 11,10, 14);
+  // canopy top
+  fill(s, 1,1, 14,3, 5);
+  fill(s, 2,2, 13,2, 7);
+  // legs
+  set(s, 2,12, 3); set(s, 13,12, 3);
+  set(s, 2,13, 3); set(s, 13,13, 3);
+  set(s, 2,15, 3); set(s, 13,15, 3);
+  return s;
+}
+
+function makeToys() {
+  const s = empty(16,16);
+  fill(s, 1,8, 14,14, 1);     // floor shadow
+  // block
+  fill(s, 2,6, 5,9, 6);
+  fill(s, 3,7, 4,8, 5);
+  // ball
+  fill(s, 7,7, 10,10, 6);
+  fill(s, 8,8, 9,9, 5);
+  // teddy bear
+  fill(s, 11,6, 14,10, 7);
+  fill(s, 12,7, 13,9, 8);
+  set(s, 12,7, 0); set(s, 13,7, 0); // eyes
+  set(s, 12,8, 1); set(s, 13,8, 1);
+  // car
+  fill(s, 3,10, 7,12, 6);
+  fill(s, 4,11, 6,11, 5);
+  set(s, 3,12, 0); set(s, 7,12, 0); // wheels
+  return s;
+}
+
+function makeWashingMachine() {
+  const s = empty(16,16);
+  fill(s, 1,0, 14,15, 14);    // body
+  fill(s, 2,1, 13,14, 15);
+  // door
+  fill(s, 3,2, 12,10, 12);
+  fill(s, 4,3, 11,9, 0);
+  fill(s, 5,4, 10,8, 10);
+  // control panel
+  fill(s, 3,11, 12,14, 2);
+  set(s, 4,12, 15); set(s, 6,12, 15);
+  set(s, 8,12, 15); set(s, 10,12, 15);
+  // bottom
+  fill(s, 1,14, 14,15, 1);
+  return s;
+}
+
+function makeShower() {
+  const s = empty(16,16);
+  // drain
+  fill(s, 6,13, 9,14, 0);
+  set(s, 7,13, 2); set(s, 8,13, 2);
+  // pipe
+  fill(s, 13,0, 14,8, 7);
+  // shower head
+  fill(s, 12,0, 15,0, 7);
+  fill(s, 13,1, 14,1, 7);
+  // water drops
+  set(s, 13,3, 12); set(s, 12,5, 12);
+  set(s, 13,7, 12); set(s, 14,9, 12);
+  set(s, 12,11, 12); set(s, 13,13, 12);
+  // wall tile pattern
+  fill(s, 0,0, 11,15, 14);
+  for (let x = 0; x < 12; x += 2)
+    for (let y = 0; y < 16; y += 2)
+      set(s, x, y, 15);
+  return s;
+}
+
+function makeBedside() {
+  const s = empty(16,16);
+  // small table
+  fill(s, 2,6, 13,12, 4);
+  fill(s, 3,7, 12,11, 7);
+  // drawer
+  fill(s, 4,7, 11,8, 7);
+  set(s, 7,7, 5); set(s, 8,7, 5);
+  fill(s, 4,9, 11,10, 7);
+  set(s, 7,9, 5); set(s, 8,9, 5);
+  // top surface
+  fill(s, 3,6, 12,6, 7);
+  // legs
+  set(s, 3,11, 3); set(s, 12,11, 3);
+  set(s, 3,12, 3); set(s, 12,12, 3);
+  set(s, 3,15, 3); set(s, 12,15, 3);
+  return s;
+}
+
+function makeOven() {
+  const s = empty(16,16);
+  fill(s, 1,0, 14,15, 2);     // body
+  fill(s, 2,1, 13,14, 1);
+  // oven window
+  fill(s, 4,6, 11,11, 0);
+  fill(s, 5,7, 10,10, 6);
+  // controls
+  set(s, 4,2, 7); set(s, 6,2, 7); set(s, 8,2, 7);
+  set(s, 10,2, 7); set(s, 12,2, 7);
+  // handle
+  fill(s, 4,4, 11,4, 7);
+  // legs
+  set(s, 3,15, 2); set(s, 12,15, 2);
+  return s;
+}
+
 /* Tile registry with variants */
 const T_SPRITES = {
   1: [makeFloor(), makeFloorB(), makeFloorC()],
@@ -392,6 +906,35 @@ const T_SPRITES = {
   15: makeTable(),
   16: makePew(),
   17: makeCrate(),
+  18: makeSofa(),
+  19: makeTV(),
+  20: makeFridge(),
+  21: makeStove(),
+  22: makeSink(),
+  23: makeToilet(),
+  24: makeWardrobe(),
+  25: makeBookshelf(),
+  26: makePainting(),
+  27: makePlant(),
+  28: makeChair(),
+  29: makeLamp(),
+  30: makeRug(),
+  31: makeCurtain(),
+  32: makeTrash(),
+  33: makeMicrowave(),
+  34: makePlayground(),
+  35: makeAltar(),
+  36: makeCross(),
+  37: makeCandle(),
+  38: makeParkBench(),
+  39: makeFountain(),
+  40: makeSign(),
+  41: makeCrib(),
+  42: makeToys(),
+  43: makeWashingMachine(),
+  44: makeShower(),
+  45: makeBedside(),
+  46: makeOven(),
 };
 
 /* ================================================================
@@ -914,7 +1457,7 @@ class Sprites {
       { name:'shiva_shadow', sprite:SHIVA_SHADOW, w:16, h:16 },
       { name:'shiva_eyes', sprite:SHIVA_EYES, w:16, h:16 },
     ];
-    for (let id = 1; id <= 17; id++) {
+    for (let id = 1; id <= 46; id++) {
       const sprite = T_SPRITES[id];
       if (!sprite) continue;
       if (Array.isArray(sprite) && Array.isArray(sprite[0])) {
