@@ -162,6 +162,27 @@ const PUZZLES = {
   },
   kitchen_sink: {
     id: 'kitchen_sink', solved: false, seq: [3,5,2,4,1], pos: 0, err: false, ok: false,
+    render: function(ctx, time, g){
+      ctx.fillStyle='rgba(5,2,2,0.85)'
+      ctx.fillRect(0,0,800,600)
+      ctx.fillStyle=PAL.bm
+      ctx.fillRect(220,380,360,120)
+      ctx.fillStyle=PAL.d
+      ctx.fillRect(230,390,340,100)
+      ctx.fillStyle=PAL.y
+      ctx.font='14px Georgia'
+      ctx.textAlign='center'
+      ctx.fillText('RITMO DA ÁGUA',400,420)
+      const btns=[{x:270,y:430,w:60,h:30,l:'1'},{x:340,y:430,w:60,h:30,l:'2'},{x:410,y:430,w:60,h:30,l:'3'},{x:480,y:430,w:60,h:30,l:'4'},{x:550,y:430,w:60,h:30,l:'5'}]
+      for(let i=0;i<5;i++){
+        const b=btns[i]
+        ctx.fillStyle=this.err?PAL.r:this.pos>i?PAL.o:PAL.g
+        ctx.fillRect(b.x,b.y,b.w,b.h)
+        ctx.fillStyle=PAL.s
+        ctx.font='16px Georgia'
+        ctx.fillText(b.l,b.x+30,b.y+22)
+      }
+    },
     click: function(x,y,g){
       if(this.solved||this.ok){g.engine.tooltip('Já fez isso.');return}
       const btn={
@@ -301,7 +322,7 @@ const PUZZLES = {
     }
   },
   mansion_mirror: {
-    id: 'mansion_mirror', solved: false, watching: false, tick: 0,
+    id: 'mansion_mirror', solved: false, watching: false, targetTime: 0,
     render: function(ctx, time, g){
       ctx.fillStyle='rgba(5,2,2,0.85)'
       ctx.fillRect(0,0,800,600)
@@ -332,9 +353,8 @@ const PUZZLES = {
       if(this.solved)return
       const now=performance.now()
       const eTime=now-g.engine.puzzleStartTime
-      const delay=1000+Math.sin(now*0.002)*300+200
       if(x>=200&&x<=600&&y>=100&&y<=450){
-        if(eTime>delay+100&&eTime<delay+500){
+        if(eTime>this.targetTime+100&&eTime<this.targetTime+500){
           this.solved=true
           g.a.chime()
           g.obtained('tower_key')
@@ -349,8 +369,9 @@ const PUZZLES = {
     },
     onOpen: function(e,g){
       this.watching=false
+      this.targetTime=delayCalc()
       e.puzzleStartTime=performance.now()
-      setTimeout(()=>this.watching=true,delayCalc()+100)
+      setTimeout(()=>this.watching=true,this.targetTime+100)
     }
   },
   mansion_cabinet: {
@@ -509,7 +530,7 @@ const PUZZLES = {
       if(this.solved)return
       for(let i=0;i<6;i++){
         const cx=180+i*80
-        if(x>=cx&&x<=cx+50&&y>=200&&y<=320&&i<this.current===false){
+        if(x>=cx&&x<=cx+50&&y>=200&&y<=320&&i>=this.current){
           if(i===this.order[this.current]){
             this.current++
             g.a.candle()

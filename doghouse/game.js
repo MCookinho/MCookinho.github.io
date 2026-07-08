@@ -6,7 +6,8 @@ const SCENES = {
       {id:'door_front',name:'PORTÃO',type:'puzzle',puzzle:'gate',desc:'Três fechaduras de símbolos.'},
       {id:'lamp_c1',name:'LÂMPADA',desc:'Oscila sem vento.'},
       {id:'wall_c1',name:'PAREDE',desc:'"O passeio começa onde a luz termina."'},
-      {id:'ground_c1',name:'CHÃO',desc:'Pegadas recentes levam ao portão.'}
+      {id:'ground_c1',name:'CHÃO',desc:'Pegadas recentes levam ao portão.'},
+      {id:'stairs_c1',name:'ESCADARIA',type:'exit',target:'cellar',desc:'Desce para o porão.'}
     ]
   },
   cellar: {
@@ -110,11 +111,21 @@ const SCENES = {
   },
   corridor_6: {
     id:'corridor_6', name:'ESCADA', day:8,
-    connections:{south:'mansion', north:'tower'},
+    connections:{south:'mansion', north:'library'},
     objects:[
       {id:'exit_c6_back',name:'DESCE',type:'exit',target:'mansion'},
-      {id:'exit_c6_fwd',name:'TORRE',type:'exit',target:'tower'},
+      {id:'exit_c6_fwd',name:'BIBLIOTECA',type:'exit',target:'library'},
       {id:'mirror_c6',name:'ESPELHO',desc:'Você está diferente. Mais velho.'}
+    ]
+  },
+  library: {
+    id:'library', name:'BIBLIOTECA', day:8,
+    connections:{south:'corridor_6', north:'tower'},
+    objects:[
+      {id:'shelf_main',name:'ESTANTE',type:'puzzle',puzzle:'library_shelf',desc:'Livros em ordem.'},
+      {id:'book_table',name:'MESA',desc:'Cérbero: Guardião do Subumano'},
+      {id:'exit_library_back',name:'VOLTAR',type:'exit',target:'corridor_6'},
+      {id:'exit_library_fwd',name:'TORRE',type:'exit',target:'tower'}
     ]
   },
   tower: {
@@ -135,7 +146,7 @@ const SCENES = {
     objects:[
       {id:'altar_tunnel',name:'ALTAR FINAL',type:'puzzle',puzzle:'final_altar',desc:'Três cavidades.'},
       {id:'eye_tunnel',name:'OLHO',desc:'Shiva vê tudo.'},
-      {id:'light_tunnel',name:'LUZ',desc:'Lá longe — a saída.'},
+      {id:'light_tunnel',name:'LUZ',type:'exit',target:'end',desc:'Lá longe — a saída.'},
       {id:'chain_tunnel',name:'CORRENTE',desc:'A corrente que te prendeu — quebrada.'},
       {id:'exit_tunnel_back',name:'VOLTAR',type:'exit',target:'tower'}
     ]
@@ -147,6 +158,7 @@ const HITBOXES = {
   lamp_c1:{x:380,y:20,w:40,h:80},
   wall_c1:{x:80,y:240,w:180,h:180},
   ground_c1:{x:0,y:400,w:800,h:200},
+  stairs_c1:{x:500,y:400,w:200,h:100},
   well:{x:300,y:300,w:200,h:200},
   wall_cellar:{x:60,y:80,w:180,h:280},
   chain_cellar:{x:500,y:120,w:60,h:180},
@@ -195,6 +207,10 @@ const HITBOXES = {
   exit_c6_back:{x:50,y:450,w:80,h:80},
   exit_c6_fwd:{x:350,y:70,w:100,h:200},
   mirror_c6:{x:600,y:120,w:50,h:70},
+  shelf_main:{x:40,y:90,w:720,h:310},
+  book_table:{x:270,y:250,w:160,h:100},
+  exit_library_back:{x:50,y:450,w:80,h:80},
+  exit_library_fwd:{x:350,y:450,w:100,h:80},
   shrine:{x:260,y:130,w:280,h:260},
   bed_tower:{x:100,y:250,w:180,h:140},
   window_tower:{x:550,y:80,w:100,h:100},
@@ -359,12 +375,12 @@ class Game {
     this.engine.openPuzzle(p)
   }
   goTo(target){
-    if(!SCENES[target]){
-      this.engine.tooltip('Não há saída aqui.')
-      return
-    }
     if(this.sceneId==='tunnel'&&target==='end'){
       this.endGame('bone')
+      return
+    }
+    if(!SCENES[target]){
+      this.engine.tooltip('Não há saída aqui.')
       return
     }
     this.a.door()
