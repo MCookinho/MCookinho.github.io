@@ -249,23 +249,21 @@ function drEast(ctx,t){
   // items on shelves
   rect(80,85,30,40,PAL.paper_d) // book
   rect(120,95,45,30,PAL.paper_l) // book
-  // Candle (visible)
-  const cx=202, cy=107
-  // glow
-  $ctx.fillStyle=rgrad(cx,cy,35,'rgba(255,200,100,0.12)','rgba(255,200,100,0)')
-  $ctx.beginPath();$ctx.arc(cx,cy,35,0,Math.PI*2);$ctx.fill()
-  // body
-  rect(cx-5,cy-12,10,30,PAL.sepia_d)
-  rect(cx-6,cy-8,3,10,PAL.sepia)
-  rect(cx+4,cy-4,3,8,PAL.sepia)
-  // wick
-  ln(cx,cy-12,cx,cy-16,PAL.ink,1)
-  // flame
-  const fl=0.6+Math.sin(t*0.005)*0.2
-  $ctx.fillStyle=`rgba(255,180,60,${fl})`
-  $ctx.beginPath();$ctx.ellipse(cx,cy-20,4,8,0,0,Math.PI*2);$ctx.fill()
-  $ctx.fillStyle=`rgba(255,220,160,${fl*0.5})`
-  $ctx.beginPath();$ctx.ellipse(cx,cy-22,2,4,0,0,Math.PI*2);$ctx.fill()
+  // Candle (visible until picked up)
+  if(!window.__game||!window.__game.hasObtained('vela')){
+    const cx=202, cy=107
+    $ctx.fillStyle=rgrad(cx,cy,35,'rgba(255,200,100,0.12)','rgba(255,200,100,0)')
+    $ctx.beginPath();$ctx.arc(cx,cy,35,0,Math.PI*2);$ctx.fill()
+    rect(cx-5,cy-12,10,30,PAL.sepia_d)
+    rect(cx-6,cy-8,3,10,PAL.sepia)
+    rect(cx+4,cy-4,3,8,PAL.sepia)
+    ln(cx,cy-12,cx,cy-16,PAL.ink,1)
+    const fl=0.6+Math.sin(t*0.005)*0.2
+    $ctx.fillStyle=`rgba(255,180,60,${fl})`
+    $ctx.beginPath();$ctx.ellipse(cx,cy-20,4,8,0,0,Math.PI*2);$ctx.fill()
+    $ctx.fillStyle=`rgba(255,220,160,${fl*0.5})`
+    $ctx.beginPath();$ctx.ellipse(cx,cy-22,2,4,0,0,Math.PI*2);$ctx.fill()
+  }
   rect(260,92,30,33,PAL.dark) // box
   rect(80,185,50,35,PAL.paper_d)
   rect(150,190,35,30,PAL.sepia_d)
@@ -445,18 +443,19 @@ function drSouth(ctx,t){
   circle(250,480,2,PAL.rust_l)
   circle(350,480,2,PAL.rust_l)
 
-  // Stone (item) — visible
-  pl([[95,465],[145,468],[140,498],[90,495]],PAL.stone_l)
-  pl([[100,470],[130,472],[128,480],[98,478]],'rgba(58,50,36,0.6)')
-  wln(95,465,145,468,PAL.ink_l,0.8,t)
-  wln(145,468,140,498,PAL.ink_l,0.8,t)
-  wln(140,498,90,495,PAL.ink_l,0.8,t)
-  wln(90,495,95,465,PAL.ink_l,0.8,t)
-  // shadow under stone
-  $ctx.fillStyle='rgba(0,0,0,0.2)'
-  $ctx.beginPath()
-  $ctx.ellipse(117,500,28,6,0,0,Math.PI*2)
-  $ctx.fill()
+  // Stone (item) — visible until picked up
+  if(!window.__game||!window.__game.hasObtained('pedra')){
+    pl([[95,465],[145,468],[140,498],[90,495]],PAL.stone_l)
+    pl([[100,470],[130,472],[128,480],[98,478]],'rgba(58,50,36,0.6)')
+    wln(95,465,145,468,PAL.ink_l,0.8,t)
+    wln(145,468,140,498,PAL.ink_l,0.8,t)
+    wln(140,498,90,495,PAL.ink_l,0.8,t)
+    wln(90,495,95,465,PAL.ink_l,0.8,t)
+    $ctx.fillStyle='rgba(0,0,0,0.2)'
+    $ctx.beginPath()
+    $ctx.ellipse(117,500,28,6,0,0,Math.PI*2)
+    $ctx.fill()
+  }
 
   // Shadows
   rect(0,0,30,600,PAL.shadow_d)
@@ -516,30 +515,29 @@ function drWest(ctx,t){
   ln(435,270,435,300,PAL.ink_l,0.5)
   ln(425,280,445,280,PAL.ink_l,0.5)
 
-  // Rope hanging on wall
-  const rx=620,ry=60
-  for(let i=0;i<8;i++){
-    const ry2=ry+i*25
-    const sw=2+Math.sin(i)*0.5
-    wln(rx-6+Math.sin(t*0.001+i)*2,ry2,rx+6+Math.cos(t*0.001+i)*2,ry2+12,PAL.sepia,sw,t)
+  // Rope hanging on wall (visible until picked up)
+  if(!window.__game||!window.__game.hasObtained('corda')){
+    const rx=620,ry=60
+    for(let i=0;i<8;i++){
+      const ry2=ry+i*25
+      const sw=2+Math.sin(i)*0.5
+      wln(rx-6+Math.sin(t*0.001+i)*2,ry2,rx+6+Math.cos(t*0.001+i)*2,ry2+12,PAL.sepia,sw,t)
+    }
+    ln(rx,ry,rx,ry+220,PAL.sepia,2.5)
+    circle(rx,ry+5,8,PAL.sepia)
+    circle(rx-2,ry+8,4,PAL.sepia_d)
   }
-  ln(rx,ry,rx,ry+220,PAL.sepia,2.5)
-  // rope knot at top
-  circle(rx,ry+5,8,PAL.sepia)
-  circle(rx-2,ry+8,4,PAL.sepia_d)
 
-  // Tool pile
-  rect(560,350,120,100,PAL.ink_m)
-  rect(565,355,110,90,PAL.ink)
-  // iron bar
-  wln(575,365,635,400,PAL.rust,3,t)
-  wln(575,365,635,400,PAL.rust_l,1.5,t)
-  // hammer head
-  rect(580,360,25,15,PAL.rust)
-  // chain piece
-  for(let i=0;i<4;i++)circle(610+i*8,390+i*5,3,PAL.rust)
-  // saw blade
-  wln(590,380,620,395,PAL.ink_l,0.8,t)
+  // Tool pile (visible until ferro picked up)
+  if(!window.__game||!window.__game.hasObtained('ferro')){
+    rect(560,350,120,100,PAL.ink_m)
+    rect(565,355,110,90,PAL.ink)
+    wln(575,365,635,400,PAL.rust,3,t)
+    wln(575,365,635,400,PAL.rust_l,1.5,t)
+    rect(580,360,25,15,PAL.rust)
+    for(let i=0;i<4;i++)circle(610+i*8,390+i*5,3,PAL.rust)
+    wln(590,380,620,395,PAL.ink_l,0.8,t)
+  }
 
   // Dark shape under bench
   const sa=0.06+Math.sin(t*0.0005)*0.04
