@@ -1,9 +1,8 @@
 class AudioSys{
   constructor(){
     this.ctx=null;this.initialized=false
-    this.volumes={sfx:0.25,amb:0.08,bg:0.06}
-    this.ambients={};this.muted=false;this.drone=null
-    this.t=0
+    this.volumes={sfx:0.18,amb:0.04,bg:0.03}
+    this.ambients={};this.drone=null;this.droneGain=0
   }
   init(){
     if(this.initialized)return
@@ -15,245 +14,170 @@ class AudioSys{
   resume(){
     if(this.ctx&&this.ctx.state==='suspended')this.ctx.resume()
   }
-  _now(){return this.ctx?this.ctx.currentTime:0}
-  _filter(type,freq,Q){
-    const f=this.ctx.createBiquadFilter()
-    f.type=type||'lowpass';f.frequency.value=freq||1000;f.Q.value=Q||1
-    return f
-  }
-  _gain(v){
-    const g=this.ctx.createGain()
-    g.gain.value=v||0
-    return g
-  }
-  _noiseBuf(dur){
+  _t(f){return{type:'sine',freq:f||440}}
+  _n(dur,g,f,Q){
     const sr=this.ctx.sampleRate,len=Math.floor(sr*dur)
     const buf=this.ctx.createBuffer(1,len,sr),d=buf.getChannelData(0)
     for(let i=0;i<len;i++)d[i]=Math.random()*2-1
-    return buf
+    const s=this.ctx.createBufferSource();s.buffer=buf
+    const gN=this.ctx.createGain()
+    gN.gain.setValueAtTime((g||0.08)*this.volumes.sfx,this.ctx.currentTime)
+    gN.gain.exponentialRampToValueAtTime(0.001,this.ctx.currentTime+dur)
+    if(f){
+      const flt=this.ctx.createBiquadFilter()
+      flt.type=f.t||'lowpass';flt.frequency.value=f.f||1000;flt.Q.value=f.Q||1
+      s.connect(flt);flt.connect(gN);gN.connect(this.ctx.destination)
+    }else{s.connect(gN);gN.connect(this.ctx.destination)}
+    s.start();s.stop(this.ctx.currentTime+dur)
   }
-  _playNoise(dur,gain,filterOpts,slideGain){
-    const s=this.ctx.createBufferSource();s.buffer=this._noiseBuf(dur)
-    const g=this._gain(0);const chain=[g]
-    if(filterOpts){const f=this._filter(filterOpts.t,filterOpts.f,filterOpts.Q);g.connect(f);chain.push(f)}
-    chain[chain.length-1].connect(this.ctx.destination)
-    const t=this._now()
-    g.gain.setValueAtTime((gain||0.1)*this.volumes.sfx,t)
-    if(slideGain)g.gain.exponentialRampToValueAtTime(slideGain*this.volumes.sfx,t+dur)
-    else g.gain.exponentialRampToValueAtTime(0.001,t+dur)
-    s.connect(chain[0]);s.start(t);s.stop(t+dur)
-    return s
-  }
-  _tone(freq,type,dur,gain,slideFreq,slideGain){
-    const o=this.ctx.createOscillator()
-    o.type=type||'sine'
-    const g=this._gain(0);const t=this._now()
+  _o(freq,type,dur,gain,slide){
+    const o=this.ctx.createOscillator();o.type=type||'sine'
+    const g=this.ctx.createGain()
+    const t=this.ctx.currentTime
     o.frequency.setValueAtTime(freq,t)
-    if(slideFreq)o.frequency.linearRampToValueAtTime(slideFreq,t+dur)
-    g.gain.setValueAtTime((gain||0.1)*this.volumes.sfx,t)
-    if(slideGain)g.gain.linearRampToValueAtTime(slideGain*this.volumes.sfx,t+dur)
+    if(slide)o.frequency.linearRampToValueAtTime(slide,t+dur)
+    g.gain.setValueAtTime((gain||0.08)*this.volumes.sfx,t)
+    if(typeof slide==='string'&&slide==='hold'){}
     else g.gain.exponentialRampToValueAtTime(0.001,t+dur)
     o.connect(g);g.connect(this.ctx.destination)
     o.start(t);o.stop(t+dur)
-    return o
-  }
-  _reverb(signal,gain,decay){
-    const dry=this._gain(1);const wet=this._gain(0)
-    signal.connect(dry);signal.connect(wet)
-    const t=this._now()
-    wet.gain.setValueAtTime(gain||0.3,t)
-    const fb=this.ctx.createGain();fb.gain.value=0.5
-    const delay=this.ctx.createDelay(1);delay.delayTime.value=0.08
-    wet.connect(delay);delay.connect(fb);fb.connect(delay)
-    fb.connect(this.ctx.destination)
-    dry.connect(this.ctx.destination)
-  }
-  _impact(dur,filterFreq,filterQ,noiseGain,toneFreq,toneGain){
-    this._playNoise(dur*0.3,noiseGain,{t:'lowpass',f:filterFreq,Q:filterQ})
-    if(toneFreq)this._tone(toneFreq,'sine',dur,toneGain,undefined,0.001)
   }
 
-  /* ---- realistic sound effects ---- */
-  click(){
-    const t=this._now()
-    this._playNoise(0.02,0.06,{t:'highpass',f:2000,Q:2})
-    this._tone(1200,'sine',0.04,0.08,800,0.001)
-  }
+  /* ---- sfx ---- */
+  click(){this._n(0.015,0.04,{t:'highpass',f:3000,Q:3})}
   pickup(){
-    const t=this._now()
-    this._playNoise(0.05,0.08,{t:'bandpass',f:1500,Q:4})
-    this._tone(800,'sine',0.08,0.12,1400,0.001)
-    this._tone(1400,'sine',0.12,0.06,1800,0.001)
+    this._o(1200,'sine',0.06,0.07,1500)
+    this._n(0.03,0.03,{t:'bandpass',f:2000,Q:6})
   }
   wrong(){
-    this._playNoise(0.15,0.1,{t:'lowpass',f:300,Q:2})
-    this._tone(180,'sawtooth',0.2,0.1,80,0.001)
+    this._n(0.12,0.06,{t:'lowpass',f:250,Q:2})
+    this._o(150,'sawtooth',0.15,0.06,80)
   }
   unlock(){
-    const t=this._now()
-    this._playNoise(0.15,0.08,{t:'bandpass',f:800,Q:6})
-    this._tone(600,'triangle',0.1,0.1,800,0.001)
+    this._o(600,'triangle',0.08,0.06,750)
     setTimeout(()=>{
-      this._playNoise(0.1,0.06,{t:'bandpass',f:1000,Q:4})
-      this._tone(900,'sine',0.15,0.08,1200,0.001)
-    },150)
+      this._o(800,'sine',0.12,0.05,900)
+      this._n(0.04,0.03,{t:'bandpass',f:1200,Q:5})
+    },120)
   }
   door(){
-    const t=this._now()
-    this._playNoise(0.3,0.12,{t:'lowpass',f:400,Q:2},0.02)
-    this._tone(120,'sine',0.35,0.15,80,0.001)
-    this._playNoise(0.08,0.04,{t:'highpass',f:3000,Q:2},0.01)
+    this._n(0.25,0.07,{t:'lowpass',f:350,Q:2})
+    this._o(130,'sine',0.3,0.08,80)
   }
-  step(){
-    this._playNoise(0.06,0.04,{t:'bandpass',f:200,Q:3})
-    this._playNoise(0.03,0.02,{t:'highpass',f:4000,Q:2})
-  }
+  step(){this._n(0.05,0.03,{t:'bandpass',f:180,Q:3})}
   key(){
-    const t=this._now()
-    this._tone(1800,'sine',0.3,0.12,1600,0.001)
-    this._tone(2400,'sine',0.2,0.08,2200,0.001)
-    this._tone(1200,'sine',0.4,0.06,1100,0.002)
-    this._playNoise(0.03,0.04,{t:'highpass',f:3000,Q:6})
+    this._o(2000,'sine',0.25,0.06,1800)
+    this._o(2500,'sine',0.15,0.04,2300)
+    this._n(0.02,0.02,{t:'highpass',f:4000,Q:5})
   }
-  paper(){
-    this._playNoise(0.15,0.04,{t:'bandpass',f:3000,Q:3},0.005)
-    this._playNoise(0.08,0.03,{t:'highpass',f:5000,Q:2},0.002)
-  }
+  paper(){this._n(0.12,0.02,{t:'bandpass',f:4000,Q:3})}
   shiva(){
-    const t=this._now()
-    this._tone(55,'sawtooth',2,0.12,40,0.02)
-    this._tone(110,'sine',1.5,0.06,90,0.01)
-    this._playNoise(2,0.06,{t:'lowpass',f:200,Q:2},0.005)
-    this._tone(880,'sine',0.5,0.04,990,0.001)
+    this._o(50,'sawtooth',2,0.06,35)
+    this._n(2,0.03,{t:'lowpass',f:150,Q:2})
+    this._o(800,'sine',0.4,0.02,900)
   }
   radio(freq){
-    this._playNoise(0.15,0.05,{t:'bandpass',f:(freq||400),Q:20},0.005)
-    if(freq)this._tone(freq,'sine',0.2,0.08,freq*1.02,0.001)
+    this._n(0.1,0.03,{t:'bandpass',f:(freq||400),Q:30})
+    if(freq)this._o(freq,'sine',0.15,0.05,freq*1.01)
   }
   clock(){
-    const t=this._now()
-    this._playNoise(0.04,0.06,{t:'bandpass',f:2000,Q:10})
-    this._tone(400,'triangle',0.3,0.1,600,0.001)
-    setTimeout(()=>{
-      this._playNoise(0.03,0.04,{t:'bandpass',f:1500,Q:8})
-      this._tone(350,'sine',0.2,0.06,500,0.001)
-    },200)
-    setTimeout(()=>this._tone(600,'sine',0.5,0.06,800,0.001),400)
+    this._n(0.03,0.04,{t:'bandpass',f:2500,Q:10})
+    this._o(350,'triangle',0.2,0.06,500)
+    setTimeout(()=>{this._o(500,'sine',0.3,0.04,700);this._n(0.02,0.02,{t:'bandpass',f:2000,Q:8})},150)
   }
   heart(){
-    this._tone(180,'sine',0.2,0.1,220,0.001)
-    setTimeout(()=>this._tone(200,'sine',0.2,0.08,240,0.001),250)
+    this._o(160,'sine',0.15,0.06,200)
+    setTimeout(()=>this._o(180,'sine',0.15,0.04,220),200)
   }
   chime(){
-    const t=this._now();const notes=[880,1100,1320,1760]
-    notes.forEach((f,i)=>{
-      const d=0.8-i*0.1
-      this._tone(f,'sine',d,0.12-i*0.02,f*1.005,0.002)
+    [880,1100,1320,1760].forEach((f,i)=>{
+      this._o(f,'sine',0.6-i*0.06,0.06-i*0.01,f*1.003)
     })
-    this._playNoise(0.02,0.03,{t:'highpass',f:4000,Q:4})
+    this._n(0.02,0.02,{t:'highpass',f:5000,Q:5})
   }
-  candle(){
-    this._playNoise(0.2,0.04,{t:'bandpass',f:600,Q:3},0.008)
-    this._tone(200,'sine',0.1,0.03,300,0.001)
-  }
+  candle(){this._n(0.15,0.02,{t:'bandpass',f:500,Q:4})}
   grave(){
-    this._playNoise(0.5,0.1,{t:'lowpass',f:150,Q:3},0.01)
-    this._tone(80,'sawtooth',0.5,0.1,50,0.001)
+    this._n(0.4,0.06,{t:'lowpass',f:120,Q:3})
+    this._o(70,'sawtooth',0.4,0.06,45)
   }
-  water(){
-    this._playNoise(0.6,0.06,{t:'bandpass',f:500,Q:3},0.01)
-    this._playNoise(0.4,0.04,{t:'bandpass',f:1200,Q:4},0.005)
-  }
-  wind(){
-    this._playNoise(1.5,0.04,{t:'lowpass',f:300,Q:2},0.008)
-  }
+  water(){this._n(0.5,0.03,{t:'bandpass',f:400,Q:3})}
+  wind(){this._n(1.2,0.02,{t:'lowpass',f:250,Q:2})}
   crow(){
-    this._tone(500,'square',0.12,0.08,400,0.001)
-    setTimeout(()=>this._tone(350,'square',0.15,0.06,280,0.001),150)
-    this._playNoise(0.1,0.03,{t:'highpass',f:2000,Q:2})
+    this._o(450,'square',0.1,0.05,350)
+    setTimeout(()=>this._o(300,'square',0.12,0.04,250),120)
   }
   bell(){
-    const notes=[600,750,900,1200]
-    notes.forEach((f,i)=>{
-      const d=1.2-i*0.15
-      this._tone(f,'sine',d,0.1-i*0.015,f*1.003,0.002)
+    [600,750,900,1200].forEach((f,i)=>{
+      this._o(f,'sine',1-i*0.1,0.05-i*0.008,f*1.002)
     })
-    this._playNoise(0.03,0.02,{t:'highpass',f:5000,Q:4})
+    this._n(0.02,0.015,{t:'highpass',f:6000,Q:5})
   }
   final(){
-    const t=this._now()
-    this._tone(400,'triangle',2.5,0.15,800,0.01)
-    this._tone(600,'sine',2,0.08,1000,0.005)
-    this._playNoise(2,0.05,{t:'lowpass',f:500,Q:3},0.003)
+    this._o(400,'triangle',2,0.08,800)
+    this._o(600,'sine',1.5,0.04,1000)
+    this._n(2,0.03,{t:'lowpass',f:400,Q:3})
   }
 
-  /* ---- procedural ambient drone ---- */
+  /* ---- drone ambiental sutil ---- */
   startDrone(sceneId){
     if(!this.ctx||this.muted)return
     this.stopDrone()
-    const scenes={
-      cellar:{f1:55,f2:62,f3:72,type:'sawtooth'},kitchen:{f1:65,f2:73,f3:82,type:'sine'},
-      church:{f1:110,f2:123,f3:137,type:'sine'},graveyard:{f1:49,f2:55,f3:62,type:'sawtooth'},
-      mansion:{f1:98,f2:110,f3:123,type:'sine'},library:{f1:73,f2:82,f3:92,type:'triangle'},
-      tower:{f1:130,f2:147,f3:165,type:'triangle'},tunnel:{f1:41,f2:49,f3:55,type:'sawtooth'},
-      default:{f1:45,f2:55,f3:65,type:'sine'}
+    const cfg={
+      cellar:{f:50,type:'sine'},corridor_1:{f:45,type:'sine'},
+      corridor_2:{f:52,type:'sine'},kitchen:{f:60,type:'sine'},
+      corridor_3:{f:58,type:'sine'},church:{f:100,type:'sine'},
+      corridor_4:{f:55,type:'sine'},graveyard:{f:42,type:'sine'},
+      corridor_5:{f:65,type:'sine'},mansion:{f:90,type:'sine'},
+      corridor_6:{f:70,type:'sine'},library:{f:80,type:'triangle'},
+      tower:{f:110,type:'triangle'},tunnel:{f:38,type:'sawtooth'},
+      default:{f:50,type:'sine'}
     }
-    const cfg=scenes[sceneId]||scenes.default
-    const oscs=[];const lfos=[]
+    const c=cfg[sceneId]||cfg.default
+    const gDrone=this.ctx.createGain()
+    gDrone.gain.value=0
+    this.droneGain=gDrone
+    gDrone.connect(this.ctx.destination)
+    const oscs=[]
+    const freqs=[c.f*1,c.f*1.01,c.f*0.99]
     for(let i=0;i<3;i++){
-      const f=cfg.f1*(1+i*0.15)+(Math.random()-0.5)*2
-      const o=this.ctx.createOscillator()
-      o.type=cfg.type
-      o.frequency.value=f
-      const g=this._gain(0.008*this.volumes.bg)
-      const lfo=this.ctx.createOscillator()
-      lfo.type='sine';lfo.frequency.value=0.1+Math.random()*0.3
-      const lfoG=this.ctx.createGain();lfoG.gain.value=f*0.02
-      lfo.connect(lfoG);lfoG.connect(g.gain);lfo.start()
-      o.connect(g);g.connect(this.ctx.destination);o.start()
-      oscs.push({o,g,baseF:f});lfos.push(lfo)
+      const o=this.ctx.createOscillator();o.type=c.type
+      o.frequency.value=freqs[i]+(Math.random()-0.5)*0.5
+      const g=this.ctx.createGain()
+      g.gain.value=this.volumes.bg*(0.5-i*0.15)
+      const lfo=this.ctx.createOscillator();lfo.type='sine';lfo.frequency.value=0.08+Math.random()*0.15
+      const lfoG=this.ctx.createGain();lfoG.gain.value=freqs[i]*0.01
+      lfo.connect(lfoG);lfoG.connect(o.frequency);lfo.start()
+      o.connect(g);g.connect(gDrone);o.start()
+      oscs.push({o,g,lfo})
     }
-    const ambient=this.ctx.createBufferSource()
-    ambient.buffer=this._noiseBuf(8)
-    ambient.loop=true
-    const ambG=this._gain(0.02*this.volumes.amb)
-    const ambF=this._filter('lowpass',200+Math.random()*200,1.5)
-    const ambLfo=this.ctx.createOscillator()
-    ambLfo.type='sine';ambLfo.frequency.value=0.05
-    const ambLfoG=this.ctx.createGain();ambLfoG.gain.value=80
+    const amb=this.ctx.createBufferSource()
+    amb.buffer=(()=>{
+      const sr=this.ctx.sampleRate,len=sr*6
+      const buf=this.ctx.createBuffer(1,len,sr),d=buf.getChannelData(0)
+      for(let i=0;i<len;i++)d[i]=Math.random()*2-1
+      return buf
+    })()
+    amb.loop=true
+    const ambF=this.ctx.createBiquadFilter()
+    ambF.type='lowpass';ambF.frequency.value=100+c.f*0.5;ambF.Q.value=1.5
+    const ambG=this.ctx.createGain()
+    ambG.gain.value=this.volumes.amb*0.6
+    const ambLfo=this.ctx.createOscillator();ambLfo.type='sine';ambLfo.frequency.value=0.03
+    const ambLfoG=this.ctx.createGain();ambLfoG.gain.value=50
     ambLfo.connect(ambLfoG);ambLfoG.connect(ambF.frequency);ambLfo.start()
-    ambient.connect(ambF);ambF.connect(ambG);ambG.connect(this.ctx.destination)
-    ambient.start()
-    this.drone={oscs,lfos,ambient,ambF,ambG,ambLfo}
+    amb.connect(ambF);ambF.connect(ambG);ambG.connect(gDrone);amb.start()
+    gDrone.gain.linearRampToValueAtTime(1,this.ctx.currentTime+3)
+    this.drone={oscs,amb,ambLfo,g:gDrone}
   }
   stopDrone(){
     if(!this.drone)return
-    this.drone.oscs.forEach(o=>{try{o.o.stop()}catch(e){}})
-    this.drone.lfos.forEach(l=>{try{l.stop()}catch(e){}})
-    try{this.drone.ambient.stop()}catch(e){}
-    try{this.drone.ambLfo.stop()}catch(e){}
-    this.drone=null
-  }
-  startAmbient(id,freq,type){
-    if(!this.ctx||this.muted)return
-    if(this.ambients[id]){this.stopAmbient(id)}
-    const o=this.ctx.createOscillator()
-    const g=this.ctx.createGain()
-    o.type=type||'sine'
-    o.frequency.setValueAtTime(freq||200,this.ctx.currentTime)
-    g.gain.setValueAtTime(this.volumes.amb,this.ctx.currentTime)
-    o.connect(g);g.connect(this.ctx.destination)
-    o.start()
-    this.ambients[id]={osc:o,gain:g}
-  }
-  stopAmbient(id){
-    if(this.ambients[id]){
-      try{this.ambients[id].osc.stop()}catch(e){}
-      delete this.ambients[id]
-    }
-  }
-  stopAll(){
-    Object.keys(this.ambients).forEach(k=>this.stopAmbient(k))
-    this.stopDrone()
+    if(this.drone.g)this.drone.g.gain.linearRampToValueAtTime(0,this.ctx.currentTime+0.5)
+    setTimeout(()=>{
+      if(!this.drone)return
+      this.drone.oscs.forEach(o=>{try{o.o.stop()}catch(e){};try{o.lfo.stop()}catch(e){}})
+      try{this.drone.amb.stop()}catch(e){}
+      try{this.drone.ambLfo.stop()}catch(e){}
+      this.drone=null
+    },500)
   }
 }
