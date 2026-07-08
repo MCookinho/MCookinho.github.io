@@ -145,8 +145,19 @@ class Player {
     if (obj.type === 'door') {
       this.interacting = true;
       engine.audio.playDoorOpen();
-      engine.transitionToMap(obj.targetMap, obj.targetX, obj.targetY);
+      engine.transitionToMap(obj.targetMap, obj.targetX * TILE_SIZE, obj.targetY * TILE_SIZE);
       setTimeout(() => { this.interacting = false; }, 100);
+    }
+    else if (obj.type === 'gate') {
+      if (this.inventory.includes(obj.requiredItem)) {
+        const map = engine.currentMap;
+        if (map.collision[obj.y]) map.collision[obj.y][obj.x] = false;
+        if (map.wall[obj.y]) map.wall[obj.y][obj.x] = 0;
+        this.interacting = true;
+        engine.audio.playDoorOpen();
+        engine.transitionToMap(obj.targetMap, obj.targetX * TILE_SIZE, obj.targetY * TILE_SIZE);
+        setTimeout(() => { this.interacting = false; }, 100);
+      }
     }
     else if (obj.type === 'item' && !obj.collected) {
       obj.collected = true;
