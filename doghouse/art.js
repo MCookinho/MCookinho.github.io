@@ -274,82 +274,103 @@ function drEast(ctx,t){
 
   // Mirror (right side)
   const mirrorBroken=window.__game&&window.__game.hasObtained('caco_vidro')
-  rect(430,80,220,280,PAL.ink_l)
-  rect(435,85,210,270,PAL.dark)
-  // mirror frame (ornate)
-  wln(430,80,650,80,PAL.rust,1.5,t)
-  wln(650,80,650,360,PAL.rust,1.5,t)
-  wln(650,360,430,360,PAL.rust,1.5,t)
-  wln(430,360,430,80,PAL.rust,1.5,t)
+  const mx=435,my=85,mw=210,mh=270
+  rect(mx-5,my-5,mw+10,mh+10,PAL.ink_l)
 
   if(mirrorBroken){
-    // mirror shards (reflective)
-    const sp=[[460,105],[620,95],[630,330],[470,350]]
-    pl(sp,PAL.sepia_l)
-    for(let i=0;i<8;i++){
-      const sx=450+Math.sin(i*37+Math.floor(t*0.01)%100)*100
-      const sy=110+Math.sin(i*53+Math.floor(t*0.01)%100)*200
-      const sa=Math.sin(t*0.003+i)*0.2+0.1
-      $ctx.globalAlpha=sa
-      wln(sx,sy,sx+Math.sin(t*0.002+i)*10,sy-20+Math.cos(t*0.002+i)*10,PAL.sepia_l,0.8,t)
-      $ctx.globalAlpha=1
-    }
-    // cracked reflection
-    $ctx.globalAlpha=0.08
-    $ctx.fillStyle=PAL.gold
-    $ctx.fillRect(465,115,5,5)
-    $ctx.fillRect(510,180,5,5)
-    $ctx.fillRect(580,250,5,5)
-    $ctx.globalAlpha=1
-    // crack lines
-    $ctx.strokeStyle=`rgba(184,160,128,0.15)`
-    $ctx.lineWidth=1
-    for(let i=0;i<3;i++){
-      const cx=450+Math.sin(i*37)*80,cy=120+Math.sin(i*53)*160
+    rect(mx,my,mw,mh,PAL.ink)
+    // Crack lines from impact point
+    const ix=540,iy=200
+    $ctx.strokeStyle='rgba(154,138,122,0.3)'
+    $ctx.lineWidth=1.5
+    for(let i=0;i<7;i++){
+      const a=i*0.9+0.3,l=40+Math.sin(i*5)*25
       $ctx.beginPath()
-      $ctx.moveTo(cx,cy)
-      $ctx.lineTo(cx+Math.sin(t*0.001+i*2)*15,cy+80+Math.sin(i*3)*10)
+      $ctx.moveTo(ix,iy)
+      let px=ix,py=iy
+      for(let j=0;j<5;j++){
+        px+=Math.cos(a+Math.sin(i+j*2)*0.6)*l/5
+        py+=Math.sin(a+Math.cos(i+j*2)*0.6)*l/5
+        $ctx.lineTo(px,py)
+      }
       $ctx.stroke()
     }
+    // Secondary cracks
+    $ctx.strokeStyle='rgba(154,138,122,0.15)'
+    $ctx.lineWidth=0.8
+    for(let i=0;i<5;i++){
+      const cx=470+Math.sin(i*31)*90,cy=120+Math.sin(i*43)*140
+      $ctx.beginPath()
+      $ctx.moveTo(cx,cy)
+      $ctx.lineTo(cx+Math.sin(t*0.001+i)*20,cy+60+Math.sin(i*2)*15)
+      $ctx.stroke()
+    }
+    // Shard polygons
+    pl([[460,105],[560,95],[540,160],[470,150]],'rgba(58,50,36,0.3)')
+    pl([[540,160],[620,150],[630,330],[550,310]],'rgba(58,50,36,0.2)')
+    pl([[470,150],[550,160],[510,300],[460,280]],'rgba(58,50,36,0.25)')
+    // Occasional glint
+    $ctx.fillStyle='rgba(184,160,128,0.06)'
+    $ctx.fillRect(475,120,2,2)
+    $ctx.fillRect(580,250,2,2)
+    $ctx.fillRect(500,280,2,2)
   }else{
-    // Intact mirror with reflection
     $ctx.save()
     $ctx.beginPath()
-    $ctx.rect(435,85,210,270)
+    $ctx.rect(mx,my,mw,mh)
     $ctx.clip()
-    // Reflection background
-    rect(435,85,210,270,'rgba(10,8,6,0.9)')
-    // Room reflection (dim)
-    $ctx.fillStyle='rgba(26,18,10,0.3)'
-    $ctx.font='48px Georgia'
+    // Stone wall (opposite room reflection)
+    rect(mx,my,mw,mh,'rgba(36,28,20,0.95)')
+    for(let row=0;row<5;row++){
+      for(let col=0;col<3;col++){
+        const bx=mx+col*70+(row%2)*35,by=my+row*55
+        rect(bx,by,60,48,'rgba(52,42,32,0.5)')
+        rect(bx+2,by+2,54,44,'rgba(42,34,26,0.3)')
+        $ctx.strokeStyle='rgba(68,58,48,0.15)'
+        $ctx.lineWidth=0.5
+        $ctx.strokeRect(bx,by,60,48)
+      }
+    }
+    $ctx.fillStyle='rgba(122,90,58,0.35)'
+    $ctx.font='22px Georgia'
     $ctx.textAlign='center'
-    $ctx.fillText('ESQUEÇA',540,340)
-    // Player silhouette
+    $ctx.fillText('ESQUEÇA',540,195)
+    $ctx.fillStyle='rgba(122,90,58,0.1)'
+    $ctx.fillRect(535,200,3,25)
+    $ctx.fillRect(548,202,1,18)
+    // Player bust silhouette
     $ctx.fillStyle='rgba(10,8,6,0.8)'
     $ctx.beginPath()
-    $ctx.ellipse(540,295,28,45,0,0,Math.PI*2)
+    $ctx.moveTo(508,305)
+    $ctx.quadraticCurveTo(520,268,540,258)
+    $ctx.quadraticCurveTo(560,268,572,305)
+    $ctx.closePath()
     $ctx.fill()
     // Head
     $ctx.beginPath()
-    $ctx.ellipse(540,242,15,19,0,0,Math.PI*2)
+    $ctx.ellipse(540,240,16,20,0,0,Math.PI*2)
     $ctx.fill()
-    // Stain covering face
-    $ctx.fillStyle='rgba(52,42,32,0.75)'
+    // Ink stain on mirror glass (over face)
+    $ctx.fillStyle='rgba(52,42,32,0.65)'
     $ctx.beginPath()
-    $ctx.ellipse(540,242,22,18,0,0,Math.PI*2)
+    $ctx.ellipse(540,243,14,11,0,0,Math.PI*2)
     $ctx.fill()
-    $ctx.fillStyle='rgba(36,28,20,0.6)'
+    $ctx.fillStyle='rgba(36,28,20,0.5)'
     $ctx.beginPath()
-    $ctx.ellipse(537,239,14,10,-0.2,0,Math.PI*2)
+    $ctx.ellipse(538,241,8,5,-0.1,0,Math.PI*2)
     $ctx.fill()
-    $ctx.beginPath()
-    $ctx.ellipse(545,249,10,8,0.3,0,Math.PI*2)
-    $ctx.fill()
+    // Reflective glint
+    $ctx.fillStyle='rgba(184,160,128,0.04)'
+    $ctx.fillRect(mx+3,my,2,mh)
+    $ctx.fillRect(mx+50,my,1,mh)
     $ctx.restore()
-    // Surface glint
-    $ctx.fillStyle='rgba(184,160,128,0.03)'
-    $ctx.fillRect(438,85,2,270)
   }
+
+  // Mirror frame ornate (always on top)
+  wln(mx-5,my-5,mx+mw+5,my-5,PAL.rust,1.5,t)
+  wln(mx+mw+5,my-5,mx+mw+5,my+mh+5,PAL.rust,1.5,t)
+  wln(mx+mw+5,my+mh+5,mx-5,my+mh+5,PAL.rust,1.5,t)
+  wln(mx-5,my+mh+5,mx-5,my-5,PAL.rust,1.5,t)
 
   // Loose brick highlight
   const briAlpha=0.4+Math.sin(t*0.002)*0.15
