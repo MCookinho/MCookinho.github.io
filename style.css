@@ -1150,7 +1150,7 @@ body {
 
 .music-panel {
   width: 100%;
-  max-width: 560px;
+  max-width: 680px;
   border: 2px solid var(--pink);
   background: #0d0d14;
   box-shadow: 0 0 40px rgba(255,45,120,0.1), 0 0 80px rgba(0,255,200,0.03);
@@ -1191,7 +1191,7 @@ body {
 
 .music-list {
   padding: 8px 0;
-  max-height: 60vh;
+  max-height: 65vh;
   overflow-y: auto;
 }
 
@@ -1571,6 +1571,9 @@ body {
   .nav-logo { font-size: 13px; }
   .nav { padding: 16px 0; }
 
+  .music-panel { max-width: 760px; }
+  .music-list { max-height: 70vh; }
+
   .hero-nome { font-size: 38px; }
   .hero-sub { font-size: 11px; }
   .hero-frase { font-size: 9px; }
@@ -1635,6 +1638,9 @@ body {
   .nav-links { gap: 28px; }
   .nav-links a { font-size: 11px; }
   .nav-logo { font-size: 15px; }
+
+  .music-panel { max-width: 860px; }
+  .music-list { max-height: 72vh; }
 
   .hero-nome { font-size: 48px; letter-spacing: 4px; }
   .hero-sub { font-size: 12px; }
