@@ -45,22 +45,16 @@ class Camera {
     this.y = 0;
     this.targetX = 0;
     this.targetY = 0;
-    this.worldWidth = width;
-    this.worldHeight = height;
     this.shakeTimer = 0;
     this.shakeIntensity = 0;
   }
   follow(px, py, mapW, mapH) {
-    this.targetX = px - CANVAS_W / 2 + TILE_SIZE / 2;
-    this.targetY = py - CANVAS_H / 2 + TILE_SIZE / 2;
-    this.worldWidth = mapW * TILE_SIZE;
-    this.worldHeight = mapH * TILE_SIZE;
+    this.targetX = 0;
+    this.targetY = 0;
   }
   update(dt) {
     this.x += (this.targetX - this.x) * Math.min(1, 10 * dt);
     this.y += (this.targetY - this.y) * Math.min(1, 10 * dt);
-    this.x = Math.max(0, Math.min(this.worldWidth - CANVAS_W, this.x));
-    this.y = Math.max(0, Math.min(this.worldHeight - CANVAS_H, this.y));
     if (this.shakeTimer > 0) {
       this.shakeTimer -= dt;
       const sx = (Math.random() - 0.5) * this.shakeIntensity;
@@ -73,6 +67,7 @@ class Camera {
     this.shakeIntensity = intensity;
     this.shakeTimer = duration;
   }
+  getScale() { return 2; }
 }
 
 /* ===== TILEMAP ===== */
@@ -199,11 +194,7 @@ class Engine {
     const map = this.maps[mapId];
     if (!map) return;
     this.currentMap = map;
-    this.camera.follow(
-      this.player ? this.player.x : map.playerStart.x,
-      this.player ? this.player.y : map.playerStart.y,
-      map.width, map.height
-    );
+    this.camera.follow();
     // HUD day
     const dayMap = {
       quarto:1, corredor:1, sala:1, calcada:2, rua:2,
@@ -245,11 +236,7 @@ class Engine {
     if (this.player) this.player.update(dt, this);
     // shiva
     if (this.shivaSystem) this.shivaSystem.update(dt, this);
-    // camera
-    if (this.player) {
-      this.camera.follow(this.player.x, this.player.y,
-        this.currentMap.width, this.currentMap.height);
-    }
+    // camera (fixed at origin)
     this.camera.update(dt);
     // watcher timer
     if (this.state.watcherTimer > 0) {
@@ -279,20 +266,26 @@ class Engine {
     ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
     if (!this.currentMap || !this.sprites) return;
 
+    // escala 2x estilo Undertale (mundo 320x240 → canvas 640x480)
+    ctx.save();
+    ctx.scale(2, 2);
+
     this.currentMap.render(ctx, this.camera, this.sprites);
-    // player
     if (this.player) this.player.render(ctx, this.camera);
-    // shiva
     if (this.shivaSystem) this.shivaSystem.render(ctx, this.camera);
-    // darkness overlay
+
+    ctx.restore();
+
+    // escuridão em espaço da tela (não escala)
     this._renderDarkness(ctx);
   }
   _renderDarkness(ctx) {
     if (!this.player) return;
-    const px = this.player.x - this.camera.x + TILE_SIZE / 2;
-    const py = this.player.y - this.camera.y + TILE_SIZE / 2;
-    const radius = this.state.lanternOn ? 80 : 48;
-    const gradient = ctx.createRadialGradient(px, py, 8, px, py, radius);
+    // converte posição do player para espaço da tela (×2)
+    const px = (this.player.x + TILE_SIZE / 2) * 2;
+    const py = (this.player.y + TILE_SIZE / 2) * 2;
+    const radius = (this.state.lanternOn ? 80 : 48) * 2;
+    const gradient = ctx.createRadialGradient(px, py, 16, px, py, radius);
     gradient.addColorStop(0, 'rgba(0,0,0,0)');
     gradient.addColorStop(0.6, 'rgba(0,0,0,0)');
     gradient.addColorStop(1, 'rgba(10,5,5,1)');
