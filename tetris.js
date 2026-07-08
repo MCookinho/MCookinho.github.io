@@ -376,6 +376,20 @@
           }
         }
       }
+
+      // DAS
+      for (const dir of Object.keys(this.dasTimers)) {
+        const timer = this.dasTimers[dir]
+        if (!timer) continue
+        timer.delay -= dt
+        if (timer.delay<=0) {
+          timer.interval -= dt
+          if (timer.interval<=0) {
+            timer.interval = this.dasInterval
+            this.move(dir==='left'?-1:1)
+          }
+        }
+      }
     }
 
     render() {
@@ -567,24 +581,6 @@
         if (e.key==='ArrowLeft') { delete this.dasTimers.left; if(this.dasDir==='left')this.dasDir=null }
         if (e.key==='ArrowRight') { delete this.dasTimers.right; if(this.dasDir==='right')this.dasDir=null }
       })
-
-      // DAS handling in update
-      const origUpdate = this.update.bind(this)
-      this.update = (dt) => {
-        origUpdate(dt)
-        if (this.gameOver||this.paused||this.clearing) return
-        for (const [dir,timer] of Object.entries(this.dasTimers)) {
-          if (!timer) continue
-          timer.delay -= dt
-          if (timer.delay<=0) {
-            timer.interval -= dt
-            if (timer.interval<=0) {
-              timer.interval = this.dasInterval
-              this.move(dir==='left'?-1:1)
-            }
-          }
-        }
-      }
     }
   }
 })()
