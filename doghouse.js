@@ -3,12 +3,27 @@
   var isPointerLocked = false, lastTime = 0, dirLight = null, memoryFlags = 0, keys = {}
 
   var audioCtx = null
+  var flickerLights = []
   var footstepTimer = 0
 
   function getAudioCtx() {
-    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)()
+    if (!audioCtx) {
+      try {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)()
+      } catch (e) { return null }
+    }
+    if (audioCtx.state === 'suspended') {
+      audioCtx.resume().catch(function () {})
+    }
     return audioCtx
   }
+
+  function ensureAudio() {
+    var ac = getAudioCtx()
+    if (ac && ac.state === 'suspended') ac.resume().catch(function () {})
+  }
+  document.addEventListener('click', ensureAudio, { once: true })
+  document.addEventListener('keydown', ensureAudio, { once: true })
 
   function playNoise(duration, volume, freq) {
     try {
@@ -56,6 +71,7 @@
   function startAmbient() {
     try {
       var ac = getAudioCtx()
+      if (ac.state === 'suspended') ac.resume()
       // Deep house rumble (low frequency drone)
       var bufSize = Math.floor(ac.sampleRate * 8)
       var buf = ac.createBuffer(1, bufSize, ac.sampleRate)
@@ -71,7 +87,7 @@
       ambientSource.buffer = buf
       ambientSource.loop = true
       var gain = ac.createGain()
-      gain.gain.setValueAtTime(0.02, ac.currentTime)
+      gain.gain.setValueAtTime(0.06, ac.currentTime)
       var filter = ac.createBiquadFilter()
       filter.type = 'lowpass'
       filter.frequency.setValueAtTime(120, ac.currentTime)
@@ -85,13 +101,13 @@
       var wBuf = ac.createBuffer(1, wBufSize, ac.sampleRate)
       var wData = wBuf.getChannelData(0)
       for (var wi = 0; wi < wBufSize; wi++) {
-        wData[wi] = (Math.random() * 2 - 1) * 0.006 * Math.sin(Math.PI * wi / wBufSize)
+        wData[wi] = (Math.random() * 2 - 1) * 0.02 * Math.sin(Math.PI * wi / wBufSize)
       }
       windSource = ac.createBufferSource()
       windSource.buffer = wBuf
       windSource.loop = true
       var wGain = ac.createGain()
-      wGain.gain.setValueAtTime(0.008, ac.currentTime)
+      wGain.gain.setValueAtTime(0.025, ac.currentTime)
       var wFilter = ac.createBiquadFilter()
       wFilter.type = 'bandpass'
       wFilter.frequency.setValueAtTime(800, ac.currentTime)
@@ -125,20 +141,20 @@
     var fl = isOnSecondFloor ? 1 : 0
     var room = getRoomAtCell(col, row, fl)
     if (room && (room.type === 'garage' || room.type === 'entrance')) {
-      playNoise(0.07, 0.06, 300 + Math.random() * 200)
-      playNoise(0.04, 0.05, 100)
+      playNoise(0.07, 0.12, 300 + Math.random() * 200)
+      playNoise(0.04, 0.10, 100)
     } else if (room && room.type === 'bathroom') {
-      playNoise(0.05, 0.04, 800 + Math.random() * 400)
-      playNoise(0.02, 0.03, 300)
+      playNoise(0.05, 0.08, 800 + Math.random() * 400)
+      playNoise(0.02, 0.06, 300)
     } else if (room && (room.type === 'bedroom' || room.type === 'study')) {
-      playNoise(0.04, 0.03, 400 + Math.random() * 200)
-      playNoise(0.02, 0.02, 150)
+      playNoise(0.04, 0.06, 400 + Math.random() * 200)
+      playNoise(0.02, 0.04, 150)
     } else if (room && room.type === 'hall') {
-      playNoise(0.05, 0.06, 600 + Math.random() * 200)
-      playNoise(0.03, 0.04, 300)
+      playNoise(0.05, 0.12, 600 + Math.random() * 200)
+      playNoise(0.03, 0.08, 300)
     } else {
-      playNoise(0.06, 0.05, 500 + Math.random() * 300)
-      playNoise(0.03, 0.03, 200)
+      playNoise(0.06, 0.10, 500 + Math.random() * 300)
+      playNoise(0.03, 0.06, 200)
     }
   }
 
@@ -244,7 +260,7 @@
   function playGrowl(dist) {
     if (growlTimer > 0) return
     growlTimer = 3 + Math.random() * 4
-    var vol = Math.max(0.02, 0.08 * (1 - dist / 6))
+    var vol = Math.max(0.05, 0.15 * (1 - dist / 6))
     playNoise(0.15 + Math.random() * 0.1, vol, 80 + Math.random() * 40)
     playTone(90 + Math.random() * 30, 60 + Math.random() * 20, 0.3 + Math.random() * 0.2, vol * 0.8, 'sawtooth')
   }
@@ -880,14 +896,7 @@
     scene.add(dirLight)
     var moon = new THREE.DirectionalLight(0x4444aa, 0.15)
     moon.position.set(-5, 8, 3)
-    moon.castShadow = true
-    moon.shadow.mapSize.width = 512; moon.shadow.mapSize.height = 512
-    var d2 = 12
-    moon.shadow.camera.left = -d2; moon.shadow.camera.right = d2
-    moon.shadow.camera.top = d2; moon.shadow.camera.bottom = -d2
-    moon.shadow.camera.near = 1; moon.shadow.camera.far = 25
     scene.add(moon)
-    var flickerLights = []
     for (var i = 0; i < ROOMS.length; i++) {
       var r = ROOMS[i]
       if (r.yOffset) continue
@@ -898,18 +907,6 @@
       scene.add(pl)
       flickerLights.push(pl)
     }
-    // Flicker loop
-    function flickerLoop() {
-      for (var fi = 0; fi < flickerLights.length; fi++) {
-        var fl2 = flickerLights[fi]
-        var t2 = Date.now() * 0.001 + fl2.userData.phase
-        var flicker = Math.sin(t2 * 2.7) * Math.sin(t2 * 3.1) * Math.sin(t2 * 5.3)
-        flicker = Math.pow(Math.abs(flicker), 1.5) * (flicker > 0 ? 1 : -0.3)
-        fl2.intensity = fl2.userData.baseIntensity * (0.7 + 0.3 * Math.max(-0.2, flicker))
-      }
-      requestAnimationFrame(flickerLoop)
-    }
-    flickerLoop()
     // Upper floor dim lights
     for (var ui = 0; ui < ROOMS.length; ui++) {
       var ru = ROOMS[ui]
@@ -1042,6 +1039,7 @@
 
     function processFloor(floor, yOffset, wallHeight) {
       var edgeBuilt = {}
+      var builtDoors = {}
       function processEdge(col, row, ncol, nrow) {
         var r = cellRoom[floor][row][col]
         if (!r) return
@@ -1052,6 +1050,11 @@
         if (ncol >= 0 && ncol < GRID_COLS && nrow >= 0 && nrow < GRID_ROWS) nr = cellRoom[floor][nrow][ncol]
         if (nr === r) return
         var isDoor2 = nr && isDoorConnection(r, nr)
+        if (isDoor2) {
+          var dk = [r, nr].sort().join('-')
+          if (builtDoors[dk]) isDoor2 = false
+          else builtDoors[dk] = true
+        }
         var wx, wz, ww, wd
         if (ncol !== col) {
           wx = Math.max(col, ncol) * CELL_SIZE; wz = (Math.min(row, nrow) + 0.5) * CELL_SIZE
@@ -1131,208 +1134,201 @@
       scene.add(mesh)
       return mesh
     }
-    var wMat = makeMat(0x2a1e18, 0.8), dMat = makeMat(0x2a1e14, 0.7)
-    var cMat = makeMat(0x2a1820, 0.85), ctMat = makeMat(0x3a2818, 0.5)
+    var dMat = makeMat(0x2a1e14, 0.7)
+    var ctMat = makeMat(0x3a2818, 0.5)
     var fMat = makeMat(0x1a1010, 0.9)
     var chairMat = makeMat(0x1a1410, 0.85)
     var clothMat = makeMat(0x1a1214, 0.85)
     var darkWoodMat = makeMat(0x1a0e08, 0.85)
 
-    // LIVING ROOM (0,0)+(1,0)+(0,1)+(1,1) -> center (4, 4)
+    // LIVING ROOM (center 4, 4, 8x8)
     var livingR = getRoomById('living')
     if (livingR) {
       var lx = 4, lz = 4
-      placeBox(lx - 1.2, lz + 0.2, 0.15, 0.5, 0.7, fMat)
-      placeBox(lx + 1.2, lz + 0.2, 0.15, 0.5, 0.7, fMat)
-      placeBox(lx - 0.7, lz + 0.2, 0.9, 0.08, 0.8, fMat)
-      // Armchair
-      placeBox(lx + 0.8, lz + 0.3, 0.5, 0.5, 0.4, cMat)
-      // Fireplace
-      var fireMat = makeMat(0x1a0a0a, 0.9)
-      placeBox(lx - 1.5, lz - 0.3, 0.3, 0.15, 0.4, fireMat)
-      var firePillar = makeMat(0x1a1a1a, 0.85)
-      placeBox(lx - 1.55, lz - 0.5, 0.06, 0.4, 0.06, firePillar)
-      placeBox(lx - 1.45, lz - 0.5, 0.06, 0.4, 0.06, firePillar)
-      var fl = new THREE.PointLight(0xff4400, 0.3, 3)
-      fl.position.set(lx - 1.5, 0.3, lz - 0.3)
-      scene.add(fl)
+      // Sofa (south side, facing north toward TV)
+      placeBox(lx, 6.5, 1.6, 0.35, 0.65, fMat) // seat
+      placeBox(lx, 7.0, 1.6, 0.5, 0.08, fMat)  // backrest
+      placeBox(lx - 0.85, 6.5, 0.12, 0.3, 0.65, fMat) // left armrest
+      placeBox(lx + 0.85, 6.5, 0.12, 0.3, 0.65, fMat) // right armrest
+      // TV against north wall
+      placeBox(lx, 0.5, 0.02, 0.35, 0.55, makeMat(0x0a0a0a, 0.3, 0.5))
+      // TV stand
+      placeBox(lx, 0.2, 0.55, 0.4, 0.35, darkWoodMat)
       // Coffee table
-      placeBox(lx - 0.2, lz + 0.4, 0.5, 0.3, 0.4, dMat)
-      // TV
-      placeBox(lx + 1.5, lz - 0.2, 0.02, 0.3, 0.4, makeMat(0x0a0a0a, 0.3, 0.5))
-      // Rug
-      placeBox(lx, lz, 1.2, 0.02, 1.2, makeMat(0x2a1a20, 0.9))
+      placeBox(lx, 3.5, 0.7, 0.25, 0.45, dMat)
+      // Rug under coffee table
+      placeBox(lx, lz, 1.6, 0.02, 1.4, makeMat(0x2a1a20, 0.9))
+      // Bookshelf against west wall
+      placeBox(0.5, 3, 0.3, 1.3, 0.7, darkWoodMat)
+      // Floor lamp (southwest corner)
+      var lampLiv = new THREE.PointLight(0xff8844, 0.15, 3)
+      lampLiv.position.set(1.5, 0.9, 7)
+      scene.add(lampLiv)
+      placeBox(1.5, 7, 0.08, 0.8, 0.08, makeMat(0x1a1818, 0.7), 0)
     }
 
-    // HALL (2,0)+(2,1)+(2,2) -> center (10, 6)
+    // HALL (narrow, center 10, 6, 4x12)
     var hallR = getRoomById('hall')
     if (hallR) {
-      // Small table at north end
-      placeBox(10, 1.5, 0.3, 0.6, 0.3, dMat)
-      // Lamp on table
-      var lampHall = new THREE.PointLight(0xff8844, 0.15, 2.5)
-      lampHall.position.set(10, 0.9, 1.5)
+      // Small table at north end (near kitchen door)
+      placeBox(10, 1.2, 0.3, 0.6, 0.3, dMat)
+      var lampHall = new THREE.PointLight(0xff8844, 0.12, 2.5)
+      lampHall.position.set(10, 0.9, 1.2)
       scene.add(lampHall)
-      // Pillars along hall
-      var pillMat2 = makeMat(0x1a1818, 0.9)
-      for (var pi = 0; pi < 2; pi++) {
-        var pp = new THREE.Mesh(new THREE.BoxGeometry(0.12, WALL_HEIGHT, 0.12), pillMat2)
-        pp.position.set(9 + pi * 2, WALL_HEIGHT / 2, 11.5)
-        pp.castShadow = true; scene.add(pp); wallObjects.push(pp)
-      }
-      // Picture frame at south wall
-      placeBox(9, 11.5, 0.02, 0.4, 0.3, makeMat(0x2a1a12, 0.7, 0.2))
-      placeBox(11, 11.5, 0.02, 0.4, 0.3, makeMat(0x2a1a12, 0.7, 0.2))
+      // Coat rack (mid-hall)
+      placeBox(10, 6, 0.1, 0.9, 0.1, makeMat(0x1a1410, 0.8))
+      placeBox(10, 6.5, 0.2, 0.04, 0.2, makeMat(0x2a1e14, 0.7))
+      // Picture frames on east wall
+      placeBox(11.9, 3, 0.02, 0.35, 0.25, makeMat(0x2a1a12, 0.7, 0.2))
+      placeBox(11.9, 9, 0.02, 0.35, 0.25, makeMat(0x2a1a12, 0.7, 0.2))
     }
 
-    // KITCHEN (3,0)+(4,0)+(3,1)+(4,1) -> center (16, 4), spans cols 3-4 rows 0-1
+    // KITCHEN (center 16, 4, 8x8)
     var kitchenR = getRoomById('kitchen')
     if (kitchenR) {
       var cMat2 = makeMat(0x2a2a38, 0.6)
-      // Counters along north wall (row 0)
-      placeBox(14.5, 0.5, 0.5, 0.9, 1.2, cMat2)
-      placeBox(17.5, 0.5, 0.5, 0.9, 1.2, cMat2)
-      // Countertops
-      placeBox(14.5, 0.5, 0.5, 0.06, 1.2, ctMat)
-      placeBox(17.5, 0.5, 0.5, 0.06, 1.2, ctMat)
-      // Stove
-      placeBox(16, 0.8, 0.4, 0.8, 0.4, makeMat(0x1a1a22, 0.4, 0.5))
+      // Counter: north wall (z=0.5)
+      placeBox(14.5, 0.8, 0.5, 0.85, 1.0, cMat2)
+      placeBox(17.5, 0.8, 0.5, 0.85, 1.0, cMat2)
+      placeBox(14.5, 0.8, 0.5, 0.06, 1.0, ctMat) // countertop
+      placeBox(17.5, 0.8, 0.5, 0.06, 1.0, ctMat)
+      // Counter: east wall (z=7.5)
+      placeBox(19.2, 4, 0.5, 0.85, 1.0, cMat2)
+      placeBox(19.2, 4, 0.5, 0.06, 1.0, ctMat)
+      // Stove (center of north counters)
+      placeBox(16, 1.2, 0.45, 0.8, 0.45, makeMat(0x1a1a22, 0.4, 0.5))
       // Refrigerator
       placeBox(14.5, 4.5, 0.4, 1.2, 0.4, makeMat(0x1a1a1a, 0.7))
       // Sink
       placeBox(17.5, 4.5, 0.4, 0.15, 0.4, makeMat(0x2a2a2a, 0.6, 0.4))
-      // Island
-      placeBox(16, 3.0, 0.6, 0.75, 0.6, makeMat(0x2a2a38, 0.6))
-      placeBox(16, 3.0, 0.6, 0.06, 0.6, ctMat)
+      // Kitchen island
+      placeBox(16, 3.0, 0.7, 0.75, 0.6, makeMat(0x2a2a38, 0.6))
+      placeBox(16, 3.0, 0.7, 0.06, 0.6, ctMat)
     }
 
-    // GROUND FLOOR BEDROOM (0,2) -> center (2, 10)
+    // GROUND FLOOR BEDROOM (center 2, 10, 4x4)
     var bg = getRoomById('bedroom_g')
     if (bg) {
-      // Bed
-      placeBox(2, 9.5, 0.8, 0.4, 1.0, makeMat(0x2a1e20, 0.85))
-      placeBox(2, 9.5, 0.8, 0.15, 0.8, makeMat(0x1a1218, 0.9))
+      // Bed against south wall
+      placeBox(2, 11.2, 0.9, 0.35, 1.1, makeMat(0x2a1e20, 0.85))
+      placeBox(2, 11.2, 0.9, 0.12, 0.9, makeMat(0x1a1218, 0.9)) // mattress
       // Nightstand
-      placeBox(2, 11.0, 0.25, 0.1, 0.25, makeMat(0x1a1810, 0.7))
-      // Wardrobe
-      placeBox(0.5, 10, 0.3, 1.3, 0.6, darkWoodMat)
+      placeBox(2.8, 11.0, 0.25, 0.1, 0.25, makeMat(0x1a1810, 0.7))
+      // Wardrobe against west wall
+      placeBox(0.5, 10, 0.3, 1.4, 0.65, darkWoodMat)
       // Rug
-      placeBox(2, 10, 0.6, 0.02, 0.6, makeMat(0x2a1a20, 0.9))
+      placeBox(2, 10, 0.7, 0.02, 0.7, makeMat(0x2a1a20, 0.9))
+      // Bedside lamp
+      var lampBg = new THREE.PointLight(0xff8844, 0.08, 1.5)
+      lampBg.position.set(1.2, 0.6, 11)
+      scene.add(lampBg)
     }
 
-    // ENTRANCE (1,2) -> center (6, 10)
+    // ENTRANCE (center 6, 10, 4x4)
     var entR = getRoomById('entrance')
     if (entR) {
-      var rackMat = makeMat(0x1a1a1a, 0.6, 0.3)
       // Shoe rack
-      placeBox(5.5, 9.5, 0.06, 1.0, 0.06, rackMat)
-      placeBox(5.5, 9.0, 0.5, 0.06, 0.5, rackMat)
-      // Small table
-      placeBox(6.5, 10, 0.3, 0.6, 0.3, dMat)
-      // Mirror
-      placeBox(6.5, 10.5, 0.02, 0.5, 0.3, makeMat(0x3a3a4a, 0.3, 0.5))
+      placeBox(5.5, 9.2, 0.4, 0.35, 0.3, darkWoodMat)
+      // Small table with mirror
+      placeBox(6.5, 10.5, 0.3, 0.6, 0.3, dMat)
+      placeBox(6.5, 11.0, 0.02, 0.5, 0.3, makeMat(0x3a3a4a, 0.3, 0.5)) // mirror
       // Doormat
-      placeBox(6, 11.2, 0.6, 0.04, 0.4, makeMat(0x1a0a0a, 0.9))
+      placeBox(6, 11.5, 0.6, 0.04, 0.4, makeMat(0x1a0a0a, 0.9))
     }
 
-    // DINING (3,2)+(4,2) -> center (16, 10)
+    // DINING (center 16, 10, 8x4, wide room)
     var diningR = getRoomById('dining')
     if (diningR) {
-      // Table
-      placeBox(16, 10, 0.9, 0.75, 0.6, dMat)
-      placeBox(16, 10, 0.9, 0.05, 0.6, makeMat(0x3a2a1a, 0.5))
-      // Chairs
-      placeBox(16, 9, 0.3, 0.45, 0.3, chairMat)
-      placeBox(16, 11, 0.3, 0.45, 0.3, chairMat)
-      placeBox(15, 10, 0.3, 0.45, 0.3, chairMat)
-      placeBox(17, 10, 0.3, 0.45, 0.3, chairMat)
-      // Sideboard
-      placeBox(15, 8.5, 0.8, 0.6, 0.4, makeMat(0x2a1e14, 0.8))
-      // Mirror on wall
-      placeBox(16, 8.3, 0.02, 0.5, 0.3, makeMat(0x3a3a4a, 0.3, 0.5))
+      // Dining table in center
+      placeBox(16, 10, 1.0, 0.75, 0.65, dMat)
+      placeBox(16, 10, 1.0, 0.05, 0.65, makeMat(0x3a2a1a, 0.5)) // tabletop
+      // 4 chairs around table
+      placeBox(16, 8.8, 0.3, 0.45, 0.3, chairMat)
+      placeBox(16, 11.2, 0.3, 0.45, 0.3, chairMat)
+      placeBox(14.8, 10, 0.3, 0.45, 0.3, chairMat)
+      placeBox(17.2, 10, 0.3, 0.45, 0.3, chairMat)
+      // Sideboard against south wall
+      placeBox(15, 11.8, 0.85, 0.65, 0.4, makeMat(0x2a1e14, 0.8))
     }
 
-    // GARAGE (0,3)+(1,3) -> center (4, 14)
+    // GARAGE (center 4, 14, 8x4)
     var garR = getRoomById('garage')
     if (garR) {
-      // Workbench
-      placeBox(4, 13, 1.0, 0.5, 0.6, makeMat(0x2a2818, 0.9))
-      // Shelf
-      placeBox(1.5, 14, 0.3, 1.3, 0.8, makeMat(0x1a1410, 0.9))
-      // Cloth pile / car cover
-      placeBox(5.5, 14.5, 1.2, 0.3, 0.6, clothMat)
-      // Tool box
-      placeBox(4.5, 13, 0.3, 0.2, 0.2, makeMat(0x2a2a2a, 0.5, 0.5))
+      // Workbench against south wall
+      placeBox(3, 14.5, 0.2, 0.5, 0.6, makeMat(0x2a2818, 0.9))
+      placeBox(3, 14.8, 1.0, 0.08, 0.65, makeMat(0x3a2a18, 0.8))
+      // Shelf against west wall
+      placeBox(0.5, 14, 0.3, 1.4, 0.8, makeMat(0x1a1410, 0.9))
+      // Toolbox
+      placeBox(5, 14.5, 0.3, 0.2, 0.25, makeMat(0x2a2a2a, 0.5, 0.5))
+      // Cloth pile
+      placeBox(5, 13.2, 0.8, 0.15, 0.4, clothMat)
     }
 
-    // BATHROOM (2,3) -> center (10, 14)
+    // BATHROOM (center 10, 14, 4x4)
     var bathR = getRoomById('bathroom')
     if (bathR) {
-      // Bathtub
-      placeBox(9, 14, 0.6, 0.3, 1.0, makeMat(0x1a1a28, 0.4, 0.3))
-      placeBox(9, 14, 0.4, 0.12, 0.7, makeMat(0x0a0a18, 0.3, 0.5))
+      // Bathtub along north wall
+      placeBox(9.5, 13.2, 0.65, 0.3, 1.0, makeMat(0x1a1a28, 0.4, 0.3))
+      placeBox(9.5, 13.2, 0.45, 0.12, 0.7, makeMat(0x0a0a18, 0.3, 0.5)) // water
       // Toilet
-      placeBox(10.5, 14.5, 0.3, 0.5, 0.3, makeMat(0x1a1a22, 0.5))
+      placeBox(10.5, 14.8, 0.35, 0.45, 0.35, makeMat(0x1a1a22, 0.5))
       // Sink
-      placeBox(10.5, 13.5, 0.25, 0.4, 0.25, makeMat(0x1a1a1e, 0.6))
-      // Mirror
-      placeBox(10.7, 14, 0.02, 0.4, 0.3, makeMat(0x3a3a4a, 0.3, 0.5))
+      placeBox(10.5, 13.2, 0.25, 0.4, 0.25, makeMat(0x1a1a1e, 0.6))
+      // Mirror above sink
+      placeBox(10.5, 12.9, 0.3, 0.4, 0.02, makeMat(0x3a3a4a, 0.3, 0.5))
     }
 
-    // PANTRY (3,3)+(4,3) -> center (16, 14)
+    // PANTRY (center 16, 14, 8x4)
     var panR = getRoomById('pantry')
     if (panR) {
-      // Shelves
-      for (var si = 0; si < 2; si++) {
-        placeBox(14 + si * 4, 14, 0.3, 1.3, 0.8, makeMat(0x1a1410, 0.9))
-      }
-      // Small crate
-      placeBox(16, 14.5, 0.2, 0.1, 0.2, makeMat(0x2a2a1a, 0.8))
+      // Tall shelves along walls
+      placeBox(14.5, 14, 0.3, 1.3, 0.9, makeMat(0x1a1410, 0.9))
+      placeBox(17.5, 14, 0.3, 1.3, 0.9, makeMat(0x1a1410, 0.9))
+      // Crate on floor
+      placeBox(16, 14.3, 0.4, 0.2, 0.3, makeMat(0x2a2a1a, 0.8))
     }
 
     // UPPER FLOOR FURNITURE (yOffset = 3.0)
 
-    // BEDROOM1 (upper, 0,0)+(1,0)+(0,1)+(1,1) -> center (4, 4) at y=3
+    // BEDROOM1 (upper, center 4, 4, 8x8)
     var b1u = getRoomById('bedroom1')
     if (b1u) {
       // Bed
-      placeBox(4, 3.5, 0.8, 0.4, 1.0, makeMat(0x2a1e20, 0.85), 3.0)
-      placeBox(4, 3.5, 0.8, 0.15, 0.8, makeMat(0x1a1218, 0.9), 3.0)
-      // Desk
-      placeBox(3, 5.0, 0.6, 0.75, 0.35, makeMat(0x1a1412, 0.8), 3.0)
-      placeBox(3, 5.0, 0.6, 0.05, 0.35, makeMat(0x2a1e14, 0.5), 3.0)
-      // Chair
-      placeBox(3, 5.7, 0.2, 0.4, 0.2, chairMat, 3.0)
-      // Wardrobe
-      placeBox(5.5, 4, 0.3, 1.3, 0.6, darkWoodMat, 3.0)
-      // Nightstand lamp
-      var lampB1 = new THREE.PointLight(0xff8844, 0.12, 2)
-      lampB1.position.set(4, 3.7, 4.5)
+      placeBox(4, 3.0, 0.9, 0.35, 1.1, makeMat(0x2a1e20, 0.85), 3.0)
+      placeBox(4, 3.0, 0.9, 0.12, 0.9, makeMat(0x1a1218, 0.9), 3.0)
+      // Desk against east wall
+      placeBox(3, 5.5, 0.65, 0.75, 0.35, makeMat(0x1a1412, 0.8), 3.0)
+      placeBox(3, 5.5, 0.65, 0.05, 0.35, makeMat(0x2a1e14, 0.5), 3.0)
+      // Chair at desk
+      placeBox(3, 6.2, 0.25, 0.4, 0.25, chairMat, 3.0)
+      // Wardrobe against south wall
+      placeBox(5.5, 5.5, 0.3, 1.4, 0.65, darkWoodMat, 3.0)
+      // Nightstand
+      placeBox(2.5, 4.5, 0.25, 0.1, 0.25, makeMat(0x1a1810, 0.7), 3.0)
+      var lampB1 = new THREE.PointLight(0xff8844, 0.1, 2)
+      lampB1.position.set(2.5, 3.7, 4.5)
       scene.add(lampB1)
-      placeBox(4, 4.5, 0.15, 0.3, 0.15, makeMat(0x2a2a1a, 0.6), 3.0)
     }
 
-    // HALL_UP (upper, 2,0)+(2,1) -> center (10, 4) at y=3
+    // HALL_UP (upper, center 10, 4, 4x8)
     var hup = getRoomById('hall_up')
     if (hup) {
-      // Small table
-      placeBox(10, 3, 0.3, 0.6, 0.3, dMat, 3.0)
-      // Hallway lamp
+      placeBox(10, 2.5, 0.3, 0.6, 0.3, dMat, 3.0)
       var lampH = new THREE.PointLight(0xff8844, 0.1, 2)
-      lampH.position.set(10, 4.0, 3)
+      lampH.position.set(10, 4.0, 2.5)
       scene.add(lampH)
-      // Picture
-      placeBox(10, 4.5, 0.02, 0.3, 0.25, makeMat(0x2a1a12, 0.7, 0.2), 3.0)
+      placeBox(10, 5.5, 0.02, 0.3, 0.25, makeMat(0x2a1a12, 0.7, 0.2), 3.0)
     }
 
-    // STUDY (upper, 3,0)+(4,0) -> center (16, 2) at y=3
+    // STUDY (upper, center 16, 2, 8x4)
     var stuR = getRoomById('study')
     if (stuR) {
       // Desk
-      placeBox(16, 1.5, 0.7, 0.75, 0.4, makeMat(0x1a1412, 0.8), 3.0)
+      placeBox(16, 1.5, 0.75, 0.75, 0.4, makeMat(0x1a1412, 0.8), 3.0)
+      placeBox(16, 1.5, 0.75, 0.05, 0.4, makeMat(0x2a1e14, 0.5), 3.0)
       // Bookshelf
-      var shelfMat = makeMat(0x1a1210, 0.9)
-      var sh = new THREE.Mesh(new THREE.BoxGeometry(0.35, 1.2, 1.0), shelfMat)
+      var sh = new THREE.Mesh(new THREE.BoxGeometry(0.35, 1.2, 1.0), makeMat(0x1a1210, 0.9))
       sh.position.set(14.5, 3.6, 2.5)
       sh.castShadow = true; sh.receiveShadow = true; scene.add(sh)
       for (var si2 = 0; si2 < 4; si2++) {
@@ -1346,25 +1342,22 @@
       var lampSt = new THREE.PointLight(0xff8844, 0.12, 2)
       lampSt.position.set(16, 3.7, 1.5)
       scene.add(lampSt)
-      placeBox(16, 1.2, 0.15, 0.3, 0.15, makeMat(0x2a2a1a, 0.6), 3.0)
       // Pen holder
       placeBox(15.5, 1.8, 0.01, 0.3, 0.01, makeMat(0x8a6a3a, 0.6, 0.4), 3.0)
     }
 
-    // BEDROOM2 (upper, 3,1)+(4,1) -> center (16, 6) at y=3
+    // BEDROOM2 (upper, center 16, 6, 8x4)
     var b2u = getRoomById('bedroom2')
     if (b2u) {
-      // Bed
-      placeBox(16, 5.5, 0.8, 0.4, 1.0, makeMat(0x2a2018, 0.85), 3.0)
-      placeBox(16, 5.5, 0.8, 0.15, 0.8, makeMat(0x1a1410, 0.9), 3.0)
+      // Bed against south wall
+      placeBox(16, 7.0, 0.9, 0.35, 1.1, makeMat(0x2a2018, 0.85), 3.0)
+      placeBox(16, 7.0, 0.9, 0.12, 0.9, makeMat(0x1a1410, 0.9), 3.0)
       // Nightstand
-      placeBox(16, 7.0, 0.25, 0.1, 0.25, makeMat(0x1a1810, 0.7), 3.0)
-      // Wardrobe
-      placeBox(17.5, 6, 0.3, 1.3, 0.6, darkWoodMat, 3.0)
+      placeBox(17, 7.5, 0.25, 0.1, 0.25, makeMat(0x1a1810, 0.7), 3.0)
+      // Wardrobe against north wall
+      placeBox(17.5, 5, 0.3, 1.4, 0.65, darkWoodMat, 3.0)
       // Rug
-      placeBox(16, 6, 0.6, 0.02, 0.6, makeMat(0x2a2a3a, 0.8), 3.0)
-      // Lamp
-      placeBox(15.5, 6.5, 0.15, 0.3, 0.15, makeMat(0x3a2a1a, 0.7), 3.0)
+      placeBox(16, 6, 0.7, 0.02, 0.7, makeMat(0x2a2a3a, 0.8), 3.0)
     }
 
     // STAIRCASE (hall -> upper floor)
@@ -1383,7 +1376,7 @@
     }
     addBox(10.4, 1.2, 8.5, 1.0, 0.04, 0.04, makeMat(0x2a1e14, 0.7), 0)
 
-    // Attic window (on upper floor north wall at (10, 3.0, 0))
+    // Attic window (on upper floor north wall)
     var winMat2 = new THREE.MeshStandardMaterial({ color: 0x224488, emissive: 0x4488cc, emissiveIntensity: 0.3 })
     addBox(10, 4.2, 0.06, 0.06, 1.2, 0.8, winMat2, 0, false)
   }
@@ -1908,145 +1901,207 @@
 
   function buildShiva() {
     var group = new THREE.Object3D()
-    // Golden retriever fur: dark golden/brown with sickly undertones
+    // Materials: golden retriever fur with sickly, mangy undertones
     shivaBodyMat = new THREE.MeshStandardMaterial({ color: 0x8a6a3a, emissive: 0x3a2a0a, emissiveIntensity: 0.15, roughness: 0.7 })
-    var darkFurMat = new THREE.MeshStandardMaterial({ color: 0x5a3a1a, roughness: 0.8 })
+    var darkFurMat = new THREE.MeshStandardMaterial({ color: 0x4a2a0a, roughness: 0.85 })
     var paleFurMat = new THREE.MeshStandardMaterial({ color: 0xba9a6a, roughness: 0.7 })
-    var eyeMat = new THREE.MeshStandardMaterial({ color: 0xff0000, emissive: 0xff0000, emissiveIntensity: 0.8 })
+    var dirtyMat = new THREE.MeshStandardMaterial({ color: 0x6a4a2a, roughness: 0.9 })
+    var eyeMat = new THREE.MeshStandardMaterial({ color: 0xff0000, emissive: 0xff0000, emissiveIntensity: 1.0 })
     var pupilMat = new THREE.MeshStandardMaterial({ color: 0x000000 })
     var teethMat = new THREE.MeshStandardMaterial({ color: 0xddd4c0, roughness: 0.3 })
     var tongueMat = new THREE.MeshStandardMaterial({ color: 0x6a1a1a, roughness: 0.6 })
+    var noseMat = new THREE.MeshStandardMaterial({ color: 0x111111, roughness: 0.3 })
 
-    // BIPEDAL ANTHROPOMORPHIC BODY
-    // Torso (upright, humanoid)
-    var torso = new THREE.Mesh(new THREE.BoxGeometry(0.6, 0.9, 0.35), shivaBodyMat)
-    torso.position.set(0, 0.7, 0)
-    torso.castShadow = true
-    group.add(torso)
-
-    // Chest (slightly lighter fur on belly)
-    var chest = new THREE.Mesh(new THREE.BoxGeometry(0.4, 0.4, 0.18), paleFurMat)
-    chest.position.set(0, 0.65, -0.08)
-    chest.castShadow = true
-    group.add(chest)
-
-    // Left arm
-    var lArm = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.6, 0.12), shivaBodyMat)
-    lArm.position.set(-0.4, 0.55, 0)
-    lArm.rotation.z = 0.15
-    lArm.castShadow = true
-    group.add(lArm)
-
-    // Right arm
-    var rArm = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.6, 0.12), shivaBodyMat)
-    rArm.position.set(0.4, 0.55, 0)
-    rArm.rotation.z = -0.15
-    rArm.castShadow = true
-    group.add(rArm)
-
-    // Left hand/paw (anthropomorphic claws)
-    var lHand = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.12, 0.08), darkFurMat)
-    lHand.position.set(-0.4, 0.25, 0)
-    group.add(lHand)
-
-    var rHand = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.12, 0.08), darkFurMat)
-    rHand.position.set(0.4, 0.25, 0)
-    group.add(rHand)
-
-    // Claws on hands
-    for (var ci = -1; ci <= 1; ci++) {
-      var lClaw = new THREE.Mesh(new THREE.BoxGeometry(0.008, 0.04, 0.008), teethMat)
-      lClaw.position.set(-0.4 + ci * 0.025, 0.18, 0)
-      group.add(lClaw)
-      var rClaw = new THREE.Mesh(new THREE.BoxGeometry(0.008, 0.04, 0.008), teethMat)
-      rClaw.position.set(0.4 + ci * 0.025, 0.18, 0)
-      group.add(rClaw)
+    // Helper for adding body parts
+    function addPart(geo, mat, x, y, z, castShadow) {
+      var m = new THREE.Mesh(geo, mat)
+      m.position.set(x, y, z)
+      if (castShadow !== false) m.castShadow = true
+      group.add(m)
+      return m
     }
 
-    // Legs (bipedal, slightly bent)
+    // BIPEDAL ANTHROPOMORPHIC GOLDEN RETRIEVER — HUNCHED, GANGLY, MENACING
+    // Overall height ~1.9 units. Werewolf-like posture: torso leans forward,
+    // digitigrade legs, arms hanging low, head thrust forward.
+
+    // --- LEGS (digitigrade — like dog hind legs) ---
+    // Each leg: thigh (angled forward), shin (angled back), paw
     for (var li = -1; li <= 1; li += 2) {
-      var thigh = new THREE.Mesh(new THREE.BoxGeometry(0.14, 0.4, 0.14), shivaBodyMat)
-      thigh.position.set(li * 0.16, 0.2, 0.05)
-      thigh.castShadow = true
+      // Thigh (thick, angled forward)
+      var thigh = new THREE.Mesh(new THREE.BoxGeometry(0.18, 0.35, 0.16), shivaBodyMat)
+      thigh.position.set(li * 0.18, 0.3, 0.06)
+      thigh.rotation.x = -0.3
       group.add(thigh)
-      var shin = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.3, 0.1), darkFurMat)
-      shin.position.set(li * 0.16, -0.05, 0.1)
-      shin.castShadow = true
+      // Knee joint
+      var knee = new THREE.Mesh(new THREE.SphereGeometry(0.08, 6, 6), dirtyMat)
+      knee.position.set(li * 0.18, 0.12, 0.12)
+      group.add(knee)
+      // Shin (longer, angled back)
+      var shin = new THREE.Mesh(new THREE.BoxGeometry(0.14, 0.4, 0.12), darkFurMat)
+      shin.position.set(li * 0.18, -0.08, 0.0)
+      shin.rotation.x = 0.25
       group.add(shin)
-      // Paw
-      var paw = new THREE.Mesh(new THREE.BoxGeometry(0.14, 0.06, 0.2), darkFurMat)
-      paw.position.set(li * 0.16, -0.2, 0.12)
+      // Paw (dog-like, broad)
+      var paw = new THREE.Mesh(new THREE.BoxGeometry(0.16, 0.06, 0.22), dirtyMat)
+      paw.position.set(li * 0.18, -0.28, 0.04)
       group.add(paw)
     }
 
-    // HEAD — dog-like but humanoid proportions
-    var head = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.25, 0.28), shivaBodyMat)
-    head.position.set(0, 1.2, -0.05)
-    head.castShadow = true
-    group.add(head)
+    // --- TORSO (hunched, larger upper body) ---
+    // Lower torso / belly
+    addPart(new THREE.BoxGeometry(0.5, 0.4, 0.4), shivaBodyMat, 0, 0.45, 0.04)
+    // Upper torso (broader, hunched forward)
+    var upperTorso = addPart(new THREE.BoxGeometry(0.7, 0.5, 0.42), shivaBodyMat, 0, 0.8, -0.02)
+    upperTorso.rotation.x = 0.15
 
-    // Muzzle (elongated dog snout)
-    var muzzle = new THREE.Mesh(new THREE.BoxGeometry(0.14, 0.1, 0.15), paleFurMat)
-    muzzle.position.set(0, 1.1, -0.25)
-    muzzle.castShadow = true
-    group.add(muzzle)
+    // Chest/belly fur (pale)
+    addPart(new THREE.BoxGeometry(0.4, 0.4, 0.2), paleFurMat, 0, 0.7, -0.12)
 
-    // Nose (black wet nose)
-    var nose = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.03, 0.02), new THREE.MeshStandardMaterial({ color: 0x111111, roughness: 0.3 }))
-    nose.position.set(0, 1.12, -0.33)
-    group.add(nose)
+    // --- SHOULDERS (broad, hunched) ---
+    for (var shi = -1; shi <= 1; shi += 2) {
+      var shoulder = new THREE.Mesh(new THREE.SphereGeometry(0.13, 6, 6), shivaBodyMat)
+      shoulder.position.set(shi * 0.38, 1.0, 0.02)
+      group.add(shoulder)
+      // Trapezius hump (makes it look hunched/animalistic)
+      var hump = new THREE.Mesh(new THREE.BoxGeometry(0.15, 0.12, 0.15), darkFurMat)
+      hump.position.set(shi * 0.25, 1.15, -0.04)
+      hump.rotation.x = -0.3
+      group.add(hump)
+    }
 
-    // Mouth line
-    var mouth = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.01, 0.01), darkFurMat)
-    mouth.position.set(0, 1.04, -0.32)
-    group.add(mouth)
+    // --- ARMS (long, gangly, slightly bent) ---
+    for (var ai = -1; ai <= 1; ai += 2) {
+      // Upper arm
+      var uArm = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.5, 0.1), shivaBodyMat)
+      uArm.position.set(ai * 0.42, 0.65, 0.04)
+      uArm.rotation.z = ai * 0.2
+      uArm.rotation.x = 0.2
+      group.add(uArm)
+      // Elbow
+      var elbow = new THREE.Mesh(new THREE.SphereGeometry(0.06, 5, 5), dirtyMat)
+      elbow.position.set(ai * 0.45, 0.38, 0.08)
+      group.add(elbow)
+      // Forearm (hanging forward)
+      var fArm = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.45, 0.08), darkFurMat)
+      fArm.position.set(ai * 0.44, 0.12, 0.02)
+      fArm.rotation.x = -0.15
+      fArm.rotation.z = ai * 0.1
+      group.add(fArm)
+      // Hand/paw (large, clawed)
+      addPart(new THREE.BoxGeometry(0.1, 0.1, 0.1), dirtyMat, ai * 0.44, -0.1, 0.04)
+      // Claws (3 per hand)
+      for (var ci = -1; ci <= 1; ci++) {
+        var claw = new THREE.Mesh(new THREE.BoxGeometry(0.008, 0.05, 0.008), teethMat)
+        claw.position.set(ai * 0.44 + ci * 0.03, -0.15, 0.04)
+        claw.rotation.x = 0.3
+        group.add(claw)
+      }
+    }
 
-    // Teeth (slightly bared)
+    // --- NECK (thick, animalistic) ---
+    addPart(new THREE.BoxGeometry(0.22, 0.15, 0.18), darkFurMat, 0, 1.1, -0.06)
+
+    // --- HEAD (large golden retriever head, slightly oversized for horror) ---
+    // Skull (broad)
+    addPart(new THREE.BoxGeometry(0.35, 0.28, 0.32), shivaBodyMat, 0, 1.38, -0.08)
+    // Forehead ridge
+    addPart(new THREE.BoxGeometry(0.2, 0.06, 0.1), darkFurMat, 0, 1.5, -0.16)
+
+    // Muzzle (long, golden retriever snout)
+    var muzzle = addPart(new THREE.BoxGeometry(0.16, 0.1, 0.2), paleFurMat, 0, 1.28, -0.32)
+    muzzle.rotation.x = -0.1
+
+    // Upper jaw bridge
+    addPart(new THREE.BoxGeometry(0.1, 0.04, 0.12), shivaBodyMat, 0, 1.34, -0.32)
+
+    // Nose (black, at tip of snout)
+    addPart(new THREE.BoxGeometry(0.05, 0.03, 0.03), noseMat, 0, 1.3, -0.44)
+
+    // Open mouth / jaw
+    var lowerJaw = addPart(new THREE.BoxGeometry(0.12, 0.04, 0.12), darkFurMat, 0, 1.18, -0.34)
+    lowerJaw.rotation.x = 0.3
+
+    // Teeth (upper — more prominent, bared)
     for (var ti = -2; ti <= 2; ti++) {
-      var tooth = new THREE.Mesh(new THREE.BoxGeometry(0.015, 0.025, 0.01), teethMat)
-      tooth.position.set(ti * 0.03, 1.03, -0.33 + Math.abs(ti) * 0.005)
+      var tSize = 0.02 + Math.abs(ti) * 0.005
+      var tooth = new THREE.Mesh(new THREE.BoxGeometry(tSize, 0.03, 0.01), teethMat)
+      tooth.position.set(ti * 0.03, 1.22, -0.38 + Math.abs(ti) * 0.005)
+      tooth.rotation.x = -0.2
       group.add(tooth)
     }
+    // Teeth (lower — smaller)
+    for (var tj = -1; tj <= 1; tj++) {
+      var tooth2 = new THREE.Mesh(new THREE.BoxGeometry(0.015, 0.02, 0.01), teethMat)
+      tooth2.position.set(tj * 0.03, 1.16, -0.38)
+      tooth2.rotation.x = 0.3
+      group.add(tooth2)
+    }
+    // Canine fangs
+    for (var fk = -1; fk <= 1; fk += 2) {
+      var fang = new THREE.Mesh(new THREE.BoxGeometry(0.015, 0.045, 0.01), teethMat)
+      fang.position.set(fk * 0.05, 1.2, -0.4)
+      fang.rotation.x = -0.15
+      group.add(fang)
+    }
 
-    // Tongue (hanging out slightly)
-    var tongue = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.05, 0.01), tongueMat)
-    tongue.position.set(0, 1.0, -0.33)
-    tongue.rotation.x = 0.2
+    // Tongue (hanging out of mouth, long)
+    var tongue = new THREE.Mesh(new THREE.BoxGeometry(0.05, 0.08, 0.01), tongueMat)
+    tongue.position.set(0, 1.12, -0.4)
+    tongue.rotation.x = 0.4
     group.add(tongue)
 
-    // Eyes (glowing red, slightly asymmetric for uncanny valley)
+    // Eyes (glowing red — large, unsettling)
     for (var ei = -1; ei <= 1; ei += 2) {
-      var eye = new THREE.Mesh(new THREE.SphereGeometry(0.045, 8, 8), eyeMat)
-      eye.position.set(ei * 0.09, 1.28, -0.18)
+      // Eye socket (dark hollow)
+      addPart(new THREE.BoxGeometry(0.07, 0.06, 0.02), new THREE.MeshStandardMaterial({ color: 0x0a0000 }), ei * 0.1, 1.44, -0.2)
+      // Glowing eyeball
+      var eye = new THREE.Mesh(new THREE.SphereGeometry(0.055, 8, 8), eyeMat)
+      eye.position.set(ei * 0.1, 1.44, -0.19)
       group.add(eye)
-      // Black pupil (dilated)
-      var pupil = new THREE.Mesh(new THREE.SphereGeometry(0.025, 6, 6), pupilMat)
-      pupil.position.set(ei * 0.09, 1.28, -0.2)
+      // Pupil (dilated, black)
+      var pupil = new THREE.Mesh(new THREE.SphereGeometry(0.03, 6, 6), pupilMat)
+      pupil.position.set(ei * 0.1, 1.44, -0.205)
       group.add(pupil)
+      // Red glow aura (larger transparent sphere)
+      var glow = new THREE.Mesh(new THREE.SphereGeometry(0.075, 6, 6), new THREE.MeshStandardMaterial({
+        color: 0xff0000, emissive: 0xff0000, emissiveIntensity: 0.3, transparent: true, opacity: 0.2
+      }))
+      glow.position.set(ei * 0.1, 1.44, -0.18)
+      group.add(glow)
     }
 
-    // Dog ears (floppy golden retriever ears, oversized)
+    // Eyebrows (angry, furrowed)
+    for (var ebi = -1; ebi <= 1; ebi += 2) {
+      var brow = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.02, 0.02), darkFurMat)
+      brow.position.set(ebi * 0.09, 1.5, -0.16)
+      brow.rotation.z = ebi * 0.3
+      group.add(brow)
+    }
+
+    // EARS (golden retriever floppy ears — large, tattered-looking)
     for (var epi = -1; epi <= 1; epi += 2) {
-      var ear = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.18, 0.04), darkFurMat)
-      ear.position.set(epi * 0.17, 1.15, -0.02)
-      ear.rotation.x = 0.4
-      ear.rotation.z = epi * 0.3
-      group.add(ear)
+      // Upper ear (attached to head)
+      var earTop = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.04, 0.06), shivaBodyMat)
+      earTop.position.set(epi * 0.2, 1.4, -0.04)
+      earTop.rotation.z = epi * 0.2
+      group.add(earTop)
+      // Floppy portion (hangs down)
+      var earFlop = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.14, 0.04), darkFurMat)
+      earFlop.position.set(epi * 0.22, 1.26, -0.04)
+      earFlop.rotation.z = epi * 0.4
+      earFlop.rotation.x = 0.2
+      group.add(earFlop)
     }
 
-    // Tail (between legs, tucked)
+    // --- TAIL (tucked between legs, scraggly) ---
     var tail = new THREE.Mesh(new THREE.BoxGeometry(0.03, 0.2, 0.03), shivaBodyMat)
-    tail.position.set(0, 0.3, 0.2)
+    tail.position.set(0, 0.15, 0.25)
     tail.rotation.x = 0.5
     group.add(tail)
 
-    // Shoulder lumps
-    for (var shi = -1; shi <= 1; shi += 2) {
-      var shoulder = new THREE.Mesh(new THREE.BoxGeometry(0.18, 0.15, 0.18), shivaBodyMat)
-      shoulder.position.set(shi * 0.35, 1.1, 0)
-      group.add(shoulder)
-    }
-
+    // Overall scale
+    group.scale.set(1.0, 1.0, 1.0)
     group.position.set(10, 0, 8)
     scene.add(group)
     shiva = group
@@ -2079,8 +2134,10 @@
     var isMoving = keys.w || keys.s || keys.a || keys.d
     if (isMoving) {
       move.normalize().multiplyScalar(spd * dt)
-      var nx = player.pos.x + move.x, nz = player.pos.z + move.z
-      if (!checkCollision(nx, nz)) { player.pos.x = nx; player.pos.z = nz }
+      var nx = player.pos.x + move.x
+      if (!checkCollision(nx, player.pos.z)) player.pos.x = nx
+      var nz = player.pos.z + move.z
+      if (!checkCollision(player.pos.x, nz)) player.pos.z = nz
     }
     if (isMoving && player.isGrounded) {
       footstepTimer += dt
@@ -2406,6 +2463,13 @@
     if (!gameState.gameOver && keys.tab) {
       keys.tab = false
       if (puzzleState.herbsCollected >= 3 && !puzzleState.herbsUsed && isOnStove()) { useHerbsOnStove() }
+    }
+    for (var fi = 0; fi < flickerLights.length; fi++) {
+      var fl2 = flickerLights[fi]
+      var t2 = now * 0.001 + fl2.userData.phase
+      var flicker = Math.sin(t2 * 2.7) * Math.sin(t2 * 3.1) * Math.sin(t2 * 5.3)
+      flicker = Math.pow(Math.abs(flicker), 1.5) * (flicker > 0 ? 1 : -0.3)
+      fl2.intensity = fl2.userData.baseIntensity * (0.7 + 0.3 * Math.max(-0.2, flicker))
     }
     renderer.render(scene, camera)
     updateInteractionPrompt()
