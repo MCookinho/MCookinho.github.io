@@ -97,7 +97,7 @@
       var dirs = items.filter(function (f) { return f.type === 'dir' })
 
       var rootSongs = mp3s.map(function (f) {
-        return { title: titleFromName(f.name), file: f.name, url: f.download_url, dur: null, folder: null }
+        return { title: titleFromName(f.name), file: f.name, url: f.download_url, dur: null, folder: null, artist: null }
       })
 
       var dirPromises = dirs.map(function (dir) {
@@ -107,7 +107,7 @@
           return {
             name: dir.name,
             songs: subMp3s.map(function (f) {
-              return { title: titleFromName(f.name), file: f.name, url: f.download_url, dur: null, folder: dir.name }
+              return { title: titleFromName(f.name), file: f.name, url: f.download_url, dur: null, folder: dir.name, artist: titleFromName(dir.name) }
             })
           }
         })
@@ -143,6 +143,7 @@
       '<span class="music-item-num">' + pad(idx + 1) + '</span>' +
       '<div class="music-item-info">' +
         '<span class="music-item-title">' + song.title + '</span>' +
+        (song.artist ? '<span class="music-item-artist">' + song.artist + '</span>' : '') +
       '</div>' +
       '<span class="music-item-duration">' + durText + '</span>' +
       '<span class="music-item-play">' + (active && isPlaying ? '\u25B6' : '\u266A') + '</span>' +
@@ -313,12 +314,17 @@
     }
 
     if (currentIndex >= 0) {
-      cdNowPlaying.textContent = songs[currentIndex].title
+      var song = songs[currentIndex]
+      cdNowPlaying.textContent = song.title
       cdNowPlaying.classList.add('visible')
-      playerSongName.textContent = songs[currentIndex].title
+      playerSongName.textContent = song.title
+      playerArtistName.textContent = song.artist || ''
+      playerArtistName.style.display = song.artist ? 'inline' : 'none'
     } else {
       cdNowPlaying.classList.remove('visible')
       playerSongName.textContent = 'NENHUMA MÚSICA'
+      playerArtistName.textContent = ''
+      playerArtistName.style.display = 'none'
     }
 
     playerPlay.textContent = isPlaying ? '\u23F8' : '\u25B6'

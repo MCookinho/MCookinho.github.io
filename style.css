@@ -1239,6 +1239,17 @@ body {
   color: var(--pink);
 }
 
+.music-item-artist {
+  font-family: var(--font);
+  font-size: 5.5px;
+  color: var(--dim);
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 1px;
+}
+
 .music-item-duration {
   font-family: var(--font);
   font-size: 6px;
@@ -1452,6 +1463,7 @@ body {
   .music-panel { max-width: 100%; }
   .music-title { font-size: 8px; }
   .music-item-title { font-size: 6px; }
+  .music-item-artist { font-size: 4.5px; }
   .music-item-num { font-size: 6px; }
   .cd-now-playing { max-width: 80px; font-size: 6px; }
 }
