@@ -62,6 +62,7 @@
 
     /* Proximity alert */
     #shivaAlert { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:9px; color:#8a0303; opacity:0; transition:opacity 0.3s; text-shadow:0 0 20px rgba(138,3,3,0.5); }
+    #damageOverlay { position:fixed; inset:0; z-index:9; pointer-events:none; background:radial-gradient(ellipse at center,transparent 50%,rgba(80,0,0,0.4) 100%); opacity:0; transition:opacity 0.3s; }
     #shivaAlert.active { opacity:1; animation:shivaPulse 0.5s ease-in-out infinite alternate; }
     @keyframes shivaPulse { 0%{opacity:0.6} 100%{opacity:1} }
 
@@ -189,6 +190,52 @@
     .glitch { animation:glitch 3s infinite; }
     @keyframes glitch { 0%,90%,100%{transform:translate(0);opacity:1} 92%{transform:translate(-3px,1px);opacity:0.8} 94%{transform:translate(3px,-1px);opacity:0.9} 96%{transform:translate(-1px,2px);opacity:0.85} }
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    @keyframes blink { 0%,100%{opacity:0.3} 50%{opacity:1} }
+
+    #dayTransition {
+      position:fixed; inset:0; z-index:150;
+      background:#000;
+      display:none; align-items:center; justify-content:center;
+      text-align:center;
+    }
+    #dayTransition.open { display:flex; }
+    #dayTransition .dayNum { font-size:7px; color:#8a0303; letter-spacing:4px; margin-bottom:20px; }
+    #dayTransition .dayText { font-size:6px; color:#5a3a3a; line-height:2.2; max-width:420px; }
+
+    #shivaDialogue {
+      position:fixed; inset:0; z-index:160;
+      background:rgba(0,0,0,0.75);
+      display:none; align-items:center; justify-content:center;
+      pointer-events:all;
+    }
+    #shivaDialogue.open { display:flex; }
+    #shivaBox {
+      background:#0a0806; border:1px solid #2a1a1a;
+      padding:30px; text-align:center; max-width:400px;
+    }
+    #shivaBox .question { font-size:7px; color:#8a3a3a; margin-bottom:6px; letter-spacing:2px; }
+    #shivaBox .response { font-size:6px; color:#5a3a3a; line-height:2; margin-bottom:20px; min-height:30px; }
+    #shivaBox .options { display:flex; flex-direction:column; gap:8px; }
+    #shivaBox .opt {
+      font-family:'Press Start 2P',monospace; font-size:6px;
+      padding:10px; background:#120a0a; border:1px solid #2a1a1a;
+      color:#8a5a3a; cursor:pointer; pointer-events:all;
+      transition:all 0.1s;
+    }
+    #shivaBox .opt:hover { background:#1a0e0e; border-color:#5a2a2a; color:#a86a4a; }
+    #shivaBox .opt.selected { border-color:#5a2a2a; color:#6a2a2a; }
+
+    #prologueOverlay {
+      position:fixed; inset:0; z-index:300;
+      background:#000;
+      display:flex; align-items:center; justify-content:center;
+      cursor:pointer;
+    }
+    #prologueOverlay.hidden { opacity:0; pointer-events:none; transition:opacity 0.8s; }
+    #prologueBox { max-width:500px; padding:40px; text-align:center; }
+    #prologueText { font-size:7px; color:#5a3a3a; line-height:2.2; min-height:120px; text-align:center; }
+    #prologueText .cursor { animation:blink 0.5s infinite; color:#8a3a3a; }
+    #prologueSkip { font-size:5px; color:#2a1a1a; margin-top:40px; animation:blink 1s infinite; }
   </style>
 </head>
 <body>
@@ -198,8 +245,16 @@
     <p>CARREGANDO...</p>
   </div>
 
+  <div id="prologueOverlay">
+    <div id="prologueBox">
+      <div id="prologueText"></div>
+      <div id="prologueSkip">[ PRESSIONE ENTER PARA PULAR ]</div>
+    </div>
+  </div>
+
   <div id="gameUI">
     <div id="hudVignette"></div>
+    <div id="damageOverlay"></div>
     <div id="crosshair">+</div>
     <div id="shivaAlert">⚠ SHIVA PROXIMA</div>
 
@@ -239,6 +294,21 @@
   </div>
 
   <div id="memoryFlash"></div>
+
+  <div id="dayTransition">
+    <div>
+      <div class="dayNum"></div>
+      <div class="dayText"></div>
+    </div>
+  </div>
+
+  <div id="shivaDialogue">
+    <div id="shivaBox">
+      <div class="question">// SHIVA</div>
+      <div class="response">Ela dorme. Seu corpo preto encolhido no canto do corredor. O que voce faz?</div>
+      <div class="options"></div>
+    </div>
+  </div>
 
   <!-- NOTE OVERLAY -->
   <div id="noteOverlay">
