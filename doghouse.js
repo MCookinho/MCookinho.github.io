@@ -1,12 +1,9 @@
 ;(function () {
-  var scene, camera, renderer, raycaster, clock
+  var scene, camera, renderer, raycaster
   var isPointerLocked = false, lastTime = 0, dirLight = null, memoryFlags = 0, keys = {}
-  clock = new THREE.Clock()
 
   var audioCtx = null
   var footstepTimer = 0
-  var wasMoving = false
-  var wasGrounded = true
 
   function getAudioCtx() {
     if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)()
@@ -160,16 +157,12 @@
   var DAY_DURATION = 300, DAWN_SLEEP = 120
 
   var player = { height: 1.6, speed: 3, pos: new THREE.Vector3(8, 0, 14), velY: 0, isGrounded: true, yaw: 0, pitch: 0 }
-  var euler = { x: 0, y: 0 }
-  var vel = new THREE.Vector3()
-  var moveDir = { fwd: 0, right: 0 }
-  var isLocked = false, isRunning = false, isCrouching = false, isJumping = false
   var flashlightOn = false, flashlightFound = false, flashlightPickupAnim = 0
 
   var gameState = {
-    day: 1, maxDays: 5, dayTimer: 0, timeOfDay: 0, dayLength: DAY_DURATION,
+    day: 1, maxDays: 5, timeOfDay: 0, dayLength: DAY_DURATION,
     hunger: 100, memories: 0, maxMemories: 6,
-    captures: 0, maxCaptures: 5, caught: false, gameOver: false, won: false,
+    captures: 0, maxCaptures: 5, caught: false, gameOver: false,
     secondFloorUnlocked: false
   }
   var playerItems = []
@@ -264,6 +257,7 @@
   }
 
   var wallObjects = []
+  var wallBoxes = []
   var interactables = []
   var scratchMarks = []
   var noteMeshes = []
@@ -275,13 +269,12 @@
   var stairTeleportUp = null
   var stairTeleportDown = null
   var isOnSecondFloor = false
-  var proShieldTimer = 0
   var shivaAlertActive = false
 
   var flashlight = null
   var flashlightBulb = null
 
-  var shiva = null
+  var shiva = null, shivaBodyMat = null
 
   var shivaState = {
     mesh: null, pos: new THREE.Vector3(10, 0, 4), targetRoom: null,
@@ -564,7 +557,7 @@
       cellRoom[row] = []
       for (var col = 0; col < GRID_COLS; col++) {
         var r = getRoomAtCell(col, row)
-        cellRoom[row][col] = r ? r.id : null
+        cellRoom[row][col] = (r && !r.yOffset && r.type !== 'attic' && r.type !== 'loft') ? r.id : null
       }
     }
   }
@@ -615,6 +608,9 @@
     setupPointerLock()
     updateHUD()
     placeFlashlightItem()
+    for (var bi = 0; bi < wallObjects.length; bi++) {
+      wallBoxes.push(new THREE.Box3().setFromObject(wallObjects[bi]))
+    }
 
     setTimeout(function () {
       var ls = document.getElementById('loadingScreen')
@@ -1015,10 +1011,11 @@
             var edges = [[cc,rr,cc,rr-1],[cc,rr,cc,rr+1],[cc,rr,cc-1,rr],[cc,rr,cc+1,rr]]
             for (var ei = 0; ei < edges.length; ei++) {
               var e = edges[ei], nc = e[2], nr = e[3]
-              var tRoom = cellRoom[rr] ? cellRoom[rr][cc] : null
-              var nbRoom = (nc >= 0 && nc < GRID_COLS && nr >= 0 && nr < GRID_ROWS && cellRoom[nr]) ? cellRoom[nr][nc] : null
-              if (nbRoom === tRoom) continue
-              var isDr = nbRoom && isDoorConnection(tRoom, nbRoom)
+              var sameFloor = nr >= 0 && nr < GRID_ROWS && nc >= 0 && nc < GRID_COLS
+              var nbRoom = sameFloor ? getRoomAtCell(nc, nr) : null
+              if (nbRoom && !nbRoom.yOffset && nbRoom.type !== 'attic' && nbRoom.type !== 'loft') continue
+              if (nbRoom && nbRoom.type === fRoom.type) continue
+              var isDr = nbRoom && isDoorConnection(fRoom.id, nbRoom.id)
               var wwx, wwz, www, wwd
               if (nc !== cc) { wwx = Math.max(cc, nc) * CELL_SIZE; wwz = (Math.min(rr, nr) + 0.5) * CELL_SIZE; www = 0.12; wwd = CELL_SIZE }
               else { wwx = (Math.min(cc, nc) + 0.5) * CELL_SIZE; wwz = Math.max(rr, nr) * CELL_SIZE; www = CELL_SIZE; wwd = 0.12 }
@@ -1048,7 +1045,7 @@
       // Wall between attic and loft
       for (var rw2 = 0; rw2 < 2; rw2++) {
         var wwz2 = (rw2 + 0.5) * CELL_SIZE
-        if (cellRoom[rw2] && cellRoom[rw2][4] === 'loft') {
+        if (getRoomAtCell(4, rw2) && getRoomAtCell(4, rw2).type === 'loft') {
           addBox(4 * CELL_SIZE, yOff2 + wallH2 / 2, wwz2, 0.12, wallH2, CELL_SIZE, new THREE.MeshStandardMaterial({ color: 0x1a1818, roughness: 0.85 }), 0)
         }
       }
@@ -1253,6 +1250,13 @@
     }
 
     var brickMat2 = new THREE.MeshStandardMaterial({ color: 0x2a2818, roughness: 0.9 })
+    brickWallMesh = new THREE.Mesh(new THREE.BoxGeometry(0.8, 1.2, 0.12), brickMat2)
+    brickWallMesh.position.set(10, 0.6, 0.06)
+    brickWallMesh.castShadow = true
+    brickWallMesh.receiveShadow = true
+    scene.add(brickWallMesh)
+    wallObjects.push(brickWallMesh)
+
     var brickMesh = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.08, 0.04), brickMat2)
     brickMesh.position.set(10, 1.0, 0.3)
     brickMesh.userData = {
@@ -1528,6 +1532,7 @@
       if (k === 'e') { keys.e = true; e.preventDefault() }
       if (k === 'escape') { keys.esc = true }
       if (k === 'tab') { keys.tab = true; e.preventDefault() }
+      if (k === 'f') { if (!gameState.gameOver && !gameState.caught) toggleFlashlight(); e.preventDefault() }
     })
     document.addEventListener('keyup', function (e) {
       var k = e.key.toLowerCase()
@@ -1566,15 +1571,15 @@
 
   function buildShiva() {
     var group = new THREE.Object3D()
-    var bodyMat = new THREE.MeshStandardMaterial({ color: 0x111111, emissive: 0x440000, emissiveIntensity: 0.3, roughness: 0.8 })
+    shivaBodyMat = new THREE.MeshStandardMaterial({ color: 0x111111, emissive: 0x440000, emissiveIntensity: 0.3, roughness: 0.8 })
     var eyeMat = new THREE.MeshStandardMaterial({ color: 0xff0000, emissive: 0xff0000, emissiveIntensity: 1.0 })
     // Body
-    var body = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.25, 0.7), bodyMat)
+    var body = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.25, 0.7), shivaBodyMat)
     body.position.y = 0.3
     body.castShadow = true
     group.add(body)
     // Head
-    var head = new THREE.Mesh(new THREE.BoxGeometry(0.25, 0.2, 0.25), bodyMat)
+    var head = new THREE.Mesh(new THREE.BoxGeometry(0.25, 0.2, 0.25), shivaBodyMat)
     head.position.set(0, 0.45, -0.35)
     head.castShadow = true
     group.add(head)
@@ -1586,18 +1591,18 @@
     }
     // 2 front legs
     for (var li = -1; li <= 1; li += 2) {
-      var leg = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.2, 0.06), bodyMat)
+      var leg = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.2, 0.06), shivaBodyMat)
       leg.position.set(li * 0.15, 0.1, -0.25)
       group.add(leg)
     }
     // 2 back legs
     for (var li = -1; li <= 1; li += 2) {
-      var leg = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.2, 0.06), bodyMat)
+      var leg = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.2, 0.06), shivaBodyMat)
       leg.position.set(li * 0.15, 0.1, 0.25)
       group.add(leg)
     }
     // Tail
-    var tail = new THREE.Mesh(new THREE.BoxGeometry(0.03, 0.15, 0.03), bodyMat)
+    var tail = new THREE.Mesh(new THREE.BoxGeometry(0.03, 0.15, 0.03), shivaBodyMat)
     tail.position.set(0, 0.45, 0.35)
     group.add(tail)
     group.position.set(5, 0, 5)
@@ -1607,9 +1612,16 @@
   }
 
   function placeFlashlightItem() {
-    flashlightOn = true
-    if (hudEls.flashlightInd) hudEls.flashlightInd.classList.add('on')
-    if (flashlight) flashlight.intensity = 2.5
+    var flMat = new THREE.MeshStandardMaterial({ color: 0x8a7a3a, emissive: 0x6a5a2a, emissiveIntensity: 0.3, metalness: 0.5, roughness: 0.4 })
+    var flMesh = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.08, 0.15), flMat)
+    flMesh.position.set(8.5, 0.04, 14.5)
+    flMesh.rotation.z = 0.3
+    flMesh.userData = {
+      interactable: true, icon: '\uD83D\uDCA1', name: 'LANTERNA',
+      onInteract: function () { pickupFlashlight(); scene.remove(flMesh) }
+    }
+    scene.add(flMesh)
+    interactables.push(flMesh)
   }
 
   function updatePlayer(dt) {
@@ -1622,11 +1634,17 @@
     if (keys.s) move.sub(forward)
     if (keys.a) move.sub(right)
     if (keys.d) move.add(right)
-    if (move.length() > 0) {
+    var isMoving = keys.w || keys.s || keys.a || keys.d
+    if (isMoving) {
       move.normalize().multiplyScalar(spd * dt)
       var nx = player.pos.x + move.x, nz = player.pos.z + move.z
       if (!checkCollision(nx, nz)) { player.pos.x = nx; player.pos.z = nz }
     }
+    if (isMoving && player.isGrounded) {
+      footstepTimer += dt
+      var stepInterval = keys.shift ? 0.25 : 0.45
+      if (footstepTimer >= stepInterval) { footstepTimer = 0; playFootstep() }
+    } else { footstepTimer = 0 }
     player.velY += GRAVITY * dt
     player.pos.y += player.velY * dt
     var floorY = isOnSecondFloor ? 3.0 : 0
@@ -1640,14 +1658,13 @@
   }
 
   function checkCollision(nx, nz) {
-    for (var ci = 0; ci < wallObjects.length; ci++) {
-      var bb = new THREE.Box3().setFromObject(wallObjects[ci])
-      var halfSize = 0.2
-      var testBox = new THREE.Box3(
-        new THREE.Vector3(nx - halfSize, -1, nz - halfSize),
-        new THREE.Vector3(nx + halfSize, 5, nz + halfSize)
-      )
-      if (bb.intersectsBox(testBox)) return true
+    var halfSize = 0.2
+    var testBox = new THREE.Box3(
+      new THREE.Vector3(nx - halfSize, -1, nz - halfSize),
+      new THREE.Vector3(nx + halfSize, 5, nz + halfSize)
+    )
+    for (var ci = 0; ci < wallBoxes.length; ci++) {
+      if (wallBoxes[ci].intersectsBox(testBox)) return true
     }
     return false
   }
@@ -1669,6 +1686,16 @@
     if (dayEl) dayEl.textContent = 'DIA ' + gameState.day
     var hudMem = document.getElementById('hudMemories')
     if (hudMem) hudMem.textContent = gameState.memories + '/' + gameState.maxMemories
+    var fill = document.getElementById('hudHungerFill')
+    var pct = document.getElementById('hudHungerPct')
+    if (fill) fill.style.width = gameState.hunger + '%'
+    if (pct) pct.textContent = Math.floor(gameState.hunger) + '%'
+    var fi = document.getElementById('flashlightIndicator')
+    if (fi) fi.classList.toggle('on', flashlightOn && flashlightFound)
+    var memSlots = document.querySelectorAll('.mem-slot')
+    for (var mi = 0; mi < memSlots.length; mi++) {
+      memSlots[mi].className = 'mem-slot' + (mi < gameState.memories ? ' filled' : '')
+    }
     var slots = document.querySelectorAll('.item-slot')
     for (var si = 0; si < slots.length; si++) {
       var slot = slots[si]
@@ -1743,17 +1770,17 @@
   function showEnding(type) {
     gameState.gameOver = true
     var es = document.getElementById('endingScreen')
-    if (es) es.style.display = 'flex'
+    if (es) { es.className = type; es.style.display = 'flex' }
     var title = document.getElementById('endingTitle')
     var text = document.getElementById('endingText')
     if (type === 'good') {
-      es.className = 'endingGood'; if (title) title.textContent = 'O SOL VOLTOU'
+      if (title) title.textContent = 'O SOL VOLTOU'
       if (text) text.textContent = 'Voce abriu a porta dourada. A luz invade o sotao, e pela primeira vez em decadas, a casa inteira range como se estivesse respirando. O cheiro de mofo evapora. As paredes param de suar. Shiva uiva ao longe, mas nao e mais um grito de fome. E um adeus.'
     } else if (type === 'bad') {
-      es.className = 'endingBad'; if (title) title.textContent = 'O SOL SE APAGOU'
+      if (title) title.textContent = 'O SOL SE APAGOU'
       if (text) text.textContent = 'Cinco vezes. Cinco almas. A casa se alimentou de voce. Sua historia vira mais uma mancha na parede, mais um nome no diario de seu Ulisses. A porta dourada enferruja. Shiva jamais dormira de novo.'
     } else {
-      es.className = 'endingNeutral'; if (title) title.textContent = 'O SOL NUNCA NASCEU'
+      if (title) title.textContent = 'O SOL NUNCA NASCEU'
       if (text) text.textContent = 'Os dias passaram. As memorias se foram. A casa nao te prende mais — simplesmente te ignorou. Voce e agora parte do mobiliario, um fantasma entre fantasmas. Talvez alguem ache suas anotacoes um dia.'
     }
     setTimeout(function () {
@@ -1775,6 +1802,8 @@
       updateHUD()
       if (gameState.day > 5) { showEnding('neutral'); return }
     }
+    gameState.hunger = Math.max(0, gameState.hunger - dt * 0.4)
+    if (gameState.hunger <= 0) player.speed = 2
     var t = gameState.timeOfDay / gameState.dayLength
     var amb = 0.05 + t * 0.25
     if (amb > 0.3) amb = 0.3
@@ -1784,8 +1813,8 @@
       dirLight.position.set(0, sunH * 20, 0)
       dirLight.intensity = 0.3 + t * 0.5
     }
-    if (shiva && !shivaState.sleeping) {
-      shiva.material.color.setHSL(0, 0, 0.2 + t * 0.3)
+    if (shiva && shivaBodyMat && !shivaState.sleeping) {
+      shivaBodyMat.color.setHSL(0, 0, 0.2 + t * 0.3)
     }
   }
 
@@ -1813,7 +1842,6 @@
 
   function useHerbsOnStove() {
     if (puzzleState.herbsUsed) return
-    puzzleState.herbsUsed = true
     var hasAlecrim = false, hasHortela = false, hasSal = false
     for (var hi = 0; hi < playerItems.length; hi++) {
       if (playerItems[hi] === 'alecrim') hasAlecrim = true
@@ -1821,6 +1849,10 @@
       if (playerItems[hi] === 'salGrosso') hasSal = true
     }
     if (hasAlecrim && hasHortela && hasSal) {
+      puzzleState.herbsUsed = true
+      playerItems = playerItems.filter(function (it) {
+        return it !== 'alecrim' && it !== 'hortela' && it !== 'salGrosso'
+      })
       playerItems.push('pocao')
       document.getElementById('puzzleMsg').textContent = 'A POCAO FOI PREPARADA! SHIVA DORMIRA POR MAIS TEMPO.'
       document.getElementById('puzzleOverlay').classList.add('open')

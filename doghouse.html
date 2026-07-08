@@ -143,28 +143,28 @@
       flex-direction:column; align-items:center; justify-content:center;
     }
     #endingScreen.open { display:flex; }
-    #endingBad { background:radial-gradient(ellipse at center,#0a0000,#000); }
-    #endingNeutral { background:radial-gradient(ellipse at center,#050008,#000); }
-    #endingGood { background:radial-gradient(ellipse at center,#0a0500,#000); }
+    #endingScreen.bad { background:radial-gradient(ellipse at center,#0a0000,#000); }
+    #endingScreen.neutral { background:radial-gradient(ellipse at center,#050008,#000); }
+    #endingScreen.good { background:radial-gradient(ellipse at center,#0a0500,#000); }
     #endingScreen h2 { font-size:12px; letter-spacing:4px; margin-bottom:20px; }
     #endingScreen p { font-size:7px; max-width:400px; text-align:center; line-height:2.2; margin-bottom:30px; }
-    #endingBad h2 { color:#8a0303; text-shadow:0 0 30px rgba(138,3,3,0.6); }
-    #endingBad p { color:#5a3a3a; }
-    #endingNeutral h2 { color:#6a3a6a; text-shadow:0 0 20px rgba(100,50,100,0.4); }
-    #endingNeutral p { color:#4a3a4a; }
-    #endingGood h2 { color:#8a7a3a; text-shadow:0 0 30px rgba(200,180,80,0.3); }
-    #endingGood p { color:#6a5a3a; }
+    #endingScreen.bad h2 { color:#8a0303; text-shadow:0 0 30px rgba(138,3,3,0.6); }
+    #endingScreen.bad p { color:#5a3a3a; }
+    #endingScreen.neutral h2 { color:#6a3a6a; text-shadow:0 0 20px rgba(100,50,100,0.4); }
+    #endingScreen.neutral p { color:#4a3a4a; }
+    #endingScreen.good h2 { color:#8a7a3a; text-shadow:0 0 30px rgba(200,180,80,0.3); }
+    #endingScreen.good p { color:#6a5a3a; }
     .ending-btn {
       font-family:'Press Start 2P',monospace; font-size:8px;
       padding:12px 24px; background:none; cursor:pointer;
       transition:all 0.15s; letter-spacing:2px; pointer-events:all;
     }
-    #endingBad .ending-btn { border:2px solid #8a0303; color:#8a0303; }
-    #endingBad .ending-btn:hover { background:#8a0303; color:#000; }
-    #endingNeutral .ending-btn { border:2px solid #6a3a6a; color:#6a3a6a; }
-    #endingNeutral .ending-btn:hover { background:#6a3a6a; color:#000; }
-    #endingGood .ending-btn { border:2px solid #8a7a3a; color:#8a7a3a; }
-    #endingGood .ending-btn:hover { background:#8a7a3a; color:#000; }
+    #endingScreen.bad .ending-btn { border:2px solid #8a0303; color:#8a0303; }
+    #endingScreen.bad .ending-btn:hover { background:#8a0303; color:#000; }
+    #endingScreen.neutral .ending-btn { border:2px solid #6a3a6a; color:#6a3a6a; }
+    #endingScreen.neutral .ending-btn:hover { background:#6a3a6a; color:#000; }
+    #endingScreen.good .ending-btn { border:2px solid #8a7a3a; color:#8a7a3a; }
+    #endingScreen.good .ending-btn:hover { background:#8a7a3a; color:#000; }
 
     /* Memory flash */
     #memoryFlash {
@@ -216,6 +216,7 @@
           <span class="mem-slot" data-i="2"></span>
           <span class="mem-slot" data-i="3"></span>
           <span class="mem-slot" data-i="4"></span>
+          <span class="mem-slot" data-i="5"></span>
         </div>
       </div>
       <div id="hudHungerWrap">
@@ -261,7 +262,7 @@
   </div>
 
   <!-- ENDING SCREENS -->
-  <div id="endingScreen" id="endingBad">
+  <div id="endingScreen">
     <h2 id="endingTitle"></h2>
     <p id="endingText"></p>
     <canvas id="endingCanvas" style="width:320px;height:180px;margin-bottom:20px;border:1px solid #2a1a1a;background:#000;"></canvas>
