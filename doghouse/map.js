@@ -506,13 +506,13 @@ function makeGrid(fill) {
   tiles[7][10] = 39; coll[7][10] = true;
 
   // postes de luz do parque
-  [[3,2],[8,3],[8,17],[12,5],[11,11],[6,1],[6,18]].forEach(([ax, ay]) => {
-    wall[ay][ax] = 72; coll[ay][ax] = true;
+  [[3,2],[8,3],[8,12],[12,5],[11,11],[6,1],[6,13]].forEach(([ax, ay]) => {
+    if (ay < 15 && ax < 20) { wall[ay][ax] = 72; coll[ay][ax] = true; }
   });
 
   // árvores
-  [[4,8],[2,12],[12,8],[5,2],[5,17],[9,17]].forEach(([ax, ay]) => {
-    wall[ay][ax] = 9; coll[ay][ax] = true;
+  [[4,8],[2,12],[12,8],[5,2],[5,14],[9,14]].forEach(([ax, ay]) => {
+    if (ay < 15 && ax < 20) { wall[ay][ax] = 9; coll[ay][ax] = true; }
   });
 
   // bancos
@@ -569,7 +569,7 @@ function makeGrid(fill) {
   });
 
   // barris
-  [[7,6],[11,10],[5,15]].forEach(([bx, by]) => {
+  [[7,6],[11,10],[5,14]].forEach(([bx, by]) => {
     tiles[by][bx] = 62; coll[by][bx] = true;
   });
 
@@ -721,7 +721,7 @@ function makeGrid(fill) {
   tiles[4][6] = 68; tiles[7][10] = 68; tiles[10][3] = 68;
 
   // árvores
-  [[1,1],[1,18],[13,1],[13,18],[2,8],[2,11],[11,4],[11,15]].forEach(([tx, ty]) => {
+  [[1,1],[1,14],[13,1],[13,14],[2,8],[2,11],[11,4],[11,14]].forEach(([tx, ty]) => {
     wall[ty][tx] = 9; coll[ty][tx] = true;
   });
 
@@ -773,9 +773,9 @@ function makeGrid(fill) {
   tiles[7][4] = 68; tiles[7][15] = 68;
 
   // árvores (muitas)
-  [[2,2],[2,8],[2,15],[5,2],[5,17],[9,2],[9,17],
-   [12,2],[12,8],[12,15],[2,18],[6,5],[6,14],[8,4],[8,15]].forEach(([ax, ay]) => {
-    wall[ay][ax] = 9; coll[ay][ax] = true;
+  [[2,2],[2,8],[2,14],[5,2],[5,14],[9,2],[9,14],
+   [12,2],[12,8],[12,14],[2,14],[6,5],[6,14],[8,4],[8,14]].forEach(([ax, ay]) => {
+    if (ay < 15 && ax < 20) { wall[ay][ax] = 9; coll[ay][ax] = true; }
   });
 
   // portal dourado

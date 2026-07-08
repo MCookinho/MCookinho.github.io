@@ -24,11 +24,10 @@ button:hover { background:#5a5a3a; }
 <script>
 const COLS = 10;
 const TILE_SIZE = 16;
-const TOTAL_TILES = 73; // 0 (void) + 72 tiles
+const TOTAL_TILES = 72; // tiles 1-72 (sem void — vazio = sem tile no Tiled)
 const ROWS = Math.ceil(TOTAL_TILES / COLS);
 
 function getTile(id) {
-  if (id === 0) return empty(16, 16); // void tile (transparent)
   const v = T_SPRITES[id];
   if (!v) return null;
   if (Array.isArray(v) && v.length > 0 && Array.isArray(v[0])) {
@@ -63,7 +62,7 @@ function generate() {
     }
   }
 
-  for (let id = 0; id < TOTAL_TILES; id++) {
+  for (let id = 1; id <= 72; id++) {
     const col = id % COLS;
     const row = Math.floor(id / COLS);
     const sprite = getTile(id);
@@ -77,7 +76,7 @@ function generate() {
   container.appendChild(canvas);
 
   document.getElementById('info').textContent =
-    `Tileset: ${TOTAL_TILES} tiles (0=vazio, 1-72=tiles) em ${COLS} × ${ROWS} = ${canvas.width}×${canvas.height}px`;
+    `Tileset: ${TOTAL_TILES} tiles (1-72) em ${COLS} × ${ROWS} = ${canvas.width}×${canvas.height}px — sem tile vazio, Tiled GID = ID do tile`;
 
   const dl = document.getElementById('download');
   dl.style.display = 'inline';

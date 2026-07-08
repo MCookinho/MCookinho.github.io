@@ -26,9 +26,10 @@ for (let y = 0; y < ROWS * TILE_SIZE; y += 8)
   for (let x = 0; x < COLS * TILE_SIZE; x += 8)
     ctx.fillStyle = ((Math.floor(x/8) + Math.floor(y/8)) % 2 === 0) ? '#ccc' : '#999',
     ctx.fillRect(x, y, 8, 8);
-for (let id = 0; id < TOTAL_TILES; id++) {
-  const col = id % COLS, row = Math.floor(id / COLS);
-  const v = id === 0 ? empty(16,16) : T_SPRITES[id];
+let idx = 0;
+for (let id = 1; id <= 72; id++) {
+  const col = idx % COLS, row = Math.floor(idx / COLS);
+  const v = T_SPRITES[id];
   const sprite = (Array.isArray(v) && Array.isArray(v[0])) ? v[0] : v;
   if (!sprite) continue;
   for (let r = 0; r < sprite.length; r++)
@@ -36,6 +37,8 @@ for (let id = 0; id < TOTAL_TILES; id++) {
       const ci = sprite[r][c];
       if (ci && PALETTE_16[ci]) ctx.fillStyle = PALETTE_16[ci], ctx.fillRect(col*TILE_SIZE+c, row*TILE_SIZE+r, 1, 1);
     }
+  }
+  idx++;
 }
 fs.writeFileSync('doghouse-tileset.png', canvas.toBuffer('image/png'));
 "
