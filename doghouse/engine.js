@@ -111,7 +111,7 @@ class Tilemap {
         if (!tileId || tileId === 0) continue;
         const sx = col * TILE_SIZE - camera.x;
         const sy = row * TILE_SIZE - camera.y;
-        this._drawTile(ctx, sprites, tileId, sx, sy);
+        this._drawTile(ctx, sprites, tileId, sx, sy, col, row);
       }
     }
     // parede
@@ -121,22 +121,22 @@ class Tilemap {
         if (!wallId || wallId === 0) continue;
         const sx = col * TILE_SIZE - camera.x;
         const sy = row * TILE_SIZE - camera.y;
-        this._drawTile(ctx, sprites, wallId, sx, sy);
+        this._drawTile(ctx, sprites, wallId, sx, sy, col, row);
       }
     }
   }
-  _drawTile(ctx, sprites, id, sx, sy) {
-    const tileSprite = sprites.getTileSprite(id);
+  _drawTile(ctx, sprites, id, sx, sy, col, row) {
+    const tileSprite = sprites.getTileSprite(id, col, row);
     if (!tileSprite) return;
     if (typeof tileSprite === 'function') {
       tileSprite(ctx, sx, sy);
     } else if (Array.isArray(tileSprite)) {
-      for (let row = 0; row < TILE_SIZE; row++) {
-        for (let col = 0; col < TILE_SIZE; col++) {
-          const ci = tileSprite[row] && tileSprite[row][col];
+      for (let r = 0; r < TILE_SIZE; r++) {
+        for (let c = 0; c < TILE_SIZE; c++) {
+          const ci = tileSprite[r] && tileSprite[r][c];
           if (ci === undefined || ci === null || ci === 0) continue;
           ctx.fillStyle = PALETTE_16[ci];
-          ctx.fillRect(sx + col, sy + row, 1, 1);
+          ctx.fillRect(sx + c, sy + r, 1, 1);
         }
       }
     }
