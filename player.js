@@ -1,44 +1,6 @@
 (function () {
-  var STATIC_SONGS = [
-    { title: 'PIXEL DREAMS',       file: 'track01.mp3', dur: '3:30' },
-    { title: 'NEON NIGHTS',        file: 'track02.mp3', dur: '4:12' },
-    { title: 'RETRO WAVE',         file: 'track03.mp3', dur: '3:45' },
-    { title: 'CHIP TUNE SUNRISE',  file: 'track04.mp3', dur: '2:58' },
-    { title: 'MIDNIGHT CODE',      file: 'track05.mp3', dur: '4:01' },
-    { title: 'CAFÉ E BIT',         file: 'track06.mp3', dur: '3:22' },
-    { title: 'TERMINAL LOVE',      file: 'track07.mp3', dur: '3:55' },
-    { title: '8-BIT SOUL',         file: 'track08.mp3', dur: '2:44' },
-    { title: 'VOID WALKER',        file: 'track09.mp3', dur: '4:30' },
-    { title: 'CYBER CITY',         file: 'track10.mp3', dur: '3:18' },
-    { title: 'LATE NIGHT LOOP',    file: 'track11.mp3', dur: '5:02' },
-    { title: 'GLITCH GARDEN',      file: 'track12.mp3', dur: '3:36' },
-    { title: 'SHIVA WALK',         file: 'track13.mp3', dur: '4:15' },
-    { title: 'PURPLE SKIES',       file: 'track14.mp3', dur: '3:42' },
-    { title: 'ARCADE AFTERNOON',   file: 'track15.mp3', dur: '2:30' },
-    { title: 'HEXAGON',            file: 'track16.mp3', dur: '4:48' },
-    { title: 'BOSS FIGHT',         file: 'track17.mp3', dur: '3:08' },
-    { title: 'MENU SCREEN',        file: 'track18.mp3', dur: '2:55' },
-    { title: 'RAINY BYTES',        file: 'track19.mp3', dur: '5:20' },
-    { title: 'CURSOR BLINK',       file: 'track20.mp3', dur: '3:14' },
-    { title: 'DUNGEON DEPTHS',     file: 'track21.mp3', dur: '4:05' },
-    { title: 'STARFIELD',          file: 'track22.mp3', dur: '6:00' },
-    { title: 'PASSWORD SCREEN',    file: 'track23.mp3', dur: '2:18' },
-    { title: 'FINAL LEVEL',        file: 'track24.mp3', dur: '4:33' },
-    { title: 'CRT NOISE',          file: 'track25.mp3', dur: '3:50' },
-    { title: 'SHELL GAME',         file: 'track26.mp3', dur: '3:27' },
-    { title: 'EMPTY ROOM',         file: 'track27.mp3', dur: '4:44' },
-    { title: 'LOADING...',         file: 'track28.mp3', dur: '1:55' },
-    { title: 'SECRET AREA',        file: 'track29.mp3', dur: '5:10' },
-    { title: 'CREDITS SCROLL',     file: 'track30.mp3', dur: '6:30' },
-    { title: 'BOOT SEQUENCE',      file: 'track31.mp3', dur: '2:40' },
-    { title: 'OVERWORLD',          file: 'track32.mp3', dur: '4:22' },
-    { title: 'CAOS ORGANIZADO',    file: 'track33.mp3', dur: '3:48' },
-    { title: 'LOOP INFINITO',      file: 'track34.mp3', dur: '5:15' },
-  ]
-
   var songs = []
   var folders = []
-  var usingDynamic = false
   var CACHE_KEY = 'mcookinho_playlist'
   var COLLAPSED_KEY = 'mcookinho_folders'
   var CACHE_TTL = 5 * 60 * 1000
@@ -169,12 +131,6 @@
     })
   }
 
-  function useStaticPlaylist() {
-    songs = STATIC_SONGS.map(function (s, i) { s.id = i + 1; s.folder = null; return s })
-    folders = []
-    usingDynamic = false
-  }
-
   function updateStatus(msg) {
     listEl.innerHTML = '<div class="music-status">' + msg + '</div>'
   }
@@ -252,7 +208,7 @@
     if (idx < 0 || idx >= songs.length) return
     currentIndex = idx
 
-    var src = songs[idx].url || ('assets/music/' + songs[idx].file)
+    var src = songs[idx].url
     audio.src = src
     audio.load()
     audio.play().then(function () {
@@ -372,12 +328,12 @@
       if (dynamic && dynamic.songs && dynamic.songs.length > 0) {
         songs = dynamic.songs
         folders = dynamic.folders || []
-        usingDynamic = true
         var total = songs.length
         musicTitle.textContent = '// MINHA PLAYLIST (' + total + ')'
       } else {
-        useStaticPlaylist()
-        musicTitle.textContent = '// MINHA PLAYLIST (' + songs.length + ')'
+        songs = []
+        folders = []
+        musicTitle.textContent = '// MINHA PLAYLIST'
       }
       renderList()
     })
