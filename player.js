@@ -80,8 +80,10 @@
     if (cached) {
       try {
         var data = JSON.parse(cached)
+        var pl = data.playlist
+        if (!pl || Array.isArray(pl) || !Array.isArray(pl.songs)) { localStorage.removeItem(CACHE_KEY); throw 'OLD_FORMAT' }
         if (Date.now() - data.ts < CACHE_TTL) {
-          return Promise.resolve(data.playlist)
+          return Promise.resolve(pl)
         }
       } catch (e) {}
     }
