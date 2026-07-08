@@ -1892,7 +1892,8 @@ class Sprites {
         run:  { down: PLAYER_RUN_DOWN, up: PLAYER_RUN_UP, left: PLAYER_RUN_LEFT, right: PLAYER_RUN_RIGHT },
       };
       const arr = (anims[animType] || anims.idle)[d] || PLAYER_WALK_DOWN;
-      sprite = Array.isArray(arr) ? arr[f % arr.length] : arr;
+      const isFrameArray = Array.isArray(arr) && Array.isArray(arr[0]) && Array.isArray(arr[0][0]);
+      sprite = isFrameArray ? arr[f % arr.length] : arr;
     } else if (name === 'shiva') {
       const anims = {
         idle: { down: SHIVA_DOWN, up: SHIVA_UP, left: SHIVA_LEFT, right: SHIVA_RIGHT },
@@ -1900,7 +1901,8 @@ class Sprites {
         run:  { down: SHIVA_RUN_DOWN, up: SHIVA_RUN_UP, left: SHIVA_RUN_LEFT, right: SHIVA_RUN_RIGHT },
       };
       const arr = (anims[animType] || anims.idle)[d] || SHIVA_WALK_DOWN;
-      sprite = Array.isArray(arr) ? arr[f % arr.length] : arr;
+      const isFrameArray = Array.isArray(arr) && Array.isArray(arr[0]) && Array.isArray(arr[0][0]);
+      sprite = isFrameArray ? arr[f % arr.length] : arr;
     } else if (name === 'shiva_evil') {
       sprite = SHIVA_EVIL;
     } else if (name === 'shiva_shadow') {

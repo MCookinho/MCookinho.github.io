@@ -516,6 +516,7 @@ function _puzzleSolved(puzzleId) {
     const keyIndex = data.keyIndex;
 
     const ps = window.puzzleState || {};
+    if (ps.solved && ps.solved[keyIndex]) return; // already solved
     if (ps.solved) ps.solved[keyIndex] = true;
     if (ps.keys) ps.keys[keyIndex] = true;
 

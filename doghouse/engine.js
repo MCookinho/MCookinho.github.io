@@ -262,8 +262,8 @@ class Engine {
     const dt = Math.min((timestamp - this.lastTime) / 1000, 0.05);
     this.lastTime = timestamp;
     this.input.update();
-    this.update(dt);
-    this.render();
+    try { this.update(dt); } catch(e) { console.error('Update error:', e); }
+    try { this.render(); } catch(e) { console.error('Render error:', e); }
     requestAnimationFrame(t => this.loop(t));
   }
   update(dt) {
