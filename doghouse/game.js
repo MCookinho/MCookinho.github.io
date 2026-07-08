@@ -251,13 +251,14 @@ class Game {
     this.selectedItem=null
     this.flags={}
     this.sceneId='corridor_1'
+    this.prevScene=null
     this.day=7
     this.engine.scene='corridor_1'
     this.engine.state=S.INTRO
     this.a.init()
     this.initHUD()
     this.loop()
-    setTimeout(()=>this.startIntro(),100)
+    setTimeout(()=>{this.startIntro();this.a.startDrone('corridor_1')},100)
   }
   startIntro(){
     this.engine.showIntro(STORY.intro)
@@ -383,13 +384,32 @@ class Game {
       this.engine.tooltip('Não há saída aqui.')
       return
     }
+    this.prevScene=this.sceneId
     this.a.door()
     this.engine.transitionTo(target,()=>{
       this.sceneId=target
       const sc=SCENES[target]
+      this.a.startDrone(target)
       if(sc.day&&sc.day!==this.day){this.day=sc.day;this.updateDay()}
       if(sc.id==='tunnel')this.engine.tooltip('O ar muda. Shiva está aqui.',3000)
     })
+  }
+  goForward(){
+    const objs=SCENES[this.sceneId].objects
+    for(let i=objs.length-1;i>=0;i--){
+      const o=objs[i]
+      if(o.type==='exit'&&o.target!==this.prevScene){this.goTo(o.target);return}
+    }
+  }
+  goBack(){
+    if(this.prevScene&&SCENES[this.prevScene]){this.goTo(this.prevScene);return}
+    const objs=SCENES[this.sceneId].objects
+    for(let i=0;i<objs.length;i++){
+      if(objs[i].type==='exit'){this.goTo(objs[i].target);return}
+    }
+  }
+  interactFocused(){
+    this.handleClick(400,300)
   }
   updateDay(){}
   checkEndings(){
