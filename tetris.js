@@ -294,7 +294,9 @@
       if (this.gameOver||this.paused||this.clearing) return
       const from = this.piece.rot
       const to = (from+dir+4)%4
-      const rotated = rotateCCW(this.piece.shape)
+      let rotated = this.piece.shape
+      const n = ((dir % 4) + 4) % 4
+      for (let i = 0; i < n; i++) rotated = rotateCCW(rotated)
       if (!this.collides(rotated, this.piece.x, this.piece.y)) {
         this.piece.shape = rotated
         this.piece.rot = to
@@ -561,6 +563,8 @@
           case 'ArrowRight': e.preventDefault(); this.dasDir='right'; this.dasTimers.right={delay:this.dasDelay,interval:0}; this.move(1); break
           case 'ArrowDown': e.preventDefault(); if(!this.gameOver&&!this.paused&&!this.clearing){if(!this.collides(this.piece.shape,this.piece.x,this.piece.y+1)){this.piece.y++;this.score++;this.dropTimer=0}} break
           case 'ArrowUp': e.preventDefault(); this.rotate(1); break
+          case 'a': case 'A': e.preventDefault(); this.rotate(-1); break
+          case 'b': case 'B': e.preventDefault(); this.rotate(1); break
           case ' ': e.preventDefault(); this.hardDrop(); break
           case 'p': case 'P': e.preventDefault(); this.paused=!this.paused; if(this.paused)this.overlay.classList.remove('tetris-open'); else this.overlay.classList.add('tetris-open'); break
           case 'r': case 'R': e.preventDefault(); if(this.gameOver)this.restart(); break
