@@ -137,7 +137,13 @@ class Player {
     const ty = Math.floor((this.y + PLAYER_H/2) / TILE_SIZE);
     const facingTx = tx + this._facingDx();
     const facingTy = ty + this._facingDy();
-    return map.getObjectAt(facingTx, facingTy) || map.getObjectAt(tx, ty);
+    const obj = map.getObjectAt(facingTx, facingTy) || map.getObjectAt(tx, ty);
+    if (!obj) return null;
+    if (obj.type === 'item' && obj.collected) return null;
+    if (obj.type === 'note' && obj.read) return null;
+    if (obj.type === 'puzzle' && obj.solved) return null;
+    if (obj.type === 'shiva_event' && obj.triggered) return null;
+    return obj;
   }
 
   _checkInteractPrompt(engine) {
@@ -166,6 +172,8 @@ class Player {
         engine.audio.playDoorOpen();
         engine.transitionToMap(obj.targetMap, obj.targetX * TILE_SIZE, obj.targetY * TILE_SIZE);
         setTimeout(() => { this.interacting = false; }, 100);
+      } else {
+        showDialogue(['Está trancado.']);
       }
     }
     else if (obj.type === 'item' && !obj.collected) {
