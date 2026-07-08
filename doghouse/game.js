@@ -127,19 +127,23 @@ class Player {
     return false;
   }
 
+  _findInteractableObject(map) {
+    const tx = Math.floor((this.x + PLAYER_W/2) / TILE_SIZE);
+    const ty = Math.floor((this.y + PLAYER_H/2) / TILE_SIZE);
+    const facingTx = tx + this._facingDx();
+    const facingTy = ty + this._facingDy();
+    return map.getObjectAt(facingTx, facingTy) || map.getObjectAt(tx, ty);
+  }
+
   _checkInteractPrompt(engine) {
     const map = engine.currentMap;
-    const tx = Math.floor((this.x + PLAYER_W/2) / TILE_SIZE) + this._facingDx();
-    const ty = Math.floor((this.y + PLAYER_H/2) / TILE_SIZE) + this._facingDy();
-    const obj = map.getObjectAt(tx, ty);
+    const obj = this._findInteractableObject(map);
     engine.showInteractPrompt(!!obj);
   }
 
   _interact(engine) {
     const map = engine.currentMap;
-    const tx = Math.floor((this.x + PLAYER_W/2) / TILE_SIZE) + this._facingDx();
-    const ty = Math.floor((this.y + PLAYER_H/2) / TILE_SIZE) + this._facingDy();
-    const obj = map.getObjectAt(tx, ty);
+    const obj = this._findInteractableObject(map);
     if (!obj) return;
 
     if (obj.type === 'door') {
