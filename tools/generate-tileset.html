@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Doghouse - Gerar Tileset</title>
+<style>
+body { background:#1a1a1a; color:#ccc; font-family:sans-serif; padding:20px; }
+canvas { image-rendering:pixelated; border:1px solid #444; display:block; margin:20px 0; }
+button { padding:10px 20px; font-size:16px; cursor:pointer; background:#3a3a1a; color:#aaa878; border:1px solid #5a5a3a; }
+button:hover { background:#5a5a3a; }
+.info { margin:10px 0; }
+</style>
+</head>
+<body>
+<h1>Doghouse — Gerar Tileset para Tiled</h1>
+<p>Gera a spritesheet com todos os 72 tiles + tile vazio (ID 0).</p>
+<p>Salve o PNG para usar como tileset no Tiled (16×16, margem 0, espaçamento 0).</p>
+<button id="generate">Gerar Tileset</button>
+<button id="download" style="display:none">Download PNG</button>
+<div class="info" id="info"></div>
+<div id="canvas-container"></div>
+
+<script src="../doghouse/sprites.js"></script>
+<script>
+const COLS = 10;
+const TILE_SIZE = 16;
+const TOTAL_TILES = 73; // 0 (void) + 72 tiles
+const ROWS = Math.ceil(TOTAL_TILES / COLS);
+
+function getTile(id) {
+  if (id === 0) return empty(16, 16); // void tile (transparent)
+  const v = T_SPRITES[id];
+  if (!v) return null;
+  if (Array.isArray(v) && v.length > 0 && Array.isArray(v[0])) {
+    return v[0]; // first variant
+  }
+  return v;
+}
+
+function renderTile(ctx, sprite, ox, oy) {
+  if (!sprite) return;
+  for (let row = 0; row < sprite.length; row++) {
+    for (let col = 0; col < sprite[row].length; col++) {
+      const ci = sprite[row][col];
+      if (ci === undefined || ci === null || ci === 0) continue;
+      ctx.fillStyle = PALETTE_16[ci];
+      ctx.fillRect(ox + col, oy + row, 1, 1);
+    }
+  }
+}
+
+function generate() {
+  const canvas = document.createElement('canvas');
+  canvas.width = COLS * TILE_SIZE;
+  canvas.height = ROWS * TILE_SIZE;
+  const ctx = canvas.getContext('2d');
+
+  // checkered background for transparency display
+  for (let y = 0; y < ROWS * TILE_SIZE; y += 8) {
+    for (let x = 0; x < COLS * TILE_SIZE; x += 8) {
+      ctx.fillStyle = ((Math.floor(x/8) + Math.floor(y/8)) % 2 === 0) ? '#ccc' : '#999';
+      ctx.fillRect(x, y, 8, 8);
+    }
+  }
+
+  for (let id = 0; id < TOTAL_TILES; id++) {
+    const col = id % COLS;
+    const row = Math.floor(id / COLS);
+    const sprite = getTile(id);
+    if (sprite) {
+      renderTile(ctx, sprite, col * TILE_SIZE, row * TILE_SIZE);
+    }
+  }
+
+  const container = document.getElementById('canvas-container');
+  container.innerHTML = '';
+  container.appendChild(canvas);
+
+  document.getElementById('info').textContent =
+    `Tileset: ${TOTAL_TILES} tiles (0=vazio, 1-72=tiles) em ${COLS} × ${ROWS} = ${canvas.width}×${canvas.height}px`;
+
+  const dl = document.getElementById('download');
+  dl.style.display = 'inline';
+  dl.onclick = () => {
+    const link = document.createElement('a');
+    link.download = 'doghouse-tileset.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  };
+}
+
+document.getElementById('generate').addEventListener('click', generate);
+generate();
+</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+{
+  "compressionlevel": -1,
+  "height": 15,
+  "infinite": false,
+  "layers": [
+    {
+      "data": [],
+      "height": 15,
+      "id": 1,
+      "name": "tiles",
+      "opacity": 1,
+      "type": "tilelayer",
+      "visible": true,
+      "width": 20,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "data": [],
+      "height": 15,
+      "id": 2,
+      "name": "wall",
+      "opacity": 1,
+      "type": "tilelayer",
+      "visible": true,
+      "width": 20,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "draworder": "topdown",
+      "id": 3,
+      "name": "objects",
+      "objects": [],
+      "opacity": 1,
+      "type": "objectgroup",
+      "visible": true,
+      "width": 20,
+      "height": 15,
+      "x": 0,
+      "y": 0
+    }
+  ],
+  "nextlayerid": 4,
+  "nextobjectid": 1,
+  "orientation": "orthogonal",
+  "renderorder": "right-down",
+  "tiledversion": "1.11",
+  "tileheight": 16,
+  "tilesets": [
+    {
+      "columns": 10,
+      "firstgid": 1,
+      "image": "doghouse-tileset.png",
+      "imageheight": 128,
+      "imagewidth": 160,
+      "margin": 0,
+      "name": "doghouse-tileset",
+      "spacing": 0,
+      "tilecount": 80,
+      "tileheight": 16,
+      "tilewidth": 16
+    }
+  ],
+  "tilewidth": 16,
+  "type": "map",
+  "version": "1.10",
+  "width": 20
+}

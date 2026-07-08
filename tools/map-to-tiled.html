@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Doghouse - Exportar Mapas para Tiled</title>
+<style>
+body { background:#1a1a1a; color:#ccc; font-family:sans-serif; padding:20px; }
+pre { background:#111; color:#0f0; padding:10px; overflow:auto; max-height:400px; font-size:12px; }
+button { padding:10px 20px; font-size:16px; cursor:pointer; background:#3a3a1a; color:#aaa878; border:1px solid #5a5a3a; margin:5px; }
+button:hover { background:#5a5a3a; }
+select, input { padding:5px; font-size:14px; background:#222; color:#ccc; border:1px solid #444; }
+#maps-list { margin:10px 0; }
+.map-item { display:inline-block; padding:5px 10px; margin:3px; background:#333; cursor:pointer; border:1px solid #555; }
+.map-item:hover { background:#444; border-color:#aaa878; }
+</style>
+</head>
+<body>
+<h1>Doghouse — Exportar Mapas para Tiled JSON</h1>
+<p>Carregue o jogo com os script tags abaixo, depois clique nos mapas para baixar o JSON do Tiled.</p>
+
+<button id="load-game">Carregar sprites.js + map.js</button>
+<div id="maps-list"></div>
+
+<div id="output" style="display:none">
+  <h3>JSON gerado:</h3>
+  <pre id="json-output"></pre>
+  <button id="download-json">Download .json</button>
+</div>
+
+<script>
+// Inclui sprites.js e map.js via script tags
+function loadGame() {
+  return new Promise((resolve, reject) => {
+    const s1 = document.createElement('script');
+    s1.src = '../doghouse/sprites.js';
+    s1.onload = () => {
+      const s2 = document.createElement('script');
+      s2.src = '../doghouse/map.js';
+      s2.onload = resolve;
+      s2.onerror = reject;
+      document.head.appendChild(s2);
+    };
+    s1.onerror = reject;
+    document.head.appendChild(s1);
+  });
+}
+
+const TILE_SIZE = 16;
+const MAP_COLS = 20;
+const MAP_ROWS = 15;
+
+function mapToTiledJson(mapData, mapId) {
+  const mapJson = {
+    width: MAP_COLS,
+    height: MAP_ROWS,
+    tilewidth: TILE_SIZE,
+    tileheight: TILE_SIZE,
+    infinite: false,
+    type: 'map',
+    orientation: 'orthogonal',
+    renderorder: 'right-down',
+    compressionlevel: -1,
+    nextlayerid: 4,
+    nextobjectid: 1,
+    layers: [],
+    tilesets: [
+      {
+        firstgid: 1,
+        source: 'doghouse-tileset.tsx',
+      }
+    ],
+  };
+
+  // --- tiles layer ---
+  const tilesData = [];
+  for (let y = 0; y < MAP_ROWS; y++) {
+    for (let x = 0; x < MAP_COLS; x++) {
+      tilesData.push(mapData.tiles[y]?.[x] || 0);
+    }
+  }
+  mapJson.layers.push({
+    id: 1,
+    name: 'tiles',
+    type: 'tilelayer',
+    width: MAP_COLS,
+    height: MAP_ROWS,
+    x: 0, y: 0,
+    visible: true,
+    opacity: 1,
+    data: tilesData,
+  });
+
+  // --- wall layer ---
+  const wallData = [];
+  for (let y = 0; y < MAP_ROWS; y++) {
+    for (let x = 0; x < MAP_COLS; x++) {
+      wallData.push(mapData.wall[y]?.[x] || 0);
+    }
+  }
+  mapJson.layers.push({
+    id: 2,
+    name: 'wall',
+    type: 'tilelayer',
+    width: MAP_COLS,
+    height: MAP_ROWS,
+    x: 0, y: 0,
+    visible: true,
+    opacity: 1,
+    data: wallData,
+  });
+
+  // --- objects layer ---
+  const objects = [];
+  let objId = 1;
+
+  // Map objects
+  if (mapData.objects) {
+    for (const obj of mapData.objects) {
+      const entry = {
+        id: objId++,
+        name: obj.type + '_' + obj.x + '_' + obj.y,
+        type: obj.type,
+        x: obj.x * TILE_SIZE,
+        y: obj.y * TILE_SIZE,
+        width: TILE_SIZE,
+        height: TILE_SIZE,
+        visible: true,
+      };
+
+      // Custom properties based on type
+      const props = [];
+      switch (obj.type) {
+        case 'door':
+          props.push({ name: 'targetMap', type: 'string', value: obj.targetMap || '' });
+          props.push({ name: 'targetX', type: 'int', value: obj.targetX || 1 });
+          props.push({ name: 'targetY', type: 'int', value: obj.targetY || 1 });
+          break;
+        case 'item':
+          props.push({ name: 'item', type: 'string', value: obj.item || '' });
+          break;
+        case 'note':
+          props.push({ name: 'noteId', type: 'string', value: obj.noteId || '' });
+          break;
+        case 'puzzle':
+          props.push({ name: 'puzzleId', type: 'string', value: obj.puzzleId || '' });
+          break;
+        case 'gate':
+          props.push({ name: 'requiredItem', type: 'string', value: obj.requiredItem || '' });
+          props.push({ name: 'targetMap', type: 'string', value: obj.targetMap || '' });
+          props.push({ name: 'targetX', type: 'int', value: obj.targetX || 1 });
+          props.push({ name: 'targetY', type: 'int', value: obj.targetY || 1 });
+          break;
+        case 'golden_door':
+          props.push({ name: 'puzzleId', type: 'string', value: obj.puzzleId || '' });
+          break;
+        case 'shiva_event':
+          props.push({ name: 'eventId', type: 'string', value: obj.eventId || '' });
+          break;
+      }
+      if (props.length > 0) {
+        entry.properties = props;
+      }
+      objects.push(entry);
+    }
+  }
+
+  // Connections as edge-based objects
+  if (mapData.connections) {
+    for (const conn of mapData.connections) {
+      let cx, cy;
+      const dir = conn.dir || 'right';
+      switch (dir) {
+        case 'left': cx = 0; cy = conn.y * TILE_SIZE; break;
+        case 'right': cx = (MAP_COLS - 1) * TILE_SIZE; cy = conn.y * TILE_SIZE; break;
+        case 'up': cx = conn.x * TILE_SIZE; cy = 0; break;
+        case 'down': cx = conn.x * TILE_SIZE; cy = (MAP_ROWS - 1) * TILE_SIZE; break;
+      }
+      objects.push({
+        id: objId++,
+        name: 'connection_' + dir,
+        type: 'connection',
+        x: cx, y: cy,
+        width: TILE_SIZE,
+        height: TILE_SIZE,
+        visible: true,
+        properties: [
+          { name: 'dir', type: 'string', value: dir },
+          { name: 'map', type: 'string', value: conn.map || '' },
+          { name: 'x', type: 'int', value: conn.x || 0 },
+          { name: 'y', type: 'int', value: conn.y || 0 },
+        ],
+      });
+    }
+  }
+
+  mapJson.layers.push({
+    id: 3,
+    name: 'objects',
+    type: 'objectgroup',
+    draworder: 'topdown',
+    width: MAP_COLS,
+    height: MAP_ROWS,
+    x: 0, y: 0,
+    visible: true,
+    opacity: 1,
+    objects,
+  });
+
+  mapJson.nextobjectid = objId;
+  return mapJson;
+}
+
+document.getElementById('load-game').addEventListener('click', async () => {
+  try {
+    await loadGame();
+    const ids = ['quarto','corredor','sala','calcada','rua','portao','praca','beco','igreja','cemiterio','parque'];
+    const container = document.getElementById('maps-list');
+    container.innerHTML = '<h3>Mapas carregados:</h3>';
+
+    ids.forEach(id => {
+      const data = window['MAP_DATA_' + id];
+      if (!data) {
+        const el = document.createElement('div');
+        el.className = 'map-item';
+        el.style.color = '#666';
+        el.textContent = id + ' (nao encontrado)';
+        container.appendChild(el);
+        return;
+      }
+
+      const el = document.createElement('div');
+      el.className = 'map-item';
+      el.textContent = id + ' (' + (data.name || id) + ')';
+      el.addEventListener('click', () => {
+        const json = mapToTiledJson(data, id);
+        const str = JSON.stringify(json, null, 2);
+        document.getElementById('json-output').textContent = str;
+        document.getElementById('output').style.display = 'block';
+
+        document.getElementById('download-json').onclick = () => {
+          const blob = new Blob([str], { type: 'application/json' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.download = id + '.json';
+          a.href = url;
+          a.click();
+          URL.revokeObjectURL(url);
+        };
+      });
+      container.appendChild(el);
+    });
+  } catch (e) {
+    document.getElementById('maps-list').innerHTML =
+      '<div style="color:red">Erro ao carregar: ' + e.message + '</div>';
+  }
+});
+</script>
+</body>
+</html>
