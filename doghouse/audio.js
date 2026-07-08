@@ -1,7 +1,7 @@
 class AudioSys{
   constructor(){
     this.ctx=null;this.initialized=false
-    this.volumes={sfx:0.18}
+    this.volumes={sfx:0.2}
   }
   init(){
     if(this.initialized)return
@@ -13,7 +13,6 @@ class AudioSys{
   resume(){
     if(this.ctx&&this.ctx.state==='suspended')this.ctx.resume()
   }
-  _t(f){return{type:'sine',freq:f||440}}
   _n(dur,g,f,Q){
     const sr=this.ctx.sampleRate,len=Math.floor(sr*dur)
     const buf=this.ctx.createBuffer(1,len,sr),d=buf.getChannelData(0)
@@ -60,25 +59,14 @@ class AudioSys{
   final(){this._o(400,'triangle',2,0.08,800);this._o(600,'sine',1.5,0.04,1000);this._n(2,0.03,{t:'lowpass',f:400,Q:3})}
   combine(){this._o(500,'triangle',0.1,0.06,700);setTimeout(()=>this._o(800,'triangle',0.08,0.05,900),80)}
   dig(){this._n(0.3,0.05,{t:'lowpass',f:200,Q:2})}
+  chain(){this._o(100,'sawtooth',0.3,0.05,150);this._n(0.3,0.04,{t:'bandpass',f:800,Q:3})}
+  heartbeat(){this._o(30,'sine',0.15,0.1,40);setTimeout(()=>this._o(30,'sine',0.15,0.1,40),250)}
+  whisper(){this._n(0.8,0.02,{t:'bandpass',f:2000,Q:5})}
 
-  startDrone(sceneId){
-    if(!this.ctx||this.muted)return
+  startDrone(){
+    if(!this.ctx)return
     this.stopDrone()
-    const themes={
-      corridor:{n:'Corredor',bpm:50,scale:[0,2,3,5,7,8,10],root:55,pat:'bass'},
-      cellar:{n:'Porao',bpm:45,scale:[0,3,5,7,10],root:44,pat:'arp'},
-      kitchen:{n:'Cozinha',bpm:60,scale:[0,2,3,5,7],root:65,pat:'arp'},
-      church:{n:'Capela',bpm:40,scale:[0,3,5,7,8,10],root:110,pat:'pad'},
-      crypt:{n:'Cripta',bpm:35,scale:[0,2,3,6,7,10],root:49,pat:'arp'},
-      graveyard:{n:'Cemiterio',bpm:38,scale:[0,3,5,6,8,10],root:41,pat:'arp'},
-      mansion:{n:'Solar',bpm:42,scale:[0,3,5,7,8,10],root:98,pat:'pad'},
-      library:{n:'Biblioteca',bpm:35,scale:[0,2,4,5,7,9],root:73,pat:'pad'},
-      tower:{n:'Torre',bpm:30,scale:[0,2,3,5,7,8,10,12],root:130,pat:'arp'},
-      tunnel:{n:'Tunel',bpm:25,scale:[0,1,3,4,6,7,9,10],root:38,pat:'arp'},
-      default:{n:'Vazio',bpm:40,scale:[0,3,5,7],root:50,pat:'bass'}
-    }
-    const th=themes[sceneId]||themes.default
-    const bpmMs=60000/th.bpm
+    const bpmMs=1500
     const gMaster=this.ctx.createGain()
     gMaster.gain.value=0
     this.masterGain=gMaster
@@ -87,82 +75,38 @@ class AudioSys{
     const tick=(ba=0)=>{
       if(!this.masterGain)return
       const t=this.ctx.currentTime+ba
-      const notes=th.scale
-      if(th.pat==='arp'){
-        const ni=step%notes.length
-        const n=notes[ni],freq=th.root*Math.pow(2,n/12)
-        const o=this.ctx.createOscillator();o.type='triangle'
-        o.frequency.setValueAtTime(freq,t)
-        const g=this.ctx.createGain()
-        g.gain.setValueAtTime(0,t)
-        g.gain.linearRampToValueAtTime(0.04,t+0.05)
-        g.gain.exponentialRampToValueAtTime(0.001,t+bpmMs/1000*0.8)
-        const lfo=this.ctx.createOscillator();lfo.type='sine';lfo.frequency.value=0.1
-        const lfoG=this.ctx.createGain();lfoG.gain.value=freq*0.003
-        lfo.connect(lfoG);lfoG.connect(o.frequency);lfo.start(t);lfo.stop(t+bpmMs/1000)
-        o.connect(g);g.connect(gMaster);o.start(t);o.stop(t+bpmMs/1000)
-        voices.push({o,g,lfo})
-        if(ni===0){
-          const o2=this.ctx.createOscillator();o2.type='sine'
-          o2.frequency.setValueAtTime(th.root/2,t)
-          const g2=this.ctx.createGain()
-          g2.gain.setValueAtTime(0.03,t)
-          g2.gain.linearRampToValueAtTime(0.01,t+bpmMs/1000*4)
-          g2.gain.exponentialRampToValueAtTime(0.001,t+bpmMs/1000*8)
-          o2.connect(g2);g2.connect(gMaster);o2.start(t);o2.stop(t+bpmMs/1000*8)
-          voices.push({o:o2,g:g2})
-        }
-        step++
-        const nextMs=bpmMs/4+(Math.random()-0.5)*20
-        this.musicTimer=setTimeout(()=>tick(),nextMs)
-      }else if(th.pat==='bass'){
-        const ni=step%notes.length
-        const n=notes[ni],freq=th.root*Math.pow(2,n/12)
-        const o=this.ctx.createOscillator();o.type='sawtooth'
-        o.frequency.setValueAtTime(freq/2,t)
-        const g=this.ctx.createGain()
-        g.gain.setValueAtTime(0,t)
-        g.gain.linearRampToValueAtTime(0.02,t+0.1)
-        g.gain.exponentialRampToValueAtTime(0.001,t+bpmMs/1000*1.5)
-        const flt=this.ctx.createBiquadFilter();flt.type='lowpass';flt.frequency.value=200
-        o.connect(flt);flt.connect(g);g.connect(gMaster);o.start(t);o.stop(t+bpmMs/1000*1.5)
-        voices.push({o,g})
-        if(ni%2===0){
-          const o2=this.ctx.createOscillator();o2.type='triangle'
-          o2.frequency.setValueAtTime(freq*1.5,t)
-          const g2=this.ctx.createGain()
-          g2.gain.setValueAtTime(0.008,t)
-          g2.gain.exponentialRampToValueAtTime(0.001,t+bpmMs/1000*2)
-          o2.connect(g2);g2.connect(gMaster);o2.start(t);o2.stop(t+bpmMs/1000*2)
-          voices.push({o:o2,g:g2})
-        }
-        step++
-        const nextMs=bpmMs/2+(Math.random()-0.5)*30
-        this.musicTimer=setTimeout(()=>tick(),nextMs)
-      }else{
-        notes.forEach((n,i)=>{
-          const freq=th.root*Math.pow(2,n/12)
-          const o=this.ctx.createOscillator();o.type='sine'
-          o.frequency.setValueAtTime(freq,t)
-          const g=this.ctx.createGain()
-          const attack=0.5+i*0.3
-          g.gain.setValueAtTime(0,t)
-          g.gain.linearRampToValueAtTime(0.015,t+attack)
-          g.gain.setValueAtTime(0.015,t+4)
-          g.gain.exponentialRampToValueAtTime(0.001,t+6)
-          const lfo=this.ctx.createOscillator();lfo.type='sine';lfo.frequency.value=0.05+Math.random()*0.1
-          const lfoG=this.ctx.createGain();lfoG.gain.value=freq*0.005
-          lfo.connect(lfoG);lfoG.connect(o.frequency);lfo.start(t);lfo.stop(t+6)
-          o.connect(g);g.connect(gMaster);o.start(t);o.stop(t+6)
-          voices.push({o,g,lfo})
-        })
-        step++
-        this.musicTimer=setTimeout(()=>tick(),bpmMs*4+(Math.random()-0.5)*500)
+      const root=44
+      const scale=[0,3,5,7,10]
+      const ni=step%scale.length
+      const n=scale[ni],freq=root*Math.pow(2,n/12)
+      const o=this.ctx.createOscillator();o.type='triangle'
+      o.frequency.setValueAtTime(freq,t)
+      const g=this.ctx.createGain()
+      g.gain.setValueAtTime(0,t)
+      g.gain.linearRampToValueAtTime(0.03,t+0.08)
+      g.gain.exponentialRampToValueAtTime(0.001,t+bpmMs/1000*0.7)
+      const lfo=this.ctx.createOscillator();lfo.type='sine';lfo.frequency.value=0.08+Math.random()*0.06
+      const lfoG=this.ctx.createGain();lfoG.gain.value=freq*0.005
+      lfo.connect(lfoG);lfoG.connect(o.frequency);lfo.start(t);lfo.stop(t+bpmMs/1000)
+      o.connect(g);g.connect(gMaster);o.start(t);o.stop(t+bpmMs/1000)
+      voices.push({o,g,lfo})
+      if(ni===0){
+        const o2=this.ctx.createOscillator();o2.type='sine'
+        o2.frequency.setValueAtTime(root/2,t)
+        const g2=this.ctx.createGain()
+        g2.gain.setValueAtTime(0.025,t)
+        g2.gain.linearRampToValueAtTime(0.01,t+bpmMs/1000*3)
+        g2.gain.exponentialRampToValueAtTime(0.001,t+bpmMs/1000*8)
+        o2.connect(g2);g2.connect(gMaster);o2.start(t);o2.stop(t+bpmMs/1000*8)
+        voices.push({o:o2,g:g2})
       }
+      step++
+      const nextMs=bpmMs/4+(Math.random()-0.5)*30
+      this.musicTimer=setTimeout(()=>tick(),nextMs)
     }
-    gMaster.gain.linearRampToValueAtTime(0.5,this.ctx.currentTime+4)
+    gMaster.gain.linearRampToValueAtTime(0.35,this.ctx.currentTime+4)
     tick(0.5)
-    this.musicVoices=voices;this.musicTheme=th
+    this.musicVoices=voices
   }
   stopDrone(){
     if(this.musicTimer){clearTimeout(this.musicTimer);this.musicTimer=null}
@@ -175,7 +119,7 @@ class AudioSys{
         try{v.o.stop()}catch(e){}
         try{if(v.lfo)v.lfo.stop()}catch(e){}
       })
-      this.musicVoices=null;this.masterGain=null;this.musicTheme=null
+      this.musicVoices=null;this.masterGain=null
     },1200)
   }
 }

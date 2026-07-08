@@ -5,12 +5,10 @@ class Engine {
     this.canvas=document.getElementById('game-canvas')
     this.ctx=this.canvas.getContext('2d')
     this.state=S.INTRO
-    this.scene='corridor'
     this.puzzle=null
     this.tooltipTimer=null
     this.tooltipEl=document.getElementById('tooltip')
-    this.roomLabel=document.getElementById('room-label')
-    this.watchingEl=document.getElementById('hud-watching')
+    this.dirHint=document.getElementById('dir-hint')
     this.transitionEl=document.getElementById('transition-overlay')
     this.setupEvents()
   }
@@ -25,7 +23,6 @@ class Engine {
       if(this.state===S.INTRO)this.handleIntroClick()
       else if(this.state===S.PLAYING)window.__game.handleClick(p.x,p.y)
     })
-
     document.getElementById('puzzle-overlay').addEventListener('click',e=>{
       if(this.state!==S.PUZZLE||!this.puzzle)return
       const p=getPos(e)
@@ -34,19 +31,6 @@ class Engine {
     document.getElementById('note-overlay').addEventListener('click',()=>{
       if(this.state===S.NOTE)this.closeNote()
     })
-
-    this.canvas.addEventListener('dragover',e=>{e.preventDefault()})
-    this.canvas.addEventListener('drop',e=>{
-      e.preventDefault()
-      if(this.state!==S.PLAYING)return
-      const idx=parseInt(e.dataTransfer.getData('text/plain'))
-      if(isNaN(idx))return
-      const r=this.canvas.getBoundingClientRect()
-      const x=(e.clientX-r.left)/r.width*800
-      const y=(e.clientY-r.top)/r.height*600
-      window.__game.handleItemDrop(idx,x,y)
-    })
-
     document.addEventListener('keydown',e=>{
       if(this.state===S.NOTE&&e.key==='Escape'){this.closeNote();return}
       if(this.state===S.PUZZLE&&e.key==='Escape'){this.closePuzzle();return}
@@ -54,13 +38,12 @@ class Engine {
       if(this.state===S.INTRO&&(e.key==='Enter'||e.key===' ')){this.handleIntroClick();return}
       if(this.state!==S.PLAYING)return
       const g=window.__game
-      if(e.key==='ArrowUp')g.goNorth()
-      else if(e.key==='ArrowDown')g.goSouth()
-      else if(e.key==='ArrowLeft')g.goWest()
-      else if(e.key==='ArrowRight')g.goEast()
+      if(e.key==='ArrowLeft'||e.key==='a')g.goToView(g.view-1)
+      else if(e.key==='ArrowRight'||e.key==='d')g.goToView(g.view+1)
+      else if(e.key==='ArrowUp'||e.key==='w')g.goToView(4)
+      else if(e.key==='ArrowDown'||e.key==='s')g.goToView(g.view===4?0:g.view)
       else if(e.key>='1'&&e.key<='9'){const i=parseInt(e.key)-1;g.selectItem(i)}
     })
-
     this.canvas.addEventListener('contextmenu',e=>{e.preventDefault()})
   }
 
@@ -80,51 +63,37 @@ class Engine {
   }
 
   render(t){
-    const ctx=this.ctx
+    const ctx=this.ctx,g=window.__game
     if(this.state===S.INTRO||this.state===S.PLAYING||this.state===S.FINAL){
-      drawScene(ctx,this.scene,t)
-      this.drawSceneLabel()
-      this.drawEdgeHints(t)
+      const views=['north','east','south','west','ceiling']
+      const vk=views[g.view]||'north'
+      const fn=VIEW_DRAW[vk]
+      if(fn)fn(ctx,t)
+
+      if(g.candleLit)drawCandleLight(ctx,t,true)
+
+      if(g.shivaActive&&this.state===S.PLAYING){
+        $ctx=ctx
+        drawShivaAppearance(ctx,g.view,performance.now()*0.001,t)
+      }
+
     }
     if(this.state===S.PUZZLE&&this.puzzle&&this.puzzle.render){
       this.puzzle.render(ctx,t)
     }
-    if(window.__game&&window.__game.showingWatching&&this.state===S.PLAYING){
-      this.watchingEl.classList.add('show')
-    }else{
-      this.watchingEl.classList.remove('show')
-    }
   }
 
-  drawSceneLabel(){
-    const sc=window.__game?window.__game.getScene(this.scene):null
-    if(sc){this.roomLabel.textContent=sc.name;this.roomLabel.style.display='block'}
-  }
-
-  drawEdgeHints(t){
-    const ctx=this.ctx
-    const g=window.__game
-    if(!g)return
-    const exits=g.getExits(this.scene)
-    const hint=document.getElementById('dir-hint')
-    let labels=[]
-    if(exits.north)labels.push('N: '+g.getScene(exits.north).name)
-    if(exits.south)labels.push('S: '+g.getScene(exits.south).name)
-    if(exits.west)labels.push('O: '+g.getScene(exits.west).name)
-    if(exits.east)labels.push('L: '+g.getScene(exits.east).name)
-    hint.textContent=labels.join(' · ')
-    hint.style.display=labels.length?'block':'none'
-  }
-
-  findHit(x,y){
-    const g=window.__game
-    if(!g)return null
-    const scene=this.scene
-    for(const obj of g.getScene(scene).objects){
-      const h=g.getHitbox(scene,obj.id)
-      if(h&&x>=h.x&&x<=h.x+h.w&&y>=h.y&&y<=h.y+h.h)return obj
-    }
-    return null
+  drawDirHint(g){
+    const el=this.dirHint
+    const views=['NORTE','LESTE','SUL','OESTE','TETO']
+    let hint=''
+    if(g.view>0)hint+='◀ '
+    hint+=views[g.view]
+    if(g.view<4)hint+=' ▶'
+    if(g.view!==4)hint+='  ↑TETO'
+    if(g.view!==0)hint+='  ↓CHÃO'
+    el.textContent=hint
+    el.style.display='block'
   }
 
   openPuzzle(p){
@@ -165,13 +134,12 @@ class Engine {
     if(this.tooltipTimer){clearTimeout(this.tooltipTimer);this.tooltipTimer=null}
   }
 
-  transitionTo(target,cb){
-    this.transitionEl.classList.add('active')
+  flashView(cb){
+    this.transitionEl.classList.add('flash')
     setTimeout(()=>{
-      this.scene=target
       if(cb)cb()
-      setTimeout(()=>this.transitionEl.classList.remove('active'),200)
-    },400)
+      setTimeout(()=>this.transitionEl.classList.remove('flash'),60)
+    },100)
   }
 
   showIntro(texts){

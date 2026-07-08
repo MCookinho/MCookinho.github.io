@@ -1,203 +1,86 @@
 const ITEMS_ICON = {
-  cellar_key:'🗝️',kitchen_key:'🗝️',church_key:'🗝️',crypt_key:'🗝️',graveyard_key:'🦴',
-  mansion_key:'🗝️',library_key:'🗝️',tower_key:'🔑',
-  match:'🔥',wax:'🕯️',lit_candle:'🕯️🔥',
-  medallion:'📿',bell:'🔔',feather:'🪶',
-  shovel:'🪚',handle:'🔗',complete_shovel:'🪚✓',
-  broken_key_A:'🔑½',broken_key_B:'🔑½',complete_key:'🔑✓',
-  shard:'🪞💔',ribbon:'🎀',estilete:'🔪',
-  oil:'🫒',cloth:'🧣',oiled_cloth:'🧣💧',
-  herb:'🌿',pilao:'🥣',powder:'✨',
-  flower:'🌺',ring:'💍',collar:'⛓️',
-  skull:'💀',photo:'🖼️',lantern:'🏮'
+  pedra:'🪨', caco_vidro:'💎', fosforo:'🔥', vela:'🕯️',
+  vela_acesa:'🕯️✨', corda:'🪢', gancho:'🪝', corda_gancho:'🪝🪢',
+  ferro:'🔩', chave_1:'🗝️¹', chave_2:'🗝️²', chave_3:'🗝️³',
+  chave_12:'🗝️¹²', chave_completa:'🔑✓',
+  coleira:'⛓️', bola:'⚾', osso:'🦴'
 }
 
 const ITEMS_NAME = {
-  cellar_key:'Chave do Porão',kitchen_key:'Chave da Cozinha',church_key:'Chave da Capela',
-  crypt_key:'Chave da Cripta',graveyard_key:'Chave do Cemitério',
-  mansion_key:'Chave do Salão',library_key:'Chave da Biblioteca',tower_key:'Chave da Torre',
-  match:'Fósforo',wax:'Cera',lit_candle:'Vela Acesa',
-  medallion:'Medalhão',bell:'Sino',feather:'Pena',
-  shovel:'Pá',handle:'Cabo',complete_shovel:'Pá Montada',
-  broken_key_A:'Metade de Chave A',broken_key_B:'Metade de Chave B',complete_key:'Chave Completa',
-  shard:'Caco de Vidro',ribbon:'Fita',estilete:'Estilete',
-  oil:'Óleo',cloth:'Pano',oiled_cloth:'Pano Oleoso',
-  herb:'Ervas',pilao:'Pilão',powder:'Pó Ritual',
-  flower:'Flor',ring:'Anel',collar:'Coleira',
-  skull:'Caveira',photo:'Fotografia',lantern:'Lanterna'
+  pedra:'Pedra', caco_vidro:'Caco de Vidro', fosforo:'Fósforo', vela:'Vela',
+  vela_acesa:'Vela Acesa', corda:'Corda', gancho:'Gancho', corda_gancho:'Corda com Gancho',
+  ferro:'Barra de Ferro', chave_1:'Fragmento de Chave I', chave_2:'Fragmento de Chave II',
+  chave_3:'Fragmento de Chave III', chave_12:'Dois Fragmentos',
+  chave_completa:'Chave Completa',
+  coleira:'Coleira', bola:'Bola', osso:'Osso'
 }
 
-const ROOM_EXITS = {
-  corridor:{east:'cellar',south:'kitchen'},
-  cellar:{west:'corridor',east:'crypt'},
-  kitchen:{north:'corridor',east:'church'},
-  church:{west:'kitchen',south:'crypt'},
-  crypt:{west:'cellar',north:'church',east:'graveyard'},
-  graveyard:{west:'crypt',south:'mansion'},
-  mansion:{north:'graveyard',east:'library'},
-  library:{west:'mansion',east:'tower'},
-  tower:{west:'library',south:'tunnel'},
-  tunnel:{north:'tower'}
-}
-
-const ROOM_LOCKS = {
-  cellar:'cellar_key', kitchen:'kitchen_key', church:'church_key',
-  crypt:'crypt_key', graveyard:'graveyard_key', mansion:'mansion_key',
-  library:'library_key', tower:'tower_key', tunnel:'collar'
-}
-
-const SCENES = {
-  corridor:{
-    id:'corridor',name:'CORREDOR',day:7,
-    objects:[
-      {id:'portao',name:'PORTÃO',type:'puzzle',puzzle:'gate',desc:'Três fechaduras.'},
-      {id:'lamp_c',name:'LÂMPADA',desc:'Oscila sem vento.'},
-      {id:'wall_c',name:'PAREDE',desc:'"O passeio começa onde a luz termina."'},
-      {id:'ground_c',name:'CHÃO',desc:'Pegadas recentes levam ao portão.'},
-      {id:'cellar_key',name:'CHAVE DO PORÃO',type:'item',gives:'cellar_key',desc:'Chave enferrujada no chão.'},
-      {id:'loose_floor',name:'PISO SOLTO',desc:'Uma tábua solta.',type:'examine',reveals:'broken_key_B'},
-      {id:'broken_key_B',name:'M.PARTIDA B',type:'item',gives:'broken_key_B',desc:'Metade de chave.'}
-    ]
-  },
-  cellar:{
-    id:'cellar',name:'PORÃO',day:7,
-    objects:[
-      {id:'barrels',name:'BARRIS',type:'puzzle',puzzle:'barrels',desc:'Três barris com símbolos.'},
-      {id:'match',name:'FÓSFORO',type:'item',gives:'match',desc:'Caixa de fósforos.'},
-      {id:'medallion',name:'MEDALHÃO',type:'item',gives:'medallion',desc:'Medalhão frio.'},
-      {id:'herb',name:'ERVAS',type:'item',gives:'herb',desc:'Ervas secas.'},
-      {id:'wall_cellar',name:'PAREDE',type:'examine',desc:'Parede úmida.',note:'cellar'},
-      {id:'water_cellar',name:'POÇO',desc:'O reflexo não é seu.'}
-    ]
-  },
-  kitchen:{
-    id:'kitchen',name:'COZINHA',day:7,
-    objects:[
-      {id:'sink',name:'PIA',type:'puzzle',puzzle:'sink',desc:'Água pinga sem parar.'},
-      {id:'wax',name:'CERA',type:'item',gives:'wax',desc:'Cera grudada na faca.'},
-      {id:'pilao',name:'PILÃO',type:'item',gives:'pilao',desc:'Pilão de pedra.'},
-      {id:'cabinet_kitchen',name:'ARMÁRIO',type:'examine',desc:'Range.',note:'kitchen'},
-      {id:'stove',name:'FOGÃO',desc:'Cinzas frias.'}
-    ]
-  },
-  church:{
-    id:'church',name:'CAPELA',day:7,
-    objects:[
-      {id:'altar_church',name:'ALTAR',type:'puzzle',puzzle:'altar',desc:'Três cavidades aguardam oferendas.'},
-      {id:'bell_church',name:'SINO',type:'item',gives:'bell',desc:'Sino pequeno no banco.'},
-      {id:'feather_church',name:'PENA',type:'item',gives:'feather',desc:'Pena preta.'},
-      {id:'shard_church',name:'CACO',type:'item',gives:'shard',desc:'Caco de vidro do vitral.'},
-      {id:'statue',name:'ESTÁTUA',type:'examine',desc:'Cão de três cabeças.',note:'church'},
-      {id:'pew',name:'BANCO',desc:' '},
-      {id:'window_church',name:'VITRAL',desc:'Luz forma um símbolo.'}
-    ]
-  },
-  crypt:{
-    id:'crypt',name:'CRIPTA',day:8,
-    objects:[
-      {id:'candles',name:'VELAS',type:'puzzle',puzzle:'crypt_candles',desc:'Seis velas apagadas.'},
-      {id:'broken_key_A',name:'M.PARTIDA A',type:'item',gives:'broken_key_A',desc:'Metade de chave no sarcófago.'},
-      {id:'sarcophagus',name:'SARCOFÁGO',desc:'Pedra esculpida.'},
-      {id:'inscriptions',name:'INSCRIÇÕES',desc:'Símbolos antigos na parede.'}
-    ]
-  },
-  graveyard:{
-    id:'graveyard',name:'CEMITÉRIO',day:7,
-    objects:[
-      {id:'tombs',name:'TÚMULOS',type:'puzzle',puzzle:'tombs',desc:'Seis túmulos.'},
-      {id:'shovel',name:'PÁ',type:'item',gives:'shovel',desc:'Pá encostada na árvore.'},
-      {id:'handle',name:'CABO',type:'item',gives:'handle',desc:'Cabo de madeira.'},
-      {id:'tree',name:'ÁRVORE',desc:'Galhos como dedos.'}
-    ]
-  },
-  mansion:{
-    id:'mansion',name:'SALÃO',day:7,
-    objects:[
-      {id:'cabinet_mansion',name:'ARMÁRIO',type:'puzzle',puzzle:'cabinet',desc:'Gavetas trancadas.'},
-      {id:'clock_mansion',name:'RELÓGIO',type:'puzzle',puzzle:'clock',desc:'Pêndulo parado.'},
-      {id:'portrait',name:'RETRATO',type:'examine',desc:'Olhos arrancados.',note:'mansion'},
-      {id:'lamp_mansion',name:'ABAJUR',desc:' '},
-    ]
-  },
-  library:{
-    id:'library',name:'BIBLIOTECA',day:8,
-    objects:[
-      {id:'shelf_main',name:'ESTANTE',type:'puzzle',puzzle:'shelf',desc:'Livros em ordem.'},
-      {id:'oil',name:'ÓLEO',type:'item',gives:'oil',desc:'Frasco de óleo.'},
-      {id:'cloth',name:'PANO',type:'item',gives:'cloth',desc:'Pano velho.'},
-      {id:'book_table',name:'MESA',desc:'Cérbero: Guardião do Subumano'},
-      {id:'lantern_lib',name:'LANTERNA',type:'item',gives:'lantern',desc:'Lanterna acesa no canto.'}
-    ]
-  },
-  tower:{
-    id:'tower',name:'TORRE',day:8,
-    objects:[
-      {id:'shrine',name:'SANTUÁRIO',type:'puzzle',puzzle:'shrine',desc:'Seis velas.'},
-      {id:'bed_tower',name:'CAMA',type:'examine',desc:'Ainda quente.',note:'tower'},
-      {id:'window_tower',name:'JANELA',desc:'O céu está cheio de olhos.'}
-    ]
-  },
-  tunnel:{
-    id:'tunnel',name:'O TÚNEL',day:8,
-    objects:[
-      {id:'altar_tunnel',name:'ALTAR FINAL',type:'puzzle',puzzle:'final_altar',desc:'Três cavidades.'},
-      {id:'eye_tunnel',name:'O OLHO',desc:'Shiva vê tudo.'},
-      {id:'light_tunnel',name:'LUZ',desc:'Lá longe.'},
-      {id:'chain_tunnel',name:'CORRENTE',desc:'Quebrada.'}
-    ]
-  }
+const VIEWS = {
+  north: [
+    {id:'porta',name:'PORTA',desc:'Madeira grossa, ferro, três fechaduras.',type:'door'},
+    {id:'grade',name:'GRADE',desc:'Barras de ferro presas na parede. Algo atrás.',type:'grate'},
+    {id:'janela',name:'JANELA',desc:'Gradeada. Lá fora, escuridão.',type:'examine'},
+    {id:'cruz',name:'CRUZ',desc:'Enferrujada. As marcas dos pregos.',type:'examine'}
+  ],
+  east: [
+    {id:'prateleira',name:'PRATELEIRA',desc:'Empoeirada. Uma vela.',type:'shelf'},
+    {id:'espelho',name:'ESPELHO',desc:'Trincado. O reflexo é seu mas não parece.',type:'mirror'},
+    {id:'teia',name:'TEIA DE ARANHA',desc:'A aranha observa.',type:'examine'},
+    {id:'tijolo',name:'TIJOLO SOLTO',desc:'Parece que dá pra mexer.',type:'brick'}
+  ],
+  south: [
+    {id:'inscricao',name:'INSCRIÇÃO',desc:'"ESQUEÇA" — a palavra lateja.',type:'examine'},
+    {id:'ralo',name:'RALO',desc:'No chão. Água escura. Algo brilha.',type:'drain'},
+    {id:'assoalho',name:'ASSOALHO',desc:'Tábua solta no chão.',type:'floorboard'},
+    {id:'goteira',name:'GOTEIRA',desc:'Ping... ping...',type:'examine'},
+    {id:'pedra_obj',name:'PEDRA',desc:'No chão. Pesada.',type:'item',gives:'pedra'}
+  ],
+  west: [
+    {id:'bancada',name:'BANCADA',desc:'Marca de unhas na madeira.',type:'examine'},
+    {id:'gaveta',name:'GAVETA',desc:'Trancada. Três pinos de metal.',type:'drawer'},
+    {id:'diario',name:'DIÁRIO',desc:'Páginas amareladas. Algo escrito.',type:'diary'},
+    {id:'corda_obj',name:'CORDA',desc:'Pendurada na parede.',type:'item',gives:'corda'},
+    {id:'ferramentas',name:'FERRAMENTAS',desc:'Pilha de ferros velhos.',type:'item',gives:'ferro'}
+  ],
+  ceiling: [
+    {id:'corrente',name:'CORRENTE',desc:'Pendurada. Um gancho na ponta.',type:'chain'},
+    {id:'alcapao',name:'ALÇAPÃO',desc:'No teto. Trancado por fora.',type:'hatch'},
+    {id:'olhos',name:'OLHOS...',desc:'Brilham na escuridão.',type:'examine'}
+  ]
 }
 
 const HITBOXES = {
-  portao:{x:200,y:100,w:400,h:350},
-  lamp_c:{x:380,y:30,w:40,h:60},
-  wall_c:{x:80,y:240,w:180,h:180},
-  ground_c:{x:0,y:400,w:800,h:200},
-  cellar_key:{x:620,y:380,w:50,h:40},
-  loose_floor:{x:50,y:450,w:100,h:40},
-  broken_key_B:{x:60,y:455,w:30,h:30},
-  barrels:{x:200,y:100,w:400,h:350},
-  match:{x:100,y:300,w:40,h:30},
-  medallion:{x:700,y:350,w:40,h:40},
-  herb:{x:680,y:250,w:30,h:30},
-  wall_cellar:{x:60,y:80,w:180,h:280},
-  water_cellar:{x:350,y:350,w:100,h:100},
-  sink:{x:300,y:250,w:120,h:120},
-  wax:{x:600,y:280,w:40,h:60},
-  pilao:{x:650,y:200,w:40,h:40},
-  cabinet_kitchen:{x:500,y:120,w:80,h:120},
-  stove:{x:100,y:200,w:150,h:200},
-  altar_church:{x:340,y:260,w:120,h:100},
-  bell_church:{x:80,y:350,w:40,h:40},
-  feather_church:{x:120,y:370,w:30,h:20},
-  shard_church:{x:620,y:180,w:30,h:30},
-  statue:{x:340,y:360,w:120,h:120},
-  pew:{x:80,y:320,w:120,h:80},
-  window_church:{x:600,y:100,w:80,h:100},
-  candles:{x:100,y:100,w:600,h:400},
-  broken_key_A:{x:300,y:400,w:30,h:30},
-  sarcophagus:{x:200,y:280,w:400,h:100},
-  inscriptions:{x:100,y:150,w:150,h:200},
-  tombs:{x:40,y:260,w:720,h:100},
-  shovel:{x:180,y:230,w:30,h:80},
-  handle:{x:250,y:350,w:60,h:20},
-  tree:{x:250,y:200,w:100,h:150},
-  cabinet_mansion:{x:600,y:350,w:80,h:100},
-  clock_mansion:{x:560,y:110,w:55,h:75},
-  portrait:{x:40,y:180,w:60,h:70},
-  lamp_mansion:{x:40,y:280,w:40,h:70},
-  shelf_main:{x:40,y:90,w:720,h:310},
-  oil:{x:200,y:400,w:30,h:40},
-  cloth:{x:240,y:400,w:40,h:30},
-  book_table:{x:270,y:250,w:160,h:100},
-  lantern_lib:{x:680,y:350,w:35,h:45},
-  shrine:{x:200,y:100,w:400,h:300},
-  bed_tower:{x:100,y:250,w:180,h:140},
-  window_tower:{x:550,y:80,w:100,h:100},
-  altar_tunnel:{x:340,y:270,w:120,h:120},
-  eye_tunnel:{x:350,y:150,w:100,h:90},
-  light_tunnel:{x:680,y:100,w:80,h:200},
-  chain_tunnel:{x:100,y:280,w:80,h:180}
+  north: {
+    porta:{x:270,y:80,w:260,h:420},
+    grade:{x:60,y:200,w:100,h:150},
+    janela:{x:350,y:120,w:100,h:80},
+    cruz:{x:600,y:100,w:50,h:80}
+  },
+  east: {
+    prateleira:{x:50,y:80,w:300,h:280},
+    espelho:{x:450,y:100,w:200,h:250},
+    teia:{x:420,y:60,w:40,h:40},
+    tijolo:{x:560,y:380,w:40,h:40}
+  },
+  south: {
+    inscricao:{x:150,y:200,w:300,h:150},
+    ralo:{x:340,y:480,w:120,h:40},
+    assoalho:{x:250,y:470,w:100,h:30},
+    goteira:{x:380,y:80,w:40,h:60},
+    pedra_obj:{x:100,y:470,w:50,h:30}
+  },
+  west: {
+    bancada:{x:120,y:280,w:500,h:60},
+    gaveta:{x:240,y:260,w:160,h:50},
+    diario:{x:360,y:260,w:80,h:50},
+    corda_obj:{x:600,y:80,w:40,h:200},
+    ferramentas:{x:580,y:360,w:100,h:90}
+  },
+  ceiling: {
+    corrente:{x:380,y:40,w:40,h:220},
+    alcapao:{x:320,y:300,w:160,h:80},
+    olhos:{x:200,y:130,w:120,h:80}
+  }
 }
 
 class Game {
@@ -206,29 +89,27 @@ class Game {
     this.engine=new Engine()
     this.a=new AudioSys()
     this.inventory=[]
-    this.notes=[]
     this.obtainedItems=[]
     this.selectedItem=null
-    this.locks={...ROOM_LOCKS}
-    this.flags={}
-    this.sceneId='corridor'
-    this.day=7
-    this.showingWatching=false
-    this.watchTimer=null
+    this.view=0
+    this.candleLit=false
+    this.shivaActive=false
+    this.shivaPhase=0
+    this.shivaTimer=null
+    this.diaryRead=false
+    this.bellRung=false
     this.introStep=0
+    this.flags={}
     this.a.init()
-    this.setupInventoryUI()
+    this.setupUI()
     this.loop()
-    setTimeout(()=>{this.engine.showIntro(STORY.intro);this.a.startDrone('corridor')},100)
+    setTimeout(()=>{this.engine.showIntro(STORY.intro);this.a.startDrone()},100)
+    setTimeout(()=>this.startShivaTimer(),3000)
   }
 
-  getScene(id){return SCENES[id]}
-  getExits(id){return ROOM_EXITS[id]||{}}
-  getHitbox(sceneId,objId){return HITBOXES[objId]}
-
-  setupInventoryUI(){
+  setupUI(){
     const bar=document.getElementById('inventory-bar')
-    bar.addEventListener('dragover',e=>{e.preventDefault()})
+    bar.addEventListener('dragover',e=>e.preventDefault())
     bar.addEventListener('drop',e=>{
       e.preventDefault()
       const src=parseInt(e.dataTransfer.getData('text/plain'))
@@ -253,7 +134,7 @@ class Game {
       s.title=ITEMS_NAME[it]||it
       if(this.selectedItem===i)s.classList.add('selected')
       s.draggable=true
-      s.addEventListener('dragstart',e=>{e.dataTransfer.setData('text/plain',i)})
+      s.addEventListener('dragstart',e=>e.dataTransfer.setData('text/plain',i))
       s.addEventListener('click',()=>this.selectItem(i))
       bar.appendChild(s)
     }
@@ -263,8 +144,7 @@ class Game {
     this.selectedItem=this.selectedItem===i?null:i
     this.renderInventory()
     if(this.selectedItem!==null){
-      const it=this.inventory[this.selectedItem]
-      this.engine.tooltip(ITEMS_NAME[it]+' selecionado')
+      this.engine.tooltip(ITEMS_NAME[this.inventory[this.selectedItem]]+' selecionado')
     }
   }
 
@@ -276,29 +156,37 @@ class Game {
       this.renderInventory()
       if(!silent)this.engine.tooltip(ITEMS_NAME[id]+' — pego.')
     }else if(!silent)this.engine.tooltip('Já tem isso.')
+    return true
   }
 
-  removeItem(id){
-    const i=this.inventory.indexOf(id)
-    if(i>-1){
-      this.inventory.splice(i,1)
-      if(this.selectedItem===i)this.selectedItem=null
-      else if(this.selectedItem>i)this.selectedItem--
-      this.renderInventory()
-    }
+  removeItem(idx){
+    if(idx===null||idx<0||idx>=this.inventory.length)return
+    const id=this.inventory[idx]
+    this.inventory.splice(idx,1)
+    if(this.selectedItem===idx)this.selectedItem=null
+    else if(this.selectedItem!==null&&this.selectedItem>idx)this.selectedItem--
+    this.renderInventory()
   }
 
   hasItem(id){return this.inventory.includes(id)}
-  obtained(id){if(!this.obtainedItems.includes(id))this.obtainedItems.push(id)}
+  hasObtained(id){return this.obtainedItems.includes(id)}
 
   tryCombine(srcIdx,targetIdx){
     const a=this.inventory[srcIdx],b=this.inventory[targetIdx]
     const result=tryCombine(a,b)
     if(result){
-      this.removeItem(a);this.removeItem(b)
+      this.removeItem(srcIdx)
+      this.removeItem(targetIdx>srcIdx?targetIdx-1:targetIdx)
       this.addItem(result,false)
       this.a.combine()
-      this.engine.tooltip(ITEMS_NAME[a]+' + '+ITEMS_NAME[b]+' = '+ITEMS_NAME[result],3000)
+      if(result==='vela_acesa'){
+        this.candleLit=true
+        this.engine.tooltip('A vela acende. A sala se revela.',3000)
+      }else if(result==='chave_completa'){
+        this.engine.tooltip('A chave está completa!',3000)
+      }else{
+        this.engine.tooltip(ITEMS_NAME[a]+' + '+ITEMS_NAME[b]+' = '+ITEMS_NAME[result],3000)
+      }
     }else{
       this.engine.tooltip('Não combina.')
     }
@@ -307,163 +195,272 @@ class Game {
   }
 
   handleClick(x,y){
-    const obj=this.engine.findHit(x,y)
-    if(!obj){this.engine.tooltip('...');return}
-    this.engine.clearTooltip()
-    this._interact(obj)
-  }
-
-  handleItemDrop(idx,x,y){
-    const obj=this.engine.findHit(x,y)
-    if(!obj){this.engine.tooltip('...');return}
-    const item=this.inventory[idx]
-    if(!item)return
-    this.selectedItem=idx
-    this._interact(obj)
-    if(this.engine.state!==S.PUZZLE){
-      this.selectedItem=null
-      this.renderInventory()
-    }
-  }
-
-  _interact(obj){
-    if(obj.type==='puzzle'){
-      this.startPuzzle(obj)
-    }else if(obj.type==='item'){
-      if(obj.gives){
-        if(obj.reveals){
-          this.removeObject(this.sceneId,obj.id)
-          this.addObject(this.sceneId,{id:obj.reveals,name:ITEMS_NAME[obj.reveals]||obj.reveals,type:'item',gives:obj.reveals,desc:''})
-          this.engine.tooltip(obj.desc||'Algo está escondido.')
-        }else{
-          this.obtained(obj.gives)
-          this.addItem(obj.gives,true)
-          this.engine.tooltip(obj.desc||'Pego.')
-        }
-      }
-    }else if(obj.type==='examine'){
-      if(obj.reveals){
-        this.removeObject(this.sceneId,obj.id)
-        this.addObject(this.sceneId,{id:obj.reveals,name:ITEMS_NAME[obj.reveals]||obj.reveals,type:'item',gives:obj.reveals,desc:''})
-        this.engine.tooltip(obj.desc||'Algo revelado!')
-      }else if(obj.note)this.addNote(obj.note)
-      else this.engine.tooltip(obj.desc||'...')
+    if(this.view===4){
+      if(y>570)return this.goToView(0)
     }else{
-      if(this.selectedItem!==null){
-        const item=this.inventory[this.selectedItem]
-        this.engine.tooltip(ITEMS_NAME[item]+' não funciona aqui.')
-      }else{
-        this.engine.tooltip(obj.desc||'...')
+      if(y<30)return this.goToView(4)
+      if(x<50)return this.goToView(this.view-1)
+      if(x>750)return this.goToView(this.view+1)
+    }
+
+    const vk=['north','east','south','west','ceiling'][this.view]
+    const objs=VIEWS[vk]
+    const hbs=HITBOXES[vk]
+
+    for(const obj of objs){
+      const h=hbs[obj.id]
+      if(!h)continue
+      if(x>=h.x&&x<=h.x+h.w&&y>=h.y&&y<=h.y+h.h){
+        this.engine.clearTooltip()
+        this.interact(obj)
+        return
       }
     }
+    this.engine.tooltip('...')
   }
 
-  addObject(sceneId,obj){
-    const sc=SCENES[sceneId]
-    if(sc&&!sc.objects.find(o=>o.id===obj.id))sc.objects.push(obj)
-  }
+  interact(obj){
+    const item=this.selectedItem!==null?this.inventory[this.selectedItem]:null
 
-  removeObject(sceneId,objId){
-    const sc=SCENES[sceneId]
-    if(sc){const i=sc.objects.findIndex(o=>o.id===objId);if(i>-1)sc.objects.splice(i,1)}
-  }
-
-  startPuzzle(obj){
-    if(!obj.puzzle)return
-    const p=PUZZLES[obj.puzzle]
-    if(!p)return
-    if(p.solved){this.engine.tooltip('Já resolveu isso.');return}
-    if(!p.inited){if(p.init)p.init();p.inited=true}
-    if(p.onOpen)p.onOpen(this.engine,this)
-    this.engine.openPuzzle(p)
-  }
-
-  addNote(id){
-    if(!this.notes.includes(id)){
-      this.notes.push(id)
-      this.obtainedItems.push('note_'+id)
-      this.a.paper()
-      const n=STORY.notes[id]
-      if(n)this.engine.showNote(n.symbol,n.text)
-      this.updateMemories()
+    switch(obj.type){
+      case 'door': return this.interactDoor(item)
+      case 'grate': return this.interactGrate(item)
+      case 'shelf': return this.interactShelf(item)
+      case 'mirror': return this.interactMirror(item)
+      case 'brick': return this.interactBrick(item)
+      case 'drain': return this.interactDrain(item)
+      case 'floorboard': return this.interactFloorboard(item)
+      case 'drawer': return this.startPuzzle('drawer')
+      case 'diary': return this.readDiary()
+      case 'chain': return this.interactChain(item)
+      case 'hatch': return this.interactHatch(item)
+      case 'item': return this.pickupItem(obj)
+      default: this.engine.tooltip(obj.desc||'...')
     }
   }
 
-  updateMemories(){
-    const ids=['cellar','kitchen','church','graveyard','mansion','tower']
-    for(let i=0;i<6;i++){
-      const el=document.getElementById('mem-'+i)
-      if(el){
-        if(this.notes.includes(ids[i])){
-          el.textContent=STORY.notes[ids[i]].symbol
-          el.className='mem-slot filled'
-        }else{el.textContent='○';el.className='mem-slot'}
-      }
+  pickupItem(obj){
+    if(obj.gives&&!this.hasItem(obj.gives)){
+      this.addItem(obj.gives,false)
+      obj.gives=null
+      obj.desc=obj.desc+' (vazio)'
+    }else if(obj.gives){
+      this.engine.tooltip('Já pegou isso.')
+    }else{
+      this.engine.tooltip(obj.desc||'...')
     }
   }
 
-  isLocked(roomId){
-    return this.locks[roomId]&&!this.obtainedItems.includes(this.locks[roomId])
-  }
-
-  goNorth(){
-    const e=ROOM_EXITS[this.sceneId]
-    if(e&&e.north)this.goTo(e.north);else this.engine.tooltip('Não há saída ao norte.')
-  }
-  goSouth(){
-    const e=ROOM_EXITS[this.sceneId]
-    if(e&&e.south)this.goTo(e.south);else this.engine.tooltip('Não há saída ao sul.')
-  }
-  goWest(){
-    const e=ROOM_EXITS[this.sceneId]
-    if(e&&e.west)this.goTo(e.west);else this.engine.tooltip('Não há saída a oeste.')
-  }
-  goEast(){
-    const e=ROOM_EXITS[this.sceneId]
-    if(e&&e.east)this.goTo(e.east);else this.engine.tooltip('Não há saída ao leste.')
-  }
-
-  goTo(target){
-    if(!SCENES[target]){this.engine.tooltip('Não há saída.');return}
-    if(this.isLocked(target)){
-      this.engine.tooltip('Trancado. Precisa de '+ITEMS_NAME[this.locks[target]]+'.')
+  /* ─── DOOR (ending trigger) ─── */
+  interactDoor(item){
+    if(!item){
+      this.engine.tooltip('Porta de madeira. Três fechaduras. Precisa de algo...')
       this.a.wrong()
       return
     }
-    this.a.door()
-    this.engine.transitionTo(target,()=>{
-      this.sceneId=target
-      const sc=SCENES[target]
-      this.a.startDrone(target)
-      if(sc.day&&sc.day!==this.day)this.day=sc.day
-      if(target==='tunnel'){this.showWatching();this.engine.tooltip('Shiva está aqui.',3000)}
-      else if(target==='tower')this.showWatching()
-      else if(target==='church')this.flashWatching(2000)
-      else this.hideWatching()
+
+    if(item==='chave_completa'){
+      this.a.final()
+      this.engine.showFinal(STORY.endings.abandon.title,STORY.endings.abandon.text)
+      this.engine.state=S.FINAL
+      return
+    }
+
+    if(item==='coleira'&&this.candleLit){
+      this.a.final()
+      this.engine.showFinal(STORY.endings.submission.title,STORY.endings.submission.text)
+      this.engine.state=S.FINAL
+      return
+    }
+
+    if(item==='bola'&&this.hasItem('osso')&&this.diaryRead){
+      this.a.final()
+      this.a.bell()
+      this.engine.showFinal(STORY.endings.walk.title,STORY.endings.walk.text)
+      this.engine.state=S.FINAL
+      return
+    }
+
+    this.engine.tooltip(ITEMS_NAME[item]+' não funciona na porta.')
+  }
+
+  /* ─── GRATE (north) ─── */
+  interactGrate(item){
+    if(this.hasObtained('coleira')){
+      this.engine.tooltip('Já abriu a grade.')
+      return
+    }
+    if(item==='ferro'){
+      this.a.chain()
+      this.engine.tooltip('A grade range! Uma coleira cai.',3000)
+      this.addItem('coleira',false)
+      this.selectedItem=null;this.renderInventory()
+      return
+    }
+    if(!item)this.engine.tooltip('Barras de ferro. Preciso de algo para forçar.')
+    else this.engine.tooltip(ITEMS_NAME[item]+' não quebra a grade.')
+  }
+
+  /* ─── SHELF (east) ─── */
+  interactShelf(item){
+    if(this.hasObtained('vela')){
+      this.engine.tooltip('A prateleira está vazia.')
+      return
+    }
+    if(item==='pedra'){
+      this.engine.tooltip('Quebrar a prateleira? Não faz sentido.')
+      return
+    }
+    this.addItem('vela',false)
+  }
+
+  /* ─── MIRROR (east) ─── */
+  interactMirror(item){
+    if(this.hasObtained('caco_vidro')){
+      this.engine.tooltip('O espelho já está quebrado.')
+      return
+    }
+    if(item==='pedra'){
+      this.a.chain()
+      this.engine.tooltip('O espelho estilhaça! Um caco no chão.',2000)
+      this.addItem('caco_vidro',false)
+      this.selectedItem=null
+      this.renderInventory()
+      return
+    }
+    this.engine.tooltip('O espelho está trincado. Dá pra quebrar com algo.')
+  }
+
+  /* ─── BRICK (east, needs candle) ─── */
+  interactBrick(item){
+    if(this.hasObtained('chave_1')){
+      this.engine.tooltip('O tijolo já foi removido.')
+      return
+    }
+    if(!this.candleLit){
+      this.engine.tooltip('Está escuro demais para ver direito.')
+      return
+    }
+    this.a.dig()
+    this.engine.tooltip('O tijolo se solta! Um fragmento de chave cai.',3000)
+    this.addItem('chave_1',false)
+  }
+
+  /* ─── DRAIN (south) ─── */
+  interactDrain(item){
+    if(this.hasObtained('chave_3')){
+      this.engine.tooltip('O ralo está vazio.')
+      return
+    }
+    if(!this.candleLit){
+      this.engine.tooltip('Água escura. Não dá pra ver o fundo.')
+      return
+    }
+    if(item==='ferro'){
+      this.a.water()
+      this.engine.tooltip('A tampa do ralo cede! Outro fragmento de chave.',3000)
+      this.addItem('chave_3',false)
+      this.selectedItem=null;this.renderInventory()
+      return
+    }
+    this.engine.tooltip('O ralo está tampado. Preciso de algo para abrir.')
+  }
+
+  /* ─── FLOORBOARD (south, needs candle) ─── */
+  interactFloorboard(item){
+    if(this.hasObtained('bola')){
+      this.engine.tooltip('O assoalho já foi levantado.')
+      return
+    }
+    if(!this.candleLit){
+      this.engine.tooltip('Não vejo direito no escuro.')
+      return
+    }
+    this.a.dig()
+    this.engine.tooltip('A tábua range! Uma bola velha embaixo.',3000)
+    this.addItem('bola',false)
+  }
+
+  /* ─── CHAIN (ceiling) ─── */
+  interactChain(item){
+    if(this.hasObtained('gancho')){
+      this.engine.tooltip('A corrente está partida. O gancho no chão.')
+      return
+    }
+    if(item==='ferro'){
+      this.a.chain()
+      this.engine.tooltip('A corrente range! O gancho se solta.',3000)
+      this.addItem('gancho',false)
+      this.selectedItem=null;this.renderInventory()
+      return
+    }
+    this.engine.tooltip('Corrente com um gancho. Preciso forçar com algo.')
+  }
+
+  /* ─── HATCH (ceiling) ─── */
+  interactHatch(item){
+    if(this.hasObtained('chave_2')){
+      this.engine.tooltip('O alçapão está aberto. Vazio.')
+      return
+    }
+    if(item==='corda_gancho'){
+      this.a.unlock()
+      this.engine.tooltip('O gancho prende no alçapão! Fragmento de chave e um osso.',3000)
+      this.addItem('chave_2',false)
+      this.addItem('osso',false)
+      this.removeItem(this.selectedItem)
+      this.selectedItem=null;this.renderInventory()
+      return
+    }
+    this.engine.tooltip('Alçapão no teto. Muito alto. Preciso de algo para alcançar.')
+  }
+
+  /* ─── DIARY ─── */
+  readDiary(){
+    this.diaryRead=true
+    this.a.paper()
+    this.engine.showNote('📖',STORY.diary.join('\n\n'))
+  }
+
+  /* ─── PUZZLE ─── */
+  startPuzzle(id){
+    const p=PUZZLES[id]
+    if(!p)return
+    if(p.solved){this.engine.tooltip('Já resolveu.');return}
+    if(!p.inited){if(p.init)p.init();p.inited=true}
+    this.engine.openPuzzle(p)
+  }
+
+  /* ─── VIEW NAVIGATION ─── */
+  goToView(idx){
+    if(idx<0)idx=4
+    else if(idx>4)idx=0
+    if(idx===this.view)return
+    this.engine.flashView(()=>{
+      this.view=idx
+      this.a.step()
     })
   }
 
-  flashWatching(dur){
-    this.showingWatching=true
-    if(this.watchTimer)clearTimeout(this.watchTimer)
-    this.watchTimer=setTimeout(()=>{this.showingWatching=false},dur||3000)
-  }
-  showWatching(){this.showingWatching=true;if(this.watchTimer)clearTimeout(this.watchTimer);this.watchTimer=null}
-  hideWatching(){this.showingWatching=false;if(this.watchTimer){clearTimeout(this.watchTimer);this.watchTimer=null}}
-
-  checkEndings(){
-    this.engine.closePuzzle()
-    const extras=['medallion','bell','feather','shard','lantern']
-    const extraCount=extras.filter(p=>this.obtainedItems.includes(p)).length
-    if(extraCount>=4){
-      this.engine.showFinal(STORY.endings.walk.title,STORY.endings.walk.text)
-    }else if(extraCount>=2){
-      this.engine.showFinal(STORY.endings.collar.title,STORY.endings.collar.text)
-    }else{
-      this.engine.showFinal(STORY.endings.bone.title,STORY.endings.bone.text)
-    }
+  /* ─── SHIVA TIMER ─── */
+  startShivaTimer(){
+    const next=90000+Math.random()*90000
+    this.shivaTimer=setTimeout(()=>{
+      if(this.engine.state===S.PLAYING){
+        this.shivaActive=true
+        this.shivaPhase=this.view
+        this.a.shiva()
+        setTimeout(()=>{
+          this.shivaActive=false
+          this.startShivaTimer()
+        },2500+Math.random()*2000)
+      }else{
+        this.startShivaTimer()
+      }
+    },next)
   }
 
+  /* ─── GAME LOOP ─── */
   loop(){
     this.engine.render(performance.now())
     requestAnimationFrame(()=>this.loop())
