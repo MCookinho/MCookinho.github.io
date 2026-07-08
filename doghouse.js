@@ -423,7 +423,7 @@
     renderer.shadowMap.enabled = true
     renderer.shadowMap.type = THREE.PCFSoftShadowMap
     renderer.toneMapping = THREE.ACESFilmicToneMapping
-    renderer.toneMappingExposure = 0.6
+    renderer.toneMappingExposure = 1.0
     document.body.prepend(renderer.domElement)
 
     raycaster = new THREE.Raycaster()
@@ -459,10 +459,10 @@
 
   // ===== LIGHTING =====
   function buildLighting() {
-    var amb = new THREE.AmbientLight(0x0a0a14, 0.2)
+    var amb = new THREE.AmbientLight(0x222244, 0.5)
     scene.add(amb)
 
-    var moon = new THREE.DirectionalLight(0x222244, 0.15)
+    var moon = new THREE.DirectionalLight(0x4444aa, 0.4)
     moon.position.set(-5, 8, 3)
     moon.castShadow = true
     moon.shadow.mapSize.width = 512
@@ -475,6 +475,21 @@
     moon.shadow.camera.near = 1
     moon.shadow.camera.far = 20
     scene.add(moon)
+
+    // Dim ceiling lights in each room (subtle)
+    var lightPositions = []
+    for (var row = 0; row < MAP.rows; row++) {
+      for (var col = 0; col < MAP.cols; col++) {
+        if (!isWalkable(col, row)) continue
+        var p = computeRoomPos(col, row)
+        lightPositions.push([p.x, 2.4, p.z])
+      }
+    }
+    lightPositions.forEach(function (p) {
+      var pl = new THREE.PointLight(0xff8844, 0.08, 4)
+      pl.position.set(p[0], p[1], p[2])
+      scene.add(pl)
+    })
   }
 
   // ===== FLASHLIGHT =====
