@@ -46,7 +46,7 @@ function drawParticles(ctx,id,t){
 }
 function hr(h){const v=parseInt(h.slice(1),16);return (v>>16)+','+((v>>8)&255)+','+(v&255)}
 
-function paperBG(seed){
+function paperBG(ctx, seed){
   rect(0,0,C(),H(),PAL.paper)
   for(let i=0;i<60;i++){
     const x=(i*137+seed)%800,y=(i*251+seed)%600
@@ -55,7 +55,7 @@ function paperBG(seed){
   }
 }
 
-function vignette(){
+function vignette(ctx){
   const g=ctx.createRadialGradient(400,300,100,400,300,500)
   g.addColorStop(0,'rgba(0,0,0,0)');g.addColorStop(1,'rgba(30,20,10,0.5)')
   ctx.fillStyle=g;ctx.fillRect(0,0,800,600)
@@ -65,13 +65,13 @@ function drawScene(ctx, sid, t){
   $ctx=ctx
   const f={corridor:drCorridor,cellar:drCellar,kitchen:drKitchen,church:drChurch,crypt:drCrypt,graveyard:drGraveyard,mansion:drMansion,library:drLibrary,tower:drTower,tunnel:drTunnel}
   ctx.save()
-  if(f[sid]){f[sid](ctx,t);drawParticles(ctx,sid,t);vignette()}
+  if(f[sid]){f[sid](ctx,t);drawParticles(ctx,sid,t);vignette(ctx)}
   else{rect(0,0,800,600,'#2a1f14');tx('◈',400,300,PAL.sepia_l,24)}
   ctx.restore()
 }
 
 function drCorridor(ctx,t){
-  paperBG(1)
+  paperBG(ctx,1)
   rect(0,0,200,600,PAL.ink_l);rect(600,0,200,600,PAL.ink_l)
   rect(0,480,800,120,PAL.ink_m)
   for(let i=0;i<30;i++){ln(0,100+i*15,200,100+i*15,PAL.shadow,1)}
@@ -91,7 +91,7 @@ function drCorridor(ctx,t){
 }
 
 function drCellar(ctx,t){
-  paperBG(7)
+  paperBG(ctx,7)
   rect(0,0,800,400,grad(0,0,0,400,PAL.ink_l,PAL.paper_d))
   for(let i=0;i<8;i++){
     rect(40+i*95,150,80,300,PAL.ink_m)
@@ -109,7 +109,7 @@ function drCellar(ctx,t){
 }
 
 function drKitchen(ctx,t){
-  paperBG(3)
+  paperBG(ctx,3)
   rect(0,0,800,200,grad(0,0,0,200,PAL.sepia,PAL.paper_d))
   rect(0,450,800,150,PAL.ink_m)
   rect(120,180,180,270,PAL.ink_l);rect(130,190,160,250,PAL.paper_d)
@@ -127,7 +127,7 @@ function drKitchen(ctx,t){
 }
 
 function drChurch(ctx,t){
-  paperBG(5)
+  paperBG(ctx,5)
   pl([[250,200],[550,200],[520,350],[280,350]],PAL.ink_m)
   rect(260,210,280,30,PAL.dark)
   rect(340,260,120,90,PAL.ink_l);rect(350,270,100,70,PAL.paper_d)
@@ -145,7 +145,7 @@ function drChurch(ctx,t){
 }
 
 function drCrypt(ctx,t){
-  paperBG(2)
+  paperBG(ctx,2)
   rect(0,0,800,600,grad(0,0,0,600,PAL.ink,PAL.dark))
   for(let i=0;i<4;i++){
     rect(80+i*200,80,40,500,PAL.ink_m)
@@ -166,7 +166,7 @@ function drCrypt(ctx,t){
 }
 
 function drGraveyard(ctx,t){
-  paperBG(11)
+  paperBG(ctx,11)
   rect(0,350,800,250,PAL.ink_m)
   for(let i=0;i<6;i++){
     const gx=60+i*115
@@ -183,7 +183,7 @@ function drGraveyard(ctx,t){
 }
 
 function drMansion(ctx,t){
-  paperBG(13)
+  paperBG(ctx,13)
   rect(0,0,800,250,grad(0,0,0,250,PAL.sepia,PAL.paper_d))
   rect(200,100,400,350,PAL.ink_l);rect(210,110,380,330,PAL.paper_d)
   circle(390,240,30,PAL.dark);circle(400,240,30,PAL.ink_l)
@@ -198,7 +198,7 @@ function drMansion(ctx,t){
 }
 
 function drLibrary(ctx,t){
-  paperBG(17)
+  paperBG(ctx,17)
   for(let i=0;i<4;i++){
     const sx=40+i*190
     rect(sx,90,170,310,PAL.ink_l)
@@ -213,7 +213,7 @@ function drLibrary(ctx,t){
 }
 
 function drTower(ctx,t){
-  paperBG(19)
+  paperBG(ctx,19)
   rect(0,0,200,600,PAL.ink_l);rect(600,0,200,600,PAL.ink_l)
   rect(0,480,800,120,PAL.ink_m)
   rect(200,100,400,400,PAL.ink_m);rect(210,110,380,380,PAL.paper_d)
@@ -233,7 +233,7 @@ function drTower(ctx,t){
 }
 
 function drTunnel(ctx,t){
-  paperBG(23)
+  paperBG(ctx,23)
   rect(0,0,800,600,grad(0,0,0,600,PAL.ink,PAL.dark))
   for(let i=0;i<8;i++){
     ctx.strokeStyle=`rgba(74,58,42,${0.05+Math.sin(t*0.0008+i)*0.05})`;ctx.lineWidth=1
