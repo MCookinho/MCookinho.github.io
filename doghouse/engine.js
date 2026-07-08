@@ -14,6 +14,7 @@ class Engine {
     this.time=0; this.tooltipTimer=0; this.tooltipText=''
     this.mouseX=0; this.mouseY=0
     this.scrX=0; this.scrY=0; this._hintHidden=false
+    this.transDir=0; this.transProgress=0
     this._resize()
     this._bindEvents()
   }
@@ -21,15 +22,9 @@ class Engine {
     this.cw=window.innerWidth; this.ch=window.innerHeight
     this.canvas.width=this.cw; this.canvas.height=this.ch
   }
-  _s(){
-    return Math.min(this.cw/this.LW,this.ch/this.LH)
-  }
-  _ox(){
-    return (this.cw-this.LW*this._s())/2
-  }
-  _oy(){
-    return (this.ch-this.LH*this._s())/2
-  }
+  _s(){return Math.min(this.cw/this.LW,this.ch/this.LH)}
+  _ox(){return (this.cw-this.LW*this._s())/2}
+  _oy(){return (this.ch-this.LH*this._s())/2}
   _scrToCanvas(cx,cy){
     const s=this._s()
     return {x:(cx-this._ox())/s,y:(cy-this._oy())/s}
@@ -58,7 +53,7 @@ class Engine {
     })
     document.getElementById('final-overlay').querySelector('.final-sub').addEventListener('click', () => location.reload())
     document.getElementById('hint-btn').addEventListener('click', () => {
-      this.tooltip('Explorar cada canto. Observar os detalhes. As respostas estão no ambiente.', 3000)
+      this.tooltip('Explore cada canto. Observe os detalhes. As respostas estão ao redor.', 3000)
     })
     window.addEventListener('resize',()=>this._resize())
     window.addEventListener('keydown', e => this._handleKey(e))
@@ -155,9 +150,10 @@ class Engine {
     const ov=document.getElementById('transition-overlay')
     ov.classList.add('active')
     setTimeout(()=>{
-      this.scene=sceneId; ov.classList.remove('active')
-      setTimeout(()=>{this.state=S.EXPLORE;if(cb)cb()},450)
-    },450)
+      this.scene=sceneId
+      ov.classList.remove('active')
+      setTimeout(()=>{this.state=S.EXPLORE;if(cb)cb()},500)
+    },500)
   }
   openPuzzle(puzzle){
     this.state=S.PUZZLE; this.puzzle=puzzle
@@ -178,7 +174,7 @@ class Engine {
     if(drawScene)drawScene(ctx,this.scene,now)
     else{ctx.fillStyle='#0a0505';ctx.fillRect(0,0,this.LW,this.LH)}
     if(this.state===S.PUZZLE&&this.puzzle){
-      ctx.fillStyle='rgba(5,2,2,0.7)'
+      ctx.fillStyle='rgba(5,2,2,0.75)'
       ctx.fillRect(0,0,this.LW,this.LH)
       if(this.puzzle.render)this.puzzle.render(ctx,now)
     }
@@ -186,43 +182,47 @@ class Engine {
     if(this.state===S.EXPLORE)this._drawMinimap(ctx)
     this._drawRoomLabel()
     this._drawEdgeHints()
-    document.getElementById('hud-watching').classList.toggle('show', window.__game && window.__game.showingWatching)
+    if(this.state!==S.TRANSITION){
+      document.getElementById('hud-watching').classList.toggle('show', window.__game && window.__game.showingWatching)
+    }
     if(this.tooltipTimer>0){this.tooltipTimer-=16;if(this.tooltipTimer<=0)this.clearTooltip()}
   }
   _drawMinimap(ctx){
-    if(!window.__game)return
+    if(!window.__game||this.state===S.TRANSITION)return
     const g=window.__game,id=g.sceneId
     const p=ROOM_GRID[id];if(!p)return
-    const ms=18,gap=4,ox=20,oy=20,rad=5
-    const minX=Math.min(...Object.values(ROOM_GRID).map(v=>v[0]))
-    const minY=Math.min(...Object.values(ROOM_GRID).map(v=>v[1]))
-    const maxX=Math.max(...Object.values(ROOM_GRID).map(v=>v[0]))
-    const maxY=Math.max(...Object.values(ROOM_GRID).map(v=>v[1]))
+    const ms=16,gap=3,ox=12,oy=12
+    const rooms=Object.entries(ROOM_GRID)
+    const minX=Math.min(...rooms.map(([_,v])=>v[0]))
+    const minY=Math.min(...rooms.map(([_,v])=>v[1]))
+    const maxX=Math.max(...rooms.map(([_,v])=>v[0]))
+    const maxY=Math.max(...rooms.map(([_,v])=>v[1]))
     const cols=maxX-minX+1,rows=maxY-minY+1
     const mw=cols*(ms+gap)-gap,mh=rows*(ms+gap)-gap
-    const bx=ox,by=oy
     ctx.save()
-    ctx.fillStyle='rgba(10,5,5,0.85)'
-    ctx.fillRect(bx-6,by-6,mw+12,mh+12)
+    ctx.fillStyle='rgba(5,2,2,0.9)'
+    ctx.fillRect(ox-4,oy-4,mw+8,mh+8)
     ctx.strokeStyle='#2a1010';ctx.lineWidth=1
-    ctx.strokeRect(bx-6,by-6,mw+12,mh+12)
-    for(const[rid,[rx,ry]]of Object.entries(ROOM_GRID)){
-      const cx=bx+(rx-minX)*(ms+gap)+ms/2
-      const cy=by+(ry-minY)*(ms+gap)+ms/2
+    ctx.strokeRect(ox-4,oy-4,mw+8,mh+8)
+    for(const[rid,[rx,ry]]of rooms){
+      const cx=ox+(rx-minX)*(ms+gap)+ms/2
+      const cy=oy+(ry-minY)*(ms+gap)+ms/2
       const isCurrent=rid===id
-      const isConnected=getNeighbor(id,0,-1)===rid||getNeighbor(id,0,1)===rid||
-                       getNeighbor(id,-1,0)===rid||getNeighbor(id,1,0)===rid
-      ctx.fillStyle=isCurrent?'#c4a46c':isConnected?'#5a3a3a':'#2a1010'
+      const isLocked=g.isLocked(rid)
+      const isConnected=!!getNeighbor(id,rid!==id?0:1,0)
+      ctx.fillStyle=isCurrent?'#c4a46c':isLocked?'#1a0a0a':'#3a1a1a'
       ctx.fillRect(cx-ms/2+2,cy-ms/2+2,ms-4,ms-4)
       if(isCurrent){
         ctx.strokeStyle='#e8d4a8';ctx.lineWidth=1.5
         ctx.strokeRect(cx-ms/2+1,cy-ms/2+1,ms-2,ms-2)
       }
+      if(isLocked){
+        ctx.fillStyle='#2a1010';ctx.font='7px Georgia';ctx.textAlign='center'
+        ctx.fillText('🔒',cx,cy+3)
+      }
     }
-    ctx.fillStyle='#3a1a1a'
-    ctx.font='7px Georgia'
-    ctx.textAlign='left'
-    ctx.fillText('⊙ MAPA',bx+2,by+mh+12)
+    ctx.fillStyle='#3a1a1a';ctx.font='6px Georgia';ctx.textAlign='left'
+    ctx.fillText('⊙ MAPA',ox+2,oy+mh+10)
     ctx.restore()
   }
   _drawRoomLabel(){
@@ -235,37 +235,38 @@ class Engine {
     el.style.display='block'
   }
   _drawEdgeHints(){
-    if(!window.__game||this.state!==S.EXPLORE)return
+    if(!window.__game||this.state!==S.EXPLORE||this.state===S.TRANSITION)return
     const ctx=this.ctx,g=window.__game,id=g.sceneId
-    const edge=80,aSize=16
+    const edge=80
     const dirs=[
       {d:'n',dx:0,dy:-1,x:this.cw/2,y:edge/2,label:'N'},
       {d:'s',dx:0,dy:1,x:this.cw/2,y:this.ch-edge/2,label:'S'},
       {d:'w',dx:-1,dy:0,x:edge/2,y:this.ch/2,label:'O'},
       {d:'e',dx:1,dy:0,x:this.cw-edge/2,y:this.ch/2,label:'L'}
     ]
-    const mouseNear=80
     const nearEdge=dirs.find(d=>{
-      if(d.d==='n')return this.scrY<mouseNear
-      if(d.d==='s')return this.scrY>this.ch-mouseNear
-      if(d.d==='w')return this.scrX<mouseNear
-      if(d.d==='e')return this.scrX>this.cw-mouseNear
+      if(d.d==='n')return this.scrY<80
+      if(d.d==='s')return this.scrY>this.ch-80
+      if(d.d==='w')return this.scrX<80
+      if(d.d==='e')return this.scrX>this.cw-80
     })
     ctx.save()
     for(const d of dirs){
       const hasExit=getNeighbor(id,d.dx,d.dy)
+      const locked=hasExit?g.isLocked(hasExit):false
       if(!hasExit)continue
       const isHover=nearEdge&&nearEdge.d===d.d&&!this._hintHidden
-      const alpha=isHover?0.9:0.25
+      const alpha=isHover?0.9:0.2
       ctx.fillStyle=`rgba(196,164,108,${alpha})`
       ctx.font=`${isHover?14:10}px Georgia`
       ctx.textAlign='center';ctx.textBaseline='middle'
-      ctx.fillText(d.label,d.x,d.y)
-      if(isHover){
-        ctx.font='11px Georgia'
+      const label=locked?'🔒':d.label
+      ctx.fillText(label,d.x,d.y)
+      if(isHover&&!locked){
+        ctx.font='10px Georgia'
         ctx.fillStyle='rgba(196,164,108,0.5)'
         const name=SCENES[hasExit]?.name||''
-        ctx.fillText(name,d.x,d.y+(d.d==='n'?18:-18))
+        ctx.fillText('→ '+name,d.x,d.y+(d.d==='n'?18:-18))
       }
     }
     ctx.restore()

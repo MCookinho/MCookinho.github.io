@@ -122,17 +122,12 @@ class AudioSys{
     if(!this.ctx||this.muted)return
     this.stopDrone()
     const themes={
-      corridor_1:{n:'Intro',bpm:50,scale:[0,2,3,5,7,8,10],root:55,pat:'bass'},
-      corridor_2:{n:'Patamar',bpm:55,scale:[0,2,4,7,9],root:49,pat:'bass'},
+      corridor:{n:'Corredor',bpm:50,scale:[0,2,3,5,7,8,10],root:55,pat:'bass'},
       cellar:{n:'Porao',bpm:45,scale:[0,3,5,7,10],root:44,pat:'arp'},
       kitchen:{n:'Cozinha',bpm:60,scale:[0,2,3,5,7],root:65,pat:'arp'},
-      corridor_3:{n:'Antessala',bpm:50,scale:[0,2,4,7,9],root:55,pat:'bass'},
       church:{n:'Capela',bpm:40,scale:[0,3,5,7,8,10],root:110,pat:'pad'},
-      corridor_4:{n:'Patio',bpm:48,scale:[0,2,3,5,7,9],root:49,pat:'bass'},
       graveyard:{n:'Cemiterio',bpm:38,scale:[0,3,5,6,8,10],root:41,pat:'arp'},
-      corridor_5:{n:'Salao',bpm:52,scale:[0,2,4,7,9],root:58,pat:'bass'},
       mansion:{n:'Solar',bpm:42,scale:[0,3,5,7,8,10],root:98,pat:'pad'},
-      corridor_6:{n:'Escada',bpm:46,scale:[0,2,3,5,7,9,10],root:65,pat:'bass'},
       library:{n:'Biblioteca',bpm:35,scale:[0,2,4,5,7,9],root:73,pat:'pad'},
       tower:{n:'Torre',bpm:30,scale:[0,2,3,5,7,8,10,12],root:130,pat:'arp'},
       tunnel:{n:'Tunel',bpm:25,scale:[0,1,3,4,6,7,9,10],root:38,pat:'arp'},

@@ -1,166 +1,104 @@
+const ROOM_LOCKS = {
+  cellar:'cellar_key',
+  kitchen:'kitchen_key',
+  church:'church_key',
+  graveyard:'graveyard_key',
+  mansion:'mansion_key',
+  library:'library_key',
+  tower:'tower_key',
+  tunnel:'collar'
+}
+
 const SCENES = {
-  corridor_1: {
-    id:'corridor_1', name:'CORREDOR', day:7,
-    connections:{north:'cellar'},
+  corridor:{
+    id:'corridor', name:'CORREDOR', day:7,
     objects:[
-      {id:'door_front',name:'PORTÃO',type:'puzzle',puzzle:'gate',desc:'Três fechaduras de símbolos.'},
-      {id:'lamp_c1',name:'LÂMPADA',desc:'Oscila sem vento.'},
-      {id:'wall_c1',name:'PAREDE',desc:'"O passeio começa onde a luz termina."'},
-      {id:'ground_c1',name:'CHÃO',desc:'Pegadas recentes levam ao portão.'},
-      {id:'stairs_c1',name:'ESCADARIA',type:'exit',target:'cellar',desc:'Desce para o porão.'}
+      {id:'gate',name:'PORTÃO',type:'puzzle',puzzle:'gate',desc:'Três fechaduras de símbolos.'},
+      {id:'lamp_c',name:'LÂMPADA',desc:'Oscila sem vento.'},
+      {id:'wall_c',name:'PAREDE',desc:'"O passeio começa onde a luz termina."'},
+      {id:'ground_c',name:'CHÃO',desc:'Pegadas recentes levam ao portão.'},
+      {id:'cellar_key',name:'CHAVE DO PORÃO',type:'item',gives:'cellar_key',desc:'Chave enferrujada no chão.'},
+      {id:'medallion',name:'MEDALHÃO',type:'item',gives:'medallion',desc:'Medalhão frio no chão.'}
     ]
   },
-  cellar: {
-    id:'cellar', name:'PORÃO — CELA 1', day:7,
-    connections:{south:'corridor_1', north:'corridor_2'},
+  cellar:{
+    id:'cellar', name:'PORÃO', day:7,
     objects:[
-      {id:'well',name:'POÇO',type:'puzzle',puzzle:'cellar_well',desc:'A água reflete uma luz que não existe.'},
-      {id:'wall_cellar',name:'PAREDE',type:'examine',desc:'Parede úmida.',note:'cellar'},
-      {id:'chain_cellar',name:'CORRENTE',type:'item',gives:'cellar_key',desc:'Uma chave pendurada.'},
+      {id:'chain_cellar',name:'CORRENTE',type:'item',gives:'kitchen_key',desc:'Chave da cozinha pendurada na corrente.'},
       {id:'vent_cellar',name:'VENTILAÇÃO',type:'puzzle',puzzle:'cellar_vent',desc:'Algo brilha atrás das barras.'},
-      {id:'water_cellar',name:'ÁGUA',desc:'O reflexo não é seu. É Shiva.'},
-      {id:'exit_cellar_fwd',name:'SUBIR',type:'exit',target:'corridor_2'},
-      {id:'exit_cellar_back',name:'VOLTAR',type:'exit',target:'corridor_1'}
+      {id:'wall_cellar',name:'PAREDE',type:'examine',desc:'Parede úmida.',note:'cellar'},
+      {id:'water_cellar',name:'POÇO',desc:'O reflexo não é seu. É Shiva.'},
+      {id:'bell_cellar',name:'SINO',type:'item',gives:'bell',desc:'Sino pequeno enferrujado.'}
     ]
   },
-  corridor_2: {
-    id:'corridor_2', name:'PATAMAR', day:7,
-    connections:{south:'cellar', north:'kitchen'},
+  kitchen:{
+    id:'kitchen', name:'COZINHA', day:7,
     objects:[
-      {id:'exit_c2_fwd',name:'SOBE',type:'exit',target:'kitchen'},
-      {id:'exit_c2_back',name:'DESCE',type:'exit',target:'cellar'},
-      {id:'window_c2',name:'JANELA',desc:'Algo passa voando na escuridão.'}
-    ]
-  },
-  kitchen: {
-    id:'kitchen', name:'COZINHA — CELA 2', day:7,
-    connections:{south:'corridor_2', north:'corridor_3'},
-    objects:[
-      {id:'stove',name:'FOGÃO',type:'puzzle',puzzle:'kitchen_stove',desc:'Cinzas frias.'},
-      {id:'radio',name:'RÁDIO',type:'puzzle',puzzle:'kitchen_radio',desc:'O dial está solto.'},
-      {id:'cabinet_kitchen',name:'ARMÁRIO',type:'examine',desc:'Range.',note:'kitchen'},
       {id:'sink',name:'PIA',type:'puzzle',puzzle:'kitchen_sink',desc:'Água pinga sem parar.'},
-      {id:'knife',name:'FACA',type:'item',gives:'wax',desc:'Cera grudada no cabo.'},
-      {id:'exit_kitchen_back',name:'VOLTAR',type:'exit',target:'corridor_2'},
-      {id:'exit_kitchen_fwd',name:'SAÍDA',type:'exit',target:'corridor_3'}
+      {id:'cabinet_kitchen',name:'ARMÁRIO',type:'examine',desc:'Range.',note:'kitchen'},
+      {id:'knife',name:'FACA',type:'item',gives:'wax',desc:'Cera grudada no cabo.'}
     ]
   },
-  corridor_3: {
-    id:'corridor_3', name:'CORREDOR', day:7,
-    connections:{south:'kitchen', north:'church'},
+  church:{
+    id:'church', name:'CAPELA', day:7,
     objects:[
-      {id:'exit_c3_back',name:'VOLTAR',type:'exit',target:'kitchen'},
-      {id:'exit_c3_fwd',name:'CAPELA',type:'exit',target:'church'},
-      {id:'bell_c3',name:'SINO',type:'item',gives:'bell',desc:'Sino pequeno.'},
-      {id:'candle_c3',name:'VELA',type:'item',gives:'candle',desc:'Vela largada no canto.'}
-    ]
-  },
-  church: {
-    id:'church', name:'CAPELA — CELA 3', day:7,
-    connections:{south:'corridor_3', north:'corridor_4'},
-    objects:[
-      {id:'altar',name:'ALTAR',type:'puzzle',puzzle:'church_altar',desc:'Três cavidades.'},
+      {id:'altar',name:'ALTAR',type:'puzzle',puzzle:'church_altar',desc:'Três cavidades aguardam oferendas.'},
       {id:'statue',name:'ESTÁTUA',type:'examine',desc:'Cão de três cabeças.',note:'church'},
       {id:'pew',name:'BANCO',type:'item',gives:'feather',desc:'Pena preta no banco.'},
-      {id:'window_church',name:'VITRAL',desc:'Luz forma um símbolo no chão.'},
-      {id:'exit_church_back',name:'VOLTAR',type:'exit',target:'corridor_3'},
-      {id:'exit_church_fwd',name:'SAÍDA',type:'exit',target:'corridor_4'}
+      {id:'window_church',name:'VITRAL',desc:'Luz forma um símbolo no chão.'}
     ]
   },
-  corridor_4: {
-    id:'corridor_4', name:'CORREDOR', day:7,
-    connections:{south:'church', north:'graveyard'},
-    objects:[
-      {id:'exit_c4_back',name:'VOLTAR',type:'exit',target:'church'},
-      {id:'exit_c4_fwd',name:'CEMITÉRIO',type:'exit',target:'graveyard'},
-      {id:'wind_c4',name:'VENTO',desc:'Uivo distante.'}
-    ]
-  },
-  graveyard: {
-    id:'graveyard', name:'CEMITÉRIO — CELA 4', day:7,
-    connections:{south:'corridor_4', north:'corridor_5'},
+  graveyard:{
+    id:'graveyard', name:'CEMITÉRIO', day:7,
     objects:[
       {id:'grave_all',name:'TÚMULOS',type:'puzzle',puzzle:'graveyard_tomb',desc:'Seis túmulos em fileira.'},
-      {id:'tree',name:'ÁRVORE',desc:'Galhos como dedos.'},
-      {id:'fence',name:'CERCA',type:'item',gives:'graveyard_key',desc:'Chave pendurada.'},
-      {id:'exit_grave_back',name:'VOLTAR',type:'exit',target:'corridor_4'},
-      {id:'exit_grave_fwd',name:'SAÍDA',type:'exit',target:'corridor_5'}
+      {id:'fence',name:'CERCA',desc:'Chave pendurada na cerca. Já não está mais aqui.'},
+      {id:'tree',name:'ÁRVORE',desc:'Galhos como dedos.'}
     ]
   },
-  corridor_5: {
-    id:'corridor_5', name:'CORREDOR', day:7,
-    connections:{south:'graveyard', north:'mansion'},
+  mansion:{
+    id:'mansion', name:'SALÃO', day:7,
     objects:[
-      {id:'exit_c5_back',name:'VOLTAR',type:'exit',target:'graveyard'},
-      {id:'exit_c5_fwd',name:'SALÃO',type:'exit',target:'mansion'},
-      {id:'rug',name:'TAPETE',type:'item',gives:'ribbon',desc:'Fita vermelha na franja.'}
-    ]
-  },
-  mansion: {
-    id:'mansion', name:'SALÃO — CELA 5', day:7,
-    connections:{south:'corridor_5', north:'corridor_6'},
-    objects:[
-      {id:'mirror',name:'ESPELHO',type:'puzzle',puzzle:'mansion_mirror',desc:'Reflexo atrasado.'},
-      {id:'portrait',name:'RETRATO',type:'examine',desc:'Olhos arrancados.',note:'mansion'},
-      {id:'cabinet_mansion',name:'ARMÁRIO',type:'puzzle',puzzle:'mansion_cabinet',desc:'Gavetas trancadas.'},
+      {id:'cabinet_mansion',name:'ARMÁRIO',type:'puzzle',puzzle:'mansion_cabinet',desc:'Gavetas trancadas com segredo.'},
       {id:'clock_mansion',name:'RELÓGIO',type:'puzzle',puzzle:'mansion_clock',desc:'Pêndulo parado.'},
-      {id:'lamp_mansion',name:'ABAJUR',type:'item',gives:'mansion_key',desc:'Luz azulada revela chave.'},
-      {id:'exit_mansion_back',name:'VOLTAR',type:'exit',target:'corridor_5'},
-      {id:'exit_mansion_fwd',name:'SOBE',type:'exit',target:'corridor_6'}
+      {id:'portrait',name:'RETRATO',type:'examine',desc:'Olhos arrancados.',note:'mansion'},
+      {id:'lamp_mansion',name:'ABAJUR',desc:'Luz azulada, mas a chave já não está aqui.'}
     ]
   },
-  corridor_6: {
-    id:'corridor_6', name:'ESCADA', day:8,
-    connections:{south:'mansion', north:'library'},
-    objects:[
-      {id:'exit_c6_back',name:'DESCE',type:'exit',target:'mansion'},
-      {id:'exit_c6_fwd',name:'BIBLIOTECA',type:'exit',target:'library'},
-      {id:'mirror_c6',name:'ESPELHO',desc:'Você está diferente. Mais velho.'}
-    ]
-  },
-  library: {
+  library:{
     id:'library', name:'BIBLIOTECA', day:8,
-    connections:{south:'corridor_6', north:'tower'},
     objects:[
-      {id:'shelf_main',name:'ESTANTE',type:'puzzle',puzzle:'library_shelf',desc:'Livros em ordem.'},
+      {id:'shelf_main',name:'ESTANTE',type:'puzzle',puzzle:'library_shelf',desc:'Livros em ordem enigmática.'},
       {id:'book_table',name:'MESA',desc:'Cérbero: Guardião do Subumano'},
-      {id:'exit_library_back',name:'VOLTAR',type:'exit',target:'corridor_6'},
-      {id:'exit_library_fwd',name:'TORRE',type:'exit',target:'tower'}
+      {id:'lantern_lib',name:'LANTERNA',type:'item',gives:'lantern',desc:'Lanterna acesa no canto.'}
     ]
   },
-  tower: {
-    id:'tower', name:'TORRE — CELA 6', day:8,
-    connections:{south:'corridor_6', north:'tunnel'},
+  tower:{
+    id:'tower', name:'TORRE', day:8,
     objects:[
-      {id:'shrine',name:'SANTUÁRIO',type:'puzzle',puzzle:'tower_shrine',desc:'Seis velas.'},
+      {id:'shrine',name:'SANTUÁRIO',type:'puzzle',puzzle:'tower_shrine',desc:'Seis velas apagadas.'},
       {id:'bed_tower',name:'CAMA',type:'examine',desc:'Ainda quente.',note:'tower'},
       {id:'window_tower',name:'JANELA',desc:'O céu está cheio de olhos.'},
-      {id:'tower_candle',name:'VELA',type:'item',gives:'lantern',desc:'Chama ainda acesa.'},
-      {id:'exit_tower_back',name:'DESCE',type:'exit',target:'corridor_6'},
-      {id:'exit_tower_fwd',name:'TÚNEL',type:'exit',target:'tunnel'}
+      {id:'tower_candle',name:'VELAS',desc:'Chamas tremulam. A chave não está mais aqui.'}
     ]
   },
-  tunnel: {
+  tunnel:{
     id:'tunnel', name:'O TÚNEL', day:8,
-    connections:{south:'tower', north:'end'},
     objects:[
-      {id:'altar_tunnel',name:'ALTAR FINAL',type:'puzzle',puzzle:'final_altar',desc:'Três cavidades.'},
-      {id:'eye_tunnel',name:'OLHO',desc:'Shiva vê tudo.'},
-      {id:'light_tunnel',name:'LUZ',type:'exit',target:'end',desc:'Lá longe — a saída.'},
-      {id:'chain_tunnel',name:'CORRENTE',desc:'A corrente que te prendeu — quebrada.'},
-      {id:'exit_tunnel_back',name:'VOLTAR',type:'exit',target:'tower'}
+      {id:'altar_tunnel',name:'ALTAR FINAL',type:'puzzle',puzzle:'final_altar',desc:'Três cavidades para a oferenda final.'},
+      {id:'eye_tunnel',name:'O OLHO',desc:'Shiva vê tudo.'},
+      {id:'light_tunnel',name:'LUZ',desc:'Lá longe — talvez a saída.'},
+      {id:'chain_tunnel',name:'CORRENTE',desc:'A corrente que te prendeu — quebrada.'}
     ]
   }
 }
 
 const ROOM_GRID = {
-  corridor_1:[0,0], cellar:[1,0],
-  corridor_2:[1,1], kitchen:[1,2],
-  corridor_3:[0,2], church:[0,3],
-  corridor_4:[1,3], graveyard:[1,4],
-  corridor_5:[0,4], mansion:[0,5],
-  corridor_6:[1,5], library:[1,6],
-  tower:[0,6], tunnel:[0,7]
+  corridor:[0,0], cellar:[1,0],
+  kitchen:[0,1], church:[1,1],
+  graveyard:[2,0], mansion:[2,1],
+  library:[2,2], tower:[3,2],
+  tunnel:[3,3]
 }
 const GRID_ROOMS={};for(const[id,[x,y]]of Object.entries(ROOM_GRID))GRID_ROOMS[x+','+y]=id
 function getNeighbor(id,dx,dy){
@@ -169,90 +107,59 @@ function getNeighbor(id,dx,dy){
 }
 
 const HITBOXES = {
-  door_front:{x:280,y:150,w:240,h:330},
-  lamp_c1:{x:380,y:20,w:40,h:80},
-  wall_c1:{x:80,y:240,w:180,h:180},
-  ground_c1:{x:0,y:400,w:800,h:200},
-  stairs_c1:{x:500,y:400,w:200,h:100},
-  well:{x:300,y:300,w:200,h:200},
-  wall_cellar:{x:60,y:80,w:180,h:280},
+  gate:{x:200,y:100,w:400,h:400},
+  lamp_c:{x:380,y:30,w:40,h:60},
+  wall_c:{x:80,y:240,w:180,h:180},
+  ground_c:{x:0,y:400,w:800,h:200},
+   cellar_key:{x:620,y:380,w:40,h:40},
+   medallion:{x:300,y:420,w:30,h:30},
   chain_cellar:{x:500,y:120,w:60,h:180},
   vent_cellar:{x:600,y:200,w:60,h:60},
-  water_cellar:{x:350,y:350,w:100,h:100},
-  exit_cellar_fwd:{x:350,y:450,w:100,h:80},
-  exit_cellar_back:{x:50,y:450,w:80,h:80},
-  exit_c2_fwd:{x:350,y:150,w:100,h:200},
-  exit_c2_back:{x:50,y:300,w:80,h:100},
-  window_c2:{x:620,y:100,w:60,h:80},
-  stove:{x:60,y:200,w:140,h:200},
-  radio:{x:550,y:270,w:110,h:70},
-  cabinet_kitchen:{x:500,y:120,w:80,h:120},
+  wall_cellar:{x:60,y:80,w:180,h:280},
+   water_cellar:{x:350,y:350,w:100,h:100},
+   bell_cellar:{x:200,y:400,w:30,h:40},
   sink:{x:280,y:300,w:100,h:100},
+  cabinet_kitchen:{x:500,y:120,w:80,h:120},
   knife:{x:600,y:300,w:30,h:50},
-  exit_kitchen_back:{x:50,y:450,w:80,h:80},
-  exit_kitchen_fwd:{x:350,y:450,w:100,h:80},
-  exit_c3_back:{x:50,y:450,w:80,h:80},
-  exit_c3_fwd:{x:350,y:130,w:100,h:250},
-  bell_c3:{x:580,y:350,w:40,h:30},
-  candle_c3:{x:640,y:360,w:30,h:35},
-  altar:{x:340,y:280,w:120,h:80},
-  statue:{x:340,y:380,w:120,h:100},
+  altar:{x:340,y:260,w:120,h:100},
+  statue:{x:340,y:360,w:120,h:120},
   pew:{x:80,y:350,w:120,h:60},
   window_church:{x:600,y:100,w:80,h:100},
-  exit_church_back:{x:50,y:450,w:80,h:80},
-  exit_church_fwd:{x:350,y:450,w:100,h:80},
-  exit_c4_back:{x:50,y:450,w:80,h:80},
-  exit_c4_fwd:{x:350,y:120,w:100,h:250},
-  wind_c4:{x:100,y:200,w:100,h:100},
   grave_all:{x:40,y:300,w:720,h:100},
-  tree:{x:250,y:330,w:100,h:130},
   fence:{x:100,y:200,w:80,h:100},
-  exit_grave_back:{x:50,y:450,w:80,h:80},
-  exit_grave_fwd:{x:350,y:50,w:100,h:80},
-  exit_c5_back:{x:50,y:450,w:80,h:80},
-  exit_c5_fwd:{x:350,y:110,w:100,h:250},
-  rug:{x:200,y:420,w:400,h:30},
-  mirror:{x:270,y:70,w:260,h:310},
-  portrait:{x:40,y:180,w:60,h:70},
+  tree:{x:250,y:330,w:100,h:130},
   cabinet_mansion:{x:600,y:350,w:80,h:100},
   clock_mansion:{x:560,y:110,w:55,h:75},
+  portrait:{x:40,y:180,w:60,h:70},
   lamp_mansion:{x:40,y:280,w:40,h:70},
-  exit_mansion_back:{x:50,y:450,w:80,h:80},
-  exit_mansion_fwd:{x:350,y:450,w:100,h:80},
-  exit_c6_back:{x:50,y:450,w:80,h:80},
-  exit_c6_fwd:{x:350,y:70,w:100,h:200},
-  mirror_c6:{x:600,y:120,w:50,h:70},
   shelf_main:{x:40,y:90,w:720,h:310},
   book_table:{x:270,y:250,w:160,h:100},
-  exit_library_back:{x:50,y:450,w:80,h:80},
-  exit_library_fwd:{x:350,y:450,w:100,h:80},
+  lantern_lib:{x:680,y:350,w:35,h:45},
   shrine:{x:260,y:130,w:280,h:260},
   bed_tower:{x:100,y:250,w:180,h:140},
   window_tower:{x:550,y:80,w:100,h:100},
   tower_candle:{x:600,y:400,w:40,h:45},
-  exit_tower_back:{x:50,y:450,w:80,h:80},
-  exit_tower_fwd:{x:350,y:450,w:100,h:80},
   altar_tunnel:{x:340,y:270,w:120,h:120},
   eye_tunnel:{x:350,y:150,w:100,h:90},
   light_tunnel:{x:680,y:100,w:80,h:200},
-  chain_tunnel:{x:100,y:280,w:80,h:180},
-  exit_tunnel_back:{x:50,y:450,w:80,h:80}
+  chain_tunnel:{x:100,y:280,w:80,h:180}
 }
 
 const ITEMS_ICONS = {
   cellar_key:'🗝️',kitchen_key:'🗝️',church_key:'🗝️',graveyard_key:'🦴',
-  mansion_key:'🗝️',tower_key:'🔑',key6:'⚜️',match:'🔥',wax:'🕯️',
-  photo:'📷',medallion:'📿',bell:'🔔',feather:'🪶',skull:'💀',
-  collar:'⛓️',ribbon:'🎀',shard:'🪞',flower:'🌺',ring:'💍',
-  mirror:'🪞',candle:'🕯️',lantern:'🏮',rope:'🪢',heart:'❤️'
+  mansion_key:'🗝️',tower_key:'🔑',wax:'🕯️',
+  medallion:'📿',bell:'🔔',  feather:'🪶',skull:'💀',photo:'🖼️',
+  collar:'⛓️',shard:'🪞',flower:'🌺',ring:'💍',
+  lantern:'🏮',candle:'🕯️',match:'🔥',ribbon:'🎀',
+  eye:'👁️',bone:'🦴',mirror:'🪞'
 }
 const ITEMS_NAMES = {
   cellar_key:'Chave do Porão',kitchen_key:'Chave da Cozinha',church_key:'Chave da Capela',
   graveyard_key:'Chave do Cemitério',mansion_key:'Chave do Salão',tower_key:'Chave da Torre',
-  key6:'Chave Dourada',match:'Fósforo',wax:'Vela',photo:'Fotografia',
-  medallion:'Medalhão',bell:'Sino',feather:'Pena',skull:'Caveira',
-  collar:'Coleira',ribbon:'Fita',shard:'Caco',flower:'Flor',ring:'Anel',
-  mirror:'Espelho',candle:'Vela',lantern:'Lanterna',rope:'Corda',heart:'Coração'
+  wax:'Vela',medallion:'Medalhão',bell:'Sino',feather:'Pena',
+  collar:'Coleira',shard:'Caco de Espelho',flower:'Flor',ring:'Anel',
+  lantern:'Lanterna',candle:'Vela',match:'Fósforo',ribbon:'Fita',
+  skull:'Caveira',eye:'Olho de Vidro',bone:'Osso',mirror:'Espelho',photo:'Fotografia'
 }
 
 class Game {
@@ -264,18 +171,18 @@ class Game {
     this.notes=[]
     this.obtainedItems=[]
     this.selectedItem=null
+    this.locks={...ROOM_LOCKS}
     this.flags={}
-    this.sceneId='corridor_1'
-    this.prevScene=null
+    this.sceneId='corridor'
     this.day=7
-    this.engine.scene='corridor_1'
+    this.engine.scene='corridor'
     this.engine.state=S.INTRO
     this.a.init()
     this.initHUD()
     this.showingWatching=false
     this.watchTimer=null
     this.loop()
-    setTimeout(()=>{this.startIntro();this.a.startDrone('corridor_1')},100)
+    setTimeout(()=>{this.startIntro();this.a.startDrone('corridor')},100)
   }
   startIntro(){
     this.engine.showIntro(STORY.intro)
@@ -352,7 +259,7 @@ class Game {
     for(let i=0;i<6;i++){
       const el=document.getElementById('mem-'+i)
       if(el){
-        if(i<this.notes.length){
+        if(this.notes.includes(ids[i])){
           el.textContent=STORY.notes[ids[i]].symbol
           el.className='mem-slot filled'
         }else{el.textContent='○';el.className='mem-slot'}
@@ -406,6 +313,9 @@ class Game {
     this.showingWatching=false
     if(this.watchTimer){clearTimeout(this.watchTimer);this.watchTimer=null}
   }
+  isLocked(roomId){
+    return this.locks[roomId]&&!this.obtainedItems.includes(this.locks[roomId])
+  }
   goTo(target){
     if(this.sceneId==='tunnel'&&target==='end'){
       this.endGame('bone')
@@ -415,13 +325,18 @@ class Game {
       this.engine.tooltip('Não há saída aqui.')
       return
     }
+    if(this.isLocked(target)){
+      this.engine.tooltip('Trancado. Precisa de '+ITEMS_NAMES[this.locks[target]]+'.')
+      this.a.wrong()
+      return
+    }
     this.prevScene=this.sceneId
     this.a.door()
     this.engine.transitionTo(target,()=>{
       this.sceneId=target
       const sc=SCENES[target]
       this.a.startDrone(target)
-      if(sc.day&&sc.day!==this.day){this.day=sc.day;this.updateDay()}
+      if(sc.day&&sc.day!==this.day){this.day=sc.day}
       if(target==='tunnel'){this.showWatching();this.engine.tooltip('O ar muda. Shiva está aqui.',3000)}
       else if(target==='tower')this.showWatching()
       else if(target==='church')this.flashWatching(2000)
@@ -444,18 +359,13 @@ class Game {
     const t=getNeighbor(this.sceneId,1,0)
     if(t)this.goTo(t);else this.engine.tooltip('Não há saída ao leste.')
   }
-  updateDay(){}
   checkEndings(){
     this.engine.closePuzzle()
-    const keys=['cellar_key','kitchen_key','church_key','graveyard_key','mansion_key','tower_key','key6']
-      .filter(k=>this.obtainedItems.includes(k)).length
-    const notes=['note_cellar','note_kitchen','note_church','note_graveyard','note_mansion','note_tower']
-      .filter(n=>this.obtainedItems.includes(n)).length
-    const prot=['photo','medallion','bell','feather','collar','ring','shard','lantern']
+    const prot=['medallion','bell','feather','collar','ring','shard','lantern','mirror']
       .filter(p=>this.obtainedItems.includes(p)).length
-    if(keys>=7&&notes>=6&&prot>=5){
+    if(this.obtainedItems.includes('collar')&&prot>=4){
       this.engine.showFinal(STORY.endings.walk.title,STORY.endings.walk.text)
-    }else if(keys>=7&&prot>=3){
+    }else if(prot>=3){
       this.engine.showFinal(STORY.endings.collar.title,STORY.endings.collar.text)
     }else{
       this.engine.showFinal(STORY.endings.bone.title,STORY.endings.bone.text)
