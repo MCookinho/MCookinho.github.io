@@ -1628,7 +1628,7 @@
     if (gameState.gameOver || gameState.caught) return
     var spd = keys.shift ? player.speed * 1.6 : player.speed
     var forward = new THREE.Vector3(-Math.sin(player.yaw), 0, -Math.cos(player.yaw))
-    var right = new THREE.Vector3(forward.z, 0, -forward.x)
+    var right = new THREE.Vector3(-forward.z, 0, forward.x)
     var move = new THREE.Vector3(0, 0, 0)
     if (keys.w) move.add(forward)
     if (keys.s) move.sub(forward)
