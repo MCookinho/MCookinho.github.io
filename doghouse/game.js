@@ -181,17 +181,23 @@ class Player {
       this.inventory.push(obj.item);
       if (obj.item === 'lanterna') this.hasLantern = true;
       engine.audio.playItemCollect();
-      // HUD update
+      map.removeObject(obj);
       this._updateInventoryHUD(engine);
 
       if (window.showNote && obj.itemNote) {
         window.showNote(obj.itemNote);
+        if (window.journal && !window.journal.notes.includes(obj.itemNote)) {
+          window.journal.notes.push(obj.itemNote);
+        }
       }
     }
     else if (obj.type === 'note' && !obj.read) {
       obj.read = true;
       if (window.showNote) {
         window.showNote(obj.noteId);
+      }
+      if (window.journal && !window.journal.notes.includes(obj.noteId)) {
+        window.journal.notes.push(obj.noteId);
       }
     }
     else if (obj.type === 'puzzle' && !obj.solved) {
@@ -257,6 +263,8 @@ class Player {
       }
       container.appendChild(slot);
     }
+    const lanternEl = document.getElementById('hud-lantern');
+    if (lanternEl) lanternEl.style.display = this.hasLantern ? '' : 'none';
   }
 
   render(ctx, camera) {
@@ -469,6 +477,7 @@ const puzzleState = {
 };
 const journal = {
   readCount: 0,
+  notes: [],
 };
 
 // expoe globalmente
@@ -477,6 +486,79 @@ window.player = player;
 window.shivaSystem = shivaSystem;
 window.puzzleState = puzzleState;
 window.journal = journal;
+
+/* ===== DIÁRIO ===== */
+function openJournal(tab) {
+  if (window.engine) window.engine.state.phase = 'note';
+  document.getElementById('journal-overlay').style.display = 'block';
+  renderJournal(tab || 'notes');
+}
+
+function closeJournal() {
+  document.getElementById('journal-overlay').style.display = 'none';
+  if (window.engine && window.engine.state.phase === 'note') {
+    window.engine.state.phase = 'exploration';
+  }
+}
+
+function renderJournal(tab) {
+  const content = document.getElementById('journal-content');
+  content.innerHTML = '';
+  document.querySelectorAll('.journal-tab').forEach(el => {
+    el.classList.toggle('active', el.dataset.tab === tab);
+  });
+
+  if (tab === 'notes') {
+    const noteIds = window.journal.notes;
+    if (!noteIds.length) {
+      content.innerHTML = '<div style="color:#5a5a3a;text-align:center;">NENHUM BILHETE ENCONTRADO.</div>';
+      return;
+    }
+    noteIds.forEach(id => {
+      const data = NOTES_DATA[id];
+      if (!data) return;
+      const entry = document.createElement('div');
+      entry.className = 'entry';
+      entry.innerHTML = `<div class="entry-title">${data.title}</div><div class="entry-text">${data.text}</div>`;
+      content.appendChild(entry);
+    });
+  } else if (tab === 'memories') {
+    const ps = window.puzzleState;
+    const memories = [
+      { id: 'joao', label: 'CELA 1 — JOÃO MARCELO', symbol: '☽' },
+      { id: 'sandalia', label: 'CELA 2 — SANDÁLIA', symbol: '⌵' },
+      { id: 'ulisses', label: 'CELA 3 — SEU ULISSES', symbol: '⌂' },
+      { id: 'enzo', label: 'CELA 4 — ENZO', symbol: '☆' },
+      { id: 'elaine', label: 'CELA 5 — ELAINE', symbol: '🔥' },
+      { id: 'giulia', label: 'CELA 6 — GIULIA L.', symbol: '◇' },
+    ];
+    memories.forEach((m, i) => {
+      const div = document.createElement('div');
+      div.className = 'entry';
+      const solved = ps && ps.solved && ps.solved[i];
+      div.innerHTML = `<div class="entry-title">${solved ? '✓' : '?'} ${m.label}</div><div class="entry-text">SÍMBOLO: ${m.symbol} — ${solved ? 'LIBERTADO' : '???'}</div>`;
+      content.appendChild(div);
+    });
+  }
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && document.getElementById('journal-overlay').style.display === 'block') {
+    closeJournal();
+  }
+});
+
+document.getElementById('journal-overlay').addEventListener('click', (e) => {
+  if (e.target === document.getElementById('journal-overlay') || e.target.id === 'journal-close') {
+    closeJournal();
+  }
+});
+
+document.querySelectorAll('.journal-tab').forEach(el => {
+  el.addEventListener('click', () => renderJournal(el.dataset.tab));
+});
+
+document.getElementById('hud-journal-btn').addEventListener('click', () => openJournal('notes'));
 
 /* ===== APP ===== */
 window.startGame = function() {
