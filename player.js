@@ -26,6 +26,9 @@
   var playerProgressFill = document.getElementById('playerProgressFill')
   var playerCurrentTime = document.getElementById('playerCurrentTime')
   var playerDuration = document.getElementById('playerDuration')
+  var playerVolume = document.getElementById('playerVolume')
+  var playerVolBtn = document.getElementById('playerVolBtn')
+  var playerVolumeSlider = document.getElementById('playerVolumeSlider')
   var musicClose = document.getElementById('musicClose')
   var musicTitle = document.querySelector('.music-title')
 
@@ -430,6 +433,22 @@
   playerRestart.addEventListener('click', restartSong)
   playerSpeed.addEventListener('click', cycleSpeed)
 
+  playerVolume.addEventListener('input', function () {
+    var v = parseFloat(playerVolume.value)
+    audio.volume = v
+    playerVolBtn.textContent = v === 0 ? '×' : v < 0.4 ? '♩' : '♪'
+  })
+
+  playerVolBtn.addEventListener('click', function () {
+    playerVolumeSlider.classList.toggle('open')
+  })
+
+  document.addEventListener('click', function (e) {
+    if (!playerVolBtn.contains(e.target) && !playerVolumeSlider.contains(e.target)) {
+      playerVolumeSlider.classList.remove('open')
+    }
+  })
+
   playerProgress.addEventListener('click', function (e) {
     var rect = playerProgress.getBoundingClientRect()
     var pct = (e.clientX - rect.left) / rect.width
@@ -460,4 +479,8 @@
   document.head.appendChild(style)
 
   loadPlaylist()
+
+  // Init volume
+  audio.volume = parseFloat(playerVolume.value)
+  playerVolBtn.textContent = '♪'
 })()
