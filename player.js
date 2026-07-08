@@ -1,7 +1,10 @@
 (function () {
   var songs = []
+  var folders = []
   var CACHE_KEY = 'mcookinho_playlist'
+  var COLLAPSED_KEY = 'mcookinho_folders'
   var CACHE_TTL = 5 * 60 * 1000
+  var API_BASE = 'https://api.github.com/repos/MCookinho/MCookinho.github.io/contents'
 
   var audio = document.getElementById('playerAudio')
   var overlay = document.getElementById('musicOverlay')
@@ -54,59 +57,97 @@
       .trim()
   }
 
+  function getCollapsed() {
+    try { return JSON.parse(localStorage.getItem(COLLAPSED_KEY)) || {} } catch (e) { return {} }
+  }
+
+  function saveCollapsed(name, val) {
+    var o = getCollapsed()
+    o[name] = val
+    localStorage.setItem(COLLAPSED_KEY, JSON.stringify(o))
+  }
+
+  function fetchDir(path) {
+    return fetch(API_BASE + '/' + path).then(function (r) {
+      if (r.status === 404) throw new Error('NOT_FOUND')
+      if (r.status === 403) throw new Error('RATE_LIMIT')
+      if (!r.ok) throw new Error('FAILED')
+      return r.json()
+    })
+  }
+
+  function fileToSong(f, folder) {
+    return {
+      title: titleFromName(f.name),
+      file: f.name,
+      url: f.download_url,
+      dur: null,
+      folder: folder || null
+    }
+  }
+
   function fetchPlaylist() {
     var cached = localStorage.getItem(CACHE_KEY)
     if (cached) {
       try {
         var data = JSON.parse(cached)
         if (Date.now() - data.ts < CACHE_TTL) {
-          return Promise.resolve(data.songs)
+          return Promise.resolve(data)
         }
       } catch (e) {}
     }
 
     loading = true
-    updateStatus('CARREGANDO...')
 
-    return fetch('https://api.github.com/repos/MCookinho/MCookinho.github.io/contents/assets/sound/playlist')
-      .then(function (r) {
-        if (r.status === 404) throw new Error('NOT_FOUND')
-        if (r.status === 403) throw new Error('RATE_LIMIT')
-        if (!r.ok) throw new Error('FAILED')
-        return r.json()
+    return fetchDir('assets/sound/playlist').then(function (items) {
+      if (!Array.isArray(items)) throw new Error('INVALID')
+
+      var mp3s = items.filter(function (f) {
+        return f.name.toLowerCase().endsWith('.mp3') && f.name !== '.gitkeep'
       })
-      .then(function (files) {
-        if (!Array.isArray(files)) throw new Error('INVALID')
-        var mp3s = files.filter(function (f) {
-          return f.name.toLowerCase().endsWith('.mp3') && f.name !== '.gitkeep'
-        })
-        mp3s.sort(function (a, b) { return a.name.localeCompare(b.name) })
+      var dirs = items.filter(function (f) { return f.type === 'dir' })
 
-        var parsed = mp3s.map(function (f, i) {
+      var rootSongs = mp3s.map(function (f) { return fileToSong(f, null) })
+
+      var dirPromises = dirs.map(function (dir) {
+        return fetchDir(dir.path).then(function (subItems) {
+          if (!Array.isArray(subItems)) return { name: dir.name, songs: [] }
+          var subMp3s = subItems.filter(function (f) { return f.name.toLowerCase().endsWith('.mp3') })
           return {
-            id: i + 1,
-            title: titleFromName(f.name),
-            file: f.name,
-            url: f.download_url,
-            dur: null
+            name: dir.name,
+            songs: subMp3s.map(function (f) { return fileToSong(f, dir.name) })
+          }
+        })
+      })
+
+      return Promise.all(dirPromises).then(function (folderData) {
+        var allSongs = rootSongs.slice()
+        var allFolders = []
+        folderData.forEach(function (f) {
+          if (f.songs.length > 0) {
+            allFolders.push({ name: f.name, songs: f.songs })
+            allSongs = allSongs.concat(f.songs)
           }
         })
 
-        localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), songs: parsed }))
-        loading = false
-        return parsed
+        allSongs.forEach(function (s, i) { s.id = i + 1 })
+
+        var data = { songs: allSongs, folders: allFolders }
+        localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), data: data }))
+        return data
       })
-      .catch(function (err) {
-        loading = false
-        // Try stale cache
-        if (cached) {
-          try {
-            var data = JSON.parse(cached)
-            return data.songs
-          } catch (e) {}
-        }
-        throw err
-      })
+    }).catch(function (err) {
+      if (cached) {
+        try {
+          var data = JSON.parse(cached)
+          if (data && data.data) return data.data
+        } catch (e) {}
+      }
+      throw err
+    }).then(function (data) {
+      loading = false
+      return data || { songs: [], folders: [] }
+    })
   }
 
   function updateStatus(msg) {
@@ -126,34 +167,73 @@
       return
     }
 
-    listEl.innerHTML = ''
+    var collapsed = getCollapsed()
+    var html = ''
+
+    // Root songs (no folder)
     songs.forEach(function (song, i) {
-      var item = document.createElement('div')
-      item.className = 'music-item'
-      if (i === currentIndex) item.classList.add('active')
+      if (song.folder) return
+      html += renderSongItem(song, i)
+    })
 
-      var durText = song.dur || '?:??'
+    // Folders
+    folders.forEach(function (f) {
+      var isCollapsed = !!collapsed[f.name]
+      html += '<div class="music-folder">'
+      html += '<div class="music-folder-header" data-folder="' + f.name + '">'
+      html += '<span class="music-folder-arrow">' + (isCollapsed ? '\u25B6' : '\u25BC') + '</span>'
+      html += '<span class="music-folder-name">' + f.name.toUpperCase() + '</span>'
+      html += '<span class="music-folder-count">(' + f.songs.length + ')</span>'
+      html += '</div>'
+      if (!isCollapsed) {
+        html += '<div class="music-folder-songs">'
+        songs.forEach(function (song, i) {
+          if (song.folder === f.name) html += renderSongItem(song, i)
+        })
+        html += '</div>'
+      }
+      html += '</div>'
+    })
 
-      item.innerHTML =
-        '<span class="music-item-num">' + pad(i + 1) + '</span>' +
-        '<div class="music-item-info">' +
-          '<span class="music-item-title">' + song.title + '</span>' +
-        '</div>' +
-        '<span class="music-item-duration">' + durText + '</span>' +
-        '<span class="music-item-play">' + (i === currentIndex && isPlaying ? '▶' : '♪') + '</span>'
+    listEl.innerHTML = html
 
-      item.addEventListener('click', function () {
-        playSong(i)
+    // Attach folder click listeners
+    listEl.querySelectorAll('.music-folder-header').forEach(function (header) {
+      header.addEventListener('click', function () {
+        var name = header.getAttribute('data-folder')
+        var collapsed = getCollapsed()
+        saveCollapsed(name, !collapsed[name])
+        renderList()
       })
-      listEl.appendChild(item)
+    })
+
+    // Attach song click listeners
+    listEl.querySelectorAll('.music-item').forEach(function (item) {
+      var idx = parseInt(item.getAttribute('data-idx'), 10)
+      if (!isNaN(idx)) {
+        item.addEventListener('click', function () { playSong(idx) })
+      }
     })
   }
 
-  function playSong(index) {
-    if (index < 0 || index >= songs.length) return
-    currentIndex = index
+  function renderSongItem(song, idx) {
+    var durText = song.dur || '?:??'
+    var active = currentIndex === idx && isPlaying
+    return '<div class="music-item' + (active ? ' active' : '') + '" data-idx="' + idx + '">' +
+      '<span class="music-item-num">' + pad(idx + 1) + '</span>' +
+      '<div class="music-item-info">' +
+        '<span class="music-item-title">' + song.title + '</span>' +
+      '</div>' +
+      '<span class="music-item-duration">' + durText + '</span>' +
+      '<span class="music-item-play">' + (active ? '\u25B6' : '\u266A') + '</span>' +
+    '</div>'
+  }
 
-    audio.src = songs[index].url
+  function playSong(idx) {
+    if (idx < 0 || idx >= songs.length) return
+    currentIndex = idx
+
+    audio.src = songs[idx].url
     audio.load()
     audio.play().then(function () {
       isPlaying = true
@@ -297,34 +377,32 @@
   function loadPlaylist() {
     musicTitle.textContent = '// CARREGANDO...'
 
-    fetchPlaylist()
-      .then(function (list) {
-        songs = list
-        musicTitle.textContent = '// MINHA PLAYLIST'
-        if (songs.length > 0) {
-          musicTitle.textContent += ' (' + songs.length + ')'
-        }
-        renderList()
-      })
-      .catch(function (err) {
-        musicTitle.textContent = '// MINHA PLAYLIST'
-        if (err.message === 'NOT_FOUND') {
-          updateStatus(
-            '<span class="music-status-icon">✕</span>' +
-            'PASTA NÃO ENCONTRADA<br/><strong>ASSETS/SOUND/PLAYLIST/</strong>'
-          )
-        } else if (err.message === 'RATE_LIMIT') {
-          updateStatus(
-            '<span class="music-status-icon">⏳</span>' +
-            'LIMITE DA API DO GITHUB<br/>TENTE NOVAMENTE MAIS TARDE'
-          )
-        } else {
-          updateStatus(
-            '<span class="music-status-icon">✕</span>' +
-            'ERRO AO CARREGAR PLAYLIST'
-          )
-        }
-      })
+    fetchPlaylist().then(function (data) {
+      songs = data.songs || []
+      folders = data.folders || []
+      var total = songs.length
+      musicTitle.textContent = '// MINHA PLAYLIST'
+      if (total > 0) musicTitle.textContent += ' (' + total + ')'
+      renderList()
+    }).catch(function (err) {
+      musicTitle.textContent = '// MINHA PLAYLIST'
+      if (err.message === 'NOT_FOUND') {
+        updateStatus(
+          '<span class="music-status-icon">\u2715</span>' +
+          'PASTA N\u00C3O ENCONTRADA<br/><strong>ASSETS/SOUND/PLAYLIST/</strong>'
+        )
+      } else if (err.message === 'RATE_LIMIT') {
+        updateStatus(
+          '<span class="music-status-icon">\u23F3</span>' +
+          'LIMITE DA API DO GITHUB<br/>TENTE NOVAMENTE MAIS TARDE'
+        )
+      } else {
+        updateStatus(
+          '<span class="music-status-icon">\u2715</span>' +
+          'ERRO AO CARREGAR PLAYLIST'
+        )
+      }
+    })
   }
 
   // Audio events
@@ -382,9 +460,19 @@
     }
   })
 
-  // Add status style
+  // Inline status/folder styles
   var style = document.createElement('style')
-  style.textContent = '.music-status { padding: 40px 20px; text-align: center; font-family: var(--font); font-size: 7px; color: var(--dim); line-height: 2; } .music-status-icon { display: block; font-size: 20px; margin-bottom: 12px; color: var(--purple); } .music-status strong { color: var(--cyan); }'
+  style.textContent =
+    '.music-status { padding: 40px 20px; text-align: center; font-family: var(--font); font-size: 7px; color: var(--dim); line-height: 2; }' +
+    '.music-status-icon { display: block; font-size: 20px; margin-bottom: 12px; color: var(--purple); }' +
+    '.music-status strong { color: var(--cyan); }' +
+    '.music-folder { border-bottom: 1px solid rgba(42,42,62,0.4); }' +
+    '.music-folder-header { display: flex; align-items: center; gap: 8px; padding: 10px 18px; cursor: pointer; transition: background 0.15s; }' +
+    '.music-folder-header:hover { background: rgba(168,85,247,0.06); }' +
+    '.music-folder-arrow { font-size: 8px; color: var(--cyan); min-width: 14px; }' +
+    '.music-folder-name { font-family: var(--font); font-size: 7px; color: var(--purple); letter-spacing: 1px; }' +
+    '.music-folder-count { font-family: var(--font); font-size: 6px; color: var(--dim); margin-left: auto; }' +
+    '.music-folder-songs { border-top: 1px solid rgba(42,42,62,0.2); }'
   document.head.appendChild(style)
 
   loadPlaylist()
