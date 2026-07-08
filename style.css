@@ -362,33 +362,32 @@ body {
 .skills-controller {
   flex-shrink: 0;
   width: 260px;
-  padding-top: 10px;
 }
 
 .ctrl-label {
   font-family: var(--font);
   font-size: 7px;
-  color: var(--dim);
+  color: var(--pink);
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   letter-spacing: 1px;
 }
 
 .ctrl-body {
   background: var(--card);
-  border: 2px solid var(--border);
+  border: 2px solid var(--cyan);
   padding: 14px 10px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 4px;
+  justify-content: center;
+  gap: 6px;
 }
 
 /* D-pad */
 .ctrl-dpad {
   display: grid;
-  grid-template-columns: 30px 30px 30px;
-  grid-template-rows: 30px 30px 30px;
+  grid-template-columns: 32px 32px 32px;
+  grid-template-rows: 32px 32px 32px;
   gap: 2px;
   flex-shrink: 0;
 }
@@ -413,17 +412,17 @@ body {
 }
 
 .ctrl-dpad .ctrl-btn {
-  width: 30px;
-  height: 30px;
-  background: var(--bg);
-  border: 2px solid var(--border);
-  font-size: 12px;
-  color: var(--dim);
+  width: 32px;
+  height: 32px;
+  background: #1a1a2e;
+  border: 2px solid #3a3a5e;
+  font-size: 14px;
+  color: var(--cyan);
 }
 
 .ctrl-dpad .ctrl-btn:hover {
+  background: #22223a;
   border-color: var(--cyan);
-  color: var(--cyan);
 }
 
 .ctrl-dpad .ctrl-btn.pressed,
@@ -445,27 +444,32 @@ body {
 .ctrl-select,
 .ctrl-start {
   font-size: 5px;
-  padding: 5px 6px;
-  background: var(--bg);
-  border: 2px solid var(--border);
-  color: var(--dim);
+  padding: 6px 8px;
   letter-spacing: 1px;
-  min-width: 32px;
+  min-width: 38px;
 }
 
-.ctrl-select:hover,
-.ctrl-start:hover {
-  border-color: var(--yellow);
-  color: var(--yellow);
+.ctrl-select {
+  background: var(--yellow);
+  border: 2px solid #b89600;
+  color: #000;
+}
+
+.ctrl-start {
+  background: var(--pink);
+  border: 2px solid #cc0055;
+  color: #fff;
 }
 
 .ctrl-select.pressed,
-.ctrl-select:active,
+.ctrl-select:active {
+  background: #b89600;
+  transform: translateY(2px);
+}
+
 .ctrl-start.pressed,
 .ctrl-start:active {
-  background: var(--yellow);
-  border-color: var(--yellow);
-  color: #000;
+  background: #cc0055;
   transform: translateY(2px);
 }
 
@@ -479,22 +483,22 @@ body {
 
 .ctrl-a,
 .ctrl-b {
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: bold;
 }
 
 .ctrl-b {
-  background: var(--yellow);
-  border: 2px solid #b89600;
+  background: var(--cyan);
+  border: 2px solid #009977;
   color: #000;
 }
 
 .ctrl-b.pressed,
 .ctrl-b:active {
-  background: #b89600;
+  background: #009977;
   transform: translateY(2px);
 }
 
@@ -1074,12 +1078,12 @@ body {
 
   .skill-bloco h3 { font-size: 11px; }
   .skill-items span { font-size: 8px; }
-  .skills-controller { width: 280px; }
+  .skills-controller { width: 300px; }
   .ctrl-label { font-size: 8px; }
-  .ctrl-dpad { grid-template-columns: 34px 34px 34px; grid-template-rows: 34px 34px 34px; }
-  .ctrl-dpad .ctrl-btn { width: 34px; height: 34px; font-size: 14px; }
-  .ctrl-a, .ctrl-b { width: 40px; height: 40px; font-size: 16px; }
-  .ctrl-select, .ctrl-start { font-size: 6px; padding: 6px 8px; min-width: 38px; }
+  .ctrl-dpad { grid-template-columns: 36px 36px 36px; grid-template-rows: 36px 36px 36px; }
+  .ctrl-dpad .ctrl-btn { width: 36px; height: 36px; font-size: 15px; }
+  .ctrl-a, .ctrl-b { width: 42px; height: 42px; font-size: 17px; }
+  .ctrl-select, .ctrl-start { font-size: 6px; padding: 7px 10px; min-width: 42px; }
 
   .projeto-card h3 { font-size: 12px; }
   .projeto-card p { font-size: 8px; }
@@ -1140,12 +1144,12 @@ body {
 
   .skill-bloco h3 { font-size: 13px; }
   .skill-items span { font-size: 9px; padding: 8px 14px; }
-  .skills-controller { width: 300px; }
+  .skills-controller { width: 320px; }
   .ctrl-label { font-size: 9px; }
-  .ctrl-dpad { grid-template-columns: 36px 36px 36px; grid-template-rows: 36px 36px 36px; }
-  .ctrl-dpad .ctrl-btn { width: 36px; height: 36px; font-size: 15px; }
-  .ctrl-a, .ctrl-b { width: 42px; height: 42px; font-size: 17px; }
-  .ctrl-select, .ctrl-start { font-size: 7px; padding: 7px 10px; min-width: 42px; }
+  .ctrl-dpad { grid-template-columns: 38px 38px 38px; grid-template-rows: 38px 38px 38px; }
+  .ctrl-dpad .ctrl-btn { width: 38px; height: 38px; font-size: 16px; }
+  .ctrl-a, .ctrl-b { width: 44px; height: 44px; font-size: 18px; }
+  .ctrl-select, .ctrl-start { font-size: 7px; padding: 8px 12px; min-width: 46px; }
 
   .projeto-card h3 { font-size: 14px; }
   .projeto-card p { font-size: 9px; }
