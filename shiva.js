@@ -707,7 +707,7 @@
               setTimeout(function () {
                 H.playDogBark()
                 H.animateTear(function () {
-                  setTimeout(function () { window.location.href = 'doghouse.html' }, 100)
+                  setTimeout(function () { window.location.href = 'doghouse/index.html' }, 100)
                 })
               }, 600)
             }, 10000)
