@@ -369,12 +369,17 @@
         this.dropTimer = 0
         if (!this.collides(this.piece.shape, this.piece.x, this.piece.y+1)) {
           this.piece.y++
-        } else {
-          this.lockTimer += dt
-          if (this.lockTimer >= this.lockDelay || this.lockMoves >= this.maxLockMoves) {
-            this.lock()
-          }
         }
+      }
+
+      // Lock delay runs every frame
+      if (this.collides(this.piece.shape, this.piece.x, this.piece.y+1)) {
+        this.lockTimer += dt
+        if (this.lockTimer >= this.lockDelay || this.lockMoves >= this.maxLockMoves) {
+          this.lock()
+        }
+      } else {
+        this.lockTimer = 0
       }
     }
 
