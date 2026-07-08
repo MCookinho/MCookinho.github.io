@@ -417,12 +417,12 @@ body {
   background: #1a1a2e;
   border: 2px solid #3a3a5e;
   font-size: 14px;
-  color: var(--cyan);
+  color: var(--purple);
 }
 
 .ctrl-dpad .ctrl-btn:hover {
   background: #22223a;
-  border-color: var(--cyan);
+  border-color: var(--purple);
 }
 
 .ctrl-dpad .ctrl-btn.pressed,
@@ -450,26 +450,26 @@ body {
 }
 
 .ctrl-select {
-  background: var(--yellow);
-  border: 2px solid #b89600;
-  color: #000;
-}
-
-.ctrl-start {
   background: var(--pink);
   border: 2px solid #cc0055;
   color: #fff;
 }
 
+.ctrl-start {
+  background: var(--cyan);
+  border: 2px solid #009977;
+  color: #000;
+}
+
 .ctrl-select.pressed,
 .ctrl-select:active {
-  background: #b89600;
+  background: #cc0055;
   transform: translateY(2px);
 }
 
 .ctrl-start.pressed,
 .ctrl-start:active {
-  background: #cc0055;
+  background: #009977;
   transform: translateY(2px);
 }
 
@@ -491,26 +491,26 @@ body {
 }
 
 .ctrl-b {
-  background: var(--cyan);
-  border: 2px solid #009977;
+  background: var(--yellow);
+  border: 2px solid #b89600;
   color: #000;
 }
 
 .ctrl-b.pressed,
 .ctrl-b:active {
-  background: #009977;
+  background: #b89600;
   transform: translateY(2px);
 }
 
 .ctrl-a {
-  background: var(--purple);
-  border: 2px solid #7c3aed;
-  color: #fff;
+  background: var(--yellow);
+  border: 2px solid #b89600;
+  color: #000;
 }
 
 .ctrl-a.pressed,
 .ctrl-a:active {
-  background: #7c3aed;
+  background: #b89600;
   transform: translateY(2px);
 }
 
