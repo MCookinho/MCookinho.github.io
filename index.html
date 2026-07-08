@@ -18,7 +18,13 @@
 
   <nav class="nav" id="nav">
     <div class="nav-inner">
-      <a href="#" class="nav-logo">[ MCOOKINHO ]</a>
+      <div class="nav-left">
+        <a href="#" class="nav-logo">[ MCOOKINHO ]</a>
+        <button class="cd-btn" id="cdBtn" aria-label="Abrir biblioteca de música">
+          <span class="cd-icon" id="cdIcon"></span>
+          <span class="cd-now-playing" id="cdNowPlaying"></span>
+        </button>
+      </div>
       <div class="nav-links" id="navLinks">
         <a href="#about">SOBRE</a>
         <a href="#skills">STACK</a>
@@ -313,8 +319,49 @@
     </div>
   </footer>
 
+  <!-- Music Library Overlay -->
+  <div class="music-overlay" id="musicOverlay">
+    <div class="music-panel">
+      <div class="music-header">
+        <h2 class="music-title">// MINHA PLAYLIST</h2>
+        <button class="music-close" id="musicClose">[ X ]</button>
+      </div>
+      <div class="music-list" id="musicList"></div>
+    </div>
+  </div>
+
+  <!-- Player Bar -->
+  <div class="player-bar" id="playerBar">
+    <div class="player-left">
+      <span class="player-cd-mini" id="playerCdMini"></span>
+      <div class="player-info">
+        <span class="player-song-name" id="playerSongName">NENHUMA MÚSICA</span>
+        <span class="player-artist-name" id="playerArtistName">PEU BORGES</span>
+      </div>
+    </div>
+    <div class="player-center">
+      <div class="player-progress-wrap">
+        <div class="player-progress" id="playerProgress">
+          <div class="player-progress-fill" id="playerProgressFill"></div>
+        </div>
+        <span class="player-time" id="playerCurrentTime">0:00</span>
+        <span class="player-time" id="playerDuration">0:00</span>
+      </div>
+    </div>
+    <div class="player-right">
+      <button class="player-btn" id="playerPrev" aria-label="Anterior">⏮</button>
+      <button class="player-btn" id="playerRestart" aria-label="Reiniciar">⏪</button>
+      <button class="player-btn player-play-btn" id="playerPlay" aria-label="Play/Pause">▶</button>
+      <button class="player-btn" id="playerNext" aria-label="Próxima">⏭</button>
+      <button class="player-btn player-speed-btn" id="playerSpeed" aria-label="Velocidade">1×</button>
+    </div>
+  </div>
+
+  <audio id="playerAudio" preload="metadata"></audio>
+
   <script src="script.js"></script>
   <script src="tetris.js"></script>
   <script src="shiva.js"></script>
+  <script src="player.js"></script>
 </body>
 </html>
