@@ -173,43 +173,278 @@
     }
   }
 
+  function easeInOutCubic(t) {
+    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
+  }
+
+  function easeOutElastic(t) {
+    var c4 = (2 * Math.PI) / 3
+    return t === 0 ? 0 : t === 1 ? 1 : Math.pow(2, -10 * t) * Math.sin((t * 10 - 0.75) * c4) + 1
+  }
+
   function animateTear(callback) {
     createCanvasOverlay()
     canvasEl.style.display = 'block'
     var w = canvasEl.width
     var h = canvasEl.height
     var startTime = performance.now()
-    var duration = 2500
-    var paws = []
-    var tearY = h / 2
+    var duration = 3200
     var tearWidth = 0
-    var glow = 0
-    var crackLines = []
-    var maxCracks = 40
+    var shakeIntensity = 0
+    var glitchFrames = 0
+    var maxGlitchFrames = 12
+
+    // Pre-generate crack system - organic branching cracks from center
+    var cracks = []
+    var branchCracks = []
+    var maxCracks = 60
     for (var i = 0; i < maxCracks; i++) {
-      crackLines.push({
-        x: w / 2 + (Math.random() - 0.5) * w * 0.8,
+      var angle = -Math.PI / 2 + (Math.random() - 0.5) * Math.PI * 0.5
+      var len = 20 + Math.random() * 100
+      var startX = w / 2 + (Math.random() - 0.5) * 60
+      var startY = h / 2 + (Math.random() - 0.5) * h * 0.6
+      cracks.push({
+        sx: startX, sy: startY,
+        dx: startX + Math.cos(angle) * len,
+        dy: startY + Math.sin(angle) * len,
+        len: len,
+        delay: Math.random() * 0.5,
+        speed: 0.4 + Math.random() * 0.6,
+        width: 0.5 + Math.random() * 3
+      })
+      // Branch cracks off main cracks
+      if (i % 2 === 0 && i > 5) {
+        var bAngle = angle + (Math.random() - 0.5) * Math.PI * 0.7
+        var bLen = 10 + Math.random() * 40
+        var midX = (startX + cracks[cracks.length - 1].dx) / 2
+        var midY = (startY + cracks[cracks.length - 1].dy) / 2
+        branchCracks.push({
+          sx: midX + (Math.random() - 0.5) * 20,
+          sy: midY + (Math.random() - 0.5) * 20,
+          dx: midX + Math.cos(bAngle) * bLen,
+          dy: midY + Math.sin(bAngle) * bLen,
+          delay: 0.3 + Math.random() * 0.4,
+          speed: 0.5 + Math.random() * 0.5,
+          width: 0.3 + Math.random() * 1
+        })
+      }
+    }
+
+    // Glitch effect lines
+    var glitchLines = []
+    for (var g = 0; g < 8; g++) {
+      glitchLines.push({
         y: Math.random() * h,
-        len: 10 + Math.random() * 60,
-        angle: -Math.PI / 2 + (Math.random() - 0.5) * Math.PI * 0.3,
-        speed: 0.3 + Math.random() * 0.7,
-        phase: Math.random() * Math.PI * 2
+        h: 2 + Math.random() * 8,
+        xOff: (Math.random() - 0.5) * 20,
+        alpha: 0.3 + Math.random() * 0.7,
+        duration: 50 + Math.random() * 150,
+        timer: 0
       })
     }
-    var pawTeeth = []
-    for (var p = 0; p < 18; p++) {
-      var side = p < 9 ? -1 : 1
-      var idx = p < 9 ? p : p - 9
-      pawTeeth.push({
-        side: side,
-        y: (idx / 9) * h + (Math.random() - 0.5) * 30,
-        xOff: side * (30 + Math.random() * 40),
-        size: 20 + Math.random() * 40,
-        phase: Math.random() * Math.PI * 2
-      })
+
+    function drawBackground(progress) {
+      var c = canvasCtx
+      // Dark ambient background
+      var baseColor = 10 + Math.floor(progress * 5)
+      c.fillStyle = 'rgb(' + baseColor + ',' + baseColor + ',' + (baseColor + 5) + ')'
+      c.fillRect(0, 0, w, h)
     }
-    var dogPawLeft = { x: w * 0.25, y: h * 0.3, size: 120, grabY: h / 2, revealed: false }
-    var dogPawRight = { x: w * 0.75, y: h * 0.3, size: 120, grabY: h / 2, revealed: false }
+
+    function drawBaseContent(progress) {
+      var c = canvasCtx
+      // Content being torn - the last thing you see
+      var grad = c.createRadialGradient(w / 2, h / 2, 0, w / 2, h / 2, w * 0.6)
+      grad.addColorStop(0, 'rgba(5,0,10,0)')
+      grad.addColorStop(0.7, 'rgba(5,0,10,0.2)')
+      grad.addColorStop(1, 'rgba(0,0,0,0.4)')
+      c.fillStyle = grad
+      c.fillRect(0, 0, w, h)
+    }
+
+    function drawGlitch(progress) {
+      if (progress > 0.8) return
+      var c = canvasCtx
+      c.save()
+      // Random horizontal offsets (VHS tracking effect)
+      var glitchProb = 0.1 + progress * 0.3
+      for (var i = 0; i < glitchLines.length; i++) {
+        var gl = glitchLines[i]
+        gl.timer++
+        if (gl.timer > gl.duration) {
+          gl.y = Math.random() * h
+          gl.h = 2 + Math.random() * 6
+          gl.xOff = (Math.random() - 0.5) * (15 + progress * 20)
+          gl.alpha = 0.2 + Math.random() * 0.5
+          gl.duration = 30 + Math.random() * 100
+          gl.timer = 0
+        }
+        if (Math.random() < glitchProb * 0.08) {
+          c.fillStyle = 'rgba(255,255,255,' + (gl.alpha * 0.3) + ')'
+          c.fillRect(0, gl.y, w, gl.h)
+          // Chromatic shift
+          c.fillStyle = 'rgba(255,0,0,' + (gl.alpha * 0.15) + ')'
+          c.fillRect(-gl.xOff * 0.5, gl.y, w, gl.h)
+          c.fillStyle = 'rgba(0,100,255,' + (gl.alpha * 0.15) + ')'
+          c.fillRect(gl.xOff * 0.5, gl.y, w, gl.h)
+        }
+      }
+      // Random full-screen glitch flicker
+      if (Math.random() < glitchProb * 0.15) {
+        c.fillStyle = 'rgba(255,255,255,0.05)'
+        c.fillRect(0, 0, w, h)
+      }
+      c.restore()
+    }
+
+    function drawCracks(progress) {
+      var c = canvasCtx
+      // Purple glow behind cracks
+      c.shadowColor = 'rgba(100,0,60,0.3)'
+      c.shadowBlur = 8
+
+      // Draw main cracks
+      for (var i = 0; i < cracks.length; i++) {
+        var cr = cracks[i]
+        var pct = Math.max(0, Math.min(1, (progress - cr.delay) * cr.speed * 1.5))
+        if (pct <= 0) continue
+        var cx = cr.sx + (cr.dx - cr.sx) * pct
+        var cy = cr.sy + (cr.dy - cr.sy) * pct
+        // Glow trail
+        var alpha = 0.3 + progress * 0.4
+        c.strokeStyle = 'rgba(120,20,80,' + (alpha * pct) + ')'
+        c.lineWidth = cr.width + progress * 1.5
+        c.beginPath()
+        c.moveTo(cr.sx, cr.sy)
+        c.lineTo(cx, cy)
+        c.stroke()
+        // Inner bright core
+        c.strokeStyle = 'rgba(200,80,150,' + (alpha * 0.5 * pct) + ')'
+        c.lineWidth = 0.5
+        c.beginPath()
+        c.moveTo(cr.sx, cr.sy)
+        c.lineTo(cx, cy)
+        c.stroke()
+      }
+
+      // Draw branch cracks
+      for (var j = 0; j < branchCracks.length; j++) {
+        var bc = branchCracks[j]
+        var bpct = Math.max(0, Math.min(1, (progress - bc.delay) * bc.speed))
+        if (bpct <= 0) continue
+        var bcx = bc.sx + (bc.dx - bc.sx) * bpct
+        var bcy = bc.sy + (bc.dy - bc.sy) * bpct
+        c.strokeStyle = 'rgba(80,15,50,' + (0.3 * bpct) + ')'
+        c.lineWidth = bc.width
+        c.beginPath()
+        c.moveTo(bc.sx, bc.sy)
+        c.lineTo(bcx, bcy)
+        c.stroke()
+      }
+      c.shadowBlur = 0
+    }
+
+    function drawTear(progress) {
+      var c = canvasCtx
+      var maxWidth = w * 0.65
+      // Use elastic easing for a more violent tear
+      var ripProg = Math.min(1, progress * 1.2)
+      var tearEase = ripProg < 0.7
+        ? easeInOutCubic(ripProg / 0.7) * 0.5
+        : 0.5 + easeOutElastic((ripProg - 0.7) / 0.3) * 0.5
+      tearWidth = maxWidth * tearEase
+      var leftEdge = w / 2 - tearWidth / 2
+      var rightEdge = w / 2 + tearWidth / 2
+
+      // Deep void glow - expanding darkness
+      var voidAlpha = Math.min(1, progress * 1.5)
+      var vg = c.createRadialGradient(w / 2, h / 2, 0, w / 2, h / 2, tearWidth * 1.5)
+      vg.addColorStop(0, 'rgba(0,0,0,' + (0.8 * voidAlpha) + ')')
+      vg.addColorStop(0.3, 'rgba(5,0,10,' + (0.6 * voidAlpha) + ')')
+      vg.addColorStop(0.6, 'rgba(15,0,20,' + (0.3 * voidAlpha) + ')')
+      vg.addColorStop(1, 'rgba(0,0,0,0)')
+      c.fillStyle = vg
+      c.fillRect(0, 0, w, h)
+
+      // Tear edge glow
+      var edgeColor = Math.min(255, 60 + Math.floor(progress * 100))
+      var eg = c.createLinearGradient(leftEdge - 15, 0, leftEdge + 15, 0)
+      eg.addColorStop(0, 'rgba(0,0,0,0)')
+      eg.addColorStop(0.3, 'rgba(' + edgeColor + ',0,' + Math.floor(edgeColor * 0.6) + ',' + (0.5 * voidAlpha) + ')')
+      eg.addColorStop(0.7, 'rgba(' + edgeColor + ',0,' + Math.floor(edgeColor * 0.6) + ',' + (0.5 * voidAlpha) + ')')
+      eg.addColorStop(1, 'rgba(0,0,0,0)')
+      c.fillStyle = eg
+      c.fillRect(leftEdge - 15, 0, 30, h)
+
+      var eg2 = c.createLinearGradient(rightEdge - 15, 0, rightEdge + 15, 0)
+      eg2.addColorStop(0, 'rgba(0,0,0,0)')
+      eg2.addColorStop(0.3, 'rgba(' + edgeColor + ',0,' + Math.floor(edgeColor * 0.6) + ',' + (0.5 * voidAlpha) + ')')
+      eg2.addColorStop(0.7, 'rgba(' + edgeColor + ',0,' + Math.floor(edgeColor * 0.6) + ',' + (0.5 * voidAlpha) + ')')
+      eg2.addColorStop(1, 'rgba(0,0,0,0)')
+      c.fillStyle = eg2
+      c.fillRect(rightEdge - 15, 0, 30, h)
+
+      // The tear hole - jagged organic edges
+      var segments = 50
+      var segH = h / segments
+      // Dark jagged shape
+      c.fillStyle = '#000'
+      c.beginPath()
+      c.moveTo(leftEdge, 0)
+      for (var s = 0; s <= segments; s++) {
+        var sy = s * segH
+        var jitter = (Math.random() - 0.5) * 12 * (0.5 + progress)
+        c.lineTo(leftEdge + jitter, sy)
+      }
+      c.lineTo(rightEdge, h)
+      for (var s2 = segments; s2 >= 0; s2--) {
+        var sy2 = s2 * segH
+        var jitter2 = (Math.random() - 0.5) * 12 * (0.5 + progress)
+        c.lineTo(rightEdge + jitter2, sy2)
+      }
+      c.closePath()
+      c.fill()
+
+      // Pure void interior
+      c.fillStyle = '#000'
+      c.fillRect(leftEdge + 6, 1, tearWidth - 12, h - 3)
+
+      // Bright edge highlights on torn "fabric"
+      c.strokeStyle = 'rgba(180,60,120,' + (0.4 * voidAlpha) + ')'
+      c.lineWidth = 1.5
+      c.beginPath()
+      for (var h1 = 0; h1 < h; h1 += 4) {
+        var j1 = (Math.random() - 0.5) * 4
+        if (h1 === 0) c.moveTo(leftEdge + j1, h1)
+        else c.lineTo(leftEdge + j1, h1)
+      }
+      c.stroke()
+      c.beginPath()
+      for (var h2 = 0; h2 < h; h2 += 4) {
+        var j2 = (Math.random() - 0.5) * 4
+        if (h2 === 0) c.moveTo(rightEdge + j2, h2)
+        else c.lineTo(rightEdge + j2, h2)
+      }
+      c.stroke()
+
+      // Particle sparks at tear edges
+      if (progress > 0.3 && progress < 0.95) {
+        var sparkCount = Math.floor(5 + progress * 15)
+        for (var sp = 0; sp < sparkCount; sp++) {
+          var sparkX = leftEdge + (Math.random() - 0.5) * 20
+          var sparkY = Math.random() * h
+          var sparkSize = 0.5 + Math.random() * 2
+          var sparkAlpha = Math.random() * 0.6 * voidAlpha
+          c.fillStyle = 'rgba(200,100,150,' + sparkAlpha + ')'
+          c.fillRect(sparkX, sparkY, sparkSize, sparkSize)
+          // Blue spark
+          if (Math.random() > 0.7) {
+            c.fillStyle = 'rgba(100,150,255,' + (sparkAlpha * 0.5) + ')'
+            c.fillRect(sparkX + (Math.random() - 0.5) * 8, sparkY + (Math.random() - 0.5) * 4, sparkSize * 0.5, sparkSize * 0.5)
+          }
+        }
+      }
+    }
 
     function drawPaw(cx, cy, size, side) {
       var c = canvasCtx
@@ -217,220 +452,190 @@
       c.translate(cx, cy)
       c.scale(side, 1)
       var s = size
-      c.fillStyle = '#1a0a0a'
-      c.strokeStyle = '#2a0000'
-      c.lineWidth = 3
+      // Shadow/depth under paw
+      c.shadowColor = 'rgba(200,0,0,0.2)'
+      c.shadowBlur = 15
+
+      // Main paw pad body
+      c.fillStyle = '#1a0808'
+      c.strokeStyle = '#300000'
+      c.lineWidth = 2
       c.beginPath()
       c.ellipse(0, 0, s * 0.5, s * 0.55, 0, 0, Math.PI * 2)
       c.fill()
       c.stroke()
-      // Main pad
-      c.fillStyle = '#2a1010'
+
+      // Main pad (center)
+      c.fillStyle = '#2a0e0e'
       c.beginPath()
       c.ellipse(0, s * 0.05, s * 0.2, s * 0.18, 0, 0, Math.PI * 2)
       c.fill()
-      // Toes
+
+      // Digital toes
       for (var i = -2; i <= 2; i++) {
         var tx = i * s * 0.14
         var ty = -s * 0.35 + Math.abs(i) * s * 0.03
-        c.fillStyle = '#1a0808'
+        c.fillStyle = '#1a0606'
         c.beginPath()
-        c.ellipse(tx, ty, s * 0.08, s * 0.13, 0.1, 0, Math.PI * 2)
+        c.ellipse(tx, ty, s * 0.09, s * 0.14, 0.1, 0, Math.PI * 2)
         c.fill()
         // Claw
-        c.fillStyle = '#333'
+        c.fillStyle = '#222'
+        c.strokeStyle = '#444'
+        c.lineWidth = 0.5
         c.beginPath()
-        c.ellipse(tx, ty - s * 0.12, s * 0.025, s * 0.05, 0, 0, Math.PI * 2)
+        c.ellipse(tx, ty - s * 0.13, s * 0.02, s * 0.055, 0, 0, Math.PI * 2)
         c.fill()
+        c.stroke()
       }
-      // Creases
-      c.strokeStyle = 'rgba(60,10,10,0.3)'
-      c.lineWidth = 1
+      // Skin creases
+      c.strokeStyle = 'rgba(60,5,5,0.4)'
+      c.lineWidth = 0.8
       for (var j = -1; j <= 1; j++) {
         c.beginPath()
         c.moveTo(j * s * 0.08, s * 0.02)
-        c.lineTo(j * s * 0.12, s * 0.16)
+        c.quadraticCurveTo(j * s * 0.1, s * 0.1, j * s * 0.12, s * 0.18)
         c.stroke()
       }
+      c.shadowBlur = 0
       c.restore()
     }
 
-    function drawBackground() {
-      var c = canvasCtx
-      // Screen content (what's being torn)
-      c.fillStyle = '#0a0a0f'
-      c.fillRect(0, 0, w, h)
-      // CRT scanlines on the remaining screen
-      for (var i = 0; i < h; i += 3) {
-        c.fillStyle = 'rgba(0,0,0,0.1)'
-        c.fillRect(0, i, w, 1)
-      }
-      // Cracked glass effect around tear
-      var grad = c.createRadialGradient(w / 2, tearY, 0, w / 2, tearY, tearWidth * 2)
-      grad.addColorStop(0, 'rgba(0,0,0,0)')
-      grad.addColorStop(0.5, 'rgba(10,0,20,0.3)')
-      grad.addColorStop(1, 'rgba(0,0,0,0)')
-      c.fillStyle = grad
-      c.fillRect(0, 0, w, h)
-    }
-
-    function drawCracks(progress) {
-      var c = canvasCtx
-      c.strokeStyle = 'rgba(80,20,60,' + (0.3 + progress * 0.5) + ')'
-      c.lineWidth = 1.5
-      var active = Math.floor(progress * maxCracks)
-      for (var i = 0; i < active && i < crackLines.length; i++) {
-        var cr = crackLines[i]
-        var pct = Math.min(1, (progress - i / maxCracks) * 3)
-        if (pct <= 0) continue
-        c.beginPath()
-        c.moveTo(cr.x, cr.y)
-        var ex = cr.x + Math.cos(cr.angle) * cr.len * pct
-        var ey = cr.y + Math.sin(cr.angle) * cr.len * pct
-        c.lineTo(ex, ey)
-        c.stroke()
-        // Branch cracks
-        if (pct > 0.5 && i % 3 === 0) {
-          c.strokeStyle = 'rgba(60,15,40,' + (0.15 + progress * 0.2) + ')'
-          c.lineWidth = 0.8
-          c.beginPath()
-          c.moveTo(ex, ey)
-          c.lineTo(ex + (Math.random() - 0.5) * 30, ey + (Math.random() - 0.5) * 30)
-          c.stroke()
-          c.strokeStyle = 'rgba(80,20,60,' + (0.3 + progress * 0.5) + ')'
-          c.lineWidth = 1.5
-        }
-      }
-    }
-
-    function drawTear(progress) {
-      var c = canvasCtx
-      var maxWidth = w * 0.55
-      tearWidth = maxWidth * easeOutBack(progress)
-      var leftEdge = w / 2 - tearWidth / 2
-      var rightEdge = w / 2 + tearWidth / 2
-      // Glow behind tear
-      glow = progress
-      var g = c.createRadialGradient(w / 2, tearY, 0, w / 2, tearY, tearWidth * 1.2)
-      g.addColorStop(0, 'rgba(20,0,30,' + (0.4 * progress) + ')')
-      g.addColorStop(0.5, 'rgba(10,0,15,' + (0.2 * progress) + ')')
-      g.addColorStop(1, 'rgba(0,0,0,0)')
-      c.fillStyle = g
-      c.fillRect(leftEdge - 40, 0, tearWidth + 80, h)
-      // The tear itself - jagged edges
-      var segments = 40
-      var segH = h / segments
-      // Left edge
-      c.fillStyle = '#000'
-      c.beginPath()
-      c.moveTo(leftEdge, 0)
-      for (var s = 0; s <= segments; s++) {
-        var sy = s * segH
-        var jitter = (Math.random() - 0.5) * 8 * (1 + progress)
-        c.lineTo(leftEdge + jitter, sy)
-      }
-      c.lineTo(rightEdge, h)
-      for (var s2 = segments; s2 >= 0; s2--) {
-        var sy2 = s2 * segH
-        var jitter2 = (Math.random() - 0.5) * 8 * (1 + progress)
-        c.lineTo(rightEdge + jitter2, sy2)
-      }
-      c.closePath()
-      c.fill()
-      // Void inside tear - pure black hole
-      c.fillStyle = '#000'
-      c.fillRect(leftEdge + 4, 2, tearWidth - 8, h - 4)
-      // Purple glow edges on the tear
-      var eg = c.createLinearGradient(leftEdge - 10, 0, leftEdge + 10, 0)
-      eg.addColorStop(0, 'rgba(0,0,0,0)')
-      eg.addColorStop(0.5, 'rgba(100,0,60,' + (0.3 * progress) + ')')
-      eg.addColorStop(1, 'rgba(0,0,0,0)')
-      c.fillStyle = eg
-      c.fillRect(leftEdge - 10, 0, 20, h)
-      var eg2 = c.createLinearGradient(rightEdge - 10, 0, rightEdge + 10, 0)
-      eg2.addColorStop(0, 'rgba(0,0,0,0)')
-      eg2.addColorStop(0.5, 'rgba(100,0,60,' + (0.3 * progress) + ')')
-      eg2.addColorStop(1, 'rgba(0,0,0,0)')
-      c.fillStyle = eg2
-      c.fillRect(rightEdge - 10, 0, 20, h)
-    }
-
-    function easeOutBack(t) {
-      var c1 = 1.70158
-      var c3 = c1 + 1
-      return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2)
-    }
-
-    var pawRevealProgress = 0
-
     function drawPaws(progress) {
       var c = canvasCtx
-      var maxWidth = w * 0.55
-      var leftEdge = w / 2 - maxWidth / 2
-      var rightEdge = w / 2 + maxWidth / 2
-      // Paws come from sides
-      var pawAppear = Math.max(0, (progress - 0.3) / 0.5)
-      var pawReveal = easeOutBack(Math.min(1, pawAppear * 1.5))
-      var lpX = leftEdge + 10
-      var rpX = rightEdge - 10
-      var pawY = h / 2 - 10
-      var pawS = 80 + 30 * pawReveal
+      var maxWidth = w * 0.65
+      // Paws emerge from the tear edges
+      var pawPhase = Math.max(0, (progress - 0.25) / 0.55)
+      var pawReveal = easeInOutCubic(Math.min(1, pawPhase * 1.8))
 
-      // Shadow behind paws
-      c.fillStyle = 'rgba(0,0,0,0.3)'
-      c.beginPath()
-      c.ellipse(lpX + 5, pawY + 5, pawS * 0.5, pawS * 0.55, 0, 0, Math.PI * 2)
-      c.fill()
-      c.beginPath()
-      c.ellipse(rpX - 5, pawY + 5, pawS * 0.5, pawS * 0.55, 0, 0, Math.PI * 2)
-      c.fill()
+      var tearW = maxWidth * 0.9
+      var leftEdge = w / 2 - tearW / 2
+      var rightEdge = w / 2 + tearW / 2
 
-      // Paw details glowing eyes in the void
-      if (progress > 0.6) {
-        var eyeAlpha = Math.min(1, (progress - 0.6) / 0.3)
-        c.fillStyle = 'rgba(200,20,20,' + eyeAlpha + ')'
-        var eyeY = h * 0.4
-        var eyeSpacing = 40
-        // Glowing red eyes in the darkness of the tear
-        for (var ei = -1; ei <= 1; ei += 2) {
-          c.shadowColor = '#f00'
-          c.shadowBlur = 20 * eyeAlpha
-          c.beginPath()
-          c.ellipse(w / 2 + ei * eyeSpacing, eyeY, 12 * eyeAlpha, 8 * eyeAlpha, 0, 0, Math.PI * 2)
-          c.fill()
-          c.shadowBlur = 0
-          // Pupil
-          c.fillStyle = 'rgba(0,0,0,' + eyeAlpha + ')'
-          c.beginPath()
-          c.ellipse(w / 2 + ei * eyeSpacing + ei * 3, eyeY, 4 * eyeAlpha, 6 * eyeAlpha, 0, 0, Math.PI * 2)
-          c.fill()
-          c.fillStyle = 'rgba(200,20,20,' + eyeAlpha + ')'
-        }
-        c.shadowBlur = 0
-      }
+      // Paws emerge from within the tear
+      var pawXOff = (1 - pawReveal) * 60
+      var lpX = leftEdge + 10 + pawXOff
+      var rpX = rightEdge - 10 - pawXOff
+      var pawY = h / 2 + Math.sin(progress * Math.PI * 2) * 8
+      var pawS = 60 + 50 * pawReveal
+
+      // Shadow glow behind paws
+      c.shadowColor = 'rgba(150,0,0,0.15)'
+      c.shadowBlur = 25 * pawReveal
 
       drawPaw(lpX, pawY, pawS, 1)
       drawPaw(rpX, pawY, pawS, -1)
+
+      c.shadowBlur = 0
+    }
+
+    function drawEyes(progress) {
+      if (progress < 0.45) return
+      var c = canvasCtx
+      var eyeAlpha = easeInOutCubic(Math.min(1, (progress - 0.45) / 0.3))
+      var eyeGlow = Math.min(1, (progress - 0.45) / 0.2)
+      var eyeY = h * 0.38 + Math.sin(progress * 3) * 5
+      var eyeSpacing = 50 + Math.sin(progress * 2) * 10
+
+      // Glowing aura
+      c.shadowColor = 'rgba(200,0,0,0.8)'
+      c.shadowBlur = 40 * eyeGlow
+
+      for (var ei = -1; ei <= 1; ei += 2) {
+        var ex = w / 2 + ei * eyeSpacing
+        var ey = eyeY
+
+        // Outer glow
+        var og = c.createRadialGradient(ex, ey, 0, ex, ey, 25 * eyeAlpha)
+        og.addColorStop(0, 'rgba(200,20,20,' + (0.4 * eyeAlpha) + ')')
+        og.addColorStop(0.5, 'rgba(150,0,0,' + (0.2 * eyeAlpha) + ')')
+        og.addColorStop(1, 'rgba(100,0,0,0)')
+        c.fillStyle = og
+        c.fillRect(ex - 30, ey - 30, 60, 60)
+
+        // Eye white (red)
+        c.fillStyle = 'rgba(180,10,10,' + eyeAlpha + ')'
+        c.beginPath()
+        c.ellipse(ex, ey, 14 * eyeAlpha, 10 * eyeAlpha, 0, 0, Math.PI * 2)
+        c.fill()
+
+        // Pupil
+        c.fillStyle = 'rgba(0,0,0,' + eyeAlpha + ')'
+        c.beginPath()
+        c.ellipse(ex + ei * 3, ey, 5 * eyeAlpha, 8 * eyeAlpha, 0, 0, Math.PI * 2)
+        c.fill()
+
+        // Pupil glint
+        c.fillStyle = 'rgba(255,150,150,' + (0.3 * eyeAlpha) + ')'
+        c.beginPath()
+        c.ellipse(ex - ei * 2, ey - 2, 2 * eyeAlpha, 3 * eyeAlpha, 0, 0, Math.PI * 2)
+        c.fill()
+      }
+      c.shadowBlur = 0
+    }
+
+    function drawVignette(progress) {
+      var c = canvasCtx
+      var vAlpha = 0.3 + progress * 0.4
+      var vg = c.createRadialGradient(w / 2, h / 2, w * 0.2, w / 2, h / 2, w * 0.8)
+      vg.addColorStop(0, 'rgba(0,0,0,0)')
+      vg.addColorStop(0.5, 'rgba(0,0,0,' + (vAlpha * 0.3) + ')')
+      vg.addColorStop(1, 'rgba(0,0,0,' + vAlpha + ')')
+      c.fillStyle = vg
+      c.fillRect(0, 0, w, h)
+    }
+
+    function drawVHSNoise(progress) {
+      if (progress > 0.9) return
+      var c = canvasCtx
+      var noiseAlpha = 0.03 + progress * 0.06
+      for (var i = 0; i < 4; i++) {
+        if (Math.random() > 0.08) continue
+        var ny = Math.random() * h
+        var nh = 1 + Math.random() * 3
+        c.fillStyle = 'rgba(255,255,255,' + (noiseAlpha * Math.random()) + ')'
+        c.fillRect(0, ny, w, nh)
+      }
     }
 
     function animate() {
       var elapsed = performance.now() - startTime
       var progress = Math.min(1, elapsed / duration)
-      drawBackground()
-      drawTear(progress)
+
+      // Clear with slight motion blur trail
+      canvasCtx.fillStyle = 'rgba(0,0,0,0.15)'
+      canvasCtx.fillRect(0, 0, w, h)
+
+      drawBackground(progress)
+      drawBaseContent(progress)
+      drawGlitch(progress)
       drawCracks(progress)
+      drawTear(progress)
+      drawVignette(progress)
+      drawEyes(progress)
       drawPaws(progress)
+      drawVHSNoise(progress)
+
+      // Screen shake via canvas transform
+      var shake = 0
+      if (progress < 0.3) shake = progress * 8
+      else if (progress < 0.65) shake = 1.5 + Math.sin(progress * 50 + elapsed * 0.01) * (0.8 + (progress - 0.3) * 3)
+      else if (progress < 0.85) shake = Math.max(0, 3 - (progress - 0.65) * 15)
+      if (shake > 1) {
+        canvasCtx.fillStyle = 'rgba(0,0,0,' + (shake * 0.01) + ')'
+        canvasCtx.fillRect(0, 0, w, h)
+      }
+
       if (progress < 1) {
         requestAnimationFrame(animate)
       } else {
-        // Final black
-        setTimeout(function () {
-          canvasCtx.fillStyle = '#000'
-          canvasCtx.fillRect(0, 0, w, h)
-          setTimeout(function () {
-            if (callback) callback()
-          }, 800)
-        }, 400)
+        // Final black - fade to pure void
+        canvasCtx.fillStyle = '#000'
+        canvasCtx.fillRect(0, 0, w, h)
+        // Brief flash before black
+        if (callback) {
+          setTimeout(function () { callback() }, 600)
+        }
       }
     }
     animate()

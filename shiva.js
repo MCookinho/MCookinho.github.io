@@ -698,8 +698,8 @@
             H.setStaticVolume(0.5)
             H.fadeDim(0.3, 0.6, 2000)
           } else if (step === 6) {
-            H.fadeDim(0.6, 0, 2000)
-            setTimeout(function () { H.stopStatic() }, 2200)
+            H.setDim(0)
+            H.stopStatic()
             H.lockChat()
             H.endEgg()
             setTimeout(function () {
@@ -707,7 +707,7 @@
               setTimeout(function () {
                 H.playDogBark()
                 H.animateTear(function () {
-                  window.location.href = 'doghouse.html'
+                  setTimeout(function () { window.location.href = 'doghouse.html' }, 100)
                 })
               }, 600)
             }, 10000)
