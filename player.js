@@ -460,7 +460,7 @@
   })
 
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'm' || e.key === 'M') {
+    if ((e.key === 'm' || e.key === 'M') && document.activeElement && document.activeElement.tagName !== 'INPUT') {
       if (!document.querySelector('.tetris-overlay.tetris-open')) toggleOverlay()
     }
   })
