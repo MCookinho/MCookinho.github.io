@@ -60,7 +60,7 @@ const VIEWS = {
 /* Fixed hitboxes for normal interactables */
 const HITBOXES = {
   north: {
-    porta:{x:270,y:70,w:260,h:440},
+    porta:{x:270,y:15,w:260,h:440},
     grade:{x:50,y:190,w:110,h:160},
     janela:{x:580,y:130,w:100,h:90},
     cruz:{x:630,y:250,w:24,h:60},
