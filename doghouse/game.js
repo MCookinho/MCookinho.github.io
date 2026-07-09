@@ -265,7 +265,16 @@ class Game {
       case 'brick': return this.interactBrick(item)
       case 'drain': return this.interactDrain(item)
       case 'floorboard': return this.interactFloorboard(item)
-      case 'drawer': return this.startPuzzle('drawer')
+      case 'drawer':
+        if(PUZZLES.drawer.solved){
+          if(!this.hasObtained('fosforo')){
+            this.addItem('fosforo',false)
+          }else{
+            this.engine.tooltip('A gaveta está vazia.')
+          }
+          return
+        }
+        return this.startPuzzle('drawer')
       case 'diary': return this.readDiary()
       case 'chain': return this.interactChain(item)
       case 'hatch': return this.interactHatch(item)

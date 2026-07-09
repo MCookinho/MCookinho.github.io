@@ -626,9 +626,11 @@ function drWest(ctx,t){
     rect(295,362,30,6,PAL.rust)
     rect(293,360,34,10,PAL.rust_l)
     circle(310,365,3,PAL.rust_l)
-    // Match inside the cavity
-    rect(255,312,28,3,PAL.paper_d)
-    circle(255,313,2,'rgba(180,60,30,0.6)')
+    // Match inside the cavity (visible until picked up)
+    if(!window.__game||!window.__game.hasObtained('fosforo')){
+      rect(255,312,28,3,PAL.paper_d)
+      circle(255,313,2,'rgba(180,60,30,0.6)')
+    }
   }else{
     rect(220,295,180,65,PAL.ink_l)
     rect(225,300,170,55,PAL.ink)

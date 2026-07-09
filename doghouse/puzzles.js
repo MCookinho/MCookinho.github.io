@@ -69,9 +69,7 @@ const PUZZLES = {
              this.pins[2]===this.target[2]){
             this.solved=true
             g.a.unlock()
-            g.addItem('fosforo',true)
             g.engine.closePuzzle()
-            g.engine.tooltip('Fósforo! Dentro da gaveta.',3000)
           }
           return
         }
