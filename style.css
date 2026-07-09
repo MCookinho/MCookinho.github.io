@@ -729,7 +729,7 @@ body {
   flex-shrink: 0;
 }
 .rk-star {
-  font-size: 16px; line-height: 1;
+  font-size: 22px; line-height: 1;
   transition: transform 0.2s, color 0.2s;
 }
 .rk-star.filled { color: #ffd700; text-shadow: 0 0 6px rgba(255,215,0,0.3); }
@@ -831,7 +831,8 @@ body {
   .rk-tab { font-size: 9px; padding: 12px 8px; }
   .rk-pos { width: 32px; font-size: 12px; }
   .rk-item-body { padding: 10px 12px; }
-  .rk-stars { font-size: 13px; }
+  .rk-stars { font-size: 18px; }
+  .rk-star { font-size: 18px; }
   .rk-score-val { font-size: 12px; }
 }
 
