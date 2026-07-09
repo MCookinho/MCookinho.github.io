@@ -306,16 +306,6 @@ function drEast(ctx,t){
     const ry=my+20+i*30
     wln(mx+190,ry,mx+200,ry+12,'rgba(106,90,74,0.2)',1.5,t)
   }
-  // AÇEUQSE diagonal across mirror
-  $ctx.save()
-  $ctx.translate(540,200)
-  $ctx.rotate(-0.35)
-  $ctx.fillStyle='rgba(122,90,58,0.25)'
-  $ctx.font='bold 36px Georgia'
-  $ctx.textAlign='center'
-  $ctx.textBaseline='middle'
-  $ctx.fillText('AÇEUQSE',0,0)
-  $ctx.restore()
   // Reflective glint
   $ctx.fillStyle='rgba(184,160,128,0.04)'
   $ctx.fillRect(mx+3,my,2,mh)
@@ -338,16 +328,8 @@ function drEast(ctx,t){
       }
       $ctx.stroke()
     }
-    // Distortion: slight offset copy of text
-    $ctx.save()
-    $ctx.translate(543,203)
-    $ctx.rotate(-0.35)
-    $ctx.fillStyle='rgba(122,90,58,0.12)'
-    $ctx.font='bold 36px Georgia'
-    $ctx.textAlign='center'
-    $ctx.textBaseline='middle'
-    $ctx.fillText('AÇEUQSE',0,0)
-    $ctx.restore()
+    // Distortion: slight offset of the reflection
+    rect(mx+10,my+142,190,20,'rgba(26,18,10,0.15)')
     // Offset glint
     $ctx.fillStyle='rgba(184,160,128,0.05)'
     $ctx.fillRect(480,110,2,2)
