@@ -168,10 +168,12 @@
         <div class="config-tab-content active" id="tab-theme">
           <div class="config-group">
             <label class="config-label">TEMA</label>
+            <p class="config-hint">Escolha um tema predefinido. As cores abaixo podem ser usadas para personalizar ainda mais.</p>
             <div class="theme-grid" id="themeGrid"></div>
           </div>
           <div class="config-group">
-            <label class="config-label">CORES PERSONALIZADAS (sobrescrevem o tema)</label>
+            <label class="config-label">CORES PERSONALIZADAS</label>
+            <p class="config-hint">Sobrescrevem as cores do tema. Altere apenas se quiser um visual único.</p>
             <div class="color-row">
               <div class="color-field"><label>Primária</label><input type="color" id="colorPrimary" /></div>
               <div class="color-field"><label>Destaque</label><input type="color" id="colorAccent" /></div>
@@ -184,20 +186,24 @@
             </div>
           </div>
           <div class="config-group">
-            <label class="config-label">IMAGEM DE FUNDO (URL)</label>
+            <label class="config-label">IMAGEM DE FUNDO</label>
+            <p class="config-hint">URL de uma imagem para usar como fundo. Aparece com opacidade suave atrás do conteúdo.</p>
             <input type="text" class="config-input" id="bgImageInput" placeholder="https://..." />
           </div>
           <div class="config-group">
             <label class="config-label">PADRÃO DE FUNDO</label>
+            <p class="config-hint">Padrão visual aplicado sobre o fundo. Combina com a imagem de fundo ou cores do tema.</p>
             <div class="config-btn-group" id="bgPatternGroup"></div>
           </div>
           <div class="config-group">
             <label class="config-label">OPACIDADE DO PADRÃO</label>
+            <p class="config-hint">Define quão visível o padrão de fundo aparece.</p>
             <input type="range" class="config-range" id="bgPatternOpacity" min="0" max="100" value="20" />
             <span class="config-range-val" id="bgPatternOpacityVal">20%</span>
           </div>
           <div class="config-group">
             <label class="config-label">ANIMAÇÕES</label>
+            <p class="config-hint">Como os elementos aparecem conforme você rola a página.</p>
             <div class="config-btn-group" id="animGroup"></div>
           </div>
         </div>
@@ -206,38 +212,47 @@
         <div class="config-tab-content" id="tab-typo">
           <div class="config-group">
             <label class="config-label">FAMÍLIA DA FONTE</label>
+            <p class="config-hint">Estilo geral da fonte usada em toda a página.</p>
             <div class="config-btn-group" id="fontGroup"></div>
           </div>
           <div class="config-group">
             <label class="config-label">TAMANHO DA FONTE</label>
+            <p class="config-hint">Tamanho base do texto. Os demais elementos escalam a partir dele.</p>
             <div class="config-btn-group" id="fontSizeGroup"></div>
           </div>
           <div class="config-group">
             <label class="config-label">TAMANHO DO TÍTULO PRINCIPAL</label>
+            <p class="config-hint">Tamanho do seu nome no cabeçalho da página.</p>
             <div class="config-btn-group" id="titleSizeGroup"></div>
           </div>
           <div class="config-group">
             <label class="config-label">TAMANHO DOS TÍTULOS DE SEÇÃO</label>
+            <p class="config-hint">Tamanho dos títulos de cada seção (EXPERIÊNCIA, FORMAÇÃO, etc).</p>
             <div class="config-btn-group" id="sectionTitleSizeGroup"></div>
           </div>
           <div class="config-group">
             <label class="config-label">PESO DA FONTE</label>
+            <p class="config-hint">Espessura do texto. "Leve" para um visual mais suave, "Negrito" para mais destaque.</p>
             <div class="config-btn-group" id="fontWeightGroup"></div>
           </div>
           <div class="config-group">
             <label class="config-label">ESPAÇAMENTO ENTRE PARÁGRAFOS</label>
+            <p class="config-hint">Espaço vertical entre parágrafos consecutivos.</p>
             <div class="config-btn-group" id="paragraphSpacingGroup"></div>
           </div>
           <div class="config-group">
             <label class="config-label">ALTURA DA LINHA</label>
+            <p class="config-hint">Espaçamento vertical entre linhas do texto. Afeta a legibilidade.</p>
             <div class="config-btn-group" id="lineHeightGroup"></div>
           </div>
           <div class="config-group">
             <label class="config-label">ESPAÇAMENTO ENTRE LETRAS</label>
+            <p class="config-hint">Espaço entre caracteres. "Largo" cria um visual mais arejado.</p>
             <div class="config-btn-group" id="letterSpacingGroup"></div>
           </div>
           <div class="config-group">
             <label class="config-label">ALINHAMENTO DO TEXTO</label>
+            <p class="config-hint">Alinhamento padrão do texto da página.</p>
             <div class="config-btn-group" id="textAlignGroup"></div>
           </div>
         </div>
@@ -246,26 +261,32 @@
         <div class="config-tab-content" id="tab-header">
           <div class="config-group">
             <label class="config-label">ALINHAMENTO DO CABEÇALHO</label>
+            <p class="config-hint">Posicionamento do texto e imagem no topo da página.</p>
             <div class="config-btn-group" id="headerAlignGroup"></div>
           </div>
           <div class="config-group">
             <label class="config-label">MOSTRAR LOCALIZAÇÃO</label>
+            <p class="config-hint">Exibe ou oculta sua cidade/estado abaixo do título.</p>
             <div class="config-btn-group" id="showLocationGroup"></div>
           </div>
           <div class="config-group">
             <label class="config-label">MOSTRAR TÍTULO/CARGO</label>
+            <p class="config-hint">Exibe ou oculta seu cargo ou área de atuação.</p>
             <div class="config-btn-group" id="showTitleGroup"></div>
           </div>
           <div class="config-group">
             <label class="config-label">MOSTRAR LINKS DE CONTATO</label>
+            <p class="config-hint">Exibe ou oculta os links de email, GitHub e LinkedIn no cabeçalho.</p>
             <div class="config-btn-group" id="showContactGroup"></div>
           </div>
           <div class="config-group">
-            <label class="config-label">IMAGEM DE PERFIL (URL)</label>
+            <label class="config-label">IMAGEM DE PERFIL</label>
+            <p class="config-hint">URL de uma imagem sua. Aparece no topo da página em formato circular.</p>
             <input type="text" class="config-input" id="profileImageInput" placeholder="https://..." />
           </div>
           <div class="config-group">
             <label class="config-label">TAMANHO DA IMAGEM DE PERFIL</label>
+            <p class="config-hint">Define o diâmetro da foto de perfil em pixels.</p>
             <div class="config-btn-group" id="profileImageSizeGroup"></div>
           </div>
         </div>
@@ -274,74 +295,92 @@
         <div class="config-tab-content" id="tab-layout">
           <div class="config-group">
             <label class="config-label">LARGURA DO CONTEÚDO</label>
+            <p class="config-hint">Largura máxima da área central da página.</p>
             <div class="config-btn-group" id="contentWidthGroup"></div>
           </div>
           <div class="config-group">
             <label class="config-label">ESPAÇAMENTO ENTRE SEÇÕES</label>
+            <p class="config-hint">Distância vertical entre cada seção da página.</p>
             <div class="config-btn-group" id="sectionSpacingGroup"></div>
           </div>
           <div class="config-group">
             <label class="config-label">ESPAÇAMENTO ENTRE ITENS</label>
+            <p class="config-hint">Distância entre itens dentro de uma mesma seção (ex: cards de projeto).</p>
             <div class="config-btn-group" id="gapSizeGroup"></div>
           </div>
           <div class="config-group">
             <label class="config-label">PADDING DO CONTEÚDO</label>
+            <p class="config-hint">Espaçamento interno ao redor do conteúdo principal da página.</p>
             <div class="config-btn-group" id="contentPaddingGroup"></div>
           </div>
           <div class="config-group">
             <label class="config-label">ESTILO DO CABEÇALHO</label>
+            <p class="config-hint">Define o quão detalhado é o cabeçalho com seu nome e informações.</p>
             <div class="config-btn-group" id="headerStyleGroup"></div>
           </div>
           <div class="config-group">
             <label class="config-label">LAYOUT DAS HABILIDADES</label>
+            <p class="config-hint">Organização visual das barras de habilidade.</p>
             <div class="config-btn-group" id="skillsLayoutGroup"></div>
           </div>
           <div class="config-group">
             <label class="config-label">LAYOUT DOS PROJETOS</label>
+            <p class="config-hint">Organização visual dos cards de projeto.</p>
             <div class="config-btn-group" id="projectsLayoutGroup"></div>
           </div>
           <div class="config-group">
             <label class="config-label">ESTILO DOS BOTÕES</label>
+            <p class="config-hint">Aparência dos indicadores de linguagem nos projetos.</p>
             <div class="config-btn-group" id="buttonStyleGroup"></div>
           </div>
           <div class="config-group">
             <label class="config-label">ESTILO DAS LISTAS</label>
+            <p class="config-hint">Marcadores visuais dos itens de experiência e formação.</p>
             <div class="config-btn-group" id="listStyleGroup"></div>
           </div>
           <div class="config-group">
             <label class="config-label">BORDA ARREDONDADA</label>
+            <p class="config-hint">Arredondamento dos cantos de cards, botões e campos.</p>
             <div class="config-btn-group" id="borderRadiusGroup"></div>
           </div>
           <div class="config-group">
             <label class="config-label">SOMBRA</label>
+            <p class="config-hint">Sombra ao redor dos cards de projeto e contato.</p>
             <div class="config-btn-group" id="boxShadowGroup"></div>
           </div>
           <div class="config-group">
             <label class="config-label">FUNDO ALTERNADO NAS SEÇÕES</label>
+            <p class="config-hint">Destaca cada seção com um fundo levemente diferente.</p>
             <div class="config-btn-group" id="altSectionBgGroup"></div>
           </div>
           <div class="config-group">
             <label class="config-label">COR DO FUNDO DA SEÇÃO</label>
+            <p class="config-hint">Usada quando "Fundo alternado" está ativo.</p>
             <input type="color" class="config-color-single" id="sectionBgColor" />
           </div>
           <div class="config-group">
             <label class="config-label">MOSTRAR BORDAS</label>
+            <p class="config-hint">Bordas ao redor de cards e itens da página.</p>
             <div class="config-btn-group" id="showBordersGroup"></div>
           </div>
           <div class="config-group">
             <label class="config-label">MOSTRAR DIVISORES</label>
+            <p class="config-hint">Linhas separadoras abaixo dos títulos de seção.</p>
             <div class="config-btn-group" id="showDividersGroup"></div>
           </div>
           <div class="config-group">
             <label class="config-label">MOSTRAR BARRA DO TOPO</label>
+            <p class="config-hint">A barra fixa no topo com "MODO — PROFISSIONAL" e os botões de ação.</p>
             <div class="config-btn-group" id="showTopbarGroup"></div>
           </div>
           <div class="config-group">
             <label class="config-label">MOSTRAR RODAPÉ</label>
+            <p class="config-hint">O rodapé com copyright no final da página.</p>
             <div class="config-btn-group" id="showFooterGroup"></div>
           </div>
           <div class="config-group">
             <label class="config-label">MOSTRAR PORCENTAGEM NAS HABILIDADES</label>
+            <p class="config-hint">Exibe ou oculta os números percentuais ao lado das barras de habilidade.</p>
             <div class="config-btn-group" id="showSkillPctGroup"></div>
           </div>
         </div>
@@ -378,6 +417,7 @@
           </div>
           <div class="config-group">
             <label class="config-label">IDIOMA</label>
+            <p class="config-hint">Alterna entre português e inglês para o conteúdo preenchido automaticamente.</p>
             <div class="config-btn-group" id="langGroup"></div>
           </div>
           <div class="config-divider"></div>
@@ -393,32 +433,45 @@
           <div class="config-group" id="projectsEditContainer">
             <label class="config-label">PROJETOS</label>
           </div>
+          <div class="config-divider"></div>
+          <div class="config-group">
+            <label class="config-label">SEÇÕES PERSONALIZADAS</label>
+            <p class="config-hint">Crie seções livres com texto sobre você, seus interesses, projetos paralelos, ou qualquer conteúdo extra que quiser mostrar.</p>
+            <div id="customSectionsList"></div>
+            <button class="config-btn config-btn-add" id="addCustomSection">+ ADICIONAR SEÇÃO</button>
+          </div>
         </div>
 
         <!-- TAB: PDF -->
         <div class="config-tab-content" id="tab-pdf">
           <div class="config-group">
             <label class="config-label">INCLUIR NO PDF</label>
+            <p class="config-hint">Selecione quais seções aparecerão no arquivo PDF exportado.</p>
             <div class="config-pdf-list" id="pdfSectionList"></div>
           </div>
           <div class="config-group">
             <label class="config-label">MARGENS</label>
+            <p class="config-hint">Espaçamento nas bordas do PDF.</p>
             <div class="config-btn-group" id="marginGroup"></div>
           </div>
           <div class="config-group">
             <label class="config-label">TAMANHO DA FONTE NO PDF</label>
+            <p class="config-hint">Tamanho do texto no PDF (independente do tamanho na tela).</p>
             <div class="config-btn-group" id="pdfFontGroup"></div>
           </div>
           <div class="config-group">
             <label class="config-label">TAMANHO DA PÁGINA</label>
+            <p class="config-hint">Formato de papel usado na exportação.</p>
             <div class="config-btn-group" id="pageSizeGroup"></div>
           </div>
           <div class="config-group">
             <label class="config-label">CORES NO PDF</label>
+            <p class="config-hint">"Colorido" mantém as cores do tema; "Escala de cinza" converte tudo para preto e branco.</p>
             <div class="config-btn-group" id="pdfColorGroup"></div>
           </div>
           <div class="config-group">
             <label class="config-label">INCLUIR TOPO NO PDF</label>
+            <p class="config-hint">A barra superior com "MODO — PROFISSIONAL" aparece no PDF?</p>
             <div class="config-btn-group" id="pdfTopbarGroup"></div>
           </div>
         </div>

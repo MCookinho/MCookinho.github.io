@@ -281,6 +281,7 @@
           { id: 'letral',     lang: 'JavaScript', label: 'LETRAL',     desc: 'Wordle Battle Royale. Descubra a palavra secreta antes dos outros em pt-BR, en, es.',                    url: 'letral.wtf' },
           { id: 'catfishing', lang: 'GML',        label: 'CATFISHING', desc: 'Point & Click com combate por turno. Pesque e batalhe contra os peixes do aquário.',                    url: 'codecrusaders.itch.io/catfishing' },
         ],
+        customSections: [],
       },
       pdf: {
         sections: SECTION_IDS.map(function (s) { return s.id }),
@@ -350,6 +351,7 @@
     if (!cfg.content.education) cfg.content.education = JSON.parse(JSON.stringify(d.content.education))
     if (!cfg.content.skills) cfg.content.skills = JSON.parse(JSON.stringify(d.content.skills))
     if (!cfg.content.projects) cfg.content.projects = JSON.parse(JSON.stringify(d.content.projects))
+    if (!cfg.content.customSections) cfg.content.customSections = []
     var existing = cfg.sections || []
     SECTION_IDS.forEach(function (s) {
       if (!existing.find(function (e) { return e.id === s.id })) {
@@ -673,6 +675,20 @@
       })
     }
 
+    // Custom sections
+    var mainEl = document.getElementById('mainContent')
+    if (mainEl && content.customSections) {
+      mainEl.querySelectorAll('.prof-section[data-section^="custom-"]').forEach(function (el) { el.remove() })
+      content.customSections.forEach(function (cs) {
+        var div = document.createElement('section')
+        div.className = 'prof-section'
+        div.id = 'sec-custom-' + cs.id
+        div.setAttribute('data-section', 'custom-' + cs.id)
+        div.innerHTML = '<h2 class="ps-title">' + escHtml(cs.title || '') + '</h2><p class="ps-text">' + escHtml(cs.content || '') + '</p>'
+        mainEl.appendChild(div)
+      })
+    }
+
     // Projects
     var projGrid = document.querySelector('.proj-grid')
     if (projGrid && content.projects) {
@@ -854,6 +870,7 @@
 
     // Dynamic content editors
     renderContentEditors(cfg)
+    renderCustomSectionEditors(cfg)
 
     // PDF
     renderPdfSectionList(cfg)
@@ -995,6 +1012,46 @@
     }
   }
 
+  function renderCustomSectionEditors(cfg) {
+    var list = document.getElementById('customSectionsList')
+    if (!list) return
+    list.innerHTML = ''
+    cfg.content.customSections.forEach(function (cs, i) {
+      var box = document.createElement('div')
+      box.className = 'config-custom-section'
+      box.innerHTML =
+        '<div class="config-cs-header">' +
+          '<span class="config-cs-number">#' + (i + 1) + '</span>' +
+          '<button class="config-cs-delete" data-index="' + i + '" title="Remover seção">✕</button>' +
+        '</div>' +
+        '<div class="config-cs-body">' +
+          '<div class="config-content-row"><span class="config-content-row-label">Título</span><input type="text" class="config-input cs-title-input" value="' + escAttr(cs.title) + '" placeholder="Título da seção" /></div>' +
+          '<div class="config-content-row"><span class="config-content-row-label">Conteúdo</span><textarea class="config-textarea cs-content-input" rows="4" placeholder="Escreva aqui o conteúdo da seção...">' + escAttr(cs.content) + '</textarea></div>' +
+        '</div>'
+      // Wire up inputs
+      var titleInput = box.querySelector('.cs-title-input')
+      var contentInput = box.querySelector('.cs-content-input')
+      if (titleInput) {
+        titleInput.addEventListener('input', function () {
+          if (currentConfig.content.customSections[i]) currentConfig.content.customSections[i].title = titleInput.value
+        })
+      }
+      if (contentInput) {
+        contentInput.addEventListener('input', function () {
+          if (currentConfig.content.customSections[i]) currentConfig.content.customSections[i].content = contentInput.value
+        })
+      }
+      var delBtn = box.querySelector('.config-cs-delete')
+      if (delBtn) {
+        delBtn.addEventListener('click', function () {
+          currentConfig.content.customSections.splice(i, 1)
+          renderCustomSectionEditors(currentConfig)
+        })
+      }
+      list.appendChild(box)
+    })
+  }
+
   function renderThemeGrid(cfg) {
     var grid = document.getElementById('themeGrid')
     grid.innerHTML = ''
@@ -1102,6 +1159,13 @@
   })
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && overlay.classList.contains('open')) closePanel()
+  })
+
+  // Add custom section
+  document.getElementById('addCustomSection').addEventListener('click', function () {
+    var id = 'cs_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6)
+    currentConfig.content.customSections.push({ id: id, title: 'Nova Seção', content: '' })
+    renderCustomSectionEditors(currentConfig)
   })
 
   // Tab switching

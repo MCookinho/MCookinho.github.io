@@ -383,6 +383,42 @@ body.list-bullet .edu-item::before {
 .config-pdf-item label { flex: 1; font-size: 13px; color: var(--text); cursor: pointer; }
 .config-pdf-item input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--accent); cursor: pointer; }
 
+/* ── Custom Sections Editor ── */
+.config-custom-section {
+  background: var(--bg); border: 1px solid var(--border);
+  margin-bottom: 12px; overflow: hidden;
+}
+.config-cs-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 14px; background: var(--card);
+  border-bottom: 1px solid var(--border);
+}
+.config-cs-number {
+  font-size: 11px; font-weight: 700; color: var(--muted);
+  letter-spacing: 0.5px;
+}
+.config-cs-delete {
+  background: none; border: none; cursor: pointer;
+  font-size: 14px; color: #e74c3c; padding: 2px 6px;
+  transition: opacity 0.15s;
+}
+.config-cs-delete:hover { opacity: 0.6; }
+.config-cs-body {
+  padding: 14px; display: flex; flex-direction: column; gap: 10px;
+}
+.config-cs-body .config-content-row { flex-direction: column; gap: 4px; }
+.config-cs-body .config-content-row .config-content-row-label { width: auto; }
+.config-cs-body .config-content-row .config-input,
+.config-cs-body .config-content-row .config-textarea { width: 100%; }
+
+.config-btn-add {
+  font-family: inherit; font-size: 12px; padding: 9px 16px;
+  background: var(--card); color: var(--accent);
+  border: 1px dashed var(--accent); cursor: pointer;
+  transition: all 0.15s; width: 100%; margin-top: 4px;
+}
+.config-btn-add:hover { background: var(--accent); color: #fff; }
+
 /* ── Content Editor (dynamic items) ── */
 .config-content-editor { margin-bottom: 12px; }
 .config-content-item {
