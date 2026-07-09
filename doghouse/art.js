@@ -199,32 +199,23 @@ function drNorth(ctx,t){
   circle(dx+130,dy+320,6,PAL.rust_l)
   rect(dx+128,dy+310,4,10,PAL.rust)
 
-  // Grate (left) — iron bars
+  // Grate (left) — iron bars (sketch style)
   rect(50,190,110,160,PAL.ink_l)
-
-  // darkness behind grate
   rect(55,195,100,150,PAL.ink)
 
-  // Vertical iron bars (3D effect)
+  // Vertical bars (wavy hand-drawn lines)
   for(let i=0;i<4;i++){
     const bx=65+i*25
-    // shadow side
-    rect(bx-2,195,4,150,'rgba(40,20,10,0.6)')
-    // main body
-    rect(bx,195,6,150,PAL.rust)
-    // highlight
-    rect(bx+1,195,2,150,'rgba(160,106,58,0.3)')
-    // top/bottom caps
-    rect(bx-2,193,10,4,PAL.rust)
-    rect(bx-2,339,10,4,PAL.rust)
+    wln(bx-2,195,bx-2,345,'rgba(40,20,10,0.4)',2.5,t)
+    wln(bx,195,bx,345,PAL.rust,4,t)
+    wln(bx+1.5,195,bx+1.5,345,'rgba(160,106,58,0.2)',1.5,t)
   }
   // Horizontal crossbars
   for(let i=0;i<4;i++){
     const gy=197+i*44
-    rect(53,gy-2,104,4,PAL.rust)
-    rect(54,gy-1,102,2,'rgba(160,106,58,0.2)')
-    // Rivets at intersections
-    for(let j=0;j<4;j++)circle(65+j*25,gy,2,PAL.rust_l)
+    wln(53,gy,157,gy,PAL.rust,3.5,t)
+    wln(54,gy+0.5,156,gy+0.5,'rgba(160,106,58,0.15)',2,t)
+    for(let j=0;j<4;j++)circle(65+j*25,gy,2.5,PAL.rust_l)
   }
 
   // Window (right)
