@@ -1,10 +1,55 @@
 [
   {
+    "name": "After Life",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE After Life]",
+    "review": "[EDITAR REVIEW DE After Life]",
+    "rating": 3.9,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
     "name": "Alice in Borderland",
     "type": "Acao",
     "synopsis": "Pessoas sao transportadas para uma Tóquio alternativa.",
     "review": "Minha opiniao sobre Alice in Borderland. [EDITAR]",
     "rating": 4.7,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Altered Carbon",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Altered Carbon]",
+    "review": "[EDITAR REVIEW DE Altered Carbon]",
+    "rating": 4.0,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "American Crime Story",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE American Crime Story]",
+    "review": "[EDITAR REVIEW DE American Crime Story]",
+    "rating": 3.4,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "American Vandal",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE American Vandal]",
+    "review": "[EDITAR REVIEW DE American Vandal]",
+    "rating": 4.8,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Anne With An E",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Anne With An E]",
+    "review": "[EDITAR REVIEW DE Anne With An E]",
+    "rating": 4.3,
     "favoriteEpisode": "[EDITAR]"
   },
 
@@ -45,6 +90,33 @@
   },
 
   {
+    "name": "Avatar The Last Airbender",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Avatar The Last Airbender]",
+    "review": "[EDITAR REVIEW DE Avatar The Last Airbender]",
+    "rating": 4.5,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Babylon Berlin",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Babylon Berlin]",
+    "review": "[EDITAR REVIEW DE Babylon Berlin]",
+    "rating": 3.9,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Band Of Brothers",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Band Of Brothers]",
+    "review": "[EDITAR REVIEW DE Band Of Brothers]",
+    "rating": 4.0,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
     "name": "Banshee",
     "type": "Acao",
     "synopsis": "Um ex-convicto assume a identidade de um xerife.",
@@ -72,10 +144,37 @@
   },
 
   {
+    "name": "Beenham",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Beenham]",
+    "review": "[EDITAR REVIEW DE Beenham]",
+    "rating": 4.3,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
     "name": "Better Call Saul",
     "type": "Drama",
     "synopsis": "A origem de Saul Goodman.",
     "review": "Minha opiniao sobre Better Call Saul. [EDITAR]",
+    "rating": 4.4,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Better Things",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Better Things]",
+    "review": "[EDITAR REVIEW DE Better Things]",
+    "rating": 3.8,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Big Little Lies",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Big Little Lies]",
+    "review": "[EDITAR REVIEW DE Big Little Lies]",
     "rating": 4.4,
     "favoriteEpisode": "[EDITAR]"
   },
@@ -90,11 +189,65 @@
   },
 
   {
+    "name": "Bloodline",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Bloodline]",
+    "review": "[EDITAR REVIEW DE Bloodline]",
+    "rating": 3.7,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Boardwalk Empire",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Boardwalk Empire]",
+    "review": "[EDITAR REVIEW DE Boardwalk Empire]",
+    "rating": 4.7,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Bodyguard",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Bodyguard]",
+    "review": "[EDITAR REVIEW DE Bodyguard]",
+    "rating": 4.8,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
     "name": "BoJack Horseman",
     "type": "Animacao",
     "synopsis": "Um cavalo ator lidando com a fama e a depressao.",
     "review": "Minha opiniao sobre BoJack Horseman. [EDITAR]",
     "rating": 3.9,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Bones",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Bones]",
+    "review": "[EDITAR REVIEW DE Bones]",
+    "rating": 3.4,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Bonsai",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Bonsai]",
+    "review": "[EDITAR REVIEW DE Bonsai]",
+    "rating": 4.2,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Boo",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Boo]",
+    "review": "[EDITAR REVIEW DE Boo]",
+    "rating": 4.1,
     "favoriteEpisode": "[EDITAR]"
   },
 
@@ -108,11 +261,74 @@
   },
 
   {
+    "name": "Britannia",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Britannia]",
+    "review": "[EDITAR REVIEW DE Britannia]",
+    "rating": 3.3,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Broadchurch",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Broadchurch]",
+    "review": "[EDITAR REVIEW DE Broadchurch]",
+    "rating": 3.2,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
     "name": "Brooklyn Nine-Nine",
     "type": "Comedia",
     "synopsis": "O dia a dia de uma delegacia do Brooklyn.",
     "review": "Minha opiniao sobre Brooklyn Nine-Nine. [EDITAR]",
     "rating": 4.0,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Californication",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Californication]",
+    "review": "[EDITAR REVIEW DE Californication]",
+    "rating": 4.5,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Carnivale",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Carnivale]",
+    "review": "[EDITAR REVIEW DE Carnivale]",
+    "rating": 3.5,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Castle",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Castle]",
+    "review": "[EDITAR REVIEW DE Castle]",
+    "rating": 4.5,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Casts",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Casts]",
+    "review": "[EDITAR REVIEW DE Casts]",
+    "rating": 4.2,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Chaos",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Chaos]",
+    "review": "[EDITAR REVIEW DE Chaos]",
+    "rating": 3.2,
     "favoriteEpisode": "[EDITAR]"
   },
 
@@ -126,10 +342,127 @@
   },
 
   {
+    "name": "Clarice",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Clarice]",
+    "review": "[EDITAR REVIEW DE Clarice]",
+    "rating": 3.5,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Class",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Class]",
+    "review": "[EDITAR REVIEW DE Class]",
+    "rating": 3.5,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Claws",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Claws]",
+    "review": "[EDITAR REVIEW DE Claws]",
+    "rating": 3.1,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Clean",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Clean]",
+    "review": "[EDITAR REVIEW DE Clean]",
+    "rating": 3.7,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Close",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Close]",
+    "review": "[EDITAR REVIEW DE Close]",
+    "rating": 4.7,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Cold Case",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Cold Case]",
+    "review": "[EDITAR REVIEW DE Cold Case]",
+    "rating": 4.9,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Colony",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Colony]",
+    "review": "[EDITAR REVIEW DE Colony]",
+    "rating": 3.4,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
     "name": "Community",
     "type": "Comedia",
     "synopsis": "Um grupo de estudantes de uma faculdade comunitária.",
     "review": "Minha opiniao sobre Community. [EDITAR]",
+    "rating": 4.5,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Counterpart",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Counterpart]",
+    "review": "[EDITAR REVIEW DE Counterpart]",
+    "rating": 3.4,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Criminal Minds",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Criminal Minds]",
+    "review": "[EDITAR REVIEW DE Criminal Minds]",
+    "rating": 3.8,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Cross",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Cross]",
+    "review": "[EDITAR REVIEW DE Cross]",
+    "rating": 3.0,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Crush",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Crush]",
+    "review": "[EDITAR REVIEW DE Crush]",
+    "rating": 3.0,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Cursed",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Cursed]",
+    "review": "[EDITAR REVIEW DE Cursed]",
+    "rating": 4.5,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Daredevil",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Daredevil]",
+    "review": "[EDITAR REVIEW DE Daredevil]",
     "rating": 4.5,
     "favoriteEpisode": "[EDITAR]"
   },
@@ -144,11 +477,326 @@
   },
 
   {
+    "name": "Dark Matter",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Dark Matter]",
+    "review": "[EDITAR REVIEW DE Dark Matter]",
+    "rating": 3.6,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "David",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE David]",
+    "review": "[EDITAR REVIEW DE David]",
+    "rating": 3.1,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Dawn",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Dawn]",
+    "review": "[EDITAR REVIEW DE Dawn]",
+    "rating": 3.7,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Days",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Days]",
+    "review": "[EDITAR REVIEW DE Days]",
+    "rating": 3.3,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Dead",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Dead]",
+    "review": "[EDITAR REVIEW DE Dead]",
+    "rating": 4.3,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Dead To Me",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Dead To Me]",
+    "review": "[EDITAR REVIEW DE Dead To Me]",
+    "rating": 4.5,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Deception",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Deception]",
+    "review": "[EDITAR REVIEW DE Deception]",
+    "rating": 4.0,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Defenders",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Defenders]",
+    "review": "[EDITAR REVIEW DE Defenders]",
+    "rating": 3.4,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Designated Survivor",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Designated Survivor]",
+    "review": "[EDITAR REVIEW DE Designated Survivor]",
+    "rating": 4.2,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
     "name": "Dexter",
     "type": "Drama",
     "synopsis": "Um serial killer que so mata criminosos.",
     "review": "Minha opiniao sobre Dexter. [EDITAR]",
     "rating": 4.4,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Dirk Gently",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Dirk Gently]",
+    "review": "[EDITAR REVIEW DE Dirk Gently]",
+    "rating": 3.9,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Discovery",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Discovery]",
+    "review": "[EDITAR REVIEW DE Discovery]",
+    "rating": 4.9,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Disenchantment",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Disenchantment]",
+    "review": "[EDITAR REVIEW DE Disenchantment]",
+    "rating": 4.5,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Dollhouse",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Dollhouse]",
+    "review": "[EDITAR REVIEW DE Dollhouse]",
+    "rating": 4.8,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Dominion",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Dominion]",
+    "review": "[EDITAR REVIEW DE Dominion]",
+    "rating": 3.6,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Doom Patrol",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Doom Patrol]",
+    "review": "[EDITAR REVIEW DE Doom Patrol]",
+    "rating": 4.8,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Dopesick",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Dopesick]",
+    "review": "[EDITAR REVIEW DE Dopesick]",
+    "rating": 4.9,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Downton Abbey",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Downton Abbey]",
+    "review": "[EDITAR REVIEW DE Downton Abbey]",
+    "rating": 4.4,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Dream",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Dream]",
+    "review": "[EDITAR REVIEW DE Dream]",
+    "rating": 4.7,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Drive",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Drive]",
+    "review": "[EDITAR REVIEW DE Drive]",
+    "rating": 3.9,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Drop Dead Diva",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Drop Dead Diva]",
+    "review": "[EDITAR REVIEW DE Drop Dead Diva]",
+    "rating": 3.9,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Dynasty",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Dynasty]",
+    "review": "[EDITAR REVIEW DE Dynasty]",
+    "rating": 3.2,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Element",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Element]",
+    "review": "[EDITAR REVIEW DE Element]",
+    "rating": 3.7,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Elementary",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Elementary]",
+    "review": "[EDITAR REVIEW DE Elementary]",
+    "rating": 3.0,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Elite",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Elite]",
+    "review": "[EDITAR REVIEW DE Elite]",
+    "rating": 4.8,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Emerald City",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Emerald City]",
+    "review": "[EDITAR REVIEW DE Emerald City]",
+    "rating": 3.3,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Empire",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Empire]",
+    "review": "[EDITAR REVIEW DE Empire]",
+    "rating": 3.6,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "End",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE End]",
+    "review": "[EDITAR REVIEW DE End]",
+    "rating": 4.6,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "End Of The F Ing World",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE End Of The F Ing World]",
+    "review": "[EDITAR REVIEW DE End Of The F Ing World]",
+    "rating": 3.9,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Enter",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Enter]",
+    "review": "[EDITAR REVIEW DE Enter]",
+    "rating": 3.0,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Euphoria",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Euphoria]",
+    "review": "[EDITAR REVIEW DE Euphoria]",
+    "rating": 3.9,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Ever",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Ever]",
+    "review": "[EDITAR REVIEW DE Ever]",
+    "rating": 4.3,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Evil",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Evil]",
+    "review": "[EDITAR REVIEW DE Evil]",
+    "rating": 4.2,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Explained",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Explained]",
+    "review": "[EDITAR REVIEW DE Explained]",
+    "rating": 4.1,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Extra",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Extra]",
+    "review": "[EDITAR REVIEW DE Extra]",
+    "rating": 3.7,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "Extracurricular",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Extracurricular]",
+    "review": "[EDITAR REVIEW DE Extracurricular]",
+    "rating": 4.7,
     "favoriteEpisode": "[EDITAR]"
   },
 
@@ -459,6 +1107,159 @@
   },
 
   {
+    "name": "The Falcon And The Winter Soldier",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Falcon And The Winter Soldier]",
+    "review": "[EDITAR REVIEW DE The Falcon And The Winter Soldier]",
+    "rating": 3.1,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Fall",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Fall]",
+    "review": "[EDITAR REVIEW DE The Fall]",
+    "rating": 4.5,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Fly",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Fly]",
+    "review": "[EDITAR REVIEW DE The Fly]",
+    "rating": 4.6,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Gold",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Gold]",
+    "review": "[EDITAR REVIEW DE The Gold]",
+    "rating": 4.9,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Good Doctor",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Good Doctor]",
+    "review": "[EDITAR REVIEW DE The Good Doctor]",
+    "rating": 3.3,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Good Fight",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Good Fight]",
+    "review": "[EDITAR REVIEW DE The Good Fight]",
+    "rating": 3.8,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Good Place",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Good Place]",
+    "review": "[EDITAR REVIEW DE The Good Place]",
+    "rating": 3.4,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Great",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Great]",
+    "review": "[EDITAR REVIEW DE The Great]",
+    "rating": 3.7,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Great British Bake Off",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Great British Bake Off]",
+    "review": "[EDITAR REVIEW DE The Great British Bake Off]",
+    "rating": 4.7,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Haunting Of Bly Manor",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Haunting Of Bly Manor]",
+    "review": "[EDITAR REVIEW DE The Haunting Of Bly Manor]",
+    "rating": 3.7,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Haunting Of Hill House",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Haunting Of Hill House]",
+    "review": "[EDITAR REVIEW DE The Haunting Of Hill House]",
+    "rating": 4.4,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The I Land",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The I Land]",
+    "review": "[EDITAR REVIEW DE The I Land]",
+    "rating": 3.1,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Irregulars",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Irregulars]",
+    "review": "[EDITAR REVIEW DE The Irregulars]",
+    "rating": 4.1,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Kingdom",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Kingdom]",
+    "review": "[EDITAR REVIEW DE The Kingdom]",
+    "rating": 3.6,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Last Dance",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Last Dance]",
+    "review": "[EDITAR REVIEW DE The Last Dance]",
+    "rating": 4.2,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Last Kingdom",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Last Kingdom]",
+    "review": "[EDITAR REVIEW DE The Last Kingdom]",
+    "rating": 3.2,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Last Of Us",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Last Of Us]",
+    "review": "[EDITAR REVIEW DE The Last Of Us]",
+    "rating": 3.0,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
     "name": "The Leftovers",
     "type": "Drama",
     "synopsis": "O mundo apos o repentino desaparecimento de pessoas.",
@@ -468,11 +1269,524 @@
   },
 
   {
+    "name": "The Legend Of Korra",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Legend Of Korra]",
+    "review": "[EDITAR REVIEW DE The Legend Of Korra]",
+    "rating": 3.9,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Librarian",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Librarian]",
+    "review": "[EDITAR REVIEW DE The Librarian]",
+    "rating": 3.7,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Looney Tunes Show",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Looney Tunes Show]",
+    "review": "[EDITAR REVIEW DE The Looney Tunes Show]",
+    "rating": 4.5,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Lord Of The Rings",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Lord Of The Rings]",
+    "review": "[EDITAR REVIEW DE The Lord Of The Rings]",
+    "rating": 3.7,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Lost Room",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Lost Room]",
+    "review": "[EDITAR REVIEW DE The Lost Room]",
+    "rating": 3.3,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Magicians",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Magicians]",
+    "review": "[EDITAR REVIEW DE The Magicians]",
+    "rating": 4.2,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Mandalorian",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Mandalorian]",
+    "review": "[EDITAR REVIEW DE The Mandalorian]",
+    "rating": 4.5,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Marvelous Mrs Maisel",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Marvelous Mrs Maisel]",
+    "review": "[EDITAR REVIEW DE The Marvelous Mrs Maisel]",
+    "rating": 3.4,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Mentalist",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Mentalist]",
+    "review": "[EDITAR REVIEW DE The Mentalist]",
+    "rating": 3.4,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Midnight Club",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Midnight Club]",
+    "review": "[EDITAR REVIEW DE The Midnight Club]",
+    "rating": 3.7,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Mighty Boosh",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Mighty Boosh]",
+    "review": "[EDITAR REVIEW DE The Mighty Boosh]",
+    "rating": 3.3,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Mist",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Mist]",
+    "review": "[EDITAR REVIEW DE The Mist]",
+    "rating": 4.3,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Mole",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Mole]",
+    "review": "[EDITAR REVIEW DE The Mole]",
+    "rating": 3.8,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Movie",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Movie]",
+    "review": "[EDITAR REVIEW DE The Movie]",
+    "rating": 4.6,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Murder Of",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Murder Of]",
+    "review": "[EDITAR REVIEW DE The Murder Of]",
+    "rating": 3.4,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Nanny",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Nanny]",
+    "review": "[EDITAR REVIEW DE The Nanny]",
+    "rating": 3.4,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Newsroom",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Newsroom]",
+    "review": "[EDITAR REVIEW DE The Newsroom]",
+    "rating": 3.7,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Night Manager",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Night Manager]",
+    "review": "[EDITAR REVIEW DE The Night Manager]",
+    "rating": 3.2,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Night Of",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Night Of]",
+    "review": "[EDITAR REVIEW DE The Night Of]",
+    "rating": 3.2,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Oa",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Oa]",
+    "review": "[EDITAR REVIEW DE The Oa]",
+    "rating": 4.3,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
     "name": "The Office (US)",
     "type": "Comedia",
     "synopsis": "O dia a dia de uma empresa de papel.",
     "review": "Minha opiniao sobre The Office (US). [EDITAR]",
     "rating": 3.0,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Office Uk",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Office Uk]",
+    "review": "[EDITAR REVIEW DE The Office Uk]",
+    "rating": 4.9,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Orange",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Orange]",
+    "review": "[EDITAR REVIEW DE The Orange]",
+    "rating": 3.3,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Orphan",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Orphan]",
+    "review": "[EDITAR REVIEW DE The Orphan]",
+    "rating": 4.7,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Other Black Girl",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Other Black Girl]",
+    "review": "[EDITAR REVIEW DE The Other Black Girl]",
+    "rating": 4.7,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Outer Limits",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Outer Limits]",
+    "review": "[EDITAR REVIEW DE The Outer Limits]",
+    "rating": 3.1,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Pacific",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Pacific]",
+    "review": "[EDITAR REVIEW DE The Pacific]",
+    "rating": 3.8,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Palace",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Palace]",
+    "review": "[EDITAR REVIEW DE The Palace]",
+    "rating": 3.6,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Paradise",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Paradise]",
+    "review": "[EDITAR REVIEW DE The Paradise]",
+    "rating": 4.9,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Path",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Path]",
+    "review": "[EDITAR REVIEW DE The Path]",
+    "rating": 3.7,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Patient",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Patient]",
+    "review": "[EDITAR REVIEW DE The Patient]",
+    "rating": 3.9,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The People V",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The People V]",
+    "review": "[EDITAR REVIEW DE The People V]",
+    "rating": 4.3,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Permanent Room",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Permanent Room]",
+    "review": "[EDITAR REVIEW DE The Permanent Room]",
+    "rating": 4.4,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Pilot",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Pilot]",
+    "review": "[EDITAR REVIEW DE The Pilot]",
+    "rating": 4.6,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Plot Against America",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Plot Against America]",
+    "review": "[EDITAR REVIEW DE The Plot Against America]",
+    "rating": 4.5,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Politician",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Politician]",
+    "review": "[EDITAR REVIEW DE The Politician]",
+    "rating": 3.7,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Power",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Power]",
+    "review": "[EDITAR REVIEW DE The Power]",
+    "rating": 4.3,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Practice",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Practice]",
+    "review": "[EDITAR REVIEW DE The Practice]",
+    "rating": 4.1,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Pretender",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Pretender]",
+    "review": "[EDITAR REVIEW DE The Pretender]",
+    "rating": 4.9,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Princess",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Princess]",
+    "review": "[EDITAR REVIEW DE The Princess]",
+    "rating": 4.3,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Prison",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Prison]",
+    "review": "[EDITAR REVIEW DE The Prison]",
+    "rating": 4.0,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Promise",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Promise]",
+    "review": "[EDITAR REVIEW DE The Promise]",
+    "rating": 3.9,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Protector",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Protector]",
+    "review": "[EDITAR REVIEW DE The Protector]",
+    "rating": 3.8,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Punisher",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Punisher]",
+    "review": "[EDITAR REVIEW DE The Punisher]",
+    "rating": 4.9,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Queen",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Queen]",
+    "review": "[EDITAR REVIEW DE The Queen]",
+    "rating": 4.9,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Rain",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Rain]",
+    "review": "[EDITAR REVIEW DE The Rain]",
+    "rating": 4.8,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Ranch",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Ranch]",
+    "review": "[EDITAR REVIEW DE The Ranch]",
+    "rating": 4.1,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Rebel",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Rebel]",
+    "review": "[EDITAR REVIEW DE The Rebel]",
+    "rating": 4.3,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Recruit",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Recruit]",
+    "review": "[EDITAR REVIEW DE The Recruit]",
+    "rating": 3.0,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Red Line",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Red Line]",
+    "review": "[EDITAR REVIEW DE The Red Line]",
+    "rating": 4.6,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Refugee",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Refugee]",
+    "review": "[EDITAR REVIEW DE The Refugee]",
+    "rating": 3.0,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Regime",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Regime]",
+    "review": "[EDITAR REVIEW DE The Regime]",
+    "rating": 4.0,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Repeat",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Repeat]",
+    "review": "[EDITAR REVIEW DE The Repeat]",
+    "rating": 4.7,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Resident",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Resident]",
+    "review": "[EDITAR REVIEW DE The Resident]",
+    "rating": 3.6,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Return",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Return]",
+    "review": "[EDITAR REVIEW DE The Return]",
+    "rating": 3.4,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Reunion",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Reunion]",
+    "review": "[EDITAR REVIEW DE The Reunion]",
+    "rating": 3.5,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Rich",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Rich]",
+    "review": "[EDITAR REVIEW DE The Rich]",
+    "rating": 3.4,
+    "favoriteEpisode": "[EDITAR]"
+  },
+
+  {
+    "name": "The Righteous Gemstones",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE The Righteous Gemstones]",
+    "review": "[EDITAR REVIEW DE The Righteous Gemstones]",
+    "rating": 3.6,
     "favoriteEpisode": "[EDITAR]"
   },
 

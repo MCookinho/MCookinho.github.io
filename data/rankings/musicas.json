@@ -14,10 +14,52 @@
   },
 
   {
+    "name": "After Dark",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/after%20dark",
+    "rating": 4.0
+  },
+
+  {
+    "name": "Alive",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/alive",
+    "rating": 3.8
+  },
+
+  {
     "name": "All Along the Watchtower",
     "artist": "Jimi Hendrix",
     "spotify": "https://open.spotify.com/search/All%20Along%20the%20Watchtower",
     "rating": 4.8
+  },
+
+  {
+    "name": "All Star",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/all%20star",
+    "rating": 3.9
+  },
+
+  {
+    "name": "American Idiot",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/american%20idiot",
+    "rating": 3.2
+  },
+
+  {
+    "name": "Another Brick In The Wall",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/another%20brick%20in%20the%20wall",
+    "rating": 3.8
+  },
+
+  {
+    "name": "Apocalypse",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/apocalypse",
+    "rating": 4.6
   },
 
   {
@@ -35,10 +77,45 @@
   },
 
   {
+    "name": "Bad Guy",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/bad%20guy",
+    "rating": 4.6
+  },
+
+  {
+    "name": "Basket Case",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/basket%20case",
+    "rating": 4.9
+  },
+
+  {
+    "name": "Believer",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/believer",
+    "rating": 4.9
+  },
+
+  {
     "name": "Billie Jean",
     "artist": "Michael Jackson",
     "spotify": "https://open.spotify.com/search/Billie%20Jean",
     "rating": 3.0
+  },
+
+  {
+    "name": "Black Hole Sun",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/black%20hole%20sun",
+    "rating": 4.8
+  },
+
+  {
+    "name": "Blinding Lights",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/blinding%20lights",
+    "rating": 3.1
   },
 
   {
@@ -49,10 +126,73 @@
   },
 
   {
+    "name": "Born To Run",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/born%20to%20run",
+    "rating": 4.4
+  },
+
+  {
+    "name": "Breezeblocks",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/breezeblocks",
+    "rating": 4.9
+  },
+
+  {
+    "name": "Bulletproof",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/bulletproof",
+    "rating": 4.7
+  },
+
+  {
     "name": "Californication",
     "artist": "Red Hot Chili Peppers",
     "spotify": "https://open.spotify.com/search/Californication",
     "rating": 3.6
+  },
+
+  {
+    "name": "Can'T Feel My Face",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/can't%20feel%20my%20face",
+    "rating": 3.8
+  },
+
+  {
+    "name": "Carry On My Wayward Son",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/carry%20on%20my%20wayward%20son",
+    "rating": 4.9
+  },
+
+  {
+    "name": "Centuries",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/centuries",
+    "rating": 4.9
+  },
+
+  {
+    "name": "Changes",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/changes",
+    "rating": 4.5
+  },
+
+  {
+    "name": "Chop Suey",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/chop%20suey",
+    "rating": 4.7
+  },
+
+  {
+    "name": "Clocks",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/clocks",
+    "rating": 4.3
   },
 
   {
@@ -63,10 +203,38 @@
   },
 
   {
+    "name": "Come Together",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/come%20together",
+    "rating": 4.4
+  },
+
+  {
     "name": "Comfortably Numb",
     "artist": "Pink Floyd",
     "spotify": "https://open.spotify.com/search/Comfortably%20Numb",
     "rating": 3.5
+  },
+
+  {
+    "name": "Crawl Outta Love",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/crawl%20outta%20love",
+    "rating": 4.1
+  },
+
+  {
+    "name": "Crawling",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/crawling",
+    "rating": 4.3
+  },
+
+  {
+    "name": "Crazy Train",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/crazy%20train",
+    "rating": 3.2
   },
 
   {
@@ -77,10 +245,73 @@
   },
 
   {
+    "name": "Dance Monkey",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/dance%20monkey",
+    "rating": 4.4
+  },
+
+  {
+    "name": "Dancing Queen",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/dancing%20queen",
+    "rating": 4.6
+  },
+
+  {
+    "name": "Dare",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/dare",
+    "rating": 3.6
+  },
+
+  {
+    "name": "Dazed And Confused",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/dazed%20and%20confused",
+    "rating": 4.5
+  },
+
+  {
+    "name": "Demons",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/demons",
+    "rating": 3.9
+  },
+
+  {
+    "name": "Do I Wanna Know",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/do%20i%20wanna%20know",
+    "rating": 3.7
+  },
+
+  {
+    "name": "Dogs",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/dogs",
+    "rating": 4.4
+  },
+
+  {
+    "name": "Don'T Look Back In Anger",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/don't%20look%20back%20in%20anger",
+    "rating": 4.2
+  },
+
+  {
     "name": "Dont Stop Believin",
     "artist": "Journey",
     "spotify": "https://open.spotify.com/search/Dont%20Stop%20Believin",
     "rating": 3.2
+  },
+
+  {
+    "name": "Dragula",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/dragula",
+    "rating": 4.6
   },
 
   {
@@ -91,10 +322,45 @@
   },
 
   {
+    "name": "Du Hast",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/du%20hast",
+    "rating": 3.6
+  },
+
+  {
+    "name": "Easy On Me",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/easy%20on%20me",
+    "rating": 3.9
+  },
+
+  {
+    "name": "Echoes",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/echoes",
+    "rating": 3.2
+  },
+
+  {
+    "name": "Electric Feel",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/electric%20feel",
+    "rating": 4.9
+  },
+
+  {
     "name": "Enter Sandman",
     "artist": "Metallica",
     "spotify": "https://open.spotify.com/search/Enter%20Sandman",
     "rating": 3.1
+  },
+
+  {
+    "name": "Everlong",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/everlong",
+    "rating": 3.9
   },
 
   {
@@ -105,10 +371,45 @@
   },
 
   {
+    "name": "Everybody Wants To Rule The World",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/everybody%20wants%20to%20rule%20the%20world",
+    "rating": 3.5
+  },
+
+  {
     "name": "Eye of the Tiger",
     "artist": "Survivor",
     "spotify": "https://open.spotify.com/search/Eye%20of%20the%20Tiger",
     "rating": 4.8
+  },
+
+  {
+    "name": "Fade",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/fade",
+    "rating": 4.8
+  },
+
+  {
+    "name": "Fade To Black",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/fade%20to%20black",
+    "rating": 4.3
+  },
+
+  {
+    "name": "Faded",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/faded",
+    "rating": 3.1
+  },
+
+  {
+    "name": "Fake It",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/fake%20it",
+    "rating": 4.1
   },
 
   {
@@ -119,10 +420,59 @@
   },
 
   {
+    "name": "Fear Of The Dark",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/fear%20of%20the%20dark",
+    "rating": 3.7
+  },
+
+  {
     "name": "Feel Good Inc.",
     "artist": "Gorillaz",
     "spotify": "https://open.spotify.com/search/Feel%20Good%20Inc.",
     "rating": 3.3
+  },
+
+  {
+    "name": "First",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/first",
+    "rating": 4.7
+  },
+
+  {
+    "name": "For Whom The Bell Tolls",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/for%20whom%20the%20bell%20tolls",
+    "rating": 4.1
+  },
+
+  {
+    "name": "Freak On A Leash",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/freak%20on%20a%20leash",
+    "rating": 3.7
+  },
+
+  {
+    "name": "Freaks",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/freaks",
+    "rating": 4.3
+  },
+
+  {
+    "name": "Gears",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/gears",
+    "rating": 4.2
+  },
+
+  {
+    "name": "Genesis",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/genesis",
+    "rating": 4.6
   },
 
   {
@@ -133,10 +483,143 @@
   },
 
   {
+    "name": "Ghost",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/ghost",
+    "rating": 4.7
+  },
+
+  {
     "name": "Gimme Shelter",
     "artist": "The Rolling Stones",
     "spotify": "https://open.spotify.com/search/Gimme%20Shelter",
     "rating": 4.9
+  },
+
+  {
+    "name": "Girls Like You",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/girls%20like%20you",
+    "rating": 4.8
+  },
+
+  {
+    "name": "Given Up",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/given%20up",
+    "rating": 4.8
+  },
+
+  {
+    "name": "Glory",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/glory",
+    "rating": 4.9
+  },
+
+  {
+    "name": "God'S Plan",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/god's%20plan",
+    "rating": 3.7
+  },
+
+  {
+    "name": "Going Bad",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/going%20bad",
+    "rating": 4.4
+  },
+
+  {
+    "name": "Gold",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/gold",
+    "rating": 4.8
+  },
+
+  {
+    "name": "Gone Gone Gone",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/gone%20gone%20gone",
+    "rating": 4.8
+  },
+
+  {
+    "name": "Good 4 U",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/good%204%20u",
+    "rating": 4.6
+  },
+
+  {
+    "name": "Grace",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/grace",
+    "rating": 4.3
+  },
+
+  {
+    "name": "Grand",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/grand",
+    "rating": 3.1
+  },
+
+  {
+    "name": "Great",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/great",
+    "rating": 4.3
+  },
+
+  {
+    "name": "Green Light",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/green%20light",
+    "rating": 4.8
+  },
+
+  {
+    "name": "Grind",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/grind",
+    "rating": 3.2
+  },
+
+  {
+    "name": "Ground",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/ground",
+    "rating": 4.9
+  },
+
+  {
+    "name": "Grown",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/grown",
+    "rating": 4.7
+  },
+
+  {
+    "name": "Guard",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/guard",
+    "rating": 4.3
+  },
+
+  {
+    "name": "Guess",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/guess",
+    "rating": 3.7
+  },
+
+  {
+    "name": "Hail To The King",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/hail%20to%20the%20king",
+    "rating": 4.6
   },
 
   {
@@ -147,6 +630,76 @@
   },
 
   {
+    "name": "Happier Than Ever",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/happier%20than%20ever",
+    "rating": 3.1
+  },
+
+  {
+    "name": "Happy",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/happy",
+    "rating": 4.9
+  },
+
+  {
+    "name": "Harder Better Faster Stronger",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/harder%20better%20faster%20stronger",
+    "rating": 4.9
+  },
+
+  {
+    "name": "Havana",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/havana",
+    "rating": 4.8
+  },
+
+  {
+    "name": "Headlikeahole",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/headlikeahole",
+    "rating": 3.5
+  },
+
+  {
+    "name": "Hear Me Now",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/hear%20me%20now",
+    "rating": 4.4
+  },
+
+  {
+    "name": "Heart Of Gold",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/heart%20of%20gold",
+    "rating": 3.9
+  },
+
+  {
+    "name": "Heartless",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/heartless",
+    "rating": 4.4
+  },
+
+  {
+    "name": "Heathens",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/heathens",
+    "rating": 3.9
+  },
+
+  {
+    "name": "Heavy",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/heavy",
+    "rating": 3.9
+  },
+
+  {
     "name": "Hello",
     "artist": "Adele",
     "spotify": "https://open.spotify.com/search/Hello",
@@ -154,9 +707,156 @@
   },
 
   {
+    "name": "Help",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/help",
+    "rating": 3.8
+  },
+
+  {
+    "name": "Here Comes The Sun",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/here%20comes%20the%20sun",
+    "rating": 4.1
+  },
+
+  {
+    "name": "Heroes",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/heroes",
+    "rating": 4.4
+  },
+
+  {
+    "name": "Hey Jude",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/hey%20jude",
+    "rating": 4.5
+  },
+
+  {
+    "name": "Highway To Hell",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/highway%20to%20hell",
+    "rating": 4.4
+  },
+
+  {
+    "name": "Hits Different",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/hits%20different",
+    "rating": 4.4
+  },
+
+  {
+    "name": "Hold The Line",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/hold%20the%20line",
+    "rating": 3.4
+  },
+
+  {
+    "name": "Home",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/home",
+    "rating": 4.7
+  },
+
+  {
+    "name": "Hometown",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/hometown",
+    "rating": 4.4
+  },
+
+  {
+    "name": "Honey",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/honey",
+    "rating": 4.0
+  },
+
+  {
+    "name": "Hooked On A Feeling",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/hooked%20on%20a%20feeling",
+    "rating": 3.9
+  },
+
+  {
+    "name": "Hope",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/hope",
+    "rating": 4.6
+  },
+
+  {
+    "name": "Horse With No Name",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/horse%20with%20no%20name",
+    "rating": 3.2
+  },
+
+  {
+    "name": "Hot",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/hot",
+    "rating": 4.1
+  },
+
+  {
     "name": "Hotel California",
     "artist": "Eagles",
     "spotify": "https://open.spotify.com/search/Hotel%20California",
+    "rating": 4.2
+  },
+
+  {
+    "name": "House Of The Rising Sun",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/house%20of%20the%20rising%20sun",
+    "rating": 4.5
+  },
+
+  {
+    "name": "How Deep Is Your Love",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/how%20deep%20is%20your%20love",
+    "rating": 4.1
+  },
+
+  {
+    "name": "How To Save A Life",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/how%20to%20save%20a%20life",
+    "rating": 4.4
+  },
+
+  {
+    "name": "Human",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/human",
+    "rating": 4.6
+  },
+
+  {
+    "name": "Human Nature",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/human%20nature",
+    "rating": 4.9
+  },
+
+  {
+    "name": "Hungry Like The Wolf",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/hungry%20like%20the%20wolf",
+    "rating": 3.8
+  },
+
+  {
+    "name": "Hurricane",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/hurricane",
     "rating": 4.2
   },
 
@@ -168,10 +868,178 @@
   },
 
   {
+    "name": "Hurt So Good",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/hurt%20so%20good",
+    "rating": 4.1
+  },
+
+  {
+    "name": "Hyperballad",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/hyperballad",
+    "rating": 4.3
+  },
+
+  {
+    "name": "I Believe I Can Fly",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/i%20believe%20i%20can%20fly",
+    "rating": 3.5
+  },
+
+  {
+    "name": "I Cant Help Falling In Love",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/i%20cant%20help%20falling%20in%20love",
+    "rating": 4.0
+  },
+
+  {
+    "name": "I Feel Good",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/i%20feel%20good",
+    "rating": 4.7
+  },
+
+  {
+    "name": "I Gotta Feeling",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/i%20gotta%20feeling",
+    "rating": 3.6
+  },
+
+  {
+    "name": "I Kissed A Girl",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/i%20kissed%20a%20girl",
+    "rating": 4.6
+  },
+
+  {
+    "name": "I Love Rock N Roll",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/i%20love%20rock%20n%20roll",
+    "rating": 4.8
+  },
+
+  {
+    "name": "I Miss You",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/i%20miss%20you",
+    "rating": 3.4
+  },
+
+  {
+    "name": "I Wanna Dance With Somebody",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/i%20wanna%20dance%20with%20somebody",
+    "rating": 4.9
+  },
+
+  {
+    "name": "I Want It That Way",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/i%20want%20it%20that%20way",
+    "rating": 3.3
+  },
+
+  {
+    "name": "I Will Always Love You",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/i%20will%20always%20love%20you",
+    "rating": 4.6
+  },
+
+  {
+    "name": "I Will Survive",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/i%20will%20survive",
+    "rating": 3.6
+  },
+
+  {
+    "name": "I Write Sins Not Tragedies",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/i%20write%20sins%20not%20tragedies",
+    "rating": 3.2
+  },
+
+  {
+    "name": "Ice Ice Baby",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/ice%20ice%20baby",
+    "rating": 3.8
+  },
+
+  {
+    "name": "Idol",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/idol",
+    "rating": 3.7
+  },
+
+  {
+    "name": "If I Aint Got You",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/if%20i%20aint%20got%20you",
+    "rating": 4.6
+  },
+
+  {
+    "name": "If I Die Young",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/if%20i%20die%20young",
+    "rating": 3.6
+  },
+
+  {
+    "name": "If I Lose Myself",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/if%20i%20lose%20myself",
+    "rating": 3.0
+  },
+
+  {
+    "name": "Im Yours",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/im%20yours",
+    "rating": 3.1
+  },
+
+  {
     "name": "Imagine",
     "artist": "John Lennon",
     "spotify": "https://open.spotify.com/search/Imagine",
     "rating": 3.8
+  },
+
+  {
+    "name": "Immigrant Song",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/immigrant%20song",
+    "rating": 4.3
+  },
+
+  {
+    "name": "In My Life",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/in%20my%20life",
+    "rating": 4.9
+  },
+
+  {
+    "name": "In My Veins",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/in%20my%20veins",
+    "rating": 3.3
+  },
+
+  {
+    "name": "In The Air Tonight",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/in%20the%20air%20tonight",
+    "rating": 3.5
   },
 
   {
@@ -182,10 +1050,101 @@
   },
 
   {
+    "name": "In The Name Of Love",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/in%20the%20name%20of%20love",
+    "rating": 4.2
+  },
+
+  {
+    "name": "In Your Eyes",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/in%20your%20eyes",
+    "rating": 3.4
+  },
+
+  {
+    "name": "Independent Women",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/independent%20women",
+    "rating": 4.1
+  },
+
+  {
+    "name": "Informer",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/informer",
+    "rating": 3.4
+  },
+
+  {
+    "name": "Into The Groove",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/into%20the%20groove",
+    "rating": 4.9
+  },
+
+  {
+    "name": "Iris",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/iris",
+    "rating": 3.9
+  },
+
+  {
     "name": "Iron Man",
     "artist": "Black Sabbath",
     "spotify": "https://open.spotify.com/search/Iron%20Man",
     "rating": 3.4
+  },
+
+  {
+    "name": "Irreplaceable",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/irreplaceable",
+    "rating": 4.6
+  },
+
+  {
+    "name": "Is This Love",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/is%20this%20love",
+    "rating": 3.9
+  },
+
+  {
+    "name": "Island In The Sun",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/island%20in%20the%20sun",
+    "rating": 3.6
+  },
+
+  {
+    "name": "It Was A Good Day",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/it%20was%20a%20good%20day",
+    "rating": 3.1
+  },
+
+  {
+    "name": "Its Been Awhile",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/its%20been%20awhile",
+    "rating": 3.0
+  },
+
+  {
+    "name": "Its My Life",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/its%20my%20life",
+    "rating": 3.8
+  },
+
+  {
+    "name": "Its Not Over",
+    "artist": "[EDITAR]",
+    "spotify": "https://open.spotify.com/search/its%20not%20over",
+    "rating": 4.5
   },
 
   {

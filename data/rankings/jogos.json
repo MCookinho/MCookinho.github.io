@@ -8,6 +8,14 @@
   },
 
   {
+    "name": "A Short Hike",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE A Short Hike]",
+    "review": "[EDITAR REVIEW DE A Short Hike]",
+    "rating": 3.1
+  },
+
+  {
     "name": "Age of Empires II",
     "type": "Estrategia",
     "synopsis": "Construa um imperio e conquiste seus inimigos.",
@@ -16,11 +24,59 @@
   },
 
   {
+    "name": "Alan Wake",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Alan Wake]",
+    "review": "[EDITAR REVIEW DE Alan Wake]",
+    "rating": 4.2
+  },
+
+  {
+    "name": "Alan Wake 2",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Alan Wake 2]",
+    "review": "[EDITAR REVIEW DE Alan Wake 2]",
+    "rating": 3.5
+  },
+
+  {
+    "name": "Among Trees",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Among Trees]",
+    "review": "[EDITAR REVIEW DE Among Trees]",
+    "rating": 3.8
+  },
+
+  {
     "name": "Among Us",
     "type": "Party",
     "synopsis": "Descubra o impostor antes que seja tarde.",
     "review": "Minha opiniao sobre Among Us. [EDITAR]",
     "rating": 4.6
+  },
+
+  {
+    "name": "Animal Crossing",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Animal Crossing]",
+    "review": "[EDITAR REVIEW DE Animal Crossing]",
+    "rating": 3.5
+  },
+
+  {
+    "name": "Armored Core Vi",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Armored Core Vi]",
+    "review": "[EDITAR REVIEW DE Armored Core Vi]",
+    "rating": 4.3
+  },
+
+  {
+    "name": "Astral Chain",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Astral Chain]",
+    "review": "[EDITAR REVIEW DE Astral Chain]",
+    "rating": 3.4
   },
 
   {
@@ -40,11 +96,67 @@
   },
 
   {
+    "name": "Bastion",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Bastion]",
+    "review": "[EDITAR REVIEW DE Bastion]",
+    "rating": 4.3
+  },
+
+  {
+    "name": "Batman Arkham Asylum",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Batman Arkham Asylum]",
+    "review": "[EDITAR REVIEW DE Batman Arkham Asylum]",
+    "rating": 4.9
+  },
+
+  {
+    "name": "Batman Arkham City",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Batman Arkham City]",
+    "review": "[EDITAR REVIEW DE Batman Arkham City]",
+    "rating": 4.4
+  },
+
+  {
+    "name": "Batman Arkham Knight",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Batman Arkham Knight]",
+    "review": "[EDITAR REVIEW DE Batman Arkham Knight]",
+    "rating": 3.9
+  },
+
+  {
+    "name": "Bayonetta",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Bayonetta]",
+    "review": "[EDITAR REVIEW DE Bayonetta]",
+    "rating": 4.5
+  },
+
+  {
     "name": "BioShock",
     "type": "FPS",
     "synopsis": "Explore a cidade submersa de Rapture.",
     "review": "Minha opiniao sobre BioShock. [EDITAR]",
     "rating": 4.1
+  },
+
+  {
+    "name": "Bioshock Infinite",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Bioshock Infinite]",
+    "review": "[EDITAR REVIEW DE Bioshock Infinite]",
+    "rating": 4.1
+  },
+
+  {
+    "name": "Blasphemous",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Blasphemous]",
+    "review": "[EDITAR REVIEW DE Blasphemous]",
+    "rating": 3.2
   },
 
   {
@@ -56,11 +168,67 @@
   },
 
   {
+    "name": "Borderlands 2",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Borderlands 2]",
+    "review": "[EDITAR REVIEW DE Borderlands 2]",
+    "rating": 4.9
+  },
+
+  {
+    "name": "Braid",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Braid]",
+    "review": "[EDITAR REVIEW DE Braid]",
+    "rating": 3.2
+  },
+
+  {
+    "name": "Burnout Paradise",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Burnout Paradise]",
+    "review": "[EDITAR REVIEW DE Burnout Paradise]",
+    "rating": 4.9
+  },
+
+  {
+    "name": "Castlevania Sotn",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Castlevania Sotn]",
+    "review": "[EDITAR REVIEW DE Castlevania Sotn]",
+    "rating": 4.9
+  },
+
+  {
+    "name": "Catherine",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Catherine]",
+    "review": "[EDITAR REVIEW DE Catherine]",
+    "rating": 3.5
+  },
+
+  {
+    "name": "Cave Story",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Cave Story]",
+    "review": "[EDITAR REVIEW DE Cave Story]",
+    "rating": 4.8
+  },
+
+  {
     "name": "Celeste",
     "type": "Plataforma",
     "synopsis": "Madeline sobe o Monte Celeste.",
     "review": "Minha opiniao sobre Celeste. [EDITAR]",
     "rating": 3.4
+  },
+
+  {
+    "name": "Child Of Light",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Child Of Light]",
+    "review": "[EDITAR REVIEW DE Child Of Light]",
+    "rating": 4.3
   },
 
   {
@@ -72,11 +240,43 @@
   },
 
   {
+    "name": "Control",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Control]",
+    "review": "[EDITAR REVIEW DE Control]",
+    "rating": 4.9
+  },
+
+  {
+    "name": "Crash 4",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Crash 4]",
+    "review": "[EDITAR REVIEW DE Crash 4]",
+    "rating": 4.1
+  },
+
+  {
     "name": "Crash Bandicoot",
     "type": "Plataforma",
     "synopsis": "Um marsupial tenta salvar o mundo.",
     "review": "Minha opiniao sobre Crash Bandicoot. [EDITAR]",
     "rating": 4.1
+  },
+
+  {
+    "name": "Crypt Of The Necrodancer",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Crypt Of The Necrodancer]",
+    "review": "[EDITAR REVIEW DE Crypt Of The Necrodancer]",
+    "rating": 4.8
+  },
+
+  {
+    "name": "Crysis",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Crysis]",
+    "review": "[EDITAR REVIEW DE Crysis]",
+    "rating": 3.8
   },
 
   {
@@ -88,11 +288,35 @@
   },
 
   {
+    "name": "Cyberpunk 2077",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Cyberpunk 2077]",
+    "review": "[EDITAR REVIEW DE Cyberpunk 2077]",
+    "rating": 3.2
+  },
+
+  {
+    "name": "Danganronpa",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Danganronpa]",
+    "review": "[EDITAR REVIEW DE Danganronpa]",
+    "rating": 4.6
+  },
+
+  {
     "name": "Dark Souls",
     "type": "RPG",
     "synopsis": "Um morto-vivo busca quebrar a maldicao.",
     "review": "Minha opiniao sobre Dark Souls. [EDITAR]",
     "rating": 3.5
+  },
+
+  {
+    "name": "Darkest Dungeon",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Darkest Dungeon]",
+    "review": "[EDITAR REVIEW DE Darkest Dungeon]",
+    "rating": 3.4
   },
 
   {
@@ -104,11 +328,59 @@
   },
 
   {
+    "name": "Dead Space",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Dead Space]",
+    "review": "[EDITAR REVIEW DE Dead Space]",
+    "rating": 3.5
+  },
+
+  {
     "name": "Death Stranding",
     "type": "Aventura",
     "synopsis": "Entregue pacotes em um mundo pos-apocaliptico.",
     "review": "Minha opiniao sobre Death Stranding. [EDITAR]",
     "rating": 3.0
+  },
+
+  {
+    "name": "Deathloop",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Deathloop]",
+    "review": "[EDITAR REVIEW DE Deathloop]",
+    "rating": 4.7
+  },
+
+  {
+    "name": "Deus Ex",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Deus Ex]",
+    "review": "[EDITAR REVIEW DE Deus Ex]",
+    "rating": 3.9
+  },
+
+  {
+    "name": "Deus Ex Human Revolution",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Deus Ex Human Revolution]",
+    "review": "[EDITAR REVIEW DE Deus Ex Human Revolution]",
+    "rating": 3.4
+  },
+
+  {
+    "name": "Devil May Cry 5",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Devil May Cry 5]",
+    "review": "[EDITAR REVIEW DE Devil May Cry 5]",
+    "rating": 3.0
+  },
+
+  {
+    "name": "Diablo Ii",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Diablo Ii]",
+    "review": "[EDITAR REVIEW DE Diablo Ii]",
+    "rating": 3.9
   },
 
   {
@@ -120,11 +392,91 @@
   },
 
   {
+    "name": "Dodonpachi",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Dodonpachi]",
+    "review": "[EDITAR REVIEW DE Dodonpachi]",
+    "rating": 4.6
+  },
+
+  {
+    "name": "Doki Doki Literature Club",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Doki Doki Literature Club]",
+    "review": "[EDITAR REVIEW DE Doki Doki Literature Club]",
+    "rating": 3.8
+  },
+
+  {
+    "name": "Donkey Kong Country",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Donkey Kong Country]",
+    "review": "[EDITAR REVIEW DE Donkey Kong Country]",
+    "rating": 3.1
+  },
+
+  {
+    "name": "Doom 2016",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Doom 2016]",
+    "review": "[EDITAR REVIEW DE Doom 2016]",
+    "rating": 3.8
+  },
+
+  {
     "name": "Doom Eternal",
     "type": "FPS",
     "synopsis": "Mate demonios em um ritmo frenetico.",
     "review": "Minha opiniao sobre Doom Eternal. [EDITAR]",
     "rating": 4.7
+  },
+
+  {
+    "name": "Dragon Age Origins",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Dragon Age Origins]",
+    "review": "[EDITAR REVIEW DE Dragon Age Origins]",
+    "rating": 3.3
+  },
+
+  {
+    "name": "Dragon Quest Xi",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Dragon Quest Xi]",
+    "review": "[EDITAR REVIEW DE Dragon Quest Xi]",
+    "rating": 3.9
+  },
+
+  {
+    "name": "Dredge",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Dredge]",
+    "review": "[EDITAR REVIEW DE Dredge]",
+    "rating": 3.6
+  },
+
+  {
+    "name": "Dying Light",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Dying Light]",
+    "review": "[EDITAR REVIEW DE Dying Light]",
+    "rating": 4.1
+  },
+
+  {
+    "name": "Earthbound",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Earthbound]",
+    "review": "[EDITAR REVIEW DE Earthbound]",
+    "rating": 3.4
+  },
+
+  {
+    "name": "Eastward",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Eastward]",
+    "review": "[EDITAR REVIEW DE Eastward]",
+    "rating": 4.0
   },
 
   {
@@ -136,11 +488,99 @@
   },
 
   {
+    "name": "Enderal",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Enderal]",
+    "review": "[EDITAR REVIEW DE Enderal]",
+    "rating": 3.6
+  },
+
+  {
+    "name": "Enter The Gungeon",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Enter The Gungeon]",
+    "review": "[EDITAR REVIEW DE Enter The Gungeon]",
+    "rating": 3.7
+  },
+
+  {
+    "name": "Etrian Odyssey",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Etrian Odyssey]",
+    "review": "[EDITAR REVIEW DE Etrian Odyssey]",
+    "rating": 3.5
+  },
+
+  {
+    "name": "Everhood",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Everhood]",
+    "review": "[EDITAR REVIEW DE Everhood]",
+    "rating": 3.9
+  },
+
+  {
+    "name": "Fable Ii",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Fable Ii]",
+    "review": "[EDITAR REVIEW DE Fable Ii]",
+    "rating": 3.9
+  },
+
+  {
     "name": "Fallout: New Vegas",
     "type": "RPG",
     "synopsis": "Sobreviva no deserto pos-nuclear de Mojave.",
     "review": "Minha opiniao sobre Fallout: New Vegas. [EDITAR]",
     "rating": 3.5
+  },
+
+  {
+    "name": "Faster Than Light",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Faster Than Light]",
+    "review": "[EDITAR REVIEW DE Faster Than Light]",
+    "rating": 3.5
+  },
+
+  {
+    "name": "Fez",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Fez]",
+    "review": "[EDITAR REVIEW DE Fez]",
+    "rating": 3.3
+  },
+
+  {
+    "name": "Final Fantasy Ix",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Final Fantasy Ix]",
+    "review": "[EDITAR REVIEW DE Final Fantasy Ix]",
+    "rating": 3.4
+  },
+
+  {
+    "name": "Final Fantasy Vi",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Final Fantasy Vi]",
+    "review": "[EDITAR REVIEW DE Final Fantasy Vi]",
+    "rating": 3.9
+  },
+
+  {
+    "name": "Final Fantasy Vii",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Final Fantasy Vii]",
+    "review": "[EDITAR REVIEW DE Final Fantasy Vii]",
+    "rating": 3.3
+  },
+
+  {
+    "name": "Final Fantasy Xiv",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Final Fantasy Xiv]",
+    "review": "[EDITAR REVIEW DE Final Fantasy Xiv]",
+    "rating": 3.2
   },
 
   {
@@ -152,11 +592,67 @@
   },
 
   {
+    "name": "Firewatch",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Firewatch]",
+    "review": "[EDITAR REVIEW DE Firewatch]",
+    "rating": 4.6
+  },
+
+  {
+    "name": "Forza Horizon 5",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Forza Horizon 5]",
+    "review": "[EDITAR REVIEW DE Forza Horizon 5]",
+    "rating": 4.5
+  },
+
+  {
+    "name": "Freedom Planet",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Freedom Planet]",
+    "review": "[EDITAR REVIEW DE Freedom Planet]",
+    "rating": 3.1
+  },
+
+  {
+    "name": "Ghost Of Tsushima",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Ghost Of Tsushima]",
+    "review": "[EDITAR REVIEW DE Ghost Of Tsushima]",
+    "rating": 3.4
+  },
+
+  {
+    "name": "Ghostrunner",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Ghostrunner]",
+    "review": "[EDITAR REVIEW DE Ghostrunner]",
+    "rating": 4.2
+  },
+
+  {
     "name": "God of War",
     "type": "Acao",
     "synopsis": "Kratos e Atreus viajam pelos reinos nordicos.",
     "review": "Minha opiniao sobre God of War. [EDITAR]",
     "rating": 4.1
+  },
+
+  {
+    "name": "Golf Story",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Golf Story]",
+    "review": "[EDITAR REVIEW DE Golf Story]",
+    "rating": 3.9
+  },
+
+  {
+    "name": "Gran Turismo 7",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Gran Turismo 7]",
+    "review": "[EDITAR REVIEW DE Gran Turismo 7]",
+    "rating": 4.2
   },
 
   {
@@ -176,6 +672,22 @@
   },
 
   {
+    "name": "Gta San Andreas",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Gta San Andreas]",
+    "review": "[EDITAR REVIEW DE Gta San Andreas]",
+    "rating": 4.2
+  },
+
+  {
+    "name": "Gunpoint",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Gunpoint]",
+    "review": "[EDITAR REVIEW DE Gunpoint]",
+    "rating": 3.5
+  },
+
+  {
     "name": "Hades",
     "type": "Roguelike",
     "synopsis": "Fuja do submundo grego.",
@@ -189,6 +701,54 @@
     "synopsis": "Gordon Freeman luta contra a Alianca.",
     "review": "Minha opiniao sobre Half-Life 2. [EDITAR]",
     "rating": 3.2
+  },
+
+  {
+    "name": "Halo 3",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Halo 3]",
+    "review": "[EDITAR REVIEW DE Halo 3]",
+    "rating": 3.2
+  },
+
+  {
+    "name": "Halo Infinite",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Halo Infinite]",
+    "review": "[EDITAR REVIEW DE Halo Infinite]",
+    "rating": 3.5
+  },
+
+  {
+    "name": "Hearthstone",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Hearthstone]",
+    "review": "[EDITAR REVIEW DE Hearthstone]",
+    "rating": 4.0
+  },
+
+  {
+    "name": "Hellblade",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Hellblade]",
+    "review": "[EDITAR REVIEW DE Hellblade]",
+    "rating": 3.9
+  },
+
+  {
+    "name": "Heroes Of Might And Magic Iii",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Heroes Of Might And Magic Iii]",
+    "review": "[EDITAR REVIEW DE Heroes Of Might And Magic Iii]",
+    "rating": 4.0
+  },
+
+  {
+    "name": "Hi Fi Rush",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Hi Fi Rush]",
+    "review": "[EDITAR REVIEW DE Hi Fi Rush]",
+    "rating": 4.1
   },
 
   {
@@ -208,11 +768,171 @@
   },
 
   {
+    "name": "Hotline Miami 2",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Hotline Miami 2]",
+    "review": "[EDITAR REVIEW DE Hotline Miami 2]",
+    "rating": 4.0
+  },
+
+  {
+    "name": "Human Fall Flat",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Human Fall Flat]",
+    "review": "[EDITAR REVIEW DE Human Fall Flat]",
+    "rating": 4.6
+  },
+
+  {
+    "name": "Hyper Light Drifter",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Hyper Light Drifter]",
+    "review": "[EDITAR REVIEW DE Hyper Light Drifter]",
+    "rating": 4.9
+  },
+
+  {
+    "name": "I Am Bread",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE I Am Bread]",
+    "review": "[EDITAR REVIEW DE I Am Bread]",
+    "rating": 3.6
+  },
+
+  {
+    "name": "Icewind Dale",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Icewind Dale]",
+    "review": "[EDITAR REVIEW DE Icewind Dale]",
+    "rating": 4.2
+  },
+
+  {
+    "name": "Ico",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Ico]",
+    "review": "[EDITAR REVIEW DE Ico]",
+    "rating": 3.0
+  },
+
+  {
+    "name": "Iconoclasts",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Iconoclasts]",
+    "review": "[EDITAR REVIEW DE Iconoclasts]",
+    "rating": 3.1
+  },
+
+  {
+    "name": "Immortality",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Immortality]",
+    "review": "[EDITAR REVIEW DE Immortality]",
+    "rating": 3.5
+  },
+
+  {
+    "name": "In Stars And Time",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE In Stars And Time]",
+    "review": "[EDITAR REVIEW DE In Stars And Time]",
+    "rating": 4.2
+  },
+
+  {
+    "name": "Incredipede",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Incredipede]",
+    "review": "[EDITAR REVIEW DE Incredipede]",
+    "rating": 3.1
+  },
+
+  {
+    "name": "Indiana Jones And The Fate Of Atlantis",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Indiana Jones And The Fate Of Atlantis]",
+    "review": "[EDITAR REVIEW DE Indiana Jones And The Fate Of Atlantis]",
+    "rating": 4.2
+  },
+
+  {
+    "name": "Infamous",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Infamous]",
+    "review": "[EDITAR REVIEW DE Infamous]",
+    "rating": 4.9
+  },
+
+  {
+    "name": "Ink",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Ink]",
+    "review": "[EDITAR REVIEW DE Ink]",
+    "rating": 3.8
+  },
+
+  {
+    "name": "Inscryption",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Inscryption]",
+    "review": "[EDITAR REVIEW DE Inscryption]",
+    "rating": 4.3
+  },
+
+  {
     "name": "Inside",
     "type": "Puzzle",
     "synopsis": "Um garoto foge por um mundo sombrio.",
     "review": "Minha opiniao sobre Inside. [EDITAR]",
     "rating": 3.0
+  },
+
+  {
+    "name": "Insurgency",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Insurgency]",
+    "review": "[EDITAR REVIEW DE Insurgency]",
+    "rating": 3.1
+  },
+
+  {
+    "name": "Into The Breach",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Into The Breach]",
+    "review": "[EDITAR REVIEW DE Into The Breach]",
+    "rating": 4.5
+  },
+
+  {
+    "name": "Invisible Inc",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Invisible Inc]",
+    "review": "[EDITAR REVIEW DE Invisible Inc]",
+    "rating": 3.8
+  },
+
+  {
+    "name": "Jak And Daxter",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Jak And Daxter]",
+    "review": "[EDITAR REVIEW DE Jak And Daxter]",
+    "rating": 4.7
+  },
+
+  {
+    "name": "Jazzpunk",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Jazzpunk]",
+    "review": "[EDITAR REVIEW DE Jazzpunk]",
+    "rating": 3.1
+  },
+
+  {
+    "name": "Jet Set Radio",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Jet Set Radio]",
+    "review": "[EDITAR REVIEW DE Jet Set Radio]",
+    "rating": 4.8
   },
 
   {
@@ -224,11 +944,75 @@
   },
 
   {
+    "name": "Jump King",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Jump King]",
+    "review": "[EDITAR REVIEW DE Jump King]",
+    "rating": 4.0
+  },
+
+  {
+    "name": "Just Cause 3",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Just Cause 3]",
+    "review": "[EDITAR REVIEW DE Just Cause 3]",
+    "rating": 3.5
+  },
+
+  {
+    "name": "Katamari Damacy",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Katamari Damacy]",
+    "review": "[EDITAR REVIEW DE Katamari Damacy]",
+    "rating": 3.0
+  },
+
+  {
     "name": "Katana Zero",
     "type": "Acao",
     "synopsis": "Um samurai com controle do tempo.",
     "review": "Minha opiniao sobre Katana Zero. [EDITAR]",
     "rating": 4.4
+  },
+
+  {
+    "name": "Kentucky Route Zero",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Kentucky Route Zero]",
+    "review": "[EDITAR REVIEW DE Kentucky Route Zero]",
+    "rating": 3.5
+  },
+
+  {
+    "name": "Kerbal Space Program",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Kerbal Space Program]",
+    "review": "[EDITAR REVIEW DE Kerbal Space Program]",
+    "rating": 3.7
+  },
+
+  {
+    "name": "Killer7",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Killer7]",
+    "review": "[EDITAR REVIEW DE Killer7]",
+    "rating": 3.0
+  },
+
+  {
+    "name": "Kingdom Come Deliverance",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Kingdom Come Deliverance]",
+    "review": "[EDITAR REVIEW DE Kingdom Come Deliverance]",
+    "rating": 3.6
+  },
+
+  {
+    "name": "Kingdom Hearts",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Kingdom Hearts]",
+    "review": "[EDITAR REVIEW DE Kingdom Hearts]",
+    "rating": 3.0
   },
 
   {
@@ -240,11 +1024,59 @@
   },
 
   {
+    "name": "Kirby Super Star",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Kirby Super Star]",
+    "review": "[EDITAR REVIEW DE Kirby Super Star]",
+    "rating": 4.9
+  },
+
+  {
+    "name": "Klonoa",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Klonoa]",
+    "review": "[EDITAR REVIEW DE Klonoa]",
+    "rating": 4.2
+  },
+
+  {
+    "name": "L.A. Noire",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE L.A. Noire]",
+    "review": "[EDITAR REVIEW DE L.A. Noire]",
+    "rating": 4.4
+  },
+
+  {
+    "name": "Last Day Of June",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Last Day Of June]",
+    "review": "[EDITAR REVIEW DE Last Day Of June]",
+    "rating": 4.2
+  },
+
+  {
+    "name": "Le Mans Ultimate",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Le Mans Ultimate]",
+    "review": "[EDITAR REVIEW DE Le Mans Ultimate]",
+    "rating": 4.9
+  },
+
+  {
     "name": "Left 4 Dead 2",
     "type": "FPS",
     "synopsis": "Sobreviva a um apocalipse zumbi.",
     "review": "Minha opiniao sobre Left 4 Dead 2. [EDITAR]",
     "rating": 3.5
+  },
+
+  {
+    "name": "Lego Star Wars",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Lego Star Wars]",
+    "review": "[EDITAR REVIEW DE Lego Star Wars]",
+    "rating": 3.4
   },
 
   {
@@ -256,11 +1088,163 @@
   },
 
   {
+    "name": "Limbo",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Limbo]",
+    "review": "[EDITAR REVIEW DE Limbo]",
+    "rating": 3.1
+  },
+
+  {
+    "name": "Little Big Planet",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Little Big Planet]",
+    "review": "[EDITAR REVIEW DE Little Big Planet]",
+    "rating": 4.2
+  },
+
+  {
     "name": "Little Nightmares",
     "type": "Terror",
     "synopsis": "Fuja de um navio habitado por criaturas grotescas.",
     "review": "Minha opiniao sobre Little Nightmares. [EDITAR]",
     "rating": 3.0
+  },
+
+  {
+    "name": "Little Nightmares 2",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Little Nightmares 2]",
+    "review": "[EDITAR REVIEW DE Little Nightmares 2]",
+    "rating": 4.8
+  },
+
+  {
+    "name": "Lode Runner",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Lode Runner]",
+    "review": "[EDITAR REVIEW DE Lode Runner]",
+    "rating": 3.7
+  },
+
+  {
+    "name": "Lone Echo",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Lone Echo]",
+    "review": "[EDITAR REVIEW DE Lone Echo]",
+    "rating": 4.0
+  },
+
+  {
+    "name": "Long Dark",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Long Dark]",
+    "review": "[EDITAR REVIEW DE Long Dark]",
+    "rating": 4.3
+  },
+
+  {
+    "name": "Lost Ark",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Lost Ark]",
+    "review": "[EDITAR REVIEW DE Lost Ark]",
+    "rating": 3.1
+  },
+
+  {
+    "name": "Lost Judgment",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Lost Judgment]",
+    "review": "[EDITAR REVIEW DE Lost Judgment]",
+    "rating": 4.0
+  },
+
+  {
+    "name": "Lovers In A Dangerous Spacetime",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Lovers In A Dangerous Spacetime]",
+    "review": "[EDITAR REVIEW DE Lovers In A Dangerous Spacetime]",
+    "rating": 3.9
+  },
+
+  {
+    "name": "Luigis Mansion 3",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Luigis Mansion 3]",
+    "review": "[EDITAR REVIEW DE Luigis Mansion 3]",
+    "rating": 3.7
+  },
+
+  {
+    "name": "Machinarium",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Machinarium]",
+    "review": "[EDITAR REVIEW DE Machinarium]",
+    "rating": 3.5
+  },
+
+  {
+    "name": "Mad Max",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Mad Max]",
+    "review": "[EDITAR REVIEW DE Mad Max]",
+    "rating": 3.2
+  },
+
+  {
+    "name": "Mafia",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Mafia]",
+    "review": "[EDITAR REVIEW DE Mafia]",
+    "rating": 3.9
+  },
+
+  {
+    "name": "Magic Carpet",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Magic Carpet]",
+    "review": "[EDITAR REVIEW DE Magic Carpet]",
+    "rating": 3.1
+  },
+
+  {
+    "name": "Maneater",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Maneater]",
+    "review": "[EDITAR REVIEW DE Maneater]",
+    "rating": 3.9
+  },
+
+  {
+    "name": "Marble It Up",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Marble It Up]",
+    "review": "[EDITAR REVIEW DE Marble It Up]",
+    "rating": 3.3
+  },
+
+  {
+    "name": "Marvels Guardians Of The Galaxy",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Marvels Guardians Of The Galaxy]",
+    "review": "[EDITAR REVIEW DE Marvels Guardians Of The Galaxy]",
+    "rating": 4.0
+  },
+
+  {
+    "name": "Marvels Midnight Suns",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Marvels Midnight Suns]",
+    "review": "[EDITAR REVIEW DE Marvels Midnight Suns]",
+    "rating": 3.0
+  },
+
+  {
+    "name": "Mass Effect",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Mass Effect]",
+    "review": "[EDITAR REVIEW DE Mass Effect]",
+    "rating": 3.5
   },
 
   {
@@ -272,6 +1256,110 @@
   },
 
   {
+    "name": "Mass Effect 3",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Mass Effect 3]",
+    "review": "[EDITAR REVIEW DE Mass Effect 3]",
+    "rating": 3.5
+  },
+
+  {
+    "name": "Master Blaster",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Master Blaster]",
+    "review": "[EDITAR REVIEW DE Master Blaster]",
+    "rating": 3.3
+  },
+
+  {
+    "name": "Max Payne",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Max Payne]",
+    "review": "[EDITAR REVIEW DE Max Payne]",
+    "rating": 4.5
+  },
+
+  {
+    "name": "Max Payne 2",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Max Payne 2]",
+    "review": "[EDITAR REVIEW DE Max Payne 2]",
+    "rating": 3.0
+  },
+
+  {
+    "name": "Medal Of Honor",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Medal Of Honor]",
+    "review": "[EDITAR REVIEW DE Medal Of Honor]",
+    "rating": 4.6
+  },
+
+  {
+    "name": "Megaman 11",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Megaman 11]",
+    "review": "[EDITAR REVIEW DE Megaman 11]",
+    "rating": 4.1
+  },
+
+  {
+    "name": "Megaman X",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Megaman X]",
+    "review": "[EDITAR REVIEW DE Megaman X]",
+    "rating": 3.7
+  },
+
+  {
+    "name": "Metal Gear Rising",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Metal Gear Rising]",
+    "review": "[EDITAR REVIEW DE Metal Gear Rising]",
+    "rating": 4.8
+  },
+
+  {
+    "name": "Metal Gear Solid 3",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Metal Gear Solid 3]",
+    "review": "[EDITAR REVIEW DE Metal Gear Solid 3]",
+    "rating": 4.5
+  },
+
+  {
+    "name": "Metroid Dread",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Metroid Dread]",
+    "review": "[EDITAR REVIEW DE Metroid Dread]",
+    "rating": 3.5
+  },
+
+  {
+    "name": "Metroid Prime",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Metroid Prime]",
+    "review": "[EDITAR REVIEW DE Metroid Prime]",
+    "rating": 3.0
+  },
+
+  {
+    "name": "Midnight Fight Express",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Midnight Fight Express]",
+    "review": "[EDITAR REVIEW DE Midnight Fight Express]",
+    "rating": 3.0
+  },
+
+  {
+    "name": "Miles Morales",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Miles Morales]",
+    "review": "[EDITAR REVIEW DE Miles Morales]",
+    "rating": 4.6
+  },
+
+  {
     "name": "Minecraft",
     "type": "Sandbox",
     "synopsis": "Construa, explore e sobreviva em um mundo de blocos.",
@@ -280,11 +1368,99 @@
   },
 
   {
+    "name": "Mirror Edge",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Mirror Edge]",
+    "review": "[EDITAR REVIEW DE Mirror Edge]",
+    "rating": 3.7
+  },
+
+  {
+    "name": "Monkey Island",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Monkey Island]",
+    "review": "[EDITAR REVIEW DE Monkey Island]",
+    "rating": 4.6
+  },
+
+  {
+    "name": "Monster Hunter World",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Monster Hunter World]",
+    "review": "[EDITAR REVIEW DE Monster Hunter World]",
+    "rating": 4.8
+  },
+
+  {
+    "name": "Monument Valley",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Monument Valley]",
+    "review": "[EDITAR REVIEW DE Monument Valley]",
+    "rating": 3.5
+  },
+
+  {
+    "name": "Mortal Kombat 11",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Mortal Kombat 11]",
+    "review": "[EDITAR REVIEW DE Mortal Kombat 11]",
+    "rating": 4.0
+  },
+
+  {
+    "name": "Moss",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Moss]",
+    "review": "[EDITAR REVIEW DE Moss]",
+    "rating": 4.2
+  },
+
+  {
     "name": "Mother 3",
     "type": "RPG",
     "synopsis": "Uma familia enfrenta uma corporacao maligna.",
     "review": "Minha opiniao sobre Mother 3. [EDITAR]",
     "rating": 3.7
+  },
+
+  {
+    "name": "Mulaka",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Mulaka]",
+    "review": "[EDITAR REVIEW DE Mulaka]",
+    "rating": 3.0
+  },
+
+  {
+    "name": "Muppets Treasure",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Muppets Treasure]",
+    "review": "[EDITAR REVIEW DE Muppets Treasure]",
+    "rating": 3.1
+  },
+
+  {
+    "name": "Mx Vs Atv",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Mx Vs Atv]",
+    "review": "[EDITAR REVIEW DE Mx Vs Atv]",
+    "rating": 3.2
+  },
+
+  {
+    "name": "My Friend Pedro",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE My Friend Pedro]",
+    "review": "[EDITAR REVIEW DE My Friend Pedro]",
+    "rating": 4.9
+  },
+
+  {
+    "name": "Myst",
+    "type": "[EDITAR]",
+    "synopsis": "[EDITAR SINOPSE DE Myst]",
+    "review": "[EDITAR REVIEW DE Myst]",
+    "rating": 3.5
   },
 
   {
