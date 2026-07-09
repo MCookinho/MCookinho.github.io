@@ -553,47 +553,47 @@ function drWest(ctx,t){
     circle(rx,ry+6,6,PAL.sepia)
   }
 
-  // Tool chest — organized wooden box with tools (visible until ferro picked up)
+  // Tool chest — organized wooden box on the floor
   if(!window.__game||!window.__game.hasObtained('ferro')){
     // Shadow under chest
-    $ctx.fillStyle='rgba(0,0,0,0.2)'
+    $ctx.fillStyle='rgba(0,0,0,0.25)'
     $ctx.beginPath()
-    $ctx.ellipse(625,432,60,12,0,0,Math.PI*2)
+    $ctx.ellipse(625,450,60,12,0,0,Math.PI*2)
     $ctx.fill()
     // Chest body
-    rect(565,355,120,75,PAL.ink_l)
-    rect(568,358,114,69,PAL.ink)
+    rect(565,373,120,75,PAL.ink_l)
+    rect(568,376,114,69,PAL.ink)
     // Plank lines
     for(let i=0;i<3;i++){
-      const py=362+i*22
+      const py=380+i*22
       rect(570,py,110,1,'rgba(42,34,24,0.25)')
     }
     // Metal corner brackets
-    rect(565,355,14,14,PAL.rust)
-    rect(671,355,14,14,PAL.rust)
-    rect(565,416,14,14,PAL.rust)
-    rect(671,416,14,14,PAL.rust)
-    circle(572,362,1.5,PAL.rust_l)
-    circle(678,362,1.5,PAL.rust_l)
-    circle(572,423,1.5,PAL.rust_l)
-    circle(678,423,1.5,PAL.rust_l)
+    rect(565,373,14,14,PAL.rust)
+    rect(671,373,14,14,PAL.rust)
+    rect(565,434,14,14,PAL.rust)
+    rect(671,434,14,14,PAL.rust)
+    circle(572,380,1.5,PAL.rust_l)
+    circle(678,380,1.5,PAL.rust_l)
+    circle(572,441,1.5,PAL.rust_l)
+    circle(678,441,1.5,PAL.rust_l)
     // Lid (open, tilted back)
     $ctx.fillStyle=PAL.ink
     $ctx.beginPath()
-    $ctx.moveTo(565,355);$ctx.lineTo(685,355);$ctx.lineTo(672,347);$ctx.lineTo(578,347);$ctx.closePath()
+    $ctx.moveTo(565,373);$ctx.lineTo(685,373);$ctx.lineTo(672,365);$ctx.lineTo(578,365);$ctx.closePath()
     $ctx.fill()
     $ctx.strokeStyle=PAL.ink_m
     $ctx.lineWidth=0.8
     $ctx.stroke()
     $ctx.fillStyle=PAL.ink_l
     $ctx.beginPath()
-    $ctx.moveTo(568,355);$ctx.lineTo(682,355);$ctx.lineTo(670,349);$ctx.lineTo(580,349);$ctx.closePath()
+    $ctx.moveTo(568,373);$ctx.lineTo(682,373);$ctx.lineTo(670,367);$ctx.lineTo(580,367);$ctx.closePath()
     $ctx.fill()
     // Inside darkness
-    rect(570,358,110,8,PAL.dark)
+    rect(570,376,110,8,PAL.dark)
     // Iron bar — laid diagonally across opening, curved hook end
     $ctx.save()
-    $ctx.translate(615,370)
+    $ctx.translate(615,388)
     $ctx.rotate(-0.12)
     rect(-55,-5,110,10,PAL.rust)
     rect(-53,-4,106,8,PAL.rust_l)
@@ -612,13 +612,13 @@ function drWest(ctx,t){
     $ctx.stroke()
     $ctx.restore()
     // Hammer leaning inside
-    wln(582,380,594,408,PAL.sepia_d,3.5,t)
-    wln(582,380,594,408,PAL.sepia,2,t)
-    rect(591,400,12,10,PAL.rust)
-    rect(592,401,10,2,'rgba(160,106,58,0.3)')
+    wln(582,398,594,426,PAL.sepia_d,3.5,t)
+    wln(582,398,594,426,PAL.sepia,2,t)
+    rect(591,418,12,10,PAL.rust)
+    rect(592,419,10,2,'rgba(160,106,58,0.3)')
     // Chain coiled
     for(let i=0;i<4;i++){
-      const cx=645+Math.sin(i*2)*12,cy=390+Math.sin(i*3)*5
+      const cx=645+Math.sin(i*2)*12,cy=408+Math.sin(i*3)*5
       circle(cx,cy,3,PAL.rust)
       circle(cx,cy,1.5,PAL.rust_l)
     }
