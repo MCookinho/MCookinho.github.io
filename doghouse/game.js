@@ -28,7 +28,7 @@ const VIEWS = {
     {id:'prateleira',name:'PRATELEIRA',desc:'Empoeirada.',type:'shelf'},
     {id:'espelho',name:'ESPELHO',desc:'Trincado. O reflexo é seu mas não parece.',type:'mirror'},
     {id:'teia',name:'TEIA DE ARANHA',desc:'A aranha observa.',type:'examine'},
-    {id:'tijolo',name:'TIJOLO SOLTO',desc:'Parece que dá pra mexer.',type:'brick'}
+    {id:'tijolo',name:'BURACO',desc:'Um buraco escuro na parede.',type:'brick'}
   ],
   south: [
     {id:'inscricao',name:'INSCRIÇÃO',desc:'"ESQUEÇA" — a palavra lateja.',type:'examine'},
@@ -373,7 +373,7 @@ class Game {
   /* ─── BRICK (needs candle) ─── */
   interactBrick(item){
     if(this.hasObtained('chave_1')){
-      this.engine.tooltip('O tijolo já foi removido.')
+      this.engine.tooltip('O buraco está vazio.')
       return
     }
     if(!this.candleLit){

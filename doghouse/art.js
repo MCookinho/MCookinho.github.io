@@ -448,12 +448,32 @@ function drEast(ctx,t){
   wln(mx+mw+5,my+mh+5,mx-5,my+mh+5,PAL.rust,1.5,t)
   wln(mx-5,my+mh+5,mx-5,my-5,PAL.rust,1.5,t)
 
-  // Loose brick highlight
-  const briAlpha=0.4+Math.sin(t*0.002)*0.15
-  wln(555,375,595,375,PAL.sepia_l,briAlpha,t,1)
-  wln(555,375,555,415,PAL.sepia_l,briAlpha,t,1)
-  wln(555,415,595,415,PAL.sepia_l,briAlpha,t,1)
-  wln(595,375,595,415,PAL.sepia_l,briAlpha,t,1)
+  // Dark recess in the stone wall
+  const bx=555,by=375,bw=40,bh=40
+  rect(bx,by,bw,bh,PAL.dark)
+  rect(bx+2,by+2,bw-4,bh-4,'rgba(0,0,0,0.2)')
+  // Rough edges around the hole
+  wln(bx,by,bx+bw,by,'rgba(15,8,4,0.5)',1.2,t)
+  wln(bx,by+bh,bx+bw,by+bh,'rgba(15,8,4,0.5)',1.2,t)
+  wln(bx,by,bx,by+bh,'rgba(15,8,4,0.5)',1.2,t)
+  wln(bx+bw,by,bx+bw,by+bh,'rgba(15,8,4,0.5)',1.2,t)
+  // Key fragment visible only with candle and not yet picked up
+  const keyLit=window.__game&&window.__game.candleLit
+  const keyHere=keyLit&&(!window.__game||!window.__game.hasObtained('chave_1'))
+  if(keyHere){
+    const gl=0.2+Math.sin(t*0.003)*0.12
+    $ctx.fillStyle=`rgba(184,150,80,${gl})`
+    $ctx.beginPath();$ctx.arc(bx+bw/2,by+bh/2-2,18,0,Math.PI*2);$ctx.fill()
+    // Key fragment
+    circle(bx+20,by+15,5,PAL.gold)
+    circle(bx+20,by+15,2,PAL.dark)
+    ln(bx+20,by+15,bx+20,by+30,PAL.gold,1.5)
+    ln(bx+20,by+21,bx+26,by+21,PAL.gold,1.2)
+    ln(bx+20,by+24,bx+23,by+24,PAL.gold,1.2)
+    ln(bx+20,by+27,bx+25,by+27,PAL.gold,1.2)
+    // Sparkle
+    circle(bx+18,by+12,1.5,'rgba(255,240,200,0.7)')
+  }
 
   // Shadows
   rect(0,0,30,600,PAL.shadow_d)
