@@ -514,7 +514,7 @@
       var hs = parseInt(localStorage.getItem('tetrisHighScore')) || 0
       html += '<div class="rk-score-header">SEU RECORDE: <strong>' + hs + '</strong> | ORDENADO POR SCORE</div>'
     } else {
-      html += '<div class="rk-score-header">ORDENADO POR AVALIAÇÃO</div>'
+      html += '<div class="rk-score-header">ORDENADO POR AVALIAÇÃO PESSOAL</div>'
     }
 
     if (items.length === 0) {
