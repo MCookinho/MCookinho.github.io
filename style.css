@@ -725,7 +725,7 @@ body {
 
 /* ── Stars ── */
 .rk-stars-wrap {
-  display: flex; align-items: center; gap: 6px;
+  display: flex; align-items: center; gap: 10px;
   flex-shrink: 0;
 }
 .rk-stars {
@@ -733,8 +733,9 @@ body {
 }
 .rk-rating-text {
   font-family: var(--font); font-size: 11px;
-  color: var(--dim); letter-spacing: 0.3px;
+  color: var(--pink); letter-spacing: 0.3px;
   font-weight: 500;
+  margin-top: 2px;
 }
 .rk-star {
   font-size: 22px; line-height: 1;
