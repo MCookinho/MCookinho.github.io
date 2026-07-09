@@ -585,7 +585,7 @@ body {
 .rk-overlay.open { opacity: 1; visibility: visible; }
 
 .rk-panel {
-  width: 100%; max-width: 680px;
+  width: 100%; max-width: 800px;
   background: #0d0d14;
   border: 2px solid var(--pink);
   box-shadow: 0 0 50px rgba(255,45,120,0.08), 0 0 80px rgba(0,255,200,0.02);
@@ -600,16 +600,16 @@ body {
 
 .rk-header {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 14px 20px;
+  padding: 16px 24px;
   border-bottom: 2px solid var(--border);
   flex-shrink: 0;
 }
 .rk-title {
-  font-family: var(--font); font-size: 12px;
+  font-family: var(--font); font-size: 14px;
   color: var(--pink); letter-spacing: 1px;
 }
 .rk-close {
-  font-family: var(--font); font-size: 12px;
+  font-family: var(--font); font-size: 14px;
   color: var(--dim); background: none; border: none;
   cursor: pointer; transition: color 0.15s;
 }
@@ -624,8 +624,8 @@ body {
 .rk-tabs::-webkit-scrollbar { display: none; }
 .rk-tab {
   flex: 1 1 0; min-width: 0;
-  padding: 12px 8px;
-  font-family: var(--font); font-size: 8px; font-weight: 600;
+  padding: 14px 12px;
+  font-family: var(--font); font-size: 11px; font-weight: 600;
   background: none; border: none; border-bottom: 2px solid transparent;
   color: var(--dim); cursor: pointer;
   letter-spacing: 1px;
@@ -637,20 +637,20 @@ body {
 
 /* ── Body ── */
 .rk-body {
-  padding: 16px; overflow-y: auto; flex: 1;
+  padding: 20px; overflow-y: auto; flex: 1;
   min-height: 0;
 }
 
 .rk-loading {
   text-align: center; padding: 40px 0;
-  font-family: var(--font); font-size: 8px;
+  font-family: var(--font); font-size: 11px;
   color: var(--dim); letter-spacing: 1px;
 }
 
 /* ── Score header ── */
 .rk-score-header {
-  text-align: center; padding: 16px 0 20px;
-  font-family: var(--font); font-size: 7px;
+  text-align: center; padding: 20px 0 24px;
+  font-family: var(--font); font-size: 10px;
   color: var(--dim); letter-spacing: 0.5px;
   border-bottom: 1px solid var(--border);
   margin-bottom: 12px;
@@ -680,8 +680,8 @@ body {
 /* Position badge */
 .rk-pos {
   display: flex; align-items: center; justify-content: center;
-  width: 36px; flex-shrink: 0;
-  font-family: var(--font); font-size: 10px; font-weight: 700;
+  width: 42px; flex-shrink: 0;
+  font-family: var(--font); font-size: 14px; font-weight: 700;
   color: var(--dim);
   border-right: 1px solid rgba(42,42,62,0.4);
   transition: color 0.2s, background 0.2s;
@@ -692,7 +692,7 @@ body {
 
 /* Body */
 .rk-item-body {
-  flex: 1; padding: 10px 12px;
+  flex: 1; padding: 12px 16px;
   min-width: 0;
 }
 .rk-item-top {
@@ -700,7 +700,7 @@ body {
   gap: 8px;
 }
 .rk-item-name {
-  font-family: var(--font); font-size: 8px; font-weight: 600;
+  font-family: var(--font); font-size: 12px; font-weight: 600;
   color: var(--text); letter-spacing: 0.3px;
   transition: color 0.15s;
 }
@@ -712,14 +712,14 @@ body {
 }
 .rk-item-type {
   display: inline-block;
-  font-family: var(--font); font-size: 6px;
+  font-family: var(--font); font-size: 9px;
   color: var(--dim);
   border: 1px solid rgba(42,42,62,0.6);
-  padding: 1px 6px; letter-spacing: 0.3px;
+  padding: 2px 8px; letter-spacing: 0.3px;
   border-radius: 1px;
 }
 .rk-item-detail {
-  font-family: var(--font); font-size: 6px;
+  font-family: var(--font); font-size: 9px;
   color: var(--dim); letter-spacing: 0.3px;
 }
 
@@ -729,7 +729,7 @@ body {
   flex-shrink: 0;
 }
 .rk-star {
-  font-size: 11px; line-height: 1;
+  font-size: 16px; line-height: 1;
   transition: transform 0.2s, color 0.2s;
 }
 .rk-star.filled { color: #ffd700; text-shadow: 0 0 6px rgba(255,215,0,0.3); }
@@ -750,24 +750,24 @@ body {
   opacity: 0;
 }
 .rk-item.open .rk-detail {
-  max-height: 300px; opacity: 1;
+  max-height: 400px; opacity: 1;
   margin-top: 8px; padding-top: 8px;
   border-top: 1px solid rgba(42,42,62,0.3);
 }
 .rk-detail-label {
-  font-family: var(--font); font-size: 6px;
+  font-family: var(--font); font-size: 9px;
   font-weight: 700; color: var(--purple);
   letter-spacing: 0.5px; margin-bottom: 3px;
 }
 .rk-detail-text {
-  font-family: var(--font); font-size: 7px;
+  font-family: var(--font); font-size: 10px;
   color: var(--dim); line-height: 1.7;
   margin-bottom: 6px;
 }
 
 /* ── Tetris score format ── */
 .rk-score-val {
-  font-family: var(--font); font-size: 10px; font-weight: 700;
+  font-family: var(--font); font-size: 14px; font-weight: 700;
   color: var(--cyan); letter-spacing: 0.5px;
   flex-shrink: 0;
 }
@@ -778,7 +778,7 @@ body {
   display: flex; gap: 12px; margin-top: 4px;
 }
 .rk-tetris-stat {
-  font-family: var(--font); font-size: 6px;
+  font-family: var(--font); font-size: 9px;
   color: var(--dim); letter-spacing: 0.3px;
 }
 .rk-tetris-stat strong { color: var(--text); font-weight: 600; }
@@ -786,10 +786,10 @@ body {
 /* ── Spotify link ── */
 .rk-spotify-link {
   display: inline-flex; align-items: center; gap: 4px;
-  font-family: var(--font); font-size: 6px;
+  font-family: var(--font); font-size: 9px;
   color: #1db954; text-decoration: none;
   border: 1px solid rgba(29,185,84,0.3);
-  padding: 2px 8px; letter-spacing: 0.3px;
+  padding: 4px 10px; letter-spacing: 0.3px;
   transition: all 0.15s; margin-top: 4px;
 }
 .rk-spotify-link:hover {
@@ -799,7 +799,7 @@ body {
 
 /* ── Favorite episode ── */
 .rk-fav-ep {
-  font-family: var(--font); font-size: 6px;
+  font-family: var(--font); font-size: 9px;
   color: var(--pink); letter-spacing: 0.3px;
   margin-top: 2px;
 }
@@ -807,7 +807,7 @@ body {
 
 /* ── Expand hint ── */
 .rk-expand-hint {
-  font-family: var(--font); font-size: 6px;
+  font-family: var(--font); font-size: 9px;
   color: rgba(42,42,62,0.8);
   flex-shrink: 0; align-self: center;
   padding-right: 10px;
@@ -818,7 +818,7 @@ body {
 /* ── Empty state ── */
 .rk-empty {
   text-align: center; padding: 40px 20px;
-  font-family: var(--font); font-size: 8px;
+  font-family: var(--font); font-size: 11px;
   color: var(--dim); letter-spacing: 0.5px;
 }
 
@@ -837,11 +837,11 @@ body {
 /* ── Responsive ── */
 @media (max-width: 480px) {
   .rk-panel { max-width: 100%; border-width: 1.5px; border-radius: 0; }
-  .rk-tab { font-size: 7px; padding: 10px 6px; }
-  .rk-pos { width: 28px; font-size: 9px; }
-  .rk-item-body { padding: 8px 10px; }
-  .rk-stars { font-size: 10px; }
-  .rk-score-val { font-size: 9px; }
+  .rk-tab { font-size: 9px; padding: 12px 8px; }
+  .rk-pos { width: 32px; font-size: 12px; }
+  .rk-item-body { padding: 10px 12px; }
+  .rk-stars { font-size: 13px; }
+  .rk-score-val { font-size: 12px; }
 }
 
 .cd-icon {
