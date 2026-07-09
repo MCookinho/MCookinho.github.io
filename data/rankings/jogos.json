@@ -1,10 +1,18 @@
 [
   {
-    "name": "The Legend of Zelda: Breath of the Wild",
-    "type": "Aventura / Mundo Aberto",
-    "synopsis": "Link desperta após 100 anos em Hyrule devastada e precisa derrotar Calamity Ganon para salvar o reino.",
-    "review": "Liberdade absoluta. O jogo te solta no mundo e cada montanha, cada árvore esconde algo especial. A física é criativa, a trilha é emocionante e a sensação de descoberta é única.",
-    "rating": 5.0
+    "name": "Celeste",
+    "type": "Plataforma / Narrativo",
+    "synopsis": "Madeline sobe o Monte Celeste enquanto enfrenta seus demônios internos.",
+    "review": "Plataforma perfeito com uma história emocionante sobre ansiedade e superação. A trilha sonora é absurda de boa e os controles são precisos. Morri 3000 vezes e amei cada uma.",
+    "rating": 4.8
+  },
+
+  {
+    "name": "Disco Elysium",
+    "type": "RPG / Investigação",
+    "synopsis": "Um detetive amnésico precisa resolver um assassinato enquanto luta contra seus próprios demônios em uma cidade decadente.",
+    "review": "Não é um jogo, é literatura interativa. O texto é absurdo de bom, as escolhas tem consequências reais e o humor é afiado. Um dos jogos mais inteligentes que existem.",
+    "rating": 4.8
   },
 
   {
@@ -12,14 +20,6 @@
     "type": "RPG / Ação",
     "synopsis": "Um Sem-luz viaja pelas Terras Intermédias para se tornar o Lorde Prístino e restaurar a ordem.",
     "review": "A FromSoftware se superou. O mundo é gigantesco, cheio de segredos, masmorras e chefões memoráveis. Passei 200h e ainda queria mais. Obra-prima do game design.",
-    "rating": 5.0
-  },
-
-  {
-    "name": "Red Dead Redemption 2",
-    "type": "Aventura / Faroeste",
-    "synopsis": "Arthur Morgan, um fora-da-lei, lida com a dissipação de sua gangue enquanto o Velho Oeste chega ao fim.",
-    "review": "O jogo mais imersivo que já joguei. Os detalhes são absurdos, a história é de cinema e o Arthur Morgan é um dos melhores protagonistas já escritos.",
     "rating": 5.0
   },
 
@@ -40,22 +40,6 @@
   },
 
   {
-    "name": "Celeste",
-    "type": "Plataforma / Narrativo",
-    "synopsis": "Madeline sobe o Monte Celeste enquanto enfrenta seus demônios internos.",
-    "review": "Plataforma perfeito com uma história emocionante sobre ansiedade e superação. A trilha sonora é absurda de boa e os controles são precisos. Morri 3000 vezes e amei cada uma.",
-    "rating": 4.8
-  },
-
-  {
-    "name": "Disco Elysium",
-    "type": "RPG / Investigação",
-    "synopsis": "Um detetive amnésico precisa resolver um assassinato enquanto luta contra seus próprios demônios em uma cidade decadente.",
-    "review": "Não é um jogo, é literatura interativa. O texto é absurdo de bom, as escolhas tem consequências reais e o humor é afiado. Um dos jogos mais inteligentes que existem.",
-    "rating": 4.8
-  },
-
-  {
     "name": "Portal 2",
     "type": "Quebra-cabeça / Comédia",
     "synopsis": "Wheatley, um robô atrapalhado, te acorda nas ruínas da Aperture Science e juntos tentam escapar.",
@@ -64,11 +48,11 @@
   },
 
   {
-    "name": "Undertale",
-    "type": "RPG",
-    "synopsis": "Uma criança cai no subsolo e precisa escolher entre matar ou poupar os monstros que encontra.",
-    "review": "A Toby Fox fez um dos jogos mais criativos da história. A trilha sonora é genial, os personagens são carismáticos e as escolhas realmente importam. Música tema do Sans é épica.",
-    "rating": 4.6
+    "name": "Red Dead Redemption 2",
+    "type": "Aventura / Faroeste",
+    "synopsis": "Arthur Morgan, um fora-da-lei, lida com a dissipação de sua gangue enquanto o Velho Oeste chega ao fim.",
+    "review": "O jogo mais imersivo que já joguei. Os detalhes são absurdos, a história é de cinema e o Arthur Morgan é um dos melhores protagonistas já escritos.",
+    "rating": 5.0
   },
 
   {
@@ -77,5 +61,21 @@
     "synopsis": "Você herda a fazenda do seu avô em uma cidade pacata e começa uma nova vida no campo.",
     "review": "Feito por UMA pessoa. É relaxante, viciante e cheio de conteúdo. Passei 100h e ainda tinha coisa pra fazer. Perfeito pra desestressar.",
     "rating": 4.5
+  },
+
+  {
+    "name": "The Legend of Zelda: Breath of the Wild",
+    "type": "Aventura / Mundo Aberto",
+    "synopsis": "Link desperta após 100 anos em Hyrule devastada e precisa derrotar Calamity Ganon para salvar o reino.",
+    "review": "Liberdade absoluta. O jogo te solta no mundo e cada montanha, cada árvore esconde algo especial. A física é criativa, a trilha é emocionante e a sensação de descoberta é única.",
+    "rating": 5.0
+  },
+
+  {
+    "name": "Undertale",
+    "type": "RPG",
+    "synopsis": "Uma criança cai no subsolo e precisa escolher entre matar ou poupar os monstros que encontra.",
+    "review": "A Toby Fox fez um dos jogos mais criativos da história. A trilha sonora é genial, os personagens são carismáticos e as escolhas realmente importam. Música tema do Sans é épica.",
+    "rating": 4.6
   }
 ]

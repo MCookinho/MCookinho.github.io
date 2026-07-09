@@ -1,13 +1,5 @@
 [
   {
-    "name": "Interestelar",
-    "type": "Ficção Científica",
-    "synopsis": "Num futuro onde a Terra está morrendo, um grupo de astronautas viaja por um buraco de minhoca em busca de um novo lar para a humanidade.",
-    "review": "Simplesmente a obra-prima do Nolan. Cada cena é de tirar o fôlego, a trilha sonora do Hans Zimmer é absurda e o final emociona até quem não chora em filme.",
-    "rating": 5.0
-  },
-
-  {
     "name": "Clube da Luta",
     "type": "Drama Psicológico",
     "synopsis": "Um homem insone e desiludido com sua vida cria um clube de luta clandestino com um misterioso vendedor de sabão.",
@@ -16,19 +8,19 @@
   },
 
   {
-    "name": "O Cavaleiro das Trevas",
-    "type": "Ação / Super-herói",
-    "synopsis": "Batman enfrenta o Coringa, um gênio do crime que mergulha Gotham no caos para provar que qualquer um pode se corromper.",
-    "review": "Heath Ledger entrega a melhor atuação da história do cinema. O filme é tenso, inteligente e envelhece como vinho.",
-    "rating": 5.0
+    "name": "Homem-Aranha no Aranhaverso",
+    "type": "Animação / Super-herói",
+    "synopsis": "Miles Morales assume o manto do Homem-Aranha e encontra versões alternativas do herói vindas de diferentes dimensões.",
+    "review": "A melhor animação da década. O estilo visual é inovador, a trilha sonora é incrível e a história é emocionante. Perfeito.",
+    "rating": 4.5
   },
 
   {
-    "name": "Your Name",
-    "type": "Animação / Romance",
-    "synopsis": "Dois adolescentes japoneses começam a trocar de corpos misteriosamente e precisam desvendar o segredo por trás dessa conexão.",
-    "review": "Obra de arte do Makoto Shinkai. A animação é deslumbrante, a história emociona e a trilha sonora do RADWIMPS é perfeita. Chorei litros.",
-    "rating": 4.8
+    "name": "Interestelar",
+    "type": "Ficção Científica",
+    "synopsis": "Num futuro onde a Terra está morrendo, um grupo de astronautas viaja por um buraco de minhoca em busca de um novo lar para a humanidade.",
+    "review": "Simplesmente a obra-prima do Nolan. Cada cena é de tirar o fôlego, a trilha sonora do Hans Zimmer é absurda e o final emociona até quem não chora em filme.",
+    "rating": 5.0
   },
 
   {
@@ -37,6 +29,14 @@
     "synopsis": "Um hacker descobre que a realidade é uma simulação criada por máquinas e se junta à resistência para libertar a humanidade.",
     "review": "Revolucionário. As cenas de ação, o conceito filosófico e o estilo visual mudaram o cinema pra sempre. O hype é justo.",
     "rating": 4.7
+  },
+
+  {
+    "name": "O Cavaleiro das Trevas",
+    "type": "Ação / Super-herói",
+    "synopsis": "Batman enfrenta o Coringa, um gênio do crime que mergulha Gotham no caos para provar que qualquer um pode se corromper.",
+    "review": "Heath Ledger entrega a melhor atuação da história do cinema. O filme é tenso, inteligente e envelhece como vinho.",
+    "rating": 5.0
   },
 
   {
@@ -56,10 +56,10 @@
   },
 
   {
-    "name": "Homem-Aranha no Aranhaverso",
-    "type": "Animação / Super-herói",
-    "synopsis": "Miles Morales assume o manto do Homem-Aranha e encontra versões alternativas do herói vindas de diferentes dimensões.",
-    "review": "A melhor animação da década. O estilo visual é inovador, a trilha sonora é incrível e a história é emocionante. Perfeito.",
-    "rating": 4.5
+    "name": "Your Name",
+    "type": "Animação / Romance",
+    "synopsis": "Dois adolescentes japoneses começam a trocar de corpos misteriosamente e precisam desvendar o segredo por trás dessa conexão.",
+    "review": "Obra de arte do Makoto Shinkai. A animação é deslumbrante, a história emociona e a trilha sonora do RADWIMPS é perfeita. Chorei litros.",
+    "rating": 4.8
   }
 ]
