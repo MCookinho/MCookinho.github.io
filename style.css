@@ -101,6 +101,29 @@ body {
 
 .nav-toggle { display: none; font-family: var(--font); font-size: 10px; background: none; border: none; color: var(--dim); cursor: pointer; }
 
+.nav-utils {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: 8px;
+}
+.nav-util-btn {
+  font-family: var(--font);
+  font-size: 11px;
+  background: none;
+  border: none;
+  color: var(--dim);
+  cursor: pointer;
+  padding: 4px 6px;
+  line-height: 1;
+  transition: color 0.15s;
+  opacity: 0.5;
+}
+.nav-util-btn:hover {
+  color: var(--pink);
+  opacity: 1;
+}
+
 .nav-left {
   display: flex;
   align-items: center;
