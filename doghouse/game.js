@@ -24,7 +24,8 @@ const VIEWS = {
     {id:'ferramentas',name:'CAIXA DE FERRAMENTAS',desc:'Caixa de metal enferrujada.',type:'item',gives:'ferro'}
   ],
   east: [
-    {id:'prateleira',name:'PRATELEIRA',desc:'Empoeirada. Três marcas estranhas na madeira.',type:'shelf'},
+    {id:'marcas',name:'ARRANHÕES',desc:'Três marcas estranhas na madeira: ⚬, ◉, —.',type:'examine'},
+    {id:'prateleira',name:'PRATELEIRA',desc:'Empoeirada.',type:'shelf'},
     {id:'espelho',name:'ESPELHO',desc:'Trincado. O reflexo é seu mas não parece.',type:'mirror'},
     {id:'teia',name:'TEIA DE ARANHA',desc:'A aranha observa.',type:'examine'},
     {id:'tijolo',name:'TIJOLO SOLTO',desc:'Parece que dá pra mexer.',type:'brick'}
@@ -67,7 +68,8 @@ const HITBOXES = {
     ferramentas:{x:555,y:395,w:115,h:75}
   },
   east: {
-    prateleira:{x:30,y:70,w:320,h:380},
+    marcas:{x:80,y:370,w:200,h:25},
+    prateleira:{x:30,y:70,w:320,h:300},
     espelho:{x:430,y:80,w:220,h:280},
     teia:{x:40,y:75,w:30,h:20},
     tijolo:{x:555,y:375,w:40,h:40}
