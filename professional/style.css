@@ -222,6 +222,8 @@ body.anim-none .prof-footer { opacity: 1; transform: none; }
 .config-btn-primary:hover { opacity: 0.9; }
 .config-btn-reset { background: var(--card); color: var(--muted); }
 .config-btn-reset:hover { border-color: var(--muted); color: var(--text); }
+.config-btn-share { background: var(--card); color: var(--accent); border-color: var(--accent); }
+.config-btn-share:hover { background: var(--accent); color: #fff; }
 
 /* ── Print ── */
 @media print {

@@ -85,6 +85,70 @@
     localStorage.setItem(CONFIG_KEY, JSON.stringify(cfg))
   }
 
+  // ── URL Hash Encoding ──
+  function encodeConfigToHash(cfg) {
+    try {
+      var json = JSON.stringify(cfg)
+      return btoa(unescape(encodeURIComponent(json)))
+    } catch (e) {
+      return ''
+    }
+  }
+
+  function decodeHashToConfig(hash) {
+    try {
+      var json = decodeURIComponent(escape(atob(hash)))
+      return JSON.parse(json)
+    } catch (e) {
+      return null
+    }
+  }
+
+  function updateShareLink(cfg) {
+    var encoded = encodeConfigToHash(cfg)
+    if (encoded) {
+      var url = window.location.origin + window.location.pathname + '#' + encoded
+      window.history.replaceState(null, '', '#' + encoded)
+      return url
+    }
+    return window.location.href
+  }
+
+  function loadConfigFromHash() {
+    var hash = window.location.hash.replace(/^#/, '')
+    if (!hash) return null
+    return decodeHashToConfig(hash)
+  }
+
+  // ── Load Config (hash > localStorage > default) ──
+  function loadConfig() {
+    // Try hash first
+    var fromHash = loadConfigFromHash()
+    if (fromHash) {
+      saveConfig(fromHash) // persist to localStorage
+      return fromHash
+    }
+    // Fall back to localStorage
+    try {
+      var raw = localStorage.getItem(CONFIG_KEY)
+      if (raw) {
+        var parsed = JSON.parse(raw)
+        // ensure all section ids exist
+        var existing = parsed.sections || []
+        SECTION_IDS.forEach(function (s) {
+          if (!existing.find(function (e) { return e.id === s.id })) {
+            existing.push({ id: s.id, visible: true })
+          }
+        })
+        parsed.sections = existing
+        if (!parsed.pdf) parsed.pdf = defaultConfig().pdf
+        if (!parsed.pdf.sections) parsed.pdf.sections = SECTION_IDS.map(function (s) { return s.id })
+        return parsed
+      }
+    } catch (e) {}
+    return defaultConfig()
+  }
+
   // ── Apply Config to DOM ──
   function applyConfig(cfg) {
     // Theme
@@ -323,6 +387,7 @@
     config = currentConfig
     applyConfig(config)
     setupAnimations(config)
+    updateShareLink(config)
     closePanel()
   })
 
@@ -331,6 +396,56 @@
     currentConfig = defaultConfig()
     renderPanel(currentConfig)
   })
+
+  // ── Share Link ──
+  function showCopyToast(msg) {
+    var existing = document.getElementById('shareToast')
+    if (existing) existing.remove()
+    var toast = document.createElement('div')
+    toast.id = 'shareToast'
+    toast.style.cssText =
+      'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);' +
+      'background:#1a1a2e;color:#fff;padding:12px 24px;font-size:13px;' +
+      'z-index:3000;box-shadow:0 4px 20px rgba(0,0,0,0.2);' +
+      'transition:opacity 0.3s;opacity:0;'
+    toast.textContent = msg
+    document.body.appendChild(toast)
+    requestAnimationFrame(function () { toast.style.opacity = '1' })
+    setTimeout(function () {
+      toast.style.opacity = '0'
+      setTimeout(function () { toast.remove() }, 400)
+    }, 2500)
+  }
+
+  document.getElementById('configShare').addEventListener('click', function () {
+    var encoded = encodeConfigToHash(currentConfig)
+    if (!encoded) { showCopyToast('Erro ao gerar link'); return }
+    var url = window.location.origin + window.location.pathname + '#' + encoded
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(function () {
+        showCopyToast('Link copiado! Compartilhe com任何人.')
+      }).catch(function () {
+        fallbackCopy(url)
+      })
+    } else {
+      fallbackCopy(url)
+    }
+  })
+
+  function fallbackCopy(url) {
+    var ta = document.createElement('textarea')
+    ta.value = url
+    ta.style.position = 'fixed'; ta.style.opacity = '0'
+    document.body.appendChild(ta)
+    ta.select()
+    try {
+      document.execCommand('copy')
+      showCopyToast('Link copiado! Compartilhe com qualquer um.')
+    } catch (e) {
+      showCopyToast('Erro ao copiar. Link: ' + url)
+    }
+    ta.remove()
+  }
 
   // ── Export PDF ──
   document.getElementById('exportPdf').addEventListener('click', function () {
