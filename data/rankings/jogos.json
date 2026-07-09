@@ -1,81 +1,481 @@
 [
   {
+    "name": " Streets of Rage 4",
+    "type": "Acao",
+    "synopsis": "Luta urbana classica em estilo arcade.",
+    "review": "Minha opiniao sobre  Streets of Rage 4. [EDITAR]",
+    "rating": 4.5
+  },
+
+  {
+    "name": "Age of Empires II",
+    "type": "Estrategia",
+    "synopsis": "Construa um imperio e conquiste seus inimigos.",
+    "review": "Minha opiniao sobre Age of Empires II. [EDITAR]",
+    "rating": 4.0
+  },
+
+  {
+    "name": "Among Us",
+    "type": "Party",
+    "synopsis": "Descubra o impostor antes que seja tarde.",
+    "review": "Minha opiniao sobre Among Us. [EDITAR]",
+    "rating": 4.6
+  },
+
+  {
+    "name": "Baldurs Gate 3",
+    "type": "RPG",
+    "synopsis": "Uma aventura epica no universo de Dungeons & Dragons.",
+    "review": "Minha opiniao sobre Baldurs Gate 3. [EDITAR]",
+    "rating": 3.6
+  },
+
+  {
+    "name": "Banjo-Kazooie",
+    "type": "Plataforma",
+    "synopsis": "Um urso e um passaro em busca de pecas de quebra-cabeca.",
+    "review": "Minha opiniao sobre Banjo-Kazooie. [EDITAR]",
+    "rating": 3.5
+  },
+
+  {
+    "name": "BioShock",
+    "type": "FPS",
+    "synopsis": "Explore a cidade submersa de Rapture.",
+    "review": "Minha opiniao sobre BioShock. [EDITAR]",
+    "rating": 4.1
+  },
+
+  {
+    "name": "Bloodborne",
+    "type": "RPG",
+    "synopsis": "Cace feras nas ruas góticas de Yharnam.",
+    "review": "Minha opiniao sobre Bloodborne. [EDITAR]",
+    "rating": 4.2
+  },
+
+  {
     "name": "Celeste",
-    "type": "Plataforma / Narrativo",
-    "synopsis": "Madeline sobe o Monte Celeste enquanto enfrenta seus demônios internos.",
-    "review": "Plataforma perfeito com uma história emocionante sobre ansiedade e superação. A trilha sonora é absurda de boa e os controles são precisos. Morri 3000 vezes e amei cada uma.",
-    "rating": 4.8
+    "type": "Plataforma",
+    "synopsis": "Madeline sobe o Monte Celeste.",
+    "review": "Minha opiniao sobre Celeste. [EDITAR]",
+    "rating": 3.4
+  },
+
+  {
+    "name": "Chrono Trigger",
+    "type": "RPG",
+    "synopsis": "Viajantes do tempo tentam salvar o mundo.",
+    "review": "Minha opiniao sobre Chrono Trigger. [EDITAR]",
+    "rating": 3.5
+  },
+
+  {
+    "name": "Crash Bandicoot",
+    "type": "Plataforma",
+    "synopsis": "Um marsupial tenta salvar o mundo.",
+    "review": "Minha opiniao sobre Crash Bandicoot. [EDITAR]",
+    "rating": 4.1
+  },
+
+  {
+    "name": "Cuphead",
+    "type": "Acao",
+    "synopsis": "Dois irmaos pagam suas dividas no cassino do diabo.",
+    "review": "Minha opiniao sobre Cuphead. [EDITAR]",
+    "rating": 3.3
+  },
+
+  {
+    "name": "Dark Souls",
+    "type": "RPG",
+    "synopsis": "Um morto-vivo busca quebrar a maldicao.",
+    "review": "Minha opiniao sobre Dark Souls. [EDITAR]",
+    "rating": 3.5
+  },
+
+  {
+    "name": "Dead Cells",
+    "type": "Roguelike",
+    "synopsis": "Fuja de uma prisao em constante mudanca.",
+    "review": "Minha opiniao sobre Dead Cells. [EDITAR]",
+    "rating": 4.4
+  },
+
+  {
+    "name": "Death Stranding",
+    "type": "Aventura",
+    "synopsis": "Entregue pacotes em um mundo pos-apocaliptico.",
+    "review": "Minha opiniao sobre Death Stranding. [EDITAR]",
+    "rating": 3.0
   },
 
   {
     "name": "Disco Elysium",
-    "type": "RPG / Investigação",
-    "synopsis": "Um detetive amnésico precisa resolver um assassinato enquanto luta contra seus próprios demônios em uma cidade decadente.",
-    "review": "Não é um jogo, é literatura interativa. O texto é absurdo de bom, as escolhas tem consequências reais e o humor é afiado. Um dos jogos mais inteligentes que existem.",
-    "rating": 4.8
+    "type": "RPG",
+    "synopsis": "Um detetive amnesico investiga um assassinato.",
+    "review": "Minha opiniao sobre Disco Elysium. [EDITAR]",
+    "rating": 3.1
+  },
+
+  {
+    "name": "Doom Eternal",
+    "type": "FPS",
+    "synopsis": "Mate demonios em um ritmo frenetico.",
+    "review": "Minha opiniao sobre Doom Eternal. [EDITAR]",
+    "rating": 4.7
   },
 
   {
     "name": "Elden Ring",
-    "type": "RPG / Ação",
-    "synopsis": "Um Sem-luz viaja pelas Terras Intermédias para se tornar o Lorde Prístino e restaurar a ordem.",
-    "review": "A FromSoftware se superou. O mundo é gigantesco, cheio de segredos, masmorras e chefões memoráveis. Passei 200h e ainda queria mais. Obra-prima do game design.",
-    "rating": 5.0
+    "type": "RPG",
+    "synopsis": "Um Sem-luz busca se tornar Lorde Prístino.",
+    "review": "Minha opiniao sobre Elden Ring. [EDITAR]",
+    "rating": 4.5
+  },
+
+  {
+    "name": "Fallout: New Vegas",
+    "type": "RPG",
+    "synopsis": "Sobreviva no deserto pos-nuclear de Mojave.",
+    "review": "Minha opiniao sobre Fallout: New Vegas. [EDITAR]",
+    "rating": 3.5
+  },
+
+  {
+    "name": "Fire Emblem: Three Houses",
+    "type": "Estrategia",
+    "synopsis": "Lidere uma casa em uma academia militar.",
+    "review": "Minha opiniao sobre Fire Emblem: Three Houses. [EDITAR]",
+    "rating": 4.5
+  },
+
+  {
+    "name": "God of War",
+    "type": "Acao",
+    "synopsis": "Kratos e Atreus viajam pelos reinos nordicos.",
+    "review": "Minha opiniao sobre God of War. [EDITAR]",
+    "rating": 4.1
+  },
+
+  {
+    "name": "Grand Theft Auto V",
+    "type": "Acao",
+    "synopsis": "Tres criminosos realizam grandes assaltos em Los Santos.",
+    "review": "Minha opiniao sobre Grand Theft Auto V. [EDITAR]",
+    "rating": 3.3
+  },
+
+  {
+    "name": "Gris",
+    "type": "Plataforma",
+    "synopsis": "Uma jornada emocional em um mundo de aquarela.",
+    "review": "Minha opiniao sobre Gris. [EDITAR]",
+    "rating": 3.7
+  },
+
+  {
+    "name": "Hades",
+    "type": "Roguelike",
+    "synopsis": "Fuja do submundo grego.",
+    "review": "Minha opiniao sobre Hades. [EDITAR]",
+    "rating": 3.5
+  },
+
+  {
+    "name": "Half-Life 2",
+    "type": "FPS",
+    "synopsis": "Gordon Freeman luta contra a Alianca.",
+    "review": "Minha opiniao sobre Half-Life 2. [EDITAR]",
+    "rating": 3.2
   },
 
   {
     "name": "Hollow Knight",
     "type": "Metroidvania",
-    "synopsis": "Um pequeno cavaleiro explora as ruínas de um reino insectóide abandonado para enfrentar uma infecção maligna.",
-    "review": "Perfeito em todos os sentidos. A arte é linda, a trilha sonora é hipnotizante, o combate é preciso e o mundo interligado é uma obra de design. E ainda tem 4 DLCs de graça.",
-    "rating": 4.9
-  },
-
-  {
-    "name": "Outer Wilds",
-    "type": "Exploração / Mistério",
-    "synopsis": "Você está preso em um loop temporal de 22 minutos e precisa explorar um sistema solar para descobrir segredos antigos.",
-    "review": "Jogo que você só pode jogar uma vez na vida. A sensação de descoberta, o medo do espaço e as revelações são algo que nenhum outro jogo entrega. Experiência única.",
-    "rating": 4.9
-  },
-
-  {
-    "name": "Portal 2",
-    "type": "Quebra-cabeça / Comédia",
-    "synopsis": "Wheatley, um robô atrapalhado, te acorda nas ruínas da Aperture Science e juntos tentam escapar.",
-    "review": "Engraçado, inteligente e criativo. Os puzzles são satisfatórios, o roteiro é hilário e a dublagem em português é impecável. O cooperativo ainda é uma das melhores experiências multiplayer.",
-    "rating": 4.7
-  },
-
-  {
-    "name": "Red Dead Redemption 2",
-    "type": "Aventura / Faroeste",
-    "synopsis": "Arthur Morgan, um fora-da-lei, lida com a dissipação de sua gangue enquanto o Velho Oeste chega ao fim.",
-    "review": "O jogo mais imersivo que já joguei. Os detalhes são absurdos, a história é de cinema e o Arthur Morgan é um dos melhores protagonistas já escritos.",
-    "rating": 5.0
-  },
-
-  {
-    "name": "Stardew Valley",
-    "type": "Simulação / Fazenda",
-    "synopsis": "Você herda a fazenda do seu avô em uma cidade pacata e começa uma nova vida no campo.",
-    "review": "Feito por UMA pessoa. É relaxante, viciante e cheio de conteúdo. Passei 100h e ainda tinha coisa pra fazer. Perfeito pra desestressar.",
+    "synopsis": "Um cavaleiro explora as ruinas de um reino insectoide.",
+    "review": "Minha opiniao sobre Hollow Knight. [EDITAR]",
     "rating": 4.5
   },
 
   {
+    "name": "Hotline Miami",
+    "type": "Acao",
+    "synopsis": "Violencia neon em um mundo dos anos 80.",
+    "review": "Minha opiniao sobre Hotline Miami. [EDITAR]",
+    "rating": 3.0
+  },
+
+  {
+    "name": "Inside",
+    "type": "Puzzle",
+    "synopsis": "Um garoto foge por um mundo sombrio.",
+    "review": "Minha opiniao sobre Inside. [EDITAR]",
+    "rating": 3.0
+  },
+
+  {
+    "name": "Journey",
+    "type": "Aventura",
+    "synopsis": "Atravesse um deserto em direcao a uma montanha.",
+    "review": "Minha opiniao sobre Journey. [EDITAR]",
+    "rating": 4.1
+  },
+
+  {
+    "name": "Katana Zero",
+    "type": "Acao",
+    "synopsis": "Um samurai com controle do tempo.",
+    "review": "Minha opiniao sobre Katana Zero. [EDITAR]",
+    "rating": 4.4
+  },
+
+  {
+    "name": "Kingdom Hearts II",
+    "type": "RPG",
+    "synopsis": "Sora viaja por mundos da Disney.",
+    "review": "Minha opiniao sobre Kingdom Hearts II. [EDITAR]",
+    "rating": 4.4
+  },
+
+  {
+    "name": "Left 4 Dead 2",
+    "type": "FPS",
+    "synopsis": "Sobreviva a um apocalipse zumbi.",
+    "review": "Minha opiniao sobre Left 4 Dead 2. [EDITAR]",
+    "rating": 3.5
+  },
+
+  {
+    "name": "Life is Strange",
+    "type": "Aventura",
+    "synopsis": "Uma fotografia descobre que pode voltar no tempo.",
+    "review": "Minha opiniao sobre Life is Strange. [EDITAR]",
+    "rating": 3.4
+  },
+
+  {
+    "name": "Little Nightmares",
+    "type": "Terror",
+    "synopsis": "Fuja de um navio habitado por criaturas grotescas.",
+    "review": "Minha opiniao sobre Little Nightmares. [EDITAR]",
+    "rating": 3.0
+  },
+
+  {
+    "name": "Mass Effect 2",
+    "type": "RPG",
+    "synopsis": "Comandante Shepard reune uma equipe para uma missao suicida.",
+    "review": "Minha opiniao sobre Mass Effect 2. [EDITAR]",
+    "rating": 4.1
+  },
+
+  {
+    "name": "Minecraft",
+    "type": "Sandbox",
+    "synopsis": "Construa, explore e sobreviva em um mundo de blocos.",
+    "review": "Minha opiniao sobre Minecraft. [EDITAR]",
+    "rating": 3.9
+  },
+
+  {
+    "name": "Mother 3",
+    "type": "RPG",
+    "synopsis": "Uma familia enfrenta uma corporacao maligna.",
+    "review": "Minha opiniao sobre Mother 3. [EDITAR]",
+    "rating": 3.7
+  },
+
+  {
+    "name": "Neon Genesis Evangelion",
+    "type": "Acao",
+    "synopsis": "Pilote um Eva para proteger a humanidade.",
+    "review": "Minha opiniao sobre Neon Genesis Evangelion. [EDITAR]",
+    "rating": 3.9
+  },
+
+  {
+    "name": "NieR: Automata",
+    "type": "RPG",
+    "synopsis": "Androides lutam por um futuro incerto.",
+    "review": "Minha opiniao sobre NieR: Automata. [EDITAR]",
+    "rating": 4.4
+  },
+
+  {
+    "name": "Omori",
+    "type": "RPG",
+    "synopsis": "Enfrente seus demonios internos em um mundo onírico.",
+    "review": "Minha opiniao sobre Omori. [EDITAR]",
+    "rating": 4.2
+  },
+
+  {
+    "name": "Ori and the Blind Forest",
+    "type": "Plataforma",
+    "synopsis": "Um pequeno espirito salva sua floresta.",
+    "review": "Minha opiniao sobre Ori and the Blind Forest. [EDITAR]",
+    "rating": 3.7
+  },
+
+  {
+    "name": "Outer Wilds",
+    "type": "Exploracao",
+    "synopsis": "Explore um sistema solar preso em um loop temporal.",
+    "review": "Minha opiniao sobre Outer Wilds. [EDITAR]",
+    "rating": 3.8
+  },
+
+  {
+    "name": "Persona 5 Royal",
+    "type": "RPG",
+    "synopsis": "Ladroes fantasma mudam os coracoes dos corruptos.",
+    "review": "Minha opiniao sobre Persona 5 Royal. [EDITAR]",
+    "rating": 3.4
+  },
+
+  {
+    "name": "Portal 2",
+    "type": "Puzzle",
+    "synopsis": "Resolva quebra-cabecas com a portal gun.",
+    "review": "Minha opiniao sobre Portal 2. [EDITAR]",
+    "rating": 3.2
+  },
+
+  {
+    "name": "Psychonauts",
+    "type": "Acao",
+    "synopsis": "Entre nas mentes de personagens bizarros.",
+    "review": "Minha opiniao sobre Psychonauts. [EDITAR]",
+    "rating": 3.5
+  },
+
+  {
+    "name": "Rain World",
+    "type": "Sobrevivencia",
+    "synopsis": "Sobreviva em um ecossistema hostil.",
+    "review": "Minha opiniao sobre Rain World. [EDITAR]",
+    "rating": 3.4
+  },
+
+  {
+    "name": "Red Dead Redemption 2",
+    "type": "Acao",
+    "synopsis": "Arthur Morgan vive o fim do Velho Oeste.",
+    "review": "Minha opiniao sobre Red Dead Redemption 2. [EDITAR]",
+    "rating": 4.4
+  },
+
+  {
+    "name": "Resident Evil 4",
+    "type": "Terror",
+    "synopsis": "Leon S. Kennedy resgata a filha do presidente.",
+    "review": "Minha opiniao sobre Resident Evil 4. [EDITAR]",
+    "rating": 3.7
+  },
+
+  {
+    "name": "Return of the Obra Dinn",
+    "type": "Investigacao",
+    "synopsis": "Descubra o que aconteceu em um navio fantasma.",
+    "review": "Minha opiniao sobre Return of the Obra Dinn. [EDITAR]",
+    "rating": 4.8
+  },
+
+  {
+    "name": "Sekiro: Shadows Die Twice",
+    "type": "Acao",
+    "synopsis": "Um shinobi busca vinganca no Japao feudal.",
+    "review": "Minha opiniao sobre Sekiro: Shadows Die Twice. [EDITAR]",
+    "rating": 3.4
+  },
+
+  {
+    "name": "Shadow of the Colossus",
+    "type": "Aventura",
+    "synopsis": "Derrube colossos em um mundo desolado.",
+    "review": "Minha opiniao sobre Shadow of the Colossus. [EDITAR]",
+    "rating": 4.7
+  },
+
+  {
+    "name": "Silent Hill 2",
+    "type": "Terror",
+    "synopsis": "James Sunderland busca sua esposa falecida.",
+    "review": "Minha opiniao sobre Silent Hill 2. [EDITAR]",
+    "rating": 3.6
+  },
+
+  {
+    "name": "Spelunky 2",
+    "type": "Roguelike",
+    "synopsis": "Explore cavernas geradas proceduralmente.",
+    "review": "Minha opiniao sobre Spelunky 2. [EDITAR]",
+    "rating": 4.4
+  },
+
+  {
+    "name": "Stardew Valley",
+    "type": "Simulacao",
+    "synopsis": "Viva uma vida pacata na fazenda do seu avo.",
+    "review": "Minha opiniao sobre Stardew Valley. [EDITAR]",
+    "rating": 3.3
+  },
+
+  {
+    "name": "Super Mario Odyssey",
+    "type": "Plataforma",
+    "synopsis": "Mario viaja o mundo para salvar a princesa.",
+    "review": "Minha opiniao sobre Super Mario Odyssey. [EDITAR]",
+    "rating": 3.7
+  },
+
+  {
+    "name": "Terraria",
+    "type": "Sandbox",
+    "synopsis": "Explore, construa e lute em um mundo 2D.",
+    "review": "Minha opiniao sobre Terraria. [EDITAR]",
+    "rating": 3.8
+  },
+
+  {
     "name": "The Legend of Zelda: Breath of the Wild",
-    "type": "Aventura / Mundo Aberto",
-    "synopsis": "Link desperta após 100 anos em Hyrule devastada e precisa derrotar Calamity Ganon para salvar o reino.",
-    "review": "Liberdade absoluta. O jogo te solta no mundo e cada montanha, cada árvore esconde algo especial. A física é criativa, a trilha é emocionante e a sensação de descoberta é única.",
-    "rating": 5.0
+    "type": "Aventura",
+    "synopsis": "Link desperta para derrotar Calamity Ganon.",
+    "review": "Minha opiniao sobre The Legend of Zelda: Breath of the Wild. [EDITAR]",
+    "rating": 4.7
+  },
+
+  {
+    "name": "The Witcher 3",
+    "type": "RPG",
+    "synopsis": "Geralt de Rivia busca sua filha adotiva.",
+    "review": "Minha opiniao sobre The Witcher 3. [EDITAR]",
+    "rating": 3.4
+  },
+
+  {
+    "name": "Tunic",
+    "type": "Aventura",
+    "synopsis": "Uma raposa explora um mundo misterioso.",
+    "review": "Minha opiniao sobre Tunic. [EDITAR]",
+    "rating": 4.0
   },
 
   {
     "name": "Undertale",
     "type": "RPG",
-    "synopsis": "Uma criança cai no subsolo e precisa escolher entre matar ou poupar os monstros que encontra.",
-    "review": "A Toby Fox fez um dos jogos mais criativos da história. A trilha sonora é genial, os personagens são carismáticos e as escolhas realmente importam. Música tema do Sans é épica.",
-    "rating": 4.6
+    "synopsis": "Uma criança cai no subsolo dos monstros.",
+    "review": "Minha opiniao sobre Undertale. [EDITAR]",
+    "rating": 3.8
+  },
+
+  {
+    "name": "What Remains of Edith Finch",
+    "type": "Aventura",
+    "synopsis": "Explore a historia da familia Finch.",
+    "review": "Minha opiniao sobre What Remains of Edith Finch. [EDITAR]",
+    "rating": 3.5
   }
 ]

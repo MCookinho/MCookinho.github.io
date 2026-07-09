@@ -1,5 +1,75 @@
 [
   {
+    "name": "Akira",
+    "score": 8200,
+    "lines": 120,
+    "level": 12
+  },
+
+  {
+    "name": "Bia",
+    "score": 3100,
+    "lines": 48,
+    "level": 6
+  },
+
+  {
+    "name": "Cadu",
+    "score": 15000,
+    "lines": 210,
+    "level": 20
+  },
+
+  {
+    "name": "Duda",
+    "score": 1800,
+    "lines": 30,
+    "level": 4
+  },
+
+  {
+    "name": "Edu",
+    "score": 9999,
+    "lines": 152,
+    "level": 15
+  },
+
+  {
+    "name": "Fabi",
+    "score": 4500,
+    "lines": 70,
+    "level": 8
+  },
+
+  {
+    "name": "Gabi",
+    "score": 7200,
+    "lines": 105,
+    "level": 11
+  },
+
+  {
+    "name": "Hugo",
+    "score": 2500,
+    "lines": 38,
+    "level": 5
+  },
+
+  {
+    "name": "Iara",
+    "score": 6000,
+    "lines": 90,
+    "level": 10
+  },
+
+  {
+    "name": "Joao",
+    "score": 500,
+    "lines": 10,
+    "level": 2
+  },
+
+  {
     "name": "Luna",
     "score": 2500,
     "lines": 38,

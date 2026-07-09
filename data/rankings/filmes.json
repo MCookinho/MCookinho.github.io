@@ -1,65 +1,457 @@
 [
   {
-    "name": "Clube da Luta",
-    "type": "Drama Psicológico",
-    "synopsis": "Um homem insone e desiludido com sua vida cria um clube de luta clandestino com um misterioso vendedor de sabão.",
-    "review": "Filme que muda sua visão de mundo. A crítica ao consumismo, a narrativa não-linear e o plot twist são geniais. Assisti 3 vezes e descubro algo novo sempre.",
-    "rating": 5.0
+    "name": "12 Homens e uma Sentenca",
+    "type": "Drama",
+    "synopsis": "Um jurado tenta convencer os outros 11 a reconsiderar o veredicto.",
+    "review": "Minha opiniao sobre 12 Homens e uma Sentenca. [EDITAR]",
+    "rating": 3.3
   },
 
   {
-    "name": "Homem-Aranha no Aranhaverso",
-    "type": "Animação / Super-herói",
-    "synopsis": "Miles Morales assume o manto do Homem-Aranha e encontra versões alternativas do herói vindas de diferentes dimensões.",
-    "review": "A melhor animação da década. O estilo visual é inovador, a trilha sonora é incrível e a história é emocionante. Perfeito.",
+    "name": "1917",
+    "type": "Guerra",
+    "synopsis": "Dois soldados britanicos correm contra o tempo para entregar uma mensagem.",
+    "review": "Minha opiniao sobre 1917. [EDITAR]",
+    "rating": 3.0
+  },
+
+  {
+    "name": "A Chegada",
+    "type": "Ficcao Cientifica",
+    "synopsis": "Uma linguista tenta se comunicar com alienigenas.",
+    "review": "Minha opiniao sobre A Chegada. [EDITAR]",
+    "rating": 3.1
+  },
+
+  {
+    "name": "A Origem",
+    "type": "Ficcao Cientifica",
+    "synopsis": "Um ladrao de sonhos e contratado para plantar uma ideia.",
+    "review": "Minha opiniao sobre A Origem. [EDITAR]",
+    "rating": 4.9
+  },
+
+  {
+    "name": "A Viagem de Chihiro",
+    "type": "Animacao",
+    "synopsis": "Uma garota entra em um mundo magico para salvar seus pais.",
+    "review": "Minha opiniao sobre A Viagem de Chihiro. [EDITAR]",
+    "rating": 3.5
+  },
+
+  {
+    "name": "Amnésia",
+    "type": "Suspense",
+    "synopsis": "Um homem com perda de memoria recente busca vinganca.",
+    "review": "Minha opiniao sobre Amnésia. [EDITAR]",
+    "rating": 4.1
+  },
+
+  {
+    "name": "Bastardos Inglorios",
+    "type": "Guerra",
+    "synopsis": "Um grupo de soldados judeus caça nazistas na Franca ocupada.",
+    "review": "Minha opiniao sobre Bastardos Inglorios. [EDITAR]",
+    "rating": 4.7
+  },
+
+  {
+    "name": "Birdman",
+    "type": "Drama",
+    "synopsis": "Um ator em declinio tenta reviver sua carreira nos palcos.",
+    "review": "Minha opiniao sobre Birdman. [EDITAR]",
+    "rating": 4.4
+  },
+
+  {
+    "name": "Blade Runner 2049",
+    "type": "Ficcao Cientifica",
+    "synopsis": "Um novo blade runner descobre um segredo que abala a sociedade.",
+    "review": "Minha opiniao sobre Blade Runner 2049. [EDITAR]",
+    "rating": 4.7
+  },
+
+  {
+    "name": "Cidade de Deus",
+    "type": "Drama",
+    "synopsis": "A vida de jovens no Rio de Janeiro dos anos 60 aos 80.",
+    "review": "Minha opiniao sobre Cidade de Deus. [EDITAR]",
+    "rating": 4.8
+  },
+
+  {
+    "name": "Clube da Luta",
+    "type": "Drama Psicologico",
+    "synopsis": "Um homem insone cria um clube de luta clandestino.",
+    "review": "Minha opiniao sobre Clube da Luta. [EDITAR]",
+    "rating": 3.7
+  },
+
+  {
+    "name": "Coringa",
+    "type": "Drama",
+    "synopsis": "A origem do icônico vilao de Gotham.",
+    "review": "Minha opiniao sobre Coringa. [EDITAR]",
+    "rating": 3.0
+  },
+
+  {
+    "name": "Django Livre",
+    "type": "Faroeste",
+    "synopsis": "Um escravo liberto se torna cacador de recompensas.",
+    "review": "Minha opiniao sobre Django Livre. [EDITAR]",
+    "rating": 4.8
+  },
+
+  {
+    "name": "Donnie Darko",
+    "type": "Ficcao Cientifica",
+    "synopsis": "Um adolescente recebe visoes de um coelho misterioso.",
+    "review": "Minha opiniao sobre Donnie Darko. [EDITAR]",
+    "rating": 3.0
+  },
+
+  {
+    "name": "Duna",
+    "type": "Ficcao Cientifica",
+    "synopsis": "Paul Atreides luta para sobreviver no planeta deserto.",
+    "review": "Minha opiniao sobre Duna. [EDITAR]",
+    "rating": 4.7
+  },
+
+  {
+    "name": "Encontros e Desencontros",
+    "type": "Drama",
+    "synopsis": "Dois estranhos formam um laco inesperado em Tokyo.",
+    "review": "Minha opiniao sobre Encontros e Desencontros. [EDITAR]",
+    "rating": 4.4
+  },
+
+  {
+    "name": "Era uma Vez no Oeste",
+    "type": "Faroeste",
+    "synopsis": "Uma viúva e um pistoleiro se unem contra um assassino.",
+    "review": "Minha opiniao sobre Era uma Vez no Oeste. [EDITAR]",
+    "rating": 3.2
+  },
+
+  {
+    "name": "Eternal Sunshine",
+    "type": "Romance",
+    "synopsis": "Um casal apaga as memorias um do outro.",
+    "review": "Minha opiniao sobre Eternal Sunshine. [EDITAR]",
+    "rating": 4.3
+  },
+
+  {
+    "name": "Ford vs Ferrari",
+    "type": "Drama",
+    "synopsis": "A corrida da Ford para vencer Le Mans.",
+    "review": "Minha opiniao sobre Ford vs Ferrari. [EDITAR]",
     "rating": 4.5
   },
 
   {
+    "name": "Forrest Gump",
+    "type": "Drama",
+    "synopsis": "Um homem simples vive grandes momentos da historia.",
+    "review": "Minha opiniao sobre Forrest Gump. [EDITAR]",
+    "rating": 4.3
+  },
+
+  {
+    "name": "Garota Exemplar",
+    "type": "Suspense",
+    "synopsis": "O desaparecimento de uma mulher revela segredos sombrios.",
+    "review": "Minha opiniao sobre Garota Exemplar. [EDITAR]",
+    "rating": 4.3
+  },
+
+  {
+    "name": "Gone Girl",
+    "type": "Suspense",
+    "synopsis": "O desaparecimento de Amy Dunne choca a cidade.",
+    "review": "Minha opiniao sobre Gone Girl. [EDITAR]",
+    "rating": 3.1
+  },
+
+  {
+    "name": "Green Book",
+    "type": "Drama",
+    "synopsis": "Um músico negro e seu motorista italiano cruzam os EUA.",
+    "review": "Minha opiniao sobre Green Book. [EDITAR]",
+    "rating": 4.2
+  },
+
+  {
+    "name": "Hereditario",
+    "type": "Terror",
+    "synopsis": "Uma familia enfrenta forcas sobrenaturais apos uma perda.",
+    "review": "Minha opiniao sobre Hereditario. [EDITAR]",
+    "rating": 4.5
+  },
+
+  {
+    "name": "Homem-Aranha no Aranhaverso",
+    "type": "Animacao",
+    "synopsis": "Miles Morales encontra heroes de outras dimensoes.",
+    "review": "Minha opiniao sobre Homem-Aranha no Aranhaverso. [EDITAR]",
+    "rating": 4.7
+  },
+
+  {
     "name": "Interestelar",
-    "type": "Ficção Científica",
-    "synopsis": "Num futuro onde a Terra está morrendo, um grupo de astronautas viaja por um buraco de minhoca em busca de um novo lar para a humanidade.",
-    "review": "Simplesmente a obra-prima do Nolan. Cada cena é de tirar o fôlego, a trilha sonora do Hans Zimmer é absurda e o final emociona até quem não chora em filme.",
-    "rating": 5.0
+    "type": "Ficcao Cientifica",
+    "synopsis": "Astronautas viajam por um buraco de minhoca.",
+    "review": "Minha opiniao sobre Interestelar. [EDITAR]",
+    "rating": 3.6
+  },
+
+  {
+    "name": "Joias Brutas",
+    "type": "Suspense",
+    "synopsis": "Um joalheiro de NY tenta pagar suas dividas.",
+    "review": "Minha opiniao sobre Joias Brutas. [EDITAR]",
+    "rating": 3.1
+  },
+
+  {
+    "name": "Kill Bill Vol. 1",
+    "type": "Acao",
+    "synopsis": "Uma assassina busca vinganca contra seu antigo chefe.",
+    "review": "Minha opiniao sobre Kill Bill Vol. 1. [EDITAR]",
+    "rating": 3.4
+  },
+
+  {
+    "name": "La La Land",
+    "type": "Musical",
+    "synopsis": "Um musico e uma atriz perseguem seus sonhos em LA.",
+    "review": "Minha opiniao sobre La La Land. [EDITAR]",
+    "rating": 4.8
+  },
+
+  {
+    "name": "Mad Max: Estrada da Furia",
+    "type": "Acao",
+    "synopsis": "Max se une a Furiosa para fugir de um tirano.",
+    "review": "Minha opiniao sobre Mad Max: Estrada da Furia. [EDITAR]",
+    "rating": 4.4
   },
 
   {
     "name": "Matrix",
-    "type": "Ficção Científica",
-    "synopsis": "Um hacker descobre que a realidade é uma simulação criada por máquinas e se junta à resistência para libertar a humanidade.",
-    "review": "Revolucionário. As cenas de ação, o conceito filosófico e o estilo visual mudaram o cinema pra sempre. O hype é justo.",
-    "rating": 4.7
+    "type": "Ficcao Cientifica",
+    "synopsis": "Um hacker descobre que a realidade e uma simulacao.",
+    "review": "Minha opiniao sobre Matrix. [EDITAR]",
+    "rating": 3.6
   },
 
   {
-    "name": "O Cavaleiro das Trevas",
-    "type": "Ação / Super-herói",
-    "synopsis": "Batman enfrenta o Coringa, um gênio do crime que mergulha Gotham no caos para provar que qualquer um pode se corromper.",
-    "review": "Heath Ledger entrega a melhor atuação da história do cinema. O filme é tenso, inteligente e envelhece como vinho.",
-    "rating": 5.0
+    "name": "Meu Amigo Totoro",
+    "type": "Animacao",
+    "synopsis": "Duas irmaos descobrem um espirito da floresta.",
+    "review": "Minha opiniao sobre Meu Amigo Totoro. [EDITAR]",
+    "rating": 3.5
+  },
+
+  {
+    "name": "Midsommar",
+    "type": "Terror",
+    "synopsis": "Um grupo viaja para um festival pagao na Suécia.",
+    "review": "Minha opiniao sobre Midsommar. [EDITAR]",
+    "rating": 4.4
+  },
+
+  {
+    "name": "Moonlight",
+    "type": "Drama",
+    "synopsis": "A jornada de um jovem negro em tres fases da vida.",
+    "review": "Minha opiniao sobre Moonlight. [EDITAR]",
+    "rating": 3.6
+  },
+
+  {
+    "name": "No Ritmo do Coracao",
+    "type": "Drama",
+    "synopsis": "Uma familia surda e sua filha ouvinte perseguem sonhos.",
+    "review": "Minha opiniao sobre No Ritmo do Coracao. [EDITAR]",
+    "rating": 3.8
+  },
+
+  {
+    "name": "O Fabuloso Destino de Amelie",
+    "type": "Comedia",
+    "synopsis": "Uma jovem decide mudar a vida das pessoas ao redor.",
+    "review": "Minha opiniao sobre O Fabuloso Destino de Amelie. [EDITAR]",
+    "rating": 3.3
+  },
+
+  {
+    "name": "O Grande Truque",
+    "type": "Misterio",
+    "synopsis": "Dois mágicos rivais levam sua competicao ao extremo.",
+    "review": "Minha opiniao sobre O Grande Truque. [EDITAR]",
+    "rating": 3.6
+  },
+
+  {
+    "name": "O Lagosta",
+    "type": "Comedia",
+    "synopsis": "Solteiros sao transformados em animais se nao acharem um par.",
+    "review": "Minha opiniao sobre O Lagosta. [EDITAR]",
+    "rating": 3.3
+  },
+
+  {
+    "name": "O Poderoso Chefao",
+    "type": "Drama",
+    "synopsis": "A historia da família Corleone.",
+    "review": "Minha opiniao sobre O Poderoso Chefao. [EDITAR]",
+    "rating": 3.2
+  },
+
+  {
+    "name": "O Poderoso Chefao II",
+    "type": "Drama",
+    "synopsis": "Michael Corleone expande o imperio da familia.",
+    "review": "Minha opiniao sobre O Poderoso Chefao II. [EDITAR]",
+    "rating": 4.3
+  },
+
+  {
+    "name": "O Senhor dos Aneis: A Sociedade do Anel",
+    "type": "Fantasia",
+    "synopsis": "Um hobbit e seus companheiros partem para destruir um anel.",
+    "review": "Minha opiniao sobre O Senhor dos Aneis: A Sociedade do Anel. [EDITAR]",
+    "rating": 3.4
+  },
+
+  {
+    "name": "O Senhor dos Aneis: As Duas Torres",
+    "type": "Fantasia",
+    "synopsis": "A guerra pelo anel se intensifica.",
+    "review": "Minha opiniao sobre O Senhor dos Aneis: As Duas Torres. [EDITAR]",
+    "rating": 3.2
+  },
+
+  {
+    "name": "O Senhor dos Aneis: O Retorno do Rei",
+    "type": "Fantasia",
+    "synopsis": "A batalha final pela Terra-Media.",
+    "review": "Minha opiniao sobre O Senhor dos Aneis: O Retorno do Rei. [EDITAR]",
+    "rating": 3.9
+  },
+
+  {
+    "name": "Oppenheimer",
+    "type": "Drama",
+    "synopsis": "O homem por tras da bomba atomica.",
+    "review": "Minha opiniao sobre Oppenheimer. [EDITAR]",
+    "rating": 4.0
+  },
+
+  {
+    "name": "Os Bons Companheiros",
+    "type": "Drama",
+    "synopsis": "A ascensao e queda de um gangster.",
+    "review": "Minha opiniao sobre Os Bons Companheiros. [EDITAR]",
+    "rating": 4.4
   },
 
   {
     "name": "Parasita",
-    "type": "Drama / Suspense",
-    "synopsis": "Uma família pobre se infiltra na vida de uma família rica com consequências imprevisíveis.",
-    "review": "Bong Joon-ho entregou uma obra-prima moderna. A sátira social é afiada, o humor é ácido e a tensão te prende do início ao fim.",
-    "rating": 4.7
+    "type": "Drama",
+    "synopsis": "Uma familia pobre se infiltra na vida de uma familia rica.",
+    "review": "Minha opiniao sobre Parasita. [EDITAR]",
+    "rating": 4.0
+  },
+
+  {
+    "name": "Pulp Fiction",
+    "type": "Drama",
+    "synopsis": "Historias entrelacadas de criminosos em Los Angeles.",
+    "review": "Minha opiniao sobre Pulp Fiction. [EDITAR]",
+    "rating": 4.0
+  },
+
+  {
+    "name": "Scarface",
+    "type": "Drama",
+    "synopsis": "Um imigrante cubano se torna um chefao do trafico.",
+    "review": "Minha opiniao sobre Scarface. [EDITAR]",
+    "rating": 4.3
+  },
+
+  {
+    "name": "Se7en",
+    "type": "Suspense",
+    "synopsis": "Dois detetives caciam um serial killer que usa os sete pecados.",
+    "review": "Minha opiniao sobre Se7en. [EDITAR]",
+    "rating": 4.2
+  },
+
+  {
+    "name": "Soul",
+    "type": "Animacao",
+    "synopsis": "Um musico descobre o verdadeiro sentido da vida.",
+    "review": "Minha opiniao sobre Soul. [EDITAR]",
+    "rating": 4.1
+  },
+
+  {
+    "name": "Taxi Driver",
+    "type": "Drama",
+    "synopsis": "Um taxista veterano de guerra mergulha na loucura.",
+    "review": "Minha opiniao sobre Taxi Driver. [EDITAR]",
+    "rating": 3.1
+  },
+
+  {
+    "name": "The Batman",
+    "type": "Acao",
+    "synopsis": "Batman investiga uma serie de assassinatos em Gotham.",
+    "review": "Minha opiniao sobre The Batman. [EDITAR]",
+    "rating": 4.3
+  },
+
+  {
+    "name": "The Truman Show",
+    "type": "Drama",
+    "synopsis": "Um homem descobre que sua vida e um reality show.",
+    "review": "Minha opiniao sobre The Truman Show. [EDITAR]",
+    "rating": 3.5
+  },
+
+  {
+    "name": "Toy Story",
+    "type": "Animacao",
+    "synopsis": "Brinquedos ganham vida quando os donos nao estao olhando.",
+    "review": "Minha opiniao sobre Toy Story. [EDITAR]",
+    "rating": 4.4
+  },
+
+  {
+    "name": "V de Vinganca",
+    "type": "Acao",
+    "synopsis": "Um justiceiro mascarado luta contra um regime totalitario.",
+    "review": "Minha opiniao sobre V de Vinganca. [EDITAR]",
+    "rating": 3.4
   },
 
   {
     "name": "Whiplash",
-    "type": "Drama / Música",
-    "synopsis": "Um jovem baterista é submetido a métodos brutais de ensino por um maestro obcecado pela perfeição.",
-    "review": "Intenso do início ao fim. A atuação do J.K. Simmons é aterrorizante e a cena final é uma das melhores que já vi no cinema.",
-    "rating": 4.6
+    "type": "Drama",
+    "synopsis": "Um baterista e submetido a metodos brutais de ensino.",
+    "review": "Minha opiniao sobre Whiplash. [EDITAR]",
+    "rating": 3.0
   },
 
   {
     "name": "Your Name",
-    "type": "Animação / Romance",
-    "synopsis": "Dois adolescentes japoneses começam a trocar de corpos misteriosamente e precisam desvendar o segredo por trás dessa conexão.",
-    "review": "Obra de arte do Makoto Shinkai. A animação é deslumbrante, a história emociona e a trilha sonora do RADWIMPS é perfeita. Chorei litros.",
-    "rating": 4.8
+    "type": "Animacao",
+    "synopsis": "Dois adolescentes trocam de corpos misteriosamente.",
+    "review": "Minha opiniao sobre Your Name. [EDITAR]",
+    "rating": 4.1
   }
 ]
