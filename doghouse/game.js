@@ -24,7 +24,7 @@ const VIEWS = {
     {id:'ferramentas',name:'CAIXA DE FERRAMENTAS',desc:'Caixa de metal enferrujada.',type:'item',gives:'ferro'}
   ],
   east: [
-    {id:'prateleira',name:'PRATELEIRA',desc:'Empoeirada.',type:'shelf'},
+    {id:'prateleira',name:'PRATELEIRA',desc:'Empoeirada. Três marcas estranhas na madeira.',type:'shelf'},
     {id:'espelho',name:'ESPELHO',desc:'Trincado. O reflexo é seu mas não parece.',type:'mirror'},
     {id:'teia',name:'TEIA DE ARANHA',desc:'A aranha observa.',type:'examine'},
     {id:'tijolo',name:'TIJOLO SOLTO',desc:'Parece que dá pra mexer.',type:'brick'}
@@ -39,7 +39,7 @@ const VIEWS = {
   west: [
     {id:'gaveta',name:'GAVETA',desc:'Trancada. Três pinos de metal.',type:'drawer'},
     {id:'diario',name:'DIÁRIO',desc:'Páginas amareladas.',type:'diary'},
-    {id:'bancada',name:'BANCADA',desc:'Marca de unhas na madeira. Três arranhões estranhos.',type:'examine'},
+    {id:'bancada',name:'BANCADA',desc:'Marca de unhas na madeira.',type:'examine'},
     {id:'corda_obj',name:'CORDA',desc:'Pendurada na parede.',type:'item',gives:'corda'}
   ],
   ceiling: [

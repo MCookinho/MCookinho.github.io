@@ -374,6 +374,15 @@ function drEast(ctx,t){
   cobweb(35,75,40,30,t)
   cobweb(340,175,30,25,t)
 
+  // Claw marks on bottom shelf — hint for drawer code
+  $ctx.strokeStyle='rgba(60,30,15,0.25)'
+  $ctx.lineWidth=1.5
+  $ctx.beginPath();$ctx.arc(90,383,5,0,Math.PI*2);$ctx.stroke()
+  $ctx.beginPath();$ctx.arc(175,383,5.5,0,Math.PI*2);$ctx.stroke()
+  $ctx.fillStyle='rgba(60,30,15,0.18)'
+  $ctx.beginPath();$ctx.arc(175,383,4.5,0,Math.PI*2);$ctx.fill()
+  wln(250,380,270,386,'rgba(60,30,15,0.25)',1.8,t,0.3)
+
   // Mirror (right side)
   const mirrorBroken=window.__game&&window.__game.hasObtained('caco_vidro')
   const mx=435,my=85,mw=210,mh=270
@@ -599,24 +608,6 @@ function drWest(ctx,t){
   rect(602,375,26,55,PAL.ink)
   // shadow under bench
   rect(70,418,580,16,grad(0,418,0,434,'rgba(0,0,0,0.4)','rgba(0,0,0,0)'))
-
-  // Shiva claw marks on bench — hint for drawer code
-  $ctx.strokeStyle='rgba(60,30,15,0.35)'
-  $ctx.lineWidth=1.8
-  // ⚬ — circle (value 1)
-  $ctx.beginPath()
-  $ctx.arc(115,288,6,0,Math.PI*2)
-  $ctx.stroke()
-  // ◉ — filled circle (value 2)
-  $ctx.beginPath()
-  $ctx.arc(165,288,6.5,0,Math.PI*2)
-  $ctx.stroke()
-  $ctx.fillStyle='rgba(60,30,15,0.25)'
-  $ctx.beginPath()
-  $ctx.arc(165,288,5.5,0,Math.PI*2)
-  $ctx.fill()
-  // — — dash (value 0)
-  wln(212,284,232,292,'rgba(60,30,15,0.35)',2,t,0.3)
 
   // Drawer — properly inset into bench face
   rect(220,295,180,65,PAL.ink_l)
