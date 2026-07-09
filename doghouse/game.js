@@ -414,7 +414,7 @@ class Game {
       if(this.hasObtained('bola')){
         this.engine.tooltip('O assoalho está levantado. Vazio.')
       }else{
-        this.engine.tooltip('A bola está ali embaixo. É só pegar.')
+        this.interactFloorboardBall()
       }
       return
     }
