@@ -140,7 +140,7 @@ function drNorth(ctx,t){
   rect(0,0,800,600,grad(0,0,0,600,'rgba(0,0,0,0.2)','rgba(0,0,0,0)'))
 
   // Door
-  const dx=270,dy=15,dw=260,dh=440
+  const dx=270,dy=8,dw=260,dh=440
   rect(dx-4,dy-4,dw+8,dh+8,PAL.ink_l)
   rect(dx,dy,dw,dh,PAL.ink)
   // wood grain
@@ -229,7 +229,7 @@ function drNorth(ctx,t){
 
   // Metal toolbox — on the floor right of the door
   if(!window.__game||!window.__game.hasObtained('ferro')){
-    const tx=555,ty=370,tw=115,th=72
+    const tx=555,ty=395,tw=115,th=72
     // Shadow
     $ctx.fillStyle='rgba(0,0,0,0.25)'
     $ctx.beginPath()
