@@ -48,6 +48,8 @@ body {
   transition: all 0.15s;
 }
 .topbar-btn:hover { color: #fff; border-color: rgba(255,255,255,0.5); }
+.topbar-btn-back { border-color: rgba(0,255,200,0.3); color: rgba(0,255,200,0.7); }
+.topbar-btn-back:hover { border-color: #00ffc8; color: #00ffc8; }
 
 /* ── Main Content ── */
 .main-content { max-width: 720px; margin: 0 auto; padding: 80px 24px 40px; }
