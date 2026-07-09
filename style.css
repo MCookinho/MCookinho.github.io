@@ -431,7 +431,7 @@ body {
 /* NES Controller */
 .skills-controller {
   flex-shrink: 0;
-  width: 260px;
+  width: 300px;
 }
 .sobre-texto .skills-controller {
   margin-top: 40px;
@@ -449,19 +449,19 @@ body {
 .ctrl-body {
   background: var(--card);
   border: 2px solid var(--purple);
-  padding: 14px 10px;
+  padding: 16px 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 10px;
 }
 
 /* D-pad */
 .ctrl-dpad {
   display: grid;
-  grid-template-columns: 32px 32px 32px;
-  grid-template-rows: 32px 32px 32px;
-  gap: 2px;
+  grid-template-columns: 38px 38px 38px;
+  grid-template-rows: 38px 38px 38px;
+  gap: 3px;
   flex-shrink: 0;
 }
 
@@ -485,11 +485,11 @@ body {
 }
 
 .ctrl-dpad .ctrl-btn {
-  width: 32px;
-  height: 32px;
+  width: 38px;
+  height: 38px;
   background: #1a1a2e;
   border: 2px solid #3a3a5e;
-  font-size: 14px;
+  font-size: 16px;
   color: var(--purple);
 }
 
@@ -511,15 +511,15 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 .ctrl-select,
 .ctrl-start {
-  font-size: 5px;
-  padding: 6px 8px;
+  font-size: 6px;
+  padding: 7px 10px;
   letter-spacing: 1px;
-  min-width: 38px;
+  min-width: 44px;
 }
 
 .ctrl-select {
@@ -556,10 +556,10 @@ body {
 
 .ctrl-a,
 .ctrl-b {
-  width: 38px;
-  height: 38px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: bold;
 }
 
@@ -1836,11 +1836,11 @@ body {
   .skill-bloco h3 { font-size: 11px; }
   .skill-items span { font-size: 8px; }
   .skills-controller { width: 300px; }
-  .ctrl-label { font-size: 8px; }
-  .ctrl-dpad { grid-template-columns: 36px 36px 36px; grid-template-rows: 36px 36px 36px; }
-  .ctrl-dpad .ctrl-btn { width: 36px; height: 36px; font-size: 15px; }
-  .ctrl-a, .ctrl-b { width: 42px; height: 42px; font-size: 17px; }
-  .ctrl-select, .ctrl-start { font-size: 6px; padding: 7px 10px; min-width: 42px; }
+  .ctrl-label { font-size: 9px; }
+  .ctrl-dpad { grid-template-columns: 38px 38px 38px; grid-template-rows: 38px 38px 38px; }
+  .ctrl-dpad .ctrl-btn { width: 38px; height: 38px; font-size: 16px; }
+  .ctrl-a, .ctrl-b { width: 44px; height: 44px; font-size: 18px; }
+  .ctrl-select, .ctrl-start { font-size: 6px; padding: 7px 10px; min-width: 44px; }
 
   .projeto-card h3 { font-size: 12px; }
   .projeto-card p { font-size: 8px; }
