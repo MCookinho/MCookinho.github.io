@@ -522,19 +522,34 @@ function drWest(ctx,t){
   circle(272,313,3,PAL.dark)
   rect(220,293,180,4,'rgba(0,0,0,0.15)')
 
-  // Diary on bench
-  rect(405,260,70,35,PAL.paper)
-  wln(405,260,475,260,PAL.ink_l,0.6,t)
-  wln(405,260,405,295,PAL.ink_l,0.6,t)
-  wln(405,295,475,295,PAL.ink_l,0.6,t)
-  wln(475,260,475,295,PAL.ink_l,0.6,t)
-  for(let i=0;i<4;i++){
-    const px=410+i*1.5,py=267+i*6
-    wln(px,py,px+52,py,PAL.ink_l,0.3,t,0.2)
+  // Diary on bench — leather book with pages and ribbon
+  // Shadow
+  rect(400,294,80,6,'rgba(0,0,0,0.2)')
+  // Page edges (cream stack)
+  rect(406,260,66,33,PAL.paper_l)
+  rect(408,262,62,29,PAL.paper)
+  for(let i=0;i<6;i++){
+    const ly=262+i*5
+    rect(408,ly,62,1,'rgba(200,180,150,0.15)')
   }
-  ln(440,266,440,290,PAL.ink_l,0.5)
-  ln(430,275,450,275,PAL.ink_l,0.5)
-  rect(403,293,74,4,'rgba(0,0,0,0.12)')
+  // Cover (leather, slightly larger)
+  rect(402,258,72,37,PAL.rust_d)
+  rect(404,260,68,33,'rgba(60,30,15,0.6)')
+  // Spine (left edge)
+  rect(402,258,8,37,PAL.rust)
+  wln(402,258,410,258,PAL.gold,0.4,t)
+  wln(402,295,410,295,PAL.gold,0.4,t)
+  ln(406,262,406,292,PAL.gold,0.5)
+  ln(408,262,408,292,PAL.gold,0.3)
+  // Gold cross on cover
+  ln(440,264,440,292,PAL.gold,0.6)
+  ln(428,275,452,275,PAL.gold,0.6)
+  // Ribbon bookmark
+  const ry=294+Math.sin(t*0.001)*2
+  rect(452,ry,4,18,PAL.blood_s)
+  rect(452,ry+15,4,5,'rgba(120,40,30,0.3)')
+  // slight corner wear
+  rect(468,258,4,3,'rgba(20,12,8,0.3)')
 
   // Rope hanging on wall
   // Wall hook/nail (always visible)

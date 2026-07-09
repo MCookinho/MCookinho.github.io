@@ -9,6 +9,9 @@ class Engine {
     this.tooltipTimer=null
     this.tooltipEl=document.getElementById('tooltip')
     this.transitionEl=document.getElementById('transition-overlay')
+    this.diaryPages=[]
+    this.diaryPageIdx=0
+    this.diaryFlipping=false
     this.setupEvents()
   }
 
@@ -29,11 +32,25 @@ class Engine {
       const p=getPos(e)
       this.puzzle.click(p.x,p.y,window.__game)
     })
-    document.getElementById('note-overlay').addEventListener('click',()=>{
+    document.getElementById('book-next').addEventListener('click',e=>{
+      e.stopPropagation()
+      if(this.state===S.NOTE)this.nextDiaryPage()
+    })
+    document.getElementById('book-prev').addEventListener('click',e=>{
+      e.stopPropagation()
+      if(this.state===S.NOTE)this.prevDiaryPage()
+    })
+    document.getElementById('book-close').addEventListener('click',e=>{
+      e.stopPropagation()
       if(this.state===S.NOTE)this.closeNote()
     })
     document.addEventListener('keydown',e=>{
-      if(this.state===S.NOTE&&e.key==='Escape'){this.closeNote();return}
+      if(this.state===S.NOTE){
+        if(e.key==='Escape'){this.closeNote();return}
+        if(e.key==='ArrowRight'||e.key===' '){this.nextDiaryPage();return}
+        if(e.key==='ArrowLeft'){this.prevDiaryPage();return}
+        return
+      }
       if(this.state===S.PUZZLE&&e.key==='Escape'){this.closePuzzle();return}
       if(this.state===S.FINAL&&(e.key==='Enter'||e.key===' ')){location.reload();return}
       if(this.state===S.INTRO&&(e.key==='Enter'||e.key===' ')){this.handleIntroClick();return}
@@ -87,7 +104,6 @@ class Engine {
 
       this.drawNavArrows(g,ctx,t)
 
-      // Pickup animation overlay
       if(g.anim)drawPickupToast(ctx,t,g.anim)
     }
     if(this.state===S.PUZZLE&&this.puzzle&&this.puzzle.render){
@@ -108,17 +124,114 @@ class Engine {
     document.getElementById('puzzle-overlay').style.display='none'
   }
 
-  showNote(symbol,text){
+  showDiary(pages){
     this.state=S.NOTE
-    const ov=document.getElementById('note-overlay')
-    ov.querySelector('.note-symbol').textContent=symbol
-    ov.querySelector('.note-text').textContent=text
-    ov.style.display='flex'
+    this.diaryPages=pages
+    this.diaryPageIdx=0
+    this.diaryFlipping=false
+    this.renderDiaryPage()
+    document.getElementById('note-overlay').style.display='flex'
+    const hint=document.getElementById('book-hint')
+    hint.textContent=pages.length>1?'◀ VIRAR ▶':''
+  }
+
+  renderDiaryPage(){
+    const page=document.getElementById('diary-page')
+    const front=page.querySelector('.page-front')
+    const back=page.querySelector('.page-back')
+    const idx=this.diaryPageIdx
+    const total=this.diaryPages.length
+
+    const getBody=t=>{
+      const nl=t.indexOf('\n')
+      return nl>=0?t.slice(nl+1):''
+    }
+    const getTitle=t=>{
+      const m=t.match(/^(.+)/)
+      return m?m[1]:''
+    }
+
+    front.querySelector('.page-header').textContent=idx<total?getTitle(this.diaryPages[idx]):''
+    front.querySelector('.page-text').textContent=idx<total?getBody(this.diaryPages[idx]):''
+    front.querySelector('.page-number').textContent=idx<total?`— ${idx+1} —`:''
+
+    const nextIdx=Math.min(idx+1,total-1)
+    back.querySelector('.page-header').textContent=nextIdx<total?getTitle(this.diaryPages[nextIdx]):''
+    back.querySelector('.page-text').textContent=nextIdx<total?getBody(this.diaryPages[nextIdx]):''
+    back.querySelector('.page-number').textContent=nextIdx<total?`— ${nextIdx+1} —`:total>0?`— ${total} —`:'';
+
+    const prevEl=document.getElementById('book-prev')
+    const nextEl=document.getElementById('book-next')
+    prevEl.style.display=this.diaryPageIdx>0?'block':'none'
+    nextEl.style.display=this.diaryPageIdx<total-1?'block':'none'
+
+    page.classList.remove('flipping','flipping-back')
+  }
+
+  nextDiaryPage(){
+    if(this.diaryFlipping||this.diaryPageIdx>=this.diaryPages.length-1)return
+    this.diaryFlipping=true
+    const page=document.getElementById('diary-page')
+    const g=window.__game
+    if(g&&g.a)g.a.paper()
+    page.classList.add('flipping')
+    const onEnd=()=>{
+      page.removeEventListener('transitionend',onEnd)
+      this.diaryPageIdx++
+      page.style.transition='none'
+      this.renderDiaryPage()
+      page.offsetHeight
+      page.style.transition=''
+      this.diaryFlipping=false
+    }
+    page.addEventListener('transitionend',onEnd)
+  }
+
+  prevDiaryPage(){
+    if(this.diaryFlipping||this.diaryPageIdx<=0)return
+    this.diaryFlipping=true
+    const page=document.getElementById('diary-page')
+    const g=window.__game
+    if(g&&g.a)g.a.paper()
+    const front=page.querySelector('.page-front')
+    const back=page.querySelector('.page-back')
+    const idx=this.diaryPageIdx
+    const getBody=t=>{const nl=t.indexOf('\n');return nl>=0?t.slice(nl+1):''}
+    const getTitle=t=>{const m=t.match(/^(.+)/);return m?m[1]:''}
+
+    page.style.transition='none'
+    page.classList.remove('flipping','flipping-back')
+    // Front shows current page, back shows PREVIOUS page (will be revealed after flip)
+    front.querySelector('.page-header').textContent=getTitle(this.diaryPages[idx])
+    front.querySelector('.page-text').textContent=getBody(this.diaryPages[idx])
+    front.querySelector('.page-number').textContent=`— ${idx+1} —`
+    const prevIdx=idx-1
+    back.querySelector('.page-header').textContent=getTitle(this.diaryPages[prevIdx])
+    back.querySelector('.page-text').textContent=getBody(this.diaryPages[prevIdx])
+    back.querySelector('.page-number').textContent=`— ${prevIdx+1} —`
+
+    page.offsetHeight
+    page.style.transition=''
+    page.classList.add('flipping-back')
+    const onEnd=()=>{
+      page.removeEventListener('transitionend',onEnd)
+      this.diaryPageIdx--
+      page.style.transition='none'
+      page.classList.remove('flipping-back')
+      this.renderDiaryPage()
+      page.offsetHeight
+      page.style.transition=''
+      this.diaryFlipping=false
+    }
+    page.addEventListener('transitionend',onEnd)
   }
 
   closeNote(){
     this.state=S.PLAYING
     document.getElementById('note-overlay').style.display='none'
+    this.diaryPages=[]
+    this.diaryPageIdx=0
+    this.diaryFlipping=false
   }
 
   tooltip(msg,dur){

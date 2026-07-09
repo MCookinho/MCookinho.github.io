@@ -81,7 +81,7 @@ const HITBOXES = {
   west: {
     bancada:{x:70,y:275,w:580,h:100},
     gaveta:{x:220,y:295,w:180,h:65},
-    diario:{x:405,y:260,w:70,h:35},
+    diario:{x:402,y:258,w:72,h:37},
     corda_obj:{x:610,y:60,w:25,h:220},
     ferramentas:{x:565,y:373,w:120,h:75}
   },
@@ -490,7 +490,7 @@ class Game {
   readDiary(){
     this.diaryRead=true
     this.a.paper()
-    this.engine.showNote('📖',STORY.diary.join('\n\n'))
+    this.engine.showDiary(STORY.diary)
   }
 
   /* ─── PUZZLE ─── */
