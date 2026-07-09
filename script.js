@@ -194,6 +194,8 @@
       icon: '\u2699',
       content: function () {
         var hidden = localStorage.getItem('mcookinho_notify_hidden') === 'true'
+        var prof = localStorage.getItem('mcookinho_professional') === 'true'
+        var profEnabled = localStorage.getItem('mcookinho_professional_config')
         return '<div class="sub-settings">' +
           '<div class="sub-setting-row">' +
             '<span class="sub-setting-label">IDIOMA</span>' +
@@ -209,6 +211,12 @@
               '<span class="sub-toggle-opt' + (hidden ? ' active' : '') + '" data-notify="hide">OCULTAR</span>' +
             '</div>' +
           '</div>' +
+          '<div class="sub-setting-divider"></div>' +
+          '<div class="sub-setting-row">' +
+            '<span class="sub-setting-label">MODO PROFISSIONAL</span>' +
+            '<button class="sub-setting-btn" id="subProfBtn" data-prof="' + (prof ? 'off' : 'on') + '">' + (prof ? 'DESATIVAR' : 'ATIVAR') + '</button>' +
+          '</div>' +
+          (profEnabled ? '<div class="sub-setting-row"><span class="sub-setting-label">PERSONALIZAR</span><a href="/professional/" class="sub-setting-link">CONFIGURAR</a></div>' : '') +
         '</div>'
       }
     },
@@ -455,6 +463,18 @@
         el.classList.remove('active')
       })
       notifyToggle.classList.add('active')
+    }
+    var profBtn = e.target.closest('#subProfBtn')
+    if (profBtn) {
+      var action = profBtn.getAttribute('data-prof')
+      if (action === 'on') {
+        localStorage.setItem('mcookinho_professional', 'true')
+        window.location.href = '/professional/'
+      } else {
+        localStorage.setItem('mcookinho_professional', 'false')
+        profBtn.textContent = 'ATIVAR'
+        profBtn.setAttribute('data-prof', 'on')
+      }
     }
   })
 

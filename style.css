@@ -362,6 +362,40 @@ body {
   background: var(--cyan);
 }
 
+.sub-setting-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 8px 0;
+}
+.sub-setting-btn {
+  font-family: var(--font);
+  font-size: 7px;
+  padding: 6px 12px;
+  border: 1px solid var(--purple);
+  color: var(--purple);
+  background: none;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.sub-setting-btn:hover {
+  background: var(--purple);
+  color: #000;
+}
+.sub-setting-link {
+  font-family: var(--font);
+  font-size: 7px;
+  padding: 6px 12px;
+  border: 1px solid var(--cyan);
+  color: var(--cyan);
+  text-decoration: none;
+  transition: all 0.15s;
+  display: inline-block;
+}
+.sub-setting-link:hover {
+  background: var(--cyan);
+  color: #000;
+}
+
 /* Achievements */
 .sub-achieve-header {
   font-family: var(--font);
