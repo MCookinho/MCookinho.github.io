@@ -297,7 +297,7 @@ body.list-bullet .edu-item::before {
 .config-overlay.open { opacity: 1; visibility: visible; }
 .config-panel {
   background: var(--card); width: 100%; max-width: 580px; max-height: 90vh;
-  display: flex; flex-direction: column;
+  display: flex; flex-direction: column; overflow: hidden;
   box-shadow: 0 8px 40px rgba(0,0,0,0.12);
   border-radius: calc(var(--border-radius) * 2px);
 }
@@ -313,7 +313,7 @@ body.list-bullet .edu-item::before {
 }
 .config-tab:hover { color: var(--text); }
 .config-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
-.config-body { padding: 20px; overflow-y: auto; flex: 1; }
+.config-body { padding: 20px; overflow-y: auto; flex: 1; min-height: 0; }
 .config-tab-content { display: none; }
 .config-tab-content.active { display: block; }
 .config-group { margin-bottom: 18px; }
