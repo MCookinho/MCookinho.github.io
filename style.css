@@ -500,11 +500,6 @@ body {
 
 .cd-now-playing {
   color: var(--cyan);
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-.cd-now-playing.visible {
-  opacity: 1;
 }
 
 @keyframes cdSpin {

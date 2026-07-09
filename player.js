@@ -354,7 +354,8 @@
       playerArtistName.textContent = song.artist || ''
       playerArtistName.style.display = song.artist ? 'inline' : 'none'
     } else {
-      cdNowPlaying.classList.remove('visible')
+      cdNowPlaying.textContent = 'ABRIR BIBLIOTECA MUSICAL'
+      cdNowPlaying.classList.add('visible')
       playerSongName.textContent = 'NENHUMA MÚSICA'
       playerArtistName.textContent = ''
       playerArtistName.style.display = 'none'
