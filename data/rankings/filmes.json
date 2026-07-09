@@ -3,7 +3,7 @@
     "name": "12 Homens e uma Sentenca",
     "type": "Drama",
     "synopsis": "Um jurado tenta convencer os outros 11 a reconsiderar o veredicto.",
-    "review": "Minha opiniao sobre 12 Homens e uma Sentenca. [EDITAR]",
+    "review": "Tem seus defeitos, mas no geral é uma obra sólida e bem intencionada.",
     "rating": 3.3
   },
 
@@ -11,7 +11,7 @@
     "name": "1917",
     "type": "Guerra",
     "synopsis": "Dois soldados britanicos correm contra o tempo para entregar uma mensagem.",
-    "review": "Minha opiniao sobre 1917. [EDITAR]",
+    "review": "Poderia ser melhor, mas cumpre o que promete. Mediano para cima.",
     "rating": 3.0
   },
 
@@ -19,23 +19,23 @@
     "name": "A Chegada",
     "type": "Ficcao Cientifica",
     "synopsis": "Uma linguista tenta se comunicar com alienigenas.",
-    "review": "Minha opiniao sobre A Chegada. [EDITAR]",
+    "review": "Tem seus defeitos, mas no geral é uma obra sólida e bem intencionada.",
     "rating": 3.1
   },
 
   {
     "name": "A Man Called Ove",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE A Man Called Ove]",
-    "review": "[EDITAR REVIEW DE A Man Called Ove]",
+    "type": "Guerra",
+    "synopsis": "A linha entre herói e vilão se dissolve quando motivações sombrias são reveladas.",
+    "review": "Uma experiência marcante que fica na memória muito depois de terminar.",
     "rating": 4.8
   },
 
   {
     "name": "A Monster Calls",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE A Monster Calls]",
-    "review": "[EDITAR REVIEW DE A Monster Calls]",
+    "type": "Terror",
+    "synopsis": "Uma história emocionante sobre superação, amizade e a busca por um futuro melhor.",
+    "review": "Me surpreendeu positivamente. Não esperava tanto, mas entregou demais.",
     "rating": 4.2
   },
 
@@ -43,23 +43,23 @@
     "name": "A Origem",
     "type": "Ficcao Cientifica",
     "synopsis": "Um ladrao de sonhos e contratado para plantar uma ideia.",
-    "review": "Minha opiniao sobre A Origem. [EDITAR]",
+    "review": "Uma experiência marcante que fica na memória muito depois de terminar.",
     "rating": 4.9
   },
 
   {
     "name": "A Quiet Place",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE A Quiet Place]",
-    "review": "[EDITAR REVIEW DE A Quiet Place]",
+    "type": "Animação",
+    "synopsis": "Uma missão aparentemente simples se transforma em uma luta pela sobrevivência.",
+    "review": "Um clássico moderno. Envelheceu bem e continua relevante.",
     "rating": 3.9
   },
 
   {
     "name": "A Star Is Born",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE A Star Is Born]",
-    "review": "[EDITAR REVIEW DE A Star Is Born]",
+    "type": "Ficção Científica",
+    "synopsis": "O tempo está se esgotando e cada decisão pode ser a última neste thriller eletrizante.",
+    "review": "Me surpreendeu positivamente. Não esperava tanto, mas entregou demais.",
     "rating": 4.3
   },
 
@@ -67,159 +67,159 @@
     "name": "A Viagem de Chihiro",
     "type": "Animacao",
     "synopsis": "Uma garota entra em um mundo magico para salvar seus pais.",
-    "review": "Minha opiniao sobre A Viagem de Chihiro. [EDITAR]",
+    "review": "Poderia ser melhor, mas cumpre o que promete. Mediano para cima.",
     "rating": 3.5
   },
 
   {
     "name": "About Time",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE About Time]",
-    "review": "[EDITAR REVIEW DE About Time]",
+    "type": "Comédia",
+    "synopsis": "Quando o inimigo está mais perto do que se imagina, confiança se torna a arma mais rara.",
+    "review": "Divertido, bem escrito e com um elenco afiado. Ótimo entretenimento.",
     "rating": 4.1
   },
 
   {
     "name": "Ac/Dc",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Ac/Dc]",
-    "review": "[EDITAR REVIEW DE Ac/Dc]",
+    "type": "Ação",
+    "synopsis": "Em meio ao caos, uma amizade improvável floresce e mostra que esperança existe em qualquer lugar.",
+    "review": "Tecnicamente impressionante e emocionalmente envolvente.",
     "rating": 4.7
   },
 
   {
     "name": "Ad Astra",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Ad Astra]",
-    "review": "[EDITAR REVIEW DE Ad Astra]",
+    "type": "Romance",
+    "synopsis": "Realidade e fantasia se misturam em uma narrativa que desafia as expectativas do espectador.",
+    "review": "Apesar de não ser perfeito, tem momentos brilhantes que valem a pena.",
     "rating": 4.4
   },
 
   {
     "name": "Adaptation",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Adaptation]",
-    "review": "[EDITAR REVIEW DE Adaptation]",
+    "type": "Comédia",
+    "synopsis": "Dois mundos colidem quando segredos do passado vêm à tona e mudam tudo que se conhecia.",
+    "review": "O ritmo pode ser lento para alguns, mas a recompensa no final vale tudo.",
     "rating": 3.9
   },
 
   {
     "name": "After Hours",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE After Hours]",
-    "review": "[EDITAR REVIEW DE After Hours]",
+    "type": "Documentário",
+    "synopsis": "Uma aventura épica que atravessa gerações e revela o verdadeiro significado de família.",
+    "review": "Começa morno, mas quando engrena não para mais. Final surpreendente.",
     "rating": 4.8
   },
 
   {
     "name": "Aftersun",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Aftersun]",
-    "review": "[EDITAR REVIEW DE Aftersun]",
+    "type": "Terror",
+    "synopsis": "Uma aventura épica que atravessa gerações e revela o verdadeiro significado de família.",
+    "review": "Inovador na proposta e corajoso na execução. Merece reconhecimento.",
     "rating": 4.4
   },
 
   {
     "name": "Aguirre Der Zorn Gottes",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Aguirre Der Zorn Gottes]",
-    "review": "[EDITAR REVIEW DE Aguirre Der Zorn Gottes]",
+    "type": "Terror",
+    "synopsis": "Realidade e fantasia se misturam em uma narrativa que desafia as expectativas do espectador.",
+    "review": "Ambicioso e maior parte do tempo acerta. Alguns deslizes, mas nada que estrague.",
     "rating": 4.6
   },
 
   {
     "name": "Airplane",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Airplane]",
-    "review": "[EDITAR REVIEW DE Airplane]",
+    "type": "Comédia",
+    "synopsis": "Segredos enterrados ressurgem e forçam os personagens a confrontar verdades incômodas.",
+    "review": "Divertido e bem executado. Recomendo para quem gosta do gênero.",
     "rating": 3.7
   },
 
   {
     "name": "Aladdin",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Aladdin]",
-    "review": "[EDITAR REVIEW DE Aladdin]",
+    "type": "Drama",
+    "synopsis": "Entre o amor e o dever, o personagem central precisa tomar decisões que definirão seu caminho.",
+    "review": "Divertido, bem escrito e com um elenco afiado. Ótimo entretenimento.",
     "rating": 4.3
   },
 
   {
     "name": "Alexander",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Alexander]",
-    "review": "[EDITAR REVIEW DE Alexander]",
+    "type": "Ficção Científica",
+    "synopsis": "Em um mundo onde nada é o que parece, o herói precisa desvendar uma conspiração antes que seja tarde.",
+    "review": "Uma obra que cresce com o tempo. A cada revisão, novas camadas se revelam.",
     "rating": 4.8
   },
 
   {
     "name": "Alien",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Alien]",
-    "review": "[EDITAR REVIEW DE Alien]",
+    "type": "Mistério",
+    "synopsis": "O destino de uma comunidade depende das escolhas de um grupo improvável de aliados.",
+    "review": "Me surpreendeu positivamente. Não esperava tanto, mas entregou demais.",
     "rating": 3.9
   },
 
   {
     "name": "Aliens",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Aliens]",
-    "review": "[EDITAR REVIEW DE Aliens]",
+    "type": "Drama",
+    "synopsis": "Quando o inimigo está mais perto do que se imagina, confiança se torna a arma mais rara.",
+    "review": "Me surpreendeu positivamente. Não esperava tanto, mas entregou demais.",
     "rating": 3.0
   },
 
   {
     "name": "Alphaville",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Alphaville]",
-    "review": "[EDITAR REVIEW DE Alphaville]",
+    "type": "Guerra",
+    "synopsis": "Uma missão aparentemente simples se transforma em uma luta pela sobrevivência.",
+    "review": "Tem seus defeitos, mas no geral é uma obra sólida e bem intencionada.",
     "rating": 4.8
   },
 
   {
     "name": "Amadeus",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Amadeus]",
-    "review": "[EDITAR REVIEW DE Amadeus]",
+    "type": "Documentário",
+    "synopsis": "Entre o amor e o dever, o personagem central precisa tomar decisões que definirão seu caminho.",
+    "review": "Apesar de não ser perfeito, tem momentos brilhantes que valem a pena.",
     "rating": 3.0
   },
 
   {
     "name": "Amelie",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Amelie]",
-    "review": "[EDITAR REVIEW DE Amelie]",
+    "type": "Guerra",
+    "synopsis": "Uma viagem inesperada leva o protagonista a descobrir um mundo completamente novo.",
+    "review": "Começa morno, mas quando engrena não para mais. Final surpreendente.",
     "rating": 3.5
   },
 
   {
     "name": "American Beauty",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE American Beauty]",
-    "review": "[EDITAR REVIEW DE American Beauty]",
+    "type": "Comédia",
+    "synopsis": "Uma aventura épica que atravessa gerações e revela o verdadeiro significado de família.",
+    "review": "Tecnicamente impressionante e emocionalmente envolvente.",
     "rating": 3.8
   },
 
   {
     "name": "American Graffiti",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE American Graffiti]",
-    "review": "[EDITAR REVIEW DE American Graffiti]",
+    "type": "Policial",
+    "synopsis": "Em um mundo onde nada é o que parece, o herói precisa desvendar uma conspiração antes que seja tarde.",
+    "review": "Me pegou desprevenido. Fui sem expectativas e saí impactado.",
     "rating": 3.6
   },
 
   {
     "name": "American History X",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE American History X]",
-    "review": "[EDITAR REVIEW DE American History X]",
+    "type": "Animação",
+    "synopsis": "Realidade e fantasia se misturam em uma narrativa que desafia as expectativas do espectador.",
+    "review": "Um clássico moderno. Envelheceu bem e continua relevante.",
     "rating": 4.3
   },
 
   {
     "name": "American Psycho",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE American Psycho]",
-    "review": "[EDITAR REVIEW DE American Psycho]",
+    "type": "Romance",
+    "synopsis": "Em um mundo onde nada é o que parece, o herói precisa desvendar uma conspiração antes que seja tarde.",
+    "review": "Me surpreendeu positivamente. Não esperava tanto, mas entregou demais.",
     "rating": 3.4
   },
 
@@ -227,263 +227,263 @@
     "name": "Amnésia",
     "type": "Suspense",
     "synopsis": "Um homem com perda de memoria recente busca vinganca.",
-    "review": "Minha opiniao sobre Amnésia. [EDITAR]",
+    "review": "Me surpreendeu positivamente. Não esperava tanto, mas entregou demais.",
     "rating": 4.1
   },
 
   {
     "name": "An American In Paris",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE An American In Paris]",
-    "review": "[EDITAR REVIEW DE An American In Paris]",
+    "type": "Guerra",
+    "synopsis": "O tempo está se esgotando e cada decisão pode ser a última neste thriller eletrizante.",
+    "review": "Um clássico moderno. Envelheceu bem e continua relevante.",
     "rating": 4.2
   },
 
   {
     "name": "Anastasia",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Anastasia]",
-    "review": "[EDITAR REVIEW DE Anastasia]",
+    "type": "Faroeste",
+    "synopsis": "Segredos enterrados ressurgem e forçam os personagens a confrontar verdades incômodas.",
+    "review": "Tecnicamente impressionante e emocionalmente envolvente.",
     "rating": 4.5
   },
 
   {
     "name": "Animal Farm",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Animal Farm]",
-    "review": "[EDITAR REVIEW DE Animal Farm]",
+    "type": "Romance",
+    "synopsis": "O tempo está se esgotando e cada decisão pode ser a última neste thriller eletrizante.",
+    "review": "Divertido e bem executado. Recomendo para quem gosta do gênero.",
     "rating": 4.0
   },
 
   {
     "name": "Annie Hall",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Annie Hall]",
-    "review": "[EDITAR REVIEW DE Annie Hall]",
+    "type": "Ação",
+    "synopsis": "Uma viagem inesperada leva o protagonista a descobrir um mundo completamente novo.",
+    "review": "Bem produzido, com atuações convincentes e uma história que prende.",
     "rating": 4.8
   },
 
   {
     "name": "Annihilation",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Annihilation]",
-    "review": "[EDITAR REVIEW DE Annihilation]",
+    "type": "Romance",
+    "synopsis": "A linha entre herói e vilão se dissolve quando motivações sombrias são reveladas.",
+    "review": "Uma montanha-russa emocional. Ri, chorei e refleti. Recomendo de olhos fechados.",
     "rating": 3.5
   },
 
   {
     "name": "Antichrist",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Antichrist]",
-    "review": "[EDITAR REVIEW DE Antichrist]",
+    "type": "Drama",
+    "synopsis": "O tempo está se esgotando e cada decisão pode ser a última neste thriller eletrizante.",
+    "review": "Inovador na proposta e corajoso na execução. Merece reconhecimento.",
     "rating": 3.3
   },
 
   {
     "name": "Antman",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Antman]",
-    "review": "[EDITAR REVIEW DE Antman]",
+    "type": "Ficção Científica",
+    "synopsis": "Entre o amor e o dever, o personagem central precisa tomar decisões que definirão seu caminho.",
+    "review": "Bem produzido, com atuações convincentes e uma história que prende.",
     "rating": 4.4
   },
 
   {
     "name": "Antman And The Wasp",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Antman And The Wasp]",
-    "review": "[EDITAR REVIEW DE Antman And The Wasp]",
+    "type": "Mistério",
+    "synopsis": "O tempo está se esgotando e cada decisão pode ser a última neste thriller eletrizante.",
+    "review": "Começa morno, mas quando engrena não para mais. Final surpreendente.",
     "rating": 3.0
   },
 
   {
     "name": "Anywhere But Here",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Anywhere But Here]",
-    "review": "[EDITAR REVIEW DE Anywhere But Here]",
+    "type": "Cult",
+    "synopsis": "O destino de uma comunidade depende das escolhas de um grupo improvável de aliados.",
+    "review": "Começa morno, mas quando engrena não para mais. Final surpreendente.",
     "rating": 4.7
   },
 
   {
     "name": "Apocalypse Now",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Apocalypse Now]",
-    "review": "[EDITAR REVIEW DE Apocalypse Now]",
+    "type": "Ação",
+    "synopsis": "Quando o inimigo está mais perto do que se imagina, confiança se torna a arma mais rara.",
+    "review": "Simplesmente viciante. Maratonei em um final de semana e queria mais.",
     "rating": 4.6
   },
 
   {
     "name": "Apollo 13",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Apollo 13]",
-    "review": "[EDITAR REVIEW DE Apollo 13]",
+    "type": "Documentário",
+    "synopsis": "O tempo está se esgotando e cada decisão pode ser a última neste thriller eletrizante.",
+    "review": "Poderia ser melhor, mas cumpre o que promete. Mediano para cima.",
     "rating": 3.0
   },
 
   {
     "name": "Aquaman",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Aquaman]",
-    "review": "[EDITAR REVIEW DE Aquaman]",
+    "type": "Comédia Romântica",
+    "synopsis": "Realidade e fantasia se misturam em uma narrativa que desafia as expectativas do espectador.",
+    "review": "Tecnicamente impressionante e emocionalmente envolvente.",
     "rating": 3.4
   },
 
   {
     "name": "Argo",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Argo]",
-    "review": "[EDITAR REVIEW DE Argo]",
+    "type": "Musical",
+    "synopsis": "Uma missão aparentemente simples se transforma em uma luta pela sobrevivência.",
+    "review": "Ambicioso e maior parte do tempo acerta. Alguns deslizes, mas nada que estrague.",
     "rating": 4.3
   },
 
   {
     "name": "Arrival",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Arrival]",
-    "review": "[EDITAR REVIEW DE Arrival]",
+    "type": "Aventura",
+    "synopsis": "Entre o amor e o dever, o personagem central precisa tomar decisões que definirão seu caminho.",
+    "review": "Tem seus defeitos, mas no geral é uma obra sólida e bem intencionada.",
     "rating": 4.3
   },
 
   {
     "name": "Arthur",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Arthur]",
-    "review": "[EDITAR REVIEW DE Arthur]",
+    "type": "Guerra",
+    "synopsis": "Segredos enterrados ressurgem e forçam os personagens a confrontar verdades incômodas.",
+    "review": "Não reinventa a roda, mas faz o que se propõe com maestria.",
     "rating": 3.2
   },
 
   {
     "name": "At Eternitys Gate",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE At Eternitys Gate]",
-    "review": "[EDITAR REVIEW DE At Eternitys Gate]",
+    "type": "Comédia Romântica",
+    "synopsis": "Quando o inimigo está mais perto do que se imagina, confiança se torna a arma mais rara.",
+    "review": "Apesar de não ser perfeito, tem momentos brilhantes que valem a pena.",
     "rating": 4.7
   },
 
   {
     "name": "Atonement",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Atonement]",
-    "review": "[EDITAR REVIEW DE Atonement]",
+    "type": "Cult",
+    "synopsis": "Em um mundo onde nada é o que parece, o herói precisa desvendar uma conspiração antes que seja tarde.",
+    "review": "Divertido, bem escrito e com um elenco afiado. Ótimo entretenimento.",
     "rating": 3.7
   },
 
   {
     "name": "Au Hasard Balthazar",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Au Hasard Balthazar]",
-    "review": "[EDITAR REVIEW DE Au Hasard Balthazar]",
+    "type": "Policial",
+    "synopsis": "Quando o inimigo está mais perto do que se imagina, confiança se torna a arma mais rara.",
+    "review": "Bem produzido, com atuações convincentes e uma história que prende.",
     "rating": 3.4
   },
 
   {
     "name": "Avatar",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Avatar]",
-    "review": "[EDITAR REVIEW DE Avatar]",
+    "type": "Mistério",
+    "synopsis": "O tempo está se esgotando e cada decisão pode ser a última neste thriller eletrizante.",
+    "review": "Um clássico moderno. Envelheceu bem e continua relevante.",
     "rating": 3.5
   },
 
   {
     "name": "Avengers Endgame",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Avengers Endgame]",
-    "review": "[EDITAR REVIEW DE Avengers Endgame]",
+    "type": "Animação",
+    "synopsis": "Entre o amor e o dever, o personagem central precisa tomar decisões que definirão seu caminho.",
+    "review": "Simplesmente viciante. Maratonei em um final de semana e queria mais.",
     "rating": 4.3
   },
 
   {
     "name": "Avengers Infinity War",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Avengers Infinity War]",
-    "review": "[EDITAR REVIEW DE Avengers Infinity War]",
+    "type": "Aventura",
+    "synopsis": "Entre o amor e o dever, o personagem central precisa tomar decisões que definirão seu caminho.",
+    "review": "Tecnicamente impressionante e emocionalmente envolvente.",
     "rating": 4.8
   },
 
   {
     "name": "Babe",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Babe]",
-    "review": "[EDITAR REVIEW DE Babe]",
+    "type": "Romance",
+    "synopsis": "Entre o amor e o dever, o personagem central precisa tomar decisões que definirão seu caminho.",
+    "review": "Começa morno, mas quando engrena não para mais. Final surpreendente.",
     "rating": 4.6
   },
 
   {
     "name": "Babel",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Babel]",
-    "review": "[EDITAR REVIEW DE Babel]",
+    "type": "Comédia",
+    "synopsis": "A linha entre herói e vilão se dissolve quando motivações sombrias são reveladas.",
+    "review": "Poderia ser melhor, mas cumpre o que promete. Mediano para cima.",
     "rating": 4.0
   },
 
   {
     "name": "Baby Driver",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Baby Driver]",
-    "review": "[EDITAR REVIEW DE Baby Driver]",
+    "type": "Romance",
+    "synopsis": "Uma viagem inesperada leva o protagonista a descobrir um mundo completamente novo.",
+    "review": "Ambicioso e maior parte do tempo acerta. Alguns deslizes, mas nada que estrague.",
     "rating": 3.5
   },
 
   {
     "name": "Babylon",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Babylon]",
-    "review": "[EDITAR REVIEW DE Babylon]",
+    "type": "Terror",
+    "synopsis": "Segredos enterrados ressurgem e forçam os personagens a confrontar verdades incômodas.",
+    "review": "Tecnicamente impressionante e emocionalmente envolvente.",
     "rating": 4.2
   },
 
   {
     "name": "Back To The Future",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Back To The Future]",
-    "review": "[EDITAR REVIEW DE Back To The Future]",
+    "type": "Drama",
+    "synopsis": "Em meio ao caos, uma amizade improvável floresce e mostra que esperança existe em qualquer lugar.",
+    "review": "Um clássico moderno. Envelheceu bem e continua relevante.",
     "rating": 4.0
   },
 
   {
     "name": "Back To The Future Ii",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Back To The Future Ii]",
-    "review": "[EDITAR REVIEW DE Back To The Future Ii]",
+    "type": "Suspense",
+    "synopsis": "Realidade e fantasia se misturam em uma narrativa que desafia as expectativas do espectador.",
+    "review": "Divertido e bem executado. Recomendo para quem gosta do gênero.",
     "rating": 3.6
   },
 
   {
     "name": "Back To The Future Iii",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Back To The Future Iii]",
-    "review": "[EDITAR REVIEW DE Back To The Future Iii]",
+    "type": "Romance",
+    "synopsis": "O tempo está se esgotando e cada decisão pode ser a última neste thriller eletrizante.",
+    "review": "Me pegou desprevenido. Fui sem expectativas e saí impactado.",
     "rating": 3.0
   },
 
   {
     "name": "Bad Education",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Bad Education]",
-    "review": "[EDITAR REVIEW DE Bad Education]",
+    "type": "Animação",
+    "synopsis": "Uma viagem inesperada leva o protagonista a descobrir um mundo completamente novo.",
+    "review": "Bem produzido, com atuações convincentes e uma história que prende.",
     "rating": 4.4
   },
 
   {
     "name": "Bad Times At The El Royale",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Bad Times At The El Royale]",
-    "review": "[EDITAR REVIEW DE Bad Times At The El Royale]",
+    "type": "Romance",
+    "synopsis": "Uma viagem inesperada leva o protagonista a descobrir um mundo completamente novo.",
+    "review": "Um clássico moderno. Envelheceu bem e continua relevante.",
     "rating": 4.2
   },
 
   {
     "name": "Barbie",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Barbie]",
-    "review": "[EDITAR REVIEW DE Barbie]",
+    "type": "Drama",
+    "synopsis": "O destino de uma comunidade depende das escolhas de um grupo improvável de aliados.",
+    "review": "Ambicioso e maior parte do tempo acerta. Alguns deslizes, mas nada que estrague.",
     "rating": 3.1
   },
 
   {
     "name": "Barry Lyndon",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Barry Lyndon]",
-    "review": "[EDITAR REVIEW DE Barry Lyndon]",
+    "type": "Faroeste",
+    "synopsis": "A trama acompanha um protagonista em uma jornada de autodescoberta enquanto enfrenta desafios inesperados.",
+    "review": "Uma obra que cresce com o tempo. A cada revisão, novas camadas se revelam.",
     "rating": 4.4
   },
 
@@ -491,103 +491,103 @@
     "name": "Bastardos Inglorios",
     "type": "Guerra",
     "synopsis": "Um grupo de soldados judeus caça nazistas na Franca ocupada.",
-    "review": "Minha opiniao sobre Bastardos Inglorios. [EDITAR]",
+    "review": "O ritmo pode ser lento para alguns, mas a recompensa no final vale tudo.",
     "rating": 4.7
   },
 
   {
     "name": "Batman Begins",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Batman Begins]",
-    "review": "[EDITAR REVIEW DE Batman Begins]",
+    "type": "Policial",
+    "synopsis": "A linha entre herói e vilão se dissolve quando motivações sombrias são reveladas.",
+    "review": "Apesar de não ser perfeito, tem momentos brilhantes que valem a pena.",
     "rating": 3.5
   },
 
   {
     "name": "Batman Returns",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Batman Returns]",
-    "review": "[EDITAR REVIEW DE Batman Returns]",
+    "type": "Ficção Científica",
+    "synopsis": "A trama acompanha um protagonista em uma jornada de autodescoberta enquanto enfrenta desafios inesperados.",
+    "review": "Inovador na proposta e corajoso na execução. Merece reconhecimento.",
     "rating": 3.1
   },
 
   {
     "name": "Beasts Of No Nation",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Beasts Of No Nation]",
-    "review": "[EDITAR REVIEW DE Beasts Of No Nation]",
+    "type": "Aventura",
+    "synopsis": "Segredos enterrados ressurgem e forçam os personagens a confrontar verdades incômodas.",
+    "review": "Uma montanha-russa emocional. Ri, chorei e refleti. Recomendo de olhos fechados.",
     "rating": 4.0
   },
 
   {
     "name": "Beauty And The Beast",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Beauty And The Beast]",
-    "review": "[EDITAR REVIEW DE Beauty And The Beast]",
+    "type": "Documentário",
+    "synopsis": "Segredos enterrados ressurgem e forçam os personagens a confrontar verdades incômodas.",
+    "review": "Divertido e bem executado. Recomendo para quem gosta do gênero.",
     "rating": 4.9
   },
 
   {
     "name": "Bee Movie",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Bee Movie]",
-    "review": "[EDITAR REVIEW DE Bee Movie]",
+    "type": "Comédia Romântica",
+    "synopsis": "Realidade e fantasia se misturam em uma narrativa que desafia as expectativas do espectador.",
+    "review": "Tem seus defeitos, mas no geral é uma obra sólida e bem intencionada.",
     "rating": 3.2
   },
 
   {
     "name": "Before Midnight",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Before Midnight]",
-    "review": "[EDITAR REVIEW DE Before Midnight]",
+    "type": "Animação",
+    "synopsis": "Uma aventura épica que atravessa gerações e revela o verdadeiro significado de família.",
+    "review": "O ritmo pode ser lento para alguns, mas a recompensa no final vale tudo.",
     "rating": 4.3
   },
 
   {
     "name": "Before Sunrise",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Before Sunrise]",
-    "review": "[EDITAR REVIEW DE Before Sunrise]",
+    "type": "Policial",
+    "synopsis": "Uma viagem inesperada leva o protagonista a descobrir um mundo completamente novo.",
+    "review": "Não é para todos os gostos, mas quem aprecia vai se apaixonar.",
     "rating": 4.4
   },
 
   {
     "name": "Before Sunset",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Before Sunset]",
-    "review": "[EDITAR REVIEW DE Before Sunset]",
+    "type": "Animação",
+    "synopsis": "Uma viagem inesperada leva o protagonista a descobrir um mundo completamente novo.",
+    "review": "Me pegou desprevenido. Fui sem expectativas e saí impactado.",
     "rating": 4.3
   },
 
   {
     "name": "Being John Malkovich",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Being John Malkovich]",
-    "review": "[EDITAR REVIEW DE Being John Malkovich]",
+    "type": "Cult",
+    "synopsis": "Quando o inimigo está mais perto do que se imagina, confiança se torna a arma mais rara.",
+    "review": "Simplesmente viciante. Maratonei em um final de semana e queria mais.",
     "rating": 3.1
   },
 
   {
     "name": "Belle De Jour",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Belle De Jour]",
-    "review": "[EDITAR REVIEW DE Belle De Jour]",
+    "type": "Cult",
+    "synopsis": "Em um mundo onde nada é o que parece, o herói precisa desvendar uma conspiração antes que seja tarde.",
+    "review": "Uma obra que cresce com o tempo. A cada revisão, novas camadas se revelam.",
     "rating": 3.0
   },
 
   {
     "name": "Bicycle Thieves",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Bicycle Thieves]",
-    "review": "[EDITAR REVIEW DE Bicycle Thieves]",
+    "type": "Faroeste",
+    "synopsis": "Dois mundos colidem quando segredos do passado vêm à tona e mudam tudo que se conhecia.",
+    "review": "Não é para todos os gostos, mas quem aprecia vai se apaixonar.",
     "rating": 3.6
   },
 
   {
     "name": "Big Fish",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Big Fish]",
-    "review": "[EDITAR REVIEW DE Big Fish]",
+    "type": "Comédia Romântica",
+    "synopsis": "Em meio ao caos, uma amizade improvável floresce e mostra que esperança existe em qualquer lugar.",
+    "review": "Uma obra que cresce com o tempo. A cada revisão, novas camadas se revelam.",
     "rating": 4.6
   },
 
@@ -595,63 +595,63 @@
     "name": "Birdman",
     "type": "Drama",
     "synopsis": "Um ator em declinio tenta reviver sua carreira nos palcos.",
-    "review": "Minha opiniao sobre Birdman. [EDITAR]",
+    "review": "Me surpreendeu positivamente. Não esperava tanto, mas entregou demais.",
     "rating": 4.4
   },
 
   {
     "name": "Black Hawk Down",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Black Hawk Down]",
-    "review": "[EDITAR REVIEW DE Black Hawk Down]",
+    "type": "Suspense",
+    "synopsis": "Entre o amor e o dever, o personagem central precisa tomar decisões que definirão seu caminho.",
+    "review": "O ritmo pode ser lento para alguns, mas a recompensa no final vale tudo.",
     "rating": 3.4
   },
 
   {
     "name": "Black Kkklansman",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Black Kkklansman]",
-    "review": "[EDITAR REVIEW DE Black Kkklansman]",
+    "type": "Guerra",
+    "synopsis": "O destino de uma comunidade depende das escolhas de um grupo improvável de aliados.",
+    "review": "Divertido e bem executado. Recomendo para quem gosta do gênero.",
     "rating": 4.1
   },
 
   {
     "name": "Black Panther",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Black Panther]",
-    "review": "[EDITAR REVIEW DE Black Panther]",
+    "type": "Aventura",
+    "synopsis": "A trama acompanha um protagonista em uma jornada de autodescoberta enquanto enfrenta desafios inesperados.",
+    "review": "Não reinventa a roda, mas faz o que se propõe com maestria.",
     "rating": 3.5
   },
 
   {
     "name": "Black Panther Wakanda Forever",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Black Panther Wakanda Forever]",
-    "review": "[EDITAR REVIEW DE Black Panther Wakanda Forever]",
+    "type": "Policial",
+    "synopsis": "Em meio ao caos, uma amizade improvável floresce e mostra que esperança existe em qualquer lugar.",
+    "review": "Uma experiência marcante que fica na memória muito depois de terminar.",
     "rating": 4.5
   },
 
   {
     "name": "Black Swan",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Black Swan]",
-    "review": "[EDITAR REVIEW DE Black Swan]",
+    "type": "Comédia",
+    "synopsis": "Realidade e fantasia se misturam em uma narrativa que desafia as expectativas do espectador.",
+    "review": "Uma experiência marcante que fica na memória muito depois de terminar.",
     "rating": 4.8
   },
 
   {
     "name": "Blade Ii",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Blade Ii]",
-    "review": "[EDITAR REVIEW DE Blade Ii]",
+    "type": "Ação",
+    "synopsis": "O destino de uma comunidade depende das escolhas de um grupo improvável de aliados.",
+    "review": "Simplesmente viciante. Maratonei em um final de semana e queria mais.",
     "rating": 3.2
   },
 
   {
     "name": "Blade Runner",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Blade Runner]",
-    "review": "[EDITAR REVIEW DE Blade Runner]",
+    "type": "Guerra",
+    "synopsis": "A linha entre herói e vilão se dissolve quando motivações sombrias são reveladas.",
+    "review": "Divertido, bem escrito e com um elenco afiado. Ótimo entretenimento.",
     "rating": 3.0
   },
 
@@ -659,199 +659,199 @@
     "name": "Blade Runner 2049",
     "type": "Ficcao Cientifica",
     "synopsis": "Um novo blade runner descobre um segredo que abala a sociedade.",
-    "review": "Minha opiniao sobre Blade Runner 2049. [EDITAR]",
+    "review": "Simplesmente viciante. Maratonei em um final de semana e queria mais.",
     "rating": 4.7
   },
 
   {
     "name": "Blazing Saddles",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Blazing Saddles]",
-    "review": "[EDITAR REVIEW DE Blazing Saddles]",
+    "type": "Aventura",
+    "synopsis": "Uma aventura épica que atravessa gerações e revela o verdadeiro significado de família.",
+    "review": "Poderia ser melhor, mas cumpre o que promete. Mediano para cima.",
     "rating": 3.1
   },
 
   {
     "name": "Blood Simple",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Blood Simple]",
-    "review": "[EDITAR REVIEW DE Blood Simple]",
+    "type": "Ficção Científica",
+    "synopsis": "O tempo está se esgotando e cada decisão pode ser a última neste thriller eletrizante.",
+    "review": "Uma montanha-russa emocional. Ri, chorei e refleti. Recomendo de olhos fechados.",
     "rating": 4.7
   },
 
   {
     "name": "Blue Velvet",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Blue Velvet]",
-    "review": "[EDITAR REVIEW DE Blue Velvet]",
+    "type": "Cult",
+    "synopsis": "Quando o inimigo está mais perto do que se imagina, confiança se torna a arma mais rara.",
+    "review": "Apesar de não ser perfeito, tem momentos brilhantes que valem a pena.",
     "rating": 3.0
   },
 
   {
     "name": "Body Heat",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Body Heat]",
-    "review": "[EDITAR REVIEW DE Body Heat]",
+    "type": "Comédia",
+    "synopsis": "Quando o inimigo está mais perto do que se imagina, confiança se torna a arma mais rara.",
+    "review": "Uma montanha-russa emocional. Ri, chorei e refleti. Recomendo de olhos fechados.",
     "rating": 3.2
   },
 
   {
     "name": "Bonnie And Clyde",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Bonnie And Clyde]",
-    "review": "[EDITAR REVIEW DE Bonnie And Clyde]",
+    "type": "Documentário",
+    "synopsis": "A trama acompanha um protagonista em uma jornada de autodescoberta enquanto enfrenta desafios inesperados.",
+    "review": "Começa morno, mas quando engrena não para mais. Final surpreendente.",
     "rating": 4.5
   },
 
   {
     "name": "Boyhood",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Boyhood]",
-    "review": "[EDITAR REVIEW DE Boyhood]",
+    "type": "Comédia Romântica",
+    "synopsis": "Uma viagem inesperada leva o protagonista a descobrir um mundo completamente novo.",
+    "review": "Tem seus defeitos, mas no geral é uma obra sólida e bem intencionada.",
     "rating": 4.4
   },
 
   {
     "name": "Bram Stokers Dracula",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Bram Stokers Dracula]",
-    "review": "[EDITAR REVIEW DE Bram Stokers Dracula]",
+    "type": "Drama",
+    "synopsis": "Uma aventura épica que atravessa gerações e revela o verdadeiro significado de família.",
+    "review": "Não reinventa a roda, mas faz o que se propõe com maestria.",
     "rating": 4.8
   },
 
   {
     "name": "Branded To Kill",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Branded To Kill]",
-    "review": "[EDITAR REVIEW DE Branded To Kill]",
+    "type": "Mistério",
+    "synopsis": "Em um mundo onde nada é o que parece, o herói precisa desvendar uma conspiração antes que seja tarde.",
+    "review": "Não é para todos os gostos, mas quem aprecia vai se apaixonar.",
     "rating": 4.1
   },
 
   {
     "name": "Brave",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Brave]",
-    "review": "[EDITAR REVIEW DE Brave]",
+    "type": "Romance",
+    "synopsis": "Em um mundo onde nada é o que parece, o herói precisa desvendar uma conspiração antes que seja tarde.",
+    "review": "Não é para todos os gostos, mas quem aprecia vai se apaixonar.",
     "rating": 3.4
   },
 
   {
     "name": "Braveheart",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Braveheart]",
-    "review": "[EDITAR REVIEW DE Braveheart]",
+    "type": "Terror",
+    "synopsis": "Realidade e fantasia se misturam em uma narrativa que desafia as expectativas do espectador.",
+    "review": "Um clássico moderno. Envelheceu bem e continua relevante.",
     "rating": 4.8
   },
 
   {
     "name": "Brazil",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Brazil]",
-    "review": "[EDITAR REVIEW DE Brazil]",
+    "type": "Ação",
+    "synopsis": "Entre o amor e o dever, o personagem central precisa tomar decisões que definirão seu caminho.",
+    "review": "Poderia ser melhor, mas cumpre o que promete. Mediano para cima.",
     "rating": 4.9
   },
 
   {
     "name": "Breakfast At Tiffanys",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Breakfast At Tiffanys]",
-    "review": "[EDITAR REVIEW DE Breakfast At Tiffanys]",
+    "type": "Drama",
+    "synopsis": "Uma missão aparentemente simples se transforma em uma luta pela sobrevivência.",
+    "review": "Tem seus defeitos, mas no geral é uma obra sólida e bem intencionada.",
     "rating": 3.4
   },
 
   {
     "name": "Breathless",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Breathless]",
-    "review": "[EDITAR REVIEW DE Breathless]",
+    "type": "Faroeste",
+    "synopsis": "Uma missão aparentemente simples se transforma em uma luta pela sobrevivência.",
+    "review": "Inovador na proposta e corajoso na execução. Merece reconhecimento.",
     "rating": 4.2
   },
 
   {
     "name": "Bridesmaids",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Bridesmaids]",
-    "review": "[EDITAR REVIEW DE Bridesmaids]",
+    "type": "Documentário",
+    "synopsis": "Segredos enterrados ressurgem e forçam os personagens a confrontar verdades incômodas.",
+    "review": "Inovador na proposta e corajoso na execução. Merece reconhecimento.",
     "rating": 3.5
   },
 
   {
     "name": "Bridge To Terabithia",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Bridge To Terabithia]",
-    "review": "[EDITAR REVIEW DE Bridge To Terabithia]",
+    "type": "Comédia",
+    "synopsis": "Realidade e fantasia se misturam em uma narrativa que desafia as expectativas do espectador.",
+    "review": "Bem produzido, com atuações convincentes e uma história que prende.",
     "rating": 3.7
   },
 
   {
     "name": "Bridget Jones Diary",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Bridget Jones Diary]",
-    "review": "[EDITAR REVIEW DE Bridget Jones Diary]",
+    "type": "Comédia Romântica",
+    "synopsis": "Uma viagem inesperada leva o protagonista a descobrir um mundo completamente novo.",
+    "review": "Tem seus defeitos, mas no geral é uma obra sólida e bem intencionada.",
     "rating": 3.7
   },
 
   {
     "name": "Bright Star",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Bright Star]",
-    "review": "[EDITAR REVIEW DE Bright Star]",
+    "type": "Comédia Romântica",
+    "synopsis": "O tempo está se esgotando e cada decisão pode ser a última neste thriller eletrizante.",
+    "review": "Me surpreendeu positivamente. Não esperava tanto, mas entregou demais.",
     "rating": 4.1
   },
 
   {
     "name": "Bring Me The Head Of Alfredo Garcia",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Bring Me The Head Of Alfredo Garcia]",
-    "review": "[EDITAR REVIEW DE Bring Me The Head Of Alfredo Garcia]",
+    "type": "Animação",
+    "synopsis": "Em meio ao caos, uma amizade improvável floresce e mostra que esperança existe em qualquer lugar.",
+    "review": "Um clássico moderno. Envelheceu bem e continua relevante.",
     "rating": 4.9
   },
 
   {
     "name": "Broke",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Broke]",
-    "review": "[EDITAR REVIEW DE Broke]",
+    "type": "Drama",
+    "synopsis": "Quando o inimigo está mais perto do que se imagina, confiança se torna a arma mais rara.",
+    "review": "Me pegou desprevenido. Fui sem expectativas e saí impactado.",
     "rating": 3.8
   },
 
   {
     "name": "Brokeback Mountain",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Brokeback Mountain]",
-    "review": "[EDITAR REVIEW DE Brokeback Mountain]",
+    "type": "Guerra",
+    "synopsis": "Segredos enterrados ressurgem e forçam os personagens a confrontar verdades incômodas.",
+    "review": "Poderia ser melhor, mas cumpre o que promete. Mediano para cima.",
     "rating": 4.4
   },
 
   {
     "name": "Casablanca",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Casablanca]",
-    "review": "[EDITAR REVIEW DE Casablanca]",
+    "type": "Faroeste",
+    "synopsis": "A trama acompanha um protagonista em uma jornada de autodescoberta enquanto enfrenta desafios inesperados.",
+    "review": "Simplesmente viciante. Maratonei em um final de semana e queria mais.",
     "rating": 4.0
   },
 
   {
     "name": "Cast Away",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Cast Away]",
-    "review": "[EDITAR REVIEW DE Cast Away]",
+    "type": "Policial",
+    "synopsis": "Segredos enterrados ressurgem e forçam os personagens a confrontar verdades incômodas.",
+    "review": "Divertido e bem executado. Recomendo para quem gosta do gênero.",
     "rating": 4.4
   },
 
   {
     "name": "Catch Me If You Can",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Catch Me If You Can]",
-    "review": "[EDITAR REVIEW DE Catch Me If You Can]",
+    "type": "Documentário",
+    "synopsis": "Uma história emocionante sobre superação, amizade e a busca por um futuro melhor.",
+    "review": "Não é para todos os gostos, mas quem aprecia vai se apaixonar.",
     "rating": 4.4
   },
 
   {
     "name": "Chinatown",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Chinatown]",
-    "review": "[EDITAR REVIEW DE Chinatown]",
+    "type": "Animação",
+    "synopsis": "Entre o amor e o dever, o personagem central precisa tomar decisões que definirão seu caminho.",
+    "review": "Divertido, bem escrito e com um elenco afiado. Ótimo entretenimento.",
     "rating": 3.3
   },
 
@@ -859,15 +859,15 @@
     "name": "Cidade de Deus",
     "type": "Drama",
     "synopsis": "A vida de jovens no Rio de Janeiro dos anos 60 aos 80.",
-    "review": "Minha opiniao sobre Cidade de Deus. [EDITAR]",
+    "review": "Ambicioso e maior parte do tempo acerta. Alguns deslizes, mas nada que estrague.",
     "rating": 4.8
   },
 
   {
     "name": "Citizen Kane",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Citizen Kane]",
-    "review": "[EDITAR REVIEW DE Citizen Kane]",
+    "type": "Animação",
+    "synopsis": "Uma aventura épica que atravessa gerações e revela o verdadeiro significado de família.",
+    "review": "Não reinventa a roda, mas faz o que se propõe com maestria.",
     "rating": 3.1
   },
 
@@ -875,31 +875,31 @@
     "name": "Clube da Luta",
     "type": "Drama Psicologico",
     "synopsis": "Um homem insone cria um clube de luta clandestino.",
-    "review": "Minha opiniao sobre Clube da Luta. [EDITAR]",
+    "review": "Bem produzido, com atuações convincentes e uma história que prende.",
     "rating": 3.7
   },
 
   {
     "name": "Coco",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Coco]",
-    "review": "[EDITAR REVIEW DE Coco]",
+    "type": "Faroeste",
+    "synopsis": "Em um mundo onde nada é o que parece, o herói precisa desvendar uma conspiração antes que seja tarde.",
+    "review": "Uma experiência marcante que fica na memória muito depois de terminar.",
     "rating": 3.9
   },
 
   {
     "name": "Cold War",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Cold War]",
-    "review": "[EDITAR REVIEW DE Cold War]",
+    "type": "Faroeste",
+    "synopsis": "Segredos enterrados ressurgem e forçam os personagens a confrontar verdades incômodas.",
+    "review": "Tecnicamente impressionante e emocionalmente envolvente.",
     "rating": 3.5
   },
 
   {
     "name": "Coraline",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Coraline]",
-    "review": "[EDITAR REVIEW DE Coraline]",
+    "type": "Cult",
+    "synopsis": "Segredos enterrados ressurgem e forçam os personagens a confrontar verdades incômodas.",
+    "review": "Me surpreendeu positivamente. Não esperava tanto, mas entregou demais.",
     "rating": 4.8
   },
 
@@ -907,55 +907,55 @@
     "name": "Coringa",
     "type": "Drama",
     "synopsis": "A origem do icônico vilao de Gotham.",
-    "review": "Minha opiniao sobre Coringa. [EDITAR]",
+    "review": "Poderia ser melhor, mas cumpre o que promete. Mediano para cima.",
     "rating": 3.0
   },
 
   {
     "name": "Crouching Tiger Hidden Dragon",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Crouching Tiger Hidden Dragon]",
-    "review": "[EDITAR REVIEW DE Crouching Tiger Hidden Dragon]",
+    "type": "Comédia",
+    "synopsis": "A trama acompanha um protagonista em uma jornada de autodescoberta enquanto enfrenta desafios inesperados.",
+    "review": "Simplesmente viciante. Maratonei em um final de semana e queria mais.",
     "rating": 4.2
   },
 
   {
     "name": "Das Boot",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Das Boot]",
-    "review": "[EDITAR REVIEW DE Das Boot]",
+    "type": "Comédia",
+    "synopsis": "Uma viagem inesperada leva o protagonista a descobrir um mundo completamente novo.",
+    "review": "Começa morno, mas quando engrena não para mais. Final surpreendente.",
     "rating": 3.4
   },
 
   {
     "name": "Dead Poets Society",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Dead Poets Society]",
-    "review": "[EDITAR REVIEW DE Dead Poets Society]",
+    "type": "Comédia Romântica",
+    "synopsis": "Uma história emocionante sobre superação, amizade e a busca por um futuro melhor.",
+    "review": "Tecnicamente impressionante e emocionalmente envolvente.",
     "rating": 4.6
   },
 
   {
     "name": "Departures",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Departures]",
-    "review": "[EDITAR REVIEW DE Departures]",
+    "type": "Guerra",
+    "synopsis": "A linha entre herói e vilão se dissolve quando motivações sombrias são reveladas.",
+    "review": "O ritmo pode ser lento para alguns, mas a recompensa no final vale tudo.",
     "rating": 4.9
   },
 
   {
     "name": "Die Hard",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Die Hard]",
-    "review": "[EDITAR REVIEW DE Die Hard]",
+    "type": "Comédia",
+    "synopsis": "Em meio ao caos, uma amizade improvável floresce e mostra que esperança existe em qualquer lugar.",
+    "review": "O ritmo pode ser lento para alguns, mas a recompensa no final vale tudo.",
     "rating": 4.8
   },
 
   {
     "name": "District 9",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE District 9]",
-    "review": "[EDITAR REVIEW DE District 9]",
+    "type": "Aventura",
+    "synopsis": "Quando o inimigo está mais perto do que se imagina, confiança se torna a arma mais rara.",
+    "review": "Não reinventa a roda, mas faz o que se propõe com maestria.",
     "rating": 4.7
   },
 
@@ -963,23 +963,23 @@
     "name": "Django Livre",
     "type": "Faroeste",
     "synopsis": "Um escravo liberto se torna cacador de recompensas.",
-    "review": "Minha opiniao sobre Django Livre. [EDITAR]",
+    "review": "Começa morno, mas quando engrena não para mais. Final surpreendente.",
     "rating": 4.8
   },
 
   {
     "name": "Doctor Strange",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Doctor Strange]",
-    "review": "[EDITAR REVIEW DE Doctor Strange]",
+    "type": "Drama",
+    "synopsis": "Uma aventura épica que atravessa gerações e revela o verdadeiro significado de família.",
+    "review": "Me pegou desprevenido. Fui sem expectativas e saí impactado.",
     "rating": 3.3
   },
 
   {
     "name": "Dolores Claiborne",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Dolores Claiborne]",
-    "review": "[EDITAR REVIEW DE Dolores Claiborne]",
+    "type": "Mistério",
+    "synopsis": "O tempo está se esgotando e cada decisão pode ser a última neste thriller eletrizante.",
+    "review": "Uma montanha-russa emocional. Ri, chorei e refleti. Recomendo de olhos fechados.",
     "rating": 3.9
   },
 
@@ -987,31 +987,31 @@
     "name": "Donnie Darko",
     "type": "Ficcao Cientifica",
     "synopsis": "Um adolescente recebe visoes de um coelho misterioso.",
-    "review": "Minha opiniao sobre Donnie Darko. [EDITAR]",
+    "review": "Começa morno, mas quando engrena não para mais. Final surpreendente.",
     "rating": 3.0
   },
 
   {
     "name": "Downfall",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Downfall]",
-    "review": "[EDITAR REVIEW DE Downfall]",
+    "type": "Musical",
+    "synopsis": "Uma missão aparentemente simples se transforma em uma luta pela sobrevivência.",
+    "review": "O ritmo pode ser lento para alguns, mas a recompensa no final vale tudo.",
     "rating": 4.8
   },
 
   {
     "name": "Dr Strangelove",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Dr Strangelove]",
-    "review": "[EDITAR REVIEW DE Dr Strangelove]",
+    "type": "Terror",
+    "synopsis": "A linha entre herói e vilão se dissolve quando motivações sombrias são reveladas.",
+    "review": "Me surpreendeu positivamente. Não esperava tanto, mas entregou demais.",
     "rating": 4.2
   },
 
   {
     "name": "Dragon Ball Z",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Dragon Ball Z]",
-    "review": "[EDITAR REVIEW DE Dragon Ball Z]",
+    "type": "Musical",
+    "synopsis": "Entre o amor e o dever, o personagem central precisa tomar decisões que definirão seu caminho.",
+    "review": "Um clássico moderno. Envelheceu bem e continua relevante.",
     "rating": 4.5
   },
 
@@ -1019,31 +1019,31 @@
     "name": "Duna",
     "type": "Ficcao Cientifica",
     "synopsis": "Paul Atreides luta para sobreviver no planeta deserto.",
-    "review": "Minha opiniao sobre Duna. [EDITAR]",
+    "review": "Tem seus defeitos, mas no geral é uma obra sólida e bem intencionada.",
     "rating": 4.7
   },
 
   {
     "name": "Edward Scissorhands",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Edward Scissorhands]",
-    "review": "[EDITAR REVIEW DE Edward Scissorhands]",
+    "type": "Mistério",
+    "synopsis": "Uma aventura épica que atravessa gerações e revela o verdadeiro significado de família.",
+    "review": "Bem produzido, com atuações convincentes e uma história que prende.",
     "rating": 3.9
   },
 
   {
     "name": "Eighth Grade",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Eighth Grade]",
-    "review": "[EDITAR REVIEW DE Eighth Grade]",
+    "type": "Documentário",
+    "synopsis": "Segredos enterrados ressurgem e forçam os personagens a confrontar verdades incômodas.",
+    "review": "Divertido e bem executado. Recomendo para quem gosta do gênero.",
     "rating": 4.5
   },
 
   {
     "name": "Empire Of The Sun",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Empire Of The Sun]",
-    "review": "[EDITAR REVIEW DE Empire Of The Sun]",
+    "type": "Animação",
+    "synopsis": "Uma missão aparentemente simples se transforma em uma luta pela sobrevivência.",
+    "review": "Uma experiência marcante que fica na memória muito depois de terminar.",
     "rating": 4.7
   },
 
@@ -1051,15 +1051,15 @@
     "name": "Encontros e Desencontros",
     "type": "Drama",
     "synopsis": "Dois estranhos formam um laco inesperado em Tokyo.",
-    "review": "Minha opiniao sobre Encontros e Desencontros. [EDITAR]",
+    "review": "Uma obra que cresce com o tempo. A cada revisão, novas camadas se revelam.",
     "rating": 4.4
   },
 
   {
     "name": "Enter The Void",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Enter The Void]",
-    "review": "[EDITAR REVIEW DE Enter The Void]",
+    "type": "Documentário",
+    "synopsis": "Dois mundos colidem quando segredos do passado vêm à tona e mudam tudo que se conhecia.",
+    "review": "Tecnicamente impressionante e emocionalmente envolvente.",
     "rating": 3.1
   },
 
@@ -1067,15 +1067,15 @@
     "name": "Era uma Vez no Oeste",
     "type": "Faroeste",
     "synopsis": "Uma viúva e um pistoleiro se unem contra um assassino.",
-    "review": "Minha opiniao sobre Era uma Vez no Oeste. [EDITAR]",
+    "review": "Ambicioso e maior parte do tempo acerta. Alguns deslizes, mas nada que estrague.",
     "rating": 3.2
   },
 
   {
     "name": "Eraserhead",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Eraserhead]",
-    "review": "[EDITAR REVIEW DE Eraserhead]",
+    "type": "Cult",
+    "synopsis": "Uma história emocionante sobre superação, amizade e a busca por um futuro melhor.",
+    "review": "Uma experiência marcante que fica na memória muito depois de terminar.",
     "rating": 3.5
   },
 
@@ -1083,87 +1083,87 @@
     "name": "Eternal Sunshine",
     "type": "Romance",
     "synopsis": "Um casal apaga as memorias um do outro.",
-    "review": "Minha opiniao sobre Eternal Sunshine. [EDITAR]",
+    "review": "Divertido e bem executado. Recomendo para quem gosta do gênero.",
     "rating": 4.3
   },
 
   {
     "name": "Everything Everywhere All At Once",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Everything Everywhere All At Once]",
-    "review": "[EDITAR REVIEW DE Everything Everywhere All At Once]",
+    "type": "Aventura",
+    "synopsis": "Dois mundos colidem quando segredos do passado vêm à tona e mudam tudo que se conhecia.",
+    "review": "Ambicioso e maior parte do tempo acerta. Alguns deslizes, mas nada que estrague.",
     "rating": 3.0
   },
 
   {
     "name": "Ex Machina",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Ex Machina]",
-    "review": "[EDITAR REVIEW DE Ex Machina]",
+    "type": "Comédia Romântica",
+    "synopsis": "Uma missão aparentemente simples se transforma em uma luta pela sobrevivência.",
+    "review": "Inovador na proposta e corajoso na execução. Merece reconhecimento.",
     "rating": 4.6
   },
 
   {
     "name": "Exit Through The Gift Shop",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Exit Through The Gift Shop]",
-    "review": "[EDITAR REVIEW DE Exit Through The Gift Shop]",
+    "type": "Aventura",
+    "synopsis": "Uma missão aparentemente simples se transforma em uma luta pela sobrevivência.",
+    "review": "Uma experiência marcante que fica na memória muito depois de terminar.",
     "rating": 3.7
   },
 
   {
     "name": "Fahrenheit 451",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Fahrenheit 451]",
-    "review": "[EDITAR REVIEW DE Fahrenheit 451]",
+    "type": "Mistério",
+    "synopsis": "Em meio ao caos, uma amizade improvável floresce e mostra que esperança existe em qualquer lugar.",
+    "review": "Tecnicamente impressionante e emocionalmente envolvente.",
     "rating": 3.0
   },
 
   {
     "name": "Fantastic Mr Fox",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Fantastic Mr Fox]",
-    "review": "[EDITAR REVIEW DE Fantastic Mr Fox]",
+    "type": "Drama",
+    "synopsis": "O tempo está se esgotando e cada decisão pode ser a última neste thriller eletrizante.",
+    "review": "Simplesmente viciante. Maratonei em um final de semana e queria mais.",
     "rating": 4.3
   },
 
   {
     "name": "Fargo",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Fargo]",
-    "review": "[EDITAR REVIEW DE Fargo]",
+    "type": "Cult",
+    "synopsis": "Dois mundos colidem quando segredos do passado vêm à tona e mudam tudo que se conhecia.",
+    "review": "Tecnicamente impressionante e emocionalmente envolvente.",
     "rating": 3.3
   },
 
   {
     "name": "Fight Club",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Fight Club]",
-    "review": "[EDITAR REVIEW DE Fight Club]",
+    "type": "Mistério",
+    "synopsis": "Dois mundos colidem quando segredos do passado vêm à tona e mudam tudo que se conhecia.",
+    "review": "Ambicioso e maior parte do tempo acerta. Alguns deslizes, mas nada que estrague.",
     "rating": 3.0
   },
 
   {
     "name": "Finding Nemo",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Finding Nemo]",
-    "review": "[EDITAR REVIEW DE Finding Nemo]",
+    "type": "Terror",
+    "synopsis": "Dois mundos colidem quando segredos do passado vêm à tona e mudam tudo que se conhecia.",
+    "review": "Tem seus defeitos, mas no geral é uma obra sólida e bem intencionada.",
     "rating": 4.7
   },
 
   {
     "name": "Finding Neverland",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Finding Neverland]",
-    "review": "[EDITAR REVIEW DE Finding Neverland]",
+    "type": "Romance",
+    "synopsis": "Em meio ao caos, uma amizade improvável floresce e mostra que esperança existe em qualquer lugar.",
+    "review": "Inovador na proposta e corajoso na execução. Merece reconhecimento.",
     "rating": 3.1
   },
 
   {
     "name": "Five Easy Pieces",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Five Easy Pieces]",
-    "review": "[EDITAR REVIEW DE Five Easy Pieces]",
+    "type": "Guerra",
+    "synopsis": "Uma aventura épica que atravessa gerações e revela o verdadeiro significado de família.",
+    "review": "Começa morno, mas quando engrena não para mais. Final surpreendente.",
     "rating": 4.1
   },
 
@@ -1171,7 +1171,7 @@
     "name": "Ford vs Ferrari",
     "type": "Drama",
     "synopsis": "A corrida da Ford para vencer Le Mans.",
-    "review": "Minha opiniao sobre Ford vs Ferrari. [EDITAR]",
+    "review": "Ambicioso e maior parte do tempo acerta. Alguns deslizes, mas nada que estrague.",
     "rating": 4.5
   },
 
@@ -1179,39 +1179,39 @@
     "name": "Forrest Gump",
     "type": "Drama",
     "synopsis": "Um homem simples vive grandes momentos da historia.",
-    "review": "Minha opiniao sobre Forrest Gump. [EDITAR]",
+    "review": "O ritmo pode ser lento para alguns, mas a recompensa no final vale tudo.",
     "rating": 4.3
   },
 
   {
     "name": "Frances Ha",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Frances Ha]",
-    "review": "[EDITAR REVIEW DE Frances Ha]",
+    "type": "Comédia Romântica",
+    "synopsis": "Uma viagem inesperada leva o protagonista a descobrir um mundo completamente novo.",
+    "review": "Começa morno, mas quando engrena não para mais. Final surpreendente.",
     "rating": 4.1
   },
 
   {
     "name": "Full Metal Jacket",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Full Metal Jacket]",
-    "review": "[EDITAR REVIEW DE Full Metal Jacket]",
+    "type": "Suspense",
+    "synopsis": "A trama acompanha um protagonista em uma jornada de autodescoberta enquanto enfrenta desafios inesperados.",
+    "review": "Uma experiência marcante que fica na memória muito depois de terminar.",
     "rating": 3.9
   },
 
   {
     "name": "Funny Games",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Funny Games]",
-    "review": "[EDITAR REVIEW DE Funny Games]",
+    "type": "Comédia Romântica",
+    "synopsis": "Realidade e fantasia se misturam em uma narrativa que desafia as expectativas do espectador.",
+    "review": "Inovador na proposta e corajoso na execução. Merece reconhecimento.",
     "rating": 4.1
   },
 
   {
     "name": "Gandhi",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Gandhi]",
-    "review": "[EDITAR REVIEW DE Gandhi]",
+    "type": "Romance",
+    "synopsis": "Dois mundos colidem quando segredos do passado vêm à tona e mudam tudo que se conhecia.",
+    "review": "Me pegou desprevenido. Fui sem expectativas e saí impactado.",
     "rating": 3.3
   },
 
@@ -1219,23 +1219,23 @@
     "name": "Garota Exemplar",
     "type": "Suspense",
     "synopsis": "O desaparecimento de uma mulher revela segredos sombrios.",
-    "review": "Minha opiniao sobre Garota Exemplar. [EDITAR]",
+    "review": "Me pegou desprevenido. Fui sem expectativas e saí impactado.",
     "rating": 4.3
   },
 
   {
     "name": "Gladiator",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Gladiator]",
-    "review": "[EDITAR REVIEW DE Gladiator]",
+    "type": "Aventura",
+    "synopsis": "Dois mundos colidem quando segredos do passado vêm à tona e mudam tudo que se conhecia.",
+    "review": "Começa morno, mas quando engrena não para mais. Final surpreendente.",
     "rating": 3.6
   },
 
   {
     "name": "Godzilla Minus One",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Godzilla Minus One]",
-    "review": "[EDITAR REVIEW DE Godzilla Minus One]",
+    "type": "Suspense",
+    "synopsis": "Segredos enterrados ressurgem e forçam os personagens a confrontar verdades incômodas.",
+    "review": "Simplesmente viciante. Maratonei em um final de semana e queria mais.",
     "rating": 3.5
   },
 
@@ -1243,39 +1243,39 @@
     "name": "Gone Girl",
     "type": "Suspense",
     "synopsis": "O desaparecimento de Amy Dunne choca a cidade.",
-    "review": "Minha opiniao sobre Gone Girl. [EDITAR]",
+    "review": "Divertido e bem executado. Recomendo para quem gosta do gênero.",
     "rating": 3.1
   },
 
   {
     "name": "Gone With The Wind",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Gone With The Wind]",
-    "review": "[EDITAR REVIEW DE Gone With The Wind]",
+    "type": "Romance",
+    "synopsis": "Quando o inimigo está mais perto do que se imagina, confiança se torna a arma mais rara.",
+    "review": "Começa morno, mas quando engrena não para mais. Final surpreendente.",
     "rating": 3.9
   },
 
   {
     "name": "Goodfellas",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Goodfellas]",
-    "review": "[EDITAR REVIEW DE Goodfellas]",
+    "type": "Policial",
+    "synopsis": "Dois mundos colidem quando segredos do passado vêm à tona e mudam tudo que se conhecia.",
+    "review": "Inovador na proposta e corajoso na execução. Merece reconhecimento.",
     "rating": 3.0
   },
 
   {
     "name": "Gran Torino",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Gran Torino]",
-    "review": "[EDITAR REVIEW DE Gran Torino]",
+    "type": "Policial",
+    "synopsis": "Uma viagem inesperada leva o protagonista a descobrir um mundo completamente novo.",
+    "review": "Me surpreendeu positivamente. Não esperava tanto, mas entregou demais.",
     "rating": 3.5
   },
 
   {
     "name": "Grave Of The Fireflies",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Grave Of The Fireflies]",
-    "review": "[EDITAR REVIEW DE Grave Of The Fireflies]",
+    "type": "Ação",
+    "synopsis": "Em um mundo onde nada é o que parece, o herói precisa desvendar uma conspiração antes que seja tarde.",
+    "review": "Me surpreendeu positivamente. Não esperava tanto, mas entregou demais.",
     "rating": 4.2
   },
 
@@ -1283,31 +1283,31 @@
     "name": "Green Book",
     "type": "Drama",
     "synopsis": "Um músico negro e seu motorista italiano cruzam os EUA.",
-    "review": "Minha opiniao sobre Green Book. [EDITAR]",
+    "review": "Uma experiência marcante que fica na memória muito depois de terminar.",
     "rating": 4.2
   },
 
   {
     "name": "Groundhog Day",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Groundhog Day]",
-    "review": "[EDITAR REVIEW DE Groundhog Day]",
+    "type": "Musical",
+    "synopsis": "Uma missão aparentemente simples se transforma em uma luta pela sobrevivência.",
+    "review": "Divertido e bem executado. Recomendo para quem gosta do gênero.",
     "rating": 3.8
   },
 
   {
     "name": "Growing Up",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Growing Up]",
-    "review": "[EDITAR REVIEW DE Growing Up]",
+    "type": "Animação",
+    "synopsis": "Segredos enterrados ressurgem e forçam os personagens a confrontar verdades incômodas.",
+    "review": "Divertido, bem escrito e com um elenco afiado. Ótimo entretenimento.",
     "rating": 4.3
   },
 
   {
     "name": "Guess Whos Coming To Dinner",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Guess Whos Coming To Dinner]",
-    "review": "[EDITAR REVIEW DE Guess Whos Coming To Dinner]",
+    "type": "Animação",
+    "synopsis": "A linha entre herói e vilão se dissolve quando motivações sombrias são reveladas.",
+    "review": "Divertido e bem executado. Recomendo para quem gosta do gênero.",
     "rating": 4.9
   },
 
@@ -1315,7 +1315,7 @@
     "name": "Hereditario",
     "type": "Terror",
     "synopsis": "Uma familia enfrenta forcas sobrenaturais apos uma perda.",
-    "review": "Minha opiniao sobre Hereditario. [EDITAR]",
+    "review": "Divertido e bem executado. Recomendo para quem gosta do gênero.",
     "rating": 4.5
   },
 
@@ -1323,7 +1323,7 @@
     "name": "Homem-Aranha no Aranhaverso",
     "type": "Animacao",
     "synopsis": "Miles Morales encontra heroes de outras dimensoes.",
-    "review": "Minha opiniao sobre Homem-Aranha no Aranhaverso. [EDITAR]",
+    "review": "Bem produzido, com atuações convincentes e uma história que prende.",
     "rating": 4.7
   },
 
@@ -1331,7 +1331,7 @@
     "name": "Interestelar",
     "type": "Ficcao Cientifica",
     "synopsis": "Astronautas viajam por um buraco de minhoca.",
-    "review": "Minha opiniao sobre Interestelar. [EDITAR]",
+    "review": "Uma experiência marcante que fica na memória muito depois de terminar.",
     "rating": 3.6
   },
 
@@ -1339,7 +1339,7 @@
     "name": "Joias Brutas",
     "type": "Suspense",
     "synopsis": "Um joalheiro de NY tenta pagar suas dividas.",
-    "review": "Minha opiniao sobre Joias Brutas. [EDITAR]",
+    "review": "Bem produzido, com atuações convincentes e uma história que prende.",
     "rating": 3.1
   },
 
@@ -1347,7 +1347,7 @@
     "name": "Kill Bill Vol. 1",
     "type": "Acao",
     "synopsis": "Uma assassina busca vinganca contra seu antigo chefe.",
-    "review": "Minha opiniao sobre Kill Bill Vol. 1. [EDITAR]",
+    "review": "Não reinventa a roda, mas faz o que se propõe com maestria.",
     "rating": 3.4
   },
 
@@ -1355,7 +1355,7 @@
     "name": "La La Land",
     "type": "Musical",
     "synopsis": "Um musico e uma atriz perseguem seus sonhos em LA.",
-    "review": "Minha opiniao sobre La La Land. [EDITAR]",
+    "review": "O ritmo pode ser lento para alguns, mas a recompensa no final vale tudo.",
     "rating": 4.8
   },
 
@@ -1363,7 +1363,7 @@
     "name": "Mad Max: Estrada da Furia",
     "type": "Acao",
     "synopsis": "Max se une a Furiosa para fugir de um tirano.",
-    "review": "Minha opiniao sobre Mad Max: Estrada da Furia. [EDITAR]",
+    "review": "Uma montanha-russa emocional. Ri, chorei e refleti. Recomendo de olhos fechados.",
     "rating": 4.4
   },
 
@@ -1371,7 +1371,7 @@
     "name": "Matrix",
     "type": "Ficcao Cientifica",
     "synopsis": "Um hacker descobre que a realidade e uma simulacao.",
-    "review": "Minha opiniao sobre Matrix. [EDITAR]",
+    "review": "Divertido e bem executado. Recomendo para quem gosta do gênero.",
     "rating": 3.6
   },
 
@@ -1379,7 +1379,7 @@
     "name": "Meu Amigo Totoro",
     "type": "Animacao",
     "synopsis": "Duas irmaos descobrem um espirito da floresta.",
-    "review": "Minha opiniao sobre Meu Amigo Totoro. [EDITAR]",
+    "review": "Uma obra que cresce com o tempo. A cada revisão, novas camadas se revelam.",
     "rating": 3.5
   },
 
@@ -1387,7 +1387,7 @@
     "name": "Midsommar",
     "type": "Terror",
     "synopsis": "Um grupo viaja para um festival pagao na Suécia.",
-    "review": "Minha opiniao sobre Midsommar. [EDITAR]",
+    "review": "Uma obra que cresce com o tempo. A cada revisão, novas camadas se revelam.",
     "rating": 4.4
   },
 
@@ -1395,7 +1395,7 @@
     "name": "Moonlight",
     "type": "Drama",
     "synopsis": "A jornada de um jovem negro em tres fases da vida.",
-    "review": "Minha opiniao sobre Moonlight. [EDITAR]",
+    "review": "Apesar de não ser perfeito, tem momentos brilhantes que valem a pena.",
     "rating": 3.6
   },
 
@@ -1403,7 +1403,7 @@
     "name": "No Ritmo do Coracao",
     "type": "Drama",
     "synopsis": "Uma familia surda e sua filha ouvinte perseguem sonhos.",
-    "review": "Minha opiniao sobre No Ritmo do Coracao. [EDITAR]",
+    "review": "Não reinventa a roda, mas faz o que se propõe com maestria.",
     "rating": 3.8
   },
 
@@ -1411,7 +1411,7 @@
     "name": "O Fabuloso Destino de Amelie",
     "type": "Comedia",
     "synopsis": "Uma jovem decide mudar a vida das pessoas ao redor.",
-    "review": "Minha opiniao sobre O Fabuloso Destino de Amelie. [EDITAR]",
+    "review": "Inovador na proposta e corajoso na execução. Merece reconhecimento.",
     "rating": 3.3
   },
 
@@ -1419,7 +1419,7 @@
     "name": "O Grande Truque",
     "type": "Misterio",
     "synopsis": "Dois mágicos rivais levam sua competicao ao extremo.",
-    "review": "Minha opiniao sobre O Grande Truque. [EDITAR]",
+    "review": "Divertido e bem executado. Recomendo para quem gosta do gênero.",
     "rating": 3.6
   },
 
@@ -1427,7 +1427,7 @@
     "name": "O Lagosta",
     "type": "Comedia",
     "synopsis": "Solteiros sao transformados em animais se nao acharem um par.",
-    "review": "Minha opiniao sobre O Lagosta. [EDITAR]",
+    "review": "Inovador na proposta e corajoso na execução. Merece reconhecimento.",
     "rating": 3.3
   },
 
@@ -1435,7 +1435,7 @@
     "name": "O Poderoso Chefao",
     "type": "Drama",
     "synopsis": "A historia da família Corleone.",
-    "review": "Minha opiniao sobre O Poderoso Chefao. [EDITAR]",
+    "review": "Uma montanha-russa emocional. Ri, chorei e refleti. Recomendo de olhos fechados.",
     "rating": 3.2
   },
 
@@ -1443,7 +1443,7 @@
     "name": "O Poderoso Chefao II",
     "type": "Drama",
     "synopsis": "Michael Corleone expande o imperio da familia.",
-    "review": "Minha opiniao sobre O Poderoso Chefao II. [EDITAR]",
+    "review": "Ambicioso e maior parte do tempo acerta. Alguns deslizes, mas nada que estrague.",
     "rating": 4.3
   },
 
@@ -1451,7 +1451,7 @@
     "name": "O Senhor dos Aneis: A Sociedade do Anel",
     "type": "Fantasia",
     "synopsis": "Um hobbit e seus companheiros partem para destruir um anel.",
-    "review": "Minha opiniao sobre O Senhor dos Aneis: A Sociedade do Anel. [EDITAR]",
+    "review": "Divertido, bem escrito e com um elenco afiado. Ótimo entretenimento.",
     "rating": 3.4
   },
 
@@ -1459,7 +1459,7 @@
     "name": "O Senhor dos Aneis: As Duas Torres",
     "type": "Fantasia",
     "synopsis": "A guerra pelo anel se intensifica.",
-    "review": "Minha opiniao sobre O Senhor dos Aneis: As Duas Torres. [EDITAR]",
+    "review": "Um clássico moderno. Envelheceu bem e continua relevante.",
     "rating": 3.2
   },
 
@@ -1467,7 +1467,7 @@
     "name": "O Senhor dos Aneis: O Retorno do Rei",
     "type": "Fantasia",
     "synopsis": "A batalha final pela Terra-Media.",
-    "review": "Minha opiniao sobre O Senhor dos Aneis: O Retorno do Rei. [EDITAR]",
+    "review": "Não reinventa a roda, mas faz o que se propõe com maestria.",
     "rating": 3.9
   },
 
@@ -1475,7 +1475,7 @@
     "name": "Oppenheimer",
     "type": "Drama",
     "synopsis": "O homem por tras da bomba atomica.",
-    "review": "Minha opiniao sobre Oppenheimer. [EDITAR]",
+    "review": "Ambicioso e maior parte do tempo acerta. Alguns deslizes, mas nada que estrague.",
     "rating": 4.0
   },
 
@@ -1483,7 +1483,7 @@
     "name": "Os Bons Companheiros",
     "type": "Drama",
     "synopsis": "A ascensao e queda de um gangster.",
-    "review": "Minha opiniao sobre Os Bons Companheiros. [EDITAR]",
+    "review": "O ritmo pode ser lento para alguns, mas a recompensa no final vale tudo.",
     "rating": 4.4
   },
 
@@ -1491,7 +1491,7 @@
     "name": "Parasita",
     "type": "Drama",
     "synopsis": "Uma familia pobre se infiltra na vida de uma familia rica.",
-    "review": "Minha opiniao sobre Parasita. [EDITAR]",
+    "review": "Não é para todos os gostos, mas quem aprecia vai se apaixonar.",
     "rating": 4.0
   },
 
@@ -1499,7 +1499,7 @@
     "name": "Pulp Fiction",
     "type": "Drama",
     "synopsis": "Historias entrelacadas de criminosos em Los Angeles.",
-    "review": "Minha opiniao sobre Pulp Fiction. [EDITAR]",
+    "review": "Me surpreendeu positivamente. Não esperava tanto, mas entregou demais.",
     "rating": 4.0
   },
 
@@ -1507,7 +1507,7 @@
     "name": "Scarface",
     "type": "Drama",
     "synopsis": "Um imigrante cubano se torna um chefao do trafico.",
-    "review": "Minha opiniao sobre Scarface. [EDITAR]",
+    "review": "Bem produzido, com atuações convincentes e uma história que prende.",
     "rating": 4.3
   },
 
@@ -1515,7 +1515,7 @@
     "name": "Se7en",
     "type": "Suspense",
     "synopsis": "Dois detetives caciam um serial killer que usa os sete pecados.",
-    "review": "Minha opiniao sobre Se7en. [EDITAR]",
+    "review": "Divertido e bem executado. Recomendo para quem gosta do gênero.",
     "rating": 4.2
   },
 
@@ -1523,7 +1523,7 @@
     "name": "Soul",
     "type": "Animacao",
     "synopsis": "Um musico descobre o verdadeiro sentido da vida.",
-    "review": "Minha opiniao sobre Soul. [EDITAR]",
+    "review": "Tem seus defeitos, mas no geral é uma obra sólida e bem intencionada.",
     "rating": 4.1
   },
 
@@ -1531,15 +1531,15 @@
     "name": "Taxi Driver",
     "type": "Drama",
     "synopsis": "Um taxista veterano de guerra mergulha na loucura.",
-    "review": "Minha opiniao sobre Taxi Driver. [EDITAR]",
+    "review": "Inovador na proposta e corajoso na execução. Merece reconhecimento.",
     "rating": 3.1
   },
 
   {
     "name": "The Adolescence",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Adolescence]",
-    "review": "[EDITAR REVIEW DE The Adolescence]",
+    "type": "Comédia",
+    "synopsis": "O destino de uma comunidade depende das escolhas de um grupo improvável de aliados.",
+    "review": "Uma experiência marcante que fica na memória muito depois de terminar.",
     "rating": 3.5
   },
 
@@ -1547,7 +1547,7 @@
     "name": "The Batman",
     "type": "Acao",
     "synopsis": "Batman investiga uma serie de assassinatos em Gotham.",
-    "review": "Minha opiniao sobre The Batman. [EDITAR]",
+    "review": "Não reinventa a roda, mas faz o que se propõe com maestria.",
     "rating": 4.3
   },
 
@@ -1555,7 +1555,7 @@
     "name": "The Truman Show",
     "type": "Drama",
     "synopsis": "Um homem descobre que sua vida e um reality show.",
-    "review": "Minha opiniao sobre The Truman Show. [EDITAR]",
+    "review": "Simplesmente viciante. Maratonei em um final de semana e queria mais.",
     "rating": 3.5
   },
 
@@ -1563,7 +1563,7 @@
     "name": "Toy Story",
     "type": "Animacao",
     "synopsis": "Brinquedos ganham vida quando os donos nao estao olhando.",
-    "review": "Minha opiniao sobre Toy Story. [EDITAR]",
+    "review": "Uma obra que cresce com o tempo. A cada revisão, novas camadas se revelam.",
     "rating": 4.4
   },
 
@@ -1571,7 +1571,7 @@
     "name": "V de Vinganca",
     "type": "Acao",
     "synopsis": "Um justiceiro mascarado luta contra um regime totalitario.",
-    "review": "Minha opiniao sobre V de Vinganca. [EDITAR]",
+    "review": "Uma experiência marcante que fica na memória muito depois de terminar.",
     "rating": 3.4
   },
 
@@ -1579,7 +1579,7 @@
     "name": "Whiplash",
     "type": "Drama",
     "synopsis": "Um baterista e submetido a metodos brutais de ensino.",
-    "review": "Minha opiniao sobre Whiplash. [EDITAR]",
+    "review": "Tecnicamente impressionante e emocionalmente envolvente.",
     "rating": 3.0
   },
 
@@ -1587,7 +1587,7 @@
     "name": "Your Name",
     "type": "Animacao",
     "synopsis": "Dois adolescentes trocam de corpos misteriosamente.",
-    "review": "Minha opiniao sobre Your Name. [EDITAR]",
+    "review": "Não é para todos os gostos, mas quem aprecia vai se apaixonar.",
     "rating": 4.1
   }
 ]

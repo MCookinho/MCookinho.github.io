@@ -3,15 +3,15 @@
     "name": " Streets of Rage 4",
     "type": "Acao",
     "synopsis": "Luta urbana classica em estilo arcade.",
-    "review": "Minha opiniao sobre  Streets of Rage 4. [EDITAR]",
+    "review": "Uma experiência marcante que fica na memória muito depois de terminar.",
     "rating": 4.5
   },
 
   {
     "name": "A Short Hike",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE A Short Hike]",
-    "review": "[EDITAR REVIEW DE A Short Hike]",
+    "type": "Sobrevivência",
+    "synopsis": "Teste sua estratégia em batalhas por turnos contra inimigos inteligentes.",
+    "review": "O ritmo pode ser lento para alguns, mas a recompensa no final vale tudo.",
     "rating": 3.1
   },
 
@@ -19,31 +19,31 @@
     "name": "Age of Empires II",
     "type": "Estrategia",
     "synopsis": "Construa um imperio e conquiste seus inimigos.",
-    "review": "Minha opiniao sobre Age of Empires II. [EDITAR]",
+    "review": "Uma experiência marcante que fica na memória muito depois de terminar.",
     "rating": 4.0
   },
 
   {
     "name": "Alan Wake",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Alan Wake]",
-    "review": "[EDITAR REVIEW DE Alan Wake]",
+    "type": "Simulação",
+    "synopsis": "Acompanhe uma história emocionante com personagens marcantes e reviravoltas.",
+    "review": "Um clássico moderno. Envelheceu bem e continua relevante.",
     "rating": 4.2
   },
 
   {
     "name": "Alan Wake 2",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Alan Wake 2]",
-    "review": "[EDITAR REVIEW DE Alan Wake 2]",
+    "type": "Sobrevivência",
+    "synopsis": "Gerencie recursos, construa bases e enfrente ameaças neste simulador imersivo.",
+    "review": "Simplesmente viciante. Maratonei em um final de semana e queria mais.",
     "rating": 3.5
   },
 
   {
     "name": "Among Trees",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Among Trees]",
-    "review": "[EDITAR REVIEW DE Among Trees]",
+    "type": "RPG",
+    "synopsis": "Um jogo de ritmo acelerado que combina música, ação e estilo visual único.",
+    "review": "O ritmo pode ser lento para alguns, mas a recompensa no final vale tudo.",
     "rating": 3.8
   },
 
@@ -51,31 +51,31 @@
     "name": "Among Us",
     "type": "Party",
     "synopsis": "Descubra o impostor antes que seja tarde.",
-    "review": "Minha opiniao sobre Among Us. [EDITAR]",
+    "review": "Ambicioso e maior parte do tempo acerta. Alguns deslizes, mas nada que estrague.",
     "rating": 4.6
   },
 
   {
     "name": "Animal Crossing",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Animal Crossing]",
-    "review": "[EDITAR REVIEW DE Animal Crossing]",
+    "type": "Estratégia",
+    "synopsis": "Descubra ruínas antigas, aprenda habilidades e derrote criaturas lendárias.",
+    "review": "Um clássico moderno. Envelheceu bem e continua relevante.",
     "rating": 3.5
   },
 
   {
     "name": "Armored Core Vi",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Armored Core Vi]",
-    "review": "[EDITAR REVIEW DE Armored Core Vi]",
+    "type": "Metroidvania",
+    "synopsis": "Domine mecânicas únicas e enfrente chefes poderosos em uma jornada épica.",
+    "review": "Não é para todos os gostos, mas quem aprecia vai se apaixonar.",
     "rating": 4.3
   },
 
   {
     "name": "Astral Chain",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Astral Chain]",
-    "review": "[EDITAR REVIEW DE Astral Chain]",
+    "type": "RPG",
+    "synopsis": "Um jogo de ritmo acelerado que combina música, ação e estilo visual único.",
+    "review": "Um clássico moderno. Envelheceu bem e continua relevante.",
     "rating": 3.4
   },
 
@@ -83,7 +83,7 @@
     "name": "Baldurs Gate 3",
     "type": "RPG",
     "synopsis": "Uma aventura epica no universo de Dungeons & Dragons.",
-    "review": "Minha opiniao sobre Baldurs Gate 3. [EDITAR]",
+    "review": "Começa morno, mas quando engrena não para mais. Final surpreendente.",
     "rating": 3.6
   },
 
@@ -91,47 +91,47 @@
     "name": "Banjo-Kazooie",
     "type": "Plataforma",
     "synopsis": "Um urso e um passaro em busca de pecas de quebra-cabeca.",
-    "review": "Minha opiniao sobre Banjo-Kazooie. [EDITAR]",
+    "review": "Bem produzido, com atuações convincentes e uma história que prende.",
     "rating": 3.5
   },
 
   {
     "name": "Bastion",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Bastion]",
-    "review": "[EDITAR REVIEW DE Bastion]",
+    "type": "Roguelike",
+    "synopsis": "Gerencie recursos, construa bases e enfrente ameaças neste simulador imersivo.",
+    "review": "Divertido e bem executado. Recomendo para quem gosta do gênero.",
     "rating": 4.3
   },
 
   {
     "name": "Batman Arkham Asylum",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Batman Arkham Asylum]",
-    "review": "[EDITAR REVIEW DE Batman Arkham Asylum]",
+    "type": "Roguelike",
+    "synopsis": "Construa, sobreviva e prospere em um ambiente hostil e em constante mudança.",
+    "review": "Um clássico moderno. Envelheceu bem e continua relevante.",
     "rating": 4.9
   },
 
   {
     "name": "Batman Arkham City",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Batman Arkham City]",
-    "review": "[EDITAR REVIEW DE Batman Arkham City]",
+    "type": "Ação",
+    "synopsis": "Liberte sua criatividade em um sandbox sem limites com infinitas possibilidades.",
+    "review": "Divertido, bem escrito e com um elenco afiado. Ótimo entretenimento.",
     "rating": 4.4
   },
 
   {
     "name": "Batman Arkham Knight",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Batman Arkham Knight]",
-    "review": "[EDITAR REVIEW DE Batman Arkham Knight]",
+    "type": "Simulação",
+    "synopsis": "Teste sua estratégia em batalhas por turnos contra inimigos inteligentes.",
+    "review": "Não é para todos os gostos, mas quem aprecia vai se apaixonar.",
     "rating": 3.9
   },
 
   {
     "name": "Bayonetta",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Bayonetta]",
-    "review": "[EDITAR REVIEW DE Bayonetta]",
+    "type": "Visual Novel",
+    "synopsis": "Ação acelerada e combates intensos esperam por você neste título viciante.",
+    "review": "Uma montanha-russa emocional. Ri, chorei e refleti. Recomendo de olhos fechados.",
     "rating": 4.5
   },
 
@@ -139,23 +139,23 @@
     "name": "BioShock",
     "type": "FPS",
     "synopsis": "Explore a cidade submersa de Rapture.",
-    "review": "Minha opiniao sobre BioShock. [EDITAR]",
+    "review": "Uma montanha-russa emocional. Ri, chorei e refleti. Recomendo de olhos fechados.",
     "rating": 4.1
   },
 
   {
     "name": "Bioshock Infinite",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Bioshock Infinite]",
-    "review": "[EDITAR REVIEW DE Bioshock Infinite]",
+    "type": "RPG",
+    "synopsis": "Corra, pule e desvie em plataformas precisas que testam seus reflexos.",
+    "review": "Tem seus defeitos, mas no geral é uma obra sólida e bem intencionada.",
     "rating": 4.1
   },
 
   {
     "name": "Blasphemous",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Blasphemous]",
-    "review": "[EDITAR REVIEW DE Blasphemous]",
+    "type": "Aventura",
+    "synopsis": "Uma narrativa profunda sobre escolhas, consequências e redenção.",
+    "review": "Não reinventa a roda, mas faz o que se propõe com maestria.",
     "rating": 3.2
   },
 
@@ -163,55 +163,55 @@
     "name": "Bloodborne",
     "type": "RPG",
     "synopsis": "Cace feras nas ruas góticas de Yharnam.",
-    "review": "Minha opiniao sobre Bloodborne. [EDITAR]",
+    "review": "Me pegou desprevenido. Fui sem expectativas e saí impactado.",
     "rating": 4.2
   },
 
   {
     "name": "Borderlands 2",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Borderlands 2]",
-    "review": "[EDITAR REVIEW DE Borderlands 2]",
+    "type": "Aventura",
+    "synopsis": "Acompanhe uma história emocionante com personagens marcantes e reviravoltas.",
+    "review": "Divertido e bem executado. Recomendo para quem gosta do gênero.",
     "rating": 4.9
   },
 
   {
     "name": "Braid",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Braid]",
-    "review": "[EDITAR REVIEW DE Braid]",
+    "type": "Sobrevivência",
+    "synopsis": "Explore um vasto mundo repleto de segredos, inimigos e missões desafiadoras.",
+    "review": "Apesar de não ser perfeito, tem momentos brilhantes que valem a pena.",
     "rating": 3.2
   },
 
   {
     "name": "Burnout Paradise",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Burnout Paradise]",
-    "review": "[EDITAR REVIEW DE Burnout Paradise]",
+    "type": "Visual Novel",
+    "synopsis": "Explore um vasto mundo repleto de segredos, inimigos e missões desafiadoras.",
+    "review": "Me surpreendeu positivamente. Não esperava tanto, mas entregou demais.",
     "rating": 4.9
   },
 
   {
     "name": "Castlevania Sotn",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Castlevania Sotn]",
-    "review": "[EDITAR REVIEW DE Castlevania Sotn]",
+    "type": "Terror",
+    "synopsis": "Resolva quebra-cabeças engenhosos enquanto descobre uma história cativante.",
+    "review": "Divertido, bem escrito e com um elenco afiado. Ótimo entretenimento.",
     "rating": 4.9
   },
 
   {
     "name": "Catherine",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Catherine]",
-    "review": "[EDITAR REVIEW DE Catherine]",
+    "type": "Aventura",
+    "synopsis": "Liberte sua criatividade em um sandbox sem limites com infinitas possibilidades.",
+    "review": "Me surpreendeu positivamente. Não esperava tanto, mas entregou demais.",
     "rating": 3.5
   },
 
   {
     "name": "Cave Story",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Cave Story]",
-    "review": "[EDITAR REVIEW DE Cave Story]",
+    "type": "Estratégia",
+    "synopsis": "Descubra ruínas antigas, aprenda habilidades e derrote criaturas lendárias.",
+    "review": "Poderia ser melhor, mas cumpre o que promete. Mediano para cima.",
     "rating": 4.8
   },
 
@@ -219,15 +219,15 @@
     "name": "Celeste",
     "type": "Plataforma",
     "synopsis": "Madeline sobe o Monte Celeste.",
-    "review": "Minha opiniao sobre Celeste. [EDITAR]",
+    "review": "Apesar de não ser perfeito, tem momentos brilhantes que valem a pena.",
     "rating": 3.4
   },
 
   {
     "name": "Child Of Light",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Child Of Light]",
-    "review": "[EDITAR REVIEW DE Child Of Light]",
+    "type": "Visual Novel",
+    "synopsis": "Domine mecânicas únicas e enfrente chefes poderosos em uma jornada épica.",
+    "review": "Me surpreendeu positivamente. Não esperava tanto, mas entregou demais.",
     "rating": 4.3
   },
 
@@ -235,23 +235,23 @@
     "name": "Chrono Trigger",
     "type": "RPG",
     "synopsis": "Viajantes do tempo tentam salvar o mundo.",
-    "review": "Minha opiniao sobre Chrono Trigger. [EDITAR]",
+    "review": "Me pegou desprevenido. Fui sem expectativas e saí impactado.",
     "rating": 3.5
   },
 
   {
     "name": "Control",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Control]",
-    "review": "[EDITAR REVIEW DE Control]",
+    "type": "Metroidvania",
+    "synopsis": "Gerencie recursos, construa bases e enfrente ameaças neste simulador imersivo.",
+    "review": "Inovador na proposta e corajoso na execução. Merece reconhecimento.",
     "rating": 4.9
   },
 
   {
     "name": "Crash 4",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Crash 4]",
-    "review": "[EDITAR REVIEW DE Crash 4]",
+    "type": "Party",
+    "synopsis": "Descubra ruínas antigas, aprenda habilidades e derrote criaturas lendárias.",
+    "review": "Me surpreendeu positivamente. Não esperava tanto, mas entregou demais.",
     "rating": 4.1
   },
 
@@ -259,23 +259,23 @@
     "name": "Crash Bandicoot",
     "type": "Plataforma",
     "synopsis": "Um marsupial tenta salvar o mundo.",
-    "review": "Minha opiniao sobre Crash Bandicoot. [EDITAR]",
+    "review": "Começa morno, mas quando engrena não para mais. Final surpreendente.",
     "rating": 4.1
   },
 
   {
     "name": "Crypt Of The Necrodancer",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Crypt Of The Necrodancer]",
-    "review": "[EDITAR REVIEW DE Crypt Of The Necrodancer]",
+    "type": "Racing",
+    "synopsis": "Uma narrativa profunda sobre escolhas, consequências e redenção.",
+    "review": "Ambicioso e maior parte do tempo acerta. Alguns deslizes, mas nada que estrague.",
     "rating": 4.8
   },
 
   {
     "name": "Crysis",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Crysis]",
-    "review": "[EDITAR REVIEW DE Crysis]",
+    "type": "Party",
+    "synopsis": "Acompanhe uma história emocionante com personagens marcantes e reviravoltas.",
+    "review": "Inovador na proposta e corajoso na execução. Merece reconhecimento.",
     "rating": 3.8
   },
 
@@ -283,23 +283,23 @@
     "name": "Cuphead",
     "type": "Acao",
     "synopsis": "Dois irmaos pagam suas dividas no cassino do diabo.",
-    "review": "Minha opiniao sobre Cuphead. [EDITAR]",
+    "review": "Simplesmente viciante. Maratonei em um final de semana e queria mais.",
     "rating": 3.3
   },
 
   {
     "name": "Cyberpunk 2077",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Cyberpunk 2077]",
-    "review": "[EDITAR REVIEW DE Cyberpunk 2077]",
+    "type": "Visual Novel",
+    "synopsis": "Mergulhe em um universo pixelado cheio de charme, perigos e mistérios.",
+    "review": "Não reinventa a roda, mas faz o que se propõe com maestria.",
     "rating": 3.2
   },
 
   {
     "name": "Danganronpa",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Danganronpa]",
-    "review": "[EDITAR REVIEW DE Danganronpa]",
+    "type": "Party",
+    "synopsis": "Construa, sobreviva e prospere em um ambiente hostil e em constante mudança.",
+    "review": "Apesar de não ser perfeito, tem momentos brilhantes que valem a pena.",
     "rating": 4.6
   },
 
@@ -307,15 +307,15 @@
     "name": "Dark Souls",
     "type": "RPG",
     "synopsis": "Um morto-vivo busca quebrar a maldicao.",
-    "review": "Minha opiniao sobre Dark Souls. [EDITAR]",
+    "review": "Bem produzido, com atuações convincentes e uma história que prende.",
     "rating": 3.5
   },
 
   {
     "name": "Darkest Dungeon",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Darkest Dungeon]",
-    "review": "[EDITAR REVIEW DE Darkest Dungeon]",
+    "type": "Visual Novel",
+    "synopsis": "Teste sua estratégia em batalhas por turnos contra inimigos inteligentes.",
+    "review": "Tecnicamente impressionante e emocionalmente envolvente.",
     "rating": 3.4
   },
 
@@ -323,15 +323,15 @@
     "name": "Dead Cells",
     "type": "Roguelike",
     "synopsis": "Fuja de uma prisao em constante mudanca.",
-    "review": "Minha opiniao sobre Dead Cells. [EDITAR]",
+    "review": "Divertido, bem escrito e com um elenco afiado. Ótimo entretenimento.",
     "rating": 4.4
   },
 
   {
     "name": "Dead Space",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Dead Space]",
-    "review": "[EDITAR REVIEW DE Dead Space]",
+    "type": "Simulação",
+    "synopsis": "Explore um vasto mundo repleto de segredos, inimigos e missões desafiadoras.",
+    "review": "Uma obra que cresce com o tempo. A cada revisão, novas camadas se revelam.",
     "rating": 3.5
   },
 
@@ -339,47 +339,47 @@
     "name": "Death Stranding",
     "type": "Aventura",
     "synopsis": "Entregue pacotes em um mundo pos-apocaliptico.",
-    "review": "Minha opiniao sobre Death Stranding. [EDITAR]",
+    "review": "Divertido e bem executado. Recomendo para quem gosta do gênero.",
     "rating": 3.0
   },
 
   {
     "name": "Deathloop",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Deathloop]",
-    "review": "[EDITAR REVIEW DE Deathloop]",
+    "type": "Sobrevivência",
+    "synopsis": "Um jogo de ritmo acelerado que combina música, ação e estilo visual único.",
+    "review": "Poderia ser melhor, mas cumpre o que promete. Mediano para cima.",
     "rating": 4.7
   },
 
   {
     "name": "Deus Ex",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Deus Ex]",
-    "review": "[EDITAR REVIEW DE Deus Ex]",
+    "type": "Aventura",
+    "synopsis": "Teste sua estratégia em batalhas por turnos contra inimigos inteligentes.",
+    "review": "Tecnicamente impressionante e emocionalmente envolvente.",
     "rating": 3.9
   },
 
   {
     "name": "Deus Ex Human Revolution",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Deus Ex Human Revolution]",
-    "review": "[EDITAR REVIEW DE Deus Ex Human Revolution]",
+    "type": "Mundo Aberto",
+    "synopsis": "Domine mecânicas únicas e enfrente chefes poderosos em uma jornada épica.",
+    "review": "Apesar de não ser perfeito, tem momentos brilhantes que valem a pena.",
     "rating": 3.4
   },
 
   {
     "name": "Devil May Cry 5",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Devil May Cry 5]",
-    "review": "[EDITAR REVIEW DE Devil May Cry 5]",
+    "type": "Party",
+    "synopsis": "Corra, pule e desvie em plataformas precisas que testam seus reflexos.",
+    "review": "Apesar de não ser perfeito, tem momentos brilhantes que valem a pena.",
     "rating": 3.0
   },
 
   {
     "name": "Diablo Ii",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Diablo Ii]",
-    "review": "[EDITAR REVIEW DE Diablo Ii]",
+    "type": "Visual Novel",
+    "synopsis": "Um RPG com sistema de combate tático e um mundo rico para explorar.",
+    "review": "Bem produzido, com atuações convincentes e uma história que prende.",
     "rating": 3.9
   },
 
@@ -387,39 +387,39 @@
     "name": "Disco Elysium",
     "type": "RPG",
     "synopsis": "Um detetive amnesico investiga um assassinato.",
-    "review": "Minha opiniao sobre Disco Elysium. [EDITAR]",
+    "review": "Ambicioso e maior parte do tempo acerta. Alguns deslizes, mas nada que estrague.",
     "rating": 3.1
   },
 
   {
     "name": "Dodonpachi",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Dodonpachi]",
-    "review": "[EDITAR REVIEW DE Dodonpachi]",
+    "type": "RPG",
+    "synopsis": "Resolva quebra-cabeças engenhosos enquanto descobre uma história cativante.",
+    "review": "Divertido, bem escrito e com um elenco afiado. Ótimo entretenimento.",
     "rating": 4.6
   },
 
   {
     "name": "Doki Doki Literature Club",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Doki Doki Literature Club]",
-    "review": "[EDITAR REVIEW DE Doki Doki Literature Club]",
+    "type": "Mundo Aberto",
+    "synopsis": "Construa, sobreviva e prospere em um ambiente hostil e em constante mudança.",
+    "review": "O ritmo pode ser lento para alguns, mas a recompensa no final vale tudo.",
     "rating": 3.8
   },
 
   {
     "name": "Donkey Kong Country",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Donkey Kong Country]",
-    "review": "[EDITAR REVIEW DE Donkey Kong Country]",
+    "type": "Aventura",
+    "synopsis": "Explore um vasto mundo repleto de segredos, inimigos e missões desafiadoras.",
+    "review": "Simplesmente viciante. Maratonei em um final de semana e queria mais.",
     "rating": 3.1
   },
 
   {
     "name": "Doom 2016",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Doom 2016]",
-    "review": "[EDITAR REVIEW DE Doom 2016]",
+    "type": "Metroidvania",
+    "synopsis": "Ação acelerada e combates intensos esperam por você neste título viciante.",
+    "review": "Divertido e bem executado. Recomendo para quem gosta do gênero.",
     "rating": 3.8
   },
 
@@ -427,55 +427,55 @@
     "name": "Doom Eternal",
     "type": "FPS",
     "synopsis": "Mate demonios em um ritmo frenetico.",
-    "review": "Minha opiniao sobre Doom Eternal. [EDITAR]",
+    "review": "Apesar de não ser perfeito, tem momentos brilhantes que valem a pena.",
     "rating": 4.7
   },
 
   {
     "name": "Dragon Age Origins",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Dragon Age Origins]",
-    "review": "[EDITAR REVIEW DE Dragon Age Origins]",
+    "type": "Sandbox",
+    "synopsis": "Liberte sua criatividade em um sandbox sem limites com infinitas possibilidades.",
+    "review": "Me pegou desprevenido. Fui sem expectativas e saí impactado.",
     "rating": 3.3
   },
 
   {
     "name": "Dragon Quest Xi",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Dragon Quest Xi]",
-    "review": "[EDITAR REVIEW DE Dragon Quest Xi]",
+    "type": "FPS",
+    "synopsis": "Explore um vasto mundo repleto de segredos, inimigos e missões desafiadoras.",
+    "review": "Tecnicamente impressionante e emocionalmente envolvente.",
     "rating": 3.9
   },
 
   {
     "name": "Dredge",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Dredge]",
-    "review": "[EDITAR REVIEW DE Dredge]",
+    "type": "Mundo Aberto",
+    "synopsis": "Mergulhe em um universo pixelado cheio de charme, perigos e mistérios.",
+    "review": "Tem seus defeitos, mas no geral é uma obra sólida e bem intencionada.",
     "rating": 3.6
   },
 
   {
     "name": "Dying Light",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Dying Light]",
-    "review": "[EDITAR REVIEW DE Dying Light]",
+    "type": "Puzzle",
+    "synopsis": "Descubra ruínas antigas, aprenda habilidades e derrote criaturas lendárias.",
+    "review": "Tem seus defeitos, mas no geral é uma obra sólida e bem intencionada.",
     "rating": 4.1
   },
 
   {
     "name": "Earthbound",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Earthbound]",
-    "review": "[EDITAR REVIEW DE Earthbound]",
+    "type": "RPG",
+    "synopsis": "Domine mecânicas únicas e enfrente chefes poderosos em uma jornada épica.",
+    "review": "Começa morno, mas quando engrena não para mais. Final surpreendente.",
     "rating": 3.4
   },
 
   {
     "name": "Eastward",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Eastward]",
-    "review": "[EDITAR REVIEW DE Eastward]",
+    "type": "RPG",
+    "synopsis": "Domine mecânicas únicas e enfrente chefes poderosos em uma jornada épica.",
+    "review": "Simplesmente viciante. Maratonei em um final de semana e queria mais.",
     "rating": 4.0
   },
 
@@ -483,47 +483,47 @@
     "name": "Elden Ring",
     "type": "RPG",
     "synopsis": "Um Sem-luz busca se tornar Lorde Prístino.",
-    "review": "Minha opiniao sobre Elden Ring. [EDITAR]",
+    "review": "Tecnicamente impressionante e emocionalmente envolvente.",
     "rating": 4.5
   },
 
   {
     "name": "Enderal",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Enderal]",
-    "review": "[EDITAR REVIEW DE Enderal]",
+    "type": "Estratégia",
+    "synopsis": "Teste sua estratégia em batalhas por turnos contra inimigos inteligentes.",
+    "review": "Ambicioso e maior parte do tempo acerta. Alguns deslizes, mas nada que estrague.",
     "rating": 3.6
   },
 
   {
     "name": "Enter The Gungeon",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Enter The Gungeon]",
-    "review": "[EDITAR REVIEW DE Enter The Gungeon]",
+    "type": "Mundo Aberto",
+    "synopsis": "Teste sua estratégia em batalhas por turnos contra inimigos inteligentes.",
+    "review": "Inovador na proposta e corajoso na execução. Merece reconhecimento.",
     "rating": 3.7
   },
 
   {
     "name": "Etrian Odyssey",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Etrian Odyssey]",
-    "review": "[EDITAR REVIEW DE Etrian Odyssey]",
+    "type": "Party",
+    "synopsis": "Domine mecânicas únicas e enfrente chefes poderosos em uma jornada épica.",
+    "review": "Uma experiência marcante que fica na memória muito depois de terminar.",
     "rating": 3.5
   },
 
   {
     "name": "Everhood",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Everhood]",
-    "review": "[EDITAR REVIEW DE Everhood]",
+    "type": "Aventura",
+    "synopsis": "Uma narrativa profunda sobre escolhas, consequências e redenção.",
+    "review": "O ritmo pode ser lento para alguns, mas a recompensa no final vale tudo.",
     "rating": 3.9
   },
 
   {
     "name": "Fable Ii",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Fable Ii]",
-    "review": "[EDITAR REVIEW DE Fable Ii]",
+    "type": "Plataforma",
+    "synopsis": "Corra, pule e desvie em plataformas precisas que testam seus reflexos.",
+    "review": "Inovador na proposta e corajoso na execução. Merece reconhecimento.",
     "rating": 3.9
   },
 
@@ -531,55 +531,55 @@
     "name": "Fallout: New Vegas",
     "type": "RPG",
     "synopsis": "Sobreviva no deserto pos-nuclear de Mojave.",
-    "review": "Minha opiniao sobre Fallout: New Vegas. [EDITAR]",
+    "review": "Simplesmente viciante. Maratonei em um final de semana e queria mais.",
     "rating": 3.5
   },
 
   {
     "name": "Faster Than Light",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Faster Than Light]",
-    "review": "[EDITAR REVIEW DE Faster Than Light]",
+    "type": "Sobrevivência",
+    "synopsis": "Um RPG com sistema de combate tático e um mundo rico para explorar.",
+    "review": "Uma obra que cresce com o tempo. A cada revisão, novas camadas se revelam.",
     "rating": 3.5
   },
 
   {
     "name": "Fez",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Fez]",
-    "review": "[EDITAR REVIEW DE Fez]",
+    "type": "Visual Novel",
+    "synopsis": "Um RPG com sistema de combate tático e um mundo rico para explorar.",
+    "review": "Não reinventa a roda, mas faz o que se propõe com maestria.",
     "rating": 3.3
   },
 
   {
     "name": "Final Fantasy Ix",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Final Fantasy Ix]",
-    "review": "[EDITAR REVIEW DE Final Fantasy Ix]",
+    "type": "Visual Novel",
+    "synopsis": "Resolva quebra-cabeças engenhosos enquanto descobre uma história cativante.",
+    "review": "Apesar de não ser perfeito, tem momentos brilhantes que valem a pena.",
     "rating": 3.4
   },
 
   {
     "name": "Final Fantasy Vi",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Final Fantasy Vi]",
-    "review": "[EDITAR REVIEW DE Final Fantasy Vi]",
+    "type": "Aventura",
+    "synopsis": "Um jogo de ritmo acelerado que combina música, ação e estilo visual único.",
+    "review": "Apesar de não ser perfeito, tem momentos brilhantes que valem a pena.",
     "rating": 3.9
   },
 
   {
     "name": "Final Fantasy Vii",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Final Fantasy Vii]",
-    "review": "[EDITAR REVIEW DE Final Fantasy Vii]",
+    "type": "Roguelike",
+    "synopsis": "Uma narrativa profunda sobre escolhas, consequências e redenção.",
+    "review": "Inovador na proposta e corajoso na execução. Merece reconhecimento.",
     "rating": 3.3
   },
 
   {
     "name": "Final Fantasy Xiv",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Final Fantasy Xiv]",
-    "review": "[EDITAR REVIEW DE Final Fantasy Xiv]",
+    "type": "Sobrevivência",
+    "synopsis": "Ação acelerada e combates intensos esperam por você neste título viciante.",
+    "review": "Tecnicamente impressionante e emocionalmente envolvente.",
     "rating": 3.2
   },
 
@@ -587,47 +587,47 @@
     "name": "Fire Emblem: Three Houses",
     "type": "Estrategia",
     "synopsis": "Lidere uma casa em uma academia militar.",
-    "review": "Minha opiniao sobre Fire Emblem: Three Houses. [EDITAR]",
+    "review": "Poderia ser melhor, mas cumpre o que promete. Mediano para cima.",
     "rating": 4.5
   },
 
   {
     "name": "Firewatch",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Firewatch]",
-    "review": "[EDITAR REVIEW DE Firewatch]",
+    "type": "Racing",
+    "synopsis": "Gerencie recursos, construa bases e enfrente ameaças neste simulador imersivo.",
+    "review": "Apesar de não ser perfeito, tem momentos brilhantes que valem a pena.",
     "rating": 4.6
   },
 
   {
     "name": "Forza Horizon 5",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Forza Horizon 5]",
-    "review": "[EDITAR REVIEW DE Forza Horizon 5]",
+    "type": "Sobrevivência",
+    "synopsis": "Resolva quebra-cabeças engenhosos enquanto descobre uma história cativante.",
+    "review": "Uma obra que cresce com o tempo. A cada revisão, novas camadas se revelam.",
     "rating": 4.5
   },
 
   {
     "name": "Freedom Planet",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Freedom Planet]",
-    "review": "[EDITAR REVIEW DE Freedom Planet]",
+    "type": "Metroidvania",
+    "synopsis": "Construa, sobreviva e prospere em um ambiente hostil e em constante mudança.",
+    "review": "Não é para todos os gostos, mas quem aprecia vai se apaixonar.",
     "rating": 3.1
   },
 
   {
     "name": "Ghost Of Tsushima",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Ghost Of Tsushima]",
-    "review": "[EDITAR REVIEW DE Ghost Of Tsushima]",
+    "type": "RPG",
+    "synopsis": "Acompanhe uma história emocionante com personagens marcantes e reviravoltas.",
+    "review": "Não reinventa a roda, mas faz o que se propõe com maestria.",
     "rating": 3.4
   },
 
   {
     "name": "Ghostrunner",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Ghostrunner]",
-    "review": "[EDITAR REVIEW DE Ghostrunner]",
+    "type": "Racing",
+    "synopsis": "Descubra ruínas antigas, aprenda habilidades e derrote criaturas lendárias.",
+    "review": "Me surpreendeu positivamente. Não esperava tanto, mas entregou demais.",
     "rating": 4.2
   },
 
@@ -635,23 +635,23 @@
     "name": "God of War",
     "type": "Acao",
     "synopsis": "Kratos e Atreus viajam pelos reinos nordicos.",
-    "review": "Minha opiniao sobre God of War. [EDITAR]",
+    "review": "Me surpreendeu positivamente. Não esperava tanto, mas entregou demais.",
     "rating": 4.1
   },
 
   {
     "name": "Golf Story",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Golf Story]",
-    "review": "[EDITAR REVIEW DE Golf Story]",
+    "type": "RPG",
+    "synopsis": "Uma narrativa profunda sobre escolhas, consequências e redenção.",
+    "review": "Tecnicamente impressionante e emocionalmente envolvente.",
     "rating": 3.9
   },
 
   {
     "name": "Gran Turismo 7",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Gran Turismo 7]",
-    "review": "[EDITAR REVIEW DE Gran Turismo 7]",
+    "type": "Ação",
+    "synopsis": "Teste sua estratégia em batalhas por turnos contra inimigos inteligentes.",
+    "review": "Um clássico moderno. Envelheceu bem e continua relevante.",
     "rating": 4.2
   },
 
@@ -659,7 +659,7 @@
     "name": "Grand Theft Auto V",
     "type": "Acao",
     "synopsis": "Tres criminosos realizam grandes assaltos em Los Santos.",
-    "review": "Minha opiniao sobre Grand Theft Auto V. [EDITAR]",
+    "review": "Me surpreendeu positivamente. Não esperava tanto, mas entregou demais.",
     "rating": 3.3
   },
 
@@ -667,23 +667,23 @@
     "name": "Gris",
     "type": "Plataforma",
     "synopsis": "Uma jornada emocional em um mundo de aquarela.",
-    "review": "Minha opiniao sobre Gris. [EDITAR]",
+    "review": "Inovador na proposta e corajoso na execução. Merece reconhecimento.",
     "rating": 3.7
   },
 
   {
     "name": "Gta San Andreas",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Gta San Andreas]",
-    "review": "[EDITAR REVIEW DE Gta San Andreas]",
+    "type": "Luta",
+    "synopsis": "Resolva quebra-cabeças engenhosos enquanto descobre uma história cativante.",
+    "review": "O ritmo pode ser lento para alguns, mas a recompensa no final vale tudo.",
     "rating": 4.2
   },
 
   {
     "name": "Gunpoint",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Gunpoint]",
-    "review": "[EDITAR REVIEW DE Gunpoint]",
+    "type": "Estratégia",
+    "synopsis": "Construa, sobreviva e prospere em um ambiente hostil e em constante mudança.",
+    "review": "Inovador na proposta e corajoso na execução. Merece reconhecimento.",
     "rating": 3.5
   },
 
@@ -691,7 +691,7 @@
     "name": "Hades",
     "type": "Roguelike",
     "synopsis": "Fuja do submundo grego.",
-    "review": "Minha opiniao sobre Hades. [EDITAR]",
+    "review": "Um clássico moderno. Envelheceu bem e continua relevante.",
     "rating": 3.5
   },
 
@@ -699,55 +699,55 @@
     "name": "Half-Life 2",
     "type": "FPS",
     "synopsis": "Gordon Freeman luta contra a Alianca.",
-    "review": "Minha opiniao sobre Half-Life 2. [EDITAR]",
+    "review": "Bem produzido, com atuações convincentes e uma história que prende.",
     "rating": 3.2
   },
 
   {
     "name": "Halo 3",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Halo 3]",
-    "review": "[EDITAR REVIEW DE Halo 3]",
+    "type": "Estratégia",
+    "synopsis": "Descubra ruínas antigas, aprenda habilidades e derrote criaturas lendárias.",
+    "review": "O ritmo pode ser lento para alguns, mas a recompensa no final vale tudo.",
     "rating": 3.2
   },
 
   {
     "name": "Halo Infinite",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Halo Infinite]",
-    "review": "[EDITAR REVIEW DE Halo Infinite]",
+    "type": "Terror",
+    "synopsis": "Resolva quebra-cabeças engenhosos enquanto descobre uma história cativante.",
+    "review": "Divertido, bem escrito e com um elenco afiado. Ótimo entretenimento.",
     "rating": 3.5
   },
 
   {
     "name": "Hearthstone",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Hearthstone]",
-    "review": "[EDITAR REVIEW DE Hearthstone]",
+    "type": "Visual Novel",
+    "synopsis": "Domine mecânicas únicas e enfrente chefes poderosos em uma jornada épica.",
+    "review": "Divertido, bem escrito e com um elenco afiado. Ótimo entretenimento.",
     "rating": 4.0
   },
 
   {
     "name": "Hellblade",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Hellblade]",
-    "review": "[EDITAR REVIEW DE Hellblade]",
+    "type": "Plataforma",
+    "synopsis": "Teste sua estratégia em batalhas por turnos contra inimigos inteligentes.",
+    "review": "Divertido, bem escrito e com um elenco afiado. Ótimo entretenimento.",
     "rating": 3.9
   },
 
   {
     "name": "Heroes Of Might And Magic Iii",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Heroes Of Might And Magic Iii]",
-    "review": "[EDITAR REVIEW DE Heroes Of Might And Magic Iii]",
+    "type": "Racing",
+    "synopsis": "Gerencie recursos, construa bases e enfrente ameaças neste simulador imersivo.",
+    "review": "Não reinventa a roda, mas faz o que se propõe com maestria.",
     "rating": 4.0
   },
 
   {
     "name": "Hi Fi Rush",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Hi Fi Rush]",
-    "review": "[EDITAR REVIEW DE Hi Fi Rush]",
+    "type": "FPS",
+    "synopsis": "Corra, pule e desvie em plataformas precisas que testam seus reflexos.",
+    "review": "Me pegou desprevenido. Fui sem expectativas e saí impactado.",
     "rating": 4.1
   },
 
@@ -755,7 +755,7 @@
     "name": "Hollow Knight",
     "type": "Metroidvania",
     "synopsis": "Um cavaleiro explora as ruinas de um reino insectoide.",
-    "review": "Minha opiniao sobre Hollow Knight. [EDITAR]",
+    "review": "Não reinventa a roda, mas faz o que se propõe com maestria.",
     "rating": 4.5
   },
 
@@ -763,119 +763,119 @@
     "name": "Hotline Miami",
     "type": "Acao",
     "synopsis": "Violencia neon em um mundo dos anos 80.",
-    "review": "Minha opiniao sobre Hotline Miami. [EDITAR]",
+    "review": "Não é para todos os gostos, mas quem aprecia vai se apaixonar.",
     "rating": 3.0
   },
 
   {
     "name": "Hotline Miami 2",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Hotline Miami 2]",
-    "review": "[EDITAR REVIEW DE Hotline Miami 2]",
+    "type": "Plataforma",
+    "synopsis": "Descubra ruínas antigas, aprenda habilidades e derrote criaturas lendárias.",
+    "review": "O ritmo pode ser lento para alguns, mas a recompensa no final vale tudo.",
     "rating": 4.0
   },
 
   {
     "name": "Human Fall Flat",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Human Fall Flat]",
-    "review": "[EDITAR REVIEW DE Human Fall Flat]",
+    "type": "Terror",
+    "synopsis": "Uma narrativa profunda sobre escolhas, consequências e redenção.",
+    "review": "Simplesmente viciante. Maratonei em um final de semana e queria mais.",
     "rating": 4.6
   },
 
   {
     "name": "Hyper Light Drifter",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Hyper Light Drifter]",
-    "review": "[EDITAR REVIEW DE Hyper Light Drifter]",
+    "type": "Roguelike",
+    "synopsis": "Mergulhe em um universo pixelado cheio de charme, perigos e mistérios.",
+    "review": "Uma experiência marcante que fica na memória muito depois de terminar.",
     "rating": 4.9
   },
 
   {
     "name": "I Am Bread",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE I Am Bread]",
-    "review": "[EDITAR REVIEW DE I Am Bread]",
+    "type": "Sobrevivência",
+    "synopsis": "Liberte sua criatividade em um sandbox sem limites com infinitas possibilidades.",
+    "review": "Me pegou desprevenido. Fui sem expectativas e saí impactado.",
     "rating": 3.6
   },
 
   {
     "name": "Icewind Dale",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Icewind Dale]",
-    "review": "[EDITAR REVIEW DE Icewind Dale]",
+    "type": "FPS",
+    "synopsis": "Corra, pule e desvie em plataformas precisas que testam seus reflexos.",
+    "review": "Me pegou desprevenido. Fui sem expectativas e saí impactado.",
     "rating": 4.2
   },
 
   {
     "name": "Ico",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Ico]",
-    "review": "[EDITAR REVIEW DE Ico]",
+    "type": "Sandbox",
+    "synopsis": "Ação acelerada e combates intensos esperam por você neste título viciante.",
+    "review": "Tecnicamente impressionante e emocionalmente envolvente.",
     "rating": 3.0
   },
 
   {
     "name": "Iconoclasts",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Iconoclasts]",
-    "review": "[EDITAR REVIEW DE Iconoclasts]",
+    "type": "Luta",
+    "synopsis": "Gerencie recursos, construa bases e enfrente ameaças neste simulador imersivo.",
+    "review": "Começa morno, mas quando engrena não para mais. Final surpreendente.",
     "rating": 3.1
   },
 
   {
     "name": "Immortality",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Immortality]",
-    "review": "[EDITAR REVIEW DE Immortality]",
+    "type": "Party",
+    "synopsis": "Um jogo de ritmo acelerado que combina música, ação e estilo visual único.",
+    "review": "Bem produzido, com atuações convincentes e uma história que prende.",
     "rating": 3.5
   },
 
   {
     "name": "In Stars And Time",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE In Stars And Time]",
-    "review": "[EDITAR REVIEW DE In Stars And Time]",
+    "type": "Party",
+    "synopsis": "Descubra ruínas antigas, aprenda habilidades e derrote criaturas lendárias.",
+    "review": "Não é para todos os gostos, mas quem aprecia vai se apaixonar.",
     "rating": 4.2
   },
 
   {
     "name": "Incredipede",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Incredipede]",
-    "review": "[EDITAR REVIEW DE Incredipede]",
+    "type": "Simulação",
+    "synopsis": "Explore um vasto mundo repleto de segredos, inimigos e missões desafiadoras.",
+    "review": "Poderia ser melhor, mas cumpre o que promete. Mediano para cima.",
     "rating": 3.1
   },
 
   {
     "name": "Indiana Jones And The Fate Of Atlantis",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Indiana Jones And The Fate Of Atlantis]",
-    "review": "[EDITAR REVIEW DE Indiana Jones And The Fate Of Atlantis]",
+    "type": "Sandbox",
+    "synopsis": "Explore um vasto mundo repleto de segredos, inimigos e missões desafiadoras.",
+    "review": "Inovador na proposta e corajoso na execução. Merece reconhecimento.",
     "rating": 4.2
   },
 
   {
     "name": "Infamous",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Infamous]",
-    "review": "[EDITAR REVIEW DE Infamous]",
+    "type": "Ação",
+    "synopsis": "Teste sua estratégia em batalhas por turnos contra inimigos inteligentes.",
+    "review": "Inovador na proposta e corajoso na execução. Merece reconhecimento.",
     "rating": 4.9
   },
 
   {
     "name": "Ink",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Ink]",
-    "review": "[EDITAR REVIEW DE Ink]",
+    "type": "Puzzle",
+    "synopsis": "Gerencie recursos, construa bases e enfrente ameaças neste simulador imersivo.",
+    "review": "Uma obra que cresce com o tempo. A cada revisão, novas camadas se revelam.",
     "rating": 3.8
   },
 
   {
     "name": "Inscryption",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Inscryption]",
-    "review": "[EDITAR REVIEW DE Inscryption]",
+    "type": "Luta",
+    "synopsis": "Um jogo de ritmo acelerado que combina música, ação e estilo visual único.",
+    "review": "Divertido, bem escrito e com um elenco afiado. Ótimo entretenimento.",
     "rating": 4.3
   },
 
@@ -883,55 +883,55 @@
     "name": "Inside",
     "type": "Puzzle",
     "synopsis": "Um garoto foge por um mundo sombrio.",
-    "review": "Minha opiniao sobre Inside. [EDITAR]",
+    "review": "Uma obra que cresce com o tempo. A cada revisão, novas camadas se revelam.",
     "rating": 3.0
   },
 
   {
     "name": "Insurgency",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Insurgency]",
-    "review": "[EDITAR REVIEW DE Insurgency]",
+    "type": "Plataforma",
+    "synopsis": "Corra, pule e desvie em plataformas precisas que testam seus reflexos.",
+    "review": "Bem produzido, com atuações convincentes e uma história que prende.",
     "rating": 3.1
   },
 
   {
     "name": "Into The Breach",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Into The Breach]",
-    "review": "[EDITAR REVIEW DE Into The Breach]",
+    "type": "Estratégia",
+    "synopsis": "Um jogo de ritmo acelerado que combina música, ação e estilo visual único.",
+    "review": "Uma experiência marcante que fica na memória muito depois de terminar.",
     "rating": 4.5
   },
 
   {
     "name": "Invisible Inc",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Invisible Inc]",
-    "review": "[EDITAR REVIEW DE Invisible Inc]",
+    "type": "Ação",
+    "synopsis": "Explore um vasto mundo repleto de segredos, inimigos e missões desafiadoras.",
+    "review": "Tem seus defeitos, mas no geral é uma obra sólida e bem intencionada.",
     "rating": 3.8
   },
 
   {
     "name": "Jak And Daxter",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Jak And Daxter]",
-    "review": "[EDITAR REVIEW DE Jak And Daxter]",
+    "type": "Mundo Aberto",
+    "synopsis": "Resolva quebra-cabeças engenhosos enquanto descobre uma história cativante.",
+    "review": "Simplesmente viciante. Maratonei em um final de semana e queria mais.",
     "rating": 4.7
   },
 
   {
     "name": "Jazzpunk",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Jazzpunk]",
-    "review": "[EDITAR REVIEW DE Jazzpunk]",
+    "type": "Sandbox",
+    "synopsis": "Descubra ruínas antigas, aprenda habilidades e derrote criaturas lendárias.",
+    "review": "Apesar de não ser perfeito, tem momentos brilhantes que valem a pena.",
     "rating": 3.1
   },
 
   {
     "name": "Jet Set Radio",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Jet Set Radio]",
-    "review": "[EDITAR REVIEW DE Jet Set Radio]",
+    "type": "Sobrevivência",
+    "synopsis": "Um jogo de ritmo acelerado que combina música, ação e estilo visual único.",
+    "review": "Não é para todos os gostos, mas quem aprecia vai se apaixonar.",
     "rating": 4.8
   },
 
@@ -939,31 +939,31 @@
     "name": "Journey",
     "type": "Aventura",
     "synopsis": "Atravesse um deserto em direcao a uma montanha.",
-    "review": "Minha opiniao sobre Journey. [EDITAR]",
+    "review": "Inovador na proposta e corajoso na execução. Merece reconhecimento.",
     "rating": 4.1
   },
 
   {
     "name": "Jump King",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Jump King]",
-    "review": "[EDITAR REVIEW DE Jump King]",
+    "type": "Party",
+    "synopsis": "Descubra ruínas antigas, aprenda habilidades e derrote criaturas lendárias.",
+    "review": "Me surpreendeu positivamente. Não esperava tanto, mas entregou demais.",
     "rating": 4.0
   },
 
   {
     "name": "Just Cause 3",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Just Cause 3]",
-    "review": "[EDITAR REVIEW DE Just Cause 3]",
+    "type": "Luta",
+    "synopsis": "Explore um vasto mundo repleto de segredos, inimigos e missões desafiadoras.",
+    "review": "Bem produzido, com atuações convincentes e uma história que prende.",
     "rating": 3.5
   },
 
   {
     "name": "Katamari Damacy",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Katamari Damacy]",
-    "review": "[EDITAR REVIEW DE Katamari Damacy]",
+    "type": "Ação",
+    "synopsis": "Resolva quebra-cabeças engenhosos enquanto descobre uma história cativante.",
+    "review": "Ambicioso e maior parte do tempo acerta. Alguns deslizes, mas nada que estrague.",
     "rating": 3.0
   },
 
@@ -971,47 +971,47 @@
     "name": "Katana Zero",
     "type": "Acao",
     "synopsis": "Um samurai com controle do tempo.",
-    "review": "Minha opiniao sobre Katana Zero. [EDITAR]",
+    "review": "Divertido, bem escrito e com um elenco afiado. Ótimo entretenimento.",
     "rating": 4.4
   },
 
   {
     "name": "Kentucky Route Zero",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Kentucky Route Zero]",
-    "review": "[EDITAR REVIEW DE Kentucky Route Zero]",
+    "type": "Racing",
+    "synopsis": "Explore um vasto mundo repleto de segredos, inimigos e missões desafiadoras.",
+    "review": "Bem produzido, com atuações convincentes e uma história que prende.",
     "rating": 3.5
   },
 
   {
     "name": "Kerbal Space Program",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Kerbal Space Program]",
-    "review": "[EDITAR REVIEW DE Kerbal Space Program]",
+    "type": "Ação",
+    "synopsis": "Acompanhe uma história emocionante com personagens marcantes e reviravoltas.",
+    "review": "Tecnicamente impressionante e emocionalmente envolvente.",
     "rating": 3.7
   },
 
   {
     "name": "Killer7",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Killer7]",
-    "review": "[EDITAR REVIEW DE Killer7]",
+    "type": "Roguelike",
+    "synopsis": "Construa, sobreviva e prospere em um ambiente hostil e em constante mudança.",
+    "review": "Um clássico moderno. Envelheceu bem e continua relevante.",
     "rating": 3.0
   },
 
   {
     "name": "Kingdom Come Deliverance",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Kingdom Come Deliverance]",
-    "review": "[EDITAR REVIEW DE Kingdom Come Deliverance]",
+    "type": "Luta",
+    "synopsis": "Domine mecânicas únicas e enfrente chefes poderosos em uma jornada épica.",
+    "review": "Uma experiência marcante que fica na memória muito depois de terminar.",
     "rating": 3.6
   },
 
   {
     "name": "Kingdom Hearts",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Kingdom Hearts]",
-    "review": "[EDITAR REVIEW DE Kingdom Hearts]",
+    "type": "Aventura",
+    "synopsis": "Ação acelerada e combates intensos esperam por você neste título viciante.",
+    "review": "Inovador na proposta e corajoso na execução. Merece reconhecimento.",
     "rating": 3.0
   },
 
@@ -1019,47 +1019,47 @@
     "name": "Kingdom Hearts II",
     "type": "RPG",
     "synopsis": "Sora viaja por mundos da Disney.",
-    "review": "Minha opiniao sobre Kingdom Hearts II. [EDITAR]",
+    "review": "O ritmo pode ser lento para alguns, mas a recompensa no final vale tudo.",
     "rating": 4.4
   },
 
   {
     "name": "Kirby Super Star",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Kirby Super Star]",
-    "review": "[EDITAR REVIEW DE Kirby Super Star]",
+    "type": "Metroidvania",
+    "synopsis": "Um jogo de ritmo acelerado que combina música, ação e estilo visual único.",
+    "review": "Me surpreendeu positivamente. Não esperava tanto, mas entregou demais.",
     "rating": 4.9
   },
 
   {
     "name": "Klonoa",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Klonoa]",
-    "review": "[EDITAR REVIEW DE Klonoa]",
+    "type": "Aventura",
+    "synopsis": "Mergulhe em um universo pixelado cheio de charme, perigos e mistérios.",
+    "review": "Tem seus defeitos, mas no geral é uma obra sólida e bem intencionada.",
     "rating": 4.2
   },
 
   {
     "name": "L.A. Noire",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE L.A. Noire]",
-    "review": "[EDITAR REVIEW DE L.A. Noire]",
+    "type": "Roguelike",
+    "synopsis": "Um RPG com sistema de combate tático e um mundo rico para explorar.",
+    "review": "Ambicioso e maior parte do tempo acerta. Alguns deslizes, mas nada que estrague.",
     "rating": 4.4
   },
 
   {
     "name": "Last Day Of June",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Last Day Of June]",
-    "review": "[EDITAR REVIEW DE Last Day Of June]",
+    "type": "Sandbox",
+    "synopsis": "Mergulhe em um universo pixelado cheio de charme, perigos e mistérios.",
+    "review": "Bem produzido, com atuações convincentes e uma história que prende.",
     "rating": 4.2
   },
 
   {
     "name": "Le Mans Ultimate",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Le Mans Ultimate]",
-    "review": "[EDITAR REVIEW DE Le Mans Ultimate]",
+    "type": "Roguelike",
+    "synopsis": "Ação acelerada e combates intensos esperam por você neste título viciante.",
+    "review": "Apesar de não ser perfeito, tem momentos brilhantes que valem a pena.",
     "rating": 4.9
   },
 
@@ -1067,15 +1067,15 @@
     "name": "Left 4 Dead 2",
     "type": "FPS",
     "synopsis": "Sobreviva a um apocalipse zumbi.",
-    "review": "Minha opiniao sobre Left 4 Dead 2. [EDITAR]",
+    "review": "O ritmo pode ser lento para alguns, mas a recompensa no final vale tudo.",
     "rating": 3.5
   },
 
   {
     "name": "Lego Star Wars",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Lego Star Wars]",
-    "review": "[EDITAR REVIEW DE Lego Star Wars]",
+    "type": "Mundo Aberto",
+    "synopsis": "Teste sua estratégia em batalhas por turnos contra inimigos inteligentes.",
+    "review": "Um clássico moderno. Envelheceu bem e continua relevante.",
     "rating": 3.4
   },
 
@@ -1083,23 +1083,23 @@
     "name": "Life is Strange",
     "type": "Aventura",
     "synopsis": "Uma fotografia descobre que pode voltar no tempo.",
-    "review": "Minha opiniao sobre Life is Strange. [EDITAR]",
+    "review": "Um clássico moderno. Envelheceu bem e continua relevante.",
     "rating": 3.4
   },
 
   {
     "name": "Limbo",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Limbo]",
-    "review": "[EDITAR REVIEW DE Limbo]",
+    "type": "Plataforma",
+    "synopsis": "Uma narrativa profunda sobre escolhas, consequências e redenção.",
+    "review": "Ambicioso e maior parte do tempo acerta. Alguns deslizes, mas nada que estrague.",
     "rating": 3.1
   },
 
   {
     "name": "Little Big Planet",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Little Big Planet]",
-    "review": "[EDITAR REVIEW DE Little Big Planet]",
+    "type": "Sandbox",
+    "synopsis": "Construa, sobreviva e prospere em um ambiente hostil e em constante mudança.",
+    "review": "Simplesmente viciante. Maratonei em um final de semana e queria mais.",
     "rating": 4.2
   },
 
@@ -1107,143 +1107,143 @@
     "name": "Little Nightmares",
     "type": "Terror",
     "synopsis": "Fuja de um navio habitado por criaturas grotescas.",
-    "review": "Minha opiniao sobre Little Nightmares. [EDITAR]",
+    "review": "Simplesmente viciante. Maratonei em um final de semana e queria mais.",
     "rating": 3.0
   },
 
   {
     "name": "Little Nightmares 2",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Little Nightmares 2]",
-    "review": "[EDITAR REVIEW DE Little Nightmares 2]",
+    "type": "Luta",
+    "synopsis": "Liberte sua criatividade em um sandbox sem limites com infinitas possibilidades.",
+    "review": "Inovador na proposta e corajoso na execução. Merece reconhecimento.",
     "rating": 4.8
   },
 
   {
     "name": "Lode Runner",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Lode Runner]",
-    "review": "[EDITAR REVIEW DE Lode Runner]",
+    "type": "Sobrevivência",
+    "synopsis": "Gerencie recursos, construa bases e enfrente ameaças neste simulador imersivo.",
+    "review": "O ritmo pode ser lento para alguns, mas a recompensa no final vale tudo.",
     "rating": 3.7
   },
 
   {
     "name": "Lone Echo",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Lone Echo]",
-    "review": "[EDITAR REVIEW DE Lone Echo]",
+    "type": "Racing",
+    "synopsis": "Um jogo de ritmo acelerado que combina música, ação e estilo visual único.",
+    "review": "Divertido e bem executado. Recomendo para quem gosta do gênero.",
     "rating": 4.0
   },
 
   {
     "name": "Long Dark",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Long Dark]",
-    "review": "[EDITAR REVIEW DE Long Dark]",
+    "type": "Aventura",
+    "synopsis": "Ação acelerada e combates intensos esperam por você neste título viciante.",
+    "review": "Uma obra que cresce com o tempo. A cada revisão, novas camadas se revelam.",
     "rating": 4.3
   },
 
   {
     "name": "Lost Ark",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Lost Ark]",
-    "review": "[EDITAR REVIEW DE Lost Ark]",
+    "type": "Plataforma",
+    "synopsis": "Ação acelerada e combates intensos esperam por você neste título viciante.",
+    "review": "Me pegou desprevenido. Fui sem expectativas e saí impactado.",
     "rating": 3.1
   },
 
   {
     "name": "Lost Judgment",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Lost Judgment]",
-    "review": "[EDITAR REVIEW DE Lost Judgment]",
+    "type": "FPS",
+    "synopsis": "Gerencie recursos, construa bases e enfrente ameaças neste simulador imersivo.",
+    "review": "Inovador na proposta e corajoso na execução. Merece reconhecimento.",
     "rating": 4.0
   },
 
   {
     "name": "Lovers In A Dangerous Spacetime",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Lovers In A Dangerous Spacetime]",
-    "review": "[EDITAR REVIEW DE Lovers In A Dangerous Spacetime]",
+    "type": "Sandbox",
+    "synopsis": "Mergulhe em um universo pixelado cheio de charme, perigos e mistérios.",
+    "review": "Divertido, bem escrito e com um elenco afiado. Ótimo entretenimento.",
     "rating": 3.9
   },
 
   {
     "name": "Luigis Mansion 3",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Luigis Mansion 3]",
-    "review": "[EDITAR REVIEW DE Luigis Mansion 3]",
+    "type": "Estratégia",
+    "synopsis": "Um jogo de ritmo acelerado que combina música, ação e estilo visual único.",
+    "review": "Uma experiência marcante que fica na memória muito depois de terminar.",
     "rating": 3.7
   },
 
   {
     "name": "Machinarium",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Machinarium]",
-    "review": "[EDITAR REVIEW DE Machinarium]",
+    "type": "FPS",
+    "synopsis": "Construa, sobreviva e prospere em um ambiente hostil e em constante mudança.",
+    "review": "Divertido e bem executado. Recomendo para quem gosta do gênero.",
     "rating": 3.5
   },
 
   {
     "name": "Mad Max",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Mad Max]",
-    "review": "[EDITAR REVIEW DE Mad Max]",
+    "type": "Aventura",
+    "synopsis": "Ação acelerada e combates intensos esperam por você neste título viciante.",
+    "review": "Não é para todos os gostos, mas quem aprecia vai se apaixonar.",
     "rating": 3.2
   },
 
   {
     "name": "Mafia",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Mafia]",
-    "review": "[EDITAR REVIEW DE Mafia]",
+    "type": "RPG",
+    "synopsis": "Explore um vasto mundo repleto de segredos, inimigos e missões desafiadoras.",
+    "review": "Divertido e bem executado. Recomendo para quem gosta do gênero.",
     "rating": 3.9
   },
 
   {
     "name": "Magic Carpet",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Magic Carpet]",
-    "review": "[EDITAR REVIEW DE Magic Carpet]",
+    "type": "Visual Novel",
+    "synopsis": "Descubra ruínas antigas, aprenda habilidades e derrote criaturas lendárias.",
+    "review": "Ambicioso e maior parte do tempo acerta. Alguns deslizes, mas nada que estrague.",
     "rating": 3.1
   },
 
   {
     "name": "Maneater",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Maneater]",
-    "review": "[EDITAR REVIEW DE Maneater]",
+    "type": "Sandbox",
+    "synopsis": "Mergulhe em um universo pixelado cheio de charme, perigos e mistérios.",
+    "review": "O ritmo pode ser lento para alguns, mas a recompensa no final vale tudo.",
     "rating": 3.9
   },
 
   {
     "name": "Marble It Up",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Marble It Up]",
-    "review": "[EDITAR REVIEW DE Marble It Up]",
+    "type": "Sandbox",
+    "synopsis": "Teste sua estratégia em batalhas por turnos contra inimigos inteligentes.",
+    "review": "Apesar de não ser perfeito, tem momentos brilhantes que valem a pena.",
     "rating": 3.3
   },
 
   {
     "name": "Marvels Guardians Of The Galaxy",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Marvels Guardians Of The Galaxy]",
-    "review": "[EDITAR REVIEW DE Marvels Guardians Of The Galaxy]",
+    "type": "Mundo Aberto",
+    "synopsis": "Explore um vasto mundo repleto de segredos, inimigos e missões desafiadoras.",
+    "review": "Uma montanha-russa emocional. Ri, chorei e refleti. Recomendo de olhos fechados.",
     "rating": 4.0
   },
 
   {
     "name": "Marvels Midnight Suns",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Marvels Midnight Suns]",
-    "review": "[EDITAR REVIEW DE Marvels Midnight Suns]",
+    "type": "Sobrevivência",
+    "synopsis": "Mergulhe em um universo pixelado cheio de charme, perigos e mistérios.",
+    "review": "Uma experiência marcante que fica na memória muito depois de terminar.",
     "rating": 3.0
   },
 
   {
     "name": "Mass Effect",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Mass Effect]",
-    "review": "[EDITAR REVIEW DE Mass Effect]",
+    "type": "Metroidvania",
+    "synopsis": "Mergulhe em um universo pixelado cheio de charme, perigos e mistérios.",
+    "review": "Uma experiência marcante que fica na memória muito depois de terminar.",
     "rating": 3.5
   },
 
@@ -1251,111 +1251,111 @@
     "name": "Mass Effect 2",
     "type": "RPG",
     "synopsis": "Comandante Shepard reune uma equipe para uma missao suicida.",
-    "review": "Minha opiniao sobre Mass Effect 2. [EDITAR]",
+    "review": "Divertido, bem escrito e com um elenco afiado. Ótimo entretenimento.",
     "rating": 4.1
   },
 
   {
     "name": "Mass Effect 3",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Mass Effect 3]",
-    "review": "[EDITAR REVIEW DE Mass Effect 3]",
+    "type": "Mundo Aberto",
+    "synopsis": "Liberte sua criatividade em um sandbox sem limites com infinitas possibilidades.",
+    "review": "Um clássico moderno. Envelheceu bem e continua relevante.",
     "rating": 3.5
   },
 
   {
     "name": "Master Blaster",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Master Blaster]",
-    "review": "[EDITAR REVIEW DE Master Blaster]",
+    "type": "Puzzle",
+    "synopsis": "Construa, sobreviva e prospere em um ambiente hostil e em constante mudança.",
+    "review": "Uma montanha-russa emocional. Ri, chorei e refleti. Recomendo de olhos fechados.",
     "rating": 3.3
   },
 
   {
     "name": "Max Payne",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Max Payne]",
-    "review": "[EDITAR REVIEW DE Max Payne]",
+    "type": "Plataforma",
+    "synopsis": "Acompanhe uma história emocionante com personagens marcantes e reviravoltas.",
+    "review": "Apesar de não ser perfeito, tem momentos brilhantes que valem a pena.",
     "rating": 4.5
   },
 
   {
     "name": "Max Payne 2",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Max Payne 2]",
-    "review": "[EDITAR REVIEW DE Max Payne 2]",
+    "type": "Aventura",
+    "synopsis": "Teste sua estratégia em batalhas por turnos contra inimigos inteligentes.",
+    "review": "Bem produzido, com atuações convincentes e uma história que prende.",
     "rating": 3.0
   },
 
   {
     "name": "Medal Of Honor",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Medal Of Honor]",
-    "review": "[EDITAR REVIEW DE Medal Of Honor]",
+    "type": "Sandbox",
+    "synopsis": "Resolva quebra-cabeças engenhosos enquanto descobre uma história cativante.",
+    "review": "Me pegou desprevenido. Fui sem expectativas e saí impactado.",
     "rating": 4.6
   },
 
   {
     "name": "Megaman 11",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Megaman 11]",
-    "review": "[EDITAR REVIEW DE Megaman 11]",
+    "type": "Mundo Aberto",
+    "synopsis": "Acompanhe uma história emocionante com personagens marcantes e reviravoltas.",
+    "review": "Um clássico moderno. Envelheceu bem e continua relevante.",
     "rating": 4.1
   },
 
   {
     "name": "Megaman X",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Megaman X]",
-    "review": "[EDITAR REVIEW DE Megaman X]",
+    "type": "RPG",
+    "synopsis": "Um jogo de ritmo acelerado que combina música, ação e estilo visual único.",
+    "review": "Um clássico moderno. Envelheceu bem e continua relevante.",
     "rating": 3.7
   },
 
   {
     "name": "Metal Gear Rising",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Metal Gear Rising]",
-    "review": "[EDITAR REVIEW DE Metal Gear Rising]",
+    "type": "Metroidvania",
+    "synopsis": "Ação acelerada e combates intensos esperam por você neste título viciante.",
+    "review": "Não é para todos os gostos, mas quem aprecia vai se apaixonar.",
     "rating": 4.8
   },
 
   {
     "name": "Metal Gear Solid 3",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Metal Gear Solid 3]",
-    "review": "[EDITAR REVIEW DE Metal Gear Solid 3]",
+    "type": "Visual Novel",
+    "synopsis": "Uma narrativa profunda sobre escolhas, consequências e redenção.",
+    "review": "Inovador na proposta e corajoso na execução. Merece reconhecimento.",
     "rating": 4.5
   },
 
   {
     "name": "Metroid Dread",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Metroid Dread]",
-    "review": "[EDITAR REVIEW DE Metroid Dread]",
+    "type": "Simulação",
+    "synopsis": "Um RPG com sistema de combate tático e um mundo rico para explorar.",
+    "review": "Uma experiência marcante que fica na memória muito depois de terminar.",
     "rating": 3.5
   },
 
   {
     "name": "Metroid Prime",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Metroid Prime]",
-    "review": "[EDITAR REVIEW DE Metroid Prime]",
+    "type": "Puzzle",
+    "synopsis": "Domine mecânicas únicas e enfrente chefes poderosos em uma jornada épica.",
+    "review": "Me surpreendeu positivamente. Não esperava tanto, mas entregou demais.",
     "rating": 3.0
   },
 
   {
     "name": "Midnight Fight Express",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Midnight Fight Express]",
-    "review": "[EDITAR REVIEW DE Midnight Fight Express]",
+    "type": "Metroidvania",
+    "synopsis": "Resolva quebra-cabeças engenhosos enquanto descobre uma história cativante.",
+    "review": "Uma montanha-russa emocional. Ri, chorei e refleti. Recomendo de olhos fechados.",
     "rating": 3.0
   },
 
   {
     "name": "Miles Morales",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Miles Morales]",
-    "review": "[EDITAR REVIEW DE Miles Morales]",
+    "type": "Mundo Aberto",
+    "synopsis": "Acompanhe uma história emocionante com personagens marcantes e reviravoltas.",
+    "review": "Apesar de não ser perfeito, tem momentos brilhantes que valem a pena.",
     "rating": 4.6
   },
 
@@ -1363,55 +1363,55 @@
     "name": "Minecraft",
     "type": "Sandbox",
     "synopsis": "Construa, explore e sobreviva em um mundo de blocos.",
-    "review": "Minha opiniao sobre Minecraft. [EDITAR]",
+    "review": "Divertido, bem escrito e com um elenco afiado. Ótimo entretenimento.",
     "rating": 3.9
   },
 
   {
     "name": "Mirror Edge",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Mirror Edge]",
-    "review": "[EDITAR REVIEW DE Mirror Edge]",
+    "type": "Aventura",
+    "synopsis": "Gerencie recursos, construa bases e enfrente ameaças neste simulador imersivo.",
+    "review": "Simplesmente viciante. Maratonei em um final de semana e queria mais.",
     "rating": 3.7
   },
 
   {
     "name": "Monkey Island",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Monkey Island]",
-    "review": "[EDITAR REVIEW DE Monkey Island]",
+    "type": "FPS",
+    "synopsis": "Liberte sua criatividade em um sandbox sem limites com infinitas possibilidades.",
+    "review": "Apesar de não ser perfeito, tem momentos brilhantes que valem a pena.",
     "rating": 4.6
   },
 
   {
     "name": "Monster Hunter World",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Monster Hunter World]",
-    "review": "[EDITAR REVIEW DE Monster Hunter World]",
+    "type": "Estratégia",
+    "synopsis": "Teste sua estratégia em batalhas por turnos contra inimigos inteligentes.",
+    "review": "Não reinventa a roda, mas faz o que se propõe com maestria.",
     "rating": 4.8
   },
 
   {
     "name": "Monument Valley",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Monument Valley]",
-    "review": "[EDITAR REVIEW DE Monument Valley]",
+    "type": "Mundo Aberto",
+    "synopsis": "Um RPG com sistema de combate tático e um mundo rico para explorar.",
+    "review": "Divertido e bem executado. Recomendo para quem gosta do gênero.",
     "rating": 3.5
   },
 
   {
     "name": "Mortal Kombat 11",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Mortal Kombat 11]",
-    "review": "[EDITAR REVIEW DE Mortal Kombat 11]",
+    "type": "Racing",
+    "synopsis": "Construa, sobreviva e prospere em um ambiente hostil e em constante mudança.",
+    "review": "Tem seus defeitos, mas no geral é uma obra sólida e bem intencionada.",
     "rating": 4.0
   },
 
   {
     "name": "Moss",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Moss]",
-    "review": "[EDITAR REVIEW DE Moss]",
+    "type": "FPS",
+    "synopsis": "Ação acelerada e combates intensos esperam por você neste título viciante.",
+    "review": "Divertido, bem escrito e com um elenco afiado. Ótimo entretenimento.",
     "rating": 4.2
   },
 
@@ -1419,47 +1419,47 @@
     "name": "Mother 3",
     "type": "RPG",
     "synopsis": "Uma familia enfrenta uma corporacao maligna.",
-    "review": "Minha opiniao sobre Mother 3. [EDITAR]",
+    "review": "Uma montanha-russa emocional. Ri, chorei e refleti. Recomendo de olhos fechados.",
     "rating": 3.7
   },
 
   {
     "name": "Mulaka",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Mulaka]",
-    "review": "[EDITAR REVIEW DE Mulaka]",
+    "type": "Roguelike",
+    "synopsis": "Teste sua estratégia em batalhas por turnos contra inimigos inteligentes.",
+    "review": "Uma obra que cresce com o tempo. A cada revisão, novas camadas se revelam.",
     "rating": 3.0
   },
 
   {
     "name": "Muppets Treasure",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Muppets Treasure]",
-    "review": "[EDITAR REVIEW DE Muppets Treasure]",
+    "type": "Terror",
+    "synopsis": "Uma narrativa profunda sobre escolhas, consequências e redenção.",
+    "review": "Simplesmente viciante. Maratonei em um final de semana e queria mais.",
     "rating": 3.1
   },
 
   {
     "name": "Mx Vs Atv",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Mx Vs Atv]",
-    "review": "[EDITAR REVIEW DE Mx Vs Atv]",
+    "type": "Ação",
+    "synopsis": "Corra, pule e desvie em plataformas precisas que testam seus reflexos.",
+    "review": "Não reinventa a roda, mas faz o que se propõe com maestria.",
     "rating": 3.2
   },
 
   {
     "name": "My Friend Pedro",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE My Friend Pedro]",
-    "review": "[EDITAR REVIEW DE My Friend Pedro]",
+    "type": "Sandbox",
+    "synopsis": "Construa, sobreviva e prospere em um ambiente hostil e em constante mudança.",
+    "review": "Ambicioso e maior parte do tempo acerta. Alguns deslizes, mas nada que estrague.",
     "rating": 4.9
   },
 
   {
     "name": "Myst",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Myst]",
-    "review": "[EDITAR REVIEW DE Myst]",
+    "type": "RPG",
+    "synopsis": "Ação acelerada e combates intensos esperam por você neste título viciante.",
+    "review": "Poderia ser melhor, mas cumpre o que promete. Mediano para cima.",
     "rating": 3.5
   },
 
@@ -1467,7 +1467,7 @@
     "name": "Neon Genesis Evangelion",
     "type": "Acao",
     "synopsis": "Pilote um Eva para proteger a humanidade.",
-    "review": "Minha opiniao sobre Neon Genesis Evangelion. [EDITAR]",
+    "review": "Ambicioso e maior parte do tempo acerta. Alguns deslizes, mas nada que estrague.",
     "rating": 3.9
   },
 
@@ -1475,7 +1475,7 @@
     "name": "NieR: Automata",
     "type": "RPG",
     "synopsis": "Androides lutam por um futuro incerto.",
-    "review": "Minha opiniao sobre NieR: Automata. [EDITAR]",
+    "review": "Uma experiência marcante que fica na memória muito depois de terminar.",
     "rating": 4.4
   },
 
@@ -1483,7 +1483,7 @@
     "name": "Omori",
     "type": "RPG",
     "synopsis": "Enfrente seus demonios internos em um mundo onírico.",
-    "review": "Minha opiniao sobre Omori. [EDITAR]",
+    "review": "Apesar de não ser perfeito, tem momentos brilhantes que valem a pena.",
     "rating": 4.2
   },
 
@@ -1491,7 +1491,7 @@
     "name": "Ori and the Blind Forest",
     "type": "Plataforma",
     "synopsis": "Um pequeno espirito salva sua floresta.",
-    "review": "Minha opiniao sobre Ori and the Blind Forest. [EDITAR]",
+    "review": "Tem seus defeitos, mas no geral é uma obra sólida e bem intencionada.",
     "rating": 3.7
   },
 
@@ -1499,7 +1499,7 @@
     "name": "Outer Wilds",
     "type": "Exploracao",
     "synopsis": "Explore um sistema solar preso em um loop temporal.",
-    "review": "Minha opiniao sobre Outer Wilds. [EDITAR]",
+    "review": "Simplesmente viciante. Maratonei em um final de semana e queria mais.",
     "rating": 3.8
   },
 
@@ -1507,7 +1507,7 @@
     "name": "Persona 5 Royal",
     "type": "RPG",
     "synopsis": "Ladroes fantasma mudam os coracoes dos corruptos.",
-    "review": "Minha opiniao sobre Persona 5 Royal. [EDITAR]",
+    "review": "Divertido e bem executado. Recomendo para quem gosta do gênero.",
     "rating": 3.4
   },
 
@@ -1515,7 +1515,7 @@
     "name": "Portal 2",
     "type": "Puzzle",
     "synopsis": "Resolva quebra-cabecas com a portal gun.",
-    "review": "Minha opiniao sobre Portal 2. [EDITAR]",
+    "review": "Poderia ser melhor, mas cumpre o que promete. Mediano para cima.",
     "rating": 3.2
   },
 
@@ -1523,7 +1523,7 @@
     "name": "Psychonauts",
     "type": "Acao",
     "synopsis": "Entre nas mentes de personagens bizarros.",
-    "review": "Minha opiniao sobre Psychonauts. [EDITAR]",
+    "review": "O ritmo pode ser lento para alguns, mas a recompensa no final vale tudo.",
     "rating": 3.5
   },
 
@@ -1531,7 +1531,7 @@
     "name": "Rain World",
     "type": "Sobrevivencia",
     "synopsis": "Sobreviva em um ecossistema hostil.",
-    "review": "Minha opiniao sobre Rain World. [EDITAR]",
+    "review": "Ambicioso e maior parte do tempo acerta. Alguns deslizes, mas nada que estrague.",
     "rating": 3.4
   },
 
@@ -1539,7 +1539,7 @@
     "name": "Red Dead Redemption 2",
     "type": "Acao",
     "synopsis": "Arthur Morgan vive o fim do Velho Oeste.",
-    "review": "Minha opiniao sobre Red Dead Redemption 2. [EDITAR]",
+    "review": "Não é para todos os gostos, mas quem aprecia vai se apaixonar.",
     "rating": 4.4
   },
 
@@ -1547,7 +1547,7 @@
     "name": "Resident Evil 4",
     "type": "Terror",
     "synopsis": "Leon S. Kennedy resgata a filha do presidente.",
-    "review": "Minha opiniao sobre Resident Evil 4. [EDITAR]",
+    "review": "Tecnicamente impressionante e emocionalmente envolvente.",
     "rating": 3.7
   },
 
@@ -1555,7 +1555,7 @@
     "name": "Return of the Obra Dinn",
     "type": "Investigacao",
     "synopsis": "Descubra o que aconteceu em um navio fantasma.",
-    "review": "Minha opiniao sobre Return of the Obra Dinn. [EDITAR]",
+    "review": "Tem seus defeitos, mas no geral é uma obra sólida e bem intencionada.",
     "rating": 4.8
   },
 
@@ -1563,7 +1563,7 @@
     "name": "Sekiro: Shadows Die Twice",
     "type": "Acao",
     "synopsis": "Um shinobi busca vinganca no Japao feudal.",
-    "review": "Minha opiniao sobre Sekiro: Shadows Die Twice. [EDITAR]",
+    "review": "Começa morno, mas quando engrena não para mais. Final surpreendente.",
     "rating": 3.4
   },
 
@@ -1571,7 +1571,7 @@
     "name": "Shadow of the Colossus",
     "type": "Aventura",
     "synopsis": "Derrube colossos em um mundo desolado.",
-    "review": "Minha opiniao sobre Shadow of the Colossus. [EDITAR]",
+    "review": "Não reinventa a roda, mas faz o que se propõe com maestria.",
     "rating": 4.7
   },
 
@@ -1579,7 +1579,7 @@
     "name": "Silent Hill 2",
     "type": "Terror",
     "synopsis": "James Sunderland busca sua esposa falecida.",
-    "review": "Minha opiniao sobre Silent Hill 2. [EDITAR]",
+    "review": "Ambicioso e maior parte do tempo acerta. Alguns deslizes, mas nada que estrague.",
     "rating": 3.6
   },
 
@@ -1587,7 +1587,7 @@
     "name": "Spelunky 2",
     "type": "Roguelike",
     "synopsis": "Explore cavernas geradas proceduralmente.",
-    "review": "Minha opiniao sobre Spelunky 2. [EDITAR]",
+    "review": "Poderia ser melhor, mas cumpre o que promete. Mediano para cima.",
     "rating": 4.4
   },
 
@@ -1595,7 +1595,7 @@
     "name": "Stardew Valley",
     "type": "Simulacao",
     "synopsis": "Viva uma vida pacata na fazenda do seu avo.",
-    "review": "Minha opiniao sobre Stardew Valley. [EDITAR]",
+    "review": "Bem produzido, com atuações convincentes e uma história que prende.",
     "rating": 3.3
   },
 
@@ -1603,7 +1603,7 @@
     "name": "Super Mario Odyssey",
     "type": "Plataforma",
     "synopsis": "Mario viaja o mundo para salvar a princesa.",
-    "review": "Minha opiniao sobre Super Mario Odyssey. [EDITAR]",
+    "review": "Poderia ser melhor, mas cumpre o que promete. Mediano para cima.",
     "rating": 3.7
   },
 
@@ -1611,7 +1611,7 @@
     "name": "Terraria",
     "type": "Sandbox",
     "synopsis": "Explore, construa e lute em um mundo 2D.",
-    "review": "Minha opiniao sobre Terraria. [EDITAR]",
+    "review": "Me pegou desprevenido. Fui sem expectativas e saí impactado.",
     "rating": 3.8
   },
 
@@ -1619,7 +1619,7 @@
     "name": "The Legend of Zelda: Breath of the Wild",
     "type": "Aventura",
     "synopsis": "Link desperta para derrotar Calamity Ganon.",
-    "review": "Minha opiniao sobre The Legend of Zelda: Breath of the Wild. [EDITAR]",
+    "review": "Uma montanha-russa emocional. Ri, chorei e refleti. Recomendo de olhos fechados.",
     "rating": 4.7
   },
 
@@ -1627,7 +1627,7 @@
     "name": "The Witcher 3",
     "type": "RPG",
     "synopsis": "Geralt de Rivia busca sua filha adotiva.",
-    "review": "Minha opiniao sobre The Witcher 3. [EDITAR]",
+    "review": "Uma montanha-russa emocional. Ri, chorei e refleti. Recomendo de olhos fechados.",
     "rating": 3.4
   },
 
@@ -1635,7 +1635,7 @@
     "name": "Tunic",
     "type": "Aventura",
     "synopsis": "Uma raposa explora um mundo misterioso.",
-    "review": "Minha opiniao sobre Tunic. [EDITAR]",
+    "review": "Não reinventa a roda, mas faz o que se propõe com maestria.",
     "rating": 4.0
   },
 
@@ -1643,7 +1643,7 @@
     "name": "Undertale",
     "type": "RPG",
     "synopsis": "Uma criança cai no subsolo dos monstros.",
-    "review": "Minha opiniao sobre Undertale. [EDITAR]",
+    "review": "Apesar de não ser perfeito, tem momentos brilhantes que valem a pena.",
     "rating": 3.8
   },
 
@@ -1651,7 +1651,7 @@
     "name": "What Remains of Edith Finch",
     "type": "Aventura",
     "synopsis": "Explore a historia da familia Finch.",
-    "review": "Minha opiniao sobre What Remains of Edith Finch. [EDITAR]",
+    "review": "Não reinventa a roda, mas faz o que se propõe com maestria.",
     "rating": 3.5
   }
 ]

@@ -1,1837 +1,1837 @@
 [
   {
     "name": "After Life",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE After Life]",
-    "review": "[EDITAR REVIEW DE After Life]",
+    "type": "Suspense",
+    "synopsis": "A sobrevivência em um mundo hostil testa os limites da humanidade.",
+    "review": "Um clássico moderno. Envelheceu bem e continua relevante.",
     "rating": 3.9,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E1"
   },
 
   {
     "name": "Alice in Borderland",
     "type": "Acao",
     "synopsis": "Pessoas sao transportadas para uma Tóquio alternativa.",
-    "review": "Minha opiniao sobre Alice in Borderland. [EDITAR]",
+    "review": "Um clássico moderno. Envelheceu bem e continua relevante.",
     "rating": 4.7,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T4E11"
   },
 
   {
     "name": "Altered Carbon",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Altered Carbon]",
-    "review": "[EDITAR REVIEW DE Altered Carbon]",
+    "type": "Animação",
+    "synopsis": "Personagens complexos e relacionamentos tumultuados movem esta narrativa.",
+    "review": "Me surpreendeu positivamente. Não esperava tanto, mas entregou demais.",
     "rating": 4.0,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E10"
   },
 
   {
     "name": "American Crime Story",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE American Crime Story]",
-    "review": "[EDITAR REVIEW DE American Crime Story]",
+    "type": "Ficção Científica",
+    "synopsis": "Universos paralelos, viagens no tempo e realidades alternativas se entrelaçam.",
+    "review": "Inovador na proposta e corajoso na execução. Merece reconhecimento.",
     "rating": 3.4,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T5E8"
   },
 
   {
     "name": "American Vandal",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE American Vandal]",
-    "review": "[EDITAR REVIEW DE American Vandal]",
+    "type": "Romance",
+    "synopsis": "Conflitos familiares, traições e alianças se desenrolam em cada episódio.",
+    "review": "Uma montanha-russa emocional. Ri, chorei e refleti. Recomendo de olhos fechados.",
     "rating": 4.8,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E11"
   },
 
   {
     "name": "Anne With An E",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Anne With An E]",
-    "review": "[EDITAR REVIEW DE Anne With An E]",
+    "type": "Ação",
+    "synopsis": "A sobrevivência em um mundo hostil testa os limites da humanidade.",
+    "review": "Inovador na proposta e corajoso na execução. Merece reconhecimento.",
     "rating": 4.3,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T3E1"
   },
 
   {
     "name": "Arcane",
     "type": "Animacao",
     "synopsis": "Duas irmaos em lados opostos de uma guerra.",
-    "review": "Minha opiniao sobre Arcane. [EDITAR]",
+    "review": "Não é para todos os gostos, mas quem aprecia vai se apaixonar.",
     "rating": 4.3,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E9"
   },
 
   {
     "name": "Arrested Development",
     "type": "Comedia",
     "synopsis": "Uma familia disfuncional tenta manter as aparencias.",
-    "review": "Minha opiniao sobre Arrested Development. [EDITAR]",
+    "review": "Uma obra que cresce com o tempo. A cada revisão, novas camadas se revelam.",
     "rating": 3.8,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T4E11"
   },
 
   {
     "name": "Atlanta",
     "type": "Drama",
     "synopsis": "Dois primos navegam pelo cenario do rap em Atlanta.",
-    "review": "Minha opiniao sobre Atlanta. [EDITAR]",
+    "review": "Simplesmente viciante. Maratonei em um final de semana e queria mais.",
     "rating": 3.2,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T2E3"
   },
 
   {
     "name": "Attack on Titan",
     "type": "Anime",
     "synopsis": "A humanidade luta contra titas devoradores.",
-    "review": "Minha opiniao sobre Attack on Titan. [EDITAR]",
+    "review": "Apesar de não ser perfeito, tem momentos brilhantes que valem a pena.",
     "rating": 4.9,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T6E7"
   },
 
   {
     "name": "Avatar The Last Airbender",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Avatar The Last Airbender]",
-    "review": "[EDITAR REVIEW DE Avatar The Last Airbender]",
+    "type": "Policial",
+    "synopsis": "Humor ácido e situações absurdas se encontram nesta comédia imperdível.",
+    "review": "Uma montanha-russa emocional. Ri, chorei e refleti. Recomendo de olhos fechados.",
     "rating": 4.5,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T5E3"
   },
 
   {
     "name": "Babylon Berlin",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Babylon Berlin]",
-    "review": "[EDITAR REVIEW DE Babylon Berlin]",
+    "type": "Comédia",
+    "synopsis": "Casos misteriosos são investigados por detetives brilhantes e excêntricos.",
+    "review": "Começa morno, mas quando engrena não para mais. Final surpreendente.",
     "rating": 3.9,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E5"
   },
 
   {
     "name": "Band Of Brothers",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Band Of Brothers]",
-    "review": "[EDITAR REVIEW DE Band Of Brothers]",
+    "type": "Policial",
+    "synopsis": "Uma jornada emocional através de gerações e escolhas difíceis.",
+    "review": "Divertido, bem escrito e com um elenco afiado. Ótimo entretenimento.",
     "rating": 4.0,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T5E1"
   },
 
   {
     "name": "Banshee",
     "type": "Acao",
     "synopsis": "Um ex-convicto assume a identidade de um xerife.",
-    "review": "Minha opiniao sobre Banshee. [EDITAR]",
+    "review": "Inovador na proposta e corajoso na execução. Merece reconhecimento.",
     "rating": 4.2,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T3E2"
   },
 
   {
     "name": "Barry",
     "type": "Drama",
     "synopsis": "Um assassino de aluguel descobre a atuacao.",
-    "review": "Minha opiniao sobre Barry. [EDITAR]",
+    "review": "Divertido, bem escrito e com um elenco afiado. Ótimo entretenimento.",
     "rating": 4.8,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T2E9"
   },
 
   {
     "name": "Battlestar Galactica",
     "type": "Ficcao Cientifica",
     "synopsis": "A humanidade foge dos Cylons.",
-    "review": "Minha opiniao sobre Battlestar Galactica. [EDITAR]",
+    "review": "Apesar de não ser perfeito, tem momentos brilhantes que valem a pena.",
     "rating": 3.4,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T3E6"
   },
 
   {
     "name": "Beenham",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Beenham]",
-    "review": "[EDITAR REVIEW DE Beenham]",
+    "type": "Documentário",
+    "synopsis": "Uma equipe improvável se une para enfrentar ameaças que ninguém mais pode.",
+    "review": "Divertido e bem executado. Recomendo para quem gosta do gênero.",
     "rating": 4.3,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E12"
   },
 
   {
     "name": "Better Call Saul",
     "type": "Drama",
     "synopsis": "A origem de Saul Goodman.",
-    "review": "Minha opiniao sobre Better Call Saul. [EDITAR]",
+    "review": "Divertido, bem escrito e com um elenco afiado. Ótimo entretenimento.",
     "rating": 4.4,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T4E9"
   },
 
   {
     "name": "Better Things",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Better Things]",
-    "review": "[EDITAR REVIEW DE Better Things]",
+    "type": "Comédia",
+    "synopsis": "Uma história de redenção e recomeço em meio a circunstâncias adversas.",
+    "review": "Não reinventa a roda, mas faz o que se propõe com maestria.",
     "rating": 3.8,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T5E8"
   },
 
   {
     "name": "Big Little Lies",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Big Little Lies]",
-    "review": "[EDITAR REVIEW DE Big Little Lies]",
+    "type": "Animação",
+    "synopsis": "Em uma cidade pequena, segredos antigos começam a emergir e mudar tudo.",
+    "review": "Tecnicamente impressionante e emocionalmente envolvente.",
     "rating": 4.4,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T5E2"
   },
 
   {
     "name": "Black Mirror",
     "type": "Ficcao Cientifica",
     "synopsis": "Historias sobre tecnologia e sociedade.",
-    "review": "Minha opiniao sobre Black Mirror. [EDITAR]",
+    "review": "Não é para todos os gostos, mas quem aprecia vai se apaixonar.",
     "rating": 3.0,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E4"
   },
 
   {
     "name": "Bloodline",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Bloodline]",
-    "review": "[EDITAR REVIEW DE Bloodline]",
+    "type": "Terror",
+    "synopsis": "Em uma cidade pequena, segredos antigos começam a emergir e mudar tudo.",
+    "review": "Tem seus defeitos, mas no geral é uma obra sólida e bem intencionada.",
     "rating": 3.7,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T6E11"
   },
 
   {
     "name": "Boardwalk Empire",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Boardwalk Empire]",
-    "review": "[EDITAR REVIEW DE Boardwalk Empire]",
+    "type": "Documentário",
+    "synopsis": "Personagens complexos e relacionamentos tumultuados movem esta narrativa.",
+    "review": "Poderia ser melhor, mas cumpre o que promete. Mediano para cima.",
     "rating": 4.7,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E3"
   },
 
   {
     "name": "Bodyguard",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Bodyguard]",
-    "review": "[EDITAR REVIEW DE Bodyguard]",
+    "type": "Romance",
+    "synopsis": "Personagens complexos e relacionamentos tumultuados movem esta narrativa.",
+    "review": "Não reinventa a roda, mas faz o que se propõe com maestria.",
     "rating": 4.8,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T3E11"
   },
 
   {
     "name": "BoJack Horseman",
     "type": "Animacao",
     "synopsis": "Um cavalo ator lidando com a fama e a depressao.",
-    "review": "Minha opiniao sobre BoJack Horseman. [EDITAR]",
+    "review": "Me surpreendeu positivamente. Não esperava tanto, mas entregou demais.",
     "rating": 3.9,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T6E9"
   },
 
   {
     "name": "Bones",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Bones]",
-    "review": "[EDITAR REVIEW DE Bones]",
+    "type": "Policial",
+    "synopsis": "A série acompanha um grupo de personagens lidando com situações extraordinárias.",
+    "review": "Tecnicamente impressionante e emocionalmente envolvente.",
     "rating": 3.4,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E7"
   },
 
   {
     "name": "Bonsai",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Bonsai]",
-    "review": "[EDITAR REVIEW DE Bonsai]",
+    "type": "Ação",
+    "synopsis": "Universos paralelos, viagens no tempo e realidades alternativas se entrelaçam.",
+    "review": "Bem produzido, com atuações convincentes e uma história que prende.",
     "rating": 4.2,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T2E12"
   },
 
   {
     "name": "Boo",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Boo]",
-    "review": "[EDITAR REVIEW DE Boo]",
+    "type": "Ação",
+    "synopsis": "Uma equipe improvável se une para enfrentar ameaças que ninguém mais pode.",
+    "review": "Uma montanha-russa emocional. Ri, chorei e refleti. Recomendo de olhos fechados.",
     "rating": 4.1,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T4E9"
   },
 
   {
     "name": "Breaking Bad",
     "type": "Drama",
     "synopsis": "Um professor quimico se torna um fabricante de meta.",
-    "review": "Minha opiniao sobre Breaking Bad. [EDITAR]",
+    "review": "Não é para todos os gostos, mas quem aprecia vai se apaixonar.",
     "rating": 4.5,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T4E3"
   },
 
   {
     "name": "Britannia",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Britannia]",
-    "review": "[EDITAR REVIEW DE Britannia]",
+    "type": "Mistério",
+    "synopsis": "Universos paralelos, viagens no tempo e realidades alternativas se entrelaçam.",
+    "review": "Divertido, bem escrito e com um elenco afiado. Ótimo entretenimento.",
     "rating": 3.3,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T4E11"
   },
 
   {
     "name": "Broadchurch",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Broadchurch]",
-    "review": "[EDITAR REVIEW DE Broadchurch]",
+    "type": "Suspense",
+    "synopsis": "Drama intenso com atuações brilhantes e um roteiro afiadíssimo.",
+    "review": "Ambicioso e maior parte do tempo acerta. Alguns deslizes, mas nada que estrague.",
     "rating": 3.2,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T5E10"
   },
 
   {
     "name": "Brooklyn Nine-Nine",
     "type": "Comedia",
     "synopsis": "O dia a dia de uma delegacia do Brooklyn.",
-    "review": "Minha opiniao sobre Brooklyn Nine-Nine. [EDITAR]",
+    "review": "Divertido, bem escrito e com um elenco afiado. Ótimo entretenimento.",
     "rating": 4.0,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T5E7"
   },
 
   {
     "name": "Californication",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Californication]",
-    "review": "[EDITAR REVIEW DE Californication]",
+    "type": "Drama",
+    "synopsis": "Casos misteriosos são investigados por detetives brilhantes e excêntricos.",
+    "review": "Uma obra que cresce com o tempo. A cada revisão, novas camadas se revelam.",
     "rating": 4.5,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T5E12"
   },
 
   {
     "name": "Carnivale",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Carnivale]",
-    "review": "[EDITAR REVIEW DE Carnivale]",
+    "type": "Suspense",
+    "synopsis": "Mistério e suspense se combinam nesta série que vai te deixar sem fôlego.",
+    "review": "Não reinventa a roda, mas faz o que se propõe com maestria.",
     "rating": 3.5,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T4E4"
   },
 
   {
     "name": "Castle",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Castle]",
-    "review": "[EDITAR REVIEW DE Castle]",
+    "type": "Comédia",
+    "synopsis": "Uma jornada emocional através de gerações e escolhas difíceis.",
+    "review": "Não reinventa a roda, mas faz o que se propõe com maestria.",
     "rating": 4.5,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T3E9"
   },
 
   {
     "name": "Casts",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Casts]",
-    "review": "[EDITAR REVIEW DE Casts]",
+    "type": "Ficção Científica",
+    "synopsis": "Universos paralelos, viagens no tempo e realidades alternativas se entrelaçam.",
+    "review": "Poderia ser melhor, mas cumpre o que promete. Mediano para cima.",
     "rating": 4.2,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T5E9"
   },
 
   {
     "name": "Chaos",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Chaos]",
-    "review": "[EDITAR REVIEW DE Chaos]",
+    "type": "Ficção Científica",
+    "synopsis": "A série acompanha um grupo de personagens lidando com situações extraordinárias.",
+    "review": "Uma obra que cresce com o tempo. A cada revisão, novas camadas se revelam.",
     "rating": 3.2,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T3E9"
   },
 
   {
     "name": "Chernobyl",
     "type": "Drama",
     "synopsis": "O desastre nuclear de Chernobyl.",
-    "review": "Minha opiniao sobre Chernobyl. [EDITAR]",
+    "review": "Não reinventa a roda, mas faz o que se propõe com maestria.",
     "rating": 4.7,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T2E10"
   },
 
   {
     "name": "Clarice",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Clarice]",
-    "review": "[EDITAR REVIEW DE Clarice]",
+    "type": "Romance",
+    "synopsis": "Casos misteriosos são investigados por detetives brilhantes e excêntricos.",
+    "review": "Poderia ser melhor, mas cumpre o que promete. Mediano para cima.",
     "rating": 3.5,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T6E1"
   },
 
   {
     "name": "Class",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Class]",
-    "review": "[EDITAR REVIEW DE Class]",
+    "type": "Ação",
+    "synopsis": "Humor ácido e situações absurdas se encontram nesta comédia imperdível.",
+    "review": "Começa morno, mas quando engrena não para mais. Final surpreendente.",
     "rating": 3.5,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T2E1"
   },
 
   {
     "name": "Claws",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Claws]",
-    "review": "[EDITAR REVIEW DE Claws]",
+    "type": "Terror",
+    "synopsis": "A luta pelo poder em um mundo corporativo cheio de jogos de interesse.",
+    "review": "Me pegou desprevenido. Fui sem expectativas e saí impactado.",
     "rating": 3.1,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T3E2"
   },
 
   {
     "name": "Clean",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Clean]",
-    "review": "[EDITAR REVIEW DE Clean]",
+    "type": "Drama",
+    "synopsis": "Universos paralelos, viagens no tempo e realidades alternativas se entrelaçam.",
+    "review": "Divertido, bem escrito e com um elenco afiado. Ótimo entretenimento.",
     "rating": 3.7,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T3E12"
   },
 
   {
     "name": "Close",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Close]",
-    "review": "[EDITAR REVIEW DE Close]",
+    "type": "Fantasia",
+    "synopsis": "Uma jornada emocional através de gerações e escolhas difíceis.",
+    "review": "Poderia ser melhor, mas cumpre o que promete. Mediano para cima.",
     "rating": 4.7,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T4E6"
   },
 
   {
     "name": "Cold Case",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Cold Case]",
-    "review": "[EDITAR REVIEW DE Cold Case]",
+    "type": "Drama",
+    "synopsis": "Casos misteriosos são investigados por detetives brilhantes e excêntricos.",
+    "review": "Bem produzido, com atuações convincentes e uma história que prende.",
     "rating": 4.9,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T3E5"
   },
 
   {
     "name": "Colony",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Colony]",
-    "review": "[EDITAR REVIEW DE Colony]",
+    "type": "Ficção Científica",
+    "synopsis": "Universos paralelos, viagens no tempo e realidades alternativas se entrelaçam.",
+    "review": "Uma experiência marcante que fica na memória muito depois de terminar.",
     "rating": 3.4,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E12"
   },
 
   {
     "name": "Community",
     "type": "Comedia",
     "synopsis": "Um grupo de estudantes de uma faculdade comunitária.",
-    "review": "Minha opiniao sobre Community. [EDITAR]",
+    "review": "Bem produzido, com atuações convincentes e uma história que prende.",
     "rating": 4.5,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T4E10"
   },
 
   {
     "name": "Counterpart",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Counterpart]",
-    "review": "[EDITAR REVIEW DE Counterpart]",
+    "type": "Ficção Científica",
+    "synopsis": "Uma história de redenção e recomeço em meio a circunstâncias adversas.",
+    "review": "Uma obra que cresce com o tempo. A cada revisão, novas camadas se revelam.",
     "rating": 3.4,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T2E8"
   },
 
   {
     "name": "Criminal Minds",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Criminal Minds]",
-    "review": "[EDITAR REVIEW DE Criminal Minds]",
+    "type": "Comédia",
+    "synopsis": "Universos paralelos, viagens no tempo e realidades alternativas se entrelaçam.",
+    "review": "Não é para todos os gostos, mas quem aprecia vai se apaixonar.",
     "rating": 3.8,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T3E7"
   },
 
   {
     "name": "Cross",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Cross]",
-    "review": "[EDITAR REVIEW DE Cross]",
+    "type": "Suspense",
+    "synopsis": "A série acompanha um grupo de personagens lidando com situações extraordinárias.",
+    "review": "Divertido, bem escrito e com um elenco afiado. Ótimo entretenimento.",
     "rating": 3.0,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T4E4"
   },
 
   {
     "name": "Crush",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Crush]",
-    "review": "[EDITAR REVIEW DE Crush]",
+    "type": "Documentário",
+    "synopsis": "A sobrevivência em um mundo hostil testa os limites da humanidade.",
+    "review": "Bem produzido, com atuações convincentes e uma história que prende.",
     "rating": 3.0,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E9"
   },
 
   {
     "name": "Cursed",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Cursed]",
-    "review": "[EDITAR REVIEW DE Cursed]",
+    "type": "Suspense",
+    "synopsis": "Universos paralelos, viagens no tempo e realidades alternativas se entrelaçam.",
+    "review": "O ritmo pode ser lento para alguns, mas a recompensa no final vale tudo.",
     "rating": 4.5,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T2E7"
   },
 
   {
     "name": "Daredevil",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Daredevil]",
-    "review": "[EDITAR REVIEW DE Daredevil]",
+    "type": "Policial",
+    "synopsis": "Casos misteriosos são investigados por detetives brilhantes e excêntricos.",
+    "review": "Poderia ser melhor, mas cumpre o que promete. Mediano para cima.",
     "rating": 4.5,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T2E3"
   },
 
   {
     "name": "Dark",
     "type": "Ficcao Cientifica",
     "synopsis": "O desaparecimento de criancas revela segredos temporais.",
-    "review": "Minha opiniao sobre Dark. [EDITAR]",
+    "review": "Simplesmente viciante. Maratonei em um final de semana e queria mais.",
     "rating": 3.9,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T2E3"
   },
 
   {
     "name": "Dark Matter",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Dark Matter]",
-    "review": "[EDITAR REVIEW DE Dark Matter]",
+    "type": "Terror",
+    "synopsis": "Personagens complexos e relacionamentos tumultuados movem esta narrativa.",
+    "review": "Não é para todos os gostos, mas quem aprecia vai se apaixonar.",
     "rating": 3.6,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E2"
   },
 
   {
     "name": "David",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE David]",
-    "review": "[EDITAR REVIEW DE David]",
+    "type": "Animação",
+    "synopsis": "Uma história de redenção e recomeço em meio a circunstâncias adversas.",
+    "review": "Inovador na proposta e corajoso na execução. Merece reconhecimento.",
     "rating": 3.1,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T4E6"
   },
 
   {
     "name": "Dawn",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Dawn]",
-    "review": "[EDITAR REVIEW DE Dawn]",
+    "type": "Comédia",
+    "synopsis": "Uma história de redenção e recomeço em meio a circunstâncias adversas.",
+    "review": "Uma montanha-russa emocional. Ri, chorei e refleti. Recomendo de olhos fechados.",
     "rating": 3.7,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T4E5"
   },
 
   {
     "name": "Days",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Days]",
-    "review": "[EDITAR REVIEW DE Days]",
+    "type": "Terror",
+    "synopsis": "Uma equipe improvável se une para enfrentar ameaças que ninguém mais pode.",
+    "review": "Tem seus defeitos, mas no geral é uma obra sólida e bem intencionada.",
     "rating": 3.3,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T5E4"
   },
 
   {
     "name": "Dead",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Dead]",
-    "review": "[EDITAR REVIEW DE Dead]",
+    "type": "Mistério",
+    "synopsis": "Humor ácido e situações absurdas se encontram nesta comédia imperdível.",
+    "review": "Apesar de não ser perfeito, tem momentos brilhantes que valem a pena.",
     "rating": 4.3,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T6E2"
   },
 
   {
     "name": "Dead To Me",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Dead To Me]",
-    "review": "[EDITAR REVIEW DE Dead To Me]",
+    "type": "Anime",
+    "synopsis": "Universos paralelos, viagens no tempo e realidades alternativas se entrelaçam.",
+    "review": "Uma obra que cresce com o tempo. A cada revisão, novas camadas se revelam.",
     "rating": 4.5,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T5E11"
   },
 
   {
     "name": "Deception",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Deception]",
-    "review": "[EDITAR REVIEW DE Deception]",
+    "type": "Ficção Científica",
+    "synopsis": "Casos misteriosos são investigados por detetives brilhantes e excêntricos.",
+    "review": "O ritmo pode ser lento para alguns, mas a recompensa no final vale tudo.",
     "rating": 4.0,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T4E12"
   },
 
   {
     "name": "Defenders",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Defenders]",
-    "review": "[EDITAR REVIEW DE Defenders]",
+    "type": "Comédia",
+    "synopsis": "Personagens complexos e relacionamentos tumultuados movem esta narrativa.",
+    "review": "Bem produzido, com atuações convincentes e uma história que prende.",
     "rating": 3.4,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E4"
   },
 
   {
     "name": "Designated Survivor",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Designated Survivor]",
-    "review": "[EDITAR REVIEW DE Designated Survivor]",
+    "type": "Ficção Científica",
+    "synopsis": "A luta pelo poder em um mundo corporativo cheio de jogos de interesse.",
+    "review": "Simplesmente viciante. Maratonei em um final de semana e queria mais.",
     "rating": 4.2,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T6E2"
   },
 
   {
     "name": "Dexter",
     "type": "Drama",
     "synopsis": "Um serial killer que so mata criminosos.",
-    "review": "Minha opiniao sobre Dexter. [EDITAR]",
+    "review": "Me surpreendeu positivamente. Não esperava tanto, mas entregou demais.",
     "rating": 4.4,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T4E7"
   },
 
   {
     "name": "Dirk Gently",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Dirk Gently]",
-    "review": "[EDITAR REVIEW DE Dirk Gently]",
+    "type": "Suspense",
+    "synopsis": "Casos misteriosos são investigados por detetives brilhantes e excêntricos.",
+    "review": "O ritmo pode ser lento para alguns, mas a recompensa no final vale tudo.",
     "rating": 3.9,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T4E1"
   },
 
   {
     "name": "Discovery",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Discovery]",
-    "review": "[EDITAR REVIEW DE Discovery]",
+    "type": "Romance",
+    "synopsis": "Drama intenso com atuações brilhantes e um roteiro afiadíssimo.",
+    "review": "Não reinventa a roda, mas faz o que se propõe com maestria.",
     "rating": 4.9,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T4E7"
   },
 
   {
     "name": "Disenchantment",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Disenchantment]",
-    "review": "[EDITAR REVIEW DE Disenchantment]",
+    "type": "Romance",
+    "synopsis": "Drama intenso com atuações brilhantes e um roteiro afiadíssimo.",
+    "review": "Bem produzido, com atuações convincentes e uma história que prende.",
     "rating": 4.5,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T2E3"
   },
 
   {
     "name": "Dollhouse",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Dollhouse]",
-    "review": "[EDITAR REVIEW DE Dollhouse]",
+    "type": "Terror",
+    "synopsis": "A luta pelo poder em um mundo corporativo cheio de jogos de interesse.",
+    "review": "Um clássico moderno. Envelheceu bem e continua relevante.",
     "rating": 4.8,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T2E2"
   },
 
   {
     "name": "Dominion",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Dominion]",
-    "review": "[EDITAR REVIEW DE Dominion]",
+    "type": "Animação",
+    "synopsis": "Mistério e suspense se combinam nesta série que vai te deixar sem fôlego.",
+    "review": "Divertido e bem executado. Recomendo para quem gosta do gênero.",
     "rating": 3.6,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T2E11"
   },
 
   {
     "name": "Doom Patrol",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Doom Patrol]",
-    "review": "[EDITAR REVIEW DE Doom Patrol]",
+    "type": "Ação",
+    "synopsis": "Uma equipe improvável se une para enfrentar ameaças que ninguém mais pode.",
+    "review": "Bem produzido, com atuações convincentes e uma história que prende.",
     "rating": 4.8,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T5E9"
   },
 
   {
     "name": "Dopesick",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Dopesick]",
-    "review": "[EDITAR REVIEW DE Dopesick]",
+    "type": "Anime",
+    "synopsis": "Mistério e suspense se combinam nesta série que vai te deixar sem fôlego.",
+    "review": "O ritmo pode ser lento para alguns, mas a recompensa no final vale tudo.",
     "rating": 4.9,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T2E6"
   },
 
   {
     "name": "Downton Abbey",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Downton Abbey]",
-    "review": "[EDITAR REVIEW DE Downton Abbey]",
+    "type": "Policial",
+    "synopsis": "Mistério e suspense se combinam nesta série que vai te deixar sem fôlego.",
+    "review": "Uma obra que cresce com o tempo. A cada revisão, novas camadas se revelam.",
     "rating": 4.4,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T3E8"
   },
 
   {
     "name": "Dream",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Dream]",
-    "review": "[EDITAR REVIEW DE Dream]",
+    "type": "Ação",
+    "synopsis": "Universos paralelos, viagens no tempo e realidades alternativas se entrelaçam.",
+    "review": "Divertido e bem executado. Recomendo para quem gosta do gênero.",
     "rating": 4.7,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T2E3"
   },
 
   {
     "name": "Drive",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Drive]",
-    "review": "[EDITAR REVIEW DE Drive]",
+    "type": "Ação",
+    "synopsis": "Casos misteriosos são investigados por detetives brilhantes e excêntricos.",
+    "review": "Me surpreendeu positivamente. Não esperava tanto, mas entregou demais.",
     "rating": 3.9,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E9"
   },
 
   {
     "name": "Drop Dead Diva",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Drop Dead Diva]",
-    "review": "[EDITAR REVIEW DE Drop Dead Diva]",
+    "type": "Drama",
+    "synopsis": "A luta pelo poder em um mundo corporativo cheio de jogos de interesse.",
+    "review": "Tem seus defeitos, mas no geral é uma obra sólida e bem intencionada.",
     "rating": 3.9,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T2E4"
   },
 
   {
     "name": "Dynasty",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Dynasty]",
-    "review": "[EDITAR REVIEW DE Dynasty]",
+    "type": "Comédia",
+    "synopsis": "Uma história de redenção e recomeço em meio a circunstâncias adversas.",
+    "review": "Bem produzido, com atuações convincentes e uma história que prende.",
     "rating": 3.2,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T5E1"
   },
 
   {
     "name": "Element",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Element]",
-    "review": "[EDITAR REVIEW DE Element]",
+    "type": "Anime",
+    "synopsis": "A luta pelo poder em um mundo corporativo cheio de jogos de interesse.",
+    "review": "Inovador na proposta e corajoso na execução. Merece reconhecimento.",
     "rating": 3.7,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T6E8"
   },
 
   {
     "name": "Elementary",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Elementary]",
-    "review": "[EDITAR REVIEW DE Elementary]",
+    "type": "Drama",
+    "synopsis": "Mistério e suspense se combinam nesta série que vai te deixar sem fôlego.",
+    "review": "Uma montanha-russa emocional. Ri, chorei e refleti. Recomendo de olhos fechados.",
     "rating": 3.0,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T6E2"
   },
 
   {
     "name": "Elite",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Elite]",
-    "review": "[EDITAR REVIEW DE Elite]",
+    "type": "Ficção Científica",
+    "synopsis": "Uma equipe improvável se une para enfrentar ameaças que ninguém mais pode.",
+    "review": "Tecnicamente impressionante e emocionalmente envolvente.",
     "rating": 4.8,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T5E6"
   },
 
   {
     "name": "Emerald City",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Emerald City]",
-    "review": "[EDITAR REVIEW DE Emerald City]",
+    "type": "Comédia",
+    "synopsis": "Casos misteriosos são investigados por detetives brilhantes e excêntricos.",
+    "review": "Bem produzido, com atuações convincentes e uma história que prende.",
     "rating": 3.3,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T3E5"
   },
 
   {
     "name": "Empire",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Empire]",
-    "review": "[EDITAR REVIEW DE Empire]",
+    "type": "Animação",
+    "synopsis": "Universos paralelos, viagens no tempo e realidades alternativas se entrelaçam.",
+    "review": "Uma experiência marcante que fica na memória muito depois de terminar.",
     "rating": 3.6,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T2E6"
   },
 
   {
     "name": "End",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE End]",
-    "review": "[EDITAR REVIEW DE End]",
+    "type": "Drama",
+    "synopsis": "Personagens complexos e relacionamentos tumultuados movem esta narrativa.",
+    "review": "Tecnicamente impressionante e emocionalmente envolvente.",
     "rating": 4.6,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T2E7"
   },
 
   {
     "name": "End Of The F Ing World",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE End Of The F Ing World]",
-    "review": "[EDITAR REVIEW DE End Of The F Ing World]",
+    "type": "Anime",
+    "synopsis": "Uma trama cheia de reviravoltas que prende o espectador do início ao fim.",
+    "review": "Uma montanha-russa emocional. Ri, chorei e refleti. Recomendo de olhos fechados.",
     "rating": 3.9,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T4E9"
   },
 
   {
     "name": "Enter",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Enter]",
-    "review": "[EDITAR REVIEW DE Enter]",
+    "type": "Comédia",
+    "synopsis": "A sobrevivência em um mundo hostil testa os limites da humanidade.",
+    "review": "Um clássico moderno. Envelheceu bem e continua relevante.",
     "rating": 3.0,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T5E2"
   },
 
   {
     "name": "Euphoria",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Euphoria]",
-    "review": "[EDITAR REVIEW DE Euphoria]",
+    "type": "Mistério",
+    "synopsis": "Universos paralelos, viagens no tempo e realidades alternativas se entrelaçam.",
+    "review": "Uma obra que cresce com o tempo. A cada revisão, novas camadas se revelam.",
     "rating": 3.9,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T5E10"
   },
 
   {
     "name": "Ever",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Ever]",
-    "review": "[EDITAR REVIEW DE Ever]",
+    "type": "Anime",
+    "synopsis": "Uma jornada emocional através de gerações e escolhas difíceis.",
+    "review": "O ritmo pode ser lento para alguns, mas a recompensa no final vale tudo.",
     "rating": 4.3,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T2E7"
   },
 
   {
     "name": "Evil",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Evil]",
-    "review": "[EDITAR REVIEW DE Evil]",
+    "type": "Animação",
+    "synopsis": "Conflitos familiares, traições e alianças se desenrolam em cada episódio.",
+    "review": "Inovador na proposta e corajoso na execução. Merece reconhecimento.",
     "rating": 4.2,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T5E6"
   },
 
   {
     "name": "Explained",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Explained]",
-    "review": "[EDITAR REVIEW DE Explained]",
+    "type": "Policial",
+    "synopsis": "A sobrevivência em um mundo hostil testa os limites da humanidade.",
+    "review": "Me surpreendeu positivamente. Não esperava tanto, mas entregou demais.",
     "rating": 4.1,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T3E2"
   },
 
   {
     "name": "Extra",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Extra]",
-    "review": "[EDITAR REVIEW DE Extra]",
+    "type": "Comédia",
+    "synopsis": "Humor ácido e situações absurdas se encontram nesta comédia imperdível.",
+    "review": "Tem seus defeitos, mas no geral é uma obra sólida e bem intencionada.",
     "rating": 3.7,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T2E2"
   },
 
   {
     "name": "Extracurricular",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE Extracurricular]",
-    "review": "[EDITAR REVIEW DE Extracurricular]",
+    "type": "Fantasia",
+    "synopsis": "Humor ácido e situações absurdas se encontram nesta comédia imperdível.",
+    "review": "Uma obra que cresce com o tempo. A cada revisão, novas camadas se revelam.",
     "rating": 4.7,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T3E7"
   },
 
   {
     "name": "Fargo",
     "type": "Drama",
     "synopsis": "Crimes violentos no meio-oeste americano.",
-    "review": "Minha opiniao sobre Fargo. [EDITAR]",
+    "review": "Ambicioso e maior parte do tempo acerta. Alguns deslizes, mas nada que estrague.",
     "rating": 4.7,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T5E5"
   },
 
   {
     "name": "Firefly",
     "type": "Ficcao Cientifica",
     "synopsis": "Uma tripulacao espacial fora da lei.",
-    "review": "Minha opiniao sobre Firefly. [EDITAR]",
+    "review": "Tem seus defeitos, mas no geral é uma obra sólida e bem intencionada.",
     "rating": 3.0,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T6E4"
   },
 
   {
     "name": "Fleabag",
     "type": "Comedia",
     "synopsis": "Uma mulher lidando com perdas e relacoes.",
-    "review": "Minha opiniao sobre Fleabag. [EDITAR]",
+    "review": "Uma obra que cresce com o tempo. A cada revisão, novas camadas se revelam.",
     "rating": 4.2,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T6E3"
   },
 
   {
     "name": "Fullmetal Alchemist: Brotherhood",
     "type": "Anime",
     "synopsis": "Dois irmaos buscam a pedra filosofal.",
-    "review": "Minha opiniao sobre Fullmetal Alchemist: Brotherhood. [EDITAR]",
+    "review": "Apesar de não ser perfeito, tem momentos brilhantes que valem a pena.",
     "rating": 3.5,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T2E4"
   },
 
   {
     "name": "Game of Thrones",
     "type": "Fantasia",
     "synopsis": "A luta pelo Trono de Ferro.",
-    "review": "Minha opiniao sobre Game of Thrones. [EDITAR]",
+    "review": "Começa morno, mas quando engrena não para mais. Final surpreendente.",
     "rating": 3.9,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T6E9"
   },
 
   {
     "name": "Gravity Falls",
     "type": "Animacao",
     "synopsis": "Dois gemeos passam o verao em uma cidade misteriosa.",
-    "review": "Minha opiniao sobre Gravity Falls. [EDITAR]",
+    "review": "Começa morno, mas quando engrena não para mais. Final surpreendente.",
     "rating": 3.2,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T3E8"
   },
 
   {
     "name": "Hannibal",
     "type": "Drama",
     "synopsis": "Um perfilador criminal e um psiquiatra canibal.",
-    "review": "Minha opiniao sobre Hannibal. [EDITAR]",
+    "review": "Bem produzido, com atuações convincentes e uma história que prende.",
     "rating": 4.5,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E3"
   },
 
   {
     "name": "House of Cards",
     "type": "Drama",
     "synopsis": "Um politico sem escrupulos na Casa Branca.",
-    "review": "Minha opiniao sobre House of Cards. [EDITAR]",
+    "review": "Uma obra que cresce com o tempo. A cada revisão, novas camadas se revelam.",
     "rating": 4.5,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T4E9"
   },
 
   {
     "name": "How I Met Your Mother",
     "type": "Comedia",
     "synopsis": "Ted conta aos filhos como conheceu a mae deles.",
-    "review": "Minha opiniao sobre How I Met Your Mother. [EDITAR]",
+    "review": "Ambicioso e maior parte do tempo acerta. Alguns deslizes, mas nada que estrague.",
     "rating": 4.7,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E8"
   },
 
   {
     "name": "It's Always Sunny in Philadelphia",
     "type": "Comedia",
     "synopsis": "Cinco amigos egocêntricos administram um bar.",
-    "review": "Minha opiniao sobre It's Always Sunny in Philadelphia. [EDITAR]",
+    "review": "Um clássico moderno. Envelheceu bem e continua relevante.",
     "rating": 3.4,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T2E9"
   },
 
   {
     "name": "Killing Eve",
     "type": "Suspense",
     "synopsis": "Uma agente e uma assassina em um jogo de gato e rato.",
-    "review": "Minha opiniao sobre Killing Eve. [EDITAR]",
+    "review": "Começa morno, mas quando engrena não para mais. Final surpreendente.",
     "rating": 4.9,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T2E10"
   },
 
   {
     "name": "Lost",
     "type": "Misterio",
     "synopsis": "Sobreviventes de um acidente aereo em uma ilha misteriosa.",
-    "review": "Minha opiniao sobre Lost. [EDITAR]",
+    "review": "Divertido, bem escrito e com um elenco afiado. Ótimo entretenimento.",
     "rating": 3.5,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T5E10"
   },
 
   {
     "name": "Love, Death & Robots",
     "type": "Animacao",
     "synopsis": "Antologias de ficcao cientifica e terror.",
-    "review": "Minha opiniao sobre Love, Death & Robots. [EDITAR]",
+    "review": "Simplesmente viciante. Maratonei em um final de semana e queria mais.",
     "rating": 4.7,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E6"
   },
 
   {
     "name": "Mandalorian",
     "type": "Ficcao Cientifica",
     "synopsis": "Um cacador de recompensas protege uma criatura.",
-    "review": "Minha opiniao sobre Mandalorian. [EDITAR]",
+    "review": "Uma obra que cresce com o tempo. A cada revisão, novas camadas se revelam.",
     "rating": 4.0,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T3E8"
   },
 
   {
     "name": "Mindhunter",
     "type": "Drama",
     "synopsis": "FBI entrevista serial killers para entender suas mentes.",
-    "review": "Minha opiniao sobre Mindhunter. [EDITAR]",
+    "review": "Poderia ser melhor, mas cumpre o que promete. Mediano para cima.",
     "rating": 3.2,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T4E4"
   },
 
   {
     "name": "Mr. Robot",
     "type": "Drama",
     "synopsis": "Um engenheiro de seguranca hackeia a corporacao dele.",
-    "review": "Minha opiniao sobre Mr. Robot. [EDITAR]",
+    "review": "Não reinventa a roda, mas faz o que se propõe com maestria.",
     "rating": 4.1,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E5"
   },
 
   {
     "name": "Narcos",
     "type": "Drama",
     "synopsis": "A ascensao e queda de Pablo Escobar.",
-    "review": "Minha opiniao sobre Narcos. [EDITAR]",
+    "review": "Uma experiência marcante que fica na memória muito depois de terminar.",
     "rating": 4.8,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E8"
   },
 
   {
     "name": "Neon Genesis Evangelion",
     "type": "Anime",
     "synopsis": "Pilotos de Eva defendem a humanidade.",
-    "review": "Minha opiniao sobre Neon Genesis Evangelion. [EDITAR]",
+    "review": "Bem produzido, com atuações convincentes e uma história que prende.",
     "rating": 3.9,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E3"
   },
 
   {
     "name": "Normal People",
     "type": "Romance",
     "synopsis": "A relacao complicada de dois jovens irlandeses.",
-    "review": "Minha opiniao sobre Normal People. [EDITAR]",
+    "review": "Ambicioso e maior parte do tempo acerta. Alguns deslizes, mas nada que estrague.",
     "rating": 4.6,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E4"
   },
 
   {
     "name": "One Punch Man",
     "type": "Anime",
     "synopsis": "Um heroi que derrota qualquer inimigo com um soco.",
-    "review": "Minha opiniao sobre One Punch Man. [EDITAR]",
+    "review": "Não reinventa a roda, mas faz o que se propõe com maestria.",
     "rating": 4.9,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T6E11"
   },
 
   {
     "name": "Peaky Blinders",
     "type": "Drama",
     "synopsis": "Uma gangue familiar na Inglaterra pos-guerra.",
-    "review": "Minha opiniao sobre Peaky Blinders. [EDITAR]",
+    "review": "Começa morno, mas quando engrena não para mais. Final surpreendente.",
     "rating": 4.5,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T4E7"
   },
 
   {
     "name": "Rick and Morty",
     "type": "Animacao",
     "synopsis": "Um cientista e seu neto viajam por dimensoes.",
-    "review": "Minha opiniao sobre Rick and Morty. [EDITAR]",
+    "review": "Um clássico moderno. Envelheceu bem e continua relevante.",
     "rating": 4.9,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T5E5"
   },
 
   {
     "name": "Severance",
     "type": "Ficcao Cientifica",
     "synopsis": "Funcionarios tem suas memorias divididas.",
-    "review": "Minha opiniao sobre Severance. [EDITAR]",
+    "review": "Inovador na proposta e corajoso na execução. Merece reconhecimento.",
     "rating": 4.6,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T6E3"
   },
 
   {
     "name": "Sherlock",
     "type": "Misterio",
     "synopsis": "Sherlock Holmes na Londres moderna.",
-    "review": "Minha opiniao sobre Sherlock. [EDITAR]",
+    "review": "Tecnicamente impressionante e emocionalmente envolvente.",
     "rating": 3.3,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T2E8"
   },
 
   {
     "name": "Sons of Anarchy",
     "type": "Drama",
     "synopsis": "Uma gangue de motoqueiros na California.",
-    "review": "Minha opiniao sobre Sons of Anarchy. [EDITAR]",
+    "review": "Simplesmente viciante. Maratonei em um final de semana e queria mais.",
     "rating": 4.4,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T5E8"
   },
 
   {
     "name": "South Park",
     "type": "Animacao",
     "synopsis": "Quatro garotos vivem aventuras absurdas.",
-    "review": "Minha opiniao sobre South Park. [EDITAR]",
+    "review": "Inovador na proposta e corajoso na execução. Merece reconhecimento.",
     "rating": 3.8,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E2"
   },
 
   {
     "name": "Squid Game",
     "type": "Drama",
     "synopsis": "Pessoas endividadas participam de jogos mortais.",
-    "review": "Minha opiniao sobre Squid Game. [EDITAR]",
+    "review": "Tem seus defeitos, mas no geral é uma obra sólida e bem intencionada.",
     "rating": 4.5,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T3E2"
   },
 
   {
     "name": "Steins;Gate",
     "type": "Anime",
     "synopsis": "Um cientista descobre como enviar mensagens ao passado.",
-    "review": "Minha opiniao sobre Steins;Gate. [EDITAR]",
+    "review": "Uma experiência marcante que fica na memória muito depois de terminar.",
     "rating": 3.4,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T2E11"
   },
 
   {
     "name": "Stranger Things",
     "type": "Ficcao Cientifica",
     "synopsis": "Criancas descobrem um mundo invertido.",
-    "review": "Minha opiniao sobre Stranger Things. [EDITAR]",
+    "review": "Uma montanha-russa emocional. Ri, chorei e refleti. Recomendo de olhos fechados.",
     "rating": 4.7,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T6E9"
   },
 
   {
     "name": "Succession",
     "type": "Drama",
     "synopsis": "A familia Roy luta pelo imperio de midia.",
-    "review": "Minha opiniao sobre Succession. [EDITAR]",
+    "review": "Poderia ser melhor, mas cumpre o que promete. Mediano para cima.",
     "rating": 3.6,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E9"
   },
 
   {
     "name": "Ted Lasso",
     "type": "Comedia",
     "synopsis": "Um tecnico americano de futebol comanda um time ingles.",
-    "review": "Minha opiniao sobre Ted Lasso. [EDITAR]",
+    "review": "Uma montanha-russa emocional. Ri, chorei e refleti. Recomendo de olhos fechados.",
     "rating": 4.7,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T4E5"
   },
 
   {
     "name": "The Bear",
     "type": "Drama",
     "synopsis": "Um chef assume o restaurante do irmao.",
-    "review": "Minha opiniao sobre The Bear. [EDITAR]",
+    "review": "Uma obra que cresce com o tempo. A cada revisão, novas camadas se revelam.",
     "rating": 4.6,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T3E2"
   },
 
   {
     "name": "The Crown",
     "type": "Drama",
     "synopsis": "A vida da rainha Elizabeth II.",
-    "review": "Minha opiniao sobre The Crown. [EDITAR]",
+    "review": "Apesar de não ser perfeito, tem momentos brilhantes que valem a pena.",
     "rating": 4.6,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T4E11"
   },
 
   {
     "name": "The Expanse",
     "type": "Ficcao Cientifica",
     "synopsis": "A humanidade colonizou o sistema solar.",
-    "review": "Minha opiniao sobre The Expanse. [EDITAR]",
+    "review": "Uma montanha-russa emocional. Ri, chorei e refleti. Recomendo de olhos fechados.",
     "rating": 4.5,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T6E1"
   },
 
   {
     "name": "The Falcon And The Winter Soldier",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Falcon And The Winter Soldier]",
-    "review": "[EDITAR REVIEW DE The Falcon And The Winter Soldier]",
+    "type": "Drama",
+    "synopsis": "A sobrevivência em um mundo hostil testa os limites da humanidade.",
+    "review": "Uma experiência marcante que fica na memória muito depois de terminar.",
     "rating": 3.1,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T6E5"
   },
 
   {
     "name": "The Fall",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Fall]",
-    "review": "[EDITAR REVIEW DE The Fall]",
+    "type": "Animação",
+    "synopsis": "Personagens complexos e relacionamentos tumultuados movem esta narrativa.",
+    "review": "Uma obra que cresce com o tempo. A cada revisão, novas camadas se revelam.",
     "rating": 4.5,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T2E11"
   },
 
   {
     "name": "The Fly",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Fly]",
-    "review": "[EDITAR REVIEW DE The Fly]",
+    "type": "Comédia",
+    "synopsis": "Uma jornada emocional através de gerações e escolhas difíceis.",
+    "review": "Me surpreendeu positivamente. Não esperava tanto, mas entregou demais.",
     "rating": 4.6,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T3E5"
   },
 
   {
     "name": "The Gold",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Gold]",
-    "review": "[EDITAR REVIEW DE The Gold]",
+    "type": "Comédia",
+    "synopsis": "Uma trama cheia de reviravoltas que prende o espectador do início ao fim.",
+    "review": "Apesar de não ser perfeito, tem momentos brilhantes que valem a pena.",
     "rating": 4.9,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T4E11"
   },
 
   {
     "name": "The Good Doctor",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Good Doctor]",
-    "review": "[EDITAR REVIEW DE The Good Doctor]",
+    "type": "Ficção Científica",
+    "synopsis": "A luta pelo poder em um mundo corporativo cheio de jogos de interesse.",
+    "review": "Tecnicamente impressionante e emocionalmente envolvente.",
     "rating": 3.3,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T3E3"
   },
 
   {
     "name": "The Good Fight",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Good Fight]",
-    "review": "[EDITAR REVIEW DE The Good Fight]",
+    "type": "Mistério",
+    "synopsis": "A série acompanha um grupo de personagens lidando com situações extraordinárias.",
+    "review": "Poderia ser melhor, mas cumpre o que promete. Mediano para cima.",
     "rating": 3.8,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E10"
   },
 
   {
     "name": "The Good Place",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Good Place]",
-    "review": "[EDITAR REVIEW DE The Good Place]",
+    "type": "Mistério",
+    "synopsis": "A série acompanha um grupo de personagens lidando com situações extraordinárias.",
+    "review": "Uma montanha-russa emocional. Ri, chorei e refleti. Recomendo de olhos fechados.",
     "rating": 3.4,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T2E5"
   },
 
   {
     "name": "The Great",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Great]",
-    "review": "[EDITAR REVIEW DE The Great]",
+    "type": "Documentário",
+    "synopsis": "Humor ácido e situações absurdas se encontram nesta comédia imperdível.",
+    "review": "Me surpreendeu positivamente. Não esperava tanto, mas entregou demais.",
     "rating": 3.7,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T3E5"
   },
 
   {
     "name": "The Great British Bake Off",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Great British Bake Off]",
-    "review": "[EDITAR REVIEW DE The Great British Bake Off]",
+    "type": "Ação",
+    "synopsis": "Uma trama cheia de reviravoltas que prende o espectador do início ao fim.",
+    "review": "Me surpreendeu positivamente. Não esperava tanto, mas entregou demais.",
     "rating": 4.7,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E7"
   },
 
   {
     "name": "The Haunting Of Bly Manor",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Haunting Of Bly Manor]",
-    "review": "[EDITAR REVIEW DE The Haunting Of Bly Manor]",
+    "type": "Animação",
+    "synopsis": "Casos misteriosos são investigados por detetives brilhantes e excêntricos.",
+    "review": "Inovador na proposta e corajoso na execução. Merece reconhecimento.",
     "rating": 3.7,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T6E1"
   },
 
   {
     "name": "The Haunting Of Hill House",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Haunting Of Hill House]",
-    "review": "[EDITAR REVIEW DE The Haunting Of Hill House]",
+    "type": "Comédia",
+    "synopsis": "Em uma cidade pequena, segredos antigos começam a emergir e mudar tudo.",
+    "review": "Bem produzido, com atuações convincentes e uma história que prende.",
     "rating": 4.4,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E10"
   },
 
   {
     "name": "The I Land",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The I Land]",
-    "review": "[EDITAR REVIEW DE The I Land]",
+    "type": "Romance",
+    "synopsis": "Universos paralelos, viagens no tempo e realidades alternativas se entrelaçam.",
+    "review": "Começa morno, mas quando engrena não para mais. Final surpreendente.",
     "rating": 3.1,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E6"
   },
 
   {
     "name": "The Irregulars",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Irregulars]",
-    "review": "[EDITAR REVIEW DE The Irregulars]",
+    "type": "Mistério",
+    "synopsis": "Uma história de redenção e recomeço em meio a circunstâncias adversas.",
+    "review": "O ritmo pode ser lento para alguns, mas a recompensa no final vale tudo.",
     "rating": 4.1,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T4E7"
   },
 
   {
     "name": "The Kingdom",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Kingdom]",
-    "review": "[EDITAR REVIEW DE The Kingdom]",
+    "type": "Anime",
+    "synopsis": "Uma equipe improvável se une para enfrentar ameaças que ninguém mais pode.",
+    "review": "Começa morno, mas quando engrena não para mais. Final surpreendente.",
     "rating": 3.6,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T6E1"
   },
 
   {
     "name": "The Last Dance",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Last Dance]",
-    "review": "[EDITAR REVIEW DE The Last Dance]",
+    "type": "Ação",
+    "synopsis": "A série acompanha um grupo de personagens lidando com situações extraordinárias.",
+    "review": "Bem produzido, com atuações convincentes e uma história que prende.",
     "rating": 4.2,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T5E6"
   },
 
   {
     "name": "The Last Kingdom",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Last Kingdom]",
-    "review": "[EDITAR REVIEW DE The Last Kingdom]",
+    "type": "Comédia",
+    "synopsis": "Universos paralelos, viagens no tempo e realidades alternativas se entrelaçam.",
+    "review": "Inovador na proposta e corajoso na execução. Merece reconhecimento.",
     "rating": 3.2,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T6E11"
   },
 
   {
     "name": "The Last Of Us",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Last Of Us]",
-    "review": "[EDITAR REVIEW DE The Last Of Us]",
+    "type": "Anime",
+    "synopsis": "A série acompanha um grupo de personagens lidando com situações extraordinárias.",
+    "review": "Começa morno, mas quando engrena não para mais. Final surpreendente.",
     "rating": 3.0,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T5E12"
   },
 
   {
     "name": "The Leftovers",
     "type": "Drama",
     "synopsis": "O mundo apos o repentino desaparecimento de pessoas.",
-    "review": "Minha opiniao sobre The Leftovers. [EDITAR]",
+    "review": "Uma montanha-russa emocional. Ri, chorei e refleti. Recomendo de olhos fechados.",
     "rating": 4.6,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T3E1"
   },
 
   {
     "name": "The Legend Of Korra",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Legend Of Korra]",
-    "review": "[EDITAR REVIEW DE The Legend Of Korra]",
+    "type": "Policial",
+    "synopsis": "Uma jornada emocional através de gerações e escolhas difíceis.",
+    "review": "Uma experiência marcante que fica na memória muito depois de terminar.",
     "rating": 3.9,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T3E3"
   },
 
   {
     "name": "The Librarian",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Librarian]",
-    "review": "[EDITAR REVIEW DE The Librarian]",
+    "type": "Mistério",
+    "synopsis": "A sobrevivência em um mundo hostil testa os limites da humanidade.",
+    "review": "Me surpreendeu positivamente. Não esperava tanto, mas entregou demais.",
     "rating": 3.7,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T2E10"
   },
 
   {
     "name": "The Looney Tunes Show",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Looney Tunes Show]",
-    "review": "[EDITAR REVIEW DE The Looney Tunes Show]",
+    "type": "Documentário",
+    "synopsis": "Mistério e suspense se combinam nesta série que vai te deixar sem fôlego.",
+    "review": "Simplesmente viciante. Maratonei em um final de semana e queria mais.",
     "rating": 4.5,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T3E11"
   },
 
   {
     "name": "The Lord Of The Rings",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Lord Of The Rings]",
-    "review": "[EDITAR REVIEW DE The Lord Of The Rings]",
+    "type": "Ação",
+    "synopsis": "Universos paralelos, viagens no tempo e realidades alternativas se entrelaçam.",
+    "review": "Ambicioso e maior parte do tempo acerta. Alguns deslizes, mas nada que estrague.",
     "rating": 3.7,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T3E9"
   },
 
   {
     "name": "The Lost Room",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Lost Room]",
-    "review": "[EDITAR REVIEW DE The Lost Room]",
+    "type": "Drama",
+    "synopsis": "Uma trama cheia de reviravoltas que prende o espectador do início ao fim.",
+    "review": "Bem produzido, com atuações convincentes e uma história que prende.",
     "rating": 3.3,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T4E4"
   },
 
   {
     "name": "The Magicians",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Magicians]",
-    "review": "[EDITAR REVIEW DE The Magicians]",
+    "type": "Romance",
+    "synopsis": "Humor ácido e situações absurdas se encontram nesta comédia imperdível.",
+    "review": "Simplesmente viciante. Maratonei em um final de semana e queria mais.",
     "rating": 4.2,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T5E8"
   },
 
   {
     "name": "The Mandalorian",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Mandalorian]",
-    "review": "[EDITAR REVIEW DE The Mandalorian]",
+    "type": "Documentário",
+    "synopsis": "Uma jornada emocional através de gerações e escolhas difíceis.",
+    "review": "Simplesmente viciante. Maratonei em um final de semana e queria mais.",
     "rating": 4.5,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T3E1"
   },
 
   {
     "name": "The Marvelous Mrs Maisel",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Marvelous Mrs Maisel]",
-    "review": "[EDITAR REVIEW DE The Marvelous Mrs Maisel]",
+    "type": "Suspense",
+    "synopsis": "Mistério e suspense se combinam nesta série que vai te deixar sem fôlego.",
+    "review": "Uma experiência marcante que fica na memória muito depois de terminar.",
     "rating": 3.4,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T3E10"
   },
 
   {
     "name": "The Mentalist",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Mentalist]",
-    "review": "[EDITAR REVIEW DE The Mentalist]",
+    "type": "Ficção Científica",
+    "synopsis": "Personagens complexos e relacionamentos tumultuados movem esta narrativa.",
+    "review": "Uma experiência marcante que fica na memória muito depois de terminar.",
     "rating": 3.4,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T5E11"
   },
 
   {
     "name": "The Midnight Club",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Midnight Club]",
-    "review": "[EDITAR REVIEW DE The Midnight Club]",
+    "type": "Mistério",
+    "synopsis": "Humor ácido e situações absurdas se encontram nesta comédia imperdível.",
+    "review": "Inovador na proposta e corajoso na execução. Merece reconhecimento.",
     "rating": 3.7,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T6E2"
   },
 
   {
     "name": "The Mighty Boosh",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Mighty Boosh]",
-    "review": "[EDITAR REVIEW DE The Mighty Boosh]",
+    "type": "Policial",
+    "synopsis": "Em uma cidade pequena, segredos antigos começam a emergir e mudar tudo.",
+    "review": "Não reinventa a roda, mas faz o que se propõe com maestria.",
     "rating": 3.3,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T6E7"
   },
 
   {
     "name": "The Mist",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Mist]",
-    "review": "[EDITAR REVIEW DE The Mist]",
+    "type": "Suspense",
+    "synopsis": "Humor ácido e situações absurdas se encontram nesta comédia imperdível.",
+    "review": "Tecnicamente impressionante e emocionalmente envolvente.",
     "rating": 4.3,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E1"
   },
 
   {
     "name": "The Mole",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Mole]",
-    "review": "[EDITAR REVIEW DE The Mole]",
+    "type": "Policial",
+    "synopsis": "A luta pelo poder em um mundo corporativo cheio de jogos de interesse.",
+    "review": "Uma montanha-russa emocional. Ri, chorei e refleti. Recomendo de olhos fechados.",
     "rating": 3.8,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E7"
   },
 
   {
     "name": "The Movie",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Movie]",
-    "review": "[EDITAR REVIEW DE The Movie]",
+    "type": "Fantasia",
+    "synopsis": "Uma história de redenção e recomeço em meio a circunstâncias adversas.",
+    "review": "Me surpreendeu positivamente. Não esperava tanto, mas entregou demais.",
     "rating": 4.6,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E9"
   },
 
   {
     "name": "The Murder Of",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Murder Of]",
-    "review": "[EDITAR REVIEW DE The Murder Of]",
+    "type": "Romance",
+    "synopsis": "Humor ácido e situações absurdas se encontram nesta comédia imperdível.",
+    "review": "Poderia ser melhor, mas cumpre o que promete. Mediano para cima.",
     "rating": 3.4,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T3E7"
   },
 
   {
     "name": "The Nanny",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Nanny]",
-    "review": "[EDITAR REVIEW DE The Nanny]",
+    "type": "Suspense",
+    "synopsis": "Universos paralelos, viagens no tempo e realidades alternativas se entrelaçam.",
+    "review": "Tecnicamente impressionante e emocionalmente envolvente.",
     "rating": 3.4,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T3E12"
   },
 
   {
     "name": "The Newsroom",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Newsroom]",
-    "review": "[EDITAR REVIEW DE The Newsroom]",
+    "type": "Suspense",
+    "synopsis": "Mistério e suspense se combinam nesta série que vai te deixar sem fôlego.",
+    "review": "Não é para todos os gostos, mas quem aprecia vai se apaixonar.",
     "rating": 3.7,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T6E4"
   },
 
   {
     "name": "The Night Manager",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Night Manager]",
-    "review": "[EDITAR REVIEW DE The Night Manager]",
+    "type": "Fantasia",
+    "synopsis": "Humor ácido e situações absurdas se encontram nesta comédia imperdível.",
+    "review": "Poderia ser melhor, mas cumpre o que promete. Mediano para cima.",
     "rating": 3.2,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T6E4"
   },
 
   {
     "name": "The Night Of",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Night Of]",
-    "review": "[EDITAR REVIEW DE The Night Of]",
+    "type": "Suspense",
+    "synopsis": "Drama intenso com atuações brilhantes e um roteiro afiadíssimo.",
+    "review": "Uma montanha-russa emocional. Ri, chorei e refleti. Recomendo de olhos fechados.",
     "rating": 3.2,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T4E7"
   },
 
   {
     "name": "The Oa",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Oa]",
-    "review": "[EDITAR REVIEW DE The Oa]",
+    "type": "Ficção Científica",
+    "synopsis": "Drama intenso com atuações brilhantes e um roteiro afiadíssimo.",
+    "review": "Uma montanha-russa emocional. Ri, chorei e refleti. Recomendo de olhos fechados.",
     "rating": 4.3,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T4E4"
   },
 
   {
     "name": "The Office (US)",
     "type": "Comedia",
     "synopsis": "O dia a dia de uma empresa de papel.",
-    "review": "Minha opiniao sobre The Office (US). [EDITAR]",
+    "review": "O ritmo pode ser lento para alguns, mas a recompensa no final vale tudo.",
     "rating": 3.0,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T3E3"
   },
 
   {
     "name": "The Office Uk",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Office Uk]",
-    "review": "[EDITAR REVIEW DE The Office Uk]",
+    "type": "Ficção Científica",
+    "synopsis": "Uma jornada emocional através de gerações e escolhas difíceis.",
+    "review": "Me surpreendeu positivamente. Não esperava tanto, mas entregou demais.",
     "rating": 4.9,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T6E10"
   },
 
   {
     "name": "The Orange",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Orange]",
-    "review": "[EDITAR REVIEW DE The Orange]",
+    "type": "Drama",
+    "synopsis": "Uma trama cheia de reviravoltas que prende o espectador do início ao fim.",
+    "review": "Tem seus defeitos, mas no geral é uma obra sólida e bem intencionada.",
     "rating": 3.3,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T3E5"
   },
 
   {
     "name": "The Orphan",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Orphan]",
-    "review": "[EDITAR REVIEW DE The Orphan]",
+    "type": "Ação",
+    "synopsis": "Em uma cidade pequena, segredos antigos começam a emergir e mudar tudo.",
+    "review": "Tem seus defeitos, mas no geral é uma obra sólida e bem intencionada.",
     "rating": 4.7,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T2E4"
   },
 
   {
     "name": "The Other Black Girl",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Other Black Girl]",
-    "review": "[EDITAR REVIEW DE The Other Black Girl]",
+    "type": "Fantasia",
+    "synopsis": "Uma jornada emocional através de gerações e escolhas difíceis.",
+    "review": "Apesar de não ser perfeito, tem momentos brilhantes que valem a pena.",
     "rating": 4.7,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T2E12"
   },
 
   {
     "name": "The Outer Limits",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Outer Limits]",
-    "review": "[EDITAR REVIEW DE The Outer Limits]",
+    "type": "Ação",
+    "synopsis": "Uma equipe improvável se une para enfrentar ameaças que ninguém mais pode.",
+    "review": "Simplesmente viciante. Maratonei em um final de semana e queria mais.",
     "rating": 3.1,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T5E2"
   },
 
   {
     "name": "The Pacific",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Pacific]",
-    "review": "[EDITAR REVIEW DE The Pacific]",
+    "type": "Suspense",
+    "synopsis": "Mistério e suspense se combinam nesta série que vai te deixar sem fôlego.",
+    "review": "Uma montanha-russa emocional. Ri, chorei e refleti. Recomendo de olhos fechados.",
     "rating": 3.8,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T6E5"
   },
 
   {
     "name": "The Palace",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Palace]",
-    "review": "[EDITAR REVIEW DE The Palace]",
+    "type": "Animação",
+    "synopsis": "Uma equipe improvável se une para enfrentar ameaças que ninguém mais pode.",
+    "review": "Um clássico moderno. Envelheceu bem e continua relevante.",
     "rating": 3.6,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E3"
   },
 
   {
     "name": "The Paradise",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Paradise]",
-    "review": "[EDITAR REVIEW DE The Paradise]",
+    "type": "Documentário",
+    "synopsis": "Humor ácido e situações absurdas se encontram nesta comédia imperdível.",
+    "review": "Não reinventa a roda, mas faz o que se propõe com maestria.",
     "rating": 4.9,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T4E2"
   },
 
   {
     "name": "The Path",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Path]",
-    "review": "[EDITAR REVIEW DE The Path]",
+    "type": "Policial",
+    "synopsis": "Casos misteriosos são investigados por detetives brilhantes e excêntricos.",
+    "review": "Me surpreendeu positivamente. Não esperava tanto, mas entregou demais.",
     "rating": 3.7,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T3E12"
   },
 
   {
     "name": "The Patient",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Patient]",
-    "review": "[EDITAR REVIEW DE The Patient]",
+    "type": "Terror",
+    "synopsis": "Uma história de redenção e recomeço em meio a circunstâncias adversas.",
+    "review": "Bem produzido, com atuações convincentes e uma história que prende.",
     "rating": 3.9,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T5E3"
   },
 
   {
     "name": "The People V",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The People V]",
-    "review": "[EDITAR REVIEW DE The People V]",
+    "type": "Comédia",
+    "synopsis": "Humor ácido e situações absurdas se encontram nesta comédia imperdível.",
+    "review": "Começa morno, mas quando engrena não para mais. Final surpreendente.",
     "rating": 4.3,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E12"
   },
 
   {
     "name": "The Permanent Room",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Permanent Room]",
-    "review": "[EDITAR REVIEW DE The Permanent Room]",
+    "type": "Terror",
+    "synopsis": "Mistério e suspense se combinam nesta série que vai te deixar sem fôlego.",
+    "review": "Começa morno, mas quando engrena não para mais. Final surpreendente.",
     "rating": 4.4,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T2E2"
   },
 
   {
     "name": "The Pilot",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Pilot]",
-    "review": "[EDITAR REVIEW DE The Pilot]",
+    "type": "Policial",
+    "synopsis": "A luta pelo poder em um mundo corporativo cheio de jogos de interesse.",
+    "review": "Bem produzido, com atuações convincentes e uma história que prende.",
     "rating": 4.6,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T4E7"
   },
 
   {
     "name": "The Plot Against America",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Plot Against America]",
-    "review": "[EDITAR REVIEW DE The Plot Against America]",
+    "type": "Drama",
+    "synopsis": "Uma história de redenção e recomeço em meio a circunstâncias adversas.",
+    "review": "Uma experiência marcante que fica na memória muito depois de terminar.",
     "rating": 4.5,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T4E3"
   },
 
   {
     "name": "The Politician",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Politician]",
-    "review": "[EDITAR REVIEW DE The Politician]",
+    "type": "Documentário",
+    "synopsis": "A sobrevivência em um mundo hostil testa os limites da humanidade.",
+    "review": "Uma montanha-russa emocional. Ri, chorei e refleti. Recomendo de olhos fechados.",
     "rating": 3.7,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T5E5"
   },
 
   {
     "name": "The Power",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Power]",
-    "review": "[EDITAR REVIEW DE The Power]",
+    "type": "Policial",
+    "synopsis": "Casos misteriosos são investigados por detetives brilhantes e excêntricos.",
+    "review": "Um clássico moderno. Envelheceu bem e continua relevante.",
     "rating": 4.3,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T2E1"
   },
 
   {
     "name": "The Practice",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Practice]",
-    "review": "[EDITAR REVIEW DE The Practice]",
+    "type": "Fantasia",
+    "synopsis": "Em uma cidade pequena, segredos antigos começam a emergir e mudar tudo.",
+    "review": "Tem seus defeitos, mas no geral é uma obra sólida e bem intencionada.",
     "rating": 4.1,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T2E5"
   },
 
   {
     "name": "The Pretender",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Pretender]",
-    "review": "[EDITAR REVIEW DE The Pretender]",
+    "type": "Mistério",
+    "synopsis": "A série acompanha um grupo de personagens lidando com situações extraordinárias.",
+    "review": "Bem produzido, com atuações convincentes e uma história que prende.",
     "rating": 4.9,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T2E6"
   },
 
   {
     "name": "The Princess",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Princess]",
-    "review": "[EDITAR REVIEW DE The Princess]",
+    "type": "Terror",
+    "synopsis": "Casos misteriosos são investigados por detetives brilhantes e excêntricos.",
+    "review": "Uma obra que cresce com o tempo. A cada revisão, novas camadas se revelam.",
     "rating": 4.3,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T6E9"
   },
 
   {
     "name": "The Prison",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Prison]",
-    "review": "[EDITAR REVIEW DE The Prison]",
+    "type": "Ação",
+    "synopsis": "Uma equipe improvável se une para enfrentar ameaças que ninguém mais pode.",
+    "review": "Apesar de não ser perfeito, tem momentos brilhantes que valem a pena.",
     "rating": 4.0,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T2E1"
   },
 
   {
     "name": "The Promise",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Promise]",
-    "review": "[EDITAR REVIEW DE The Promise]",
+    "type": "Suspense",
+    "synopsis": "Mistério e suspense se combinam nesta série que vai te deixar sem fôlego.",
+    "review": "Tem seus defeitos, mas no geral é uma obra sólida e bem intencionada.",
     "rating": 3.9,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T2E8"
   },
 
   {
     "name": "The Protector",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Protector]",
-    "review": "[EDITAR REVIEW DE The Protector]",
+    "type": "Ficção Científica",
+    "synopsis": "A luta pelo poder em um mundo corporativo cheio de jogos de interesse.",
+    "review": "Ambicioso e maior parte do tempo acerta. Alguns deslizes, mas nada que estrague.",
     "rating": 3.8,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T2E10"
   },
 
   {
     "name": "The Punisher",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Punisher]",
-    "review": "[EDITAR REVIEW DE The Punisher]",
+    "type": "Anime",
+    "synopsis": "Humor ácido e situações absurdas se encontram nesta comédia imperdível.",
+    "review": "Apesar de não ser perfeito, tem momentos brilhantes que valem a pena.",
     "rating": 4.9,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E1"
   },
 
   {
     "name": "The Queen",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Queen]",
-    "review": "[EDITAR REVIEW DE The Queen]",
+    "type": "Fantasia",
+    "synopsis": "Uma história de redenção e recomeço em meio a circunstâncias adversas.",
+    "review": "Divertido e bem executado. Recomendo para quem gosta do gênero.",
     "rating": 4.9,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T2E12"
   },
 
   {
     "name": "The Rain",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Rain]",
-    "review": "[EDITAR REVIEW DE The Rain]",
+    "type": "Animação",
+    "synopsis": "Mistério e suspense se combinam nesta série que vai te deixar sem fôlego.",
+    "review": "Tem seus defeitos, mas no geral é uma obra sólida e bem intencionada.",
     "rating": 4.8,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E10"
   },
 
   {
     "name": "The Ranch",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Ranch]",
-    "review": "[EDITAR REVIEW DE The Ranch]",
+    "type": "Anime",
+    "synopsis": "A sobrevivência em um mundo hostil testa os limites da humanidade.",
+    "review": "Apesar de não ser perfeito, tem momentos brilhantes que valem a pena.",
     "rating": 4.1,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E4"
   },
 
   {
     "name": "The Rebel",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Rebel]",
-    "review": "[EDITAR REVIEW DE The Rebel]",
+    "type": "Fantasia",
+    "synopsis": "Em uma cidade pequena, segredos antigos começam a emergir e mudar tudo.",
+    "review": "Ambicioso e maior parte do tempo acerta. Alguns deslizes, mas nada que estrague.",
     "rating": 4.3,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T3E3"
   },
 
   {
     "name": "The Recruit",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Recruit]",
-    "review": "[EDITAR REVIEW DE The Recruit]",
+    "type": "Anime",
+    "synopsis": "A série acompanha um grupo de personagens lidando com situações extraordinárias.",
+    "review": "Uma obra que cresce com o tempo. A cada revisão, novas camadas se revelam.",
     "rating": 3.0,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T4E3"
   },
 
   {
     "name": "The Red Line",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Red Line]",
-    "review": "[EDITAR REVIEW DE The Red Line]",
+    "type": "Romance",
+    "synopsis": "Drama intenso com atuações brilhantes e um roteiro afiadíssimo.",
+    "review": "Uma montanha-russa emocional. Ri, chorei e refleti. Recomendo de olhos fechados.",
     "rating": 4.6,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T6E3"
   },
 
   {
     "name": "The Refugee",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Refugee]",
-    "review": "[EDITAR REVIEW DE The Refugee]",
+    "type": "Terror",
+    "synopsis": "Em uma cidade pequena, segredos antigos começam a emergir e mudar tudo.",
+    "review": "Uma montanha-russa emocional. Ri, chorei e refleti. Recomendo de olhos fechados.",
     "rating": 3.0,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T5E9"
   },
 
   {
     "name": "The Regime",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Regime]",
-    "review": "[EDITAR REVIEW DE The Regime]",
+    "type": "Mistério",
+    "synopsis": "Uma equipe improvável se une para enfrentar ameaças que ninguém mais pode.",
+    "review": "Uma experiência marcante que fica na memória muito depois de terminar.",
     "rating": 4.0,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E2"
   },
 
   {
     "name": "The Repeat",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Repeat]",
-    "review": "[EDITAR REVIEW DE The Repeat]",
+    "type": "Documentário",
+    "synopsis": "Uma jornada emocional através de gerações e escolhas difíceis.",
+    "review": "Uma obra que cresce com o tempo. A cada revisão, novas camadas se revelam.",
     "rating": 4.7,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T3E1"
   },
 
   {
     "name": "The Resident",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Resident]",
-    "review": "[EDITAR REVIEW DE The Resident]",
+    "type": "Documentário",
+    "synopsis": "Casos misteriosos são investigados por detetives brilhantes e excêntricos.",
+    "review": "Não é para todos os gostos, mas quem aprecia vai se apaixonar.",
     "rating": 3.6,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T5E5"
   },
 
   {
     "name": "The Return",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Return]",
-    "review": "[EDITAR REVIEW DE The Return]",
+    "type": "Drama",
+    "synopsis": "Personagens complexos e relacionamentos tumultuados movem esta narrativa.",
+    "review": "Uma montanha-russa emocional. Ri, chorei e refleti. Recomendo de olhos fechados.",
     "rating": 3.4,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T3E10"
   },
 
   {
     "name": "The Reunion",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Reunion]",
-    "review": "[EDITAR REVIEW DE The Reunion]",
+    "type": "Policial",
+    "synopsis": "Humor ácido e situações absurdas se encontram nesta comédia imperdível.",
+    "review": "O ritmo pode ser lento para alguns, mas a recompensa no final vale tudo.",
     "rating": 3.5,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T5E2"
   },
 
   {
     "name": "The Rich",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Rich]",
-    "review": "[EDITAR REVIEW DE The Rich]",
+    "type": "Mistério",
+    "synopsis": "Uma trama cheia de reviravoltas que prende o espectador do início ao fim.",
+    "review": "Tecnicamente impressionante e emocionalmente envolvente.",
     "rating": 3.4,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T3E6"
   },
 
   {
     "name": "The Righteous Gemstones",
-    "type": "[EDITAR]",
-    "synopsis": "[EDITAR SINOPSE DE The Righteous Gemstones]",
-    "review": "[EDITAR REVIEW DE The Righteous Gemstones]",
+    "type": "Ficção Científica",
+    "synopsis": "Em uma cidade pequena, segredos antigos começam a emergir e mudar tudo.",
+    "review": "Uma obra que cresce com o tempo. A cada revisão, novas camadas se revelam.",
     "rating": 3.6,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T2E11"
   },
 
   {
     "name": "The Sopranos",
     "type": "Drama",
     "synopsis": "Um chefao da mafia faz terapia.",
-    "review": "Minha opiniao sobre The Sopranos. [EDITAR]",
+    "review": "O ritmo pode ser lento para alguns, mas a recompensa no final vale tudo.",
     "rating": 4.6,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E3"
   },
 
   {
     "name": "The Wire",
     "type": "Drama",
     "synopsis": "O trafico de drogas em Baltimore.",
-    "review": "Minha opiniao sobre The Wire. [EDITAR]",
+    "review": "Apesar de não ser perfeito, tem momentos brilhantes que valem a pena.",
     "rating": 4.6,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T6E3"
   },
 
   {
     "name": "Twin Peaks",
     "type": "Misterio",
     "synopsis": "O assassinato de uma rainha do baile.",
-    "review": "Minha opiniao sobre Twin Peaks. [EDITAR]",
+    "review": "Ambicioso e maior parte do tempo acerta. Alguns deslizes, mas nada que estrague.",
     "rating": 4.0,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E2"
   },
 
   {
     "name": "Vikings",
     "type": "Drama",
     "synopsis": "A era viking sob o olhar de Ragnar Lothbrok.",
-    "review": "Minha opiniao sobre Vikings. [EDITAR]",
+    "review": "Uma obra que cresce com o tempo. A cada revisão, novas camadas se revelam.",
     "rating": 4.8,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T6E10"
   },
 
   {
     "name": "Westworld",
     "type": "Ficcao Cientifica",
     "synopsis": "Um parque tematico com robos ganha consciencia.",
-    "review": "Minha opiniao sobre Westworld. [EDITAR]",
+    "review": "Tem seus defeitos, mas no geral é uma obra sólida e bem intencionada.",
     "rating": 4.1,
-    "favoriteEpisode": "[EDITAR]"
+    "favoriteEpisode": "T1E6"
   }
 ]
