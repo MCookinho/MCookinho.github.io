@@ -558,35 +558,55 @@ function drWest(ctx,t){
     circle(rx,ry+6,6,PAL.sepia)
   }
 
-  // Tool pile (visible until ferro picked up)
+  // Tool pile — wooden crate with tools (visible until ferro picked up)
   if(!window.__game||!window.__game.hasObtained('ferro')){
-    rect(560,350,120,100,PAL.ink_m)
-    rect(565,355,110,90,PAL.ink)
-    // Iron bar (rectangular, metallic)
+    // Shadow under crate
+    $ctx.fillStyle='rgba(0,0,0,0.2)'
+    $ctx.beginPath()
+    $ctx.ellipse(620,435,65,15,0,0,Math.PI*2)
+    $ctx.fill()
+    // Wooden crate
+    rect(560,350,120,80,PAL.ink_l)
+    rect(563,353,114,74,PAL.ink)
+    // Planks
+    for(let i=0;i<3;i++){
+      const py=353+i*25
+      rect(565,py,110,2,'rgba(42,34,24,0.4)')
+      // Nails
+      circle(570,py+1,1.5,PAL.rust_l)
+      circle(670,py+1,1.5,PAL.rust_l)
+    }
+    // Iron bar (diagonal, sticking out of crate)
     $ctx.save()
-    $ctx.translate(605,380)
-    $ctx.rotate(0.35)
-    rect(-28,-5,56,10,PAL.rust)
-    rect(-26,-4,52,8,PAL.rust_l)
-    // Highlight
-    rect(-26,-4,52,2,'rgba(160,106,58,0.4)')
-    // Shadow
-    rect(-26,2,52,2,'rgba(40,20,10,0.3)')
-    // Bent end
-    rect(-28,-5,8,10,PAL.rust)
-    rect(-28,-5,8,2,'rgba(160,106,58,0.3)')
+    $ctx.translate(610,372)
+    $ctx.rotate(0.45)
+    rect(-30,-5,62,10,PAL.rust)
+    rect(-28,-4,58,8,PAL.rust_l)
+    rect(-28,-4,58,2,'rgba(160,106,58,0.35)')
+    rect(-28,2,58,2,'rgba(40,20,10,0.3)')
+    rect(-30,-5,10,10,PAL.rust)
     $ctx.restore()
-    // Hammer head
-    rect(580,360,25,15,PAL.rust)
-    rect(582,362,21,3,'rgba(160,106,58,0.3)')
-    // Chain links
-    for(let i=0;i<4;i++)circle(610+i*8,390+i*5,3,PAL.rust)
-    circle(610,390,2,PAL.rust_l)
-    circle(618,395,2,PAL.rust_l)
-    circle(626,400,2,PAL.rust_l)
-    circle(634,405,2,PAL.rust_l)
-    // Saw blade
-    wln(590,380,620,395,PAL.ink_l,0.8,t)
+    // Hammer (handle + head)
+    wln(575,365,595,390,PAL.sepia_d,4,t) // handle
+    wln(575,365,595,390,PAL.sepia,2.5,t)
+    rect(592,385,16,10,PAL.rust) // head
+    rect(594,387,12,2,'rgba(160,106,58,0.3)')
+    // Chain links (piled in crate)
+    for(let i=0;i<5;i++){
+      const cx=625+Math.sin(i*2)*15,cy=405+Math.sin(i*3)*8
+      circle(cx,cy,3.5,PAL.rust)
+      circle(cx,cy,2,PAL.rust_l)
+    }
+    // Saw blade (sticking out)
+    $ctx.save()
+    $ctx.translate(650,395)
+    $ctx.rotate(-0.2)
+    rect(-2,-20,4,25,PAL.ink_l)
+    for(let i=0;i<8;i++){
+      const tx=-2+Math.sin(i)*3,ty=-18+i*4
+      rect(tx,ty,6,2,PAL.ink_l)
+    }
+    $ctx.restore()
   }
 
   // Dark shape under bench
