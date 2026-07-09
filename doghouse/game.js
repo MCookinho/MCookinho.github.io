@@ -3,7 +3,7 @@ const ITEMS_ICON = {
   vela_acesa:'🕯️✨', corda:'🪢', gancho:'🪝', corda_gancho:'🪝🪢',
   ferro:'🔩', chave_1:'🗝️¹', chave_2:'🗝️²', chave_3:'🗝️³',
   chave_12:'🗝️¹²', chave_completa:'🔑✓',
-  lanterna:'🏮', coleira:'⛓️', bola:'⚾', osso:'🦴'
+  guia:'🦮', coleira:'⛓️', bola:'⚾', osso:'🦴'
 }
 
 const ITEMS_NAME = {
@@ -12,7 +12,7 @@ const ITEMS_NAME = {
   ferro:'Barra de Ferro', chave_1:'Fragmento de Chave I', chave_2:'Fragmento de Chave II',
   chave_3:'Fragmento de Chave III', chave_12:'Dois Fragmentos',
   chave_completa:'Chave Completa',
-  lanterna:'Lanterna', coleira:'Coleira', bola:'Bola', osso:'Osso'
+  guia:'Guia', coleira:'Coleira', bola:'Bola', osso:'Osso'
 }
 
 const VIEWS = {
@@ -112,7 +112,6 @@ class Game {
     this.selectedItem=null
     this.view=0
     this.candleLit=false
-    this.lanternOn=false
     this.shivaActive=false
     this.shivaPhase=0
     this.shivaTimer=null
@@ -237,7 +236,7 @@ class Game {
     let objs=VIEWS[vk]
     let hbs=HITBOXES[vk]
 
-    if(vk==='ceiling'&&this.lanternOn){
+    if(vk==='ceiling'&&this.candleLit){
       objs=VIEWS.ceiling_lantern
       hbs=HITBOXES.ceiling_lantern
     }
@@ -311,14 +310,14 @@ class Game {
       return
     }
 
-    if(item==='coleira'&&this.lanternOn){
+    if(item==='coleira'&&this.candleLit){
       this.a.final()
       this.engine.showFinal(STORY.endings.submission.title,STORY.endings.submission.text)
       this.engine.state=S.FINAL
       return
     }
 
-    if(item==='lanterna'&&this.ceilingPuzzleSolved&&this.diaryRead){
+    if(item==='guia'&&this.ceilingPuzzleSolved&&this.diaryRead){
       this.a.final()
       this.a.bell()
       this.engine.showFinal(STORY.endings.walk.title,STORY.endings.walk.text)
@@ -329,17 +328,16 @@ class Game {
     this.engine.tooltip(ITEMS_NAME[item]+' não funciona na porta.')
   }
 
-  /* ─── GRATE → LANTERN ─── */
+  /* ─── GRATE → GUIÁ ─── */
   interactGrate(item){
-    if(this.hasObtained('lanterna')){
+    if(this.hasObtained('guia')){
       this.engine.tooltip('A grade está quebrada.')
       return
     }
     if(item==='ferro'){
       this.a.chain()
-      this.engine.tooltip('A grade range! Uma lanterna velha cai.',3000)
-      this.addItem('lanterna',false)
-      this.lanternOn=true
+      this.engine.tooltip('A grade range! Uma guia velha cai.',3000)
+      this.addItem('guia',false)
       this.selectedItem=null;this.renderInventory()
       return
     }
@@ -393,7 +391,7 @@ class Game {
       this.engine.tooltip('O ralo está vazio.')
       return
     }
-    if(!this.lanternOn){
+    if(!this.candleLit){
       this.engine.tooltip('Água escura. Não dá pra ver o fundo.')
       return
     }

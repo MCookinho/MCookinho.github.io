@@ -87,7 +87,7 @@ class Engine {
       const views=['north','east','south','west','ceiling']
       const vk=views[g.view]||'north'
 
-      if(vk==='ceiling'&&g.lanternOn){
+      if(vk==='ceiling'&&g.candleLit){
         drCeilingLantern(ctx,t,g)
       }else{
         const fn=VIEW_DRAW[vk]
@@ -95,7 +95,6 @@ class Engine {
       }
 
       if(g.candleLit)drawCandleLight(ctx,t,true)
-      if(g.lanternOn)drawLanternLight(ctx,t,true)
 
       if(g.shivaActive&&this.state===S.PLAYING){
         $ctx=ctx
