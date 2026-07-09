@@ -307,7 +307,7 @@ body.list-bullet .edu-item::before {
 .config-close:hover { color: var(--text); }
 .config-tabs { display: flex; border-bottom: 1px solid var(--border); overflow-x: auto; }
 .config-tab {
-  flex: 1; padding: 12px 6px; font-family: inherit; font-size: 9px; font-weight: 600;
+  flex: 0 0 auto; padding: 14px 16px; font-family: inherit; font-size: 12px; font-weight: 600;
   background: none; border: none; border-bottom: 2px solid transparent;
   cursor: pointer; color: var(--muted); letter-spacing: 0.5px; transition: all 0.15s; white-space: nowrap;
 }
