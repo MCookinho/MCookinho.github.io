@@ -281,30 +281,40 @@ function drEast(ctx,t){
   $ctx.beginPath()
   $ctx.rect(mx,my,mw,mh)
   $ctx.clip()
-  // Stone wall (opposite room reflection)
+  // Reflection of west room (workbench + drawer)
   rect(mx,my,mw,mh,'rgba(36,28,20,0.95)')
   for(let row=0;row<5;row++){
     for(let col=0;col<3;col++){
       const bx=mx+col*70+(row%2)*35,by=my+row*55
-      rect(bx,by,60,48,'rgba(52,42,32,0.4)')
-      rect(bx+2,by+2,54,44,'rgba(42,34,26,0.2)')
-      $ctx.strokeStyle='rgba(68,58,48,0.12)'
-      $ctx.lineWidth=0.5
-      $ctx.strokeRect(bx,by,60,48)
+      rect(bx,by,60,48,'rgba(52,42,32,0.3)')
+      rect(bx+2,by+2,54,44,'rgba(42,34,26,0.15)')
     }
   }
-  // AÇEUQSE (ESQUEÇA reversed) diagonal across mirror
+  // Workbench (horizontal plank, reflected)
+  rect(mx+10,my+140,190,20,'rgba(26,18,10,0.5)')
+  rect(mx+10,my+158,190,8,'rgba(20,14,8,0.4)')
+  // Workbench legs
+  rect(mx+15,my+166,8,40,'rgba(26,18,10,0.3)')
+  rect(mx+187,my+166,8,40,'rgba(26,18,10,0.3)')
+  // Drawer above bench
+  rect(mx+50,my+130,110,14,'rgba(26,18,10,0.4)')
+  rect(mx+90,my+133,28,4,'rgba(58,34,18,0.4)') // handle
+  // Diary/book on bench
+  rect(mx+100,my+143,35,12,'rgba(42,34,16,0.3)')
+  // Rope on wall (right side, simplified)
+  for(let i=0;i<4;i++){
+    const ry=my+20+i*30
+    wln(mx+190,ry,mx+200,ry+12,'rgba(106,90,74,0.2)',1.5,t)
+  }
+  // AÇEUQSE diagonal across mirror
   $ctx.save()
   $ctx.translate(540,200)
   $ctx.rotate(-0.35)
-  $ctx.fillStyle='rgba(122,90,58,0.3)'
+  $ctx.fillStyle='rgba(122,90,58,0.25)'
   $ctx.font='bold 36px Georgia'
   $ctx.textAlign='center'
   $ctx.textBaseline='middle'
   $ctx.fillText('AÇEUQSE',0,0)
-  // Drip
-  $ctx.fillStyle='rgba(122,90,58,0.08)'
-  $ctx.fillRect(8,18,2,20)
   $ctx.restore()
   // Reflective glint
   $ctx.fillStyle='rgba(184,160,128,0.04)'
