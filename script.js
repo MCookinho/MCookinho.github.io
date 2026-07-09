@@ -466,7 +466,8 @@
   }
   function getActiveRankTab() {
     var active = document.querySelector('#rkTabs .rk-tab.active')
-    return active ? active.getAttribute('data-rank') : 'tetris'
+    if (active && active.style.display !== 'none') return active.getAttribute('data-rank')
+    return 'filmes'
   }
   function getDefaultData(key) {
     var defs = {
@@ -614,7 +615,12 @@
   var rankOverlay = document.getElementById('rkOverlay')
 
   function openRankOverlay() {
-    rkSwitchTab(getActiveRankTab())
+    var tetrisUnlocked = ACHIEVEMENTS.some(function (a) { return a.id === 'enter-tetris' && a.done })
+    var tetrisTab = document.querySelector('#rkTabs .rk-tab[data-rank="tetris"]')
+    if (tetrisTab) tetrisTab.style.display = tetrisUnlocked ? '' : 'none'
+    var active = getActiveRankTab()
+    if (active === 'tetris' && !tetrisUnlocked) active = 'filmes'
+    rkSwitchTab(active)
     rankOverlay.classList.add('open')
   }
 
