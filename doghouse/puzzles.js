@@ -12,7 +12,7 @@ function tryCombine(a,b){
 
 const PUZZLES = {
   drawer:{
-    id:'drawer',solved:false,pins:[0,0,0],target:[1,2,3],
+    id:'drawer',solved:false,pins:[0,0,0],target:[1,2,0],
     render:function(ctx,t){
       ctx.fillStyle='rgba(10,8,6,0.95)'
       ctx.fillRect(0,0,800,600)
