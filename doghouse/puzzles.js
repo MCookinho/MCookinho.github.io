@@ -12,12 +12,11 @@ function tryCombine(a,b){
 
 const PUZZLES = {
   drawer:{
-    id:'drawer',solved:false,pins:[0,0,0],target:[1,2,3],err:false,
+    id:'drawer',solved:false,pins:[0,0,0],target:[1,2,3],
     render:function(ctx,t){
       ctx.fillStyle='rgba(10,8,6,0.95)'
       ctx.fillRect(0,0,800,600)
 
-      // Drawer visual
       ctx.fillStyle=PAL.paper_d
       ctx.fillRect(200,120,400,360)
       ctx.strokeStyle=PAL.ink_m
@@ -29,7 +28,6 @@ const PUZZLES = {
       ctx.textAlign='center'
       ctx.fillText('GAVETA TRANCADA — TRÊS PINOS',400,160)
 
-      // Instructions
       ctx.fillStyle=PAL.sepia_d
       ctx.font='10px Georgia'
       ctx.fillText('Clique na parte de cima de cada pino para subir, na parte de baixo para descer',400,175)
@@ -37,38 +35,24 @@ const PUZZLES = {
       for(let i=0;i<3;i++){
         const bx=240+i*130,by=200
 
-        // Pin slot
         ctx.fillStyle=PAL.ink_l
         ctx.fillRect(bx,by,80,120)
         ctx.fillStyle=PAL.dark
         ctx.fillRect(bx+5,by+5,70,110)
 
-        // Pin display
         const syms=['—','⚬','◉']
         ctx.fillStyle=this.pins[i]===0?PAL.sepia_d:this.pins[i]===1?PAL.rust_l:PAL.sepia_l
         ctx.font='36px Georgia'
         ctx.fillText(syms[this.pins[i]],bx+40,by+75)
 
-        // Up/down indicators
-        ctx.fillStyle=this.err?PAL.blood_s:PAL.ink_l
+        ctx.fillStyle=PAL.ink_l
         ctx.font='12px Georgia'
         ctx.fillText('▲',bx+40,by-8)
         ctx.fillText('▼',bx+40,by+140)
 
-        // Value label
         ctx.fillStyle=PAL.sepia_d
         ctx.font='9px Georgia'
         ctx.fillText('PINO '+(i+1),bx+40,by+110)
-      }
-
-      if(this.solved){
-        ctx.fillStyle=PAL.rust_l
-        ctx.font='16px Georgia'
-        ctx.fillText('Clique para fechar — a gaveta range. Algo dentro.',400,400)
-      }else{
-        ctx.fillStyle=PAL.sepia_d
-        ctx.font='11px Georgia'
-        ctx.fillText(this.err?'Combinação errada...':'',400,430)
       }
     },
     click:function(x,y,g){
@@ -86,12 +70,8 @@ const PUZZLES = {
             this.solved=true
             g.a.unlock()
             g.addItem('fosforo',true)
+            g.engine.closePuzzle()
             g.engine.tooltip('Fósforo! Dentro da gaveta.',3000)
-            setTimeout(()=>g.engine.closePuzzle(),1200)
-          }else{
-            this.err=true
-            g.a.wrong()
-            setTimeout(()=>this.err=false,500)
           }
           return
         }

@@ -610,20 +610,35 @@ function drWest(ctx,t){
   rect(70,418,580,16,grad(0,418,0,434,'rgba(0,0,0,0.4)','rgba(0,0,0,0)'))
 
   // Drawer — properly inset into bench face
-  rect(220,295,180,65,PAL.ink_l)
-  rect(225,300,170,55,PAL.ink)
-  wln(220,295,400,295,PAL.ink_m,0.8,t)
-  wln(220,360,400,360,PAL.ink_m,0.6,t)
-  wln(220,295,220,360,PAL.ink_m,0.4,t)
-  wln(400,295,400,360,PAL.ink_m,0.4,t)
-  // handle
-  rect(295,322,30,6,PAL.rust)
-  rect(293,320,34,10,PAL.rust_l)
-  circle(310,325,3,PAL.rust_l)
-  // keyhole
-  rect(270,308,5,10,PAL.dark)
-  circle(272,313,3,PAL.dark)
-  rect(220,293,180,4,'rgba(0,0,0,0.15)')
+  const drawerOpen=window.__game&&window.__game.hasObtained('fosforo')
+  if(drawerOpen){
+    // Empty cavity
+    rect(225,300,170,55,PAL.dark)
+    rect(225,300,170,8,grad(0,295,0,308,'rgba(0,0,0,0.3)','rgba(0,0,0,0)'))
+    // Drawer face pulled down
+    rect(220,340,180,45,PAL.ink_l)
+    rect(225,344,170,35,PAL.ink)
+    rect(220,338,180,4,'rgba(0,0,0,0.15)')
+    // handle (shifted down)
+    rect(295,357,30,6,PAL.rust)
+    rect(293,355,34,10,PAL.rust_l)
+    circle(310,360,3,PAL.rust_l)
+  }else{
+    rect(220,295,180,65,PAL.ink_l)
+    rect(225,300,170,55,PAL.ink)
+    wln(220,295,400,295,PAL.ink_m,0.8,t)
+    wln(220,360,400,360,PAL.ink_m,0.6,t)
+    wln(220,295,220,360,PAL.ink_m,0.4,t)
+    wln(400,295,400,360,PAL.ink_m,0.4,t)
+    // handle
+    rect(295,322,30,6,PAL.rust)
+    rect(293,320,34,10,PAL.rust_l)
+    circle(310,325,3,PAL.rust_l)
+    // keyhole
+    rect(270,308,5,10,PAL.dark)
+    circle(272,313,3,PAL.dark)
+    rect(220,293,180,4,'rgba(0,0,0,0.15)')
+  }
 
   // Diary on bench — leather book with pages and ribbon
   // Shadow
