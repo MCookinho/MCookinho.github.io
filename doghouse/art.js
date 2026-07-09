@@ -438,15 +438,31 @@ function drSouth(ctx,t){
 
   // Stone (item) — visible until picked up
   if(!window.__game||!window.__game.hasObtained('pedra')){
-    pl([[95,465],[145,468],[140,498],[90,495]],PAL.stone_l)
-    pl([[100,470],[130,472],[128,480],[98,478]],'rgba(58,50,36,0.6)')
-    wln(95,465,145,468,PAL.ink_l,0.8,t)
-    wln(145,468,140,498,PAL.ink_l,0.8,t)
-    wln(140,498,90,495,PAL.ink_l,0.8,t)
-    wln(90,495,95,465,PAL.ink_l,0.8,t)
-    $ctx.fillStyle='rgba(0,0,0,0.2)'
+    // Irregular rock shape
+    const sp=[[95,465],[130,460],[150,472],[145,490],[130,500],[105,502],[88,492],[85,475]]
+    pl(sp,PAL.stone)
+    pl([[95,465],[130,460],[150,472],[145,490],[130,500],[105,502],[88,492],[85,475]],'rgba(36,28,20,0.6)')
+    // Highlight face (top-left)
+    pl([[95,465],[130,460],[120,470],[88,475]],'rgba(74,66,56,0.4)')
+    // Dark face (bottom)
+    pl([[145,490],[130,500],[105,502],[88,492],[95,482]],'rgba(20,14,10,0.4)')
+    // Crack lines
+    wln(105,485,120,470,PAL.ink_l,0.6,t)
+    wln(112,492,130,478,PAL.ink_l,0.4,t)
+    wln(95,478,110,488,PAL.ink_l,0.3,t)
+    // Outline
+    wln(95,465,130,460,PAL.ink_l,0.8,t)
+    wln(130,460,150,472,PAL.ink_l,0.8,t)
+    wln(150,472,145,490,PAL.ink_l,0.8,t)
+    wln(145,490,130,500,PAL.ink_l,0.8,t)
+    wln(130,500,105,502,PAL.ink_l,0.6,t)
+    wln(105,502,88,492,PAL.ink_l,0.6,t)
+    wln(88,492,85,475,PAL.ink_l,0.6,t)
+    wln(85,475,95,465,PAL.ink_l,0.8,t)
+    // Shadow under stone
+    $ctx.fillStyle='rgba(0,0,0,0.25)'
     $ctx.beginPath()
-    $ctx.ellipse(117,500,28,6,0,0,Math.PI*2)
+    $ctx.ellipse(120,503,30,5,0,0,Math.PI*2)
     $ctx.fill()
   }
 
@@ -508,7 +524,12 @@ function drWest(ctx,t){
   ln(435,270,435,300,PAL.ink_l,0.5)
   ln(425,280,445,280,PAL.ink_l,0.5)
 
-  // Rope hanging on wall (visible until picked up)
+  // Rope hanging on wall
+  // Wall hook/nail (always visible)
+  circle(620,65,4,PAL.rust)
+  circle(620,65,2,PAL.rust_l)
+  rect(618,60,4,8,PAL.rust)
+  // Rope itself (visible until picked up)
   if(!window.__game||!window.__game.hasObtained('corda')){
     const rx=620,ry=60
     for(let i=0;i<8;i++){
@@ -516,19 +537,38 @@ function drWest(ctx,t){
       const sw=2+Math.sin(i)*0.5
       wln(rx-6+Math.sin(t*0.001+i)*2,ry2,rx+6+Math.cos(t*0.001+i)*2,ry2+12,PAL.sepia,sw,t)
     }
-    ln(rx,ry,rx,ry+220,PAL.sepia,2.5)
-    circle(rx,ry+5,8,PAL.sepia)
-    circle(rx-2,ry+8,4,PAL.sepia_d)
+    ln(rx,ry+4,rx,ry+220,PAL.sepia,2.5)
+    circle(rx,ry+6,6,PAL.sepia)
   }
 
   // Tool pile (visible until ferro picked up)
   if(!window.__game||!window.__game.hasObtained('ferro')){
     rect(560,350,120,100,PAL.ink_m)
     rect(565,355,110,90,PAL.ink)
-    wln(575,365,635,400,PAL.rust,3,t)
-    wln(575,365,635,400,PAL.rust_l,1.5,t)
+    // Iron bar (rectangular, metallic)
+    $ctx.save()
+    $ctx.translate(605,380)
+    $ctx.rotate(0.35)
+    rect(-28,-5,56,10,PAL.rust)
+    rect(-26,-4,52,8,PAL.rust_l)
+    // Highlight
+    rect(-26,-4,52,2,'rgba(160,106,58,0.4)')
+    // Shadow
+    rect(-26,2,52,2,'rgba(40,20,10,0.3)')
+    // Bent end
+    rect(-28,-5,8,10,PAL.rust)
+    rect(-28,-5,8,2,'rgba(160,106,58,0.3)')
+    $ctx.restore()
+    // Hammer head
     rect(580,360,25,15,PAL.rust)
+    rect(582,362,21,3,'rgba(160,106,58,0.3)')
+    // Chain links
     for(let i=0;i<4;i++)circle(610+i*8,390+i*5,3,PAL.rust)
+    circle(610,390,2,PAL.rust_l)
+    circle(618,395,2,PAL.rust_l)
+    circle(626,400,2,PAL.rust_l)
+    circle(634,405,2,PAL.rust_l)
+    // Saw blade
     wln(590,380,620,395,PAL.ink_l,0.8,t)
   }
 
