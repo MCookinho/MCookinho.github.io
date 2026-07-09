@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
-import json, os, glob
+import json, glob, os
 
 BASE = os.path.dirname(os.path.abspath(__file__))
-RANK_DIR = os.path.join(BASE, 'data', 'rankings')
 
 def write_json(path, data):
     keys = list(data[0].keys()) if data else []
@@ -32,7 +31,7 @@ def write_json(path, data):
         f.write(']\n')
 
 def main():
-    for path in sorted(glob.glob(os.path.join(RANK_DIR, '*.json'))):
+    for path in sorted(glob.glob(os.path.join(BASE, '*.json'))):
         with open(path) as f:
             data = json.load(f)
         name = os.path.basename(path)
