@@ -12,7 +12,7 @@
     <div class="topbar-inner">
       <a href="https://mcookinho.github.io" class="topbar-brand">PEU BORGES</a>
       <div class="topbar-links">
-        <a href="#" class="topbar-btn" data-config="true">CONFIGURAR</a>
+        <button class="topbar-btn" id="openConfig">CONFIGURAR</button>
         <button class="topbar-btn" id="exportPdf">EXPORTAR PDF</button>
         <a href="https://mcookinho.github.io" class="topbar-btn topbar-btn-back">VOLTAR</a>
       </div>
@@ -21,7 +21,6 @@
 
   <main class="main-content" id="mainContent">
 
-    <!-- HEADER -->
     <header class="prof-header" id="sec-header" data-section="header">
       <div class="ph-top">
         <h1 class="ph-name">João Pedro Borges</h1>
@@ -31,11 +30,10 @@
       <div class="ph-contact">
         <a href="mailto:peuborges.dev@gmail.com">peuborges.dev@gmail.com</a>
         <a href="https://github.com/MCookinho" target="_blank">github.com/MCookinho</a>
-        <a href="https://www.linkedin.com/in/jo%C3%A3o-pedro-borges-a16321279/" target="_blank">linkedin.com/in/joaopedro</a>
+        <a href="https://www.linkedin.com/in/joão-pedro-borges-a16321279/" target="_blank">linkedin.com/in/joaopedro</a>
       </div>
     </header>
 
-    <!-- ABOUT -->
     <section class="prof-section" id="sec-about" data-section="about">
       <h2 class="ps-title">SOBRE</h2>
       <p class="ps-text">
@@ -46,7 +44,6 @@
       </p>
     </section>
 
-    <!-- EXPERIENCE -->
     <section class="prof-section" id="sec-experience" data-section="experience">
       <h2 class="ps-title">EXPERIÊNCIA</h2>
       <div class="exp-list">
@@ -56,10 +53,7 @@
             <span class="exp-date">2022 — Presente</span>
           </div>
           <span class="exp-org">Autônomo</span>
-          <p class="exp-desc">
-            Desenvolvimento de bots, scripts de automação, interfaces web e jogos indie.
-            Clientes e projetos pessoais utilizando Python, JavaScript, C e GML.
-          </p>
+          <p class="exp-desc">Desenvolvimento de bots, scripts de automação, interfaces web e jogos indie. Clientes e projetos pessoais utilizando Python, JavaScript, C e GML.</p>
         </div>
         <div class="exp-item">
           <div class="exp-head">
@@ -67,15 +61,11 @@
             <span class="exp-date">2023 — Presente</span>
           </div>
           <span class="exp-org">Universidade — Eng. da Computação</span>
-          <p class="exp-desc">
-            Implementação de sistemas distribuídos com sockets e threads em Java,
-            desenvolvimento de jogos em Godot e C++, e projetos de eletrônica com Arduino.
-          </p>
+          <p class="exp-desc">Implementação de sistemas distribuídos com sockets e threads em Java, desenvolvimento de jogos em Godot e C++, e projetos de eletrônica com Arduino.</p>
         </div>
       </div>
     </section>
 
-    <!-- EDUCATION -->
     <section class="prof-section" id="sec-education" data-section="education">
       <h2 class="ps-title">FORMAÇÃO</h2>
       <div class="edu-item">
@@ -84,13 +74,10 @@
           <span class="edu-date">2023 — 2027</span>
         </div>
         <span class="edu-inst">Universidade — Salvador, BA</span>
-        <p class="edu-desc">
-          Ênfase em desenvolvimento de software, sistemas embarcados e inteligência computacional.
-        </p>
+        <p class="edu-desc">Ênfase em desenvolvimento de software, sistemas embarcados e inteligência computacional.</p>
       </div>
     </section>
 
-    <!-- SKILLS -->
     <section class="prof-section" id="sec-skills" data-section="skills">
       <h2 class="ps-title">HABILIDADES TÉCNICAS</h2>
       <div class="skills-grid" id="skillsGrid">
@@ -119,60 +106,43 @@
       </div>
     </section>
 
-    <!-- PROJECTS -->
     <section class="prof-section" id="sec-projects" data-section="projects">
       <h2 class="ps-title">PROJETOS</h2>
       <div class="proj-grid">
         <div class="proj-card">
-          <div class="proj-head">
-            <span class="proj-lang">Python</span>
-            <span class="proj-name">HEXFEED</span>
-          </div>
+          <div class="proj-head"><span class="proj-lang">Python</span><span class="proj-name">HEXFEED</span></div>
           <p class="proj-desc">Rede social privada no terminal. Criptografado com Tor. TUI minimalista construída com ncurses.</p>
           <a href="https://github.com/MCookinho/hexfeed" target="_blank" class="proj-link">github.com/MCookinho/hexfeed</a>
         </div>
         <div class="proj-card">
-          <div class="proj-head">
-            <span class="proj-lang">C</span>
-            <span class="proj-name">SHELLGAME</span>
-          </div>
+          <div class="proj-head"><span class="proj-lang">C</span><span class="proj-name">SHELLGAME</span></div>
           <p class="proj-desc">Coleção de jogos clássicos no terminal com ncurses. Port do FNAF incluído.</p>
           <a href="https://github.com/MCookinho/shellgame" target="_blank" class="proj-link">github.com/MCookinho/shellgame</a>
         </div>
         <div class="proj-card">
-          <div class="proj-head">
-            <span class="proj-lang">Python</span>
-            <span class="proj-name">MATE-HELPER</span>
-          </div>
+          <div class="proj-head"><span class="proj-lang">Python</span><span class="proj-name">MATE-HELPER</span></div>
           <p class="proj-desc">Desktop pet com IA. Um bichinho virtual inteligente que vive na sua tela.</p>
           <a href="https://github.com/MCookinho/mate-helper" target="_blank" class="proj-link">github.com/MCookinho/mate-helper</a>
         </div>
         <div class="proj-card">
-          <div class="proj-head">
-            <span class="proj-lang">JavaScript</span>
-            <span class="proj-name">LETRAL</span>
-          </div>
+          <div class="proj-head"><span class="proj-lang">JavaScript</span><span class="proj-name">LETRAL</span></div>
           <p class="proj-desc">Wordle Battle Royale. Descubra a palavra secreta antes dos outros em pt-BR, en, es.</p>
           <a href="https://letral.wtf" target="_blank" class="proj-link">letral.wtf</a>
         </div>
         <div class="proj-card">
-          <div class="proj-head">
-            <span class="proj-lang">GML</span>
-            <span class="proj-name">CATFISHING</span>
-          </div>
+          <div class="proj-head"><span class="proj-lang">GML</span><span class="proj-name">CATFISHING</span></div>
           <p class="proj-desc">Point &amp; Click com combate por turno. Pesque e batalhe contra os peixes do aquário.</p>
           <a href="https://codecrusaders.itch.io/catfishing" target="_blank" class="proj-link">codecrusaders.itch.io/catfishing</a>
         </div>
       </div>
     </section>
 
-    <!-- CONTACT -->
     <section class="prof-section" id="sec-contact" data-section="contact">
       <h2 class="ps-title">CONTATO</h2>
       <div class="contact-links">
         <a href="mailto:peuborges.dev@gmail.com" class="contact-item">peuborges.dev@gmail.com</a>
         <a href="https://github.com/MCookinho" target="_blank" class="contact-item">github.com/MCookinho</a>
-        <a href="https://www.linkedin.com/in/jo%C3%A3o-pedro-borges-a16321279/" target="_blank" class="contact-item">linkedin.com/in/joaopedro</a>
+        <a href="https://www.linkedin.com/in/joão-pedro-borges-a16321279/" target="_blank" class="contact-item">linkedin.com/in/joaopedro</a>
         <a href="https://mcookinho.github.io" class="contact-item">mcookinho.github.io</a>
       </div>
     </section>
@@ -180,23 +150,65 @@
   </main>
 
   <footer class="prof-footer">
-    <p>© 2026 João Pedro Borges · Portfolio Profissional</p>
+    <p>© 2026 João Pedro Borges — Portfolio Profissional</p>
   </footer>
 
   <!-- Config Panel -->
   <div class="config-overlay" id="configOverlay">
     <div class="config-panel">
       <div class="config-head">
-        <h2 class="config-title">CONFIGURAR PÁGINA</h2>
+        <h2 class="config-title">CONFIGURAÇÕES</h2>
         <button class="config-close" id="configClose">✕</button>
       </div>
+      <div class="config-tabs">
+        <button class="config-tab active" data-tab="appearance">APARÊNCIA</button>
+        <button class="config-tab" data-tab="sections">SEÇÕES</button>
+        <button class="config-tab" data-tab="pdf">PDF</button>
+      </div>
       <div class="config-body" id="configBody">
-        <p class="config-hint">Selecione as seções que deseja exibir e arraste para reordenar.</p>
-        <div class="config-section-list" id="configSectionList"></div>
-        <div class="config-actions">
-          <button class="config-btn config-btn-primary" id="configSave">SALVAR</button>
-          <button class="config-btn config-btn-reset" id="configReset">RESTAURAR PADRÃO</button>
+
+        <!-- TAB: Appearance -->
+        <div class="config-tab-content active" id="tab-appearance">
+          <div class="config-group">
+            <label class="config-label">TEMA</label>
+            <div class="theme-grid" id="themeGrid"></div>
+          </div>
+          <div class="config-group">
+            <label class="config-label">FONTE</label>
+            <div class="config-btn-group" id="fontGroup"></div>
+          </div>
+          <div class="config-group">
+            <label class="config-label">ANIMAÇÕES</label>
+            <div class="config-btn-group" id="animGroup"></div>
+          </div>
         </div>
+
+        <!-- TAB: Sections -->
+        <div class="config-tab-content" id="tab-sections">
+          <p class="config-hint">Marque/desmarque para mostrar ou ocultar seções. Arraste para reordenar.</p>
+          <div class="config-section-list" id="configSectionList"></div>
+        </div>
+
+        <!-- TAB: PDF -->
+        <div class="config-tab-content" id="tab-pdf">
+          <div class="config-group">
+            <label class="config-label">INCLUIR NO PDF</label>
+            <div class="config-pdf-list" id="pdfSectionList"></div>
+          </div>
+          <div class="config-group">
+            <label class="config-label">MARGENS</label>
+            <div class="config-btn-group" id="marginGroup"></div>
+          </div>
+          <div class="config-group">
+            <label class="config-label">TAMANHO DA FONTE</label>
+            <div class="config-btn-group" id="pdfFontGroup"></div>
+          </div>
+        </div>
+
+      </div>
+      <div class="config-foot">
+        <button class="config-btn config-btn-primary" id="configSave">SALVAR</button>
+        <button class="config-btn config-btn-reset" id="configReset">RESTAURAR PADRÃO</button>
       </div>
     </div>
   </div>
