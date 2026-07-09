@@ -277,96 +277,76 @@ function drEast(ctx,t){
   const mx=435,my=85,mw=210,mh=270
   rect(mx-5,my-5,mw+10,mh+10,PAL.ink_l)
 
+  $ctx.save()
+  $ctx.beginPath()
+  $ctx.rect(mx,my,mw,mh)
+  $ctx.clip()
+  // Stone wall (opposite room reflection)
+  rect(mx,my,mw,mh,'rgba(36,28,20,0.95)')
+  for(let row=0;row<5;row++){
+    for(let col=0;col<3;col++){
+      const bx=mx+col*70+(row%2)*35,by=my+row*55
+      rect(bx,by,60,48,'rgba(52,42,32,0.4)')
+      rect(bx+2,by+2,54,44,'rgba(42,34,26,0.2)')
+      $ctx.strokeStyle='rgba(68,58,48,0.12)'
+      $ctx.lineWidth=0.5
+      $ctx.strokeRect(bx,by,60,48)
+    }
+  }
+  // AÇEUQSE (ESQUEÇA reversed) diagonal across mirror
+  $ctx.save()
+  $ctx.translate(540,200)
+  $ctx.rotate(-0.35)
+  $ctx.fillStyle='rgba(122,90,58,0.3)'
+  $ctx.font='bold 36px Georgia'
+  $ctx.textAlign='center'
+  $ctx.textBaseline='middle'
+  $ctx.fillText('AÇEUQSE',0,0)
+  // Drip
+  $ctx.fillStyle='rgba(122,90,58,0.08)'
+  $ctx.fillRect(8,18,2,20)
+  $ctx.restore()
+  // Reflective glint
+  $ctx.fillStyle='rgba(184,160,128,0.04)'
+  $ctx.fillRect(mx+3,my,2,mh)
+  $ctx.fillRect(mx+50,my,1,mh)
+
   if(mirrorBroken){
-    rect(mx,my,mw,mh,PAL.ink)
-    // Crack lines from impact point
+    // Crack lines overlay
     const ix=540,iy=200
-    $ctx.strokeStyle='rgba(154,138,122,0.3)'
+    $ctx.strokeStyle='rgba(184,160,128,0.25)'
     $ctx.lineWidth=1.5
-    for(let i=0;i<7;i++){
-      const a=i*0.9+0.3,l=40+Math.sin(i*5)*25
+    for(let i=0;i<6;i++){
+      const a=i*1.1+0.2,l=50+Math.sin(i*4)*20
       $ctx.beginPath()
       $ctx.moveTo(ix,iy)
       let px=ix,py=iy
-      for(let j=0;j<5;j++){
-        px+=Math.cos(a+Math.sin(i+j*2)*0.6)*l/5
-        py+=Math.sin(a+Math.cos(i+j*2)*0.6)*l/5
+      for(let j=0;j<4;j++){
+        px+=Math.cos(a+Math.sin(i+j*2)*0.5)*l/4
+        py+=Math.sin(a+Math.cos(i+j*2)*0.5)*l/4
         $ctx.lineTo(px,py)
       }
       $ctx.stroke()
     }
-    // Secondary cracks
-    $ctx.strokeStyle='rgba(154,138,122,0.15)'
-    $ctx.lineWidth=0.8
-    for(let i=0;i<5;i++){
-      const cx=470+Math.sin(i*31)*90,cy=120+Math.sin(i*43)*140
-      $ctx.beginPath()
-      $ctx.moveTo(cx,cy)
-      $ctx.lineTo(cx+Math.sin(t*0.001+i)*20,cy+60+Math.sin(i*2)*15)
-      $ctx.stroke()
-    }
-    // Shard polygons
-    pl([[460,105],[560,95],[540,160],[470,150]],'rgba(58,50,36,0.3)')
-    pl([[540,160],[620,150],[630,330],[550,310]],'rgba(58,50,36,0.2)')
-    pl([[470,150],[550,160],[510,300],[460,280]],'rgba(58,50,36,0.25)')
-    // Occasional glint
-    $ctx.fillStyle='rgba(184,160,128,0.06)'
-    $ctx.fillRect(475,120,2,2)
-    $ctx.fillRect(580,250,2,2)
-    $ctx.fillRect(500,280,2,2)
-  }else{
+    // Distortion: slight offset copy of text
     $ctx.save()
-    $ctx.beginPath()
-    $ctx.rect(mx,my,mw,mh)
-    $ctx.clip()
-    // Stone wall (opposite room reflection)
-    rect(mx,my,mw,mh,'rgba(36,28,20,0.95)')
-    for(let row=0;row<5;row++){
-      for(let col=0;col<3;col++){
-        const bx=mx+col*70+(row%2)*35,by=my+row*55
-        rect(bx,by,60,48,'rgba(52,42,32,0.5)')
-        rect(bx+2,by+2,54,44,'rgba(42,34,26,0.3)')
-        $ctx.strokeStyle='rgba(68,58,48,0.15)'
-        $ctx.lineWidth=0.5
-        $ctx.strokeRect(bx,by,60,48)
-      }
-    }
-    $ctx.fillStyle='rgba(122,90,58,0.35)'
-    $ctx.font='22px Georgia'
+    $ctx.translate(543,203)
+    $ctx.rotate(-0.35)
+    $ctx.fillStyle='rgba(122,90,58,0.12)'
+    $ctx.font='bold 36px Georgia'
     $ctx.textAlign='center'
-    $ctx.fillText('ESQUEÇA',540,195)
-    $ctx.fillStyle='rgba(122,90,58,0.1)'
-    $ctx.fillRect(535,200,3,25)
-    $ctx.fillRect(548,202,1,18)
-    // Player bust silhouette
-    $ctx.fillStyle='rgba(10,8,6,0.8)'
-    $ctx.beginPath()
-    $ctx.moveTo(508,305)
-    $ctx.quadraticCurveTo(520,268,540,258)
-    $ctx.quadraticCurveTo(560,268,572,305)
-    $ctx.closePath()
-    $ctx.fill()
-    // Head
-    $ctx.beginPath()
-    $ctx.ellipse(540,240,16,20,0,0,Math.PI*2)
-    $ctx.fill()
-    // Ink stain on mirror glass (over face)
-    $ctx.fillStyle='rgba(52,42,32,0.65)'
-    $ctx.beginPath()
-    $ctx.ellipse(540,243,14,11,0,0,Math.PI*2)
-    $ctx.fill()
-    $ctx.fillStyle='rgba(36,28,20,0.5)'
-    $ctx.beginPath()
-    $ctx.ellipse(538,241,8,5,-0.1,0,Math.PI*2)
-    $ctx.fill()
-    // Reflective glint
-    $ctx.fillStyle='rgba(184,160,128,0.04)'
-    $ctx.fillRect(mx+3,my,2,mh)
-    $ctx.fillRect(mx+50,my,1,mh)
+    $ctx.textBaseline='middle'
+    $ctx.fillText('AÇEUQSE',0,0)
     $ctx.restore()
+    // Offset glint
+    $ctx.fillStyle='rgba(184,160,128,0.05)'
+    $ctx.fillRect(480,110,2,2)
+    $ctx.fillRect(570,240,2,2)
   }
 
-  // Mirror frame ornate (always on top)
+  $ctx.restore()
+
+  // Mirror frame ornate (always on top of mirror surface)
   wln(mx-5,my-5,mx+mw+5,my-5,PAL.rust,1.5,t)
   wln(mx+mw+5,my-5,mx+mw+5,my+mh+5,PAL.rust,1.5,t)
   wln(mx+mw+5,my+mh+5,mx-5,my+mh+5,PAL.rust,1.5,t)
