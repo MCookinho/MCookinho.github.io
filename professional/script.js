@@ -602,7 +602,13 @@
   }
 
   function applyPresetConfig(presetFull) {
-    if (presetFull.theme) currentConfig.theme = presetFull.theme
+    if (presetFull.theme) {
+      currentConfig.theme = presetFull.theme
+      // Reset all custom colors so they fall back to new theme defaults.
+      // Preset's explicit color overrides are re-applied below.
+      var colorKeys = ['primary','accent','bg','fontColor','linkColor','linkHoverColor','cardBg','borderColor']
+      colorKeys.forEach(function (k) { currentConfig.customColors[k] = '' })
+    }
     var simple = ['font','fontSize','titleSize','sectionTitleSize','fontWeight','paragraphSpacing','lineHeight','letterSpacing','textAlign','animation','bgPattern','bgPatternOpacity']
     simple.forEach(function (f) {
       if (presetFull[f] !== undefined) currentConfig[f] = presetFull[f]
