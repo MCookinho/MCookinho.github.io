@@ -23,7 +23,10 @@
   function launch() {
     if (tetris) { tetris.show(); return }
     flashEffect()
-    setTimeout(() => { tetris = new TetrisGame() }, 600)
+    setTimeout(() => {
+      tetris = new TetrisGame()
+      if (typeof window.__enterTetris === 'function') window.__enterTetris()
+    }, 600)
   }
 
   function flashEffect() {
@@ -130,6 +133,7 @@
       this.levelUpFlash = 0
       this.lastTime = 0
       this.animFrame = null
+      this._scoreSaved = false
 
       this.dasDelay = 170
       this.dasInterval = 50
@@ -477,6 +481,22 @@
 
       // game over overlay
       if (this.gameOver) {
+        if (!this._scoreSaved) {
+          this._scoreSaved = true
+          var prev = parseInt(localStorage.getItem('tetrisHighScore') || '0', 10)
+          if (this.score > prev) {
+            localStorage.setItem('tetrisHighScore', this.score)
+          }
+          if (typeof window.__tetrisScore === 'function') {
+            window.__tetrisScore(this.score)
+          }
+          if (typeof window.__updateRankBadge === 'function') {
+            window.__updateRankBadge()
+          }
+          if (typeof window.__syncRankScore === 'function') {
+            window.__syncRankScore()
+          }
+        }
         ctx.fillStyle = 'rgba(0,0,0,0.7)'
         ctx.fillRect(0,0,this.bw,this.bh)
         ctx.fillStyle = '#ff1493'
@@ -560,6 +580,7 @@
       this.level = 1
       this.dropInterval = 1000
       this.gameOver = false
+      this._scoreSaved = false
       this.paused = false
       this.clearing = null
       this.clearFlash = 0

@@ -707,6 +707,9 @@
               setTimeout(function () {
                 H.playDogBark()
                 H.animateTear(function () {
+                  if (typeof window.__enterDoghouse === 'function') {
+                    window.__enterDoghouse()
+                  }
                   setTimeout(function () { window.location.href = 'doghouse/index.html' }, 100)
                 })
               }, 600)
@@ -749,6 +752,9 @@
       addMsg(msg, true)
       input.value = ''
       respond(msg)
+      if (typeof window.__shivaMessageSent === 'function') {
+        window.__shivaMessageSent()
+      }
     }
 
     send.addEventListener('click', sendMsg)

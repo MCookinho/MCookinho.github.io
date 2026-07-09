@@ -75,6 +75,9 @@
 
   function dispatch(key, type) {
     document.dispatchEvent(new KeyboardEvent(type, { key: key, bubbles: true }))
+    if (type === 'keydown' && typeof window.__countControllerPress === 'function') {
+      window.__countControllerPress()
+    }
   }
 
   function setupControllerBtns(scope) {
@@ -211,10 +214,12 @@
         html += '<div class="sub-achieve-list">'
         list.forEach(function (a) {
           html += '<div class="sub-achieve-item' + (a.done ? ' done' : ' locked') + '">' +
-            '<span class="sub-achieve-icon">' + (a.done ? '\u2B50' : '\u25CB') + '</span>' +
+            '<div class="sub-achieve-icon-wrap">' +
+              '<span class="sub-achieve-icon">' + (a.done ? a.icon : a.lockedIcon) + '</span>' +
+            '</div>' +
             '<div class="sub-achieve-body">' +
               '<span class="sub-achieve-name">' + a.name + '</span>' +
-              '<span class="sub-achieve-desc">' + a.desc + '</span>' +
+              '<span class="sub-achieve-desc">' + (a.done ? a.desc : a.hint) + '</span>' +
             '</div>' +
           '</div>'
         })
@@ -246,17 +251,129 @@
   }
 
   var ACHIEVEMENTS = [
-    { name: 'PRIMEIRO COMMIT', desc: 'Fez o primeiro commit no portfólio', done: true },
-    { name: '5 PROJETOS', desc: 'Publicou 5 projetos no portfólio', done: true },
-    { name: 'CÓDIGO 3AM', desc: 'Fez um commit depois da meia-noite', done: true },
-    { name: 'SHIVA FAMOSA', desc: 'Shiva apareceu no site', done: true },
-    { name: 'PLAYLIST COMPLETA', desc: 'Adicionou 10+ músicas na playlist', done: true },
-    { name: 'TETRIS MASTER', desc: 'Fez 10000+ pontos no Tetris', done: false },
-    { name: 'OVERTURE', desc: 'Completou o jogo Doghouse', done: false },
-    { name: 'POLIGLOTA', desc: 'Usou o site em 2+ idiomas', done: false },
-    { name: 'COLECIONADOR', desc: 'Desbloqueou todas as conquistas', done: false },
-    { name: 'FÃ NÚMERO 1', desc: 'Visitou o site 100+ vezes', done: false },
+    { id:'visit-social',    name:'EXPLORADOR DIGITAL', icon:'\uD83C\uDF10', lockedIcon:'\uD83D\uDD12', desc:'Voc\u00EA visitou sua primeira rede social pelo site!', hint:'Clique nos \u00EDcones de rede social no in\u00EDcio da p\u00E1gina...', done:false },
+    { id:'view-skill',      name:'SABEDORIA PIXEL',   icon:'\uD83D\uDCD6', lockedIcon:'\uD83D\uDD12', desc:'Voc\u00EA explorou as habilidades do Peu!',           hint:'Clique em alguma skill na se\u00E7\u00E3o STACK...',   done:false },
+    { id:'time-5min',       name:'PAUSA PRO CAF\u00C9', icon:'\u2615',   lockedIcon:'\uD83D\uDD12', desc:'Voc\u00EA ficou mais de 5 minutos no site!',          hint:'Fique mais tempo explorando o site...',              done:false },
+    { id:'play-song',       name:'MELOMANIA',          icon:'\uD83C\uDFB5', lockedIcon:'\uD83D\uDD12', desc:'Voc\u00EA colocou uma m\u00FAsica para tocar!',       hint:'Abra a biblioteca musical e escolha uma m\u00FAsica...', done:false },
+    { id:'shiva-message',   name:'AU!',                icon:'\uD83D\uDC3E', lockedIcon:'\uD83D\uDD12', desc:'Voc\u00EA mandou sua primeira mensagem pra Shiva!',  hint:'Tente conversar com a Shiva no fim da p\u00E1gina...', done:false },
+    { id:'controller-10',   name:'NOSTALGI-A\u00C7\u00C3O', icon:'\uD83C\uDFAE', lockedIcon:'\uD83D\uDD12', desc:'Voc\u00EA apertou 10 vezes no controle NES!',         hint:'Fique apertando os bot\u00F5es do controle NES...',   done:false },
+    { id:'enter-tetris',    name:'BLOCO CAIU',         icon:'\uD83E\uDDF1', lockedIcon:'\uD83D\uDD12', desc:'Voc\u00EA invocou o Tetris!',                         hint:'Use o c\u00F3digo Konami (\u2191\u2191\u2193\u2193\u2190\u2192\u2190\u2192 BA)', done:false },
+    { id:'enter-doghouse',  name:'PASSEIO SOMBRIO',    icon:'\uD83D\uDE31', lockedIcon:'\uD83D\uDD12', desc:'Voc\u00EA enfrentou o Terror de Shiva!',                hint:'Tente \u201Cpassear\u201D com a Shiva...',             done:false },
+    { id:'shiva-100',       name:'MELHOR AMIGO',       icon:'\uD83D\uDC15', lockedIcon:'\uD83D\uDD12', desc:'Voc\u00EA mandou 100 mensagens pra Shiva! Ela te ama!', hint:'Mande muuuuitas mensagens pra Shiva...',            done:false },
+    { id:'tetris-5000',     name:'VICIADO EM TETRIS',  icon:'\uD83D\uDD79\uFE0F', lockedIcon:'\uD83D\uDD12', desc:'Voc\u00EA fez 5.000+ pontos no Tetris!',               hint:'Jogue Tetris at\u00E9 passar dos 5.000 pontos...',    done:false },
+    { id:'time-2h',         name:'SEM VIDA SOCIAL',    icon:'\uD83C\uDFE0', lockedIcon:'\uD83D\uDD12', desc:'Voc\u00EA passou mais de 2 horas no site!',            hint:'Deixe o site aberto por muito tempo...',             done:false },
+    { id:'tetris-15000',    name:'LENDA DO TETRIS',    icon:'\uD83D\uDC51', lockedIcon:'\uD83D\uDD12', desc:'Voc\u00EA fez 15.000+ pontos no Tetris! Lend\u00E1rio!', hint:'15.000+ pontos no Tetris... s\u00F3 os deuses!',     done:false },
   ]
+
+  // ── Achievement Persistence ──
+  function loadAchievements() {
+    try {
+      var saved = JSON.parse(localStorage.getItem('mcookinho_achievements'))
+      if (saved && saved.length) {
+        saved.forEach(function (id) {
+          var a = ACHIEVEMENTS.find(function (a) { return a.id === id })
+          if (a) a.done = true
+        })
+      }
+    } catch (e) {}
+  }
+  loadAchievements()
+
+  function saveAchievements() {
+    var done = ACHIEVEMENTS.filter(function (a) { return a.done }).map(function (a) { return a.id })
+    localStorage.setItem('mcookinho_achievements', JSON.stringify(done))
+  }
+
+  window.__unlockAchievement = function (id) {
+    var a = ACHIEVEMENTS.find(function (a) { return a.id === id })
+    if (!a || a.done) return false
+    a.done = true
+    saveAchievements()
+    showAchieveToast(a)
+    updateAchieveBadge()
+    if (document.getElementById('subOverlay').classList.contains('open')) {
+      var titleEl = document.getElementById('subTitle')
+      if (titleEl && titleEl.textContent.indexOf('CONQUISTAS') !== -1) {
+        document.getElementById('subBody').innerHTML = subData.achievements.content()
+      }
+    }
+    return true
+  }
+
+  // ── Unlock Toast ──
+  function showAchieveToast(a) {
+    var toast = document.createElement('div')
+    toast.className = 'unlock-toast'
+    toast.innerHTML =
+      '<div class="unlock-toast-inner">' +
+        '<div class="unlock-toast-glow"></div>' +
+        '<div class="unlock-toast-icon">' + a.icon + '</div>' +
+        '<div class="unlock-toast-body">' +
+          '<span class="unlock-toast-label">CONQUISTA DESBLOQUEADA!</span>' +
+          '<span class="unlock-toast-name">' + a.name + '</span>' +
+        '</div>' +
+      '</div>'
+    document.body.appendChild(toast)
+    requestAnimationFrame(function () { toast.classList.add('show') })
+    setTimeout(function () {
+      toast.classList.remove('show')
+      setTimeout(function () { toast.remove() }, 400)
+    }, 4000)
+  }
+
+  // ── Achievement Hooks ──
+
+  // Social media click
+  var heroLinks = document.querySelectorAll('.hero-redes a')
+  for (var hi = 0; hi < heroLinks.length; hi++) {
+    heroLinks[hi].addEventListener('click', function () {
+      window.__unlockAchievement('visit-social')
+    })
+  }
+
+  // Time tracking
+  var SITE_START = Date.now()
+  setInterval(function () {
+    var elapsed = Date.now() - SITE_START
+    if (elapsed >= 5 * 60 * 1000) window.__unlockAchievement('time-5min')
+    if (elapsed >= 2 * 60 * 60 * 1000) window.__unlockAchievement('time-2h')
+  }, 15000)
+
+  // Shiva message counter
+  window.__shivaMessageCount = parseInt(localStorage.getItem('mcookinho_shiva_count') || '0', 10)
+  window.__shivaMessageSent = function () {
+    window.__shivaMessageCount++
+    localStorage.setItem('mcookinho_shiva_count', window.__shivaMessageCount)
+    if (window.__shivaMessageCount >= 1) window.__unlockAchievement('shiva-message')
+    if (window.__shivaMessageCount >= 100) window.__unlockAchievement('shiva-100')
+  }
+
+  // Controller press counter
+  window.__controllerPressCount = parseInt(localStorage.getItem('mcookinho_ctrl_count') || '0', 10)
+  window.__countControllerPress = function () {
+    window.__controllerPressCount++
+    localStorage.setItem('mcookinho_ctrl_count', window.__controllerPressCount)
+    if (window.__controllerPressCount >= 10) window.__unlockAchievement('controller-10')
+  }
+
+  // Tetris hooks
+  window.__tetrisScore = function (score) {
+    if (score >= 5000) window.__unlockAchievement('tetris-5000')
+    if (score >= 15000) window.__unlockAchievement('tetris-15000')
+  }
+  window.__enterTetris = function () {
+    window.__unlockAchievement('enter-tetris')
+  }
+
+  // Doghouse hook (called from shiva.js)
+  window.__enterDoghouse = function () {
+    window.__unlockAchievement('enter-doghouse')
+  }
+
+  // Music play hook (called from player.js)
+  window.__songPlayed = function () {
+    window.__unlockAchievement('play-song')
+  }
 
   var RANKINGS = [
     {
@@ -333,13 +450,18 @@
     var hs = localStorage.getItem('tetrisHighScore')
     ndRankSub.textContent = 'TETRIS: ' + (hs || '0') + ' / PESSOAS'
   }
+  window.__updateRankBadge = updateRankBadge
   updateRankBadge()
 
   // Update rank values from localStorage
-  var tetrisScore = localStorage.getItem('tetrisHighScore')
-  if (tetrisScore && RANKINGS[0].items[0]) {
-    RANKINGS[0].items[0].value = tetrisScore
+  function syncRankScore() {
+    var tetrisScore = localStorage.getItem('tetrisHighScore')
+    if (tetrisScore && RANKINGS[0].items[0]) {
+      RANKINGS[0].items[0].value = tetrisScore
+    }
   }
+  syncRankScore()
+  window.__syncRankScore = syncRankScore
 })()
 
 ;(function () {
@@ -414,6 +536,9 @@
       skillPct.textContent = pct + '%'
 
       overlay.classList.add('open')
+      if (typeof window.__unlockAchievement === 'function') {
+        window.__unlockAchievement('view-skill')
+      }
 
       skillBarFill.style.width = '0%'
       requestAnimationFrame(function () {

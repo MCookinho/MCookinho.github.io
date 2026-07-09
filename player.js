@@ -254,6 +254,7 @@
       updateUI()
       showPlayerBar()
       closeOverlay()
+      if (typeof window.__songPlayed === 'function') window.__songPlayed()
     }).catch(function () {
       isPlaying = false
       updateUI()
