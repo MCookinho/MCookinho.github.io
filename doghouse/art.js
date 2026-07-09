@@ -82,22 +82,34 @@ function stoneWall(t){
 
 /* ─── FLOOR ─── */
 function floor(t){
-  rect(0,430,800,170,PAL.ink_m)
+  const lit=window.__game&&window.__game.candleLit
+  rect(0,430,800,170,lit?PAL.stone_d:PAL.ink_m)
   rect(0,428,800,2,PAL.shadow_d)
   rect(0,430,800,1,PAL.ink)
   for(let row=0;row<6;row++){
     for(let col=0;col<12;col++){
       const fx=col*70+(row%2)*35, fy=430+row*30
       const fw=64+Math.sin(col*3+row*7)*6, fh=24+Math.sin(col*5+row*2)*4
-      rect(fx+2,fy+2,fw,fh,PAL.stone_d)
-      rect(fx+3,fy+3,fw-2,fh-2,PAL.stone)
+      rect(fx+2,fy+2,fw,fh,lit?PAL.stone:PAL.stone_d)
+      rect(fx+3,fy+3,fw-2,fh-2,lit?PAL.stone_l:PAL.stone)
       wln(fx,fy,fx+fw,fy,PAL.ink_l,0.5,t)
       wln(fx,fy,fx,fy+fh,PAL.ink_l,0.5,t)
+      if(lit){
+        wln(fx+4,fy+4,fx+fw-4,fy+4,PAL.sepia_d,0.4,t,0.2)
+        wln(fx+2,fy+8,fx+fw-6,fy+8,PAL.sepia_d,0.3,t,0.2)
+        const knotX=fx+fw*0.3+Math.sin(col*7+row*11)*5
+        const knotY=fy+fh*0.6+Math.sin(col*13+row*3)*4
+        circle(knotX,knotY,1.5,PAL.sepia)
+        circle(knotX,knotY,0.6,PAL.dark)
+      }
     }
   }
-  for(let i=0;i<6;i++){
+  for(let i=0;i<(lit?12:6);i++){
     const fx=(i*157+23)%760, fy=440+(i*89)%130
     rect(fx,fy,2,3,PAL.ink_m)
+  }
+  if(lit){
+    rect(0,430,800,6,grad(0,430,0,436,'rgba(120,90,50,0.06)','rgba(0,0,0,0)'))
   }
 }
 
@@ -553,13 +565,53 @@ function drSouth(ctx,t){
   circle(400,500,12,`rgba(26,18,14,0.6)`)
 
   // Floorboard
-  wln(240,465,360,465,PAL.ink_l,0.8,t)
-  wln(240,465,240,500,PAL.ink_l,0.8,t)
-  wln(240,500,360,500,PAL.ink_l,0.8,t)
-  wln(360,465,360,500,PAL.ink_l,0.8,t)
-  // nail
-  circle(250,480,2,PAL.rust_l)
-  circle(350,480,2,PAL.rust_l)
+  const fbRaised=window.__game&&window.__game.floorboardRaised
+  if(fbRaised){
+    // Board tilted up — leaning against the wall on the left side
+    $ctx.fillStyle=PAL.ink_l
+    $ctx.beginPath()
+    $ctx.moveTo(225,463);$ctx.lineTo(245,460);$ctx.lineTo(247,496);$ctx.lineTo(225,500);$ctx.closePath()
+    $ctx.fill()
+    wln(225,463,225,498,PAL.stone_l,1,t)
+    wln(245,460,247,496,PAL.stone_l,0.6,t)
+    // wood grain on raised board
+    wln(230,470,242,468,PAL.sepia_d,0.5,t,0.3)
+    wln(228,482,243,480,PAL.sepia_d,0.5,t,0.3)
+    wln(229,492,244,490,PAL.sepia_d,0.5,t,0.3)
+    // nail on raised board
+    circle(234,477,1.5,PAL.rust_l)
+    // Shadow of raised board on floor
+    $ctx.fillStyle='rgba(0,0,0,0.35)'
+    $ctx.beginPath()
+    $ctx.ellipse(260,501,45,5,0,0,Math.PI*2)
+    $ctx.fill()
+    // Cavity in floor
+    rect(248,468,110,32,PAL.dark)
+    wln(248,468,358,468,PAL.ink_l,0.5,t)
+    wln(248,500,358,500,PAL.ink_l,0.5,t)
+    wln(248,468,248,500,PAL.ink_l,0.5,t)
+    wln(358,468,358,500,PAL.ink_l,0.5,t)
+    // Ball inside — if not yet obtained
+    if(!window.__game||!window.__game.hasObtained('bola')){
+      circle(300,485,10,PAL.sepia_l)
+      $ctx.strokeStyle=PAL.rust_l
+      $ctx.lineWidth=1
+      $ctx.beginPath()
+      $ctx.ellipse(300,485,10,10,0,0,Math.PI*2)
+      $ctx.stroke()
+      // Highlight on ball
+      circle(296,481,2.5,`rgba(200,180,160,0.3)`)
+      // Seam
+      wln(292,477,308,493,`rgba(100,80,60,0.3)`,0.5,t)
+    }
+  }else{
+    wln(240,465,360,465,PAL.ink_l,0.8,t)
+    wln(240,465,240,500,PAL.ink_l,0.8,t)
+    wln(240,500,360,500,PAL.ink_l,0.8,t)
+    wln(360,465,360,500,PAL.ink_l,0.8,t)
+    circle(250,480,2,PAL.rust_l)
+    circle(350,480,2,PAL.rust_l)
+  }
 
   // Stone (item) — visible until picked up
   if(!window.__game||!window.__game.hasObtained('pedra')){

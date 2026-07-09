@@ -34,6 +34,7 @@ const VIEWS = {
     {id:'inscricao',name:'INSCRIÇÃO',desc:'"ESQUEÇA" — a palavra lateja.',type:'examine'},
     {id:'ralo',name:'RALO',desc:'No chão. Água escura.',type:'drain'},
     {id:'assoalho',name:'ASSOALHO',desc:'Tábua solta no chão.',type:'floorboard'},
+    {id:'bola_assoalho',name:'BOLA',desc:'Bola velha embaixo do assoalho.',type:'floorboard_ball'},
     {id:'goteira',name:'GOTEIRA',desc:'Ping... ping...',type:'examine'},
     {id:'pedra_obj',name:'PEDRA',desc:'No chão. Pesada.',type:'item',gives:'pedra'}
   ],
@@ -78,6 +79,7 @@ const HITBOXES = {
     inscricao:{x:140,y:250,w:320,h:100},
     ralo:{x:330,y:470,w:140,h:50},
     assoalho:{x:240,y:465,w:120,h:35},
+    bola_assoalho:{x:260,y:472,w:80,h:28},
     goteira:{x:380,y:60,w:40,h:60},
     pedra_obj:{x:90,y:465,w:55,h:33}
   },
@@ -120,6 +122,7 @@ class Game {
     this.introStep=0
     this.shivaOffered={eye:false,mouth:false,paw:false}
     this.ceilingPuzzleSolved=false
+    this.floorboardRaised=false
     this.flags={}
     this.anim=null
     this.a.init()
@@ -264,6 +267,7 @@ class Game {
       case 'brick': return this.interactBrick(item)
       case 'drain': return this.interactDrain(item)
       case 'floorboard': return this.interactFloorboard(item)
+      case 'floorboard_ball': return this.interactFloorboardBall()
       case 'drawer':
         if(PUZZLES.drawer.solved){
           if(!this.hasObtained('fosforo')){
@@ -406,10 +410,14 @@ class Game {
     else this.engine.tooltip(ITEMS_NAME[item]+' não abre o ralo.')
   }
 
-  /* ─── FLOORBOARD (needs candle) ─── */
+  /* ─── FLOORBOARD (two-step: lift, then grab ball) ─── */
   interactFloorboard(item){
-    if(this.hasObtained('bola')){
-      this.engine.tooltip('O assoalho já foi levantado.')
+    if(this.floorboardRaised){
+      if(this.hasObtained('bola')){
+        this.engine.tooltip('O assoalho está levantado. Vazio.')
+      }else{
+        this.engine.tooltip('A bola está ali embaixo. É só pegar.')
+      }
       return
     }
     if(!this.candleLit){
@@ -417,7 +425,17 @@ class Game {
       return
     }
     this.a.dig()
+    this.floorboardRaised=true
     this.engine.tooltip('A tábua range! Uma bola velha embaixo.',3000)
+  }
+
+  /* ─── GRAB BALL from under floorboard ─── */
+  interactFloorboardBall(){
+    if(!this.floorboardRaised)return
+    if(this.hasObtained('bola')){
+      this.engine.tooltip('Já pegou a bola.')
+      return
+    }
     this.addItem('bola',false)
   }
 
