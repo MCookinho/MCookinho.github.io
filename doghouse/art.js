@@ -354,17 +354,10 @@ function drEast(ctx,t){
   // Candle (visible until picked up)
   if(!window.__game||!window.__game.hasObtained('vela')){
     const cx=202, cy=107
-    $ctx.fillStyle=rgrad(cx,cy,35,'rgba(255,200,100,0.12)','rgba(255,200,100,0)')
-    $ctx.beginPath();$ctx.arc(cx,cy,35,0,Math.PI*2);$ctx.fill()
     rect(cx-5,cy-12,10,30,PAL.sepia_d)
     rect(cx-6,cy-8,3,10,PAL.sepia)
     rect(cx+4,cy-4,3,8,PAL.sepia)
-    ln(cx,cy-12,cx,cy-16,PAL.ink,1)
-    const fl=0.6+Math.sin(t*0.005)*0.2
-    $ctx.fillStyle=`rgba(255,180,60,${fl})`
-    $ctx.beginPath();$ctx.ellipse(cx,cy-20,4,8,0,0,Math.PI*2);$ctx.fill()
-    $ctx.fillStyle=`rgba(255,220,160,${fl*0.5})`
-    $ctx.beginPath();$ctx.ellipse(cx,cy-22,2,4,0,0,Math.PI*2);$ctx.fill()
+    rect(cx-2,cy-13,4,4,PAL.ink)
   }
   rect(260,92,30,33,PAL.dark) // box
   rect(80,185,50,35,PAL.paper_d)
