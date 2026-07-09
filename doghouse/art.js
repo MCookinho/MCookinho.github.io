@@ -377,11 +377,11 @@ function drEast(ctx,t){
   // Claw marks on bottom shelf — hint for drawer code
   $ctx.strokeStyle='rgba(60,30,15,0.25)'
   $ctx.lineWidth=1.5
-  $ctx.beginPath();$ctx.arc(90,378,5,0,Math.PI*2);$ctx.stroke()
-  $ctx.beginPath();$ctx.arc(175,378,5.5,0,Math.PI*2);$ctx.stroke()
+  $ctx.beginPath();$ctx.arc(90,376,5,0,Math.PI*2);$ctx.stroke()
+  $ctx.beginPath();$ctx.arc(175,376,5.5,0,Math.PI*2);$ctx.stroke()
   $ctx.fillStyle='rgba(60,30,15,0.18)'
-  $ctx.beginPath();$ctx.arc(175,378,4.5,0,Math.PI*2);$ctx.fill()
-  wln(250,375,270,381,'rgba(60,30,15,0.25)',1.8,t,0.3)
+  $ctx.beginPath();$ctx.arc(175,376,4.5,0,Math.PI*2);$ctx.fill()
+  wln(250,373,270,379,'rgba(60,30,15,0.25)',1.8,t,0.3)
 
   // Mirror (right side)
   const mirrorBroken=window.__game&&window.__game.hasObtained('caco_vidro')

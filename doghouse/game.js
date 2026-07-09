@@ -68,7 +68,7 @@ const HITBOXES = {
     ferramentas:{x:555,y:395,w:115,h:75}
   },
   east: {
-    marcas:{x:80,y:370,w:200,h:25},
+    marcas:{x:80,y:373,w:200,h:20},
     prateleira:{x:30,y:70,w:320,h:300},
     espelho:{x:430,y:80,w:220,h:280},
     teia:{x:40,y:75,w:30,h:20},
