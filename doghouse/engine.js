@@ -20,12 +20,18 @@ class Engine {
       const r=this.canvas.getBoundingClientRect()
       return {x:(e.clientX-r.left)/r.width*800,y:(e.clientY-r.top)/r.height*600}
     }
+    document.getElementById('intro-overlay').addEventListener('click',e=>{
+      e.stopPropagation()
+      this.handleIntroClick()
+    })
+    document.getElementById('final-overlay').addEventListener('click',()=>{
+      window.location.href='https://mcookinho.github.io'
+    })
     this.canvas.addEventListener('click',e=>{
       const g=window.__game
       if(g&&g.a){g.a.init();g.a.resume()}
       const p=getPos(e)
-      if(this.state===S.INTRO)this.handleIntroClick()
-      else if(this.state===S.PLAYING)g.handleClick(p.x,p.y)
+      if(this.state===S.PLAYING)g.handleClick(p.x,p.y)
     })
     document.getElementById('puzzle-overlay').addEventListener('click',e=>{
       if(this.state!==S.PUZZLE||!this.puzzle)return
@@ -52,7 +58,7 @@ class Engine {
         return
       }
       if(this.state===S.PUZZLE&&e.key==='Escape'){this.closePuzzle();return}
-      if(this.state===S.FINAL&&(e.key==='Enter'||e.key===' ')){location.reload();return}
+      if(this.state===S.FINAL&&(e.key==='Enter'||e.key===' ')){window.location.href='https://mcookinho.github.io';return}
       if(this.state===S.INTRO&&(e.key==='Enter'||e.key===' ')){this.handleIntroClick();return}
       if(this.state!==S.PLAYING)return
       const g=window.__game
