@@ -1434,6 +1434,10 @@ body {
   font-size: 12px;
   padding: 6px 10px;
 }
+.player-play-btn:hover {
+  color: var(--pink);
+  border-color: var(--pink);
+}
 
 .player-speed-btn {
   font-size: 7px;
