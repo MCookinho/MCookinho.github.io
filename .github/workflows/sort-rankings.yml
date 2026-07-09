@@ -6,7 +6,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Sort JSONs
-        run: python3 data/rankings/sort-rankings.py
+        run: python3 data/rankings/cache/sort-rankings.py
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Ordena rankings automaticamente"
