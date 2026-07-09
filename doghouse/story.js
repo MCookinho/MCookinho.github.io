@@ -11,28 +11,11 @@ const STORY = {
     'O que você vai fazer?'
   ],
   diary: [
-    'Página 1:',
-    'Hoje chegou. Uma bolinha dourada de pelo.',
-    'Ela me olhou e eu prometi. Prometi tudo.',
-    '',
-    'Página 2:',
-    'Todo dia ela espera. O rabo abana quando me vê.',
-    'Mas eu sempre tenho algo mais importante pra fazer.',
-    '',
-    'Página 3:',
-    'Ela não abana mais. Ela só olha.',
-    'Ainda prometo. Toda noite prometo.',
-    '"Amanhã a gente passeia."',
-    '',
-    'Página 4:',
-    'Ela cresceu. Os olhos mudaram.',
-    'O pelo dourado escureceu.',
-    'Ainda prometo. Mas ela não acredita mais.',
-    '',
-    'Página 5:',
-    'Ela me trouxe aqui. Para o porão.',
-    'Para eu esperar. Como ela esperou.',
-    'O que você vai fazer?'
+    'Página 1:\nEla chegou numa caixa de papelão. Maior que a caixa.\nTropeçou na própria pata e caiu de cara no chão.\nLevantou, abanou o rabo e lambeu meu nariz.\nPronto. Era minha.',
+    'Página 2:\nEla aprendeu a abrir a geladeira sozinha.\nAcha que é esperta. Não sabe que eu deixo entreaberta.\nToda noite rouba um pote de iogurte.\nNunca consegui ficar bravo.',
+    'Página 3:\nCorremos no parque até os dois cair de cansaço.\nEla corria na frente, olhava pra trás, esperava.\nEu finjo que não consigo alcançar.\nEla volta correndo, late, me chama.\nGanha o jogo toda vez.',
+    'Página 4:\nDorme na cama comigo. Espalhada.\nOcupa mais espaço que um golden deveria.\nRonca baixinho. Às vezes sonha que está correndo.\nAs patas mexem. O rabo abana dormindo.\nFico acordado só pra ver.',
+    'Página 5:\nViajar é a parte ruim. Alguém fica com ela.\nToda vez que faço as malas, ela deita em cima da mala.\nOlha com esse olhar. O olhar que diz "não vai".\nVou sim, mas volto. Sempre volto pra ela.\nPrometo.'
   ],
   endings: {
     abandon: {
