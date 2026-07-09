@@ -17,6 +17,7 @@ function grad(x1,y1,x2,y2,c1,c2){const g=$ctx.createLinearGradient(x1,y1,x2,y2);
 function rgrad(x,y,r,c1,c2){const g=$ctx.createRadialGradient(x,y,0,x,y,r);g.addColorStop(0,c1);g.addColorStop(1,c2);return g}
 function ln(x1,y1,x2,y2,c,w){const g=$ctx;g.strokeStyle=c;g.lineWidth=w||1;g.beginPath();g.moveTo(x1,y1);g.lineTo(x2,y2);g.stroke()}
 function pl(pts,c){const g=$ctx;g.fillStyle=c;g.beginPath();g.moveTo(pts[0][0],pts[0][1]);for(let i=1;i<pts.length;i++)g.lineTo(pts[i][0],pts[i][1]);g.closePath();g.fill()}
+function tx(t,x,y,c,fs){const g=$ctx;g.fillStyle=c;g.font=fs+'px Georgia';g.textAlign='center';g.fillText(t,x,y)}
 
 function wln(x1,y1,x2,y2,c,w,t,amp){
   amp=amp||1.5;const g=$ctx;g.strokeStyle=c;g.lineWidth=w||1
@@ -729,332 +730,495 @@ function drWest(ctx,t){
   vignette(ctx)
 }
 
-/* ─── CEILING (DARK) ─── */
+/* ─── CEILING (DARK) — Gothic vault ─── */
 function drCeiling(ctx,t){
   $ctx=ctx
-  rect(0,0,800,600,rgrad(400,300,500,PAL.dark,PAL.ink))
+  rect(0,0,800,600,rgrad(400,300,450,'#050302','#0a0806'))
 
-  // Stone arch lines
-  for(let i=0;i<8;i++){
-    const a=Math.PI/2+i*0.12
-    const px=400+Math.cos(a)*350,py=300+Math.sin(a)*250
-    const px2=400+Math.cos(a)*380,py2=300+Math.sin(a)*280
-    wln(px,py,px2,py2,PAL.ink_l,0.6,t,0.5)
+  // Vaulted stone ribs — cathedral arches
+  for(let i=0;i<12;i++){
+    const a=-Math.PI/3+i*0.22
+    const x1=400+Math.cos(a)*450, y1=300+Math.sin(a)*380
+    const x2=400+Math.cos(a-0.04)*460, y2=300+Math.sin(a-0.04)*390
+    if(x1<0||x1>800)continue
+    wln(x1,y1,400,30,PAL.ink_m,0.9,t,0.5)
+    wln(x2,y2,400,30,PAL.ink_l,0.5,t,0.4)
   }
-  for(let i=0;i<6;i++){
-    const y=40+i*90
-    wln(60+Math.sin(i)*10,y,740+Math.sin(i+1)*10,y,PAL.ink_l,0.4,t,0.5)
-    // tile lines
-    for(let j=0;j<8;j++){
-      const tx=100+j*80+Math.sin(i+j)*5
-      wln(tx,y,tx+30,y-20,PAL.ink_m,0.3,t,0.3)
+  // Boss at center
+  circle(400,30,16,PAL.stone_d)
+  circle(400,30,10,PAL.ink_m)
+
+  // Horizontal beams
+  for(let i=0;i<4;i++){
+    const ty=80+i*100
+    wln(40+Math.sin(i)*12,ty,760+Math.sin(i+1)*12,ty,PAL.ink_l,0.7,t,0.5)
+    for(let j=0;j<7;j++){
+      const bx=60+j*110
+      wln(bx,ty-3,bx+18,ty-8,PAL.ink_m,0.3,t,0.3)
     }
   }
 
-  // Chain hanging
+  // Chain
   for(let i=0;i<10;i++){
-    const cy=40+i*22
-    const cw=8+Math.sin(i*0.8)*2
+    const cy=40+i*22,cw=8+Math.sin(i*0.8)*2
     wln(400-cw,cy,400+cw,cy+8,PAL.rust,1.5,t)
     wln(400+cw,cy+8,400-cw,cy+16,PAL.rust,1.5,t)
     circle(400,cy+4,3,PAL.rust_l)
   }
   wln(400,40,400,260,PAL.rust,2,t)
-
-  // Hook
   pl([[396,250],[404,250],[400,285],[396,260]],PAL.rust_l)
-  wln(396,250,404,250,PAL.rust,2,t)
-  wln(400,275,400,285,PAL.rust,2,t)
 
   // Hatch
-  wln(300,300,500,300,PAL.ink_l,1,t)
-  wln(300,300,300,380,PAL.ink_l,1,t)
-  wln(300,380,500,380,PAL.ink_l,1,t)
-  wln(500,300,500,380,PAL.ink_l,1,t)
-  // hatch handle
+  wln(300,300,500,300,PAL.ink_l,1.2,t)
+  wln(300,300,300,380,PAL.ink_l,1.2,t)
+  wln(300,380,500,380,PAL.ink_l,1.2,t)
+  wln(500,300,500,380,PAL.ink_l,1.2,t)
   rect(390,320,20,40,PAL.rust)
   circle(400,340,4,PAL.rust_l)
 
-  // Eyes in darkness (Shiva watching)
-  const ea=0.25+Math.sin(t*0.0015)*0.15
-  const eo=Math.sin(t*0.0008)*4
-  $ctx.fillStyle=`rgba(184,160,128,${ea*0.4})`
-  circle(250+eo,170,10+Math.sin(t*0.002)*2,PAL.rust_l)
-  circle(295+eo,175,10+Math.sin(t*0.002+1)*2,PAL.rust_l)
+  // Faint eyes in darkness
+  const p=0.2+Math.sin(t*0.001)*0.12
+  $ctx.fillStyle=`rgba(184,106,58,${p*0.3})`
+  circle(245+Math.sin(t*0.0005)*3,168,9,PAL.rust_l)
+  circle(295+Math.sin(t*0.0005+1)*3,173,9,PAL.rust_l)
   $ctx.fillStyle=PAL.dark
-  circle(250+eo,170,4,PAL.dark)
-  circle(295+eo,175,4,PAL.dark)
-  // pupil glint
-  $ctx.fillStyle=`rgba(184,160,128,${ea*0.6})`
-  circle(248+eo,168,1.5,PAL.gold)
-  circle(293+eo,173,1.5,PAL.gold)
+  circle(245+Math.sin(t*0.0005)*3,168,4,PAL.dark)
+  circle(295+Math.sin(t*0.0005+1)*3,173,4,PAL.dark)
+  circle(243+Math.sin(t*0.0005)*3,166,1.5,PAL.gold)
+  circle(293+Math.sin(t*0.0005+1)*3,171,1.5,PAL.gold)
 
-  // More eyes scattered
-  const ea2=0.15+Math.sin(t*0.001+2)*0.1
-  $ctx.fillStyle=`rgba(184,160,128,${ea2*0.2})`
-  circle(560+Math.sin(t*0.001)*3,140+Math.sin(t*0.001)*2,6,PAL.rust_l)
-  circle(590+Math.sin(t*0.001)*3,145+Math.sin(t*0.001)*2,6,PAL.rust_l)
+  // Distant eyes
+  const p2=0.1+Math.sin(t*0.001+1)*0.08
+  $ctx.fillStyle=`rgba(184,106,58,${p2*0.15})`
+  circle(580,155,5,PAL.rust_l)
+  circle(610,160,5,PAL.rust_l)
   $ctx.fillStyle=PAL.dark
-  circle(560+Math.sin(t*0.001)*3,140+Math.sin(t*0.001)*2,2.5,PAL.dark)
-  circle(590+Math.sin(t*0.001)*3,145+Math.sin(t*0.001)*2,2.5,PAL.dark)
+  circle(580,155,2,PAL.dark)
+  circle(610,160,2,PAL.dark)
 
   // Corner shadows
   rect(0,0,60,600,PAL.shadow_d)
   rect(740,0,60,600,PAL.shadow_d)
+  rect(0,480,800,120,grad(0,480,0,600,'rgba(0,0,0,0)','rgba(0,0,0,0.85)'))
 
-  paperGrain(9)
+  hatch(0,0,80,600,-45,14,PAL.shadow,t)
+  hatch(720,0,80,600,45,14,PAL.shadow,t)
+  paperGrain(7)
   vignette(ctx)
 }
 
-/* ─── CEILING WITH LANTERN (Shiva revealed) ─── */
+/* ─── CEILING LIT — Shiva revealed ─── */
 function drCeilingLantern(ctx,t,game){
-  drCeiling(ctx,t)
+  $ctx=ctx
+  const so=game.shivaOffered||{eye:false,mouth:false,paw:false}
 
-  // Draw Shiva's full demonic golden retriever body spanning the ceiling
-  const g=$ctx
-  const pulse=Math.sin(t*0.0015)*0.08
-  const baseAlpha=0.7+pulse
+  // Warm-lit vaulted ceiling
+  rect(0,0,800,600,rgrad(400,300,450,'#1a1208','#0e0a06'))
+  rect(0,0,800,600,grad(0,0,0,600,'rgba(184,130,70,0.08)','rgba(0,0,0,0.15)'))
 
-  // Body — large elongated form
-  g.save()
-
-  // Fur texture base
-  g.fillStyle=`rgba(42,26,14,${baseAlpha*0.9})`
-  g.beginPath()
-  g.ellipse(420,160,220,70+Math.sin(t*0.0008)*5,0,0,Math.PI*2)
-  g.fill()
-
-  // Body outline (sketch style)
-  g.strokeStyle=`rgba(90,58,30,${baseAlpha})`
-  g.lineWidth=2.5
-  g.beginPath()
-  g.ellipse(420,160,218,68+Math.sin(t*0.0008)*5,0,0,Math.PI*2)
-  g.stroke()
-
-  // Fur lines on body
-  for(let i=0;i<20;i++){
-    const fx=300+Math.sin(i*5)*200, fy=140+Math.sin(i*3)*40
-    const fa=0.08+Math.sin(t*0.001+i)*0.04
-    g.strokeStyle=`rgba(110,70,30,${fa})`
-    g.lineWidth=0.8
-    g.beginPath()
-    g.moveTo(fx,fy)
-    g.lineTo(fx+Math.sin(i*7+t*0.002)*15,fy+8+Math.sin(i)*3)
-    g.stroke()
+  // Stone ribs visible in light
+  for(let i=0;i<12;i++){
+    const a=-Math.PI/3+i*0.22
+    const x1=400+Math.cos(a)*450, y1=300+Math.sin(a)*380
+    if(x1<0||x1>800)continue
+    wln(x1,y1,400,30,PAL.stone_l,1,t,0.4)
+  }
+  // Horizontal beams
+  for(let i=0;i<4;i++){
+    const ty=80+i*100
+    wln(40+Math.sin(i)*12,ty,760+Math.sin(i+1)*12,ty,PAL.stone_l,0.6,t,0.4)
   }
 
-  // Head (large, demonic)
-  g.fillStyle=`rgba(52,30,14,${baseAlpha})`
-  g.beginPath()
-  g.ellipse(240,150,55,40+Math.sin(t*0.001)*2,0.2,0,Math.PI*2)
-  g.fill()
-  g.strokeStyle=`rgba(100,60,25,${baseAlpha})`
-  g.lineWidth=2
-  g.stroke()
+  // ─── SHIVA — MONSTROUS FORM ───
+  const sh=$ctx
+  const pulse=Math.sin(t*0.0012)*0.06
+  const ba=0.85+pulse
+
+  // Ethereal shadow aura around body
+  for(let r=4;r>0;r--){
+    const ra=`rgba(20,10,5,${0.08+r*0.02+Math.sin(t*0.001+r)*0.03})`
+    sh.fillStyle=ra
+    sh.beginPath()
+    sh.ellipse(400,140,290+r*12,80+r*8+Math.sin(t*0.0006+r)*5,0,0,Math.PI*2)
+    sh.fill()
+  }
+
+  // MAIN BODY — elongated, twisted, spanning the ceiling
+  sh.fillStyle=`rgba(38,22,12,${ba})`
+  sh.beginPath()
+  sh.ellipse(420,145,240,68+Math.sin(t*0.0007)*4,0.05,0,Math.PI*2)
+  sh.fill()
+  // Darker core
+  sh.fillStyle=`rgba(28,16,8,${ba*0.9})`
+  sh.beginPath()
+  sh.ellipse(420,148,200,55+Math.sin(t*0.0007)*3,0,0,Math.PI*2)
+  sh.fill()
+  // Visible ribs along body
+  for(let i=0;i<14;i++){
+    const rx=200+i*30, ry=130+Math.sin(i*1.2)*15+Math.sin(t*0.001+i)*3
+    const ra2=0.12+Math.sin(t*0.001+i*2)*0.06
+    wln(rx,ry-5,rx+8,ry+12,`rgba(60,35,18,${ra2})`,1.5,t,0.3)
+  }
+  // Body outline — sketchy, aggressive
+  sh.strokeStyle=`rgba(90,55,25,${ba})`
+  sh.lineWidth=2.5
+  sh.beginPath()
+  sh.ellipse(420,145,238,66+Math.sin(t*0.0007)*4,0.05,0,Math.PI*2)
+  sh.stroke()
+
+  // Fur tufts along spine
+  for(let i=0;i<25;i++){
+    const fx=180+i*22, fy=90+Math.sin(i*2.3)*12+Math.sin(t*0.002+i)*4
+    const fa=0.1+Math.sin(t*0.001+i*3)*0.06
+    sh.strokeStyle=`rgba(100,60,25,${fa})`
+    sh.lineWidth=1.2
+    sh.beginPath()
+    sh.moveTo(fx+Math.sin(i)*4,fy)
+    sh.lineTo(fx+Math.sin(i*2+t*0.001)*8,fy-12-Math.sin(i)*4)
+    sh.stroke()
+  }
+
+  // ─── HEAD ───
+  sh.save()
+
+  // Shadow around head
+  sh.fillStyle=`rgba(10,5,3,0.3)`
+  sh.beginPath()
+  sh.ellipse(235,148,70,55+Math.sin(t*0.001)*3,0.2,0,Math.PI*2)
+  sh.fill()
+
+  // Head base
+  sh.fillStyle=`rgba(48,28,14,${ba})`
+  sh.beginPath()
+  sh.ellipse(238,148,58,42+Math.sin(t*0.001)*3,0.2,0,Math.PI*2)
+  sh.fill()
+  sh.strokeStyle=`rgba(100,60,25,${ba})`
+  sh.lineWidth=2
+  sh.stroke()
 
   // Snout
-  g.fillStyle=`rgba(60,34,16,${baseAlpha})`
-  g.beginPath()
-  g.ellipse(200,170,30,18,0,0,Math.PI*2)
-  g.fill()
-  g.strokeStyle=`rgba(100,60,25,${baseAlpha})`
-  g.stroke()
+  sh.fillStyle=`rgba(56,32,16,${ba})`
+  sh.beginPath()
+  sh.ellipse(198,168,32,20,0.1,0,Math.PI*2)
+  sh.fill()
+  sh.strokeStyle=`rgba(100,60,25,${ba})`
+  sh.stroke()
 
-  // Open mouth with teeth
-  g.fillStyle=`rgba(10,5,3,${baseAlpha})`
-  g.beginPath()
-  g.ellipse(195,178,22,10,0,0,Math.PI*2)
-  g.fill()
-  // teeth
-  for(let i=0;i<5;i++){
-    const tx=180+i*8,ty=175
-    g.fillStyle=`rgba(184,160,128,${baseAlpha*0.8})`
-    g.beginPath()
-    g.moveTo(tx-3,ty);g.lineTo(tx+3,ty);g.lineTo(tx,ty+12);g.closePath()
-    g.fill()
-    g.strokeStyle=`rgba(80,60,40,${baseAlpha*0.5})`
-    g.lineWidth=0.5;g.stroke()
+  // Nose — black, wet
+  circle(175,168,6,PAL.dark)
+  circle(173,166,2,'rgba(184,160,128,0.3)')
+
+  // Hot breath from nostrils
+  const br=0.06+Math.sin(t*0.003)*0.04
+  sh.fillStyle=`rgba(200,160,100,${br})`
+  sh.beginPath()
+  sh.ellipse(165,175,12+Math.sin(t*0.004)*4,6+Math.sin(t*0.004+1)*3,0,0,Math.PI*2)
+  sh.fill()
+  sh.beginPath()
+  sh.ellipse(160,180,8+Math.sin(t*0.004+2)*3,5+Math.sin(t*0.004+3)*2,0.3,0,Math.PI*2)
+  sh.fill()
+
+  // ─── MOUTH — gaping maw (OFFERING SLOT 2) ───
+  const mouthOffered=so.mouth
+  sh.fillStyle=`rgba(8,4,2,${ba})`
+  sh.beginPath()
+  sh.ellipse(195,178,24,12,0,0,Math.PI*2)
+  sh.fill()
+
+  // Upper teeth — multiple rows
+  const toothRows=[[175,173],[183,171],[191,170],[199,171],[207,173],[215,176]]
+  for(let i=0;i<toothRows.length;i++){
+    const [tx,ty]=toothRows[i]
+    const ts=4+Math.sin(t*0.002+i)*1.5
+    sh.fillStyle=`rgba(200,180,150,${0.7+Math.sin(t*0.002+i)*0.2})`
+    sh.beginPath()
+    sh.moveTo(tx-3,ty);sh.lineTo(tx+3,ty);sh.lineTo(tx,ty-ts);sh.closePath()
+    sh.fill()
+    // Smaller second tooth beside
+    sh.beginPath()
+    sh.moveTo(tx+4,ty+1);sh.lineTo(tx+8,ty+1);sh.lineTo(tx+6,ty-ts+3);sh.closePath()
+    sh.fill()
   }
-  // lower teeth
-  for(let i=0;i<4;i++){
-    const tx=183+i*8,ty=182
-    g.fillStyle=`rgba(184,160,128,${baseAlpha*0.6})`
-    g.beginPath()
-    g.moveTo(tx-2,ty);g.lineTo(tx+2,ty);g.lineTo(tx,ty-8);g.closePath()
-    g.fill()
+  // Lower teeth
+  const lowTeeth=[[180,184],[188,186],[196,186],[204,185],[212,183]]
+  for(let i=0;i<lowTeeth.length;i++){
+    const [tx,ty]=lowTeeth[i]
+    sh.fillStyle=`rgba(200,180,150,${0.5+Math.sin(t*0.002+i+2)*0.15})`
+    sh.beginPath()
+    sh.moveTo(tx-2,ty);sh.lineTo(tx+2,ty);sh.lineTo(tx,ty+5);sh.closePath()
+    sh.fill()
   }
-  // tongue
-  g.fillStyle=`rgba(90,30,20,${baseAlpha*0.5})`
-  g.beginPath()
-  g.ellipse(198,185,8,5,0,0,Math.PI*2)
-  g.fill()
 
-  // Ears (pointed, demonic)
-  g.fillStyle=`rgba(42,22,10,${baseAlpha})`
-  // left ear
-  g.beginPath()
-  g.moveTo(220,130);g.lineTo(195,95);g.lineTo(235,120);g.closePath()
-  g.fill()
-  g.strokeStyle=`rgba(80,50,20,${baseAlpha})`;g.lineWidth=1.5;g.stroke()
-  // right ear
-  g.beginPath()
-  g.moveTo(265,130);g.lineTo(285,100);g.lineTo(275,135);g.closePath()
-  g.fill()
-  g.stroke()
+  // Drool strings
+  sh.strokeStyle=`rgba(160,140,120,${0.15+Math.sin(t*0.003)*0.08})`
+  sh.lineWidth=0.8
+  for(let i=0;i<3;i++){
+    const dx=185+i*10, dy=188+Math.sin(t*0.002+i*2)*2
+    sh.beginPath()
+    sh.moveTo(dx,dy)
+    sh.quadraticCurveTo(dx+Math.sin(t*0.001+i)*3,dy+12+Math.sin(t*0.002+i)*3,dx+Math.sin(t*0.001+i+1)*2,dy+20+Math.sin(t*0.002+i+1)*4)
+    sh.stroke()
+  }
 
-  // 3 glowing eyes on head
+  // Tongue
+  sh.fillStyle=`rgba(90,28,18,${0.6+Math.sin(t*0.002)*0.15})`
+  sh.beginPath()
+  sh.ellipse(200,186,10,6,0.1,0,Math.PI*2)
+  sh.fill()
+
+  // ─── 3 GLOWING EYES ───
+  const eyePositions=[[215,148],[238,145],[261,148]]
+  const eyePulse=0.6+Math.sin(t*0.003)*0.2
   for(let e=0;e<3;e++){
-    const ex=215+e*22,ey=148+Math.sin(e)*3
-    g.fillStyle=`rgba(184,106,58,${0.6+Math.sin(t*0.003+e)*0.2})`
-    g.beginPath()
-    g.ellipse(ex,ey,7+Math.sin(t*0.002+e)*1.5,5,0,0,Math.PI*2)
-    g.fill()
-    g.fillStyle=PAL.dark
-    g.beginPath()
-    g.ellipse(ex,ey,3,4,0,0,Math.PI*2)
-    g.fill()
-    // glint
-    g.fillStyle=`rgba(255,200,150,${0.6+Math.sin(t*0.003+e)*0.2})`
-    g.beginPath()
-    g.ellipse(ex-1,ey-1,1.5,1,0,0,Math.PI*2)
-    g.fill()
+    const [ex,ey]=eyePositions[e]
+    const isOffering= e===1  // center eye is the offering slot
+    if(isOffering&&mouthOffered)continue  // hide if offered? No, eye is eye, mouth is mouth
+
+    // Eye glow
+    sh.fillStyle=`rgba(220,150,80,${eyePulse*0.4})`
+    sh.beginPath()
+    sh.ellipse(ex,ey,10+Math.sin(t*0.002+e)*1.5,7+Math.sin(t*0.002+e+1)*1,0,0,Math.PI*2)
+    sh.fill()
+    // Eye white
+    sh.fillStyle=`rgba(200,160,100,${0.7+Math.sin(t*0.002+e)*0.2})`
+    sh.beginPath()
+    sh.ellipse(ex,ey,7+Math.sin(t*0.002+e)*1,5,0,0,Math.PI*2)
+    sh.fill()
+    // Slit pupil
+    sh.fillStyle=PAL.dark
+    sh.beginPath()
+    sh.ellipse(ex,ey,1.5,4.5,0,0,Math.PI*2)
+    sh.fill()
+    // Glint
+    sh.fillStyle=`rgba(255,220,180,${0.7+Math.sin(t*0.003+e)*0.2})`
+    sh.beginPath()
+    sh.ellipse(ex-1.5,ey-1.5,1.2,0.8,0,0,Math.PI*2)
+    sh.fill()
   }
 
-  // Foreground legs (2 visible)
+  // ─── EARS ───
+  sh.fillStyle=`rgba(42,22,10,${ba})`
+  // Left ear — torn
+  sh.beginPath()
+  sh.moveTo(218,128);sh.lineTo(190,88);sh.lineTo(232,115);sh.closePath()
+  sh.fill()
+  sh.strokeStyle=`rgba(80,50,20,${ba})`;sh.lineWidth=1.5;sh.stroke()
+  // Tear in ear
+  wln(210,115,215,105,`rgba(30,15,8,0.5)`,1,t,0.5)
+  // Right ear
+  sh.beginPath()
+  sh.moveTo(262,128);sh.lineTo(285,92);sh.lineTo(278,120);sh.closePath()
+  sh.fill()
+  sh.stroke()
+
+  // ─── FRONT LEGS ───
+  const legPosL=[[290,175],[390,180]]
   for(let l=0;l<2;l++){
-    const lx=300+l*120,ly=170+Math.sin(t*0.001+l)*8
-    g.fillStyle=`rgba(52,30,14,${baseAlpha*0.85})`
-    g.beginPath()
-    g.ellipse(lx,ly,15,40+Math.sin(t*0.001+l)*3,0.2+Math.sin(l)*0.1,0,Math.PI*2)
-    g.fill()
-    // claws
+    const lx=legPosL[l][0], ly=legPosL[l][1]+Math.sin(t*0.001+l)*4
+    // Upper leg
+    sh.fillStyle=`rgba(48,28,14,${ba*0.9})`
+    sh.beginPath()
+    sh.ellipse(lx,ly,15,38+Math.sin(t*0.001+l)*3,0.15+l*0.1,0,Math.PI*2)
+    sh.fill()
+    // Lower leg / paw
+    sh.fillStyle=`rgba(38,22,12,${ba})`
+    sh.beginPath()
+    sh.ellipse(lx+2,ly+32,12,16,0,0,Math.PI*2)
+    sh.fill()
+    // Claws
+    for(let c=0;c<4;c++){
+      const cx=lx-7+c*5, cy=ly+42+Math.sin(t*0.002+c)*2
+      sh.fillStyle=`rgba(50,30,14,${ba})`
+      sh.beginPath()
+      sh.moveTo(cx-2,cy);sh.lineTo(cx+2,cy);sh.lineTo(cx,cy+8);sh.closePath()
+      sh.fill()
+      sh.strokeStyle=`rgba(30,15,8,0.4)`;sh.lineWidth=0.5;sh.stroke()
+    }
+  }
+
+  // ─── PAW OFFERING SLOT (front-right paw, index 1, shifted) ───
+  // Left front paw is at x=290, we want x~300, y~245 for the offering
+  // Draw the paw structure separately so it matches the hitbox
+  {
+    const px=300, py=238
+    // Massive paw
+    sh.fillStyle=`rgba(52,30,14,${ba})`
+    sh.beginPath()
+    sh.ellipse(px,py+8,20,14,0.2,0,Math.PI*2)
+    sh.fill()
+    // Claws on this paw
+    for(let c=0;c<4;c++){
+      const cx=px-12+c*7, cy=py+17
+      sh.fillStyle=`rgba(60,35,18,${ba})`
+      sh.beginPath()
+      sh.moveTo(cx-2,cy);sh.lineTo(cx+2,cy);sh.lineTo(cx,cy+7);sh.closePath()
+      sh.fill()
+    }
+  }
+
+  // ─── HIND LEGS ───
+  for(let l=0;l<2;l++){
+    const lx=500+l*80, ly=165+Math.sin(t*0.001+l+2)*5
+    sh.fillStyle=`rgba(42,24,12,${ba*0.8})`
+    sh.beginPath()
+    sh.ellipse(lx,ly,18,32+Math.sin(t*0.001+l)*4,0,0,Math.PI*2)
+    sh.fill()
+    // Claws
     for(let c=0;c<3;c++){
-      g.fillStyle=`rgba(60,35,18,${baseAlpha})`
-      g.beginPath()
-      g.moveTo(lx-5+c*5,ly+38);g.lineTo(lx-8+c*5,ly+45);g.lineTo(lx-3+c*5,ly+42);g.closePath()
-      g.fill()
-      g.strokeStyle=`rgba(40,20,10,${baseAlpha*0.5})`;g.lineWidth=0.5;g.stroke()
+      const cx=lx-6+c*5, cy=ly+28
+      sh.fillStyle=`rgba(50,30,14,${ba*0.8})`
+      sh.beginPath()
+      sh.moveTo(cx-1.5,cy);sh.lineTo(cx+1.5,cy);sh.lineTo(cx,cy+6);sh.closePath()
+      sh.fill()
     }
   }
 
-  // Hind legs
-  for(let l=0;l<2;l++){
-    const lx=500+l*80,ly=170+Math.sin(t*0.001+l+2)*6
-    g.fillStyle=`rgba(42,22,10,${baseAlpha*0.7})`
-    g.beginPath()
-    g.ellipse(lx,ly,18,30+Math.sin(t*0.001+l)*4,0,0,Math.PI*2)
-    g.fill()
-    g.strokeStyle=`rgba(80,50,20,${baseAlpha*0.4})`
-    g.lineWidth=1
-    g.stroke()
+  // ─── TAIL ───
+  sh.strokeStyle=`rgba(80,48,20,${ba*0.7})`
+  sh.lineWidth=7
+  sh.beginPath()
+  sh.moveTo(650,140)
+  sh.quadraticCurveTo(710,135,730,100+Math.sin(t*0.002)*10)
+  sh.stroke()
+  // Fur on tail tip
+  sh.strokeStyle=`rgba(100,60,25,${ba*0.5})`
+  sh.lineWidth=3
+  sh.beginPath()
+  sh.moveTo(720,105+Math.sin(t*0.002)*10)
+  sh.lineTo(735,95+Math.sin(t*0.002+1)*10)
+  sh.stroke()
+
+  sh.restore()
+
+  // ─── CHAIN (in front of body, wrapping around a leg) ───
+  for(let i=0;i<8;i++){
+    const cy=40+i*22,cw=8+Math.sin(i*0.8)*2
+    wln(400-cw,cy,400+cw,cy+8,PAL.rust,1.5,t)
+    wln(400+cw,cy+8,400-cw,cy+16,PAL.rust,1.5,t)
+    circle(400,cy+4,3,PAL.rust_l)
+  }
+  wln(400,40,400,180,PAL.rust,2,t)
+  // Chain wraps around body
+  wln(400,180,380+Math.sin(t*0.001)*3,190,PAL.rust,2,t)
+  wln(380,190,395,200,PAL.rust,2,t)
+
+  // ─── HATCH ───
+  wln(300,300,500,300,PAL.stone_l,1,t)
+  wln(300,300,300,380,PAL.stone_l,1,t)
+  wln(300,380,500,380,PAL.stone_l,1,t)
+  wln(500,300,500,380,PAL.stone_l,1,t)
+  rect(390,320,20,40,PAL.rust)
+  circle(400,340,4,PAL.rust_l)
+
+  // ─── GLOWING OFFERING SPOTS ───
+  // SPOT 1: CENTER EYE — needs caco_vidro
+  const eyeOffered=so.eye
+  if(!eyeOffered){
+    const sa=0.5+Math.sin(t*0.004)*0.3
+    sh.fillStyle=`rgba(255,200,100,${sa*0.35})`
+    sh.beginPath()
+    sh.ellipse(227,148,18,14,0,0,Math.PI*2)
+    sh.fill()
+    sh.strokeStyle=`rgba(255,200,100,${sa*0.7})`
+    sh.lineWidth=1.5
+    sh.beginPath()
+    sh.ellipse(227,148,16,12,0,0,Math.PI*2)
+    sh.stroke()
+    tx('◈',227,153,'rgba(255,220,120,0.9)',16)
+    // Faint orbiting particles
+    for(let i=0;i<3;i++){
+      const ang=t*0.002+i*2.1
+      const px=227+Math.cos(ang)*20, py=148+Math.sin(ang)*14
+      circle(px,py,1.5,`rgba(255,200,100,${0.3+Math.sin(t*0.003+i)*0.15})`)
+    }
+  }else{
+    // Glass shard embedded in eye
+    sh.fillStyle='rgba(160,140,180,0.5)'
+    pl([[217,141],[233,148],[225,157],[214,150]],'rgba(160,140,180,0.4)')
+    sh.strokeStyle='rgba(200,180,220,0.4)'
+    sh.lineWidth=0.8
+    pl([[217,141],[233,148],[225,157],[214,150]],'rgba(200,180,220,0)')
+    sh.stroke()
+    circle(227,148,2.5,'rgba(200,180,220,0.5)')
   }
 
-  // Tail
-  g.strokeStyle=`rgba(74,42,18,${baseAlpha*0.7})`
-  g.lineWidth=6
-  g.beginPath()
-  g.moveTo(620,150)
-  g.quadraticCurveTo(680,140,700,120+Math.sin(t*0.002)*8)
-  g.stroke()
-  g.lineWidth=3
-  g.strokeStyle=`rgba(100,60,25,${baseAlpha*0.5})`
-  g.beginPath()
-  g.moveTo(620,150)
-  g.quadraticCurveTo(680,140,700,120+Math.sin(t*0.002)*8)
-  g.stroke()
-
-  g.restore()
-
-  // GLOWING OFFERING SPOTS (for ceiling puzzle)
-  const so=game.shivaOffered||{eye:false,mouth:false,paw:false}
-  const eye=so.eye,mouth=so.mouth,paw=so.paw
-  // Spot 1: Eye (head) — needs caco_vidro
-  if(!eye){
-      const sa=0.5+Math.sin(t*0.004)*0.3
-      g.fillStyle=`rgba(255,200,100,${sa*0.3})`
-      g.beginPath()
-      g.ellipse(227,148,15,12,0,0,Math.PI*2)
-      g.fill()
-      g.strokeStyle=`rgba(255,200,100,${sa*0.6})`
-      g.lineWidth=1.5
-      g.beginPath()
-      g.ellipse(227,148,14,11,0,0,Math.PI*2)
-      g.stroke()
-      tx('●',227,152,'rgba(255,200,100,0.8)',18)
-    }else{
-      // Offered — glass shard in eye
-      g.fillStyle=`rgba(184,160,128,0.4)`
-      pl([[218,140],[234,148],[225,158],[215,150]],PAL.sepia_l)
-      g.strokeStyle=PAL.sepia_l
-      g.lineWidth=1
-      g.stroke()
+  // SPOT 2: MOUTH — needs bola
+  if(!mouthOffered){
+    const sa=0.5+Math.sin(t*0.004+1)*0.3
+    sh.fillStyle=`rgba(255,200,100,${sa*0.35})`
+    sh.beginPath()
+    sh.ellipse(195,178,20,14,0,0,Math.PI*2)
+    sh.fill()
+    sh.strokeStyle=`rgba(255,200,100,${sa*0.7})`
+    sh.lineWidth=1.5
+    sh.beginPath()
+    sh.ellipse(195,178,18,12,0,0,Math.PI*2)
+    sh.stroke()
+    tx('◈',195,183,'rgba(255,220,120,0.9)',16)
+    for(let i=0;i<3;i++){
+      const ang=t*0.002+i*2.1+1
+      const px=195+Math.cos(ang)*22, py=178+Math.sin(ang)*16
+      circle(px,py,1.5,`rgba(255,200,100,${0.3+Math.sin(t*0.003+i+1)*0.15})`)
     }
+  }else{
+    // Ball inside mouth
+    circle(195,178,8,PAL.sepia_l)
+    sh.strokeStyle=PAL.rust_l
+    sh.lineWidth=1.5
+    sh.beginPath()
+    sh.ellipse(195,178,8,8,0,0,Math.PI*2)
+    sh.stroke()
+  }
 
-    // Spot 2: Mouth — needs bola
-    if(!mouth){
-      const sa=0.5+Math.sin(t*0.004+1)*0.3
-      g.fillStyle=`rgba(255,200,100,${sa*0.3})`
-      g.beginPath()
-      g.ellipse(195,178,18,12,0,0,Math.PI*2)
-      g.fill()
-      g.strokeStyle=`rgba(255,200,100,${sa*0.6})`
-      g.lineWidth=1.5
-      g.beginPath()
-      g.ellipse(195,178,17,11,0,0,Math.PI*2)
-      g.stroke()
-      tx('●',195,182,'rgba(255,200,100,0.8)',18)
-    }else{
-      // Offered — ball in mouth
-      circle(195,178,7,PAL.sepia_l)
-      g.strokeStyle=PAL.rust_l
-      g.lineWidth=1.5
-      g.beginPath()
-      g.ellipse(195,178,7,7,0,0,Math.PI*2)
-      g.stroke()
+  // SPOT 3: PAW — needs osso
+  const pawOffered=so.paw
+  if(!pawOffered){
+    const sa=0.5+Math.sin(t*0.004+2)*0.3
+    sh.fillStyle=`rgba(255,200,100,${sa*0.3})`
+    sh.beginPath()
+    sh.ellipse(300,245,20,14,0.2,0,Math.PI*2)
+    sh.fill()
+    sh.strokeStyle=`rgba(255,200,100,${sa*0.6})`
+    sh.lineWidth=1.5
+    sh.beginPath()
+    sh.ellipse(300,245,18,12,0.2,0,Math.PI*2)
+    sh.stroke()
+    tx('◈',300,250,'rgba(255,220,120,0.9)',16)
+    for(let i=0;i<3;i++){
+      const ang=t*0.002+i*2.1+2
+      const px=300+Math.cos(ang)*20, py=245+Math.sin(ang)*16
+      circle(px,py,1.5,`rgba(255,200,100,${0.3+Math.sin(t*0.003+i+2)*0.15})`)
     }
+  }else{
+    // Bone laid on paw
+    sh.fillStyle=PAL.sepia_l
+    sh.fillRect(292,238,18,5)
+    sh.fillRect(295,233,4,15)
+    circle(293,233,3,PAL.sepia_l)
+    circle(307,233,3,PAL.sepia_l)
+  }
 
-    // Spot 3: Paw — needs osso
-    if(!paw){
-      const sa=0.5+Math.sin(t*0.004+2)*0.3
-      g.fillStyle=`rgba(255,200,100,${sa*0.3})`
-      g.beginPath()
-      g.ellipse(300,245,18,12,0,0,Math.PI*2)
-      g.fill()
-      g.strokeStyle=`rgba(255,200,100,${sa*0.6})`
-      g.lineWidth=1.5
-      g.beginPath()
-      g.ellipse(300,245,17,11,0,0,Math.PI*2)
-      g.stroke()
-      tx('●',300,249,'rgba(255,200,100,0.8)',18)
-    }else{
-      // Offered — bone on paw
-      g.fillStyle=PAL.sepia_l
-      g.fillRect(290,238,20,5)
-      g.fillRect(293,233,4,15)
-      circle(292,233,3,PAL.sepia_l)
-      circle(308,233,3,PAL.sepia_l)
-    }
+  // ─── AMBIENT EFFECTS ───
 
-  // Título da criatura
-  g.fillStyle=`rgba(184,106,58,${0.15+Math.sin(t*0.002)*0.08})`
-  g.font='12px Georgia'
-  g.textAlign='center'
-  g.fillText('SHIVA',400,580)
+  // Warm light from candle below
+  const flicker=0.08+Math.sin(t*0.005)*0.04
+  const warmG=rgrad(400,500,450,`rgba(255,180,80,${flicker*0.4})`,'rgba(255,180,80,0)')
+  sh.fillStyle=warmG
+  sh.fillRect(0,0,800,600)
 
-  // Red glow from the body
-  const gl=0.04+Math.sin(t*0.0015)*0.03
-  g.fillStyle=`rgba(184,58,30,${gl})`
-  g.beginPath()
-  g.ellipse(400,160,300,100,0,0,Math.PI*2)
-  g.fill()
+  // Reddish glow from Shiva's body
+  const rg=0.06+Math.sin(t*0.0015)*0.04
+  sh.fillStyle=`rgba(184,58,30,${rg})`
+  sh.beginPath()
+  sh.ellipse(400,160,350,120,0,0,Math.PI*2)
+  sh.fill()
 
-  // Additional glow overlay
-  const glowGrad=rgrad(400,160,350,'rgba(184,106,58,0.03)','rgba(184,106,58,0)')
-  g.fillStyle=glowGrad
-  g.beginPath()
-  g.ellipse(400,160,350,120,0,0,Math.PI*2)
-  g.fill()
+  // Shadow depth at corners
+  rect(0,0,50,600,PAL.shadow_d)
+  rect(750,0,50,600,PAL.shadow_d)
+  rect(0,480,800,120,grad(0,480,0,600,'rgba(0,0,0,0)','rgba(0,0,0,0.7)'))
 
+  paperGrain(6)
   vignette(ctx)
 }
 
