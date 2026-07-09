@@ -130,7 +130,7 @@ body {
 /* ── Nav Dropdown ── */
 .nav-dropdown {
   position: absolute;
-  top: calc(100% + 14px);
+  top: calc(100% + 15px);
   left: 0;
   min-width: 280px;
   background: #0d0d14;
