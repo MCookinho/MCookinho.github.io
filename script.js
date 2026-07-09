@@ -171,6 +171,10 @@
   function onSectionClick(section) {
     if (section === 'music') return
     closeDropdown()
+    if (section === 'rankings') {
+      openRankOverlay()
+      return
+    }
     openSubOverlay(section)
   }
 
@@ -241,27 +245,6 @@
           '</div>'
         })
         html += '</div>'
-        return html
-      }
-    },
-    rankings: {
-      title: '// RANKINGS',
-      icon: '\uD83C\uDFC6',
-      content: function () {
-        var rankings = RANKINGS
-        var html = ''
-        rankings.forEach(function (r) {
-          html += '<div class="sub-rank-block">' +
-            '<h4 class="sub-rank-title">' + r.title + '</h4>'
-          r.items.forEach(function (item, i) {
-            html += '<div class="sub-rank-item">' +
-              '<span class="sub-rank-pos">' + (i + 1) + '.</span>' +
-              '<span class="sub-rank-name">' + item.name + '</span>' +
-              (item.value ? '<span class="sub-rank-value">' + item.value + '</span>' : '') +
-            '</div>'
-          })
-          html += '</div>'
-        })
         return html
       }
     }
@@ -393,25 +376,6 @@
     window.__unlockAchievement('play-song')
   }
 
-  var RANKINGS = [
-    {
-      title: 'TETRIS',
-      items: [
-        { name: 'VOCÊ', value: localStorage.getItem('tetrisHighScore') || '0' },
-        { name: 'PEU BORGES', value: '9999' },
-        { name: 'SHIVA', value: '🐾' },
-      ]
-    },
-    {
-      title: 'PESSOAS MAIS IMPORTANTES',
-      items: [
-        { name: 'SHIVA', value: 'GOLDEN RETRIEVER' },
-        { name: 'FAMÍLIA', value: 'BASE' },
-        { name: 'AMIGOS', value: '🚀' },
-      ]
-    }
-  ]
-
   // ── Sub-overlay HTML ──
   var subOverlay = document.createElement('div')
   subOverlay.className = 'sub-overlay'
@@ -475,20 +439,212 @@
   var ndRankSub = document.getElementById('ndRankSub')
   function updateRankBadge() {
     var hs = localStorage.getItem('tetrisHighScore')
-    ndRankSub.textContent = 'TETRIS: ' + (hs || '0') + ' / PESSOAS'
+    ndRankSub.textContent = 'TETRIS: ' + (hs || '0') + ' / FILMES / JOGOS / SÉRIES / MÚSICAS'
   }
   window.__updateRankBadge = updateRankBadge
   updateRankBadge()
 
-  // Update rank values from localStorage
-  function syncRankScore() {
-    var tetrisScore = localStorage.getItem('tetrisHighScore')
-    if (tetrisScore && RANKINGS[0].items[0]) {
-      RANKINGS[0].items[0].value = tetrisScore
-    }
+  // ── Rankings Data ──
+  var rankData = {}
+  var rankOrder = ['tetris','filmes','jogos','series','musicas']
+
+  function loadRankData() {
+    var loaded = 0; var total = rankOrder.length
+    rankOrder.forEach(function (key) {
+      var xhr = new XMLHttpRequest()
+      xhr.open('GET', 'data/rankings/' + key + '.json', true)
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          try { rankData[key] = JSON.parse(xhr.responseText) } catch (e) { rankData[key] = getDefaultData(key) }
+        } else { rankData[key] = getDefaultData(key) }
+        loaded++
+        if (loaded === total) renderRankTab(getActiveRankTab())
+      }
+      xhr.onerror = function () { rankData[key] = getDefaultData(key); loaded++; if (loaded === total) renderRankTab(getActiveRankTab()) }
+      xhr.send()
+    })
   }
-  syncRankScore()
-  window.__syncRankScore = syncRankScore
+  function getActiveRankTab() {
+    var active = document.querySelector('#rkTabs .rk-tab.active')
+    return active ? active.getAttribute('data-rank') : 'tetris'
+  }
+  function getDefaultData(key) {
+    var defs = {
+      tetris: [
+        {name:'Peu Borges',score:9999,lines:152,level:15},
+        {name:'Shiva',score:5000,lines:78,level:9}
+      ],
+      filmes: [
+        {name:'Interestelar',type:'Ficção Científica',synopsis:'...',review:'Obra-prima.',rating:5.0},
+        {name:'Clube da Luta',type:'Drama',synopsis:'...',review:'Genial.',rating:5.0}
+      ],
+      jogos: [
+        {name:'Zelda: Breath of the Wild',type:'Aventura',synopsis:'...',review:'Liberdade total.',rating:5.0},
+        {name:'Elden Ring',type:'RPG',synopsis:'...',review:'Obra-prima.',rating:5.0}
+      ],
+      series: [
+        {name:'Breaking Bad',type:'Drama',synopsis:'...',review:'Melhor série.',rating:5.0,favoriteEpisode:'Ozymandias'},
+        {name:'Dark',type:'Sci-Fi',synopsis:'...',review:'Complexa.',rating:5.0,favoriteEpisode:'Final'}
+      ],
+      musicas: [
+        {name:'Bohemian Rhapsody',artist:'Queen',spotify:'',rating:5.0},
+        {name:'Stairway to Heaven',artist:'Led Zeppelin',spotify:'',rating:5.0}
+      ]
+    }
+    return defs[key] || []
+  }
+
+  function renderRankTab(key) {
+    var body = document.getElementById('rkBody')
+    var items = (rankData[key] || []).slice()
+    
+    if (key === 'tetris') {
+      var playerScore = parseInt(localStorage.getItem('tetrisHighScore')) || 0
+      var hasPlayer = items.some(function (i) { return i.name === 'VOCÊ' })
+      if (playerScore > 0 && !hasPlayer) {
+        items.push({name:'VOCÊ',score:playerScore,lines:0,level:0})
+      }
+      items.sort(function (a, b) { return b.score - a.score })
+    } else {
+      items = items.slice().sort(function (a, b) { return b.rating - a.rating })
+    }
+
+    var html = ''
+    if (key === 'tetris') {
+      var hs = parseInt(localStorage.getItem('tetrisHighScore')) || 0
+      html += '<div class="rk-score-header">SEU RECORDE: <strong>' + hs + '</strong> | ORDENADO POR SCORE</div>'
+    } else {
+      html += '<div class="rk-score-header">ORDENADO POR AVALIAÇÃO</div>'
+    }
+
+    if (items.length === 0) {
+      html += '<div class="rk-empty">NENHUM ITEM AINDA</div>'
+    } else {
+      items.forEach(function (item, i) {
+        html += renderRankItem(key, item, i + 1)
+      })
+    }
+
+    body.innerHTML = html
+    requestAnimationFrame(function () {
+      body.querySelectorAll('.rk-item').forEach(function (el, idx) {
+        el.style.transitionDelay = (idx * 0.04 + 0.05) + 's'
+      })
+    })
+
+    // click to expand
+    body.querySelectorAll('.rk-item').forEach(function (el) {
+      el.addEventListener('click', function () {
+        el.classList.toggle('open')
+      })
+    })
+  }
+
+  function renderStars(rating) {
+    var full = Math.floor(rating)
+    var half = rating - full >= 0.5 ? 1 : 0
+    var empty = 5 - full - half
+    var s = ''
+    for (var i = 0; i < full; i++) s += '<span class="rk-star filled">★</span>'
+    if (half) s += '<span class="rk-star filled" style="opacity:0.6">★</span>'
+    for (var i = 0; i < empty; i++) s += '<span class="rk-star empty">★</span>'
+    return s
+  }
+
+  function renderRankItem(key, item, pos) {
+    var html = '<div class="rk-item">'
+    html += '<div class="rk-pos">' + pos + '</div>'
+    html += '<div class="rk-item-body">'
+    html += '<div class="rk-item-top">'
+    html += '<div><div class="rk-item-name">' + item.name + '</div>'
+    html += '<div class="rk-item-meta">'
+
+    if (key === 'tetris') {
+      html += '<span class="rk-item-detail">' + item.lines + ' LINES</span>'
+      html += '<span class="rk-item-detail">LEVEL ' + item.level + '</span>'
+      html += '</div></div>'
+      html += '<span class="rk-score-val">' + item.score + '</span>'
+    } else {
+      if (item.type) html += '<span class="rk-item-type">' + item.type + '</span>'
+      if (item.artist) html += '<span class="rk-item-detail">' + item.artist + '</span>'
+      html += '</div></div>'
+      html += '<div class="rk-stars">' + renderStars(item.rating) + '</div>'
+    }
+
+    html += '</div>' // end item-top
+
+    // Expandable detail
+    var hasDetail = false
+    var detailHtml = ''
+    if (key === 'tetris') {
+      // no extra detail for tetris
+    } else if (key === 'musicas') {
+      if (item.spotify) {
+        hasDetail = true
+        detailHtml += '<div class="rk-detail-label">🎧 OUÇA</div>'
+        detailHtml += '<a href="' + item.spotify + '" target="_blank" class="rk-spotify-link">▶ OPEN SPOTIFY</a>'
+      }
+    } else {
+      if (item.synopsis) {
+        hasDetail = true
+        detailHtml += '<div class="rk-detail-label">📖 SINOPSE</div>'
+        detailHtml += '<div class="rk-detail-text">' + item.synopsis + '</div>'
+      }
+      if (item.review) {
+        hasDetail = true
+        detailHtml += '<div class="rk-detail-label">💬 MINHA OPINIÃO</div>'
+        detailHtml += '<div class="rk-detail-text">' + item.review + '</div>'
+      }
+      if (item.favoriteEpisode) {
+        hasDetail = true
+        detailHtml += '<div class="rk-fav-ep">⭐ EPISÓDIO FAVORITO: <strong>' + item.favoriteEpisode + '</strong></div>'
+      }
+    }
+
+    if (hasDetail) {
+      html += '<div class="rk-detail">' + detailHtml + '</div>'
+      html += '<span class="rk-expand-hint">▼</span>'
+    }
+
+    html += '</div></div>'
+    return html
+  }
+
+  // ── Rankings Overlay ──
+  var rankOverlay = document.getElementById('rkOverlay')
+
+  function openRankOverlay() {
+    rkSwitchTab(getActiveRankTab())
+    rankOverlay.classList.add('open')
+  }
+
+  function closeRankOverlay() {
+    rankOverlay.classList.remove('open')
+  }
+
+  function rkSwitchTab(key) {
+    document.querySelectorAll('#rkTabs .rk-tab').forEach(function (t) { t.classList.remove('active') })
+    var tab = document.querySelector('#rkTabs .rk-tab[data-rank="' + key + '"]')
+    if (tab) tab.classList.add('active')
+    renderRankTab(key)
+  }
+
+  document.getElementById('rkClose').addEventListener('click', closeRankOverlay)
+  rankOverlay.addEventListener('click', function (e) {
+    if (e.target === rankOverlay) closeRankOverlay()
+  })
+
+  document.querySelectorAll('#rkTabs .rk-tab').forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      rkSwitchTab(this.getAttribute('data-rank'))
+    })
+  })
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && rankOverlay.classList.contains('open')) closeRankOverlay()
+  })
+
+  loadRankData()
 })()
 
 ;(function () {
