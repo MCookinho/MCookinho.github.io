@@ -486,6 +486,10 @@
   audio.volume = parseFloat(playerVolume.value)
   playerVolBtn.textContent = '♪'
 
+  // Expose for external toggle
+  window.__toggleMusic = toggleOverlay
+  window.__closeMusic = closeOverlay
+
   // Allow external stop
   window.playerAudio = audio
   window.addEventListener('horrorStopMusic', function () {

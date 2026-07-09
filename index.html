@@ -19,18 +19,44 @@
   <nav class="nav" id="nav">
     <div class="nav-inner">
       <div class="nav-left">
-        <a href="#" class="nav-logo">[ MCOOKINHO ]</a>
-        <button class="cd-btn" id="cdBtn" aria-label="Abrir biblioteca de música">
-          <span class="cd-icon" id="cdIcon"></span>
-          <span class="cd-now-playing" id="cdNowPlaying"></span>
-        </button>
+        <button class="nav-logo" id="navLogo">[ MCOOKINHO ]<span class="nav-logo-arrow">&#x25BE;</span></button>
+        <div class="nav-dropdown" id="navDropdown">
+          <div class="nd-section" id="cdBtn" data-section="music">
+            <div class="nd-icon">
+              <span class="cd-icon" id="cdIcon"></span>
+            </div>
+            <div class="nd-body">
+              <span class="nd-title">MÚSICA</span>
+              <span class="nd-sub cd-now-playing" id="cdNowPlaying">NENHUMA MÚSICA</span>
+            </div>
+          </div>
+          <div class="nd-divider"></div>
+          <div class="nd-section" data-section="settings">
+            <div class="nd-icon">&#x2699;</div>
+            <div class="nd-body">
+              <span class="nd-title">CONFIGURAÇÕES</span>
+              <span class="nd-sub">IDIOMA / PREFERÊNCIAS</span>
+            </div>
+          </div>
+          <div class="nd-divider"></div>
+          <div class="nd-section" data-section="achievements">
+            <div class="nd-icon">&#x2B50;</div>
+            <div class="nd-body">
+              <span class="nd-title">CONQUISTAS</span>
+              <span class="nd-sub" id="ndAchieveSub">0 CONQUISTAS</span>
+            </div>
+          </div>
+          <div class="nd-divider"></div>
+          <div class="nd-section" data-section="rankings">
+            <div class="nd-icon">&#x1F3C6;</div>
+            <div class="nd-body">
+              <span class="nd-title">RANKINGS</span>
+              <span class="nd-sub" id="ndRankSub">TETRIS / PESSOAS</span>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="nav-links" id="navLinks">
-        <div class="nav-utils">
-          <button class="nav-util-btn" id="navRankings" aria-label="Rankings">&#x1F3C6;</button>
-          <button class="nav-util-btn" id="navAchievements" aria-label="Conquistas">&#x2B50;</button>
-          <button class="nav-util-btn" id="navSettings" aria-label="Configurações">&#x2699;</button>
-        </div>
         <a href="#about">SOBRE</a>
         <a href="#skills">STACK</a>
         <a href="#projetos">PROJETOS</a>
