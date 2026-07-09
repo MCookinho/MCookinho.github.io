@@ -449,18 +449,9 @@ body.list-bullet .edu-item::before {
 .config-btn-share { background: var(--card); color: var(--accent); border-color: var(--accent); }
 .config-btn-share:hover { background: var(--accent); color: #fff; }
 
-/* ── Print ── */
+/* ── Print (base — config-driven styles injected by JS) ── */
 @media print {
-  .topbar, .config-overlay, .prof-footer { display: none !important; }
-  .main-content { padding: 0; max-width: 100%; }
-  .prof-header { page-break-after: avoid; }
-  .prof-section { page-break-inside: avoid; }
-  .skill-bar { border: 1px solid #ddd; }
-  .skill-fill { background: var(--primary) !important; }
-  .proj-card { break-inside: avoid; border: 1px solid #ccc; }
-  .contact-item { border: 1px solid #ccc; }
-  a { color: var(--primary) !important; text-decoration: none !important; }
-  body { background: #fff !important; color: #000 !important; }
+  @page { margin: 0; size: auto; }
 }
 
 /* ── Responsive ── */

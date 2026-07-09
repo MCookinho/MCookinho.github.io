@@ -1149,6 +1149,22 @@
       })
       list.appendChild(item)
     })
+    ;(cfg.content.customSections || []).forEach(function (cs) {
+      var checked = cfg.pdf.sections.indexOf('custom-' + cs.id) !== -1
+      var item = document.createElement('div')
+      item.className = 'config-pdf-item'
+      item.innerHTML =
+        '<input type="checkbox" ' + (checked ? 'checked' : '') + ' />' +
+        '<label>' + escHtml(cs.title || 'Seção personalizada') + '</label>'
+      var cb = item.querySelector('input[type="checkbox"]')
+      cb.addEventListener('change', function () {
+        var sid = 'custom-' + cs.id
+        var idx = currentConfig.pdf.sections.indexOf(sid)
+        if (cb.checked && idx === -1) currentConfig.pdf.sections.push(sid)
+        else if (!cb.checked && idx !== -1) currentConfig.pdf.sections.splice(idx, 1)
+      })
+      list.appendChild(item)
+    })
   }
 
   // ── Panel Events ──
@@ -1312,34 +1328,42 @@
 
     var marginMap = { small: '0.3in', normal: '0.5in', large: '0.8in' }
     var margin = marginMap[cfg.pdf.margins] || '0.5in'
-    var fontSizeMap = { small: '80%', normal: '100%', large: '120%' }
+    var fontSizeMap = { small: '85%', normal: '100%', large: '115%' }
     var fs = fontSizeMap[cfg.pdf.fontSize] || '100%'
     var pageSizeMap = { a4: '210mm 297mm', letter: '216mm 279mm' }
     var ps = pageSizeMap[cfg.pdf.pageSize] || '210mm 297mm'
-    var colorFilter = cfg.pdf.color === 'grayscale' ? 'grayscale(100%)' : 'none'
+    var isGrayscale = cfg.pdf.color === 'grayscale'
+
+    document.body.classList.add('is-printing')
 
     var style = document.createElement('style')
     style.id = 'pdf-temp-style'
     style.textContent =
       '@page { margin: ' + margin + '; size: ' + ps + '; }' +
-      'body { font-size: ' + fs + ' !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }' +
-      'body * { -webkit-filter: ' + colorFilter + '; filter: ' + colorFilter + '; }'
-    document.head.appendChild(style)
+      'body.is-printing { -webkit-print-color-adjust: exact; print-color-adjust: exact; background: var(--bg) !important; color: var(--text) !important; font-size: ' + fs + '; }' +
+      'body.is-printing .topbar, body.is-printing .topbar-show-btn, body.is-printing .config-overlay, body.is-printing .prof-footer { display: none !important; }' +
+      'body.is-printing .topbar.printing-show { display: flex !important; }' +
+      'body.is-printing .main-content { padding: 0; max-width: 100%; }' +
+      'body.is-printing .prof-header { page-break-after: avoid; }' +
+      'body.is-printing .prof-section { page-break-inside: avoid; }' +
+      'body.is-printing .proj-card { box-shadow: none !important; break-inside: avoid; }' +
+      'body.is-printing .contact-item { box-shadow: none !important; padding: 4px 8px; }' +
+      'body.is-printing .skill-bar { border: 1px solid var(--border); }' +
+      'body.is-printing .skill-fill { background: linear-gradient(90deg, var(--accent), var(--primary)) !important; }' +
+      (isGrayscale ? 'body.is-printing .main-content { -webkit-filter: grayscale(100%); filter: grayscale(100%); }' : '') +
+      (cfg.pdf.includeTopbar === 'yes' ? 'body.is-printing .topbar { display: flex !important; } body.is-printing .topbar .topbar-btn, body.is-printing .topbar .topbar-toggle { display: none; } body.is-printing .topbar .topbar-brand { font-size: 12px; }' : '')
 
-    if (cfg.pdf.includeTopbar === 'no') {
-      var tb = document.getElementById('topbar')
-      if (tb) tb.style.display = 'none'
-    }
+    document.head.appendChild(style)
 
     window.print()
 
     setTimeout(function () {
       document.getElementById('pdf-temp-style').remove()
-      var tb = document.getElementById('topbar')
-      if (tb) tb.style.display = ''
+      document.body.classList.remove('is-printing')
       applyConfig(cfg)
       setupAnimations(cfg)
     }, 500)
   })
 
 })()
+
