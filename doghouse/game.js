@@ -55,7 +55,6 @@ const VIEWS = {
     {id:'olho_shiva',name:'OLHO DE SHIVA',desc:'Um olho brilhante. Algo deve ser oferecido.',type:'offering'},
     {id:'boca_shiva',name:'BOCA DE SHIVA',desc:'A boca escancarada. Precisa de uma oferenda.',type:'offering'},
     {id:'pata_shiva',name:'PATA DE SHIVA',desc:'A pata dianteira. Um espaço vazio.',type:'offering'},
-    {id:'corpo_shiva',name:'SHIVA',desc:'O corpo enorme de um golden retriever demoníaco.',type:'examine'}
   ]
 }
 
@@ -97,7 +96,6 @@ const HITBOXES = {
   ceiling_lantern: {
     corrente:{x:380,y:40,w:40,h:220},
     alcapao:{x:300,y:300,w:200,h:80},
-    corpo_shiva:{x:150,y:50,w:500,h:200},
     olho_shiva:{x:210,y:135,w:35,h:25},
     boca_shiva:{x:178,y:172,w:35,h:20},
     pata_shiva:{x:282,y:227,w:38,h:35}

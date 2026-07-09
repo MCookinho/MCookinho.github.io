@@ -87,12 +87,8 @@ class Engine {
       const views=['north','east','south','west','ceiling']
       const vk=views[g.view]||'north'
 
-      if(vk==='ceiling'&&g.candleLit){
-        drCeilingLantern(ctx,t,g)
-      }else{
-        const fn=VIEW_DRAW[vk]
-        if(fn)fn(ctx,t)
-      }
+      const fn=VIEW_DRAW[vk]
+      if(fn)fn(ctx,t)
 
       if(g.candleLit)drawCandleLight(ctx,t,true)
 

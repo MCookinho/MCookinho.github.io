@@ -782,62 +782,146 @@ function drWest(ctx,t){
   vignette(ctx)
 }
 
-/* ─── CEILING (DARK) — Gothic vault ─── */
+/* ─── CEILING — Gothic vault ─── */
 function drCeiling(ctx,t){
   $ctx=ctx
-  rect(0,0,800,600,rgrad(400,300,450,'#050302','#0a0806'))
+  const lit=window.__game&&window.__game.candleLit
+  const hatchOpen=window.__game&&window.__game.hasObtained('osso')
+  const so=window.__game&&window.__game.shivaOffered||{eye:false,mouth:false,paw:false}
 
-  // Vaulted stone ribs — cathedral arches
-  for(let i=0;i<12;i++){
-    const a=-Math.PI/3+i*0.22
-    const x1=400+Math.cos(a)*450, y1=300+Math.sin(a)*380
-    const x2=400+Math.cos(a-0.04)*460, y2=300+Math.sin(a-0.04)*390
+  rect(0,0,800,600,rgrad(400,300,450,lit?'#120a06':'#050302',lit?'#1a1008':'#0a0806'))
+
+  // Vaulted stone ribs
+  for(let i=0;i<14;i++){
+    const a=-Math.PI/3+i*0.2
+    const x1=400+Math.cos(a)*460, y1=300+Math.sin(a)*390
+    const x2=400+Math.cos(a-0.03)*470, y2=300+Math.sin(a-0.03)*400
     if(x1<0||x1>800)continue
-    wln(x1,y1,400,30,PAL.ink_m,0.9,t,0.5)
-    wln(x2,y2,400,30,PAL.ink_l,0.5,t,0.4)
+    const ri=0.15+Math.sin(t*0.0008+i)*0.05
+    wln(x1,y1,400,30,lit?`rgba(50,38,28,${ri})`:PAL.ink_m,1,t,0.5)
+    wln(x2,y2,400,30,lit?`rgba(60,48,36,${ri*0.6})`:PAL.ink_l,0.6,t,0.4)
   }
-  // Boss at center
-  circle(400,30,16,PAL.stone_d)
-  circle(400,30,10,PAL.ink_m)
+  // Boss at apex
+  circle(400,30,lit?20:16,lit?PAL.stone:PAL.stone_d)
+  circle(400,30,lit?12:10,lit?PAL.stone_l:PAL.ink_m)
+  if(lit){
+    wln(400,18,400,42,PAL.sepia_d,0.4,t,0.2)
+    wln(388,30,412,30,PAL.sepia_d,0.4,t,0.2)
+  }
 
   // Horizontal beams
   for(let i=0;i<4;i++){
     const ty=80+i*100
-    wln(40+Math.sin(i)*12,ty,760+Math.sin(i+1)*12,ty,PAL.ink_l,0.7,t,0.5)
+    const bc=lit?PAL.stone_l:PAL.ink_l
+    wln(40+Math.sin(i)*12,ty,760+Math.sin(i+1)*12,ty,bc,0.8,t,0.5)
     for(let j=0;j<7;j++){
       const bx=60+j*110
-      wln(bx,ty-3,bx+18,ty-8,PAL.ink_m,0.3,t,0.3)
+      wln(bx,ty-3,bx+18,ty-8,lit?PAL.sepia_d:PAL.ink_m,0.4,t,0.3)
+      if(lit)wln(bx+2,ty-2,bx+8,ty-10,PAL.sepia_d,0.2,t,0.2)
     }
   }
 
-  // Chain
+  // ─── CHAIN & HOOK ───
+  // Ring at top
+  circle(400,28,5,lit?PAL.rust_l:PAL.rust)
+  circle(400,28,3,lit?PAL.gold:PAL.rust_l)
+  // Chain links
   for(let i=0;i<10;i++){
-    const cy=40+i*22,cw=8+Math.sin(i*0.8)*2
-    wln(400-cw,cy,400+cw,cy+8,PAL.rust,1.5,t)
-    wln(400+cw,cy+8,400-cw,cy+16,PAL.rust,1.5,t)
-    circle(400,cy+4,3,PAL.rust_l)
+    const cy=40+i*20,cw=7+Math.sin(i*0.7)*2
+    wln(400-cw,cy,400+cw,cy+7,lit?PAL.rust_l:PAL.rust,1.2,t)
+    wln(400+cw,cy+7,400-cw,cy+14,lit?PAL.rust_l:PAL.rust,1.2,t)
+    circle(400,cy+3.5,2.5,lit?PAL.gold:PAL.rust_l)
   }
-  wln(400,40,400,260,PAL.rust,2,t)
-  pl([[396,250],[404,250],[400,285],[396,260]],PAL.rust_l)
+  // Vertical chain line
+  wln(400,28,400,240,lit?PAL.rust_l:PAL.rust,1.5,t)
+  // Hook
+  pl([[394,235],[406,235],[406,240],[394,240]],lit?PAL.rust_l:PAL.rust)
+  wln(400,240,400,255,lit?PAL.rust_l:PAL.rust,2,t)
+  wln(400,255,390,268,lit?PAL.rust_l:PAL.rust,2,t)
+  wln(390,268,380,272,lit?PAL.rust_l:PAL.rust,1.5,t)
+  circle(382,272,2,lit?PAL.gold:PAL.rust_l)
+  // Hook barb
+  wln(400,255,410,268,lit?PAL.rust_l:PAL.rust,1.5,t)
+  wln(410,268,415,272,lit?PAL.rust_l:PAL.rust,1,t)
+  // Rust spots on chain
+  if(lit)for(let i=0;i<6;i++){
+    const rx=395+Math.sin(i*13)*6, ry=50+i*28
+    circle(rx,ry,1.5,PAL.rust_d)
+  }
 
-  // Hatch
-  wln(300,300,500,300,PAL.ink_l,1.2,t)
-  wln(300,300,300,380,PAL.ink_l,1.2,t)
-  wln(300,380,500,380,PAL.ink_l,1.2,t)
-  wln(500,300,500,380,PAL.ink_l,1.2,t)
-  rect(390,320,20,40,PAL.rust)
-  circle(400,340,4,PAL.rust_l)
+  // ─── HATCH ───
+  if(hatchOpen){
+    // Open hatch — dark opening
+    rect(300,300,200,80,PAL.dark)
+    // Frame
+    wln(300,300,500,300,PAL.stone_l,1,t)
+    wln(300,300,300,380,PAL.stone_l,1,t)
+    wln(300,380,500,380,PAL.stone_l,1,t)
+    wln(500,300,500,380,PAL.stone_l,1,t)
+    // Darkness inside
+    rect(305,305,190,70,rgrad(400,340,120,'#020101','#050302'))
+    // Depth shadow
+    rect(305,305,190,4,grad(305,305,305,309,'rgba(0,0,0,0.6)','rgba(0,0,0,0)'))
+    rect(305,375,190,4,grad(305,375,305,379,'rgba(0,0,0,0)','rgba(0,0,0,0.6)'))
+    // Open door panel hanging down on left side
+    pl([[297,295],[303,296],[303,385],[297,383]],PAL.stone_d)
+    wln(297,295,297,383,PAL.stone_l,0.8,t)
+    // Ladder rungs visible in opening
+    for(let i=0;i<3;i++){
+      const ly=320+i*20
+      ln(350,ly,450,ly,`rgba(100,80,60,${0.2+Math.sin(t*0.001+i)*0.1})`,1)
+    }
+    // Faint draft lines from opening
+    const dr=0.04+Math.sin(t*0.002)*0.03
+    $ctx.fillStyle=`rgba(160,140,120,${dr})`
+    $ctx.beginPath()
+    $ctx.ellipse(425,380,40,4,0,0,Math.PI*2)
+    $ctx.fill()
+    // Chain now hangs down into the opening
+    wln(400,28,400,310,PAL.rust,1,t)
+    circle(400,310,3,PAL.rust_l)
+  }else{
+    // Closed hatch
+    wln(300,300,500,300,PAL.ink_l,1,t)
+    wln(300,300,300,380,PAL.ink_l,1,t)
+    wln(300,380,500,380,PAL.ink_l,1,t)
+    wln(500,300,500,380,PAL.ink_l,1,t)
+    // Hatch handle
+    rect(390,322,20,36,PAL.rust)
+    circle(400,340,4,PAL.rust_l)
+    // Bolt/rivet corners
+    circle(308,308,2,PAL.rust_l)
+    circle(492,308,2,PAL.rust_l)
+    circle(308,372,2,PAL.rust_l)
+    circle(492,372,2,PAL.rust_l)
+    // Plank lines on hatch
+    wln(305,335,495,335,PAL.ink_m,0.4,t)
+    wln(305,355,495,355,PAL.ink_m,0.4,t)
+  }
 
-  // Faint eyes in darkness
-  const p=0.2+Math.sin(t*0.001)*0.12
-  $ctx.fillStyle=`rgba(184,106,58,${p*0.3})`
-  circle(245+Math.sin(t*0.0005)*3,168,9,PAL.rust_l)
-  circle(295+Math.sin(t*0.0005+1)*3,173,9,PAL.rust_l)
-  $ctx.fillStyle=PAL.dark
-  circle(245+Math.sin(t*0.0005)*3,168,4,PAL.dark)
-  circle(295+Math.sin(t*0.0005+1)*3,173,4,PAL.dark)
-  circle(243+Math.sin(t*0.0005)*3,166,1.5,PAL.gold)
-  circle(293+Math.sin(t*0.0005+1)*3,171,1.5,PAL.gold)
+  // ─── EYES IN DARKNESS ───
+  if(lit){
+    // Faint suggestion of eyes — barely there
+    const ep=0.08+Math.sin(t*0.001)*0.04
+    $ctx.fillStyle=`rgba(184,106,58,${ep})`
+    circle(240,168,6,PAL.rust_l)
+    circle(290,173,6,PAL.rust_l)
+    // Ambient reflection
+    $ctx.fillStyle=`rgba(184,106,58,${ep*0.4})`
+    circle(238,166,1.5,PAL.gold)
+    circle(288,171,1.5,PAL.gold)
+  }else{
+    // Glowing eyes in dark
+    const p=0.2+Math.sin(t*0.001)*0.12
+    $ctx.fillStyle=`rgba(184,106,58,${p*0.3})`
+    circle(245+Math.sin(t*0.0005)*3,168,9,PAL.rust_l)
+    circle(295+Math.sin(t*0.0005+1)*3,173,9,PAL.rust_l)
+    $ctx.fillStyle=PAL.dark
+    circle(245+Math.sin(t*0.0005)*3,168,4,PAL.dark)
+    circle(295+Math.sin(t*0.0005+1)*3,173,4,PAL.dark)
+    circle(243+Math.sin(t*0.0005)*3,166,1.5,PAL.gold)
+    circle(293+Math.sin(t*0.0005+1)*3,171,1.5,PAL.gold)
+  }
 
   // Distant eyes
   const p2=0.1+Math.sin(t*0.001+1)*0.08
@@ -848,571 +932,81 @@ function drCeiling(ctx,t){
   circle(580,155,2,PAL.dark)
   circle(610,160,2,PAL.dark)
 
-  // Corner shadows
-  rect(0,0,60,600,PAL.shadow_d)
-  rect(740,0,60,600,PAL.shadow_d)
-  rect(0,480,800,120,grad(0,480,0,600,'rgba(0,0,0,0)','rgba(0,0,0,0.85)'))
+  // ─── OFFERING SPOTS (lit only) ───
+  if(lit){
+    // SPOT 1: Eye — caco_vidro
+    const eyeOffered=so.eye
+    if(!eyeOffered){
+      const sa=0.4+Math.sin(t*0.003)*0.2
+      $ctx.fillStyle=`rgba(200,160,80,${sa*0.18})`
+      $ctx.beginPath()
+      $ctx.ellipse(227,147,18,14,0,0,Math.PI*2)
+      $ctx.fill()
+      $ctx.strokeStyle=`rgba(200,160,80,${sa*0.35})`
+      $ctx.lineWidth=0.8
+      $ctx.beginPath()
+      $ctx.ellipse(227,147,16,12,0,0,Math.PI*2)
+      $ctx.stroke()
+      circle(227,147,2,`rgba(220,180,100,${sa*0.6})`)
+      for(let i=0;i<3;i++){
+        const ang=t*0.0015+i*2.1
+        circle(227+Math.cos(ang)*18,147+Math.sin(ang)*14,1,`rgba(200,160,80,${0.15+Math.sin(t*0.002+i)*0.08})`)
+      }
+    }else{
+      circle(227,147,4,`rgba(140,120,180,0.35)`)
+      circle(225,146,1.5,'rgba(200,180,240,0.3)')
+    }
+
+    // SPOT 2: Mouth — bola
+    if(!so.mouth){
+      const sa=0.4+Math.sin(t*0.003+1)*0.2
+      $ctx.fillStyle=`rgba(200,160,80,${sa*0.15})`
+      $ctx.beginPath()
+      $ctx.ellipse(195,182,16,12,0,0,Math.PI*2)
+      $ctx.fill()
+      circle(195,182,2.5,`rgba(220,180,100,${sa*0.6})`)
+      for(let i=0;i<3;i++){
+        const ang=t*0.0015+i*2.1+1
+        circle(195+Math.cos(ang)*18,182+Math.sin(ang)*14,1,`rgba(200,160,80,${0.15+Math.sin(t*0.002+i+1)*0.08})`)
+      }
+    }else{
+      circle(195,182,5,`rgba(140,110,80,0.4)`)
+    }
+
+    // SPOT 3: Paw — osso
+    if(!so.paw){
+      const sa=0.4+Math.sin(t*0.003+2)*0.2
+      $ctx.fillStyle=`rgba(200,160,80,${sa*0.15})`
+      $ctx.beginPath()
+      $ctx.ellipse(300,245,18,14,0.15,0,Math.PI*2)
+      $ctx.fill()
+      circle(300,245,2,`rgba(220,180,100,${sa*0.6})`)
+      for(let i=0;i<3;i++){
+        const ang=t*0.0015+i*2.1+2
+        circle(300+Math.cos(ang)*18,245+Math.sin(ang)*16,1,`rgba(200,160,80,${0.15+Math.sin(t*0.002+i+2)*0.08})`)
+      }
+    }else{
+      circle(300,245,4,`rgba(160,130,100,0.3)`)
+    }
+  }
+
+  // ─── CORNER SHADOWS ───
+  rect(0,0,60,600,grad(0,0,60,0,`rgba(0,0,0,${lit?0.5:0.75})`,`rgba(0,0,0,0)`))
+  rect(740,0,60,600,grad(740,0,800,0,`rgba(0,0,0,${lit?0.5:0.75})`,`rgba(0,0,0,0)`))
+  rect(0,480,800,120,grad(0,480,0,600,'rgba(0,0,0,0)',`rgba(0,0,0,${lit?0.75:0.85})`))
 
   hatch(0,0,80,600,-45,14,PAL.shadow,t)
   hatch(720,0,80,600,45,14,PAL.shadow,t)
+
+  // ─── CANDLE WARM GLOW (lit) ───
+  if(lit){
+    const flicker=0.08+Math.sin(t*0.005)*0.04
+    const warmG=rgrad(400,550,480,`rgba(255,160,60,${flicker*0.2})`,'rgba(255,160,60,0)')
+    $ctx.fillStyle=warmG
+    $ctx.fillRect(0,0,800,600)
+  }
+
   paperGrain(7)
-  vignette(ctx)
-}
-
-/* ─── CEILING LIT — Shiva revealed ─── */
-function drCeilingLantern(ctx,t,game){
-  $ctx=ctx
-  const so=game.shivaOffered||{eye:false,mouth:false,paw:false}
-
-  // ─── ABYSS BACKGROUND ───
-  rect(0,0,800,600,rgrad(400,300,450,'#0d0804','#050201'))
-  rect(0,0,800,600,grad(0,0,0,600,'rgba(184,100,50,0.03)','rgba(0,0,0,0.35)'))
-
-  // ─── STONE VAULT — cold ribs in shadow ───
-  for(let i=0;i<14;i++){
-    const a=-Math.PI/3+i*0.18
-    const x1=400+Math.cos(a)*480, y1=300+Math.sin(a)*400
-    if(x1<0||x1>800)continue
-    const ri=0.15+Math.sin(t*0.0008+i)*0.05
-    wln(x1,y1,400,30,`rgba(40,30,24,${ri})`,1.5,t,0.3)
-  }
-  // Horizontal beams — warped
-  for(let i=0;i<5;i++){
-    const ty=60+i*95
-    const a=0.5+Math.sin(i*1.7)*0.3
-    wln(30+Math.sin(i*2.1)*15,ty,770+Math.sin(i*2.7)*15,ty,`rgba(40,30,24,${a})`,1.2,t,0.3)
-  }
-
-  // ─── CORNER VOID ───
-  rect(0,0,90,600,grad(0,0,90,0,'rgba(0,0,0,0.7)','rgba(0,0,0,0)'))
-  rect(710,0,90,600,grad(710,0,800,0,'rgba(0,0,0,0.7)','rgba(0,0,0,0)'))
-  rect(0,470,800,130,grad(0,470,0,600,'rgba(0,0,0,0)','rgba(0,0,0,0.8)'))
-
-  // ─── SHIVA — HORROR FORM ───
-  const sh=$ctx
-  const breath=Math.sin(t*0.001)*0.03
-  const ba=0.8+breath
-
-  // ─── BODY — twisted, fused with shadow ───
-  // Wide shadow presence
-  for(let r=5;r>0;r--){
-    const ra=`rgba(20,10,6,${0.06+r*0.015+Math.sin(t*0.0008+r)*0.02})`
-    sh.fillStyle=ra
-    sh.beginPath()
-    sh.ellipse(410,135,300+r*14,85+r*10+Math.sin(t*0.0005+r)*4,0.04,0,Math.PI*2)
-    sh.fill()
-  }
-
-  // Body mass — not an ellipse, an irregular twisted shape
-  sh.fillStyle=`rgba(30,18,10,${ba})`
-  pl([[180,160],[220,105],[340,88],[460,90],[580,108],[640,145],
-      [620,175],[500,190],[380,190],[260,185],[195,180]],`rgba(30,18,10,${ba})`)
-
-  // Darker core
-  sh.fillStyle=`rgba(22,12,6,${ba*0.85})`
-  pl([[250,145],[340,110],[450,108],[550,120],[580,150],
-      [500,165],[380,168],[280,160]],`rgba(22,12,6,${ba*0.85})`)
-
-  // Spine ridges — crooked vertebrae pushing against skin
-  const spineRY=[105,100,97,96,97,100,104,109,115,122,130,140,152,165,178]
-  for(let i=0;i<spineRY.length;i++){
-    const sx=200+i*30, sy=spineRY[i]+Math.sin(t*0.001+i*0.7)*3
-    const sa=0.2+Math.sin(t*0.0012+i*1.1)*0.08
-    sh.fillStyle=`rgba(50,32,16,${sa})`
-    sh.beginPath()
-    sh.ellipse(sx,sy,3+Math.sin(i*1.3)*1.5,5+Math.cos(i*0.9)*1.5,0.1,0,Math.PI*2)
-    sh.fill()
-    // sharp tip
-    sh.strokeStyle=`rgba(70,42,20,${sa*0.5})`
-    sh.lineWidth=0.8
-    sh.beginPath()
-    sh.moveTo(sx-1,sy-2);sh.lineTo(sx+Math.sin(t*0.002+i)*1.5,sy-7-Math.sin(t*0.001+i)*1.5)
-    sh.stroke()
-  }
-
-  // ─── RIBS — emerging from stone, becoming the vault ribs ───
-  const ribX=[250,290,330,370,410,450,490,530,570]
-  for(let i=0;i<ribX.length;i++){
-    const rx=ribX[i], rbase=115+i*0.5+Math.sin(t*0.001+i)*3
-    const ra2=0.15+Math.sin(t*0.0012+i*1.7)*0.07
-    // Curved rib bone
-    sh.strokeStyle=`rgba(55,35,18,${ra2})`
-    sh.lineWidth=1.8+Math.sin(i*0.5)*0.6
-    sh.beginPath()
-    sh.moveTo(rx-8,rbase-3)
-    if(i%2===0){
-      sh.quadraticCurveTo(rx+10,rbase+12,rx-4,rbase+18)
-    }else{
-      sh.quadraticCurveTo(rx+5,rbase+18,rx-6,rbase+10)
-    }
-    sh.stroke()
-    // Second rib line
-    sh.strokeStyle=`rgba(45,28,14,${ra2*0.6})`
-    sh.lineWidth=1
-    sh.beginPath()
-    sh.moveTo(rx-4,rbase-1)
-    sh.quadraticCurveTo(rx+8,rbase+8,rx-2,rbase+15)
-    sh.stroke()
-  }
-
-  // ─── FUR SHADOWS — tendrils reaching into darkness ───
-  for(let i=0;i<30;i++){
-    const fx=180+Math.sin(i*3.7)*60+i*16, fy=100+Math.sin(i*2.3+i*0.1)*18+Math.sin(t*0.0015+i)*4
-    if(fx<30||fx>770)continue
-    const fa=0.04+Math.sin(t*0.001+i*4)*0.03
-    sh.strokeStyle=`rgba(60,35,18,${fa})`
-    sh.lineWidth=1+Math.sin(i*1.7)*0.5
-    sh.beginPath()
-    sh.moveTo(fx,fy)
-    const dx=fx+Math.sin(i*5.1+t*0.001)*14, dy=fy-8-Math.sin(i*3.3+t*0.001)*6
-    sh.quadraticCurveTo(fx+Math.sin(i*4.1+t*0.0008)*8,fy-4,dx,dy)
-    sh.stroke()
-  }
-
-  // ─── HEAD — too large, wrong ───
-  sh.save()
-
-  // Dark halo around head
-  sh.fillStyle=`rgba(8,4,2,0.35)`
-  sh.beginPath()
-  sh.ellipse(230,140,85,65+Math.sin(t*0.0009)*3,0.15,0,Math.PI*2)
-  sh.fill()
-
-  // Skull base — elongated, malformed
-  sh.fillStyle=`rgba(40,22,12,${ba})`
-  sh.beginPath()
-  sh.moveTo(180,165)
-  sh.quadraticCurveTo(170,125,205,108)
-  sh.quadraticCurveTo(230,98,260,102)
-  sh.quadraticCurveTo(285,115,270,155)
-  sh.quadraticCurveTo(255,175,220,178)
-  sh.quadraticCurveTo(195,176,180,165)
-  sh.fill()
-
-  // Skull outline — sketchy, bony edges
-  sh.strokeStyle=`rgba(80,48,22,${ba})`
-  sh.lineWidth=1.5
-  sh.beginPath()
-  sh.moveTo(180,165)
-  sh.quadraticCurveTo(168,120,205,106)
-  sh.quadraticCurveTo(230,96,262,100)
-  sh.quadraticCurveTo(288,115,272,158)
-  sh.stroke()
-
-  // Snout — elongated, cracked
-  sh.fillStyle=`rgba(48,26,14,${ba})`
-  sh.beginPath()
-  sh.moveTo(190,152)
-  sh.quadraticCurveTo(170,148,150,156)
-  sh.quadraticCurveTo(140,164,148,174)
-  sh.quadraticCurveTo(160,180,185,174)
-  sh.closePath()
-  sh.fill()
-  sh.strokeStyle=`rgba(80,48,22,${ba*0.7})`
-  sh.lineWidth=1
-  sh.stroke()
-
-  // Crack in snout
-  wln(165,156,175,168,`rgba(20,10,5,0.4)`,0.8,t,0.3)
-
-  // Nose — black, cracked
-  sh.fillStyle=PAL.dark
-  sh.beginPath()
-  sh.ellipse(143,162,5,4,0,0,Math.PI*2)
-  sh.fill()
-  sh.strokeStyle='rgba(60,35,18,0.3)'
-  sh.lineWidth=0.5
-  sh.beginPath()
-  sh.ellipse(143,162,5,4,0,0,Math.PI*2)
-  sh.stroke()
-  // Nose highlight — wet
-  circle(141,160,1.2,'rgba(140,120,100,0.15)')
-
-  // ─── BREATH — hot, visible mist ───
-  const br=0.07+Math.sin(t*0.0025)*0.04
-  sh.fillStyle=`rgba(160,120,80,${br})`
-  sh.beginPath()
-  sh.ellipse(130,168,14+Math.sin(t*0.003)*5,8+Math.sin(t*0.003+1)*4,0,0,Math.PI*2)
-  sh.fill()
-  sh.fillStyle=`rgba(120,90,60,${br*0.5})`
-  sh.beginPath()
-  sh.ellipse(122,174,10+Math.sin(t*0.003+2)*4,6+Math.sin(t*0.003+3)*3,0,0,Math.PI*2)
-  sh.fill()
-
-  // ─── 3 EYES — uneven, tracking ───
-  const eyePositions=[[210,140],[235,138],[258,142]]
-  const eyePulse=0.5+Math.sin(t*0.0025)*0.25
-  for(let e=0;e<3;e++){
-    const [ex,ey]=eyePositions[e]
-    // Outer glow
-    const eg=0.25+Math.sin(t*0.002+e*1.3)*0.12
-    sh.fillStyle=`rgba(220,150,80,${eg})`
-    sh.beginPath()
-    sh.ellipse(ex,ey,11+Math.sin(t*0.0015+e)*1.5,7+Math.sin(t*0.0015+e+1)*1,0,0,Math.PI*2)
-    sh.fill()
-    // Sclera — bloodshot
-    sh.fillStyle=`rgba(160,100,60,${eyePulse*0.4})`
-    sh.beginPath()
-    sh.ellipse(ex,ey,8,6,0,0,Math.PI*2)
-    sh.fill()
-    // Iris — amber glow
-    sh.fillStyle=`rgba(200,120,60,${eyePulse*0.6})`
-    sh.beginPath()
-    sh.ellipse(ex,ey,5,5,0,0,Math.PI*2)
-    sh.fill()
-    // Slit pupil — vertical, wrong
-    sh.fillStyle=PAL.dark
-    sh.beginPath()
-    sh.ellipse(ex-0.5,ey,1.2,4.5,0.15,0,Math.PI*2)
-    sh.fill()
-    // Pupil glint
-    sh.fillStyle=`rgba(255,200,160,${0.5+Math.sin(t*0.002+e)*0.2})`
-    sh.beginPath()
-    sh.ellipse(ex-2,ey-2,1,0.7,0,0,Math.PI*2)
-    sh.fill()
-    // Blood vessels in sclera
-    sh.strokeStyle=`rgba(180,60,40,${0.1+Math.sin(t*0.002+e*1.1)*0.05})`
-    sh.lineWidth=0.4
-    for(let v=0;v<3;v++){
-      sh.beginPath()
-      sh.moveTo(ex+Math.sin(v*2.1)*5,ey+Math.cos(v*1.7)*4)
-      sh.lineTo(ex+Math.sin(v*2.1+t*0.001)*7,ey+Math.cos(v*1.7+t*0.001)*5)
-      sh.stroke()
-    }
-  }
-
-  // ─── EARS — tattered, torn ───
-  // Left ear — ripped
-  sh.fillStyle=`rgba(38,20,10,${ba})`
-  sh.beginPath()
-  sh.moveTo(215,118);sh.lineTo(182,78);sh.lineTo(196,62)
-  sh.lineTo(210,72);sh.lineTo(206,56);sh.lineTo(228,82)
-  sh.lineTo(240,105);sh.closePath()
-  sh.fill()
-  sh.strokeStyle=`rgba(70,42,18,${ba*0.6})`
-  sh.lineWidth=1.2
-  sh.stroke()
-  // Tear wounds in ear
-  wln(200,90,210,85,`rgba(25,12,6,0.4)`,0.8,t,0.3)
-  wln(215,80,220,72,`rgba(25,12,6,0.4)`,0.8,t,0.3)
-
-  // Right ear — folded, wrong angle
-  sh.fillStyle=`rgba(42,24,12,${ba})`
-  sh.beginPath()
-  sh.moveTo(258,115);sh.lineTo(290,80);sh.lineTo(302,90)
-  sh.lineTo(288,108);sh.lineTo(296,118);sh.lineTo(278,124);sh.closePath()
-  sh.fill()
-  sh.strokeStyle=`rgba(70,42,18,${ba*0.5})`
-  sh.lineWidth=1;sh.stroke()
-
-  // ─── MOUTH — gaping, unhinged (OFFERING SLOT: boca) ───
-  const mouthOffered=so.mouth
-  // Jaw shadow — too wide
-  sh.fillStyle=`rgba(6,3,1,${ba})`
-  sh.beginPath()
-  sh.moveTo(165,165)
-  sh.quadraticCurveTo(160,185,175,195)
-  sh.quadraticCurveTo(195,202,215,198)
-  sh.quadraticCurveTo(230,192,225,178)
-  sh.quadraticCurveTo(210,175,195,178)
-  sh.quadraticCurveTo(178,178,165,165)
-  sh.fill()
-
-  // Upper jaw teeth — jagged, uneven, multiple rows
-  const upperTeeth=[[164,164],[172,161],[180,159],[188,158],[196,157],[204,158],[212,160],[220,163]]
-  for(let i=0;i<upperTeeth.length;i++){
-    const [tx,ty]=upperTeeth[i]
-    const ts=3+Math.sin(i*1.3)*2+Math.sin(t*0.002+i)*1.5
-    const tw=2+Math.sin(i*2.1)*1.5
-    sh.fillStyle=`rgba(190,170,140,${0.5+Math.sin(t*0.002+i)*0.2})`
-    sh.beginPath()
-    sh.moveTo(tx-tw,ty);sh.lineTo(tx+tw,ty);sh.lineTo(tx+Math.sin(i*0.7)*1.5,ty-ts);sh.closePath()
-    sh.fill()
-    // Tooth outline
-    sh.strokeStyle=`rgba(140,120,100,0.2)`
-    sh.lineWidth=0.3
-    sh.stroke()
-  }
-  // Bottom teeth — coming up from below
-  const lowerTeeth=[[172,196],[180,198],[188,199],[196,200],[204,199],[212,197],[220,194]]
-  for(let i=0;i<lowerTeeth.length;i++){
-    const [tx,ty]=lowerTeeth[i]
-    const ts=2+Math.sin(i*1.7)*1.5+Math.sin(t*0.002+i+1)*1
-    sh.fillStyle=`rgba(190,170,140,${0.35+Math.sin(t*0.002+i+2)*0.15})`
-    sh.beginPath()
-    sh.moveTo(tx-1.5,ty);sh.lineTo(tx+1.5,ty);sh.lineTo(tx,ty+ts);sh.closePath()
-    sh.fill()
-  }
-
-  // Inner mouth darkness — deeper, with throat
-  sh.fillStyle=PAL.dark
-  sh.beginPath()
-  sh.ellipse(195,184,12,8,0,0,Math.PI*2)
-  sh.fill()
-
-  // Drool — viscous strands
-  sh.strokeStyle=`rgba(150,130,110,${0.12+Math.sin(t*0.0025)*0.06})`
-  sh.lineWidth=0.6
-  for(let i=0;i<4;i++){
-    const dx=178+i*10, dy=195+Math.sin(t*0.0015+i*2)*1.5
-    sh.beginPath()
-    sh.moveTo(dx,dy)
-    sh.quadraticCurveTo(dx+Math.sin(t*0.001+i)*2,dy+10,dx-1+Math.sin(t*0.001+i+1)*2,dy+22+Math.sin(t*0.0015+i)*3)
-    sh.stroke()
-  }
-
-  // Tongue — dark, thick
-  sh.fillStyle=`rgba(70,20,12,${0.45+Math.sin(t*0.0015)*0.12})`
-  sh.beginPath()
-  sh.ellipse(195,188,8,5,0,0,Math.PI*2)
-  sh.fill()
-  sh.strokeStyle=`rgba(50,14,8,0.15)`
-  sh.lineWidth=0.5
-  sh.beginPath()
-  sh.ellipse(195,188,8,5,0,0,Math.PI*2)
-  sh.stroke()
-
-  // ─── FORELEGS — wrong anatomy, extra joints ───
-  // Front leg 1 (left) — bent backward at elbow
-  const l1x=285, l1y=165
-  sh.strokeStyle=`rgba(60,35,18,${ba*0.7})`
-  sh.lineWidth=8
-  sh.beginPath()
-  sh.moveTo(l1x,l1y)
-  sh.quadraticCurveTo(l1x-5,l1y+20,l1x+2,l1y+40)
-  sh.stroke()
-  sh.lineWidth=5
-  sh.beginPath()
-  sh.moveTo(l1x+2,l1y+40)
-  sh.quadraticCurveTo(l1x-8,l1y+55,l1x-3,l1y+70)
-  sh.stroke()
-  // "Elbow" knob
-  sh.fillStyle=`rgba(50,30,15,${ba*0.6})`
-  sh.beginPath()
-  sh.ellipse(l1x,l1y+38,5,4,0,0,Math.PI*2)
-  sh.fill()
-
-  // Front leg 2 (right) — too long, wrong angle (PAW OFFERING ZONE)
-  const l2x=310, l2y=170
-  sh.strokeStyle=`rgba(60,35,18,${ba*0.7})`
-  sh.lineWidth=8
-  sh.beginPath()
-  sh.moveTo(l2x,l2y)
-  sh.quadraticCurveTo(l2x+10,l2y+25,l2x+2,l2y+50)
-  sh.stroke()
-  sh.lineWidth=6
-  sh.beginPath()
-  sh.moveTo(l2x+2,l2y+50)
-  sh.quadraticCurveTo(l2x-5,l2y+65,l2x,248)
-  sh.stroke()
-  // Elbow knob
-  sh.fillStyle=`rgba(50,30,15,${ba*0.6})`
-  sh.beginPath()
-  sh.ellipse(l2x+2,l2y+48,5,4,0.2,0,Math.PI*2)
-  sh.fill()
-
-  // PAW — the massive paw at the offering spot
-  {
-    const px=300, py=238
-    sh.fillStyle=`rgba(48,28,14,${ba})`
-    sh.beginPath()
-    sh.ellipse(px,py+6,22,14,0.15,0,Math.PI*2)
-    sh.fill()
-    sh.strokeStyle=`rgba(70,42,18,${ba*0.5})`
-    sh.lineWidth=1
-    sh.stroke()
-    // Claws — hooked
-    for(let c=0;c<5;c++){
-      const cx=px-14+c*7, cy=py+15+Math.sin(c*1.1)*2
-      sh.fillStyle=`rgba(50,30,14,${ba*0.9})`
-      sh.beginPath()
-      sh.moveTo(cx-1.5,cy);sh.lineTo(cx+1.5,cy);sh.lineTo(cx+Math.sin(t*0.002+c)*2,cy+9+Math.sin(t*0.001+c)*1.5);sh.closePath()
-      sh.fill()
-    }
-  }
-
-  // ─── HIND LEG region — suggestion of more limbs fading to dark ───
-  for(let l=0;l<2;l++){
-    const lx=480+l*90, ly=145+Math.sin(t*0.001+l)*5
-    sh.fillStyle=`rgba(35,20,10,${ba*0.5})`
-    sh.beginPath()
-    sh.ellipse(lx,ly,20,28+Math.sin(t*0.001+l)*3,0.15+l*0.2,0,Math.PI*2)
-    sh.fill()
-    // Claw tips barely visible
-    for(let c=0;c<3;c++){
-      const cx=lx-8+c*7, cy=ly+24
-      sh.fillStyle=`rgba(45,26,12,${ba*0.4})`
-      sh.beginPath()
-      sh.moveTo(cx-1,cy);sh.lineTo(cx+1,cy);sh.lineTo(cx,cy+5);sh.closePath()
-      sh.fill()
-    }
-  }
-
-  // ─── TAIL — serpentine, merging with shadow ───
-  sh.strokeStyle=`rgba(60,36,18,${ba*0.5})`
-  sh.lineWidth=8
-  sh.beginPath()
-  sh.moveTo(620,140)
-  sh.quadraticCurveTo(690,145,730,95+Math.sin(t*0.0015)*12)
-  sh.stroke()
-  // Split tip
-  sh.strokeStyle=`rgba(80,48,22,${ba*0.3})`
-  sh.lineWidth=2
-  sh.beginPath()
-  sh.moveTo(720,102+Math.sin(t*0.0015)*12)
-  sh.lineTo(735,92+Math.sin(t*0.0015+0.5)*12)
-  sh.stroke()
-  sh.beginPath()
-  sh.moveTo(725,105+Math.sin(t*0.0015)*12)
-  sh.lineTo(738,98+Math.sin(t*0.0015+1)*12)
-  sh.stroke()
-
-  sh.restore()
-
-  // ─── CHAIN — wrapping, crushing ───
-  for(let i=0;i<10;i++){
-    const cy=30+i*18, cw=7+Math.sin(i*0.7)*2
-    wln(400-cw,cy,400+cw,cy+6,PAL.rust,1.2,t)
-    wln(400+cw,cy+6,400-cw,cy+12,PAL.rust,1.2,t)
-    circle(400,cy+3,2.5,PAL.rust_l)
-  }
-  wln(400,30,400,200,PAL.rust,1.5,t)
-  // Wraps around body
-  wln(400,195,355,205,PAL.rust,2,t)
-  wln(355,205,370,215,PAL.rust,2,t)
-  wln(370,215,345,228,PAL.rust,2,t)
-
-  // ─── HATCH ───
-  ln(300,300,500,300,PAL.shadow_m,1.5)
-  ln(300,300,300,380,PAL.shadow_m,1.5)
-  ln(300,380,500,380,PAL.shadow_m,1.5)
-  ln(500,300,500,380,PAL.shadow_m,1.5)
-  rect(390,320,20,40,PAL.rust)
-  circle(400,340,3,PAL.rust_l)
-
-  // ─── OFFERING SPOTS — wounds of light ──
-  // SPOT 1: CENTER EYE — caco_vidro
-  const eyeOffered=so.eye
-  if(!eyeOffered){
-    const sa=0.35+Math.sin(t*0.003)*0.2
-    // Fissure glow around the eye
-    sh.fillStyle=`rgba(200,160,80,${sa*0.2})`
-    sh.beginPath()
-    sh.ellipse(227,147,22,16,0,0,Math.PI*2)
-    sh.fill()
-    // Cracked light lines radiating from eye
-    sh.strokeStyle=`rgba(200,160,80,${sa*0.3})`
-    sh.lineWidth=0.5
-    for(let i=0;i<5;i++){
-      const ang=i*1.3+t*0.0005
-      sh.beginPath()
-      sh.moveTo(227,147)
-      sh.lineTo(227+Math.cos(ang)*24,147+Math.sin(ang)*18)
-      sh.stroke()
-    }
-    // Small spark at center
-    circle(227,147,2.5,`rgba(220,180,100,${sa*0.8})`)
-    // Faint particle drift
-    for(let i=0;i<3;i++){
-      const ang=t*0.0015+i*2.1
-      const px=227+Math.cos(ang)*24, py=147+Math.sin(ang)*16
-      circle(px,py,1,`rgba(200,160,80,${0.2+Math.sin(t*0.002+i)*0.1})`)
-    }
-  }else{
-    // Glass shard embedded in eye socket — cold glitter
-    sh.fillStyle='rgba(140,120,180,0.35)'
-    pl([[214,140],[236,146],[228,158],[211,152]],`rgba(140,120,180,0.35)`)
-    sh.strokeStyle='rgba(180,160,220,0.3)'
-    sh.lineWidth=0.6
-    sh.beginPath()
-    sh.moveTo(214,140);sh.lineTo(236,146);sh.lineTo(228,158);sh.lineTo(211,152);sh.closePath()
-    sh.stroke()
-    circle(225,148,1.5,'rgba(200,180,240,0.4)')
-  }
-
-  // SPOT 2: MOUTH — bola
-  if(!mouthOffered){
-    const sa=0.35+Math.sin(t*0.003+1)*0.2
-    // Glow deep in throat
-    sh.fillStyle=`rgba(200,160,80,${sa*0.15})`
-    sh.beginPath()
-    sh.ellipse(195,182,18,14,0,0,Math.PI*2)
-    sh.fill()
-    // Warm ember
-    circle(195,182,3,`rgba(220,180,100,${sa*0.7})`)
-    for(let i=0;i<3;i++){
-      const ang=t*0.0015+i*2.1+1
-      const px=195+Math.cos(ang)*22, py=182+Math.sin(ang)*16
-      circle(px,py,1,`rgba(200,160,80,${0.2+Math.sin(t*0.002+i+1)*0.1})`)
-    }
-  }else{
-    // Ball lodged in throat
-    circle(195,182,7,`rgba(140,110,80,0.6)`)
-    sh.strokeStyle='rgba(60,40,28,0.4)'
-    sh.lineWidth=1
-    sh.beginPath()
-    sh.ellipse(195,182,7,7,0,0,Math.PI*2)
-    sh.stroke()
-  }
-
-  // SPOT 3: PAW — osso
-  const pawOffered=so.paw
-  if(!pawOffered){
-    const sa=0.35+Math.sin(t*0.003+2)*0.2
-    // Fissure glow in the paw
-    sh.fillStyle=`rgba(200,160,80,${sa*0.15})`
-    sh.beginPath()
-    sh.ellipse(300,245,22,16,0.15,0,Math.PI*2)
-    sh.fill()
-    // Crack lines
-    sh.strokeStyle=`rgba(200,160,80,${sa*0.25})`
-    sh.lineWidth=0.5
-    for(let i=0;i<4;i++){
-      const ang=i*1.6+t*0.0005+0.5
-      sh.beginPath()
-      sh.moveTo(300,245)
-      sh.lineTo(300+Math.cos(ang)*24,245+Math.sin(ang)*18)
-      sh.stroke()
-    }
-    circle(300,245,2.5,`rgba(220,180,100,${sa*0.7})`)
-    for(let i=0;i<3;i++){
-      const ang=t*0.0015+i*2.1+2
-      const px=300+Math.cos(ang)*22, py=245+Math.sin(ang)*18
-      circle(px,py,1,`rgba(200,160,80,${0.2+Math.sin(t*0.002+i+2)*0.1})`)
-    }
-  }else{
-    // Bone laid on the paw
-    sh.fillStyle=`rgba(160,130,100,0.4)`
-    sh.fillRect(292,238,18,4)
-    sh.fillRect(295,233,4,14)
-    circle(293,233,3,`rgba(160,130,100,0.4)`)
-    circle(307,233,3,`rgba(160,130,100,0.4)`)
-    sh.strokeStyle='rgba(50,35,20,0.2)'
-    sh.lineWidth=0.5
-    sh.strokeRect(292,238,18,4)
-  }
-
-  // ─── AMBIENT EFFECTS ───
-
-  // Candle glow from below — warm, trembling
-  const flicker=0.1+Math.sin(t*0.005)*0.05
-  const warmG=rgrad(400,520,500,`rgba(255,160,60,${flicker*0.25})`,'rgba(255,160,60,0)')
-  sh.fillStyle=warmG
-  sh.fillRect(0,0,800,600)
-
-  // Faint blood-tinged aura from Shiva
-  const rg=0.05+Math.sin(t*0.0012)*0.03
-  sh.fillStyle=`rgba(150,40,20,${rg})`
-  sh.beginPath()
-  sh.ellipse(400,150,380,140,0,0,Math.PI*2)
-  sh.fill()
-
-  // Deep shadow edges
-  rect(0,0,70,600,grad(0,0,70,0,'rgba(0,0,0,0.75)','rgba(0,0,0,0)'))
-  rect(730,0,70,600,grad(730,0,800,0,'rgba(0,0,0,0.75)','rgba(0,0,0,0)'))
-  rect(0,460,800,140,grad(0,460,0,600,'rgba(0,0,0,0)','rgba(0,0,0,0.85)'))
-
-  paperGrain(6)
   vignette(ctx)
 }
 
