@@ -195,7 +195,7 @@
       content: function () {
         var hidden = localStorage.getItem('mcookinho_notify_hidden') === 'true'
         var prof = localStorage.getItem('mcookinho_professional') === 'true'
-        var profEnabled = localStorage.getItem('mcookinho_professional_config')
+        var profEnabled = localStorage.getItem('mcookinho_professional') === 'true'
         return '<div class="sub-settings">' +
           '<div class="sub-setting-row">' +
             '<span class="sub-setting-label">IDIOMA</span>' +
