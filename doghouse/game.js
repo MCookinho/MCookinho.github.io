@@ -39,7 +39,7 @@ const VIEWS = {
   west: [
     {id:'gaveta',name:'GAVETA',desc:'Trancada. Três pinos de metal.',type:'drawer'},
     {id:'diario',name:'DIÁRIO',desc:'Páginas amareladas.',type:'diary'},
-    {id:'bancada',name:'BANCADA',desc:'Marca de unhas na madeira.',type:'examine'},
+    {id:'bancada',name:'BANCADA',desc:'Marca de unhas na madeira. Três arranhões estranhos.',type:'examine'},
     {id:'corda_obj',name:'CORDA',desc:'Pendurada na parede.',type:'item',gives:'corda'}
   ],
   ceiling: [

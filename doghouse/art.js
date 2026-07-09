@@ -600,6 +600,24 @@ function drWest(ctx,t){
   // shadow under bench
   rect(70,418,580,16,grad(0,418,0,434,'rgba(0,0,0,0.4)','rgba(0,0,0,0)'))
 
+  // Shiva claw marks on bench — hint for drawer code
+  $ctx.strokeStyle='rgba(60,30,15,0.35)'
+  $ctx.lineWidth=1.8
+  // ⚬ — circle (value 1)
+  $ctx.beginPath()
+  $ctx.arc(115,288,6,0,Math.PI*2)
+  $ctx.stroke()
+  // ◉ — filled circle (value 2)
+  $ctx.beginPath()
+  $ctx.arc(165,288,6.5,0,Math.PI*2)
+  $ctx.stroke()
+  $ctx.fillStyle='rgba(60,30,15,0.25)'
+  $ctx.beginPath()
+  $ctx.arc(165,288,5.5,0,Math.PI*2)
+  $ctx.fill()
+  // — — dash (value 0)
+  wln(212,284,232,292,'rgba(60,30,15,0.35)',2,t,0.3)
+
   // Drawer — properly inset into bench face
   rect(220,295,180,65,PAL.ink_l)
   rect(225,300,170,55,PAL.ink)

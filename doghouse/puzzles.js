@@ -68,7 +68,7 @@ const PUZZLES = {
       }else{
         ctx.fillStyle=PAL.sepia_d
         ctx.font='11px Georgia'
-        ctx.fillText(this.err?'Combinação errada...':'Alvo: I • II • III',400,430)
+        ctx.fillText(this.err?'Combinação errada...':'',400,430)
       }
     },
     click:function(x,y,g){
