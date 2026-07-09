@@ -433,6 +433,9 @@ body {
   flex-shrink: 0;
   width: 260px;
 }
+.sobre-texto .skills-controller {
+  margin-top: 40px;
+}
 
 .ctrl-label {
   font-family: var(--font);
