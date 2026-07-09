@@ -20,7 +20,8 @@ const VIEWS = {
     {id:'porta',name:'PORTA',desc:'Madeira grossa, ferro, três fechaduras.',type:'door'},
     {id:'grade',name:'GRADE',desc:'Barras de ferro presas na parede.',type:'grate'},
     {id:'janela',name:'JANELA',desc:'Gradeada. Lá fora, escuridão.',type:'examine'},
-    {id:'cruz',name:'CRUZ',desc:'Enferrujada. As marcas dos pregos.',type:'examine'}
+    {id:'cruz',name:'CRUZ',desc:'Enferrujada. As marcas dos pregos.',type:'examine'},
+    {id:'ferramentas',name:'CAIXA DE FERRAMENTAS',desc:'Caixa de metal enferrujada.',type:'item',gives:'ferro'}
   ],
   east: [
     {id:'prateleira',name:'PRATELEIRA',desc:'Empoeirada.',type:'shelf'},
@@ -39,8 +40,7 @@ const VIEWS = {
     {id:'gaveta',name:'GAVETA',desc:'Trancada. Três pinos de metal.',type:'drawer'},
     {id:'diario',name:'DIÁRIO',desc:'Páginas amareladas.',type:'diary'},
     {id:'bancada',name:'BANCADA',desc:'Marca de unhas na madeira.',type:'examine'},
-    {id:'corda_obj',name:'CORDA',desc:'Pendurada na parede.',type:'item',gives:'corda'},
-    {id:'ferramentas',name:'FERRAMENTAS',desc:'Pilha de ferros velhos.',type:'item',gives:'ferro'}
+    {id:'corda_obj',name:'CORDA',desc:'Pendurada na parede.',type:'item',gives:'corda'}
   ],
   ceiling: [
     {id:'corrente',name:'CORRENTE',desc:'Pendurada. Um gancho na ponta.',type:'chain'},
@@ -63,7 +63,8 @@ const HITBOXES = {
     porta:{x:270,y:70,w:260,h:440},
     grade:{x:50,y:190,w:110,h:160},
     janela:{x:580,y:130,w:100,h:90},
-    cruz:{x:630,y:250,w:24,h:60}
+    cruz:{x:630,y:250,w:24,h:60},
+    ferramentas:{x:555,y:370,w:115,h:75}
   },
   east: {
     prateleira:{x:30,y:70,w:320,h:380},
@@ -82,8 +83,7 @@ const HITBOXES = {
     bancada:{x:70,y:275,w:580,h:100},
     gaveta:{x:220,y:295,w:180,h:65},
     diario:{x:402,y:258,w:72,h:37},
-    corda_obj:{x:610,y:60,w:25,h:220},
-    ferramentas:{x:565,y:373,w:120,h:75}
+    corda_obj:{x:610,y:60,w:25,h:220}
   },
   ceiling: {
     corrente:{x:380,y:40,w:40,h:220},

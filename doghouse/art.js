@@ -227,6 +227,100 @@ function drNorth(ctx,t){
   rect(640,250,12,50,PAL.ink_l)
   rect(630,260,32,8,PAL.ink_l)
 
+  // Metal toolbox — on the floor right of the door
+  if(!window.__game||!window.__game.hasObtained('ferro')){
+    const tx=555,ty=370,tw=115,th=72
+    // Shadow
+    $ctx.fillStyle='rgba(0,0,0,0.25)'
+    $ctx.beginPath()
+    $ctx.ellipse(tx+tw/2,ty+th+4,58,10,0,0,Math.PI*2)
+    $ctx.fill()
+    // Toolbox body
+    const mg=$ctx.createLinearGradient(tx,ty,tx,ty+th)
+    mg.addColorStop(0,'#4a4238');mg.addColorStop(0.25,'#6a6252')
+    mg.addColorStop(0.55,'#4a4238');mg.addColorStop(1,'#3a3228')
+    rect(tx,ty,tw,th,mg)
+    rect(tx-1,ty-1,tw+2,th+2,PAL.ink_m)
+    // Metallic sheen
+    rect(tx+6,ty+3,tw-12,4,'rgba(180,170,155,0.2)')
+    rect(tx+4,ty+th-3,tw-8,2,'rgba(180,170,155,0.1)')
+    // Horizontal grain lines
+    for(let i=0;i<5;i++){
+      const ly=ty+12+i*13
+      rect(tx+6,ly,tw-12,1,'rgba(160,150,135,0.06)')
+    }
+    // Rust spots
+    circle(tx+18,ty+th-15,5,'rgba(130,70,35,0.25)')
+    circle(tx+tw-20,ty+20,4,'rgba(130,70,35,0.2)')
+    circle(tx+50,ty+th-8,3,'rgba(130,70,35,0.15)')
+    // Lid (slightly open — angled up)
+    $ctx.fillStyle=PAL.ink_m
+    $ctx.beginPath()
+    $ctx.moveTo(tx-1,ty-8);$ctx.lineTo(tx+tw+1,ty-8)
+    $ctx.lineTo(tx+tw-4,ty-1);$ctx.lineTo(tx+4,ty-1);$ctx.closePath()
+    $ctx.fill()
+    $ctx.fillStyle=PAL.ink
+    $ctx.beginPath()
+    $ctx.moveTo(tx+2,ty-7);$ctx.lineTo(tx+tw-2,ty-7)
+    $ctx.lineTo(tx+tw-6,ty-2);$ctx.lineTo(tx+6,ty-2);$ctx.closePath()
+    $ctx.fill()
+    // Handle (arched metal bar)
+    $ctx.save()
+    $ctx.strokeStyle=PAL.rust_l
+    $ctx.lineWidth=5
+    $ctx.beginPath()
+    $ctx.arc(tx+tw/2,ty-14,28,0.25,Math.PI-0.25,false)
+    $ctx.stroke()
+    $ctx.strokeStyle='rgba(160,106,58,0.3)'
+    $ctx.lineWidth=2
+    $ctx.beginPath()
+    $ctx.arc(tx+tw/2,ty-14,28,0.25,Math.PI-0.25,false)
+    $ctx.stroke()
+    $ctx.restore()
+    // Handle brackets (where handle attaches to lid)
+    rect(tx+tw/2-12,ty-8,4,6,PAL.rust)
+    rect(tx+tw/2+8,ty-8,4,6,PAL.rust)
+    // Latches (two metal clasps)
+    rect(tx+25,ty-2,16,6,PAL.rust_l)
+    rect(tx+24,ty-3,18,8,PAL.ink_m)
+    rect(tx+tw-41,ty-2,16,6,PAL.rust_l)
+    rect(tx+tw-42,ty-3,18,8,PAL.ink_m)
+    // Latch hooks
+    rect(tx+30,ty-7,6,6,PAL.rust)
+    rect(tx+tw-36,ty-7,6,6,PAL.rust)
+    // Rivets on body
+    for(let i=0;i<3;i++)circle(tx+15+i*42,ty+6,1.5,PAL.rust_l)
+    for(let i=0;i<3;i++)circle(tx+15+i*42,ty+th-6,1.5,PAL.rust_l)
+    // Inside darkness (visible through gap under lid)
+    rect(tx+10,ty-4,tw-20,6,PAL.dark)
+    // Iron bar (ferro) — lying diagonally inside, visible through opening
+    $ctx.save()
+    $ctx.translate(tx+tw/2+4,ty-2)
+    $ctx.rotate(-0.08)
+    rect(-42,-3,84,6,PAL.rust)
+    rect(-41,-2.5,82,5,PAL.rust_l)
+    rect(-41,-2,82,1.5,'rgba(160,106,58,0.3)')
+    rect(-41,1,82,1.5,'rgba(40,20,10,0.3)')
+    // Curved hook end
+    $ctx.beginPath()
+    $ctx.arc(42,0,6,Math.PI*1.15,Math.PI*1.85)
+    $ctx.strokeStyle=PAL.rust
+    $ctx.lineWidth=4.5
+    $ctx.stroke()
+    $ctx.beginPath()
+    $ctx.arc(42,0,6,Math.PI*1.15,Math.PI*1.85)
+    $ctx.strokeStyle=PAL.rust_l
+    $ctx.lineWidth=2.5
+    $ctx.stroke()
+    $ctx.restore()
+    // Wrench handle protruding from inside
+    wln(tx+28,ty-1,tx+20,ty+22,'rgba(90,80,70,0.5)',2.5,t)
+    rect(tx+18,ty+20,6,8,PAL.rust)
+    // Dark inner shadow on body top
+    rect(tx+2,ty,6,th-2,'rgba(0,0,0,0.1)')
+    rect(tx+tw-8,ty,6,th-2,'rgba(0,0,0,0.08)')
+  }
+
   // Shadows
   rect(0,0,30,600,PAL.shadow_d)
   rect(770,0,30,600,PAL.shadow_d)
@@ -566,77 +660,6 @@ function drWest(ctx,t){
     }
     ln(rx,ry+4,rx,ry+220,PAL.sepia,2.5)
     circle(rx,ry+6,6,PAL.sepia)
-  }
-
-  // Tool chest — organized wooden box on the floor
-  if(!window.__game||!window.__game.hasObtained('ferro')){
-    // Shadow under chest
-    $ctx.fillStyle='rgba(0,0,0,0.25)'
-    $ctx.beginPath()
-    $ctx.ellipse(625,450,60,12,0,0,Math.PI*2)
-    $ctx.fill()
-    // Chest body
-    rect(565,373,120,75,PAL.ink_l)
-    rect(568,376,114,69,PAL.ink)
-    // Plank lines
-    for(let i=0;i<3;i++){
-      const py=380+i*22
-      rect(570,py,110,1,'rgba(42,34,24,0.25)')
-    }
-    // Metal corner brackets
-    rect(565,373,14,14,PAL.rust)
-    rect(671,373,14,14,PAL.rust)
-    rect(565,434,14,14,PAL.rust)
-    rect(671,434,14,14,PAL.rust)
-    circle(572,380,1.5,PAL.rust_l)
-    circle(678,380,1.5,PAL.rust_l)
-    circle(572,441,1.5,PAL.rust_l)
-    circle(678,441,1.5,PAL.rust_l)
-    // Lid (open, tilted back)
-    $ctx.fillStyle=PAL.ink
-    $ctx.beginPath()
-    $ctx.moveTo(565,373);$ctx.lineTo(685,373);$ctx.lineTo(672,365);$ctx.lineTo(578,365);$ctx.closePath()
-    $ctx.fill()
-    $ctx.strokeStyle=PAL.ink_m
-    $ctx.lineWidth=0.8
-    $ctx.stroke()
-    $ctx.fillStyle=PAL.ink_l
-    $ctx.beginPath()
-    $ctx.moveTo(568,373);$ctx.lineTo(682,373);$ctx.lineTo(670,367);$ctx.lineTo(580,367);$ctx.closePath()
-    $ctx.fill()
-    // Inside darkness
-    rect(570,376,110,8,PAL.dark)
-    // Iron bar — laid diagonally across opening, curved hook end
-    $ctx.save()
-    $ctx.translate(615,388)
-    $ctx.rotate(-0.12)
-    rect(-55,-5,110,10,PAL.rust)
-    rect(-53,-4,106,8,PAL.rust_l)
-    rect(-53,-4,106,2,'rgba(160,106,58,0.35)')
-    rect(-53,2,106,2,'rgba(40,20,10,0.3)')
-    // curved hook
-    $ctx.beginPath()
-    $ctx.arc(55,0,8,Math.PI*1.1,Math.PI*1.8)
-    $ctx.strokeStyle=PAL.rust
-    $ctx.lineWidth=6
-    $ctx.stroke()
-    $ctx.beginPath()
-    $ctx.arc(55,0,8,Math.PI*1.1,Math.PI*1.8)
-    $ctx.strokeStyle=PAL.rust_l
-    $ctx.lineWidth=3.5
-    $ctx.stroke()
-    $ctx.restore()
-    // Hammer leaning inside
-    wln(582,398,594,426,PAL.sepia_d,3.5,t)
-    wln(582,398,594,426,PAL.sepia,2,t)
-    rect(591,418,12,10,PAL.rust)
-    rect(592,419,10,2,'rgba(160,106,58,0.3)')
-    // Chain coiled
-    for(let i=0;i<4;i++){
-      const cx=645+Math.sin(i*2)*12,cy=408+Math.sin(i*3)*5
-      circle(cx,cy,3,PAL.rust)
-      circle(cx,cy,1.5,PAL.rust_l)
-    }
   }
 
   // Dark shape under bench
