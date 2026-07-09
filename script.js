@@ -193,12 +193,20 @@
       title: '// CONFIGURAÇÕES',
       icon: '\u2699',
       content: function () {
+        var hidden = localStorage.getItem('mcookinho_notify_hidden') === 'true'
         return '<div class="sub-settings">' +
           '<div class="sub-setting-row">' +
             '<span class="sub-setting-label">IDIOMA</span>' +
             '<div class="sub-setting-toggle" id="subLangToggle">' +
               '<span class="sub-toggle-opt active" data-lang="pt">PT-BR</span>' +
               '<span class="sub-toggle-opt" data-lang="en">EN-US</span>' +
+            '</div>' +
+          '</div>' +
+          '<div class="sub-setting-row">' +
+            '<span class="sub-setting-label">NOTIFICA\u00C7\u00D5ES</span>' +
+            '<div class="sub-setting-toggle" id="subNotifyToggle">' +
+              '<span class="sub-toggle-opt' + (hidden ? '' : ' active') + '" data-notify="show">MOSTRAR</span>' +
+              '<span class="sub-toggle-opt' + (hidden ? ' active' : '') + '" data-notify="hide">OCULTAR</span>' +
             '</div>' +
           '</div>' +
         '</div>'
@@ -208,9 +216,13 @@
       title: '// CONQUISTAS',
       icon: '\u2B50',
       content: function () {
-        var list = ACHIEVEMENTS
-        var done = list.filter(function (a) { return a.done }).length
-        var html = '<div class="sub-achieve-header">' + done + ' / ' + list.length + ' CONQUISTAS</div>'
+        var list = ACHIEVEMENTS.slice().sort(function (a, b) {
+          if (a.done && !b.done) return -1
+          if (!a.done && b.done) return 1
+          return 0
+        })
+        var done = ACHIEVEMENTS.filter(function (a) { return a.done }).length
+        var html = '<div class="sub-achieve-header">' + done + ' / ' + ACHIEVEMENTS.length + ' CONQUISTAS</div>'
         html += '<div class="sub-achieve-list">'
         list.forEach(function (a) {
           html += '<div class="sub-achieve-item' + (a.done ? ' done' : ' locked') + '">' +
@@ -302,6 +314,7 @@
 
   // ── Unlock Toast ──
   function showAchieveToast(a) {
+    if (localStorage.getItem('mcookinho_notify_hidden') === 'true') return
     var toast = document.createElement('div')
     toast.className = 'unlock-toast'
     toast.innerHTML =
@@ -427,12 +440,21 @@
   })
 
   document.addEventListener('click', function (e) {
-    var toggle = e.target.closest('#subLangToggle .sub-toggle-opt')
-    if (toggle) {
+    var langToggle = e.target.closest('#subLangToggle .sub-toggle-opt')
+    if (langToggle) {
       document.querySelectorAll('#subLangToggle .sub-toggle-opt').forEach(function (el) {
         el.classList.remove('active')
       })
-      toggle.classList.add('active')
+      langToggle.classList.add('active')
+    }
+    var notifyToggle = e.target.closest('#subNotifyToggle .sub-toggle-opt')
+    if (notifyToggle) {
+      var hide = notifyToggle.getAttribute('data-notify') === 'hide'
+      localStorage.setItem('mcookinho_notify_hidden', hide)
+      document.querySelectorAll('#subNotifyToggle .sub-toggle-opt').forEach(function (el) {
+        el.classList.remove('active')
+      })
+      notifyToggle.classList.add('active')
     }
   })
 
