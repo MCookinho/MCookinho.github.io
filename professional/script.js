@@ -195,6 +195,231 @@
     { id: 'contact',    label: 'Contato' },
   ]
 
+  // ── Presets ──
+  var PRESET_CATEGORIES = [
+    {
+      label: '🎮 Jogos', id: 'cat-gaming',
+      presets: [
+        { id: 'indie-studio', label: 'Indie Studio', desc: 'Escuro com laranja neon. Perfeito para dev de jogos indie.',
+          c: { theme:'dark', cc:{accent:'#ff6b35'}, font:'mono', fw:'bold', fs:'sm', ts:'large', anim:'fade', bgp:'dots', bgpo:15, ha:'center', hs:'detailed', cw:'wide', ss:'spacious', pl:'grid3', bs:'pill', br:'small', bx:'light', asb:'yes' } },
+        { id: 'game-publisher', label: 'Game Publisher', desc: 'Sóbrio com acentos verde-água. Para publishers profissionais.',
+          c: { theme:'dark', cc:{accent:'#00ffc8'}, font:'system', fw:'normal', ts:'normal', anim:'fade', bgp:'none', ha:'left', hs:'detailed', cw:'normal', pl:'grid2', bs:'outline', ls:'icon', br:'normal', bx:'normal', asb:'no' } },
+        { id: 'mobile-games', label: 'Mobile Games', desc: 'Colorido e vibrante. Para desenvolvedor de jogos mobile.',
+          c: { theme:'nature', cc:{accent:'#7c3aed', primary:'#1a1a3e'}, font:'system', fw:'bold', fs:'normal', ts:'large', anim:'slide', bgp:'dots', bgpo:10, ha:'center', hs:'detailed', cw:'normal', pl:'grid3', bs:'pill', br:'large', bx:'light', asb:'yes' } },
+        { id: 'esports-team', label: 'Esports Team', desc: 'Agressivo e escuro. Ideal para perfil de jogador competitivo.',
+          c: { theme:'dark', cc:{accent:'#ff0044', bg:'#0d0d0d'}, font:'mono', fw:'bold', fs:'sm', ts:'large', anim:'fade', bgp:'grid', bgpo:10, ha:'center', hs:'minimal', cw:'narrow', pl:'list', bs:'flat', ls:'plain', br:'none', bx:'none', asb:'no', ss:'compact', sb:'no' } },
+        { id: 'game-dev-portfolio', label: 'Game Dev Portfolio', desc: 'Escuro com verde matrix. Portfólio de game dev.',
+          c: { theme:'dark', cc:{accent:'#00ff88'}, font:'mono', fw:'normal', fs:'normal', ts:'normal', anim:'fade', bgp:'dots', bgpo:12, ha:'left', hs:'detailed', cw:'wide', pl:'grid3', bs:'outline', br:'small', bx:'light', asb:'yes' } },
+      ]
+    },
+    {
+      label: '💼 Corporativo', id: 'cat-corporate',
+      presets: [
+        { id: 'corporate-exec', label: 'Executivo Corporativo', desc: 'Sóbrio, azul-marinho. Para cargos de liderança.',
+          c: { theme:'professional', cc:{accent:'#1a365d'}, font:'system', fw:'normal', fs:'normal', ts:'normal', anim:'fade', bgp:'none', ha:'left', hs:'detailed', cw:'narrow', pl:'list', bs:'flat', br:'none', bx:'none', asb:'no', sb:'yes', sd:'yes', ss:'normal' } },
+        { id: 'tech-startup', label: 'Tech Startup', desc: 'Moderno com azul vibrante. Para startups de tecnologia.',
+          c: { theme:'professional', cc:{accent:'#2563eb'}, font:'system', fw:'normal', fs:'normal', ts:'large', anim:'fade', bgp:'none', ha:'left', hs:'detailed', cw:'wide', pl:'grid3', bs:'outline', br:'normal', bx:'light', asb:'no', ss:'spacious' } },
+        { id: 'financial', label: 'Financeiro', desc: 'Conservador, fontes serifadas. Para banco/consultoria financeira.',
+          c: { theme:'minimal', cc:{accent:'#1a3a5c', primary:'#1a1a2e', bg:'#fafafa'}, font:'serif', fw:'normal', fs:'sm', ts:'normal', ta:'justify', anim:'none', bgp:'none', ha:'left', hs:'detailed', cw:'narrow', pl:'list', bs:'flat', br:'none', bx:'none', asb:'no', ss:'compact' } },
+        { id: 'management-consulting', label: 'Consultoria de Gestão', desc: 'Clean, profissional, minimalista.',
+          c: { theme:'minimal', cc:{accent:'#2d3748'}, font:'system', fw:'normal', fs:'normal', ts:'normal', anim:'fade', bgp:'none', ha:'left', hs:'compact', cw:'narrow', pl:'list', bs:'flat', br:'small', bx:'light', asb:'no', ss:'compact' } },
+        { id: 'enterprise-b2b', label: 'Enterprise B2B', desc: 'Profissional azul-escuro. Para vendas/parcerias B2B.',
+          c: { theme:'professional', cc:{accent:'#1e40af', primary:'#0f172a'}, font:'system', fw:'normal', fs:'normal', ts:'normal', anim:'fade', bgp:'none', ha:'left', hs:'detailed', cw:'normal', pl:'grid2', bs:'flat', br:'small', bx:'light', asb:'no' } },
+      ]
+    },
+    {
+      label: '📢 Marketing', id: 'cat-marketing',
+      presets: [
+        { id: 'creative-agency', label: 'Agência Criativa', desc: 'Cores ousadas e layout moderno. Para agências de publicidade.',
+          c: { theme:'sunset', cc:{accent:'#e63946', primary:'#2a1a1a'}, font:'system', fw:'bold', fs:'normal', ts:'large', anim:'slide', bgp:'dots', bgpo:12, ha:'center', hs:'detailed', cw:'wide', pl:'grid3', bs:'pill', br:'large', bx:'light', asb:'yes', ss:'spacious' } },
+        { id: 'digital-marketing', label: 'Marketing Digital', desc: 'Moderno e vibrante. Para profissionais de marketing digital.',
+          c: { theme:'professional', cc:{accent:'#f59e0b'}, font:'system', fw:'normal', fs:'normal', ts:'large', anim:'fade', bgp:'none', ha:'left', hs:'detailed', cw:'normal', pl:'grid3', bs:'pill', br:'normal', bx:'light', asb:'yes', ss:'normal' } },
+        { id: 'social-media-mgr', label: 'Social Media Manager', desc: 'Clean com toque trendy. Para gestor de redes sociais.',
+          c: { theme:'nature', cc:{accent:'#ec4899', primary:'#1a1a2e'}, font:'system', fw:'normal', fs:'normal', ts:'normal', anim:'slide', bgp:'dots', bgpo:8, ha:'center', hs:'detailed', cw:'normal', pl:'grid2', bs:'pill', br:'large', bx:'light', asb:'yes' } },
+        { id: 'brand-strategist', label: 'Estrategista de Marca', desc: 'Elegante e premium. Para branding e posicionamento.',
+          c: { theme:'minimal', cc:{accent:'#b8860b', primary:'#2a1a0a'}, font:'serif', fw:'bold', fs:'sm', ts:'large', anim:'fade', bgp:'none', ha:'left', hs:'detailed', cw:'narrow', pl:'list', bs:'flat', br:'none', bx:'none', asb:'no' } },
+        { id: 'content-creator', label: 'Criador de Conteúdo', desc: 'Layout largo e moderno. Para criadores digitais.',
+          c: { theme:'sunset', cc:{accent:'#ff6b35', bg:'#fffaf5'}, font:'system', fw:'normal', fs:'normal', ts:'large', anim:'slide', bgp:'none', ha:'center', hs:'detailed', cw:'full', pl:'grid3', bs:'pill', br:'normal', bx:'light', asb:'yes', ss:'spacious' } },
+      ]
+    },
+    {
+      label: '💻 Programação', id: 'cat-programming',
+      presets: [
+        { id: 'fullstack-dev', label: 'Full-Stack Developer', desc: 'Dark mode com acentos azul. O clássico dev.',
+          c: { theme:'dark', cc:{accent:'#3b82f6'}, font:'mono', fw:'normal', fs:'normal', ts:'normal', anim:'fade', bgp:'dots', bgpo:12, ha:'left', hs:'detailed', cw:'normal', pl:'grid2', bs:'outline', br:'small', bx:'light', asb:'no' } },
+        { id: 'frontend-spec', label: 'Frontend Specialist', desc: 'Moderno e colorido. Para especialista em frontend.',
+          c: { theme:'professional', cc:{accent:'#8b5cf6'}, font:'system', fw:'normal', fs:'normal', ts:'large', anim:'fade', bgp:'none', ha:'left', hs:'detailed', cw:'wide', pl:'grid3', bs:'pill', br:'normal', bx:'light', asb:'yes', ss:'spacious' } },
+        { id: 'backend-engineer', label: 'Backend Engineer', desc: 'Minimalista e funcional. Sem firulas, só código.',
+          c: { theme:'dark', cc:{accent:'#10b981', primary:'#d1d5db'}, font:'mono', fw:'normal', fs:'sm', ts:'normal', anim:'none', bgp:'none', ha:'left', hs:'compact', cw:'narrow', pl:'list', bs:'flat', br:'none', bx:'none', asb:'no', ss:'compact', sb:'no', sd:'no' } },
+        { id: 'devops-engineer', label: 'DevOps / SRE', desc: 'Escuro com vermelho/âmbar. Estilo terminal/console.',
+          c: { theme:'dark', cc:{accent:'#f59e0b'}, font:'mono', fw:'bold', fs:'sm', ts:'normal', anim:'fade', bgp:'grid', bgpo:15, ha:'left', hs:'detailed', cw:'normal', pl:'list', bs:'flat', br:'none', bx:'none', asb:'no', ss:'compact' } },
+        { id: 'mobile-dev', label: 'Mobile Developer', desc: 'Moderno e limpo. Para desenvolvedor iOS/Android.',
+          c: { theme:'professional', cc:{accent:'#06b6d4'}, font:'system', fw:'normal', fs:'normal', ts:'normal', anim:'fade', bgp:'none', ha:'left', hs:'detailed', cw:'normal', pl:'grid3', bs:'pill', br:'large', bx:'light', asb:'yes' } },
+        { id: 'data-scientist', label: 'Cientista de Dados', desc: 'Clean com púrpura analítico. Para área de dados.',
+          c: { theme:'minimal', cc:{accent:'#7c3aed'}, font:'system', fw:'normal', fs:'normal', ts:'normal', ta:'justify', anim:'fade', bgp:'none', ha:'left', hs:'detailed', cw:'normal', pl:'list', bs:'flat', br:'small', bx:'light', asb:'no', ss:'normal' } },
+        { id: 'oss-contributor', label: 'Open Source Contributor', desc: 'Verde-escuro estilo Git. Para contribuidor OSS.',
+          c: { theme:'nature', cc:{accent:'#2d8a4e', bg:'#f0faf0'}, font:'mono', fw:'normal', fs:'normal', ts:'normal', anim:'fade', bgp:'none', ha:'left', hs:'detailed', cw:'normal', pl:'grid2', bs:'outline', br:'small', bx:'light', asb:'no' } },
+        { id: 'tech-lead', label: 'Tech Lead', desc: 'Profissional e maduro. Para liderança técnica.',
+          c: { theme:'professional', cc:{accent:'#2563eb'}, font:'system', fw:'normal', fs:'normal', ts:'normal', anim:'fade', bgp:'none', ha:'left', hs:'detailed', cw:'normal', pl:'grid2', bs:'flat', br:'small', bx:'light', asb:'no', ss:'normal' } },
+        { id: 'cybersecurity', label: 'Cibersegurança', desc: 'Escuro com vermelho. Estilo hacker profissional.',
+          c: { theme:'dark', cc:{accent:'#dc2626', bg:'#0a0a0a'}, font:'mono', fw:'bold', fs:'sm', ts:'normal', anim:'none', bgp:'grid', bgpo:12, ha:'left', hs:'compact', cw:'narrow', pl:'list', bs:'flat', br:'none', bx:'none', asb:'no' } },
+        { id: 'ai-ml-engineer', label: 'Engenheiro AI/ML', desc: 'Futurista com púrpura neon. Para inteligência artificial.',
+          c: { theme:'dark', cc:{accent:'#a855f7'}, font:'system', fw:'normal', fs:'normal', ts:'large', anim:'fade', bgp:'dots', bgpo:10, ha:'center', hs:'detailed', cw:'wide', pl:'grid3', bs:'pill', br:'large', bx:'light', asb:'yes' } },
+      ]
+    },
+    {
+      label: '🎨 Design', id: 'cat-design',
+      presets: [
+        { id: 'ui-ux-designer', label: 'UI/UX Designer', desc: 'Limpo, espaçoso, minimalista. O padrão de design.',
+          c: { theme:'minimal', cc:{accent:'#6366f1'}, font:'system', fw:'normal', fs:'normal', ts:'large', anim:'slide', bgp:'none', ha:'left', hs:'detailed', cw:'wide', pl:'grid3', bs:'pill', br:'normal', bx:'light', asb:'no', ss:'spacious' } },
+        { id: 'graphic-designer', label: 'Designer Gráfico', desc: 'Criativo com cores fortes. Para portfólio visual.',
+          c: { theme:'sunset', cc:{accent:'#f97316'}, font:'system', fw:'bold', fs:'normal', ts:'large', anim:'slide', bgp:'dots', bgpo:10, ha:'center', hs:'detailed', cw:'wide', pl:'grid3', bs:'pill', br:'large', bx:'light', asb:'yes' } },
+        { id: 'product-designer', label: 'Product Designer', desc: 'Elegante, moderno, focado no produto.',
+          c: { theme:'minimal', cc:{accent:'#0891b2'}, font:'system', fw:'normal', fs:'normal', ts:'normal', anim:'fade', bgp:'none', ha:'left', hs:'detailed', cw:'normal', pl:'grid2', bs:'flat', br:'small', bx:'light', asb:'no' } },
+        { id: 'motion-designer', label: 'Motion Designer', desc: 'Escuro com acento vibrante. Para animação/motion.',
+          c: { theme:'dark', cc:{accent:'#f43f5e'}, font:'system', fw:'bold', fs:'normal', ts:'large', anim:'slide', bgp:'dots', bgpo:15, ha:'center', hs:'detailed', cw:'full', pl:'grid3', bs:'pill', br:'large', bx:'light', asb:'yes' } },
+        { id: 'art-director', label: 'Diretor de Arte', desc: 'Premium com serifa. Para direção de arte.',
+          c: { theme:'minimal', cc:{accent:'#1a1a2e', primary:'#000'}, font:'serif', fw:'bold', fs:'sm', ts:'large', anim:'fade', bgp:'none', ha:'center', hs:'detailed', cw:'narrow', pl:'list', bs:'flat', br:'none', bx:'none', asb:'no' } },
+      ]
+    },
+    {
+      label: '🌐 Internet', id: 'cat-internet',
+      presets: [
+        { id: 'youtuber-streamer', label: 'YouTuber / Streamer', desc: 'Escuro com vermelho. Padrão para criador de conteúdo.',
+          c: { theme:'dark', cc:{accent:'#ff0000'}, font:'system', fw:'bold', fs:'normal', ts:'large', anim:'slide', bgp:'dots', bgpo:12, ha:'center', hs:'detailed', cw:'wide', pl:'grid3', bs:'pill', br:'large', bx:'light', asb:'yes' } },
+        { id: 'influencer', label: 'Influenciador Digital', desc: 'Moderno, clean, trendy. Para perfis de influência.',
+          c: { theme:'nature', cc:{accent:'#f472b6', bg:'#fff5f9'}, font:'system', fw:'normal', fs:'normal', ts:'large', anim:'slide', bgp:'none', ha:'center', hs:'detailed', cw:'normal', pl:'grid2', bs:'pill', br:'large', bx:'light', asb:'yes' } },
+        { id: 'digital-nomad', label: 'Nômade Digital', desc: 'Claro e natural. Para quem trabalha viajando.',
+          c: { theme:'nature', cc:{accent:'#2d8a4e', bg:'#f5faf5'}, font:'system', fw:'normal', fs:'normal', ts:'normal', anim:'fade', bgp:'none', ha:'left', hs:'detailed', cw:'normal', pl:'grid2', bs:'flat', br:'small', bx:'light', asb:'no' } },
+        { id: 'blogger-writer', label: 'Blogger / Escritor', desc: 'Serifado e elegante. Foco na leitura.',
+          c: { theme:'minimal', cc:{accent:'#4a5568', bg:'#fefefe'}, font:'serif', fw:'normal', fs:'lg', ts:'normal', ta:'justify', lh:'relaxed', anim:'none', bgp:'none', ha:'left', hs:'detailed', cw:'narrow', pl:'list', bs:'flat', br:'none', bx:'none', asb:'no' } },
+        { id: 'podcaster', label: 'Podcaster', desc: 'Moderno e sonoro. Para perfis de podcast.',
+          c: { theme:'dark', cc:{accent:'#8b5cf6', bg:'#1a1a2e'}, font:'system', fw:'bold', fs:'normal', ts:'large', anim:'fade', bgp:'dots', bgpo:8, ha:'center', hs:'detailed', cw:'normal', pl:'grid2', bs:'pill', br:'normal', bx:'light', asb:'yes' } },
+      ]
+    },
+    {
+      label: '📱 Mídias Sociais', id: 'cat-social',
+      presets: [
+        { id: 'social-agency', label: 'Agência de Mídias Sociais', desc: 'Colorido e grade. Para agência de social media.',
+          c: { theme:'sunset', cc:{accent:'#e1306c'}, font:'system', fw:'bold', fs:'normal', ts:'large', anim:'slide', bgp:'none', ha:'center', hs:'detailed', cw:'wide', pl:'grid3', bs:'pill', br:'normal', bx:'light', asb:'yes', ss:'spacious' } },
+        { id: 'community-manager', label: 'Community Manager', desc: 'Acessível e amigável. Para gestão de comunidades.',
+          c: { theme:'nature', cc:{accent:'#3b82f6'}, font:'system', fw:'normal', fs:'normal', ts:'normal', anim:'fade', bgp:'none', ha:'left', hs:'detailed', cw:'normal', pl:'grid2', bs:'pill', br:'normal', bx:'light', asb:'yes' } },
+        { id: 'content-strategist', label: 'Estrategista de Conteúdo', desc: 'Organizado e profissional. Para estratégia digital.',
+          c: { theme:'professional', cc:{accent:'#0ea5e9'}, font:'system', fw:'normal', fs:'normal', ts:'normal', anim:'fade', bgp:'none', ha:'left', hs:'detailed', cw:'normal', pl:'grid2', bs:'flat', br:'small', bx:'light', asb:'no' } },
+      ]
+    },
+    {
+      label: '🏢 Outros', id: 'cat-other',
+      presets: [
+        { id: 'freelancer', label: 'Freelancer', desc: 'Versátil e moderno. Para profissionais autônomos.',
+          c: { theme:'professional', cc:{accent:'#6366f1'}, font:'system', fw:'normal', fs:'normal', ts:'normal', anim:'fade', bgp:'none', ha:'left', hs:'detailed', cw:'normal', pl:'grid2', bs:'pill', br:'normal', bx:'light', asb:'no' } },
+        { id: 'agency-owner', label: 'Dono de Agência', desc: 'Premium e confiável. Para donos de agência.',
+          c: { theme:'professional', cc:{accent:'#1e3a5f'}, font:'system', fw:'bold', fs:'normal', ts:'large', anim:'fade', bgp:'none', ha:'left', hs:'detailed', cw:'narrow', pl:'list', bs:'flat', br:'small', bx:'light', asb:'no' } },
+        { id: 'nonprofit', label: 'Terceiro Setor', desc: 'Acolhedor e natural. Para ONGs e projetos sociais.',
+          c: { theme:'nature', cc:{accent:'#059669'}, font:'system', fw:'normal', fs:'normal', ts:'normal', anim:'fade', bgp:'none', ha:'left', hs:'detailed', cw:'normal', pl:'grid2', bs:'flat', br:'small', bx:'light', asb:'no' } },
+        { id: 'educator', label: 'Educador / Professor', desc: 'Sóbrio e acadêmico. Para currículo de professor.',
+          c: { theme:'minimal', cc:{accent:'#4f46e5'}, font:'serif', fw:'normal', fs:'normal', ts:'normal', ta:'justify', anim:'none', bgp:'none', ha:'left', hs:'detailed', cw:'narrow', pl:'list', bs:'flat', br:'none', bx:'none', asb:'no' } },
+        { id: 'researcher', label: 'Pesquisador / Cientista', desc: 'Formal e limpo. Para publicações acadêmicas.',
+          c: { theme:'minimal', cc:{accent:'#1e40af'}, font:'serif', fw:'normal', fs:'sm', ts:'normal', ta:'justify', lh:'relaxed', anim:'none', bgp:'none', ha:'left', hs:'detailed', cw:'narrow', pl:'list', bs:'flat', br:'none', bx:'none', asb:'no' } },
+        { id: 'architect', label: 'Arquiteto', desc: 'Geométrico e minimalista. Para portfólio de arquitetura.',
+          c: { theme:'minimal', cc:{accent:'#4a4a4a', primary:'#2d2d2d'}, font:'system', fw:'light', fs:'normal', ts:'large', anim:'fade', bgp:'grid', bgpo:8, ha:'left', hs:'compact', cw:'wide', pl:'grid3', bs:'flat', br:'none', bx:'none', asb:'no' } },
+        { id: 'photographer', label: 'Fotógrafo', desc: 'Escuro com foco no conteúdo visual.',
+          c: { theme:'dark', cc:{accent:'#fbbf24', bg:'#0d0d0d'}, font:'system', fw:'light', fs:'sm', ts:'large', anim:'fade', bgp:'none', ha:'center', hs:'minimal', cw:'full', pl:'grid3', bs:'flat', br:'none', bx:'none', asb:'no', ss:'spacious' } },
+        { id: 'consultant', label: 'Consultor', desc: 'Profissional e direto. Para consultorias diversas.',
+          c: { theme:'professional', cc:{accent:'#1a56db'}, font:'system', fw:'normal', fs:'normal', ts:'normal', anim:'fade', bgp:'none', ha:'left', hs:'detailed', cw:'normal', pl:'list', bs:'flat', br:'small', bx:'light', asb:'no', ss:'compact' } },
+        { id: 'remote-worker', label: 'Trabalhador Remoto', desc: 'Funcional e limpo. Para profissionais home office.',
+          c: { theme:'professional', cc:{accent:'#6366f1'}, font:'system', fw:'normal', fs:'normal', ts:'normal', anim:'fade', bgp:'none', ha:'left', hs:'detailed', cw:'normal', pl:'grid2', bs:'flat', br:'small', bx:'none', asb:'no' } },
+        { id: 'junior-dev', label: 'Desenvolvedor Júnior', desc: 'Moderno e acessível. Para quem está começando.',
+          c: { theme:'professional', cc:{accent:'#3b82f6'}, font:'system', fw:'normal', fs:'normal', ts:'normal', anim:'fade', bgp:'dots', bgpo:10, ha:'left', hs:'detailed', cw:'normal', pl:'grid2', bs:'pill', br:'normal', bx:'light', asb:'yes' } },
+        { id: 'senior-engineer', label: 'Engenheiro Sênior', desc: 'Maduro e refinado. Para experiência sênior.',
+          c: { theme:'minimal', cc:{accent:'#374151'}, font:'system', fw:'normal', fs:'normal', ts:'normal', anim:'none', bgp:'none', ha:'left', hs:'detailed', cw:'normal', pl:'list', bs:'flat', br:'none', bx:'none', asb:'no', ss:'compact' } },
+        { id: 'clevel-exec', label: 'C-Level Executivo', desc: 'Escuro premium com dourado. Para CEO/CTO/CFO.',
+          c: { theme:'dark', cc:{accent:'#d4a017', bg:'#0a0a0a'}, font:'serif', fw:'bold', fs:'sm', ts:'large', anim:'fade', bgp:'none', ha:'center', hs:'detailed', cw:'narrow', pl:'list', bs:'flat', br:'none', bx:'none', asb:'no' } },
+      ]
+    },
+  ]
+
+  // Expand shorthand preset config: apply non-undefined fields to a full config object
+  function expandPresetConfig(shorthand) {
+    var d = defaultConfig()
+    var out = {
+      theme: shorthand.theme !== undefined ? shorthand.theme : d.theme,
+      font: shorthand.font || d.font,
+      fontSize: shorthand.fs || d.fontSize,
+      titleSize: shorthand.ts || d.titleSize,
+      sectionTitleSize: shorthand.sts || d.sectionTitleSize,
+      fontWeight: shorthand.fw || d.fontWeight,
+      paragraphSpacing: shorthand.ps || d.paragraphSpacing,
+      lineHeight: shorthand.lh || d.lineHeight,
+      letterSpacing: shorthand.ls2 || d.letterSpacing,
+      textAlign: shorthand.ta || d.textAlign,
+      animation: shorthand.anim || d.animation,
+      bgPattern: shorthand.bgp || d.bgPattern,
+      bgPatternOpacity: shorthand.bgpo !== undefined ? shorthand.bgpo : d.bgPatternOpacity,
+      customColors: {
+        primary: (shorthand.cc && shorthand.cc.primary) || '',
+        accent: (shorthand.cc && shorthand.cc.accent) || '',
+        bg: (shorthand.cc && shorthand.cc.bg) || '',
+        fontColor: (shorthand.cc && shorthand.cc.fontColor) || '',
+        linkColor: (shorthand.cc && shorthand.cc.linkColor) || '',
+        linkHoverColor: (shorthand.cc && shorthand.cc.linkHoverColor) || '',
+        cardBg: (shorthand.cc && shorthand.cc.cardBg) || '',
+        borderColor: (shorthand.cc && shorthand.cc.borderColor) || '',
+      },
+      header: {
+        alignment: shorthand.ha || d.header.alignment,
+        showLocation: shorthand.hsl || d.header.showLocation,
+        showTitle: shorthand.hst || d.header.showTitle,
+        showContact: shorthand.hsc || d.header.showContact,
+      },
+      layout: {
+        contentWidth: shorthand.cw || d.layout.contentWidth,
+        sectionSpacing: shorthand.ss || d.layout.sectionSpacing,
+        gapSize: shorthand.gs || d.layout.gapSize,
+        contentPadding: shorthand.cp || d.layout.contentPadding,
+        headerStyle: shorthand.hs || d.layout.headerStyle,
+        skillsLayout: shorthand.sl || d.layout.skillsLayout,
+        projectsLayout: shorthand.pl || d.layout.projectsLayout,
+        buttonStyle: shorthand.bs || d.layout.buttonStyle,
+        listStyle: shorthand.ls || d.layout.listStyle,
+        borderRadius: shorthand.br || d.layout.borderRadius,
+        boxShadow: shorthand.bx || d.layout.boxShadow,
+        altSectionBg: shorthand.asb || d.layout.altSectionBg,
+        sectionBgColor: shorthand.sbgc || d.layout.sectionBgColor,
+        showBorders: shorthand.sb !== undefined ? shorthand.sb : d.layout.showBorders,
+        showDividers: shorthand.sd !== undefined ? shorthand.sd : d.layout.showDividers,
+        showTopbar: shorthand.st !== undefined ? shorthand.st : d.layout.showTopbar,
+        showFooter: shorthand.sf !== undefined ? shorthand.sf : d.layout.showFooter,
+        showSkillPct: shorthand.ssp !== undefined ? shorthand.ssp : d.layout.showSkillPct,
+      },
+    }
+    return out
+  }
+
+  function applyPresetConfig(presetFull) {
+    // Merge presetFull into currentConfig (visual fields only, preserve content)
+    if (presetFull.theme) currentConfig.theme = presetFull.theme
+    var simple = ['font','fontSize','titleSize','sectionTitleSize','fontWeight','paragraphSpacing','lineHeight','letterSpacing','textAlign','animation','bgPattern','bgPatternOpacity']
+    simple.forEach(function (f) {
+      if (presetFull[f] !== undefined) currentConfig[f] = presetFull[f]
+    })
+    if (presetFull.customColors) {
+      Object.keys(presetFull.customColors).forEach(function (k) {
+        if (presetFull.customColors[k]) currentConfig.customColors[k] = presetFull.customColors[k]
+      })
+    }
+    if (presetFull.header) {
+      Object.keys(presetFull.header).forEach(function (k) {
+        if (presetFull.header[k] !== undefined) currentConfig.header[k] = presetFull.header[k]
+      })
+    }
+    if (presetFull.layout) {
+      Object.keys(presetFull.layout).forEach(function (k) {
+        if (presetFull.layout[k] !== undefined) currentConfig.layout[k] = presetFull.layout[k]
+      })
+    }
+  }
+
   var DEFAULT_SKILLS = [
     { id: 'python',     label: 'Python',       pct: 90 },
     { id: 'javascript', label: 'JavaScript',    pct: 85 },
@@ -868,6 +1093,9 @@
     document.getElementById('editLinkedinInput').value = cfg.content.linkedin
     renderBtnGroup('langGroup', LANGUAGES, cfg.content.lang, function (id) { currentConfig.content.lang = id })
 
+    // Presets
+    renderPresets()
+
     // Dynamic content editors
     renderContentEditors(cfg)
     renderCustomSectionEditors(cfg)
@@ -1165,6 +1393,60 @@
       })
       list.appendChild(item)
     })
+  }
+
+  function renderPresets() {
+    var container = document.getElementById('presetsContainer')
+    if (!container) return
+    container.innerHTML = ''
+    var wrapper = document.createElement('div')
+    wrapper.className = 'presets-container'
+    PRESET_CATEGORIES.forEach(function (cat) {
+      var catDiv = document.createElement('div')
+      catDiv.className = 'presets-category'
+      var title = document.createElement('div')
+      title.className = 'presets-cat-title'
+      title.textContent = cat.label
+      catDiv.appendChild(title)
+      var grid = document.createElement('div')
+      grid.className = 'presets-grid'
+      cat.presets.forEach(function (p) {
+        var full = expandPresetConfig(p.c)
+        var card = document.createElement('div')
+        card.className = 'presets-card'
+        card.setAttribute('data-preset-id', p.id)
+        card.innerHTML =
+          '<div class="presets-card-label">' + p.label + '</div>' +
+          '<div class="presets-card-desc">' + p.desc + '</div>'
+        var colorsDiv = document.createElement('div')
+        colorsDiv.className = 'presets-card-colors'
+        var tc = full.customColors
+        var theme = THEMES[full.theme] || THEMES.professional
+        var colorOpts = [
+          tc.primary || theme.primary,
+          tc.accent || theme.accent,
+          tc.bg || theme.bg,
+        ]
+        colorOpts.forEach(function (c) {
+          var dot = document.createElement('span')
+          dot.className = 'presets-card-color'
+          dot.style.background = c
+          colorsDiv.appendChild(dot)
+        })
+        card.appendChild(colorsDiv)
+        card.addEventListener('click', function () {
+          container.querySelectorAll('.presets-card').forEach(function (el) { el.classList.remove('active') })
+          card.classList.add('active')
+          var expanded = expandPresetConfig(p.c)
+          applyPresetConfig(expanded)
+          renderPanel(currentConfig)
+        })
+        grid.appendChild(card)
+      })
+      catDiv.appendChild(grid)
+      wrapper.appendChild(catDiv)
+    })
+    container.appendChild(wrapper)
   }
 
   // ── Panel Events ──
