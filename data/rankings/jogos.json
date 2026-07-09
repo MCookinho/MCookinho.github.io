@@ -6,6 +6,7 @@
     "review": "Liberdade absoluta. O jogo te solta no mundo e cada montanha, cada árvore esconde algo especial. A física é criativa, a trilha é emocionante e a sensação de descoberta é única.",
     "rating": 5.0
   },
+
   {
     "name": "Elden Ring",
     "type": "RPG / Ação",
@@ -13,6 +14,7 @@
     "review": "A FromSoftware se superou. O mundo é gigantesco, cheio de segredos, masmorras e chefões memoráveis. Passei 200h e ainda queria mais. Obra-prima do game design.",
     "rating": 5.0
   },
+
   {
     "name": "Red Dead Redemption 2",
     "type": "Aventura / Faroeste",
@@ -20,6 +22,7 @@
     "review": "O jogo mais imersivo que já joguei. Os detalhes são absurdos, a história é de cinema e o Arthur Morgan é um dos melhores protagonistas já escritos.",
     "rating": 5.0
   },
+
   {
     "name": "Hollow Knight",
     "type": "Metroidvania",
@@ -27,6 +30,7 @@
     "review": "Perfeito em todos os sentidos. A arte é linda, a trilha sonora é hipnotizante, o combate é preciso e o mundo interligado é uma obra de design. E ainda tem 4 DLCs de graça.",
     "rating": 4.9
   },
+
   {
     "name": "Outer Wilds",
     "type": "Exploração / Mistério",
@@ -34,6 +38,7 @@
     "review": "Jogo que você só pode jogar uma vez na vida. A sensação de descoberta, o medo do espaço e as revelações são algo que nenhum outro jogo entrega. Experiência única.",
     "rating": 4.9
   },
+
   {
     "name": "Celeste",
     "type": "Plataforma / Narrativo",
@@ -41,6 +46,7 @@
     "review": "Plataforma perfeito com uma história emocionante sobre ansiedade e superação. A trilha sonora é absurda de boa e os controles são precisos. Morri 3000 vezes e amei cada uma.",
     "rating": 4.8
   },
+
   {
     "name": "Disco Elysium",
     "type": "RPG / Investigação",
@@ -48,6 +54,7 @@
     "review": "Não é um jogo, é literatura interativa. O texto é absurdo de bom, as escolhas tem consequências reais e o humor é afiado. Um dos jogos mais inteligentes que existem.",
     "rating": 4.8
   },
+
   {
     "name": "Portal 2",
     "type": "Quebra-cabeça / Comédia",
@@ -55,6 +62,7 @@
     "review": "Engraçado, inteligente e criativo. Os puzzles são satisfatórios, o roteiro é hilário e a dublagem em português é impecável. O cooperativo ainda é uma das melhores experiências multiplayer.",
     "rating": 4.7
   },
+
   {
     "name": "Undertale",
     "type": "RPG",
@@ -62,6 +70,7 @@
     "review": "A Toby Fox fez um dos jogos mais criativos da história. A trilha sonora é genial, os personagens são carismáticos e as escolhas realmente importam. Música tema do Sans é épica.",
     "rating": 4.6
   },
+
   {
     "name": "Stardew Valley",
     "type": "Simulação / Fazenda",

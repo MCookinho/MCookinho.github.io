@@ -6,6 +6,7 @@
     "review": "Simplesmente a obra-prima do Nolan. Cada cena é de tirar o fôlego, a trilha sonora do Hans Zimmer é absurda e o final emociona até quem não chora em filme.",
     "rating": 5.0
   },
+
   {
     "name": "Clube da Luta",
     "type": "Drama Psicológico",
@@ -13,6 +14,7 @@
     "review": "Filme que muda sua visão de mundo. A crítica ao consumismo, a narrativa não-linear e o plot twist são geniais. Assisti 3 vezes e descubro algo novo sempre.",
     "rating": 5.0
   },
+
   {
     "name": "O Cavaleiro das Trevas",
     "type": "Ação / Super-herói",
@@ -20,6 +22,7 @@
     "review": "Heath Ledger entrega a melhor atuação da história do cinema. O filme é tenso, inteligente e envelhece como vinho.",
     "rating": 5.0
   },
+
   {
     "name": "Your Name",
     "type": "Animação / Romance",
@@ -27,6 +30,7 @@
     "review": "Obra de arte do Makoto Shinkai. A animação é deslumbrante, a história emociona e a trilha sonora do RADWIMPS é perfeita. Chorei litros.",
     "rating": 4.8
   },
+
   {
     "name": "Matrix",
     "type": "Ficção Científica",
@@ -34,6 +38,7 @@
     "review": "Revolucionário. As cenas de ação, o conceito filosófico e o estilo visual mudaram o cinema pra sempre. O hype é justo.",
     "rating": 4.7
   },
+
   {
     "name": "Parasita",
     "type": "Drama / Suspense",
@@ -41,6 +46,7 @@
     "review": "Bong Joon-ho entregou uma obra-prima moderna. A sátira social é afiada, o humor é ácido e a tensão te prende do início ao fim.",
     "rating": 4.7
   },
+
   {
     "name": "Whiplash",
     "type": "Drama / Música",
@@ -48,6 +54,7 @@
     "review": "Intenso do início ao fim. A atuação do J.K. Simmons é aterrorizante e a cena final é uma das melhores que já vi no cinema.",
     "rating": 4.6
   },
+
   {
     "name": "Homem-Aranha no Aranhaverso",
     "type": "Animação / Super-herói",
