@@ -724,9 +724,17 @@ body {
 }
 
 /* ── Stars ── */
+.rk-stars-wrap {
+  display: flex; align-items: center; gap: 6px;
+  flex-shrink: 0;
+}
 .rk-stars {
   display: flex; gap: 1px;
-  flex-shrink: 0;
+}
+.rk-rating-text {
+  font-family: var(--font); font-size: 11px;
+  color: var(--dim); letter-spacing: 0.3px;
+  font-weight: 500;
 }
 .rk-star {
   font-size: 22px; line-height: 1;

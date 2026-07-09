@@ -569,7 +569,7 @@
       if (item.type) html += '<span class="rk-item-type">' + item.type + '</span>'
       if (item.artist) html += '<span class="rk-item-detail">' + item.artist + '</span>'
       html += '</div></div>'
-      html += '<div class="rk-stars">' + renderStars(item.rating) + '</div>'
+      html += '<div class="rk-stars-wrap"><div class="rk-stars">' + renderStars(item.rating) + '</div><div class="rk-rating-text">' + item.rating.toFixed(1).replace('.', ',') + '/5</div></div>'
     }
 
     html += '</div>' // end item-top
