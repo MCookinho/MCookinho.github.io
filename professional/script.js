@@ -1677,6 +1677,19 @@
     container.appendChild(wrapper)
   }
 
+  // ── Info Overlay ──
+  var infoOverlay = document.getElementById('infoOverlay')
+  function openInfo() { infoOverlay.classList.add('open') }
+  function closeInfo() { infoOverlay.classList.remove('open') }
+  document.getElementById('infoTrigger').addEventListener('click', openInfo)
+  document.getElementById('infoClose').addEventListener('click', closeInfo)
+  infoOverlay.addEventListener('click', function (e) {
+    if (e.target === infoOverlay) closeInfo()
+  })
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && infoOverlay.classList.contains('open')) closeInfo()
+  })
+
   // ── Panel Events ──
   document.getElementById('openConfig').addEventListener('click', openPanel)
   document.getElementById('configClose').addEventListener('click', closePanel)
