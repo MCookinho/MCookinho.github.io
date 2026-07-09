@@ -36,9 +36,9 @@ const VIEWS = {
     {id:'pedra_obj',name:'PEDRA',desc:'No chão. Pesada.',type:'item',gives:'pedra'}
   ],
   west: [
-    {id:'bancada',name:'BANCADA',desc:'Marca de unhas na madeira.',type:'examine'},
     {id:'gaveta',name:'GAVETA',desc:'Trancada. Três pinos de metal.',type:'drawer'},
     {id:'diario',name:'DIÁRIO',desc:'Páginas amareladas.',type:'diary'},
+    {id:'bancada',name:'BANCADA',desc:'Marca de unhas na madeira.',type:'examine'},
     {id:'corda_obj',name:'CORDA',desc:'Pendurada na parede.',type:'item',gives:'corda'},
     {id:'ferramentas',name:'FERRAMENTAS',desc:'Pilha de ferros velhos.',type:'item',gives:'ferro'}
   ],
