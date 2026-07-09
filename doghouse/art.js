@@ -610,19 +610,25 @@ function drWest(ctx,t){
   rect(70,418,580,16,grad(0,418,0,434,'rgba(0,0,0,0.4)','rgba(0,0,0,0)'))
 
   // Drawer — properly inset into bench face
-  const drawerOpen=window.__game&&window.__game.hasObtained('fosforo')
-  if(drawerOpen){
-    // Empty cavity
-    rect(225,300,170,55,PAL.dark)
-    rect(225,300,170,8,grad(0,295,0,308,'rgba(0,0,0,0.3)','rgba(0,0,0,0)'))
-    // Drawer face pulled down
-    rect(220,340,180,45,PAL.ink_l)
-    rect(225,344,170,35,PAL.ink)
-    rect(220,338,180,4,'rgba(0,0,0,0.15)')
-    // handle (shifted down)
-    rect(295,357,30,6,PAL.rust)
-    rect(293,355,34,10,PAL.rust_l)
-    circle(310,360,3,PAL.rust_l)
+  const drawerSolved=typeof PUZZLES!=='undefined'&&PUZZLES.drawer&&PUZZLES.drawer.solved
+  if(drawerSolved){
+    // Empty cavity — dark hole inside the bench
+    rect(220,298,180,62,PAL.dark)
+    rect(220,298,180,12,grad(0,298,0,310,'rgba(0,0,0,0.4)','rgba(0,0,0,0)'))
+    // Bottom inner shadow
+    rect(220,350,180,10,grad(0,350,0,360,'rgba(0,0,0,0)','rgba(0,0,0,0.3)'))
+    // Drawer face pulled down and tilted — sits below the cavity
+    rect(215,345,190,45,PAL.ink_l)
+    rect(220,348,180,37,PAL.ink)
+    wln(215,345,405,345,PAL.ink_m,0.6,t)
+    wln(215,390,405,390,PAL.ink_m,0.4,t)
+    // handle (shifted down with drawer face)
+    rect(295,362,30,6,PAL.rust)
+    rect(293,360,34,10,PAL.rust_l)
+    circle(310,365,3,PAL.rust_l)
+    // Match inside the cavity
+    rect(255,312,28,3,PAL.paper_d)
+    circle(255,313,2,'rgba(180,60,30,0.6)')
   }else{
     rect(220,295,180,65,PAL.ink_l)
     rect(225,300,170,55,PAL.ink)
