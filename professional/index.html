@@ -10,33 +10,35 @@
 
   <nav class="topbar" id="topbar">
     <div class="topbar-inner">
-      <a href="https://mcookinho.github.io" class="topbar-brand">PEU BORGES</a>
+      <a href="https://mcookinho.github.io" class="topbar-brand">Profissional</a>
       <div class="topbar-links">
         <button class="topbar-btn" id="openConfig">CONFIGURAR</button>
         <button class="topbar-btn" id="exportPdf">EXPORTAR PDF</button>
         <a href="https://mcookinho.github.io" class="topbar-btn topbar-btn-back">VOLTAR</a>
+        <button class="topbar-toggle" id="topbarToggle" title="Ocultar barra">⊟</button>
       </div>
     </div>
   </nav>
+  <button class="topbar-show-btn" id="topbarShowBtn" title="Mostrar barra">≡</button>
 
   <main class="main-content" id="mainContent">
 
     <header class="prof-header" id="sec-header" data-section="header">
       <div class="ph-top">
-        <h1 class="ph-name">João Pedro Borges</h1>
-        <p class="ph-title">Engenharia da Computação // Desenvolvedor Full-Stack // Criador de Jogos</p>
-        <p class="ph-location">Salvador, BA · 20 anos</p>
+        <h1 class="ph-name" id="edit-name">João Pedro Borges</h1>
+        <p class="ph-title" id="edit-title">Engenharia da Computação // Desenvolvedor Full-Stack // Criador de Jogos</p>
+        <p class="ph-location" id="edit-location">Salvador, BA · 20 anos</p>
       </div>
-      <div class="ph-contact">
-        <a href="mailto:peuborges.dev@gmail.com">peuborges.dev@gmail.com</a>
-        <a href="https://github.com/MCookinho" target="_blank">github.com/MCookinho</a>
-        <a href="https://www.linkedin.com/in/joão-pedro-borges-a16321279/" target="_blank">linkedin.com/in/joaopedro</a>
+      <div class="ph-contact" id="edit-contact">
+        <a href="mailto:peuborges.dev@gmail.com" id="edit-email-link">peuborges.dev@gmail.com</a>
+        <a href="https://github.com/MCookinho" target="_blank" id="edit-github-link">github.com/MCookinho</a>
+        <a href="https://www.linkedin.com/in/joão-pedro-borges-a16321279/" target="_blank" id="edit-linkedin-link">linkedin.com/in/joaopedro</a>
       </div>
     </header>
 
     <section class="prof-section" id="sec-about" data-section="about">
       <h2 class="ps-title">SOBRE</h2>
-      <p class="ps-text">
+      <p class="ps-text" id="edit-about">
         Estudante de Engenharia da Computação e desenvolvedor full-stack com foco em Python, JavaScript e C.
         Construo desde ferramentas de terminal e bots até jogos e interfaces web. Apaixonado por tecnologia,
         código aberto e soluções criativas. Busco oportunidades onde possa aplicar minha versatilidade técnica
@@ -140,10 +142,10 @@
     <section class="prof-section" id="sec-contact" data-section="contact">
       <h2 class="ps-title">CONTATO</h2>
       <div class="contact-links">
-        <a href="mailto:peuborges.dev@gmail.com" class="contact-item">peuborges.dev@gmail.com</a>
-        <a href="https://github.com/MCookinho" target="_blank" class="contact-item">github.com/MCookinho</a>
-        <a href="https://www.linkedin.com/in/joão-pedro-borges-a16321279/" target="_blank" class="contact-item">linkedin.com/in/joaopedro</a>
-        <a href="https://mcookinho.github.io" class="contact-item">mcookinho.github.io</a>
+        <a href="mailto:peuborges.dev@gmail.com" class="contact-item" id="edit-email">peuborges.dev@gmail.com</a>
+        <a href="https://github.com/MCookinho" target="_blank" class="contact-item" id="edit-github">github.com/MCookinho</a>
+        <a href="https://www.linkedin.com/in/joão-pedro-borges-a16321279/" target="_blank" class="contact-item" id="edit-linkedin">linkedin.com/in/joaopedro</a>
+        <a href="https://mcookinho.github.io" class="contact-item" id="edit-website">mcookinho.github.io</a>
       </div>
     </section>
 
@@ -153,29 +155,54 @@
     <p>© 2026 João Pedro Borges — Portfolio Profissional</p>
   </footer>
 
-  <!-- Config Panel -->
+  <!-- ── Config Panel ── -->
   <div class="config-overlay" id="configOverlay">
     <div class="config-panel">
       <div class="config-head">
         <h2 class="config-title">CONFIGURAÇÕES</h2>
         <button class="config-close" id="configClose">✕</button>
       </div>
-      <div class="config-tabs">
-        <button class="config-tab active" data-tab="appearance">APARÊNCIA</button>
-        <button class="config-tab" data-tab="sections">SEÇÕES</button>
+      <div class="config-tabs" id="configTabs">
+        <button class="config-tab active" data-tab="theme">TEMA</button>
+        <button class="config-tab" data-tab="typo">TIPOGRAFIA</button>
+        <button class="config-tab" data-tab="header">CABEÇALHO</button>
+        <button class="config-tab" data-tab="layout">LAYOUT</button>
+        <button class="config-tab" data-tab="content">CONTEÚDO</button>
         <button class="config-tab" data-tab="pdf">PDF</button>
       </div>
       <div class="config-body" id="configBody">
 
-        <!-- TAB: Appearance -->
-        <div class="config-tab-content active" id="tab-appearance">
+        <!-- TAB: THEME -->
+        <div class="config-tab-content active" id="tab-theme">
           <div class="config-group">
             <label class="config-label">TEMA</label>
             <div class="theme-grid" id="themeGrid"></div>
           </div>
           <div class="config-group">
-            <label class="config-label">FONTE</label>
-            <div class="config-btn-group" id="fontGroup"></div>
+            <label class="config-label">CORES PERSONALIZADAS (sobrescrevem o tema)</label>
+            <div class="color-row">
+              <div class="color-field"><label>Primária</label><input type="color" id="colorPrimary" /></div>
+              <div class="color-field"><label>Destaque</label><input type="color" id="colorAccent" /></div>
+              <div class="color-field"><label>Fundo</label><input type="color" id="colorBg" /></div>
+              <div class="color-field"><label>Texto</label><input type="color" id="colorFont" /></div>
+              <div class="color-field"><label>Link</label><input type="color" id="colorLink" /></div>
+              <div class="color-field"><label>Link Hover</label><input type="color" id="colorLinkHover" /></div>
+              <div class="color-field"><label>Card</label><input type="color" id="colorCard" /></div>
+              <div class="color-field"><label>Borda</label><input type="color" id="colorBorder" /></div>
+            </div>
+          </div>
+          <div class="config-group">
+            <label class="config-label">IMAGEM DE FUNDO (URL)</label>
+            <input type="text" class="config-input" id="bgImageInput" placeholder="https://..." />
+          </div>
+          <div class="config-group">
+            <label class="config-label">PADRÃO DE FUNDO</label>
+            <div class="config-btn-group" id="bgPatternGroup"></div>
+          </div>
+          <div class="config-group">
+            <label class="config-label">OPACIDADE DO PADRÃO</label>
+            <input type="range" class="config-range" id="bgPatternOpacity" min="0" max="100" value="20" />
+            <span class="config-range-val" id="bgPatternOpacityVal">20%</span>
           </div>
           <div class="config-group">
             <label class="config-label">ANIMAÇÕES</label>
@@ -183,10 +210,197 @@
           </div>
         </div>
 
-        <!-- TAB: Sections -->
-        <div class="config-tab-content" id="tab-sections">
-          <p class="config-hint">Marque/desmarque para mostrar ou ocultar seções. Arraste para reordenar.</p>
-          <div class="config-section-list" id="configSectionList"></div>
+        <!-- TAB: TYPOGRAPHY -->
+        <div class="config-tab-content" id="tab-typo">
+          <div class="config-group">
+            <label class="config-label">FAMÍLIA DA FONTE</label>
+            <div class="config-btn-group" id="fontGroup"></div>
+          </div>
+          <div class="config-group">
+            <label class="config-label">TAMANHO DA FONTE</label>
+            <div class="config-btn-group" id="fontSizeGroup"></div>
+          </div>
+          <div class="config-group">
+            <label class="config-label">TAMANHO DO TÍTULO PRINCIPAL</label>
+            <div class="config-btn-group" id="titleSizeGroup"></div>
+          </div>
+          <div class="config-group">
+            <label class="config-label">TAMANHO DOS TÍTULOS DE SEÇÃO</label>
+            <div class="config-btn-group" id="sectionTitleSizeGroup"></div>
+          </div>
+          <div class="config-group">
+            <label class="config-label">PESO DA FONTE</label>
+            <div class="config-btn-group" id="fontWeightGroup"></div>
+          </div>
+          <div class="config-group">
+            <label class="config-label">ESPAÇAMENTO ENTRE PARÁGRAFOS</label>
+            <div class="config-btn-group" id="paragraphSpacingGroup"></div>
+          </div>
+          <div class="config-group">
+            <label class="config-label">ALTURA DA LINHA</label>
+            <div class="config-btn-group" id="lineHeightGroup"></div>
+          </div>
+          <div class="config-group">
+            <label class="config-label">ESPAÇAMENTO ENTRE LETRAS</label>
+            <div class="config-btn-group" id="letterSpacingGroup"></div>
+          </div>
+          <div class="config-group">
+            <label class="config-label">ALINHAMENTO DO TEXTO</label>
+            <div class="config-btn-group" id="textAlignGroup"></div>
+          </div>
+        </div>
+
+        <!-- TAB: HEADER -->
+        <div class="config-tab-content" id="tab-header">
+          <div class="config-group">
+            <label class="config-label">ALINHAMENTO DO CABEÇALHO</label>
+            <div class="config-btn-group" id="headerAlignGroup"></div>
+          </div>
+          <div class="config-group">
+            <label class="config-label">MOSTRAR LOCALIZAÇÃO</label>
+            <div class="config-btn-group" id="showLocationGroup"></div>
+          </div>
+          <div class="config-group">
+            <label class="config-label">MOSTRAR TÍTULO/CARGO</label>
+            <div class="config-btn-group" id="showTitleGroup"></div>
+          </div>
+          <div class="config-group">
+            <label class="config-label">MOSTRAR LINKS DE CONTATO</label>
+            <div class="config-btn-group" id="showContactGroup"></div>
+          </div>
+          <div class="config-group">
+            <label class="config-label">IMAGEM DE PERFIL (URL)</label>
+            <input type="text" class="config-input" id="profileImageInput" placeholder="https://..." />
+          </div>
+          <div class="config-group">
+            <label class="config-label">TAMANHO DA IMAGEM DE PERFIL</label>
+            <div class="config-btn-group" id="profileImageSizeGroup"></div>
+          </div>
+        </div>
+
+        <!-- TAB: LAYOUT -->
+        <div class="config-tab-content" id="tab-layout">
+          <div class="config-group">
+            <label class="config-label">LARGURA DO CONTEÚDO</label>
+            <div class="config-btn-group" id="contentWidthGroup"></div>
+          </div>
+          <div class="config-group">
+            <label class="config-label">ESPAÇAMENTO ENTRE SEÇÕES</label>
+            <div class="config-btn-group" id="sectionSpacingGroup"></div>
+          </div>
+          <div class="config-group">
+            <label class="config-label">ESPAÇAMENTO ENTRE ITENS</label>
+            <div class="config-btn-group" id="gapSizeGroup"></div>
+          </div>
+          <div class="config-group">
+            <label class="config-label">PADDING DO CONTEÚDO</label>
+            <div class="config-btn-group" id="contentPaddingGroup"></div>
+          </div>
+          <div class="config-group">
+            <label class="config-label">ESTILO DO CABEÇALHO</label>
+            <div class="config-btn-group" id="headerStyleGroup"></div>
+          </div>
+          <div class="config-group">
+            <label class="config-label">LAYOUT DAS HABILIDADES</label>
+            <div class="config-btn-group" id="skillsLayoutGroup"></div>
+          </div>
+          <div class="config-group">
+            <label class="config-label">LAYOUT DOS PROJETOS</label>
+            <div class="config-btn-group" id="projectsLayoutGroup"></div>
+          </div>
+          <div class="config-group">
+            <label class="config-label">ESTILO DOS BOTÕES</label>
+            <div class="config-btn-group" id="buttonStyleGroup"></div>
+          </div>
+          <div class="config-group">
+            <label class="config-label">ESTILO DAS LISTAS</label>
+            <div class="config-btn-group" id="listStyleGroup"></div>
+          </div>
+          <div class="config-group">
+            <label class="config-label">BORDA ARREDONDADA</label>
+            <div class="config-btn-group" id="borderRadiusGroup"></div>
+          </div>
+          <div class="config-group">
+            <label class="config-label">SOMBRA</label>
+            <div class="config-btn-group" id="boxShadowGroup"></div>
+          </div>
+          <div class="config-group">
+            <label class="config-label">FUNDO ALTERNADO NAS SEÇÕES</label>
+            <div class="config-btn-group" id="altSectionBgGroup"></div>
+          </div>
+          <div class="config-group">
+            <label class="config-label">COR DO FUNDO DA SEÇÃO</label>
+            <input type="color" class="config-color-single" id="sectionBgColor" />
+          </div>
+          <div class="config-group">
+            <label class="config-label">MOSTRAR BORDAS</label>
+            <div class="config-btn-group" id="showBordersGroup"></div>
+          </div>
+          <div class="config-group">
+            <label class="config-label">MOSTRAR DIVISORES</label>
+            <div class="config-btn-group" id="showDividersGroup"></div>
+          </div>
+          <div class="config-group">
+            <label class="config-label">MOSTRAR BARRA DO TOPO</label>
+            <div class="config-btn-group" id="showTopbarGroup"></div>
+          </div>
+          <div class="config-group">
+            <label class="config-label">MOSTRAR RODAPÉ</label>
+            <div class="config-btn-group" id="showFooterGroup"></div>
+          </div>
+          <div class="config-group">
+            <label class="config-label">MOSTRAR PORCENTAGEM NAS HABILIDADES</label>
+            <div class="config-btn-group" id="showSkillPctGroup"></div>
+          </div>
+        </div>
+
+        <!-- TAB: CONTENT -->
+        <div class="config-tab-content" id="tab-content">
+          <div class="config-group">
+            <label class="config-label">NOME</label>
+            <input type="text" class="config-input" id="editNameInput" />
+          </div>
+          <div class="config-group">
+            <label class="config-label">TÍTULO / CARGO</label>
+            <input type="text" class="config-input" id="editTitleInput" />
+          </div>
+          <div class="config-group">
+            <label class="config-label">LOCALIZAÇÃO</label>
+            <input type="text" class="config-input" id="editLocationInput" />
+          </div>
+          <div class="config-group">
+            <label class="config-label">SOBRE</label>
+            <textarea class="config-textarea" id="editAboutInput" rows="6"></textarea>
+          </div>
+          <div class="config-group">
+            <label class="config-label">EMAIL</label>
+            <input type="text" class="config-input" id="editEmailInput" />
+          </div>
+          <div class="config-group">
+            <label class="config-label">GITHUB (usuário ou URL)</label>
+            <input type="text" class="config-input" id="editGithubInput" />
+          </div>
+          <div class="config-group">
+            <label class="config-label">LINKEDIN (URL)</label>
+            <input type="text" class="config-input" id="editLinkedinInput" />
+          </div>
+          <div class="config-group">
+            <label class="config-label">IDIOMA</label>
+            <div class="config-btn-group" id="langGroup"></div>
+          </div>
+          <div class="config-divider"></div>
+          <div class="config-group" id="experienceEditContainer">
+            <label class="config-label">EXPERIÊNCIA</label>
+          </div>
+          <div class="config-group" id="educationEditContainer">
+            <label class="config-label">FORMAÇÃO</label>
+          </div>
+          <div class="config-group" id="skillsEditContainer">
+            <label class="config-label">HABILIDADES</label>
+          </div>
+          <div class="config-group" id="projectsEditContainer">
+            <label class="config-label">PROJETOS</label>
+          </div>
         </div>
 
         <!-- TAB: PDF -->
@@ -200,16 +414,28 @@
             <div class="config-btn-group" id="marginGroup"></div>
           </div>
           <div class="config-group">
-            <label class="config-label">TAMANHO DA FONTE</label>
+            <label class="config-label">TAMANHO DA FONTE NO PDF</label>
             <div class="config-btn-group" id="pdfFontGroup"></div>
+          </div>
+          <div class="config-group">
+            <label class="config-label">TAMANHO DA PÁGINA</label>
+            <div class="config-btn-group" id="pageSizeGroup"></div>
+          </div>
+          <div class="config-group">
+            <label class="config-label">CORES NO PDF</label>
+            <div class="config-btn-group" id="pdfColorGroup"></div>
+          </div>
+          <div class="config-group">
+            <label class="config-label">INCLUIR TOPO NO PDF</label>
+            <div class="config-btn-group" id="pdfTopbarGroup"></div>
           </div>
         </div>
 
       </div>
       <div class="config-foot">
         <button class="config-btn config-btn-primary" id="configSave">SALVAR</button>
-        <button class="config-btn config-btn-share" id="configShare">COMPARTILHAR LINK</button>
-        <button class="config-btn config-btn-reset" id="configReset">RESTAURAR PADRÃO</button>
+        <button class="config-btn config-btn-share" id="configShare">COMPARTILHAR</button>
+        <button class="config-btn config-btn-reset" id="configReset">PADRÃO</button>
       </div>
     </div>
   </div>
