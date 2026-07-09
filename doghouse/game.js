@@ -79,11 +79,11 @@ const HITBOXES = {
     pedra_obj:{x:90,y:465,w:55,h:33}
   },
   west: {
-    bancada:{x:80,y:270,w:560,h:60},
-    gaveta:{x:220,y:250,w:180,h:60},
-    diario:{x:400,y:265,w:70,h:40},
+    bancada:{x:70,y:275,w:580,h:100},
+    gaveta:{x:220,y:295,w:180,h:65},
+    diario:{x:405,y:260,w:70,h:35},
     corda_obj:{x:610,y:60,w:25,h:220},
-    ferramentas:{x:560,y:350,w:120,h:100}
+    ferramentas:{x:565,y:355,w:120,h:75}
   },
   ceiling: {
     corrente:{x:380,y:40,w:40,h:220},

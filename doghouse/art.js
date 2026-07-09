@@ -488,49 +488,53 @@ function drWest(ctx,t){
   $ctx=ctx
   stoneWall(t);floor(t);dustMotes(t)
 
-  // Workbench
-  rect(80,270,560,60,PAL.ink_l)
-  rect(85,275,550,50,PAL.ink)
-  wln(80,270,640,270,PAL.ink_m,0.8,t)
-  wln(80,330,640,330,PAL.ink_m,0.5,t)
-  // wood grain on bench
-  for(let i=0;i<6;i++){
-    const gy=280+i*5
-    wln(100,gy,620,gy,PAL.ink_m,0.3,t,0.3)
+  // Workbench — larger body
+  rect(70,275,580,100,PAL.ink_l)
+  rect(75,280,570,90,PAL.ink)
+  wln(70,275,650,275,PAL.ink_m,0.8,t)
+  wln(70,375,650,375,PAL.ink_m,0.6,t)
+  // wood grain
+  for(let i=0;i<8;i++){
+    const gy=285+i*10
+    wln(85,gy,635,gy,PAL.ink_m,0.25,t,0.3)
   }
   // legs
-  rect(100,330,25,90,PAL.ink_l)
-  rect(595,330,25,90,PAL.ink_l)
-  // shadow under
-  rect(70,410,580,20,grad(0,410,0,430,'rgba(0,0,0,0.5)','rgba(0,0,0,0)'))
+  rect(90,375,30,55,PAL.ink_l)
+  rect(600,375,30,55,PAL.ink_l)
+  rect(92,375,26,55,PAL.ink)
+  rect(602,375,26,55,PAL.ink)
+  // shadow under bench
+  rect(70,418,580,16,grad(0,418,0,434,'rgba(0,0,0,0.4)','rgba(0,0,0,0)'))
 
-  // Drawer
-  rect(220,250,180,60,PAL.ink_l)
-  rect(225,255,170,50,PAL.ink)
-  wln(220,250,400,250,PAL.ink_m,0.8,t)
-  wln(220,310,400,310,PAL.ink_m,0.5,t)
-  // drawer handle
-  rect(295,278,30,6,PAL.rust)
-  rect(295,276,30,10,PAL.rust_l)
-  circle(310,281,3,PAL.rust_l)
-  // keyhole on drawer
-  rect(270,260,5,10,PAL.dark)
-  circle(272,265,3,PAL.dark)
+  // Drawer — properly inset into bench face
+  rect(220,295,180,65,PAL.ink_l)
+  rect(225,300,170,55,PAL.ink)
+  wln(220,295,400,295,PAL.ink_m,0.8,t)
+  wln(220,360,400,360,PAL.ink_m,0.6,t)
+  wln(220,295,220,360,PAL.ink_m,0.4,t)
+  wln(400,295,400,360,PAL.ink_m,0.4,t)
+  // handle
+  rect(295,322,30,6,PAL.rust)
+  rect(293,320,34,10,PAL.rust_l)
+  circle(310,325,3,PAL.rust_l)
+  // keyhole
+  rect(270,308,5,10,PAL.dark)
+  circle(272,313,3,PAL.dark)
+  rect(220,293,180,4,'rgba(0,0,0,0.15)')
 
   // Diary on bench
-  rect(400,265,70,40,PAL.paper)
-  wln(400,265,470,265,PAL.ink_l,0.6,t)
-  wln(400,265,400,305,PAL.ink_l,0.6,t)
-  wln(400,305,470,305,PAL.ink_l,0.6,t)
-  wln(470,265,470,305,PAL.ink_l,0.6,t)
-  // pages texture
-  for(let i=0;i<5;i++){
-    const px=405+Math.sin(i)*3,py=275+i*5
-    wln(px,py,px+55,py,PAL.ink_l,0.3,t,0.2)
+  rect(405,260,70,35,PAL.paper)
+  wln(405,260,475,260,PAL.ink_l,0.6,t)
+  wln(405,260,405,295,PAL.ink_l,0.6,t)
+  wln(405,295,475,295,PAL.ink_l,0.6,t)
+  wln(475,260,475,295,PAL.ink_l,0.6,t)
+  for(let i=0;i<4;i++){
+    const px=410+i*1.5,py=267+i*6
+    wln(px,py,px+52,py,PAL.ink_l,0.3,t,0.2)
   }
-  // cross on diary
-  ln(435,270,435,300,PAL.ink_l,0.5)
-  ln(425,280,445,280,PAL.ink_l,0.5)
+  ln(440,266,440,290,PAL.ink_l,0.5)
+  ln(430,275,450,275,PAL.ink_l,0.5)
+  rect(403,293,74,4,'rgba(0,0,0,0.12)')
 
   // Rope hanging on wall
   // Wall hook/nail (always visible)
@@ -549,55 +553,75 @@ function drWest(ctx,t){
     circle(rx,ry+6,6,PAL.sepia)
   }
 
-  // Tool pile — wooden crate with tools (visible until ferro picked up)
+  // Tool chest — organized wooden box with tools (visible until ferro picked up)
   if(!window.__game||!window.__game.hasObtained('ferro')){
-    // Shadow under crate
+    // Shadow under chest
     $ctx.fillStyle='rgba(0,0,0,0.2)'
     $ctx.beginPath()
-    $ctx.ellipse(620,435,65,15,0,0,Math.PI*2)
+    $ctx.ellipse(625,432,60,12,0,0,Math.PI*2)
     $ctx.fill()
-    // Wooden crate
-    rect(560,350,120,80,PAL.ink_l)
-    rect(563,353,114,74,PAL.ink)
-    // Planks
+    // Chest body
+    rect(565,355,120,75,PAL.ink_l)
+    rect(568,358,114,69,PAL.ink)
+    // Plank lines
     for(let i=0;i<3;i++){
-      const py=353+i*25
-      rect(565,py,110,2,'rgba(42,34,24,0.4)')
-      // Nails
-      circle(570,py+1,1.5,PAL.rust_l)
-      circle(670,py+1,1.5,PAL.rust_l)
+      const py=362+i*22
+      rect(570,py,110,1,'rgba(42,34,24,0.25)')
     }
-    // Iron bar (diagonal, sticking out of crate)
+    // Metal corner brackets
+    rect(565,355,14,14,PAL.rust)
+    rect(671,355,14,14,PAL.rust)
+    rect(565,416,14,14,PAL.rust)
+    rect(671,416,14,14,PAL.rust)
+    circle(572,362,1.5,PAL.rust_l)
+    circle(678,362,1.5,PAL.rust_l)
+    circle(572,423,1.5,PAL.rust_l)
+    circle(678,423,1.5,PAL.rust_l)
+    // Lid (open, tilted back)
+    $ctx.fillStyle=PAL.ink
+    $ctx.beginPath()
+    $ctx.moveTo(565,355);$ctx.lineTo(685,355);$ctx.lineTo(672,347);$ctx.lineTo(578,347);$ctx.closePath()
+    $ctx.fill()
+    $ctx.strokeStyle=PAL.ink_m
+    $ctx.lineWidth=0.8
+    $ctx.stroke()
+    $ctx.fillStyle=PAL.ink_l
+    $ctx.beginPath()
+    $ctx.moveTo(568,355);$ctx.lineTo(682,355);$ctx.lineTo(670,349);$ctx.lineTo(580,349);$ctx.closePath()
+    $ctx.fill()
+    // Inside darkness
+    rect(570,358,110,8,PAL.dark)
+    // Iron bar — laid diagonally across opening, curved hook end
     $ctx.save()
-    $ctx.translate(610,372)
-    $ctx.rotate(0.45)
-    rect(-30,-5,62,10,PAL.rust)
-    rect(-28,-4,58,8,PAL.rust_l)
-    rect(-28,-4,58,2,'rgba(160,106,58,0.35)')
-    rect(-28,2,58,2,'rgba(40,20,10,0.3)')
-    rect(-30,-5,10,10,PAL.rust)
+    $ctx.translate(615,370)
+    $ctx.rotate(-0.12)
+    rect(-55,-5,110,10,PAL.rust)
+    rect(-53,-4,106,8,PAL.rust_l)
+    rect(-53,-4,106,2,'rgba(160,106,58,0.35)')
+    rect(-53,2,106,2,'rgba(40,20,10,0.3)')
+    // curved hook
+    $ctx.beginPath()
+    $ctx.arc(55,0,8,Math.PI*1.1,Math.PI*1.8)
+    $ctx.strokeStyle=PAL.rust
+    $ctx.lineWidth=6
+    $ctx.stroke()
+    $ctx.beginPath()
+    $ctx.arc(55,0,8,Math.PI*1.1,Math.PI*1.8)
+    $ctx.strokeStyle=PAL.rust_l
+    $ctx.lineWidth=3.5
+    $ctx.stroke()
     $ctx.restore()
-    // Hammer (handle + head)
-    wln(575,365,595,390,PAL.sepia_d,4,t) // handle
-    wln(575,365,595,390,PAL.sepia,2.5,t)
-    rect(592,385,16,10,PAL.rust) // head
-    rect(594,387,12,2,'rgba(160,106,58,0.3)')
-    // Chain links (piled in crate)
-    for(let i=0;i<5;i++){
-      const cx=625+Math.sin(i*2)*15,cy=405+Math.sin(i*3)*8
-      circle(cx,cy,3.5,PAL.rust)
-      circle(cx,cy,2,PAL.rust_l)
+    // Hammer leaning inside
+    wln(582,380,594,408,PAL.sepia_d,3.5,t)
+    wln(582,380,594,408,PAL.sepia,2,t)
+    rect(591,400,12,10,PAL.rust)
+    rect(592,401,10,2,'rgba(160,106,58,0.3)')
+    // Chain coiled
+    for(let i=0;i<4;i++){
+      const cx=645+Math.sin(i*2)*12,cy=390+Math.sin(i*3)*5
+      circle(cx,cy,3,PAL.rust)
+      circle(cx,cy,1.5,PAL.rust_l)
     }
-    // Saw blade (sticking out)
-    $ctx.save()
-    $ctx.translate(650,395)
-    $ctx.rotate(-0.2)
-    rect(-2,-20,4,25,PAL.ink_l)
-    for(let i=0;i<8;i++){
-      const tx=-2+Math.sin(i)*3,ty=-18+i*4
-      rect(tx,ty,6,2,PAL.ink_l)
-    }
-    $ctx.restore()
   }
 
   // Dark shape under bench
