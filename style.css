@@ -130,16 +130,17 @@ body {
 /* ── Nav Dropdown ── */
 .nav-dropdown {
   position: absolute;
-  top: calc(100% + 8px);
+  top: 100%;
   left: 0;
+  padding-top: 2px;
   min-width: 280px;
   background: #0d0d14;
   border: 1.5px solid var(--border);
   box-shadow: 0 8px 40px rgba(0,0,0,0.5), 0 0 60px rgba(0,255,200,0.02);
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-8px) scale(0.96);
-  transform-origin: top left;
+  transform: translateY(-6px);
+  transform-origin: top center;
   transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), opacity 0.25s, visibility 0.25s;
   z-index: 100;
   overflow: hidden;
@@ -147,7 +148,7 @@ body {
 .nav-dropdown.open {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0) scale(1);
+  transform: translateY(0);
 }
 
 .nav-dropdown::before {
@@ -653,6 +654,10 @@ body {
 }
 
 .cd-now-playing {
+  color: var(--dim);
+  transition: color 0.25s;
+}
+.cd-now-playing.playing {
   color: var(--cyan);
 }
 

@@ -350,13 +350,14 @@
     if (currentIndex >= 0) {
       var song = songs[currentIndex]
       cdNowPlaying.textContent = song.title
-      cdNowPlaying.classList.add('visible')
+      cdNowPlaying.classList.add('visible', 'playing')
       playerSongName.textContent = song.title
       playerArtistName.textContent = song.artist || ''
       playerArtistName.style.display = song.artist ? 'inline' : 'none'
     } else {
       cdNowPlaying.textContent = 'ABRIR BIBLIOTECA MUSICAL'
       cdNowPlaying.classList.add('visible')
+      cdNowPlaying.classList.remove('playing')
       playerSongName.textContent = 'NENHUMA MÚSICA'
       playerArtistName.textContent = ''
       playerArtistName.style.display = 'none'
