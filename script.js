@@ -212,7 +212,7 @@
           '<div class="sub-setting-divider"></div>' +
           '<div class="sub-setting-row">' +
             '<span class="sub-setting-label">MODO PROFISSIONAL</span>' +
-            '<a href="/professional/" class="sub-setting-link">ABRIR</a>' +
+            '<a href="/professional/" class="sub-setting-link">ATIVAR</a>' +
           '</div>' +
         '</div>'
       }
