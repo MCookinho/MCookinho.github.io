@@ -343,6 +343,7 @@
 })()
 
 ;(function () {
+    var overlay = document.getElementById('skillOverlay')
     var closeBtn = document.getElementById('skillClose')
     var skillName = document.getElementById('skillName')
     var skillCategory = document.getElementById('skillCategory')
