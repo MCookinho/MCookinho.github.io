@@ -900,18 +900,7 @@ function drCeiling(ctx,t){
   }
 
   // ─── EYES IN DARKNESS ───
-  if(lit){
-    // Faint suggestion of eyes — barely there
-    const ep=0.08+Math.sin(t*0.001)*0.04
-    $ctx.fillStyle=`rgba(184,106,58,${ep})`
-    circle(240,168,6,PAL.rust_l)
-    circle(290,173,6,PAL.rust_l)
-    // Ambient reflection
-    $ctx.fillStyle=`rgba(184,106,58,${ep*0.4})`
-    circle(238,166,1.5,PAL.gold)
-    circle(288,171,1.5,PAL.gold)
-  }else{
-    // Glowing eyes in dark
+  if(!lit){
     const p=0.2+Math.sin(t*0.001)*0.12
     $ctx.fillStyle=`rgba(184,106,58,${p*0.3})`
     circle(245+Math.sin(t*0.0005)*3,168,9,PAL.rust_l)
@@ -921,16 +910,16 @@ function drCeiling(ctx,t){
     circle(295+Math.sin(t*0.0005+1)*3,173,4,PAL.dark)
     circle(243+Math.sin(t*0.0005)*3,166,1.5,PAL.gold)
     circle(293+Math.sin(t*0.0005+1)*3,171,1.5,PAL.gold)
-  }
 
-  // Distant eyes
-  const p2=0.1+Math.sin(t*0.001+1)*0.08
-  $ctx.fillStyle=`rgba(184,106,58,${p2*0.15})`
-  circle(580,155,5,PAL.rust_l)
-  circle(610,160,5,PAL.rust_l)
-  $ctx.fillStyle=PAL.dark
-  circle(580,155,2,PAL.dark)
-  circle(610,160,2,PAL.dark)
+    // Distant eyes
+    const p2=0.1+Math.sin(t*0.001+1)*0.08
+    $ctx.fillStyle=`rgba(184,106,58,${p2*0.15})`
+    circle(580,155,5,PAL.rust_l)
+    circle(610,160,5,PAL.rust_l)
+    $ctx.fillStyle=PAL.dark
+    circle(580,155,2,PAL.dark)
+    circle(610,160,2,PAL.dark)
+  }
 
   // ─── OFFERING SPOTS (lit only) ───
   if(lit){
