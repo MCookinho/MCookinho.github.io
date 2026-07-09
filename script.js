@@ -439,7 +439,7 @@
   var ndRankSub = document.getElementById('ndRankSub')
   function updateRankBadge() {
     var hs = localStorage.getItem('tetrisHighScore')
-    ndRankSub.textContent = 'TETRIS: ' + (hs || '0') + ' / FILMES / JOGOS / SÉRIES / MÚSICAS'
+    ndRankSub.textContent = 'Rankings baseados na minha opinião'
   }
   window.__updateRankBadge = updateRankBadge
   updateRankBadge()
