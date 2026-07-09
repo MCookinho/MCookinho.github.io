@@ -3,28 +3,28 @@
     "name": "A Day in the Life",
     "artist": "The Beatles",
     "spotify": "https://open.spotify.com/search/A%20Day%20in%20the%20Life",
-    "rating": 5.0
+    "rating": 4.3
   },
 
   {
     "name": "Aerials",
     "artist": "System of a Down",
     "spotify": "https://open.spotify.com/search/Aerials%20System%20of%20a%20Down",
-    "rating": 4.8
+    "rating": 4.9
   },
 
   {
     "name": "Africa",
     "artist": "Toto",
     "spotify": "https://open.spotify.com/search/Africa",
-    "rating": 3.9
+    "rating": 3.5
   },
 
   {
     "name": "After Dark",
     "artist": "R.E.M.",
     "spotify": "https://open.spotify.com/search/After%20Dark",
-    "rating": 4.5
+    "rating": 4.0
   },
 
   {
@@ -38,42 +38,42 @@
     "name": "All Along the Watchtower",
     "artist": "Jimi Hendrix",
     "spotify": "https://open.spotify.com/search/All%20Along%20the%20Watchtower",
-    "rating": 5.0
+    "rating": 4.3
   },
 
   {
     "name": "All Star",
     "artist": "The Police",
     "spotify": "https://open.spotify.com/search/All%20Star",
-    "rating": 4.5
+    "rating": 4.0
   },
 
   {
     "name": "American Idiot",
     "artist": "Amy Winehouse",
     "spotify": "https://open.spotify.com/search/American%20Idiot",
-    "rating": 3.2
+    "rating": 3.5
   },
 
   {
     "name": "Another Brick In The Wall",
     "artist": "Tracy Chapman",
     "spotify": "https://open.spotify.com/search/Another%20Brick%20In%20The%20Wall",
-    "rating": 3.8
+    "rating": 3.5
   },
 
   {
     "name": "Apocalypse",
     "artist": "The Clash",
     "spotify": "https://open.spotify.com/search/Apocalypse",
-    "rating": 5.0
+    "rating": 4.0
   },
 
   {
     "name": "Around the World",
     "artist": "Daft Punk",
     "spotify": "https://open.spotify.com/search/Around%20the%20World",
-    "rating": 4.0
+    "rating": 3.0
   },
 
   {
@@ -87,63 +87,63 @@
     "name": "B.Y.O.B.",
     "artist": "System of a Down",
     "spotify": "https://open.spotify.com/search/BYOB%20System%20of%20a%20Down",
-    "rating": 4.8
+    "rating": 4.9
   },
 
   {
     "name": "Back in Black",
     "artist": "AC/DC",
     "spotify": "https://open.spotify.com/search/Back%20in%20Black",
-    "rating": 4.0
+    "rating": 4.5
   },
 
   {
     "name": "Bad Guy",
     "artist": "Led Zeppelin",
     "spotify": "https://open.spotify.com/search/Bad%20Guy",
-    "rating": 5.0
+    "rating": 4.5
   },
 
   {
     "name": "Basket Case",
     "artist": "Bruno Mars",
     "spotify": "https://open.spotify.com/search/Basket%20Case",
-    "rating": 4.0
+    "rating": 3.5
   },
 
   {
     "name": "Before I Forget",
     "artist": "Slipknot",
     "spotify": "https://open.spotify.com/search/Before%20I%20Forget%20Slipknot",
-    "rating": 4.7
+    "rating": 4.8
   },
 
   {
     "name": "Believer",
     "artist": "Lorde",
     "spotify": "https://open.spotify.com/search/Believer",
-    "rating": 4.0
+    "rating": 3.5
   },
 
   {
     "name": "Billie Jean",
     "artist": "Michael Jackson",
     "spotify": "https://open.spotify.com/search/Billie%20Jean",
-    "rating": 3.0
+    "rating": 3.5
   },
 
   {
     "name": "Black Hole Sun",
     "artist": "Green Day",
     "spotify": "https://open.spotify.com/search/Black%20Hole%20Sun",
-    "rating": 5.0
+    "rating": 4.5
   },
 
   {
     "name": "Blinding Lights",
     "artist": "Miles Davis",
     "spotify": "https://open.spotify.com/search/Blinding%20Lights",
-    "rating": 3.1
+    "rating": 2.5
   },
 
   {
@@ -157,35 +157,35 @@
     "name": "Born To Run",
     "artist": "Ray Charles",
     "spotify": "https://open.spotify.com/search/Born%20To%20Run",
-    "rating": 4.0
+    "rating": 3.5
   },
 
   {
     "name": "Breaking the Habit",
     "artist": "Linkin Park",
     "spotify": "https://open.spotify.com/search/Breaking%20the%20Habit%20Linkin%20Park",
-    "rating": 4.9
+    "rating": 5.0
   },
 
   {
     "name": "Breezeblocks",
     "artist": "Guns N' Roses",
     "spotify": "https://open.spotify.com/search/Breezeblocks",
-    "rating": 5.0
+    "rating": 4.5
   },
 
   {
     "name": "Bulletproof",
     "artist": "Red Hot Chili Peppers",
     "spotify": "https://open.spotify.com/search/Bulletproof",
-    "rating": 5.0
+    "rating": 4.5
   },
 
   {
     "name": "Californication",
     "artist": "Red Hot Chili Peppers",
     "spotify": "https://open.spotify.com/search/Californication",
-    "rating": 4.0
+    "rating": 4.5
   },
 
   {
@@ -199,28 +199,28 @@
     "name": "Carry On My Wayward Son",
     "artist": "Iron Maiden",
     "spotify": "https://open.spotify.com/search/Carry%20On%20My%20Wayward%20Son",
-    "rating": 5.0
+    "rating": 4.5
   },
 
   {
     "name": "Centuries",
     "artist": "Red Hot Chili Peppers",
     "spotify": "https://open.spotify.com/search/Centuries",
-    "rating": 5.0
+    "rating": 4.5
   },
 
   {
     "name": "Changes",
     "artist": "The Doors",
     "spotify": "https://open.spotify.com/search/Changes",
-    "rating": 5.0
+    "rating": 4.0
   },
 
   {
     "name": "Chop Suey",
     "artist": "Billie Eilish",
     "spotify": "https://open.spotify.com/search/Chop%20Suey",
-    "rating": 4.0
+    "rating": 3.5
   },
 
   {
@@ -234,147 +234,147 @@
     "name": "Clocks",
     "artist": "Fleetwood Mac",
     "spotify": "https://open.spotify.com/search/Clocks",
-    "rating": 5.0
+    "rating": 4.0
   },
 
   {
     "name": "Come As You Are",
     "artist": "Nirvana",
     "spotify": "https://open.spotify.com/search/Come%20As%20You%20Are",
-    "rating": 5.0
+    "rating": 4.5
   },
 
   {
     "name": "Come Together",
     "artist": "Eagles",
     "spotify": "https://open.spotify.com/search/Come%20Together",
-    "rating": 4.0
+    "rating": 3.5
   },
 
   {
     "name": "Comfortably Numb",
     "artist": "Pink Floyd",
     "spotify": "https://open.spotify.com/search/Comfortably%20Numb",
-    "rating": 4.0
+    "rating": 4.3
   },
 
   {
     "name": "Crawl Outta Love",
     "artist": "Nina Simone",
     "spotify": "https://open.spotify.com/search/Crawl%20Outta%20Love",
-    "rating": 4.0
+    "rating": 2.5
   },
 
   {
     "name": "Crawling",
     "artist": "Madonna",
     "spotify": "https://open.spotify.com/search/Crawling",
-    "rating": 4.0
+    "rating": 3.5
   },
 
   {
     "name": "Crawling",
     "artist": "Linkin Park",
     "spotify": "https://open.spotify.com/search/Crawling%20Linkin%20Park",
-    "rating": 4.9
+    "rating": 5.0
   },
 
   {
     "name": "Crazy Train",
     "artist": "Bob Marley",
     "spotify": "https://open.spotify.com/search/Crazy%20Train",
-    "rating": 3.2
+    "rating": 3.0
   },
 
   {
     "name": "Creep",
     "artist": "Radiohead",
     "spotify": "https://open.spotify.com/search/Creep",
-    "rating": 5.0
+    "rating": 4.3
   },
 
   {
     "name": "Dance Monkey",
     "artist": "The Police",
     "spotify": "https://open.spotify.com/search/Dance%20Monkey",
-    "rating": 5.0
+    "rating": 4.0
   },
 
   {
     "name": "Dancing Queen",
     "artist": "Daft Punk",
     "spotify": "https://open.spotify.com/search/Dancing%20Queen",
-    "rating": 4.0
+    "rating": 3.0
   },
 
   {
     "name": "Dare",
     "artist": "Tracy Chapman",
     "spotify": "https://open.spotify.com/search/Dare",
-    "rating": 3.6
+    "rating": 3.5
   },
 
   {
     "name": "Dazed And Confused",
     "artist": "Radiohead",
     "spotify": "https://open.spotify.com/search/Dazed%20And%20Confused",
-    "rating": 5.0
+    "rating": 4.3
   },
 
   {
     "name": "Demons",
     "artist": "Yeah Yeah Yeahs",
     "spotify": "https://open.spotify.com/search/Demons",
-    "rating": 4.5
+    "rating": 4.0
   },
 
   {
     "name": "Do I Wanna Know",
     "artist": "Led Zeppelin",
     "spotify": "https://open.spotify.com/search/Do%20I%20Wanna%20Know",
-    "rating": 4.0
+    "rating": 4.5
   },
 
   {
     "name": "Dogs",
     "artist": "Santana",
     "spotify": "https://open.spotify.com/search/Dogs",
-    "rating": 5.0
+    "rating": 4.0
   },
 
   {
     "name": "Don'T Look Back In Anger",
     "artist": "Nina Simone",
     "spotify": "https://open.spotify.com/search/Don'T%20Look%20Back%20In%20Anger",
-    "rating": 4.0
+    "rating": 2.5
   },
 
   {
     "name": "Dont Stop Believin",
     "artist": "Journey",
     "spotify": "https://open.spotify.com/search/Dont%20Stop%20Believin",
-    "rating": 3.5
+    "rating": 4.0
   },
 
   {
     "name": "Dragula",
     "artist": "Oasis",
     "spotify": "https://open.spotify.com/search/Dragula",
-    "rating": 5.0
+    "rating": 4.3
   },
 
   {
     "name": "Dream On",
     "artist": "Aerosmith",
     "spotify": "https://open.spotify.com/search/Dream%20On",
-    "rating": 3.5
+    "rating": 4.3
   },
 
   {
     "name": "Du Hast",
     "artist": "Outkast",
     "spotify": "https://open.spotify.com/search/Du%20Hast",
-    "rating": 3.6
+    "rating": 3.0
   },
 
   {
@@ -388,14 +388,14 @@
     "name": "Easy On Me",
     "artist": "Michael Jackson",
     "spotify": "https://open.spotify.com/search/Easy%20On%20Me",
-    "rating": 3.9
+    "rating": 3.5
   },
 
   {
     "name": "Echoes",
     "artist": "Jay-Z",
     "spotify": "https://open.spotify.com/search/Echoes",
-    "rating": 3.2
+    "rating": 3.0
   },
 
   {
@@ -409,21 +409,21 @@
     "name": "Electric Feel",
     "artist": "ZZ Top",
     "spotify": "https://open.spotify.com/search/Electric%20Feel",
-    "rating": 5.0
+    "rating": 4.0
   },
 
   {
     "name": "Enter Sandman",
     "artist": "Metallica",
     "spotify": "https://open.spotify.com/search/Enter%20Sandman",
-    "rating": 3.5
+    "rating": 4.5
   },
 
   {
     "name": "Eu Te Amo pra Caralho",
     "artist": "Yung Lixo",
     "spotify": "https://open.spotify.com/search/Eu%20Te%20Amo%20pra%20Caralho%20Yung%20Lixo",
-    "rating": 4.5
+    "rating": 4.7
   },
 
   {
@@ -437,63 +437,63 @@
     "name": "Everlong",
     "artist": "Miles Davis",
     "spotify": "https://open.spotify.com/search/Everlong",
-    "rating": 3.9
+    "rating": 2.5
   },
 
   {
     "name": "Every Breath You Take",
     "artist": "The Police",
     "spotify": "https://open.spotify.com/search/Every%20Breath%20You%20Take",
-    "rating": 5.0
+    "rating": 4.0
   },
 
   {
     "name": "Everybody Wants To Rule The World",
     "artist": "Guns N' Roses",
     "spotify": "https://open.spotify.com/search/Everybody%20Wants%20To%20Rule%20The%20World",
-    "rating": 4.0
+    "rating": 4.5
   },
 
   {
     "name": "Eye of the Tiger",
     "artist": "Survivor",
     "spotify": "https://open.spotify.com/search/Eye%20of%20the%20Tiger",
-    "rating": 5.0
+    "rating": 3.8
   },
 
   {
     "name": "Fade",
     "artist": "Eagles",
     "spotify": "https://open.spotify.com/search/Fade",
-    "rating": 4.0
+    "rating": 3.5
   },
 
   {
     "name": "Fade To Black",
     "artist": "Green Day",
     "spotify": "https://open.spotify.com/search/Fade%20To%20Black",
-    "rating": 5.0
+    "rating": 4.5
   },
 
   {
     "name": "Faded",
     "artist": "Sia",
     "spotify": "https://open.spotify.com/search/Faded",
-    "rating": 3.1
+    "rating": 3.0
   },
 
   {
     "name": "Faint",
     "artist": "Linkin Park",
     "spotify": "https://open.spotify.com/search/Faint%20Linkin%20Park",
-    "rating": 4.8
+    "rating": 5.0
   },
 
   {
     "name": "Fake It",
     "artist": "Van Halen",
     "spotify": "https://open.spotify.com/search/Fake%20It",
-    "rating": 4.5
+    "rating": 4.3
   },
 
   {
@@ -507,42 +507,42 @@
     "name": "Fear Of The Dark",
     "artist": "Kendrick Lamar",
     "spotify": "https://open.spotify.com/search/Fear%20Of%20The%20Dark",
-    "rating": 3.7
+    "rating": 3.0
   },
 
   {
     "name": "Feel Good Inc.",
     "artist": "Gorillaz",
     "spotify": "https://open.spotify.com/search/Feel%20Good%20Inc.",
-    "rating": 3.3
+    "rating": 3.5
   },
 
   {
     "name": "First",
     "artist": "Tyler the Creator",
     "spotify": "https://open.spotify.com/search/First",
-    "rating": 4.0
+    "rating": 3.0
   },
 
   {
     "name": "For Whom The Bell Tolls",
     "artist": "Frank Sinatra",
     "spotify": "https://open.spotify.com/search/For%20Whom%20The%20Bell%20Tolls",
-    "rating": 4.0
+    "rating": 3.0
   },
 
   {
     "name": "Freak On A Leash",
     "artist": "Johnny Cash",
     "spotify": "https://open.spotify.com/search/Freak%20On%20A%20Leash",
-    "rating": 4.0
+    "rating": 3.8
   },
 
   {
     "name": "Freaks",
     "artist": "Michael Jackson",
     "spotify": "https://open.spotify.com/search/Freaks",
-    "rating": 4.0
+    "rating": 3.5
   },
 
   {
@@ -556,35 +556,35 @@
     "name": "Genesis",
     "artist": "Frank Sinatra",
     "spotify": "https://open.spotify.com/search/Genesis",
-    "rating": 4.0
+    "rating": 3.0
   },
 
   {
     "name": "Get Lucky",
     "artist": "Daft Punk",
     "spotify": "https://open.spotify.com/search/Get%20Lucky",
-    "rating": 4.0
+    "rating": 3.0
   },
 
   {
     "name": "Ghost",
     "artist": "Iron Maiden",
     "spotify": "https://open.spotify.com/search/Ghost",
-    "rating": 5.0
+    "rating": 4.5
   },
 
   {
     "name": "Gimme Shelter",
     "artist": "The Rolling Stones",
     "spotify": "https://open.spotify.com/search/Gimme%20Shelter",
-    "rating": 5.0
+    "rating": 4.3
   },
 
   {
     "name": "Girls Like You",
     "artist": "Sam Cooke",
     "spotify": "https://open.spotify.com/search/Girls%20Like%20You",
-    "rating": 4.0
+    "rating": 3.5
   },
 
   {
@@ -598,105 +598,105 @@
     "name": "Glory",
     "artist": "Tyler the Creator",
     "spotify": "https://open.spotify.com/search/Glory",
-    "rating": 4.0
+    "rating": 3.0
   },
 
   {
     "name": "God'S Plan",
     "artist": "Eagles",
     "spotify": "https://open.spotify.com/search/God'S%20Plan",
-    "rating": 3.7
+    "rating": 3.5
   },
 
   {
     "name": "Going Bad",
     "artist": "Prince",
     "spotify": "https://open.spotify.com/search/Going%20Bad",
-    "rating": 5.0
+    "rating": 3.8
   },
 
   {
     "name": "Gold",
     "artist": "Simon & Garfunkel",
     "spotify": "https://open.spotify.com/search/Gold",
-    "rating": 4.0
+    "rating": 3.5
   },
 
   {
     "name": "Gone Gone Gone",
     "artist": "David Bowie",
     "spotify": "https://open.spotify.com/search/Gone%20Gone%20Gone",
-    "rating": 5.0
+    "rating": 4.3
   },
 
   {
     "name": "Good 4 U",
     "artist": "Tom Petty",
     "spotify": "https://open.spotify.com/search/Good%204%20U",
-    "rating": 5.0
+    "rating": 4.0
   },
 
   {
     "name": "Gostava Tanto de Você",
     "artist": "Tim Maia",
     "spotify": "https://open.spotify.com/search/Gostava%20Tanto%20de%20Você%20Tim%20Maia",
-    "rating": 4.5
+    "rating": 4.6
   },
 
   {
     "name": "Grace",
     "artist": "Miles Davis",
     "spotify": "https://open.spotify.com/search/Grace",
-    "rating": 4.0
+    "rating": 2.5
   },
 
   {
     "name": "Grand",
     "artist": "Eminem",
     "spotify": "https://open.spotify.com/search/Grand",
-    "rating": 3.1
+    "rating": 3.0
   },
 
   {
     "name": "Great",
     "artist": "The Beatles",
     "spotify": "https://open.spotify.com/search/Great",
-    "rating": 5.0
+    "rating": 4.3
   },
 
   {
     "name": "Green Light",
     "artist": "The Smiths",
     "spotify": "https://open.spotify.com/search/Green%20Light",
-    "rating": 5.0
+    "rating": 4.0
   },
 
   {
     "name": "Grind",
     "artist": "Amy Winehouse",
     "spotify": "https://open.spotify.com/search/Grind",
-    "rating": 3.2
+    "rating": 3.5
   },
 
   {
     "name": "Ground",
     "artist": "Jay-Z",
     "spotify": "https://open.spotify.com/search/Ground",
-    "rating": 4.0
+    "rating": 3.0
   },
 
   {
     "name": "Grown",
     "artist": "Stevie Wonder",
     "spotify": "https://open.spotify.com/search/Grown",
-    "rating": 4.0
+    "rating": 3.5
   },
 
   {
     "name": "Guard",
     "artist": "Daft Punk",
     "spotify": "https://open.spotify.com/search/Guard",
-    "rating": 4.0
+    "rating": 3.0
   },
 
   {
@@ -710,266 +710,266 @@
     "name": "Hail To The King",
     "artist": "Bon Jovi",
     "spotify": "https://open.spotify.com/search/Hail%20To%20The%20King",
-    "rating": 5.0
+    "rating": 4.3
   },
 
   {
     "name": "Hallelujah",
     "artist": "Jeff Buckley",
     "spotify": "https://open.spotify.com/search/Hallelujah",
-    "rating": 4.0
+    "rating": 3.5
   },
 
   {
     "name": "Happier Than Ever",
     "artist": "The Doors",
     "spotify": "https://open.spotify.com/search/Happier%20Than%20Ever",
-    "rating": 3.5
+    "rating": 4.0
   },
 
   {
     "name": "Happy",
     "artist": "Tracy Chapman",
     "spotify": "https://open.spotify.com/search/Happy",
-    "rating": 4.0
+    "rating": 3.5
   },
 
   {
     "name": "Harder Better Faster Stronger",
     "artist": "Bon Jovi",
     "spotify": "https://open.spotify.com/search/Harder%20Better%20Faster%20Stronger",
-    "rating": 5.0
+    "rating": 4.3
   },
 
   {
     "name": "Havana",
     "artist": "Sam Cooke",
     "spotify": "https://open.spotify.com/search/Havana",
-    "rating": 4.0
+    "rating": 3.5
   },
 
   {
     "name": "Headlikeahole",
     "artist": "Elvis Presley",
     "spotify": "https://open.spotify.com/search/Headlikeahole",
-    "rating": 4.0
+    "rating": 3.8
   },
 
   {
     "name": "Hear Me Now",
     "artist": "Eminem",
     "spotify": "https://open.spotify.com/search/Hear%20Me%20Now",
-    "rating": 4.0
+    "rating": 3.0
   },
 
   {
     "name": "Heart Of Gold",
     "artist": "Whitney Houston",
     "spotify": "https://open.spotify.com/search/Heart%20Of%20Gold",
-    "rating": 3.9
+    "rating": 3.5
   },
 
   {
     "name": "Heartless",
     "artist": "Billie Eilish",
     "spotify": "https://open.spotify.com/search/Heartless",
-    "rating": 4.0
+    "rating": 3.5
   },
 
   {
     "name": "Heathens",
     "artist": "Whitney Houston",
     "spotify": "https://open.spotify.com/search/Heathens",
-    "rating": 3.9
+    "rating": 3.5
   },
 
   {
     "name": "Heavy",
     "artist": "Van Halen",
     "spotify": "https://open.spotify.com/search/Heavy",
-    "rating": 4.5
+    "rating": 4.3
   },
 
   {
     "name": "Hello",
     "artist": "Adele",
     "spotify": "https://open.spotify.com/search/Hello",
-    "rating": 3.6
+    "rating": 3.5
   },
 
   {
     "name": "Help",
     "artist": "ZZ Top",
     "spotify": "https://open.spotify.com/search/Help",
-    "rating": 4.5
+    "rating": 4.0
   },
 
   {
     "name": "Here Comes The Sun",
     "artist": "Radiohead",
     "spotify": "https://open.spotify.com/search/Here%20Comes%20The%20Sun",
-    "rating": 4.5
+    "rating": 4.3
   },
 
   {
     "name": "Heroes",
     "artist": "The Police",
     "spotify": "https://open.spotify.com/search/Heroes",
-    "rating": 5.0
+    "rating": 4.0
   },
 
   {
     "name": "Hey Jude",
     "artist": "AC/DC",
     "spotify": "https://open.spotify.com/search/Hey%20Jude",
-    "rating": 5.0
+    "rating": 4.5
   },
 
   {
     "name": "Highway To Hell",
     "artist": "Green Day",
     "spotify": "https://open.spotify.com/search/Highway%20To%20Hell",
-    "rating": 5.0
+    "rating": 4.5
   },
 
   {
     "name": "Hits Different",
     "artist": "Nina Simone",
     "spotify": "https://open.spotify.com/search/Hits%20Different",
-    "rating": 4.0
+    "rating": 2.5
   },
 
   {
     "name": "Hold The Line",
     "artist": "Daft Punk",
     "spotify": "https://open.spotify.com/search/Hold%20The%20Line",
-    "rating": 3.4
+    "rating": 3.0
   },
 
   {
     "name": "Home",
     "artist": "Outkast",
     "spotify": "https://open.spotify.com/search/Home",
-    "rating": 4.0
+    "rating": 3.0
   },
 
   {
     "name": "Hometown",
     "artist": "Green Day",
     "spotify": "https://open.spotify.com/search/Hometown",
-    "rating": 5.0
+    "rating": 4.5
   },
 
   {
     "name": "Honey",
     "artist": "Nina Simone",
     "spotify": "https://open.spotify.com/search/Honey",
-    "rating": 4.0
+    "rating": 2.5
   },
 
   {
     "name": "Hooked On A Feeling",
     "artist": "Billie Eilish",
     "spotify": "https://open.spotify.com/search/Hooked%20On%20A%20Feeling",
-    "rating": 3.9
+    "rating": 3.5
   },
 
   {
     "name": "Hope",
     "artist": "Van Halen",
     "spotify": "https://open.spotify.com/search/Hope",
-    "rating": 5.0
+    "rating": 4.3
   },
 
   {
     "name": "Horse With No Name",
     "artist": "Bob Marley",
     "spotify": "https://open.spotify.com/search/Horse%20With%20No%20Name",
-    "rating": 3.2
+    "rating": 3.0
   },
 
   {
     "name": "Hot",
     "artist": "R.E.M.",
     "spotify": "https://open.spotify.com/search/Hot",
-    "rating": 4.5
+    "rating": 4.0
   },
 
   {
     "name": "Hotel California",
     "artist": "Eagles",
     "spotify": "https://open.spotify.com/search/Hotel%20California",
-    "rating": 4.0
+    "rating": 3.5
   },
 
   {
     "name": "House Of The Rising Sun",
     "artist": "Bon Jovi",
     "spotify": "https://open.spotify.com/search/House%20Of%20The%20Rising%20Sun",
-    "rating": 5.0
+    "rating": 4.3
   },
 
   {
     "name": "How Deep Is Your Love",
     "artist": "Maroon 5",
     "spotify": "https://open.spotify.com/search/How%20Deep%20Is%20Your%20Love",
-    "rating": 4.0
+    "rating": 3.5
   },
 
   {
     "name": "How To Save A Life",
     "artist": "Kendrick Lamar",
     "spotify": "https://open.spotify.com/search/How%20To%20Save%20A%20Life",
-    "rating": 4.0
+    "rating": 3.0
   },
 
   {
     "name": "Human",
     "artist": "Green Day",
     "spotify": "https://open.spotify.com/search/Human",
-    "rating": 5.0
+    "rating": 4.5
   },
 
   {
     "name": "Human Nature",
     "artist": "Lorde",
     "spotify": "https://open.spotify.com/search/Human%20Nature",
-    "rating": 4.0
+    "rating": 3.5
   },
 
   {
     "name": "Hungry Like The Wolf",
     "artist": "The Beatles",
     "spotify": "https://open.spotify.com/search/Hungry%20Like%20The%20Wolf",
-    "rating": 4.5
+    "rating": 4.3
   },
 
   {
     "name": "Hurricane",
     "artist": "Simon & Garfunkel",
     "spotify": "https://open.spotify.com/search/Hurricane",
-    "rating": 4.0
+    "rating": 3.5
   },
 
   {
     "name": "Hurt",
     "artist": "Johnny Cash",
     "spotify": "https://open.spotify.com/search/Hurt",
-    "rating": 5.0
+    "rating": 3.8
   },
 
   {
     "name": "Hurt So Good",
     "artist": "Tracy Chapman",
     "spotify": "https://open.spotify.com/search/Hurt%20So%20Good",
-    "rating": 4.0
+    "rating": 3.5
   },
 
   {
     "name": "Hyperballad",
     "artist": "Elvis Presley",
     "spotify": "https://open.spotify.com/search/Hyperballad",
-    "rating": 5.0
+    "rating": 3.8
   },
 
   {
@@ -983,14 +983,14 @@
     "name": "I Cant Help Falling In Love",
     "artist": "Eagles",
     "spotify": "https://open.spotify.com/search/I%20Cant%20Help%20Falling%20In%20Love",
-    "rating": 4.0
+    "rating": 3.5
   },
 
   {
     "name": "I Feel Good",
     "artist": "Johnny Cash",
     "spotify": "https://open.spotify.com/search/I%20Feel%20Good",
-    "rating": 5.0
+    "rating": 3.8
   },
 
   {
@@ -1004,42 +1004,42 @@
     "name": "I Kissed A Girl",
     "artist": "Metallica",
     "spotify": "https://open.spotify.com/search/I%20Kissed%20A%20Girl",
-    "rating": 5.0
+    "rating": 4.5
   },
 
   {
     "name": "I Love Rock N Roll",
     "artist": "The Doors",
     "spotify": "https://open.spotify.com/search/I%20Love%20Rock%20N%20Roll",
-    "rating": 5.0
+    "rating": 4.0
   },
 
   {
     "name": "I Miss You",
     "artist": "Tracy Chapman",
     "spotify": "https://open.spotify.com/search/I%20Miss%20You",
-    "rating": 3.4
+    "rating": 3.5
   },
 
   {
     "name": "I Wanna Dance With Somebody",
     "artist": "The Who",
     "spotify": "https://open.spotify.com/search/I%20Wanna%20Dance%20With%20Somebody",
-    "rating": 5.0
+    "rating": 4.3
   },
 
   {
     "name": "I Want It That Way",
     "artist": "Aretha Franklin",
     "spotify": "https://open.spotify.com/search/I%20Want%20It%20That%20Way",
-    "rating": 3.3
+    "rating": 3.0
   },
 
   {
     "name": "I Will Always Love You",
     "artist": "Led Zeppelin",
     "spotify": "https://open.spotify.com/search/I%20Will%20Always%20Love%20You",
-    "rating": 5.0
+    "rating": 4.5
   },
 
   {
@@ -1053,28 +1053,28 @@
     "name": "I Write Sins Not Tragedies",
     "artist": "U2",
     "spotify": "https://open.spotify.com/search/I%20Write%20Sins%20Not%20Tragedies",
-    "rating": 3.5
+    "rating": 4.0
   },
 
   {
     "name": "Ice Ice Baby",
     "artist": "U2",
     "spotify": "https://open.spotify.com/search/Ice%20Ice%20Baby",
-    "rating": 4.5
+    "rating": 4.0
   },
 
   {
     "name": "Idol",
     "artist": "Prince",
     "spotify": "https://open.spotify.com/search/Idol",
-    "rating": 4.0
+    "rating": 3.8
   },
 
   {
     "name": "If I Aint Got You",
     "artist": "Red Hot Chili Peppers",
     "spotify": "https://open.spotify.com/search/If%20I%20Aint%20Got%20You",
-    "rating": 5.0
+    "rating": 4.5
   },
 
   {
@@ -1088,49 +1088,49 @@
     "name": "If I Lose Myself",
     "artist": "ZZ Top",
     "spotify": "https://open.spotify.com/search/If%20I%20Lose%20Myself",
-    "rating": 3.5
+    "rating": 4.0
   },
 
   {
     "name": "Im Yours",
     "artist": "Tyler the Creator",
     "spotify": "https://open.spotify.com/search/Im%20Yours",
-    "rating": 3.1
+    "rating": 3.0
   },
 
   {
     "name": "Imagine",
     "artist": "John Lennon",
     "spotify": "https://open.spotify.com/search/Imagine",
-    "rating": 4.5
+    "rating": 3.8
   },
 
   {
     "name": "Immigrant Song",
     "artist": "Madonna",
     "spotify": "https://open.spotify.com/search/Immigrant%20Song",
-    "rating": 4.0
+    "rating": 3.5
   },
 
   {
     "name": "In My Life",
     "artist": "Oasis",
     "spotify": "https://open.spotify.com/search/In%20My%20Life",
-    "rating": 5.0
+    "rating": 4.3
   },
 
   {
     "name": "In My Veins",
     "artist": "Eagles",
     "spotify": "https://open.spotify.com/search/In%20My%20Veins",
-    "rating": 3.3
+    "rating": 3.5
   },
 
   {
     "name": "In The Air Tonight",
     "artist": "Tyler the Creator",
     "spotify": "https://open.spotify.com/search/In%20The%20Air%20Tonight",
-    "rating": 3.5
+    "rating": 3.0
   },
 
   {
@@ -1144,77 +1144,77 @@
     "name": "In The Name Of Love",
     "artist": "Prince",
     "spotify": "https://open.spotify.com/search/In%20The%20Name%20Of%20Love",
-    "rating": 4.5
+    "rating": 3.8
   },
 
   {
     "name": "In Your Eyes",
     "artist": "Miles Davis",
     "spotify": "https://open.spotify.com/search/In%20Your%20Eyes",
-    "rating": 3.4
+    "rating": 2.5
   },
 
   {
     "name": "Independent Women",
     "artist": "The Smiths",
     "spotify": "https://open.spotify.com/search/Independent%20Women",
-    "rating": 4.5
+    "rating": 4.0
   },
 
   {
     "name": "Informer",
     "artist": "Eagles",
     "spotify": "https://open.spotify.com/search/Informer",
-    "rating": 3.4
+    "rating": 3.5
   },
 
   {
     "name": "Into The Groove",
     "artist": "Tom Petty",
     "spotify": "https://open.spotify.com/search/Into%20The%20Groove",
-    "rating": 5.0
+    "rating": 4.0
   },
 
   {
     "name": "Iris",
     "artist": "The Doors",
     "spotify": "https://open.spotify.com/search/Iris",
-    "rating": 4.5
+    "rating": 4.0
   },
 
   {
     "name": "Iron Man",
     "artist": "Black Sabbath",
     "spotify": "https://open.spotify.com/search/Iron%20Man",
-    "rating": 4.0
+    "rating": 4.5
   },
 
   {
     "name": "Irreplaceable",
     "artist": "The Rolling Stones",
     "spotify": "https://open.spotify.com/search/Irreplaceable",
-    "rating": 5.0
+    "rating": 4.3
   },
 
   {
     "name": "Is This Love",
     "artist": "Billie Eilish",
     "spotify": "https://open.spotify.com/search/Is%20This%20Love",
-    "rating": 3.9
+    "rating": 3.5
   },
 
   {
     "name": "Island In The Sun",
     "artist": "Tyler the Creator",
     "spotify": "https://open.spotify.com/search/Island%20In%20The%20Sun",
-    "rating": 3.6
+    "rating": 3.0
   },
 
   {
     "name": "It Was A Good Day",
     "artist": "Tom Petty",
     "spotify": "https://open.spotify.com/search/It%20Was%20A%20Good%20Day",
-    "rating": 3.5
+    "rating": 4.0
   },
 
   {
@@ -1235,84 +1235,84 @@
     "name": "Its Not Over",
     "artist": "Green Day",
     "spotify": "https://open.spotify.com/search/Its%20Not%20Over",
-    "rating": 5.0
+    "rating": 4.5
   },
 
   {
     "name": "Kashmir",
     "artist": "Led Zeppelin",
     "spotify": "https://open.spotify.com/search/Kashmir",
-    "rating": 3.5
+    "rating": 4.5
   },
 
   {
     "name": "Like a Rolling Stone",
     "artist": "Bob Dylan",
     "spotify": "https://open.spotify.com/search/Like%20a%20Rolling%20Stone",
-    "rating": 5.0
+    "rating": 3.8
   },
 
   {
     "name": "Livin on a Prayer",
     "artist": "Bon Jovi",
     "spotify": "https://open.spotify.com/search/Livin%20on%20a%20Prayer",
-    "rating": 4.5
+    "rating": 4.3
   },
 
   {
     "name": "Lonely Day",
     "artist": "System of a Down",
     "spotify": "https://open.spotify.com/search/Lonely%20Day%20System%20of%20a%20Down",
-    "rating": 4.6
+    "rating": 4.9
   },
 
   {
     "name": "Lose Yourself",
     "artist": "Eminem",
     "spotify": "https://open.spotify.com/search/Lose%20Yourself",
-    "rating": 3.9
+    "rating": 3.0
   },
 
   {
     "name": "Losing My Religion",
     "artist": "R.E.M.",
     "spotify": "https://open.spotify.com/search/Losing%20My%20Religion",
-    "rating": 5.0
+    "rating": 4.0
   },
 
   {
     "name": "Me Dê Motivo",
     "artist": "Tim Maia",
     "spotify": "https://open.spotify.com/search/Me%20Dê%20Motivo%20Tim%20Maia",
-    "rating": 4.5
+    "rating": 4.6
   },
 
   {
     "name": "Minha Vida é um Show",
     "artist": "Yung Lixo",
     "spotify": "https://open.spotify.com/search/Minha%20Vida%20é%20um%20Show%20Yung%20Lixo",
-    "rating": 4.4
+    "rating": 4.7
   },
 
   {
     "name": "Money",
     "artist": "Pink Floyd",
     "spotify": "https://open.spotify.com/search/Money",
-    "rating": 4.5
+    "rating": 4.3
   },
 
   {
     "name": "Mr. Brightside",
     "artist": "The Killers",
     "spotify": "https://open.spotify.com/search/Mr.%20Brightside",
-    "rating": 3.5
+    "rating": 4.0
   },
 
   {
     "name": "My Way",
     "artist": "Frank Sinatra",
     "spotify": "https://open.spotify.com/search/My%20Way",
-    "rating": 4.0
+    "rating": 3.0
   },
 
   {
@@ -1326,14 +1326,14 @@
     "name": "Nothing Else Matters",
     "artist": "Metallica",
     "spotify": "https://open.spotify.com/search/Nothing%20Else%20Matters",
-    "rating": 3.5
+    "rating": 4.5
   },
 
   {
     "name": "November Rain",
     "artist": "Guns N Roses",
     "spotify": "https://open.spotify.com/search/November%20Rain",
-    "rating": 4.0
+    "rating": 4.5
   },
 
   {
@@ -1347,49 +1347,49 @@
     "name": "Não Quero Dinheiro",
     "artist": "Tim Maia",
     "spotify": "https://open.spotify.com/search/Não%20Quero%20Dinheiro%20Tim%20Maia",
-    "rating": 4.4
+    "rating": 4.6
   },
 
   {
     "name": "One",
     "artist": "U2",
     "spotify": "https://open.spotify.com/search/One",
-    "rating": 4.5
+    "rating": 4.0
   },
 
   {
     "name": "One Step Closer",
     "artist": "Linkin Park",
     "spotify": "https://open.spotify.com/search/One%20Step%20Closer%20Linkin%20Park",
-    "rating": 4.7
+    "rating": 5.0
   },
 
   {
     "name": "Paint It Black",
     "artist": "The Rolling Stones",
     "spotify": "https://open.spotify.com/search/Paint%20It%20Black",
-    "rating": 4.0
+    "rating": 4.3
   },
 
   {
     "name": "Paranoid Android",
     "artist": "Radiohead",
     "spotify": "https://open.spotify.com/search/Paranoid%20Android",
-    "rating": 4.0
+    "rating": 4.3
   },
 
   {
     "name": "Poeta do Lixo",
     "artist": "Yung Lixo",
     "spotify": "https://open.spotify.com/search/Poeta%20do%20Lixo%20Yung%20Lixo",
-    "rating": 4.6
+    "rating": 4.7
   },
 
   {
     "name": "Primavera",
     "artist": "Tim Maia",
     "spotify": "https://open.spotify.com/search/Primavera%20Tim%20Maia",
-    "rating": 4.4
+    "rating": 4.6
   },
 
   {
@@ -1403,161 +1403,161 @@
     "name": "Purple Haze",
     "artist": "Jimi Hendrix",
     "spotify": "https://open.spotify.com/search/Purple%20Haze",
-    "rating": 5.0
+    "rating": 4.3
   },
 
   {
     "name": "Radioactive",
     "artist": "Imagine Dragons",
     "spotify": "https://open.spotify.com/search/Radioactive",
-    "rating": 4.0
+    "rating": 3.5
   },
 
   {
     "name": "Rolling in the Deep",
     "artist": "Adele",
     "spotify": "https://open.spotify.com/search/Rolling%20in%20the%20Deep",
-    "rating": 3.8
+    "rating": 3.5
   },
 
   {
     "name": "Seven Nation Army",
     "artist": "The White Stripes",
     "spotify": "https://open.spotify.com/search/Seven%20Nation%20Army",
-    "rating": 5.0
+    "rating": 4.0
   },
 
   {
     "name": "Shape of You",
     "artist": "Ed Sheeran",
     "spotify": "https://open.spotify.com/search/Shape%20of%20You",
-    "rating": 4.0
+    "rating": 3.5
   },
 
   {
     "name": "Smells Like Teen Spirit",
     "artist": "Nirvana",
     "spotify": "https://open.spotify.com/search/Smells%20Like%20Teen%20Spirit",
-    "rating": 4.0
+    "rating": 4.5
   },
 
   {
     "name": "Smoke on the Water",
     "artist": "Deep Purple",
     "spotify": "https://open.spotify.com/search/Smoke%20on%20the%20Water",
-    "rating": 4.5
+    "rating": 4.3
   },
 
   {
     "name": "Snuff",
     "artist": "Slipknot",
     "spotify": "https://open.spotify.com/search/Snuff%20Slipknot",
-    "rating": 4.5
+    "rating": 4.8
   },
 
   {
     "name": "Somebody That I Used to Know",
     "artist": "Gotye",
     "spotify": "https://open.spotify.com/search/Somebody%20That%20I%20Used%20to%20Know",
-    "rating": 4.0
+    "rating": 3.5
   },
 
   {
     "name": "Somewhere I Belong",
     "artist": "Linkin Park",
     "spotify": "https://open.spotify.com/search/Somewhere%20I%20Belong%20Linkin%20Park",
-    "rating": 4.7
+    "rating": 5.0
   },
 
   {
     "name": "Spiders",
     "artist": "System of a Down",
     "spotify": "https://open.spotify.com/search/Spiders%20System%20of%20a%20Down",
-    "rating": 4.6
+    "rating": 4.9
   },
 
   {
     "name": "Stairway to Heaven",
     "artist": "Led Zeppelin",
     "spotify": "https://open.spotify.com/search/Stairway%20to%20Heaven",
-    "rating": 4.0
+    "rating": 4.5
   },
 
   {
     "name": "Stayin Alive",
     "artist": "Bee Gees",
     "spotify": "https://open.spotify.com/search/Stayin%20Alive",
-    "rating": 4.0
+    "rating": 3.5
   },
 
   {
     "name": "Sugar",
     "artist": "System of a Down",
     "spotify": "https://open.spotify.com/search/Sugar%20System%20of%20a%20Down",
-    "rating": 4.7
+    "rating": 4.9
   },
 
   {
     "name": "Superstition",
     "artist": "Stevie Wonder",
     "spotify": "https://open.spotify.com/search/Superstition",
-    "rating": 4.0
+    "rating": 3.5
   },
 
   {
     "name": "Sweet Child o Mine",
     "artist": "Guns N Roses",
     "spotify": "https://open.spotify.com/search/Sweet%20Child%20o%20Mine",
-    "rating": 4.0
+    "rating": 4.5
   },
 
   {
     "name": "Só Deus Pode Me Julgar",
     "artist": "Yung Lixo",
     "spotify": "https://open.spotify.com/search/Só%20Deus%20Pode%20Me%20Julgar%20Yung%20Lixo",
-    "rating": 4.6
+    "rating": 4.7
   },
 
   {
     "name": "Take Me Home, Country Roads",
     "artist": "John Denver",
     "spotify": "https://open.spotify.com/search/Take%20Me%20Home,%20Country%20Roads",
-    "rating": 3.1
+    "rating": 3.0
   },
 
   {
     "name": "Take On Me",
     "artist": "a-ha",
     "spotify": "https://open.spotify.com/search/Take%20On%20Me",
-    "rating": 4.0
+    "rating": 3.0
   },
 
   {
     "name": "The Devil in I",
     "artist": "Slipknot",
     "spotify": "https://open.spotify.com/search/The%20Devil%20in%20I%20Slipknot",
-    "rating": 4.7
+    "rating": 4.8
   },
 
   {
     "name": "The Sound of Silence",
     "artist": "Simon & Garfunkel",
     "spotify": "https://open.spotify.com/search/The%20Sound%20of%20Silence",
-    "rating": 4.0
+    "rating": 3.5
   },
 
   {
     "name": "Thriller",
     "artist": "Michael Jackson",
     "spotify": "https://open.spotify.com/search/Thriller",
-    "rating": 3.4
+    "rating": 3.5
   },
 
   {
     "name": "Time",
     "artist": "Pink Floyd",
     "spotify": "https://open.spotify.com/search/Time",
-    "rating": 4.5
+    "rating": 4.3
   },
 
   {
@@ -1571,14 +1571,14 @@
     "name": "Under Pressure",
     "artist": "Queen",
     "spotify": "https://open.spotify.com/search/Under%20Pressure",
-    "rating": 5.0
+    "rating": 4.5
   },
 
   {
     "name": "Unsainted",
     "artist": "Slipknot",
     "spotify": "https://open.spotify.com/search/Unsainted%20Slipknot",
-    "rating": 4.5
+    "rating": 4.8
   },
 
   {
@@ -1592,62 +1592,62 @@
     "name": "Você",
     "artist": "Tim Maia",
     "spotify": "https://open.spotify.com/search/Você%20Tim%20Maia",
-    "rating": 4.3
+    "rating": 4.6
   },
 
   {
     "name": "Vou pro Carnaval",
     "artist": "Yung Lixo",
     "spotify": "https://open.spotify.com/search/Vou%20pro%20Carnaval%20Yung%20Lixo",
-    "rating": 4.5
+    "rating": 4.7
   },
 
   {
     "name": "Wait and Bleed",
     "artist": "Slipknot",
     "spotify": "https://open.spotify.com/search/Wait%20and%20Bleed%20Slipknot",
-    "rating": 4.6
+    "rating": 4.8
   },
 
   {
     "name": "Walk This Way",
     "artist": "Aerosmith",
     "spotify": "https://open.spotify.com/search/Walk%20This%20Way",
-    "rating": 4.0
+    "rating": 4.3
   },
 
   {
     "name": "What I've Done",
     "artist": "Linkin Park",
     "spotify": "https://open.spotify.com/search/What%20I've%20Done%20Linkin%20Park",
-    "rating": 4.8
+    "rating": 5.0
   },
 
   {
     "name": "Wish You Were Here",
     "artist": "Pink Floyd",
     "spotify": "https://open.spotify.com/search/Wish%20You%20Were%20Here",
-    "rating": 4.0
+    "rating": 4.3
   },
 
   {
     "name": "Wonderwall",
     "artist": "Oasis",
     "spotify": "https://open.spotify.com/search/Wonderwall",
-    "rating": 4.5
+    "rating": 4.3
   },
 
   {
     "name": "Yesterday",
     "artist": "The Beatles",
     "spotify": "https://open.spotify.com/search/Yesterday",
-    "rating": 4.5
+    "rating": 4.3
   },
 
   {
     "name": "Zombie",
     "artist": "The Cranberries",
     "spotify": "https://open.spotify.com/search/Zombie",
-    "rating": 4.5
+    "rating": 4.0
   }
 ]
