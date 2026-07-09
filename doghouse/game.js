@@ -82,7 +82,7 @@ const HITBOXES = {
   west: {
     bancada:{x:70,y:275,w:580,h:100},
     gaveta:{x:220,y:295,w:180,h:65},
-    diario:{x:402,y:258,w:72,h:37},
+    diario:{x:402,y:238,w:72,h:37},
     corda_obj:{x:610,y:60,w:25,h:220}
   },
   ceiling: {
