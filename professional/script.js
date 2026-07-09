@@ -1037,6 +1037,7 @@
 
   function renderSectionList(sections) {
     var list = document.getElementById('configSectionList')
+    if (!list) return
     list.innerHTML = ''
     sections.forEach(function (sec, i) {
       var info = SECTION_IDS.find(function (s) { return s.id === sec.id })
