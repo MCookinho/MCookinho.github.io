@@ -105,8 +105,7 @@ jobs:
         run: |
           git config user.name "MCookinho"
           git config user.email "ContatoPeuBorges@proton.me"
-          git reset -- .github/
-          for p in README.md assets History; do [ -e "$p" ] && git add "$p"; done
+          for p in README.md assets History .github/workflows/clear-history.yml; do [ -e "$p" ] && git add "$p"; done
           if git diff --cached --quiet; then
             echo "No changes — README is up to date"
           else
