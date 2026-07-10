@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import json, glob, os
 
-BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data', 'rankings')
 
 def write_json(path, data):
     keys = list(data[0].keys()) if data else []

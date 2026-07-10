@@ -1,6 +1,6 @@
 import json, os, hashlib
 
-DIR = os.path.dirname(os.path.dirname(__file__))
+DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data', 'rankings')
 
 def save(name, data):
     path = os.path.join(DIR, name)

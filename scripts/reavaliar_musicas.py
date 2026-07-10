@@ -1,6 +1,6 @@
 import json, os
 
-DIR = os.path.dirname(os.path.dirname(__file__))
+DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data', 'rankings')
 
 def arred(r):
     return round(r * 2) / 2
