@@ -99,14 +99,14 @@ jobs:
             ].join('\n');
             fs.writeFileSync('.github/workflows/clear-history.yml', content);
           "
-          git add .github/workflows/clear-history.yml
 
       - name: Commit and push to profile repo
         working-directory: profile
         run: |
           git config user.name "MCookinho"
           git config user.email "ContatoPeuBorges@proton.me"
-          git add README.md assets/ History/ .github/
+          git reset -- .github/
+          git add README.md assets/ History/
           if git diff --cached --quiet; then
             echo "No changes — README is up to date"
           else
