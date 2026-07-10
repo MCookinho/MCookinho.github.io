@@ -27,6 +27,11 @@ function fmtDateReadable(d) {
   return `${pad(d.getDate())}/${pad(d.getMonth() + 1)}/${d.getFullYear()}`
 }
 
+function fmtDateSafe(d) {
+  const pad = (n) => String(n).padStart(2, '0')
+  return `${pad(d.getDate())}_${pad(d.getMonth() + 1)}_${d.getFullYear()}`
+}
+
 function getNextId() {
   let maxId = 0
   if (fs.existsSync(HISTORY_DIR)) {
@@ -75,7 +80,9 @@ function archiveCurrent(id, createdDate, oldReadme) {
 
   // Archive README
   if (oldReadme) {
-    const readmeName = `ARCHIVE(${id})   [${createdDate}] -> [${archivedStr}].md`
+    const safeCreated = createdDate.replaceAll('/', '_')
+    const safeArchived = archivedStr.replaceAll('/', '_')
+    const readmeName = `ARCHIVE(${id})   [${safeCreated}] -> [${safeArchived}].md`
     fs.writeFileSync(path.join(HISTORY_DIR, readmeName), oldReadme, 'utf-8')
     console.log(`[archive] README → ${readmeName}`)
   }
