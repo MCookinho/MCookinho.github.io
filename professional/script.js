@@ -680,7 +680,7 @@
     { id: 'csharp',     label: 'C#',            pct: 55 },
     { id: 'sql',        label: 'SQL',           pct: 70 },
     { id: 'mongodb',    label: 'MongoDB',       pct: 55 },
-    { id: 'aws',        label: 'AWS',           pct: 50 },
+    { id: 'aws',        label: 'AWS',           pct: 65 },
     { id: 'googlecloud',label: 'Google Cloud',  pct: 45 },
     { id: 'flstudio',   label: 'FL Studio',     pct: 60 },
     { id: 'unity',      label: 'Unity',         pct: 55 },

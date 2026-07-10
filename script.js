@@ -787,7 +787,7 @@
       NCURSES: { desc: 'Interfaces de terminal em C. Usei extensivamente no port do FNAF e em ferramentas interativas. Sei criar menus, animações e input handling.', pct: 65 },
       SQL: { desc: 'Consultas, modelagem de dados, joins, subqueries. Uso com PostgreSQL, SQLite e MySQL para análise de dados e back-end.', pct: 70 },
       MONGODB: { desc: 'Banco NoSQL orientado a documentos. Já usei com Node.js para armazenamento flexível e agregações.', pct: 55 },
-      AWS: { desc: 'Serviços cloud da Amazon: EC2, S3, Lambda, RDS. Experiência com deploy e infraestrutura básica.', pct: 50 },
+      AWS: { desc: 'Serviços cloud da Amazon: EC2, S3, Lambda, RDS. Experiência com deploy e infraestrutura básica.', pct: 65 },
       GOOGLECLOUD: { desc: 'Google Cloud Platform: Cloud Run, Firestore, Storage. Uso para deploy de aplicações serverless.', pct: 45 },
       FLSTUDIO: { desc: 'Produção musical, beatmaking, mixing e sound design. Uso para criar trilhas sonoras e efeitos sonoros para jogos.', pct: 60 },
       UNITY: { desc: 'Engine de jogos com C#. Já fiz protótipos 2D/3D, sistemas de física e UI. Conhecimento de prefabs, animação e cenas.', pct: 55 },
