@@ -267,8 +267,10 @@ No fun fact, no tags, no fluff.
 
 4️⃣ GITHUB STATS
 <div align="center">
-  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=${s.github}&theme=tokyonight&show_icons=true&count_private=true&include_all_commits=true"/>
-  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=${s.github}&theme=tokyonight&layout=compact&langs_count=8"/>
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=${s.github}&theme=tokyonight"/>
+  <br><br>
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=${s.github}&theme=tokyonight"/>
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=${s.github}&theme=tokyonight"/>
 </div>
 
 5️⃣ PROJECTS
@@ -315,7 +317,7 @@ VISUAL GUIDELINES:
 - Clean, modern, professional. Think "tech portfolio" aesthetic.
 - Use <div align="center"> for centered blocks, <p align="left"> for badge rows.
 - Shields.io badges: prefer "for-the-badge" style. Choose accurate brand colors.
-- Stats cards: ALWAYS use theme=tokyonight. Never change this.
+- Stats cards: ALWAYS use github-profile-summary-cards with theme=tokyonight. Never use github-readme-stats (broken service).
 - Emojis: use sparingly as section headers. Prefer: 🚀, 🧠, 🛠, 📊, 💼, 🎓, 🎮, 📫.
 - Horizontal rules (---) between major sections.
 - NO FUN FACT, NO TAGS in the README body. Omit completely.
