@@ -1,0 +1,60 @@
+name: Sync Profile README
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/profile.json'
+      - 'index.html'
+      - 'script.js'
+      - 'professional/script.js'
+      - 'scripts/generate-readme.js'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  generate-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout site repo (MCookinho.github.io)
+        uses: actions/checkout@v4
+        with:
+          path: site
+
+      - name: Checkout profile repo (MCookinho/MCookinho)
+        uses: actions/checkout@v4
+        with:
+          repository: MCookinho/MCookinho
+          token: ${{ secrets.PAT_README }}
+          path: profile
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Generate README into profile repo
+        id: generate
+        working-directory: site
+        run: node scripts/generate-readme.js
+        env:
+          PROFILE_REPO: MCookinho/MCookinho
+          SITE_URL: https://mcookinho.github.io
+          HISTORY_DIR: ${{ github.workspace }}/profile/History
+          README_FILE: ${{ github.workspace }}/profile/README.md
+
+      - name: Commit and push to profile repo
+        working-directory: profile
+        run: |
+          git config user.name "MCookinho"
+          git config user.email "peuborges.dev@gmail.com"
+          git add README.md History/
+          if git diff --cached --quiet; then
+            echo "No changes — README is up to date"
+          else
+            git commit -m "chore: auto-sync profile README from site data"
+            git push
+            echo "✅ README synced to MCookinho/MCookinho"
+          fi
