@@ -739,7 +739,7 @@
         title: 'Engenharia da Computação // Desenvolvedor Full-Stack // Criador de Jogos',
         location: 'Salvador, BA · 20 anos',
         about: 'Estudante de Engenharia da Computação e desenvolvedor full-stack com foco em Python, JavaScript e C. Construo desde ferramentas de terminal e bots até jogos e interfaces web. Apaixonado por tecnologia, código aberto e soluções criativas. Busco oportunidades onde possa aplicar minha versatilidade técnica e vontade de aprender para resolver problemas reais.',
-        email: 'peuborges.dev@gmail.com',
+        email: 'ContatoPeuBorges@proton.me',
         github: 'github.com/MCookinho',
         linkedin: 'linkedin.com/in/joaopedro',
         lang: 'pt',
