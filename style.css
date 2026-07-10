@@ -1601,6 +1601,25 @@ body {
   letter-spacing: 0.5px;
 }
 
+.projeto-tag {
+  font-family: var(--font);
+  font-size: 5px;
+  padding: 2px 6px;
+  margin-left: 6px;
+  vertical-align: middle;
+  letter-spacing: 1px;
+}
+
+.tag-beta {
+  color: #f0c040;
+  border: 1px solid #f0c040;
+}
+
+.tag-alpha {
+  color: #ff6b6b;
+  border: 1px solid #ff6b6b;
+}
+
 .projeto-card p {
   font-family: var(--font);
   font-size: 7px;
@@ -2565,6 +2584,7 @@ body {
   .ctrl-select, .ctrl-start { font-size: 6px; padding: 7px 10px; min-width: 44px; }
 
   .projeto-card h3 { font-size: 12px; }
+  .projeto-tag { font-size: 6px; padding: 1px 5px; }
   .projeto-card p { font-size: 8px; }
   .projeto-card { padding: 28px; }
   .projeto-header i { font-size: 24px; }
@@ -2635,6 +2655,7 @@ body {
   .ctrl-select, .ctrl-start { font-size: 7px; padding: 8px 12px; min-width: 46px; }
 
   .projeto-card h3 { font-size: 14px; }
+  .projeto-tag { font-size: 7px; padding: 2px 7px; }
   .projeto-card p { font-size: 9px; }
   .projeto-card { padding: 32px; }
   .projeto-header i { font-size: 28px; }
