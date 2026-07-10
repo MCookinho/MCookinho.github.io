@@ -1,3 +1,12 @@
+// ── Music Player (biblioteca musical do site) ──
+// Player de áudio que carrega músicas de assets/sound/playlist/.
+// Duas estratégias de carregamento:
+//   1) playlist.json (manifest local com metadados) — preferencial
+//   2) fallback via GitHub API (assets/sound/playlist/) se não houver manifest
+// Cache em localStorage (mcookinho_playlist) com TTL de 5 min.
+// Pastas colapsáveis salvas em mcookinho_folders.
+// Controles: play/pause, próx/ant, stop, restart, velocidade, volume, seek.
+// Exibe CD girando na página e barra de player fixa no canto inferior.
 (function () {
   var songs = []
   var folders = []
@@ -85,6 +94,11 @@
     return RAW_BASE + '/' + file.split('/').map(encodeURIComponent).join('/')
   }
 
+  // ── Playlist Fetching ──
+  // Tenta carregar playlist.json primeiro (contém metadados como título,
+  // artista, pasta). Se falhar (404 ou erro), cai no fetchFromAPI() que
+  // lista o diretório via GitHub API e infere título/nome do arquivo.
+  // O resultado é cacheado em localStorage por CACHE_TTL.
   function fetchDynamicPlaylist() {
     var cached = localStorage.getItem(CACHE_KEY)
     if (cached) {
@@ -165,6 +179,12 @@
     }).catch(function () { return null })
   }
 
+  // ── UI Rendering ──
+  // renderList() constrói a lista de músicas no overlay, separando
+  // músicas sem pasta (raiz) e músicas agrupadas em pastas colapsáveis.
+  // O estado de colapso de cada pasta é salvo em localStorage.
+  // Cada item da lista tem evento de clique: se for a música atual e
+  // estiver tocando, para; senão, toca a música clicada.
   function updateStatus(msg) {
     listEl.innerHTML = '<div class="music-status">' + msg + '</div>'
   }
@@ -195,13 +215,11 @@
     var collapsed = getCollapsed()
     var html = ''
 
-    // Root songs (no folder)
     songs.forEach(function (song, i) {
       if (song.folder) return
       html += renderSongItem(song, i)
     })
 
-    // Folders
     folders.forEach(function (f) {
       var isCollapsed = !!collapsed[f.name]
       html += '<div class="music-folder">'
@@ -242,6 +260,14 @@
     })
   }
 
+  // ── Playback Controls ──
+  // playSong(idx): carrega e toca a música no índice idx. Atualiza
+  // UI, mostra a player bar, fecha o overlay e dispara o achievement.
+  // togglePlay: play/pause (inicia na primeira se não houver índice).
+  // prevSong / nextSong: navegação sequencial.
+  // restartSong: volta ao início sem mudar de música.
+  // stopSong: para, zera currentIndex e esconde a player bar.
+  // cycleSpeed: alterna entre velocidades (0.5x a 2x).
   function playSong(idx) {
     if (idx < 0 || idx >= songs.length) return
     currentIndex = idx
@@ -318,6 +344,9 @@
     playerSpeed.textContent = playbackRate + '\u00D7'
   }
 
+  // ── Progress & UI ──
+  // updateProgress: atualiza a barra de progresso e timestamps.
+  // updateUI: sincroniza CD, player bar, botões e lista com o estado.
   function updateProgress() {
     if (audio.paused && !isPlaying) return
     var d = audio.duration
@@ -380,6 +409,9 @@
 
   function closeOverlay() { overlayOpen = false; overlay.classList.remove('open') }
 
+  // ── Playlist Load ──
+  // Tenta buscar a playlist (manifest ou fallback GitHub API).
+  // Atualiza o título com a contagem de músicas carregadas.
   function loadPlaylist() {
     musicTitle.textContent = '// ' + __('CARREGANDO...')
 
@@ -398,7 +430,11 @@
     })
   }
 
-  // Audio events
+  // ── Audio Events ──
+  // ended: auto-advance para a próxima música (ou para se for a última).
+  // error: marca a música como erro e para.
+  // loadedmetadata: captura a duração real do áudio para exibição.
+  // timeupdate: atualiza a barra de progresso em tempo real.
   audio.addEventListener('ended', function () {
     if (currentIndex < songs.length - 1) {
       playSong(currentIndex + 1)
@@ -426,7 +462,11 @@
     updateProgress()
   })
 
-  // UI events
+  // ── UI Events ──
+  // Botões do player: play/pause, prev, next, stop, restart, speed.
+  // Volume: slider + toggle do slider ao clicar no ícone.
+  // Progresso: clique na barra para seek.
+  // Tecla M: abre/fecha o overlay musical (se não estiver no tetris).
   cdBtn.addEventListener('click', toggleOverlay)
   musicClose.addEventListener('click', closeOverlay)
   overlay.addEventListener('click', function (e) { if (e.target === overlay) closeOverlay() })
@@ -468,7 +508,9 @@
     }
   })
 
-  // Inline styles
+  // ── Inline Styles (componente de música) ──
+  // Estilos injetados via JS para manter o CSS do player isolado
+  // sem poluir o arquivo principal style.css.
   var style = document.createElement('style')
   style.textContent =
     '.music-status { padding: 40px 20px; text-align: center; font-family: var(--font); font-size: 7px; color: var(--dim); line-height: 2; }' +
@@ -485,21 +527,24 @@
 
   loadPlaylist()
 
-  // Init volume
   audio.volume = parseFloat(playerVolume.value)
   playerVolBtn.textContent = '♪'
 
-  // Expose for external toggle
+  // ── Exports & Eventos Globais ──
+  // window.__toggleMusic / __closeMusic: usados por script.js para
+  // abrir/fechar o overlay via dropdown.
+  // window.playerAudio: referência para outros módulos (ex: horror.js
+  // para parar a música ao iniciar o minigame de terror).
+  // horrorStopMusic: evento disparado por horror.js quando o terror
+  // deve silenciar o player.
   window.__toggleMusic = toggleOverlay
   window.__closeMusic = closeOverlay
 
-  // Re-translate on lang change
   window.addEventListener('langchange', function () {
     var total = songs.length
     musicTitle.textContent = '// ' + __('MINHA PLAYLIST') + (total > 0 ? ' (' + total + ')' : '')
   })
 
-  // Allow external stop
   window.playerAudio = audio
   window.addEventListener('horrorStopMusic', function () {
     if (currentIndex >= 0 || isPlaying) stopSong()

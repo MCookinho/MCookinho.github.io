@@ -1,13 +1,37 @@
+/* ============================================================
+ *  lang.js — Motor de Internacionalização (i18n)
+ *
+ *  Carregado PRIMEIRO no <body> para que __() esteja global
+ *  para todos os scripts subsequentes.
+ *
+ *  Estrutura:
+ *    - Dicionário pt (chave = texto em PT, valor = texto em PT)
+ *    - Dicionário en (chave = texto em PT, valor = tradução EN)
+ *    - Se a chave não existir no idioma atual, cai para PT.
+ *    - Se não existir nem em PT, retorna a própria chave (fallback).
+ *
+ *  Como adicionar uma nova string:
+ *    1. Coloque data-i18n="texto PT" no HTML (ou use __('texto PT'))
+ *    2. Adicione "'texto PT': 'texto PT'" no bloco pt
+ *    3. Adicione "'texto PT': 'English translation'" no bloco en
+ *
+ *  ATENÇÃO: Chaves com <strong>, <br/>, &amp; etc. funcionam porque
+ *  translatePage() usa innerHTML (não textContent).
+ * ============================================================ */
 (function () {
   var LANG_KEY = 'mcookinho_lang'
   var currentLang = localStorage.getItem(LANG_KEY) || 'pt'
 
   var dict = {
+    /* ---- PT-BR (idioma padrão / fonte) ---- */
     pt: {
+      // Identidade e meta
       'MCOOKINHO': 'MCOOKINHO',
       '[ MCOOKINHO ]': '[ MCOOKINHO ]',
       'PEU BORGES // MCOOKINHO': 'PEU BORGES // MCOOKINHO',
       'Peu Borges aka MCookinho. Engenheiro da computação, dev, criador de jogos, e pai da golden retriever Shiva.': 'Peu Borges aka MCookinho. Engenheiro da computação, dev, criador de jogos, e pai da golden retriever Shiva.',
+
+      // Nav / Seções principais
       'MÚSICA': 'MÚSICA',
       'ABRIR BIBLIOTECA MUSICAL': 'ABRIR BIBLIOTECA MUSICAL',
       'CONQUISTAS': 'CONQUISTAS',
@@ -22,6 +46,8 @@
       'GALERIA': 'GALERIA',
       'BLOG': 'BLOG',
       'CONTATO': 'CONTATO',
+
+      // Títulos com prefixo decorativo "//"
       '// SOBRE MIM': '// SOBRE MIM',
       '// SKILLS / STACK': '// SKILLS / STACK',
       '// PROJETOS OPEN SOURCE': '// PROJETOS OPEN SOURCE',
@@ -29,18 +55,27 @@
       '// GALERIA': '// GALERIA',
       '// BLOG': '// BLOG',
       '// CONTATO': '// CONTATO',
+
+      // Sobre / Hero
       'SOBRE MIM': 'SOBRE MIM',
       'Fala! Sou o <strong>PEU BORGES</strong>, vulgo <strong>MisterCookie</strong> (ou MisterCookinho se tu me conhece do YouTube/Twitch). Nasci em 18/04/2005 e sou estudante de ENGENHARIA DA COMPUTAÇÃO no SENAI CIMATEC em Salvador, BA.': 'Fala! Sou o <strong>PEU BORGES</strong>, vulgo <strong>MisterCookie</strong> (ou MisterCookinho se tu me conhece do YouTube/Twitch). Nasci em 18/04/2005 e sou estudante de ENGENHARIA DA COMPUTAÇÃO no SENAI CIMATEC em Salvador, BA.',
       'Sou viciado em criar coisas! Se não é um projeto no terminal, é um jogo indie, um bot pra zoar um amigo, um sisteminha criptografado com Tor, ou um port de FNAF pro Terminal. Gosto de mostrar minhas ideias pro mundo!': 'Sou viciado em criar coisas! Se não é um projeto no terminal, é um jogo indie, um bot pra zoar um amigo, um sisteminha criptografado com Tor, ou um port de FNAF pro Terminal. Gosto de mostrar minhas ideias pro mundo!',
       'Volume alto, risada alta, café forte. E se eu sumir, tô programando às 3 da manhã ou jogando algo no Steam. SHADOW THE HEDGEHOG LITERALLY SOU EU.': 'Volume alto, risada alta, café forte. E se eu sumir, tô programando às 3 da manhã ou jogando algo no Steam. SHADOW THE HEDGEHOG LITERALLY SOU EU.',
+
+      // Tags do about
       'XADREZ': 'XADREZ',
       'RPG DE MESA': 'RPG DE MESA',
       'GAME DEV': 'GAME DEV',
       'CAFÉ': 'CAFÉ',
+
+      // Legendas da galeria
       'SHIVA ANDANDO': 'SHIVA ANDANDO',
       'SHIVA NADANDO': 'SHIVA NADANDO',
       'EMAS': 'EMAS',
+
       'SKILLS / STACK': 'SKILLS / STACK',
+
+      // Projetos
       'PROJETOS OPEN SOURCE': 'PROJETOS OPEN SOURCE',
       '[ REPO ]': '[ REPO ]',
       'Rede social privada no terminal. Criptografado com Tor. TUI minimalista.': 'Rede social privada no terminal. Criptografado com Tor. TUI minimalista.',
@@ -52,9 +87,8 @@
       'Puzzle game. Converta animais em criaturas da noite sem ser pego.': 'Puzzle game. Converta animais em criaturas da noite sem ser pego.',
       'Coleção de jogos clássicos no terminal com ncurses em C.': 'Coleção de jogos clássicos no terminal com ncurses em C.',
       'JOGOS QUE EU FIZ': 'JOGOS QUE EU FIZ',
-      'GALERIA': 'GALERIA',
-      'BLOG': 'BLOG',
-      'CONTATO': 'CONTATO',
+
+      // Contato
       'GITHUB': 'GITHUB',
       'LINKEDIN': 'LINKEDIN',
       'INSTAGRAM': 'INSTAGRAM',
@@ -63,8 +97,12 @@
       'TWITCH': 'TWITCH',
       'ITCH.IO': 'ITCH.IO',
       'STEAM': 'STEAM',
+
+      // Blog
       'AINDA TÔ ESCREVENDO MEUS PRIMEIROS ARTIGOS': 'AINDA TÔ ESCREVENDO MEUS PRIMEIROS ARTIGOS',
       'AGUENTA AÍ QUE LOGO LOGO SAI TEXTO BOM': 'AGUENTA AÍ QUE LOGO LOGO SAI TEXTO BOM',
+
+      // Footer / Frases
       'FEITO COM CAOS E CARINHO': 'FEITO COM CAOS E CARINHO',
       '// FEITO COM CAOS E CARINHO': '// FEITO COM CAOS E CARINHO',
       '"vivendo a vida da maneira que eu quero viver"': '"vivendo a vida da maneira que eu quero viver"',
@@ -76,13 +114,18 @@
       'vivendo a vida da maneira que eu quero viver': 'vivendo a vida da maneira que eu quero viver',
       'VER TODOS NO GITHUB': 'VER TODOS NO GITHUB',
       'VER NO ITCH.IO': 'VER NO ITCH.IO',
+
+      // Skill overlay
       'SKILL': 'SKILL',
       'PROFICIÊNCIA': 'PROFICIÊNCIA',
-      'RANKINGS': 'RANKINGS',
+
+      // Rankings tabs
       'TETRIS': 'TETRIS',
       'FILMES': 'FILMES',
       'SÉRIES': 'SÉRIES',
       'MÚSICAS': 'MÚSICAS',
+
+      // Player
       'CARREGANDO...': 'CARREGANDO...',
       'MINHA PLAYLIST': 'MINHA PLAYLIST',
       'NENHUMA MÚSICA': 'NENHUMA MÚSICA',
@@ -95,6 +138,8 @@
       'PARAR': 'PARAR',
       'PRÓXIMA': 'PRÓXIMA',
       'VELOCIDADE': 'VELOCIDADE',
+
+      // Rankings misc
       'CONTA': 'CONTA',
       'VOCÊ': 'VOCÊ',
       'SEU RECORDE': 'SEU RECORDE',
@@ -108,6 +153,8 @@
       'SINOPSE': 'SINOPSE',
       'MINHA OPINIÃO': 'MINHA OPINIÃO',
       'EPISÓDIO FAVORITO': 'EPISÓDIO FAVORITO',
+
+      // Tetris
       'MODO RETRO': 'MODO RETRO',
       '← → MOVER': '← → MOVER',
       '↑ ROTAR': '↑ ROTAR',
@@ -119,6 +166,8 @@
       'PRESSIONE ENTER': 'PRESSIONE ENTER',
       'PAUSA': 'PAUSA',
       '// KONAMI ACTIVATED': '// KONAMI ACTIVATED',
+
+      // Settings
       'ATIVAR MODO NOTURNO': 'ATIVAR MODO NOTURNO',
       'ATIVAR MODO PROFISSIONAL': 'ATIVAR MODO PROFISSIONAL',
       'IDIOMA': 'IDIOMA',
@@ -127,13 +176,19 @@
       'OCULTAR': 'OCULTAR',
       'MODO PROFISSIONAL': 'MODO PROFISSIONAL',
       'ATIVAR': 'ATIVAR',
+
+      // Achievements
       'CONQUISTA DESBLOQUEADA!': 'CONQUISTA DESBLOQUEADA!',
       'INICIANTE': 'INICIANTE',
       'INTERMEDIÁRIO': 'INTERMEDIÁRIO',
       'AVANÇADO': 'AVANÇADO',
       'EXPERT': 'EXPERT',
+
+      // Hero / Diversos
       'ANOS': 'ANOS',
       'SALVADOR, BA': 'SALVADOR, BA',
+
+      // Controller
       '// MEU CONTROLE FAVORITO': '// MEU CONTROLE FAVORITO',
       'Cima': 'Cima',
       'Esquerda': 'Esquerda',
@@ -143,6 +198,8 @@
       'Start': 'Start',
       'Botao B': 'Botão B',
       'Botao A': 'Botão A',
+
+      // Shiva
       'SHIVA': 'SHIVA',
       'CARINHO': 'CARINHO',
       'GOLDEN RETRIEVER, A COISA MAIS FOFA DESSE MUNDO, MINHA PARCEIRA DE CÓDIGO': 'GOLDEN RETRIEVER, A COISA MAIS FOFA DESSE MUNDO, MINHA PARCEIRA DE CÓDIGO',
@@ -150,14 +207,20 @@
       'ENVIAR': 'ENVIAR',
       'AU!! MANDA VER AÍ!! :D': 'AU!! MANDA VER AÍ!! :D',
       'escrevendo... 🐾': 'escrevendo... 🐾',
+
+      // Skills seções
       'LINGUAGENS': 'LINGUAGENS',
       'FERRAMENTAS': 'FERRAMENTAS',
       'VIDA': 'VIDA',
+
+      // Playlist / player
       '// MINHA PLAYLIST': '// MINHA PLAYLIST',
       'MUSICAS DE JOGOS QUE EU GOSTO': 'MUSICAS DE JOGOS QUE EU GOSTO',
       'OUTRAS MUSICAS': 'OUTRAS MUSICAS',
       'ADICIONE ARQUIVOS .MP3 EM<br/><strong>ASSETS/SOUND/PLAYLIST/</strong>': 'ADICIONE ARQUIVOS .MP3 EM<br/><strong>ASSETS/SOUND/PLAYLIST/</strong>',
       'ERRO': 'ERRO',
+
+      // Professional mode
       'MODO — PROFISSIONAL': 'MODO — PROFISSIONAL',
       'CONFIGURAR': 'CONFIGURAR',
       'EXPORTAR PDF': 'EXPORTAR PDF',
@@ -179,7 +242,6 @@
       'CATEGORY': 'CATEGORY',
 
       // Professional config labels
-      'TEMA': 'TEMA',
       'CORES PERSONALIZADAS': 'CORES PERSONALIZADAS',
       'IMAGEM DE FUNDO': 'IMAGEM DE FUNDO',
       'PADRÃO DE FUNDO': 'PADRÃO DE FUNDO',
@@ -226,14 +288,10 @@
       'EMAIL': 'EMAIL',
       'GITHUB (usuário ou URL)': 'GITHUB (usuário ou URL)',
       'LINKEDIN (URL)': 'LINKEDIN (URL)',
-      'IDIOMA': 'IDIOMA',
       'EXPERIÊNCIA': 'EXPERIÊNCIA',
       'FORMAÇÃO': 'FORMAÇÃO',
       'HABILIDADES': 'HABILIDADES',
       'HABILIDADES TÉCNICAS': 'HABILIDADES TÉCNICAS',
-      'PROJETOS': 'PROJETOS',
-      'CONTATO': 'CONTATO',
-      'PROJETOS': 'PROJETOS',
       'SEÇÕES PERSONALIZADAS': 'SEÇÕES PERSONALIZADAS',
       '+ ADICIONAR SEÇÃO': '+ ADICIONAR SEÇÃO',
       'INCLUIR NO PDF': 'INCLUIR NO PDF',
@@ -250,7 +308,6 @@
       'Instituição': 'Instituição',
       'Linguagem': 'Linguagem',
       'URL': 'URL',
-      'Conteúdo': 'Conteúdo',
       'Nova Seção': 'Nova Seção',
       'Seção personalizada': 'Seção personalizada',
       'Remover seção': 'Remover seção',
@@ -284,7 +341,6 @@
       'Espaçado': 'Espaçado',
       'Estreito': 'Estreito',
       'Largo': 'Largo',
-      'Esquerda': 'Esquerda',
       'Justificado': 'Justificado',
       'Fade In': 'Fade In',
       'Slide In': 'Slide In',
@@ -307,7 +363,6 @@
       'Larga': 'Larga',
       'Cheia': 'Cheia',
       'Detalhado': 'Detalhado',
-      'Minimal': 'Minimal',
       '2 Colunas': '2 Colunas',
       '3 Colunas': '3 Colunas',
       'Lista': 'Lista',
@@ -317,16 +372,13 @@
       'Português': 'Português',
       'English': 'English',
       'Carta': 'Carta',
-      'Pequeno': 'Pequeno',
       'Colorido': 'Colorido',
       'Escala de cinza': 'Escala de cinza',
       'Cabeçalho': 'Cabeçalho',
       'Sobre': 'Sobre',
       'Experiência': 'Experiência',
       'Formação': 'Formação',
-      'Habilidades': 'Habilidades',
       'Projetos': 'Projetos',
-      'Contato': 'Contato',
 
       // Professional preset categories
       '🎮 Jogos': '🎮 Jogos',
@@ -397,7 +449,7 @@
       'Você fez 15.000+ pontos no Tetris! Lendário!': 'Você fez 15.000+ pontos no Tetris! Lendário!',
       '15.000+ pontos no Tetris... só os deuses!': '15.000+ pontos no Tetris... só os deuses!',
 
-      // Doghouse
+      // Doghouse (jogo de terror)
       'VOCÊ ESTÁ SENDO OBSERVADO': 'VOCÊ ESTÁ SENDO OBSERVADO',
       '[ CLIQUE OU TECLE ENTER PARA CONTINUAR ]': '[ CLIQUE OU TECLE ENTER PARA CONTINUAR ]',
       '◀ VIRAR ▶': '◀ VIRAR ▶',
@@ -465,12 +517,11 @@
       'Clique na parte de cima...': 'Clique na parte de cima...',
       'PINO ': 'PINO ',
 
-      // Hindu number mapping for puzzles
+      // Mapeamento de números hindus para puzzles
       '0': '0','1': '1','2': '2','3': '3','4': '4','5': '5','6': '6','7': '7','8': '8','9': '9',
-
-      // Game story translations (kept in PT-BR as narrative content)
-      // These are complex narrative texts that should be translated
     },
+
+    /* ---- EN-US (traduções para inglês) ---- */
     en: {
       'MCOOKINHO': 'MCOOKINHO',
       '[ MCOOKINHO ]': '[ MCOOKINHO ]',
@@ -513,9 +564,6 @@
       'Puzzle game. Converta animais em criaturas da noite sem ser pego.': 'Puzzle game. Turn animals into creatures of the night without getting caught.',
       'Coleção de jogos clássicos no terminal com ncurses em C.': 'Collection of classic games in the terminal with ncurses in C.',
       'JOGOS QUE EU FIZ': 'GAMES I MADE',
-      'GALERIA': 'GALLERY',
-      'BLOG': 'BLOG',
-      'CONTATO': 'CONTACT',
       'GITHUB': 'GITHUB',
       'LINKEDIN': 'LINKEDIN',
       'INSTAGRAM': 'INSTAGRAM',
@@ -525,7 +573,7 @@
       'ITCH.IO': 'ITCH.IO',
       'STEAM': 'STEAM',
       'AINDA TÔ ESCREVENDO MEUS PRIMEIROS ARTIGOS': "I'M STILL WRITING MY FIRST ARTICLES",
-      'AGUENTA AÍ QUE LOGO LOGO SAI TEXTO BOM': 'HANG IN THERE, GOOD TEXT IS COMING SOON',
+      'AGUENTA AÍ QUE LOGO LOGO SAI TEXTO BOM': "HANG IN THERE, GOOD TEXT IS COMING SOON",
       'FEITO COM CAOS E CARINHO': 'MADE WITH CHAOS AND CARE',
       '// FEITO COM CAOS E CARINHO': '// MADE WITH CHAOS AND CARE',
       '"vivendo a vida da maneira que eu quero viver"': '"living life the way I want to live it"',
@@ -546,7 +594,6 @@
       'VER NO ITCH.IO': 'VIEW ON ITCH.IO',
       'SKILL': 'SKILL',
       'PROFICIÊNCIA': 'PROFICIENCY',
-      'RANKINGS': 'RANKINGS',
       'TETRIS': 'TETRIS',
       'FILMES': 'MOVIES',
       'SÉRIES': 'SERIES',
@@ -691,7 +738,6 @@
       'EMAIL': 'EMAIL',
       'GITHUB (usuário ou URL)': 'GITHUB (username or URL)',
       'LINKEDIN (URL)': 'LINKEDIN (URL)',
-      'IDIOMA': 'LANGUAGE',
       'EXPERIÊNCIA': 'EXPERIENCE',
       'FORMAÇÃO': 'EDUCATION',
       'HABILIDADES': 'SKILLS',
@@ -723,8 +769,6 @@
       'Erro ao gerar link': 'Error generating link',
       'Link copiado! Envie para qualquer pessoa.': 'Link copied! Send it to anyone.',
       'Erro ao copiar. Link: ': 'Error copying. Link: ',
-
-      // Professional config option values
       'Profissional': 'Professional',
       'Minimal': 'Minimal',
       'Escuro': 'Dark',
@@ -746,7 +790,6 @@
       'Espaçado': 'Relaxed',
       'Estreito': 'Narrow',
       'Largo': 'Wide',
-      'Esquerda': 'Left',
       'Justificado': 'Justified',
       'Fade In': 'Fade In',
       'Slide In': 'Slide In',
@@ -769,7 +812,6 @@
       'Larga': 'Wide',
       'Cheia': 'Full',
       'Detalhado': 'Detailed',
-      'Minimal': 'Minimal',
       '2 Colunas': '2 Columns',
       '3 Colunas': '3 Columns',
       'Lista': 'List',
@@ -788,14 +830,10 @@
       'Habilidades': 'Skills',
       'Projetos': 'Projects',
       'Contato': 'Contact',
-
-      // Professional preset categories
       '🎮 Jogos': '🎮 Gaming',
       '💼 Corporativo': '💼 Corporate',
       '📢 Marketing': '📢 Marketing',
       '💻 Programação': '💻 Programming',
-
-      // Professional preset descriptions
       'Escuro com laranja neon. Perfeito para dev de jogos indie.': 'Dark with neon orange. Perfect for indie game devs.',
       'Sóbrio com acentos verde-água. Para publishers profissionais.': 'Sober with teal accents. For professional publishers.',
       'Colorido e vibrante. Para desenvolvedor de jogos mobile.': 'Colorful and vibrant. For mobile game developers.',
@@ -928,10 +966,19 @@
     }
   }
 
+  /* ----------------------------------------------------------
+   *  getLang()  → retorna o código do idioma atual ('pt'|'en')
+   * ---------------------------------------------------------- */
   function getLang() {
     return currentLang
   }
 
+  /* ----------------------------------------------------------
+   *  setLang(lang)
+   *  Altera o idioma, persiste no localStorage, atualiza <html lang>,
+   *  re-traduz a página e dispara evento 'langchange' para os módulos
+   *  que precisam re-renderizar conteúdo dinâmico.
+   * ---------------------------------------------------------- */
   function setLang(lang) {
     if (!dict[lang]) return
     currentLang = lang
@@ -941,6 +988,13 @@
     window.dispatchEvent(new CustomEvent('langchange', { detail: { lang: lang } }))
   }
 
+  /* ----------------------------------------------------------
+   *  __(key, fallback?)
+   *  Função principal de tradução.
+   *  - Busca a chave no idioma atual
+   *  - Se não existir (ou for string vazia), busca em PT
+   *  - Se não existir em lugar nenhum, retorna fallback || a própria chave
+   * ---------------------------------------------------------- */
   function __(key, fallback) {
     if (!key && key !== '') return ''
     if (dict[currentLang] && dict[currentLang][key] !== undefined) {
@@ -954,6 +1008,21 @@
     return fallback || key
   }
 
+  /* ----------------------------------------------------------
+   *  translatePage()
+   *  Varre o DOM em busca de elementos com atributos data-i18n-*
+   *  e substitui o conteúdo/innerHTML/texto pelo traduzido.
+   *
+   *  Atributos suportados:
+   *    data-i18n           → innerHTML (permite <strong>, <br/>)
+   *    data-i18n-placeholder → placeholder
+   *    data-i18n-title     → title
+   *    data-i18n-aria      → aria-label
+   *    data-i18n-meta      → content (meta tags)
+   *
+   *  IMPORTANTE: usa innerHTML, não textContent. Elementos com
+   *  conteúdo dinâmico NÃO devem ter data-i18n.
+   * ---------------------------------------------------------- */
   function translatePage() {
     document.querySelectorAll('[data-i18n]').forEach(function (el) {
       var key = el.getAttribute('data-i18n')
@@ -977,11 +1046,12 @@
     })
   }
 
+  // Expõe as funções globalmente
   window.__ = __
   window.__lang = getLang
   window.__setLang = setLang
 
-  // Auto-translate on DOMContentLoaded
+  // Auto-traduz ao carregar o DOM
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
       document.documentElement.lang = currentLang === 'pt' ? 'pt-BR' : 'en'
@@ -992,5 +1062,6 @@
     translatePage()
   }
 
-  // Note: no MutationObserver — dynamically added elements use __() directly + langchange events
+  // NOTA: Não há MutationObserver — elementos adicionados dinamicamente
+  //       usam __() diretamente + escutam o evento 'langchange'.
 })()

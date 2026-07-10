@@ -1,6 +1,9 @@
+// ── Hero, Nav, Scroll Reveal ──
+// Calcula a idade dinamicamente a partir da data de nascimento (18/04/2005)
+// e insere no elemento hero. Também configuram efeito de scroll no nav,
+// toggle do menu mobile e revelação de seções via IntersectionObserver.
 (function() {
 
-  // Age
   var birth = new Date(2005, 3, 18);
   var today = new Date();
   var age = today.getFullYear() - birth.getFullYear();
@@ -8,21 +11,18 @@
   if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) age--;
   document.getElementById('heroIdade').textContent = age + ' ' + __('ANOS') + ' // ' + __('SALVADOR, BA');
 
-  // Nav scroll
   var nav = document.getElementById('nav');
   window.addEventListener('scroll', function() {
     if (window.scrollY > 60) nav.classList.add('scrolled');
     else nav.classList.remove('scrolled');
   });
 
-  // Mobile toggle
   var toggle = document.getElementById('navToggle');
   var links = document.getElementById('navLinks');
   toggle.addEventListener('click', function() {
     links.classList.toggle('open');
   });
 
-  // Close nav on link click
   var navAnchors = links.querySelectorAll('a');
   for (var i = 0; i < navAnchors.length; i++) {
     navAnchors[i].addEventListener('click', function() {
@@ -30,7 +30,6 @@
     });
   }
 
-  // Scroll observer
   var observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
       if (entry.isIntersecting) {
@@ -59,6 +58,11 @@
 
 })();
 
+// ── NES Controller Emulation ──
+// Mapeia teclado (setas, Enter, Espaço, A/B) e botões de tela (.ctrl-btn)
+// para eventos de teclado virtuais que os jogos (tetris.js, etc.) escutam.
+// A função setupControllerBtns() é exposta globalmente para reativar
+// eventos em elementos clonados ou injetados dinamicamente.
 (function () {
   var keyMap = {
     ArrowUp: 'ctrl-up',
@@ -117,7 +121,6 @@
 
   window.setupControllerBtns = setupControllerBtns
 
-  // Keyboard -> visual (affects all controllers)
   document.addEventListener('keydown', function (e) {
     var cls = keyMap[e.key]
     if (cls) {
@@ -132,6 +135,11 @@
   })
 })()
 
+// ── Nav Dropdown + Sub-overlays (Configurações / Conquistas) ──
+// Dropdown da logo "MC" no canto superior esquerdo. Cada item com
+// data-section pode abrir um sub-overlay (settings, achievements) ou
+// o overlay de rankings. O item "music" apenas fecha o dropdown (a
+// música é controlada pelo player.js). Fecha ao clicar fora ou ESC.
 ;(function () {
   var navLogo = document.getElementById('navLogo')
   var navDropdown = document.getElementById('navDropdown')
@@ -167,7 +175,6 @@
     if (e.key === 'Escape' && dropdownOpen) closeDropdown()
   })
 
-  // Section actions
   function onSectionClick(section) {
     if (section === 'music') return
     closeDropdown()
@@ -191,7 +198,10 @@
 
   window.__closeDropdown = closeDropdown
 
-  // ── Sub-overlays ──
+  // ── Sub-overlays (settings / achievements) ──
+  // subData define o título, ícone e função content() que retorna o HTML
+  // de cada overlay. O settings tem toggle de idioma e notificações;
+  // o achievements lista todas as conquistas com estado done/locked.
   var subData = {
     settings: {
       title: function () { return '// ' + __('CONFIGURAÇÕES') },
@@ -251,6 +261,18 @@
     }
   }
 
+  // ── Achievement Definitions ──
+  // Array central de todas as conquistas. Cada objeto tem:
+  //   id        — chave única usada em localStorage e hooks
+  //   name      — nome para exibição (traduzido via trAchieveName)
+  //   icon      — emoji mostrado quando desbloqueada
+  //   lockedIcon— cadeado (ícone padrão quando bloqueada)
+  //   desc      — descrição mostrada ao desbloquear
+  //   hint      — dica exibida quando ainda está bloqueada
+  //   done      — estado atual (false até ser desbloqueada)
+  // Para adicionar uma nova conquista: insira um objeto aqui, crie
+  // o hook de desbloqueio (window.__unlockAchievement(id)) no local
+  // apropriado, e adicione a tradução em lang.js se necessário.
   var ACHIEVEMENTS = [
     { id:'visit-social',    name:'EXPLORADOR DIGITAL', icon:'\uD83C\uDF10', lockedIcon:'\uD83D\uDD12', desc:'Voc\u00EA visitou sua primeira rede social pelo site!', hint:'Clique nos \u00EDcones de rede social no in\u00EDcio da p\u00E1gina...', done:false },
     { id:'view-skill',      name:'SABEDORIA PIXEL',   icon:'\uD83D\uDCD6', lockedIcon:'\uD83D\uDD12', desc:'Voc\u00EA explorou as habilidades do Peu!',           hint:'Clique em alguma skill na se\u00E7\u00E3o STACK...',   done:false },
@@ -270,7 +292,11 @@
     return map[id] ? __(map[id]) : ''
   }
 
-  // ── Achievement Persistence ──
+  // ── Achievement Persistence (localStorage) ──
+  // Salva apenas os IDs das conquistas desbloqueadas no localStorage
+  // (chave "mcookinho_achievements") para persistir entre sessões.
+  // loadAchievements() é chamado na inicialização; saveAchievements()
+  // após cada novo desbloqueio via window.__unlockAchievement().
   function loadAchievements() {
     try {
       var saved = JSON.parse(localStorage.getItem('mcookinho_achievements'))
@@ -305,7 +331,10 @@
     return true
   }
 
-  // ── Unlock Toast ──
+  // ── Unlock Toast (notificação animada) ──
+  // Cria e exibe um toast no canto superior direito quando uma
+  // conquista é desbloqueada. A animação é CSS (classe .show).
+  // O toast some após 4s. Respeita a preferência "notify_hidden".
   function showAchieveToast(a) {
     if (localStorage.getItem('mcookinho_notify_hidden') === 'true') return
     var toast = document.createElement('div')
@@ -327,7 +356,11 @@
     }, 4000)
   }
 
-  // ── Achievement Hooks ──
+  // ── Achievement Hooks (gatilhos de desbloqueio) ──
+  // Cada hook abaixo monitora uma ação do usuário e chama
+  // window.__unlockAchievement(id) quando a condição é satisfeita.
+  // Para adicionar um novo gatilho: escreva o evento/listener aqui
+  // e chame __unlockAchievement com o id definido em ACHIEVEMENTS.
 
   // Social media click
   var heroLinks = document.querySelectorAll('.hero-redes a')
@@ -381,7 +414,12 @@
     window.__unlockAchievement('play-song')
   }
 
-  // ── Sub-overlay HTML ──
+  // ── Sub-overlay HTML (settings / achievements) ──
+  // Cria o elemento do overlay dinamicamente e o insere no body.
+  // O conteúdo é renderizado via subData[section].content().
+  // Fecha ao clicar no X, no fundo (backdrop) ou ao pressionar ESC.
+  // O event listener delegado no documento trata os toggles de idioma
+  // e notificações dentro do overlay.
   var subOverlay = document.createElement('div')
   subOverlay.className = 'sub-overlay'
   subOverlay.id = 'subOverlay'
@@ -469,7 +507,14 @@
   window.__updateRankBadge = updateRankBadge
   updateRankBadge()
 
-  // ── Rankings Data ──
+  // ── Rankings (overlay de listas pessoais) ──
+  // Carrega dados de arquivos JSON em data/rankings/<tipo>.json.
+  // Cada tipo tem seu próprio formato de item: tetris (score/lines/level),
+  // filmes/séries (sinopse/review/rating), jogos (review/rating),
+  // musicas (artist/spotify/rating). Itens são ordenados por score
+  // (tetris) ou rating (demais). O ranking de tetris inclui dinamicamente
+  // o recorde do jogador salvo em localStorage.
+  // getDefaultData() fornece fallback se o JSON não carregar.
   var rankData = {}
   var rankOrder = ['tetris','filmes','jogos','series','musicas']
 
@@ -678,6 +723,13 @@
   loadRankData()
 })()
 
+// ── Skill Overlay (modal de habilidades) ──
+// Ao clicar em uma skill na seção STACK, abre um modal com:
+// nome, categoria, descrição detalhada, nível em % e uma barra
+// segmentada (Iniciante/Intermediário/Avançado/Expert).
+// O ícone de cada skill é definido no objeto icons{}.
+// Dados (desc + pct) no objeto data{} — para adicionar uma skill
+// nova, inclua a entrada em ambos os objetos e o <span> no HTML.
 ;(function () {
     var overlay = document.getElementById('skillOverlay')
     var closeBtn = document.getElementById('skillClose')

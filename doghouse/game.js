@@ -1,3 +1,13 @@
+// ── Doghouse (Terror de Shiva) — Escape Room ──
+// Jogo de terror point-and-click acessado pelo easter egg "passear"
+// da Shiva. O jogador precisa explorar salas, coletar itens,
+// combinar objetos e resolver puzzles para escapar.
+// Views: north, east, south, west, ceiling (com/sem lanterna).
+// Itens combináveis: pedra+espelho, fósforo+vela, corda+gancho, etc.
+// Controles: clique nas laterais/topo para navegar, clique em
+// objetos para interagir, drag & drop no inventário para combinar.
+
+// ── Item Definitions ──
 const ITEMS_ICON = {
   pedra:'🪨', caco_vidro:'💎', fosforo:'🔥', vela:'🕯️',
   vela_acesa:'🕯️✨', corda:'🪢', gancho:'🪝', corda_gancho:'🪝🪢',
@@ -15,6 +25,10 @@ const ITEMS_NAME = {
   guia:'Guia', coleira:'Coleira', bola:'Bola', osso:'Osso'
 }
 
+// ── Room Views ──
+// Cada parede (north/east/south/west) e o teto (ceiling) possuem
+// uma lista de objetos clicáveis. O teto tem uma variante
+// "ceiling_lantern" que aparece quando a vela está acesa.
 const VIEWS = {
   north: [
     {id:'porta',name:'PORTA',desc:'Madeira grossa, ferro, três fechaduras.',type:'door'},
@@ -59,6 +73,9 @@ const VIEWS = {
 }
 
 /* Fixed hitboxes for normal interactables */
+// ── Hitboxes (clique em cada objeto) ──
+// Coordenadas {x, y, w, h} fixas para cada objeto clicável.
+// Usadas pelo handleClick para detectar em qual objeto o jogador clicou.
 const HITBOXES = {
   north: {
     porta:{x:270,y:8,w:260,h:440},
@@ -102,6 +119,10 @@ const HITBOXES = {
   }
 }
 
+// ── Game Class ──
+// Classe principal que orquestra todo o jogo: inventário, navegação
+// entre salas, interações com objetos, puzzles, sistema de oferendas
+// a Shiva, aparições aleatórias e game loop.
 class Game {
   constructor(){
     window.__game=this
@@ -130,6 +151,7 @@ class Game {
     setTimeout(()=>this.startShivaTimer(),3000)
   }
 
+  // ── Inventário (drag & drop / clique) ──
   setupUI(){
     const bar=document.getElementById('inventory-bar')
     bar.addEventListener('dragover',e=>e.preventDefault())
@@ -201,6 +223,7 @@ class Game {
   hasItem(id){return this.inventory.includes(id)}
   hasObtained(id){return this.obtainedItems.includes(id)}
 
+  // ── Combinação de Itens ──
   tryCombine(srcIdx,targetIdx){
     const a=this.inventory[srcIdx],b=this.inventory[targetIdx]
     const result=tryCombine(a,b)
@@ -224,6 +247,7 @@ class Game {
     this.renderInventory()
   }
 
+  // ── Clique / Navegação ──
   handleClick(x,y){
     if(this.view===4){
       if(y>570)return this.goDown()
@@ -254,6 +278,7 @@ class Game {
     this.engine.tooltip('...')
   }
 
+  // ── Interações por Tipo ──
   interact(obj){
     const item=this.selectedItem!==null?this.inventory[this.selectedItem]:null
 
@@ -285,6 +310,7 @@ class Game {
     }
   }
 
+  // Pegar item genérico do ambiente (ferro, pedra, corda, etc.)
   pickupItem(obj){
     if(obj.gives&&!this.hasItem(obj.gives)){
       this.addItem(obj.gives,false)
@@ -297,6 +323,7 @@ class Game {
     }
   }
 
+  // Porta principal — verifica qual item foi usado e dispara o final correspondente
   /* ─── DOOR (endings) ─── */
   interactDoor(item){
     if(!item){
@@ -330,6 +357,7 @@ class Game {
     this.engine.tooltip(ITEMS_NAME[item]+' não funciona na porta.')
   }
 
+  // Grade — barra de ferro que precisa ser forçada para obter a guia
   /* ─── GRATE → GUIÁ ─── */
   interactGrate(item){
     if(this.hasObtained('guia')){
@@ -347,6 +375,7 @@ class Game {
     else this.engine.tooltip(ITEMS_NAME[item]+' não quebra a grade.')
   }
 
+  // Prateleira — coleta a vela
   /* ─── SHELF ─── */
   interactShelf(item){
     if(this.hasObtained('vela')){
@@ -356,6 +385,7 @@ class Game {
     this.addItem('vela',false)
   }
 
+  // Espelho — quebrar com pedra para obter caco de vidro
   /* ─── MIRROR ─── */
   interactMirror(item){
     if(this.hasObtained('caco_vidro')){
@@ -372,6 +402,7 @@ class Game {
     this.engine.tooltip('O espelho está trincado. Dá pra quebrar com algo.')
   }
 
+  // Buraco no tijolo — precisa de luz para encontrar fragmento de chave
   /* ─── BRICK (needs candle) ─── */
   interactBrick(item){
     if(this.hasObtained('chave_1')){
@@ -387,6 +418,7 @@ class Game {
     this.addItem('chave_1',false)
   }
 
+  // Ralo — abrir com barra de ferro para obter fragmento de chave
   /* ─── DRAIN (needs lantern + iron bar) ─── */
   interactDrain(item){
     if(this.hasObtained('chave_3')){
@@ -408,6 +440,7 @@ class Game {
     else this.engine.tooltip(ITEMS_NAME[item]+' não abre o ralo.')
   }
 
+  // Assoalho — levantar tábua para encontrar bola (dois passos)
   /* ─── FLOORBOARD (two-step: lift, then grab ball) ─── */
   interactFloorboard(item){
     if(this.floorboardRaised){
@@ -427,6 +460,7 @@ class Game {
     this.engine.tooltip('A tábua range! Uma bola velha embaixo.',3000)
   }
 
+  // Pegar bola de baixo do assoalho levantado
   /* ─── GRAB BALL from under floorboard ─── */
   interactFloorboardBall(){
     if(!this.floorboardRaised)return
@@ -437,6 +471,7 @@ class Game {
     this.addItem('bola',false)
   }
 
+  // Corrente — forçar com barra de ferro para obter gancho
   /* ─── CHAIN ─── */
   interactChain(item){
     if(this.hasObtained('gancho')){
@@ -453,6 +488,7 @@ class Game {
     this.engine.tooltip('Corrente com um gancho. Preciso forçar com algo.')
   }
 
+  // Alçapão — alcançar com corda+gancho para obter osso
   /* ─── HATCH ─── */
   interactHatch(item){
     if(this.hasObtained('osso')){
@@ -470,6 +506,7 @@ class Game {
     this.engine.tooltip('Alçapão no teto. Muito alto. Preciso de algo para alcançar.')
   }
 
+  // Oferendas a Shiva — oferecer caco_vidro, bola e osso nos três espaços
   /* ─── CEILING OFFERING PUZZLE ─── */
   interactOffering(obj,item){
     if(this.ceilingPuzzleSolved){
@@ -511,6 +548,7 @@ class Game {
     }
   }
 
+  // Diário — lê e marca flag para o final "passear"
   /* ─── DIARY ─── */
   readDiary(){
     this.diaryRead=true
@@ -518,6 +556,7 @@ class Game {
     this.engine.showDiary(STORY.diary)
   }
 
+  // Puzzle mini-game — abre interface de puzzle (ex: gaveta com pinos)
   /* ─── PUZZLE ─── */
   startPuzzle(id){
     const p=PUZZLES[id]
@@ -550,6 +589,10 @@ class Game {
     this.engine.flashView(()=>{this.view=this.lastWallView;this.a.step()})
   }
 
+  // ── Shiva Timer (aparições aleatórias) ──
+  // Agenda aparições de Shiva em intervalos de 90-180s.
+  // Quando ativo, a tela escurece e Shiva aparece brevemente.
+  // Para quando o puzzle do teto é resolvido.
   /* ─── SHIVA TIMER (rare appearances) ─── */
   startShivaTimer(){
     const next=90000+Math.random()*90000
@@ -568,6 +611,8 @@ class Game {
     },next)
   }
 
+  // ── Game Loop ──
+  // requestAnimationFrame — limpa animações expiradas e renderiza a cada frame
   /* ─── GAME LOOP ─── */
   loop(){
     const now=performance.now()

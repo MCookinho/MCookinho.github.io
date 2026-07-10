@@ -1,6 +1,16 @@
+// ── Modo Profissional — Configurador de Portfólio ──
+// Painel de personalização completo para a página profissional.
+// Gerencia tema, cores, tipografia, layout, conteúdo editável,
+// presets, exportação PDF e compartilhamento via URL.
+// Tudo persiste em localStorage (chave: mcookinho_professional_config).
+
 (function () {
 
   var CONFIG_KEY = 'mcookinho_professional_config'
+
+  // ── Config Data Definitions ──
+  // Themes provide base color palettes (primary, bg, text, accent) for each visual style.
+  // The arrays below define all selectable option groups used throughout the config panel.
 
   var THEMES = {
     professional: { name: 'Profissional', primary: '#1a1a2e', bg: '#f8f9fa', text: '#1a1a2e', accent: '#2563eb' },
@@ -10,6 +20,7 @@
     sunset:       { name: 'Pôr do Sol',   primary: '#2a1a1a', bg: '#faf5f0', text: '#2a1a1a', accent: '#c0392b' },
   }
 
+  // ── Typography Options (font, size, weight, spacing, alignment) ──
   var FONTS = [
     { id: 'system', label: 'Sistema' },
     { id: 'serif',  label: 'Serif' },
@@ -59,6 +70,7 @@
     { id: 'justify',  label: 'Justificado' },
   ]
 
+  // ── Animation & Toggle Options ──
   var ANIMS = [
     { id: 'fade',  label: 'Fade In' },
     { id: 'slide', label: 'Slide In' },
@@ -75,6 +87,7 @@
     { id: 'center', label: 'Centro' },
   ]
 
+  // ── Visual & Layout Options (patterns, sizes, styles, spacing) ──
   var BG_PATTERNS = [
     { id: 'none',  label: 'Nenhum' },
     { id: 'dots',  label: 'Pontos' },
@@ -152,6 +165,7 @@
     { id: 'strong', label: 'Forte' },
   ]
 
+  // ── PDF & i18n Options ──
   var LANGUAGES = [
     { id: 'pt', label: 'Português' },
     { id: 'en', label: 'English' },
@@ -185,6 +199,7 @@
     { id: 'spacious', label: 'Espaçoso' },
   ]
 
+  // ── Section Definitions ──
   var SECTION_IDS = [
     { id: 'header',     label: 'Cabeçalho' },
     { id: 'about',      label: 'Sobre' },
@@ -196,6 +211,9 @@
   ]
 
   // ── Presets ──
+  // Presets are pre-configured profiles for different professions (gaming, corporate,
+  // marketing, programming, design, social media, other). Each preset sets theme, colors,
+  // typography, layout, enabled sections, and sample content.
   var PRESET_CATEGORIES = [
     {
       label: '🎮 Jogos', id: 'cat-gaming',
@@ -746,6 +764,8 @@
   }
 
   // ── Load / Save / Encode ──
+  // Handles localStorage persistence (key: mcookinho_professional_config) and URL hash
+  // encoding/decoding for sharing config via link.
   function loadConfig() {
     var fromHash = loadConfigFromHash()
     if (fromHash) {
@@ -844,6 +864,8 @@
   }
 
   // ── Apply Config ──
+  // Applies all settings from the config object to the page: theme, colors, typography,
+  // layout, section visibility/ordering, and editable content.
   function applyConfig(cfg) {
     var theme = THEMES[cfg.theme] || THEMES.professional
     document.body.className = document.body.className
@@ -1231,10 +1253,15 @@
   }
 
   // ── Init ──
+  // Bootstrap: load config from localStorage or URL hash, apply to page, set up animations.
   var config = loadConfig()
   applyConfig(config)
   setupAnimations(config)
   syncTopbarToggle()
+
+  // ── Config UI Builders ──
+  // Functions that render the config panel: theme grid, button groups, section lists,
+  // content editors, preset cards, and PDF section selectors.
 
   // ── Config Panel ──
   var overlay = document.getElementById('configOverlay')
@@ -1770,6 +1797,8 @@
   })
 
   // ── Share Link ──
+  // Encodes the current config into a base64 URL hash and copies the shareable link
+  // to the clipboard. The hash is restored by loadConfigFromHash on page load.
   function showCopyToast(msg) {
     var existing = document.getElementById('shareToast')
     if (existing) existing.remove()
@@ -1847,6 +1876,8 @@
   })
 
   // ── Export PDF ──
+  // Generates a PDF using window.print() with injected @page styles, temporary
+  // section visibility, and optional grayscale filter.
   document.getElementById('exportPdf').addEventListener('click', function () {
     var cfg = loadConfig()
 

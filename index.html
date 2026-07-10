@@ -16,6 +16,7 @@
 
   <div class="crt"></div>
 
+  <!-- Nav: barra de navegação com dropdown (logo MC), links de seção e toggle mobile -->
   <nav class="nav" id="nav">
     <div class="nav-inner">
       <div class="nav-left">
@@ -69,7 +70,8 @@
     </div>
   </nav>
 
-  <section class="hero" id="hero">
+  <!-- Hero: seção principal com foto, nome, subtítulo, frase, idade calculada e redes sociais -->
+<section class="hero" id="hero">
     <div class="hero-bg">
       <video autoplay muted loop playsinline poster="assets/fotominha.jpeg">
         <source src="assets/videos/hero-bg.mp4" type="video/mp4" />
@@ -97,7 +99,8 @@
     </div>
   </section>
 
-  <section class="section sobre" id="about">
+  <!-- About / Shiva Chat: seção "sobre mim" com texto, tags, controle NES e chat interativo com a Shiva -->
+<section class="section sobre" id="about">
     <div class="container">
       <h2 class="sec-title" data-i18n="// SOBRE MIM">// SOBRE MIM</h2>
       <div class="sobre-grid">
@@ -163,7 +166,8 @@
     </div>
   </section>
 
-  <section class="section skills" id="skills">
+  <!-- Skills / Stack: listagem de linguagens, ferramentas e habilidades da vida -->
+<section class="section skills" id="skills">
     <div class="container">
       <h2 class="sec-title" data-i18n="// SKILLS / STACK">// SKILLS / STACK</h2>
       <div class="skills-wrapper">
@@ -191,7 +195,8 @@
     </div>
   </section>
 
-  <section class="section projetos" id="projetos">
+  <!-- Projetos: cards de projetos open source com link para o GitHub -->
+<section class="section projetos" id="projetos">
     <div class="container">
       <h2 class="sec-title" data-i18n="// PROJETOS OPEN SOURCE">// PROJETOS OPEN SOURCE</h2>
       <div class="projetos-grid">
@@ -222,6 +227,15 @@
           <p data-i18n="Desktop pet com IA. Um bichinho virtual inteligente que vive na sua tela.">Desktop pet com IA. Um bichinho virtual inteligente que vive na sua tela.</p>
           <a href="https://github.com/MCookinho/mate-helper" target="_blank" rel="noopener"><span data-i18n="[ REPO ]">[ REPO ]</span></a>
         </div>
+        <div class="projeto-card">
+          <div class="projeto-header">
+            <i class="fas fa-dungeon"></i>
+            <span class="projeto-lang">JAVASCRIPT</span>
+          </div>
+          <h3>BACKROOMS ONLINE</h3>
+          <p data-i18n="Jogo multijogador ambientado nas Backrooms. Explore, evite as entidades e tente escapar com outros jogadores.">Jogo multijogador ambientado nas Backrooms. Explore, evite as entidades e tente escapar com outros jogadores.</p>
+          <a href="https://github.com/MCookinho/Backrooms-Online" target="_blank" rel="noopener"><span data-i18n="[ REPO ]">[ REPO ]</span></a>
+        </div>
       </div>
       <div class="sec-footer">
         <a href="https://github.com/MCookinho?tab=repositories" target="_blank" rel="noopener" class="btn-pixel" data-i18n="VER TODOS NO GITHUB">VER TODOS NO GITHUB</a>
@@ -229,7 +243,8 @@
     </div>
   </section>
 
-  <section class="section jogos" id="jogos">
+  <!-- Jogos: cards de jogos criados, com link para itch.io e GitHub -->
+<section class="section jogos" id="jogos">
     <div class="container">
       <h2 class="sec-title" data-i18n="// JOGOS QUE EU FIZ">// JOGOS QUE EU FIZ</h2>
       <div class="jogos-grid">
@@ -275,7 +290,8 @@
     </div>
   </section>
 
-  <section class="section galeria" id="galeria">
+  <!-- Galeria: vídeos variados (Shiva, emas, etc.) -->
+<section class="section galeria" id="galeria">
     <div class="container">
       <h2 class="sec-title" data-i18n="// GALERIA">// GALERIA</h2>
       <div class="galeria-grid">
@@ -301,7 +317,8 @@
     </div>
   </section>
 
-  <section class="section blog" id="blog">
+  <!-- Blog: espaço para artigos futuros (em construção) -->
+<section class="section blog" id="blog">
     <div class="container">
       <h2 class="sec-title" data-i18n="// BLOG">// BLOG</h2>
       <div class="blog-vazio">
@@ -311,7 +328,8 @@
     </div>
   </section>
 
-  <section class="section contato" id="contato">
+  <!-- Contato: grid de links para redes sociais e plataformas -->
+<section class="section contato" id="contato">
     <div class="container">
       <h2 class="sec-title" data-i18n="// CONTATO">// CONTATO</h2>
       <div class="contato-grid">
@@ -327,7 +345,8 @@
     </div>
   </section>
 
-  <footer class="footer">
+  <!-- Footer: rodapé com vídeo de fundo, frase e créditos -->
+<footer class="footer">
     <div class="footer-bg">
       <video autoplay muted loop playsinline>
         <source src="assets/videos/emas.mp4" type="video/mp4" />
@@ -340,6 +359,7 @@
     </div>
   </footer>
 
+  <!-- Skill Overlay: modal com detalhes da skill (ícone, categoria, nome, descrição, barra de proficiência) -->
   <!-- Skill Overlay -->
   <div class="skill-overlay" id="skillOverlay">
     <div class="skill-panel">
@@ -373,6 +393,7 @@
     </div>
   </div>
 
+  <!-- Rankings Overlay: modal com abas de rankings (Tetris, filmes, jogos, séries, músicas) -->
   <!-- ── Rankings Overlay ── -->
   <div class="rk-overlay" id="rkOverlay">
     <div class="rk-panel">
@@ -393,6 +414,7 @@
     </div>
   </div>
 
+  <!-- Music Overlay: modal com a biblioteca musical para selecionar faixas -->
   <!-- ── Music Library Overlay ── -->
   <div class="music-overlay" id="musicOverlay">
     <div class="music-panel">
@@ -404,6 +426,7 @@
     </div>
   </div>
 
+  <!-- Player Bar: barra fixa do player de música com controles (play, pause, volume, progresso, velocidade) -->
   <!-- Player Bar -->
   <div class="player-bar" id="playerBar">
     <div class="player-left">
@@ -448,9 +471,11 @@
     </div>
   </div>
 
-  <audio id="playerAudio" preload="metadata"></audio>
+  <!-- Audio: elemento <audio> oculto usado pelo player para reproduzir as faixas -->
+<audio id="playerAudio" preload="metadata"></audio>
 
-  <script src="lang.js"></script>
+  <!-- Scripts: lang.js (i18n) primeiro, depois os módulos do site -->
+<script src="lang.js"></script>
   <script src="script.js"></script>
   <script src="tetris.js"></script>
   <script src="shiva.js"></script>

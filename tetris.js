@@ -1,3 +1,12 @@
+// ── Tetris (Konami Code + Jogo Completo) ──
+// Ativado pelo código Konami (↑↑↓↓←→←→ BA).
+// Escuta teclas globalmente; ao completar a sequência, chama launch().
+// O jogo usa canvas, SRS (Super Rotation System) com wall kicks,
+// sistema de 7-bag aleatório, hold, ghost piece, lock delay,
+// DAS (Delayed Auto Shift), partículas ao limpar linhas e
+// flash de level up. Salva high score em localStorage.
+// Controles: setas (move/rotate/drop), A/B (rotate), P (pause),
+// Enter (restart), C (hold). O controle NES virtual também funciona.
 (function () {
   'use strict'
 
@@ -108,6 +117,26 @@
     get dead() { return this.life<=0 }
   }
 
+  // ═══════════════════════════════════════════════
+  // TetrisGame — lógica principal do Tetris
+  // ═══════════════════════════════════════════════
+  // Estado: board (matriz rows×cols), peça atual (piece),
+  // próxima peça (next), peça em hold, pontuação, linhas, nível.
+  //
+  // Mecânicas:
+  //   - 7-bag aleatório (sem repetir até usar todas as 7 peças)
+  //   - SRS com wall kicks (KICKS para peças padrão, IKICKS para I)
+  //   - Ghost piece (sombra da posição de queda)
+  //   - Lock delay (a peça só trava após um tempo no chão,
+  //     resetado ao mover — até maxLockMoves)
+  //   - DAS (segurar seta direcional: delay inicial + repetição)
+  //   - Clear de linhas com flash + partículas
+  //   - Level up a cada 10 linhas (aumenta velocidade)
+  //   - Game over com salvamento de high score
+  //
+  // O canvas é criado dinamicamente junto com a UI do overlay.
+  // Controles virtuais (.ctrl-btn) são configurados via
+  // window.setupControllerBtns().
   class TetrisGame {
     constructor() {
       this.cell = 28
@@ -565,6 +594,9 @@
       }
     }
 
+    // ── Game loop ──
+    // requestAnimationFrame-based. dt limitado a 1000ms para evitar
+    // grandes pulos se a aba ficar inativa.
     loop(time) {
       const dt = Math.min(time-this.lastTime, 1000)
       this.lastTime = time
@@ -573,6 +605,8 @@
       this.animFrame = requestAnimationFrame((t) => this.loop(t))
     }
 
+    // ── Restart ──
+    // Reseta todos os estados do jogo para começar uma nova partida.
     restart() {
       this.board = Array(this.rows).fill().map(()=>Array(this.cols).fill(0))
       this.score = 0
@@ -594,6 +628,11 @@
       this.spawnPiece()
     }
 
+    // ── Controles de teclado + DAS ──
+    // Mapeia teclas para ações do jogo. O DAS (Delayed Auto Shift)
+    // permite segurar ←/→ para mover continuamente com um atraso
+    // inicial (dasDelay) e repetição (dasInterval) em vez de
+    // repetir na velocidade do keydown do sistema.
     bindKeys() {
       document.addEventListener('keydown', (e) => {
         if (!this.overlay.classList.contains('tetris-open') && e.key!=='p'&&e.key!=='P') return

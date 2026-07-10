@@ -1,4 +1,16 @@
-(function () {
+// ── Shiva Interactive Pet ──
+// Chatbot canino que reage às mensagens do usuário classificando o
+// conteúdo por palavras-chave (ctxMap) e sorteando uma resposta do
+// pool correspondente (R). Cada pool tem um tema: happy, sad, angry,
+// love, food, play, sleepy, curious, greeting, goodbye, sassy, silly,
+// treat, compliment, music, water, code, weather, protect, random.
+//
+// Easter egg "passear": se o usuário mencionar passear/passeio,
+// inicia uma sequência de respostas que leva ao redirect pro jogo
+// de terror (doghouse/index.html), interagindo com window.Horror.
+//
+// Persistência: contagem de mensagens via window.__shivaMessageSent().
+// (function () {
   var R = {
     happy: [
       'AU AU AU AU!! :D',
@@ -617,6 +629,13 @@
     ],
   }
 
+  // ── Context Classification Map ──
+  // Cada entrada mapeia uma lista de palavras-chave (lowercase) a uma
+  // categoria (cat). A função classify() varre o array na ordem e
+  // retorna a primeira categoria cuja palavra-chave for encontrada.
+  // A ordem importa: entradas mais específicas devem vir primeiro.
+  // Para adicionar suporte a novos temas: crie um pool em R e uma
+  // entrada neste array com as palavras-chave disparadoras.
   var ctxMap = [
     { words: ['triste',':(','trist','deprimi','chatead','sofri','sofro','dor','magoad','merda','fudeu','ruim','pessimo','chor','sad','bad','sinto falta','saudade','solidao','sozinho','perdi','morre','morreu','doente','hospital','acabou','termino','partiu','foi embora','abandono'], cat: 'sad' },
     { words: ['feliz',':d',':)','alegr','contente','maravilha','otimo','que bom','top','brabo','foda','incrivel','show','fenomenal','festej','comemor','parabens','feliz','radiante','tesao','content','orgulho','satisfeit','realizad'], cat: 'happy' },
@@ -640,9 +659,12 @@
     { words: ['medo','perig','cuidado','alerta','protecao','protecao','vigia','segurança','seguranca','atencao','perigo','guarda','cuid','defend','invasao','estranh','barulho','esquisito','susto','protect','danger','revolt'], cat: 'protect' },
   ]
 
+  // ── classify: mensagem -> categoria ──
+  // Converte uma mensagem do usuário em uma categoria (cat) que
+  // determina qual pool de respostas será usado. O easter egg
+  // "passear" tem prioridade máxima e é detectado antes do ctxMap.
   function classify(msg) {
     var lower = msg.toLowerCase()
-    // Easter egg: detect "passear" to start
     if (lower.indexOf('passear') !== -1 || lower.indexOf('passea') !== -1 || lower.indexOf('passeio') !== -1) {
       return 'passear'
     }
@@ -655,6 +677,15 @@
     return 'random'
   }
 
+  // ── Easter Egg "Passear" ──
+  // Sequência de respostas que leva ao jogo de terror. Executada em
+  // etapas (advanceEgg) controladas pelo módulo Horror. Cada etapa
+  // corresponde a um índice de EGG_SEQUENCE:
+  //   0-2: latidos normais
+  //   3:   para a música, começa a escurecer
+  //   4:   inicia ruído estático
+  //   5:   aumenta escuro e estático
+  //   6:   trava o chat, toca sons de terror, anima rasgo e redireciona
   var EGG_SEQUENCE = [
     'AU AU AU!!',
     'AU AU AU!!!',
@@ -665,6 +696,11 @@
     ':)'
   ]
 
+  // ── Shiva Chat Init ──
+  // Configura o chat: input, botão de enviar, botão de limpar.
+  // addMsg() insere uma bolha no chat. respond() classifica e gera
+  // a resposta (com delay simulando digitação). sendMsg() é o
+  // handler do botão/Enter.
   function shivaInit() {
     var input = document.getElementById('shivaInput')
     var send = document.getElementById('shivaSend')
@@ -682,6 +718,12 @@
       chat.scrollTop = chat.scrollHeight
     }
 
+    // ── respond(msg): gera resposta da Shiva ──
+    // Se o easter egg estiver ativo, avança a sequência
+    // (EGG_SEQUENCE) em vez de classificar a mensagem.
+    // Se a mensagem contiver "passear", inicia o easter egg.
+    // Caso contrário, classifica(msg) e sorteia uma resposta
+    // do pool correspondente (fallback: random).
     function respond(msg) {
       var H = window.Horror
 

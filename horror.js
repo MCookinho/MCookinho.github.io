@@ -1,3 +1,9 @@
+// ── Horror Module (easter egg de terror) ──
+// Efeitos audiovisuais usados no easter egg "passear" da Shiva.
+// Exposto como window.Horror para shiva.js controlar a sequência.
+// Inclui: ruído estático (Web Audio API), fade escuro, sons de
+// rangido de porta e latido, e animação canvas de "rasgo" com
+// olhos, patas, glitch, VHS noise e screen shake.
 (function () {
   var ctx = null
   var staticNode = null
@@ -9,6 +15,10 @@
   var chatLocked = false
   var afterCallback = null
 
+  // ── Áudio ──
+  // Gerencia AudioContext, ruído estático (bandpass filter),
+  // tons sintetizados, rangido de porta (noise modulado) e
+  // latido canino (sawtooth com wave shaper distortion).
   function getAudioCtx() {
     if (!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)()
     if (ctx.state === 'suspended') ctx.resume()
@@ -173,6 +183,18 @@
     }
   }
 
+  // ── Canvas Tear Animation ──
+  // Cria um canvas fullscreen e renderiza uma animação composta de:
+  //   - Rachaduras orgânicas (cracks + branchCracks)
+  //   - Glitch horizontal (VHS tracking effect)
+  //   - Rasgo central com bordas irregulares e glow
+  //   - Olhos vermelhos brilhantes no escuro
+  //   - Patas digitais saindo do rasgo
+  //   - Vignette escurecendo as bordas
+  //   - VHS noise scanlines
+  //   - Screen shake em fases específicas
+  //   - Partículas (faíscas) na borda do rasgo
+  // Ao final, chama callback() após fade para preto.
   function easeInOutCubic(t) {
     return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
   }
@@ -641,6 +663,11 @@
     animate()
   }
 
+  // ── Egg State Management ──
+  // Controla o estado do easter egg (isEggActive / start / end),
+  // trava o chat da Shiva durante a sequência final e gerencia
+  // o contador de passos (eggStep) que shiva.js avança a cada
+  // interação para reproduzir EGG_SEQUENCE.
   function lockChat() {
     chatLocked = true
     var input = document.getElementById('shivaInput')
@@ -681,7 +708,7 @@
     }
   }
 
-  // Called from shiva.js
+  // ── Expose para shiva.js ──
   window.Horror = {
     startStatic: startStatic,
     setStaticVolume: setStaticVolume,

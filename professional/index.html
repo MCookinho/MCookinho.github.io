@@ -8,6 +8,7 @@
 </head>
 <body>
 
+  <!-- Topbar: barra fixa no topo com "MODO — PROFISSIONAL", botões de config, exportar PDF, desativar e toggle -->
   <nav class="topbar" id="topbar">
     <div class="topbar-inner">
       <span class="topbar-brand" id="infoTrigger" style="cursor:pointer" data-i18n="MODO — PROFISSIONAL">MODO — PROFISSIONAL</span>
@@ -23,6 +24,7 @@
 
   <main class="main-content" id="mainContent">
 
+    <!-- Cabeçalho: nome, título/cargo, localização e links de contato do profissional -->
     <header class="prof-header" id="sec-header" data-section="header">
       <div class="ph-top">
         <h1 class="ph-name" id="edit-name">João Pedro Borges</h1>
@@ -36,6 +38,7 @@
       </div>
     </header>
 
+    <!-- Seção Sobre: parágrafo descritivo com resumo profissional e objetivo -->
     <section class="prof-section" id="sec-about" data-section="about">
       <h2 class="ps-title" data-i18n="SOBRE">SOBRE</h2>
       <p class="ps-text" id="edit-about">
@@ -46,6 +49,7 @@
       </p>
     </section>
 
+    <!-- Seção Experiência: lista de experiências profissionais e acadêmicas -->
     <section class="prof-section" id="sec-experience" data-section="experience">
       <h2 class="ps-title" data-i18n="EXPERIÊNCIA">EXPERIÊNCIA</h2>
       <div class="exp-list">
@@ -68,10 +72,12 @@
       </div>
     </section>
 
+    <!-- Seção Formação: formação acadêmica e cursos -->
     <section class="prof-section" id="sec-education" data-section="education">
       <h2 class="ps-title" data-i18n="FORMAÇÃO">FORMAÇÃO</h2>
     </section>
 
+    <!-- Seção Habilidades Técnicas: categorias de linguagens e ferramentas com barras de proficiência -->
     <section class="prof-section" id="sec-skills" data-section="skills">
       <h2 class="ps-title" data-i18n="HABILIDADES TÉCNICAS">HABILIDADES TÉCNICAS</h2>
       <div class="skills-grid" id="skillsGrid">
@@ -100,6 +106,7 @@
       </div>
     </section>
 
+    <!-- Seção Projetos: grid de cards com linguagem, nome, descrição e link de cada projeto -->
     <section class="prof-section" id="sec-projects" data-section="projects">
       <h2 class="ps-title" data-i18n="PROJETOS">PROJETOS</h2>
       <div class="proj-grid">
@@ -131,6 +138,7 @@
       </div>
     </section>
 
+    <!-- Seção Contato: links clicáveis para email, GitHub, LinkedIn e site pessoal -->
     <section class="prof-section" id="sec-contact" data-section="contact">
       <h2 class="ps-title" data-i18n="CONTATO">CONTATO</h2>
       <div class="contact-links">
@@ -143,17 +151,19 @@
 
   </main>
 
+  <!-- Rodapé: copyright e informações de rodapé da página -->
   <footer class="prof-footer">
     <p>© 2026 João Pedro Borges — Portfolio Profissional</p>
   </footer>
 
-  <!-- ── Config Panel ── -->
+  <!-- Config: painel de personalização com abas — tema, presets, tipografia, cabeçalho, layout, conteúdo e PDF -->
   <div class="config-overlay" id="configOverlay">
     <div class="config-panel">
       <div class="config-head">
         <h2 class="config-title" data-i18n="CONFIGURAÇÕES">CONFIGURAÇÕES</h2>
         <button class="config-close" id="configClose">✕</button>
       </div>
+      <!-- Config Tabs: barra de navegação entre as abas de configuração -->
       <div class="config-tabs" id="configTabs">
         <button class="config-tab active" data-tab="theme" data-i18n="TEMA">TEMA</button>
         <button class="config-tab" data-tab="presets" data-i18n="PRESETS">PRESETS</button>
@@ -165,6 +175,7 @@
       </div>
       <div class="config-body" id="configBody">
 
+        <!-- Tab Tema: seleção de tema visual, cores personalizadas, imagem e padrão de fundo, opacidade e animações -->
         <!-- TAB: THEME -->
         <div class="config-tab-content active" id="tab-theme">
           <div class="config-group">
@@ -209,6 +220,7 @@
           </div>
         </div>
 
+        <!-- Tab Presets: presets rápidos que aplicam tema, tipografia e layout automaticamente -->
         <!-- TAB: PRESETS -->
         <div class="config-tab-content" id="tab-presets">
           <div class="config-group">
@@ -218,6 +230,7 @@
           </div>
         </div>
 
+        <!-- Tab Tipografia: família, tamanho, peso, espaçamento e alinhamento da fonte -->
         <!-- TAB: TYPOGRAPHY -->
         <div class="config-tab-content" id="tab-typo">
           <div class="config-group">
@@ -267,6 +280,7 @@
           </div>
         </div>
 
+        <!-- Tab Cabeçalho: alinhamento, visibilidade de elementos e imagem de perfil -->
         <!-- TAB: HEADER -->
         <div class="config-tab-content" id="tab-header">
           <div class="config-group">
@@ -301,6 +315,7 @@
           </div>
         </div>
 
+        <!-- Tab Layout: largura, espaçamentos, estilos de cards, bordas, sombras e visibilidade de elementos -->
         <!-- TAB: LAYOUT -->
         <div class="config-tab-content" id="tab-layout">
           <div class="config-group">
@@ -395,6 +410,7 @@
           </div>
         </div>
 
+        <!-- Tab Conteúdo: edição de dados pessoais, experiência, formação, habilidades, projetos e seções personalizadas -->
         <!-- TAB: CONTENT -->
         <div class="config-tab-content" id="tab-content">
           <div class="config-group">
@@ -452,6 +468,7 @@
           </div>
         </div>
 
+        <!-- Tab PDF: configurações de exportação — seções incluídas, margens, fonte, tamanho de página, cores e topo -->
         <!-- TAB: PDF -->
         <div class="config-tab-content" id="tab-pdf">
           <div class="config-group">
@@ -487,6 +504,7 @@
         </div>
 
       </div>
+      <!-- Rodapé do painel de config: botões de salvar, compartilhar e restaurar padrão -->
       <div class="config-foot">
         <button class="config-btn config-btn-primary" id="configSave">SALVAR</button>
         <button class="config-btn config-btn-share" id="configShare">COMPARTILHAR</button>
@@ -495,7 +513,7 @@
     </div>
   </div>
 
-  <!-- ── Info Overlay ── -->
+  <!-- Info Overlay: painel informativo sobre o Modo Profissional — personalização, compartilhamento e exportação PDF -->
   <div class="info-overlay" id="infoOverlay">
     <div class="info-panel">
       <div class="info-head">
@@ -533,6 +551,7 @@
     </div>
   </div>
 
+  <!-- Scripts: inclusão do sistema de internacionalização e do script principal do Modo Profissional -->
   <script src="../lang.js"></script>
   <script src="script.js"></script>
 </body>
