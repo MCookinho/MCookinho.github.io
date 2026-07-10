@@ -225,7 +225,6 @@ function generateReadme() {
   // ── Footer ──
   md += `<div align="center">\n\n`
   md += `<img src="https://komarev.com/ghpvc/?username=${s.github}&label=Profile+Views&color=0e75b6&style=flat"/>\n\n`
-  md += `*⚡ ${p.funFact || 'Code, coffee, chaos.'}*\n\n`
   md += `</div>\n`
 
   return md
