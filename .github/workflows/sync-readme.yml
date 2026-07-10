@@ -11,6 +11,7 @@ on:
       - 'lang.js'
       - 'scripts/*.js'
       - 'data/profile.json'
+      - '.github/workflows/*.yml'
   workflow_dispatch:
 
 permissions:
