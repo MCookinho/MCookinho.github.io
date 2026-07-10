@@ -4,13 +4,13 @@ on:
   push:
     branches: [main]
     paths:
-      - 'data/profile.json'
       - 'index.html'
       - 'script.js'
       - 'professional/script.js'
+      - 'professional/index.html'
       - 'lang.js'
-      - 'scripts/generate-readme.js'
-      - 'scripts/ai-extract-profile.js'
+      - 'scripts/*.js'
+      - 'data/profile.json'
   workflow_dispatch:
 
 permissions:
@@ -38,18 +38,19 @@ jobs:
           node-version: 20
 
       - name: AI Extract Profile from site data
-        id: ai
+        id: extract
         working-directory: site
         run: node scripts/ai-extract-profile.js
         env:
           GITHUB_TOKEN: ${{ github.token }}
+          AI_MODEL: Mistral-large
           PROFILE_FILE: ${{ github.workspace }}/site/data/profile.json
 
       - name: Commit AI profile update to site repo
         working-directory: site
         run: |
           git config user.name "MCookinho"
-          git config user.email "peuborges.dev@gmail.com"
+          git config user.email "ContatoPeuBorges@proton.me"
           git add data/profile.json
           if ! git diff --cached --quiet; then
             git commit -m "chore: auto-update profile.json via AI extraction"
@@ -59,26 +60,29 @@ jobs:
             echo "ℹ️ No changes to profile.json"
           fi
 
-      - name: Generate README into profile repo
-        id: generate
+      - name: AI Generate README with assets
+        id: readme
         working-directory: site
-        run: node scripts/generate-readme.js
+        run: node scripts/ai-generate-readme.js
         env:
-          PROFILE_REPO: MCookinho/MCookinho
-          SITE_URL: https://mcookinho.github.io
-          HISTORY_DIR: ${{ github.workspace }}/profile/History
+          GITHUB_TOKEN: ${{ github.token }}
+          AI_MODEL: Mistral-large
+          SITE_DIR: ${{ github.workspace }}/site
+          PROFILE_DIR: ${{ github.workspace }}/profile
           README_FILE: ${{ github.workspace }}/profile/README.md
+          ASSETS_DIR: ${{ github.workspace }}/profile/assets
+          HISTORY_DIR: ${{ github.workspace }}/profile/History
 
       - name: Commit and push to profile repo
         working-directory: profile
         run: |
           git config user.name "MCookinho"
-          git config user.email "peuborges.dev@gmail.com"
-          git add README.md History/
+          git config user.email "ContatoPeuBorges@proton.me"
+          git add README.md assets/ History/
           if git diff --cached --quiet; then
             echo "No changes — README is up to date"
           else
-            git commit -m "chore: auto-sync profile README from site data"
+            git commit -m "chore: auto-sync profile README (AI generated)"
             git push
             echo "✅ README synced to MCookinho/MCookinho"
           fi

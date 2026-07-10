@@ -6,14 +6,14 @@ const path = require('path')
 const https = require('https')
 
 const API_URL = 'https://models.inference.ai.azure.com/chat/completions'
-const MODEL = process.env.AI_MODEL || 'Meta-Llama-3.1-70B-Instruct'
+const MODEL = process.env.AI_MODEL || 'Mistral-large'
 const TOKEN = process.env.GITHUB_TOKEN
 const PROFILE_FILE = process.env.PROFILE_FILE || path.join(__dirname, '..', 'data', 'profile.json')
 const SITE_DIR = path.join(__dirname, '..')
 
-async function readSiteFiles() {
+function readSiteFiles() {
   const files = {}
-  for (const name of ['index.html', 'script.js', 'professional/script.js', 'lang.js']) {
+  for (const name of ['index.html', 'script.js', 'professional/script.js', 'lang.js', 'professional/index.html']) {
     try {
       files[name] = fs.readFileSync(path.join(SITE_DIR, name), 'utf-8')
     } catch (e) {
@@ -40,7 +40,6 @@ function callAPI(messages) {
       temperature: 0.1,
       max_tokens: 4096,
     })
-
     const u = new URL(API_URL)
     const opts = {
       hostname: u.hostname,
@@ -52,19 +51,12 @@ function callAPI(messages) {
         'Content-Length': Buffer.byteLength(body),
       },
     }
-
     const req = https.request(opts, (res) => {
       let data = ''
       res.on('data', (c) => data += c)
       res.on('end', () => {
-        if (res.statusCode !== 200) {
-          return reject(new Error(`API ${res.statusCode}: ${data.slice(0, 500)}`))
-        }
-        try {
-          resolve(JSON.parse(data))
-        } catch (e) {
-          reject(new Error('Failed to parse API response'))
-        }
+        if (res.statusCode !== 200) return reject(new Error(`API ${res.statusCode}: ${data.slice(0, 500)}`))
+        try { resolve(JSON.parse(data)) } catch (e) { reject(new Error('Failed to parse API response')) }
       })
     })
     req.on('error', reject)
@@ -74,90 +66,125 @@ function callAPI(messages) {
 }
 
 function buildPrompt(siteFiles, currentProfile) {
-  const schema = JSON.stringify({
-    version: 'number',
-    personal: {
-      name: 'string',
-      nickname: 'string',
-      handle: 'string',
-      age: 'number',
-      birthDate: 'string (YYYY-MM-DD)',
-      location: 'string',
-      title: 'string',
-      bio: 'string (detailed)',
-      shortBio: 'string (one line)',
-      email: 'string',
-      funFact: 'string',
-      avatarUrl: 'string',
-      tags: 'string[] (interests like CHESS, GAME DEV, LINUX)',
-      dog: 'string',
-    },
-    social: {
-      github: 'string (username only)',
-      linkedin: 'string (username only)',
-      instagram: 'string',
-      twitter: 'string',
-      youtube: 'string',
-      twitch: 'string',
-      itchio: 'string (username)',
-    },
-    status: {
-      currentlyLearning: 'string[]',
-      currentlyWorkingOn: 'string',
-      currentFocus: 'string',
-    },
-    skills: {
-      languages: [{ name: 'string', pct: 'number (0-100)' }],
-      tools: [{ name: 'string', pct: 'number (0-100)' }],
-    },
-    projects: [{ name: 'string', lang: 'string', desc: 'string', url: 'string', badge: 'string|null' }],
-    games: [{ name: 'string', desc: 'string', url: 'string' }],
-    experience: [{ role: 'string', org: 'string', period: 'string', desc: 'string' }],
-    education: [{ course: 'string', institution: 'string', period: 'string', desc: 'string' }],
-    rankings: { movies: 'string', series: 'string', games: 'string' },
-  }, null, 2)
+  let prompt = `You are a precise profile data extractor. Extract ALL profile data from the provided source files into the JSON schema below.
 
-  let prompt = `You are a profile data extractor. Given the source files of a personal portfolio website, extract all profile data into the JSON schema below.
+RULES - FOLLOW THESE EXACTLY:
+1. Return ONLY the JSON object. No explanation, no markdown, no code fences.
+2. version: increment by 1 from current (or start at 1).
 
-RULES:
-- Return ONLY the JSON object, no explanation.
-- Skills: categorize as "languages" (Python, JavaScript, TypeScript, Bash, SQL, Java, C, C++, C#, GML) or "tools" (everything else). Derive proficiency percentages from context in the code.
-- Projects: extract name, language, description, badge if present (e.g. BETA, ALPHA).
-- Games: extract from HTML (game card sections).
-- Social: extract GitHub, LinkedIn, Instagram, Twitter/X, YouTube, Twitch, Itch.io usernames from the code.
-- Bio/title/funFact: extract from the professional script.js data.
-- Keep "version" as 1 more than current.
-- Keep "rankings" paths as-is.
+3. personal.name: get from professional/script.js "name:" field
+4. personal.nickname: "Peu Borges"
+5. personal.handle: "MisterCookie"
+6. personal.birthDate: "2005-04-18"
+7. personal.age: calculate from birthDate
+8. personal.location: "Salvador, BA, Brazil"
+9. personal.title: from professional/script.js "title:" or similar
+10. personal.bio: from professional/script.js "about:" or similar
+11. personal.shortBio: one-line summary
+12. personal.email: from professional/script.js "email:"
+13. personal.funFact: something creative about the user
+14. personal.avatarUrl: "https://mcookinho.github.io/assets/images/avatar.png"
+15. personal.tags: extract interests from context (CHESS, GAME DEV, LINUX, etc.)
+16. personal.dog: "Shiva — Golden Retriever, the cutest coding buddy in the world"
+
+17. social: extract ALL usernames from relevant fields in script.js / professional/script.js
+    - github: username only (without https://github.com/)
+    - linkedin: username only (without https://linkedin.com/in/)
+    - instagram: username
+    - twitter: username
+    - youtube: channel handle
+    - twitch: username
+    - itchio: username
+
+18. status.currentlyLearning: extract from context
+19. status.currentlyWorkingOn: extract from context
+20. status.currentFocus: education info
+
+21. skills.languages: ONLY these names — "Python", "JavaScript", "Bash", "TypeScript", "SQL", "C / C++", "GML", "Java", "C#"
+    Set pct (0-100) based on proficiency indicators in the code.
+    Sort by pct descending.
+
+22. skills.tools: ONLY these names — "Git", "Linux", "ncurses", "AWS", "Docker", "FL Studio", "Godot", "MongoDB", "Unity", "Arduino", "GameMaker", "Google Cloud"
+    Set pct (0-100) based on proficiency indicators in the code.
+    Sort by pct descending.
+
+23. projects: extract from professional/script.js project entries. Include name, language (lang), description (desc), url, and badge (BETA/ALPHA or null).
+
+24. games: extract from index.html game card sections. Include name, desc, url.
+
+25. experience: extract education and work context.
+
+26. education: extract course, institution, period.
+
+27. rankings: keep as {"movies": "data/rankings/filmes.json", "series": "data/rankings/series.json", "games": "data/rankings/jogos.json"}
 
 SCHEMA:
-${schema}`
+{
+  "version": "number (increment from current)",
+  "personal": {
+    "name": "string",
+    "nickname": "string",
+    "handle": "string",
+    "birthDate": "2005-04-18",
+    "age": "number",
+    "location": "string",
+    "title": "string",
+    "bio": "string",
+    "shortBio": "string",
+    "email": "string",
+    "funFact": "string",
+    "avatarUrl": "string",
+    "tags": "string[]",
+    "dog": "string"
+  },
+  "social": {
+    "github": "string",
+    "linkedin": "string",
+    "instagram": "string",
+    "twitter": "string",
+    "youtube": "string",
+    "twitch": "string",
+    "itchio": "string"
+  },
+  "status": {
+    "currentlyLearning": "string[]",
+    "currentlyWorkingOn": "string",
+    "currentFocus": "string"
+  },
+  "skills": {
+    "languages": [{ "name": "string", "pct": "number" }],
+    "tools": [{ "name": "string", "pct": "number" }]
+  },
+  "projects": [{ "name": "string", "lang": "string", "desc": "string", "url": "string", "badge": "string|null" }],
+  "games": [{ "name": "string", "desc": "string", "url": "string" }],
+  "experience": [{ "role": "string", "org": "string", "period": "string", "desc": "string" }],
+  "education": [{ "course": "string", "institution": "string", "period": "string", "desc": "string" }],
+  "rankings": { "movies": "data/rankings/filmes.json", "series": "data/rankings/series.json", "games": "data/rankings/jogos.json" }
+}`
 
   if (currentProfile) {
-    prompt += `\n\nCURRENT profile.json (update/keep what applies):\n${JSON.stringify(currentProfile, null, 2)}`
+    prompt += `\n\nCURRENT profile.json (use as reference, update fields that changed):\n${JSON.stringify(currentProfile, null, 2)}`
   }
 
   prompt += '\n\nSOURCE FILES:\n\n'
   for (const [name, content] of Object.entries(siteFiles)) {
-    if (content) {
-      prompt += `=== ${name} ===\n${content.slice(0, 15000)}\n\n`
-    }
+    if (content) prompt += `=== ${name} ===\n${content.slice(0, 20000)}\n\n`
   }
 
   return prompt
 }
 
 async function main() {
-  console.log('[ai-extract] === AI Profile Extraction ===')
+  console.log('[ai-extract] === Profile Extraction ===')
   console.log('[ai-extract] Model:', MODEL)
 
   if (!TOKEN) {
-    console.warn('[ai-extract] No GITHUB_TOKEN found, keeping existing profile.json')
+    console.warn('[ai-extract] No GITHUB_TOKEN — keeping existing profile.json')
     process.exit(0)
   }
 
-  const siteFiles = await readSiteFiles()
+  const siteFiles = readSiteFiles()
   const currentProfile = getCurrentProfile()
-
   const prompt = buildPrompt(siteFiles, currentProfile)
 
   console.log('[ai-extract] Calling API...')
@@ -169,26 +196,24 @@ async function main() {
     ])
   } catch (e) {
     console.error('[ai-extract] API call failed:', e.message)
-    console.log('[ai-extract] Keeping existing profile.json unchanged')
     process.exit(0)
   }
 
   const content = result.choices?.[0]?.message?.content
-  if (!content) {
-    console.error('[ai-extract] Empty response from model')
-    process.exit(0)
-  }
+  if (!content) { console.error('[ai-extract] Empty response'); process.exit(0) }
 
   let profile
-  try {
-    profile = JSON.parse(content)
-  } catch (e) {
-    console.error('[ai-extract] Failed to parse model response as JSON:', e.message)
-    process.exit(0)
-  }
+  try { profile = JSON.parse(content) }
+  catch (e) { console.error('[ai-extract] Invalid JSON:', e.message); process.exit(0) }
 
   if (!profile.version) profile.version = (currentProfile?.version || 0) + 1
   if (!profile.rankings) profile.rankings = { movies: 'data/rankings/filmes.json', series: 'data/rankings/series.json', games: 'data/rankings/jogos.json' }
+
+  // Sort skills by pct descending
+  if (profile.skills) {
+    if (profile.skills.languages) profile.skills.languages.sort((a, b) => b.pct - a.pct)
+    if (profile.skills.tools) profile.skills.tools.sort((a, b) => b.pct - a.pct)
+  }
 
   const out = JSON.stringify(profile, null, 2) + '\n'
   fs.writeFileSync(PROFILE_FILE, out, 'utf-8')
