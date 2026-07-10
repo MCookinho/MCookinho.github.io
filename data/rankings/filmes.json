@@ -33,28 +33,6 @@
     "rating": 4.6
   },
   {
-    "name": "A Man Called Ove",
-    "type": [
-      "Comédia",
-      "Drama",
-      "Romance"
-    ],
-    "synopsis": "Ove é um viúvo rabugento que controla cada detalhe de seu bairro, mas sua vida muda quando uma nova família se muda para a vizinhança e força uma improvável amizade que revela um passado de amor e tragédia.",
-    "review": "A Man Called Ove é bom, curti a experiência.",
-    "rating": 4.0
-  },
-  {
-    "name": "A Monster Calls",
-    "type": [
-      "Fantasia",
-      "Drama",
-      "Animação"
-    ],
-    "synopsis": "Conor, um garoto de 13 anos lidando com a doença terminal da mãe, recebe a visita noturna de um monstro que conta histórias para ensinar lições sobre coragem, verdade e perda.",
-    "review": "Terrorzinho bom. A Monster Calls é bom, curti a experiência.",
-    "rating": 3.8
-  },
-  {
     "name": "A Origem",
     "type": [
       "Ficção Científica",
@@ -64,28 +42,6 @@
     "synopsis": "Dom Cobb é um ladrão especializado em roubar segredos do subconsciente das pessoas durante o sonho, mas recebe uma missão impossível: plantar uma ideia na mente de um herdeiro em troca de sua vida de volta.",
     "review": "Vi pela primeira vez com meu pai quando era pequeno, gostei demais do filme e tenho um apego emocional por ele.",
     "rating": 4.6
-  },
-  {
-    "name": "A Quiet Place",
-    "type": [
-      "Terror",
-      "Suspense",
-      "Drama"
-    ],
-    "synopsis": "Em um mundo devastado por criaturas cegas que caçam pelo som, uma família precisa viver em completo silêncio para sobreviver, enquanto enfrenta perdas e toma decisões extremas para proteger seus filhos.",
-    "review": "Animação linda. A Quiet Place me agradou bastante, filme sólido.",
-    "rating": 3.9
-  },
-  {
-    "name": "A Star Is Born",
-    "type": [
-      "Drama",
-      "Romance",
-      "Musical"
-    ],
-    "synopsis": "Jackson Maine, um músico consagrado que luta contra o alcoolismo, descobre e se apaixona por Ally, uma cantora talentosa. Enquanto a carreira dela decola, a dele entra em espiral descendente.",
-    "review": "Filme de ficção científica brabo. A Star Is Born me agradou bastante, filme sólido.",
-    "rating": 4.0
   },
   {
     "name": "A Viagem de Chihiro",
@@ -110,17 +66,6 @@
     "rating": 4.1
   },
   {
-    "name": "Ac/Dc",
-    "type": [
-      "Documentário",
-      "Musical",
-      "Biografia"
-    ],
-    "synopsis": "Um documentário sobre a lendária banda de rock AC/DC, explorando sua trajetória desde os primeiros dias na Austrália até se tornarem um dos maiores nomes do rock mundial.",
-    "review": "Ac/Dc me agradou bastante, filme sólido.",
-    "rating": 4.0
-  },
-  {
     "name": "Ad Astra",
     "type": [
       "Ficção Científica",
@@ -141,50 +86,6 @@
     "synopsis": "Charlie Kaufman, um roteirista atormentado, luta para adaptar um livro sobre orquídeas para o cinema enquanto sua vida pessoal e profissional se desintegram em meio a uma crise criativa.",
     "review": "Filme ok.",
     "rating": 3.4
-  },
-  {
-    "name": "After Hours",
-    "type": [
-      "Comédia",
-      "Suspense",
-      "Cult"
-    ],
-    "synopsis": "Um homem comum tem uma noite cada vez mais surreal e catastrófica no bairro do Soho em Nova York, onde cada encontro o coloca em situações mais absurdas e perigosas.",
-    "review": "After Hours me entreteve, recomendo.",
-    "rating": 4.0
-  },
-  {
-    "name": "Aftersun",
-    "type": [
-      "Drama",
-      "Romance",
-      "Suspense"
-    ],
-    "synopsis": "Uma mulher relembra as férias que passou com seu pai jovem em um resort turco quando tinha 11 anos, revisitando memórias fragmentadas que escondem as lutas internas que ele jamais revelou.",
-    "review": "Terrorzinho bom. Aftersun me agradou bastante, filme sólido.",
-    "rating": 4.0
-  },
-  {
-    "name": "Aguirre Der Zorn Gottes",
-    "type": [
-      "Drama",
-      "Aventura",
-      "Guerra"
-    ],
-    "synopsis": "No século XVI, o conquistador espanhol Lope de Aguirre lidera um grupo de aventureiros pela floresta amazônica em busca de El Dorado, descendo à loucura e à tirania à medida que a expedição fracassa.",
-    "review": "Terrorzinho bom. Aguirre Der Zorn Gottes é bom, curti a experiência.",
-    "rating": 4.0
-  },
-  {
-    "name": "Airplane",
-    "type": [
-      "Comédia",
-      "Cult",
-      "Ação"
-    ],
-    "synopsis": "Um ex-piloto de caça com medo de voar precisa assumir o controle de um avião comercial depois que a tripulação e os passageiros são incapacitados por uma intoxicação alimentar.",
-    "review": "Airplane não me agradou tanto, fraquinho.",
-    "rating": 3.7
   },
   {
     "name": "Aladdin",
@@ -218,28 +119,6 @@
     "synopsis": "A tripulação da nave Nostromo é acordada de sua hibernação para investigar um sinal misterioso em um planeta desolado, onde um organismo alienígena letal se infiltra na nave e começa a caçar um por um.",
     "review": "AMO DEMAIS ALIEN! É um otimo filme de terror, bom demais",
     "rating": 4.7
-  },
-  {
-    "name": "Aliens",
-    "type": [
-      "Ficção Científica",
-      "Ação",
-      "Terror"
-    ],
-    "synopsis": "Ripley é resgatada após 57 anos à deriva e convencida a acompanhar um grupo de fuzileiros navais ao planeta LV-426, onde uma colônia humana foi exterminada pelos xenomorfos.",
-    "review": "Aliens não gostei, me entediou.",
-    "rating": 3.0
-  },
-  {
-    "name": "Alphaville",
-    "type": [
-      "Ficção Científica",
-      "Cult",
-      "Policial"
-    ],
-    "synopsis": "O agente secreto Lemmy Caution viaja para Alphaville, um distópico estado totalitário governado por um supercomputador que elimina emoções e sentimentos, em uma missão para destruir o sistema.",
-    "review": "Alphaville me entreteve, recomendo.",
-    "rating": 4.0
   },
   {
     "name": "Amadeus",
@@ -352,39 +231,6 @@
     "rating": 4.0
   },
   {
-    "name": "Annie Hall",
-    "type": [
-      "Comédia",
-      "Romance",
-      "Drama"
-    ],
-    "synopsis": "O comediante Alvy Singer reflete sobre seu relacionamento com Annie Hall, uma jovem excêntrica, em uma narrativa não linear que explora as neuroses, o amor e as dificuldades dos relacionamentos modernos.",
-    "review": "Annie Hall me agradou bastante, filme sólido.",
-    "rating": 4.0
-  },
-  {
-    "name": "Annihilation",
-    "type": [
-      "Ficção Científica",
-      "Terror",
-      "Suspense"
-    ],
-    "synopsis": "Uma bióloga se junta a uma expedição em uma zona isolada chamada Área X, onde fenômenos naturais distorcem a realidade e a genética de todos os seres vivos, ameaçando engolir tudo ao redor.",
-    "review": "Annihilation não me agradou tanto, fraquinho.",
-    "rating": 3.5
-  },
-  {
-    "name": "Antichrist",
-    "type": [
-      "Terror",
-      "Drama",
-      "Suspense"
-    ],
-    "synopsis": "Um casal enlutado se refugia em uma cabana isolada na floresta após a morte trágica do filho, mas o luto e a culpa evoluem para uma violência psicológica e física cada vez mais brutal e perturbadora.",
-    "review": "Antichrist não me agradou tanto, fraquinho.",
-    "rating": 3.3
-  },
-  {
     "name": "Antman",
     "type": [
       "Ação",
@@ -405,17 +251,6 @@
     "synopsis": "Scott Lang lida com as consequências de suas ações em Capitão América: Guerra Civil enquanto tenta equilibrar a vida de super-herói com a paternidade, e se une à Vespa em uma nova missão no reino quântico.",
     "review": "HORRIVEL, só digo isso, se o primeiro era legal esse aqui é uma bosta.",
     "rating": 2.3
-  },
-  {
-    "name": "Anywhere But Here",
-    "type": [
-      "Drama",
-      "Comédia",
-      "Romance"
-    ],
-    "synopsis": "Adele August, uma mãe impulsiva e sonhadora, arrasta sua filha adolescente Ann de Wisconsin para Beverly Hills em busca de uma vida melhor, mas seus métodos excêntricos criam tensão entre elas.",
-    "review": "Anywhere But Here é bom, curti a experiência.",
-    "rating": 4.0
   },
   {
     "name": "Apocalypse Now",
@@ -462,61 +297,6 @@
     "rating": 4.2
   },
   {
-    "name": "Arrival",
-    "type": [
-      "Ficção Científica",
-      "Drama",
-      "Suspense"
-    ],
-    "synopsis": "Doze naves alienígenas pousam em diferentes lugares da Terra. A linguista Louise Banks é recrutada para decifrar sua linguagem, e quanto mais aprende, mais sua percepção do tempo se transforma radicalmente.",
-    "review": "Arrival me agradou bastante, filme sólido.",
-    "rating": 4.0
-  },
-  {
-    "name": "Arthur",
-    "type": [
-      "Comédia",
-      "Romance",
-      "Drama"
-    ],
-    "synopsis": "Arthur Bach é um milionário alcoólatra e irresponsável que arrisca perder sua fortuna se não se casar com uma mulher rica escolhida por sua família, mas se apaixona por uma vendedora humilde.",
-    "review": "Arthur não gostei, me entediou.",
-    "rating": 3.2
-  },
-  {
-    "name": "At Eternitys Gate",
-    "type": [
-      "Drama",
-      "Biografia",
-      "Arte"
-    ],
-    "synopsis": "Uma imersão íntima nos últimos anos de Vincent van Gogh, explorando sua visão artística única, sua luta contra a doença mental e sua busca incessante por beleza em meio ao isolamento e rejeição.",
-    "review": "At Eternitys Gate me agradou bastante, filme sólido.",
-    "rating": 4.0
-  },
-  {
-    "name": "Atonement",
-    "type": [
-      "Drama",
-      "Guerra",
-      "Romance"
-    ],
-    "synopsis": "Uma mentira contada por uma garota de 13 anos separa dois jovens amantes durante a Segunda Guerra Mundial, levando-os por caminhos trágicos enquanto ela passa a vida tentando se redimir pelo erro.",
-    "review": "Atonement não me agradou tanto, fraquinho.",
-    "rating": 3.7
-  },
-  {
-    "name": "Au Hasard Balthazar",
-    "type": [
-      "Drama",
-      "Cult",
-      "Arte"
-    ],
-    "synopsis": "A vida de um burro chamado Balthazar que passa por diferentes donos, testemunhando a bondade e a crueldade humana, em uma parábola sobre sofrimento, inocência e redenção no mundo moderno.",
-    "review": "Au Hasard Balthazar não me agradou tanto, fraquinho.",
-    "rating": 3.4
-  },
-  {
     "name": "Avatar",
     "type": [
       "Ficção Científica",
@@ -524,8 +304,8 @@
       "Ação"
     ],
     "synopsis": "Um ex-fuzileiro naval paraplégico viaja ao planeta Pandora e se apaixona pela cultura Na'vi, mas precisa decidir de que lado lutar quando os humanos ameaçam destruir o mundo alienígena por seus recursos.",
-    "review": "Avatar não me agradou tanto, fraquinho.",
-    "rating": 3.5
+    "review": "Gostei ne.",
+    "rating": 4.2
   },
   {
     "name": "Avengers Endgame",
@@ -535,8 +315,8 @@
       "Aventura"
     ],
     "synopsis": "Após o estalar de dedos de Thanos ter dizimado metade do universo, os Vingadores restantes precisam encontrar uma maneira de reverter a catástrofe através de viagem no tempo e um plano desesperado.",
-    "review": "Animação linda. Avengers Endgame me agradou bastante, filme sólido.",
-    "rating": 4.0
+    "review": "Pior que guerra infinita, mas ainda assim é bom.",
+    "rating": 4.2
   },
   {
     "name": "Avengers Infinity War",
@@ -548,28 +328,6 @@
     "synopsis": "Thanos finalmente coloca seu plano em ação para coletar todas as Joias do Infinito, e os Vingadores precisam se unir a inimigos do passado em uma corrida desesperada para impedir sua destruição universal.",
     "review": "Melhor filme de heroi que existe, sem sombra de duvidas.",
     "rating": 4.7
-  },
-  {
-    "name": "Babe",
-    "type": [
-      "Comédia",
-      "Drama",
-      "Fantasia"
-    ],
-    "synopsis": "Um porquinho órfão é adotado por um cachorro em uma fazenda e, contra todas as expectativas, decide que quer se tornar um cão de pastoreio, desafiando preconceitos e provando que tamanho não é documento.",
-    "review": "Babe me agradou bastante, filme sólido.",
-    "rating": 4.0
-  },
-  {
-    "name": "Babel",
-    "type": [
-      "Drama",
-      "Suspense",
-      "Romance"
-    ],
-    "synopsis": "Quatro histórias interligadas em diferentes continentes — Marrocos, EUA, México e Japão — exploram como um único evento trágico conecta pessoas de culturas distintas e revela a fragilidade da comunicação humana.",
-    "review": "Babel é bom, curti a experiência.",
-    "rating": 4.0
   },
   {
     "name": "Baby Driver",
@@ -605,7 +363,7 @@
     "rating": 4.5
   },
   {
-    "name": "Back To The Future Ii",
+    "name": "Back To The Future II",
     "type": [
       "Ficção Científica",
       "Comédia",
@@ -616,7 +374,7 @@
     "rating": 4.1
   },
   {
-    "name": "Back To The Future Iii",
+    "name": "Back To The Future III",
     "type": [
       "Faroeste",
       "Comédia",
@@ -625,28 +383,6 @@
     "synopsis": "Marty viaja para 1885 para resgatar Doc Brown, que está preso no Velho Oeste, e precisa sobreviver a duelos, bandidos e um romance inesperado para trazer seu amigo de volta ao futuro.",
     "review": "O melhor da franquia na minha opinião",
     "rating": 4.6
-  },
-  {
-    "name": "Bad Education",
-    "type": [
-      "Drama",
-      "Policial",
-      "Biografia"
-    ],
-    "synopsis": "A história real de Frank Tassone, um superintendente escolar em Long Island que desviou milhões de dólares do distrito escolar para financiar um estilo de vida luxuoso enquanto mantia uma fachada de educador exemplar.",
-    "review": "Animação linda. Bad Education me entreteve, recomendo.",
-    "rating": 4.0
-  },
-  {
-    "name": "Bad Times At The El Royale",
-    "type": [
-      "Suspense",
-      "Drama",
-      "Policial"
-    ],
-    "synopsis": "Sete estranhos se encontram no decadente hotel El Royale, na divisa entre Califórnia e Nevada, onde cada um esconde segredos obscuros que explodem em uma noite de violência e reviravoltas.",
-    "review": "Bad Times At The El Royale me entreteve, recomendo.",
-    "rating": 4.0
   },
   {
     "name": "Barbie",
@@ -658,17 +394,6 @@
     "synopsis": "Barbie vive na perfeita Barbielândia até começar a ter pensamentos existencialistas estranhos. Para se curar, ela precisa viajar ao mundo real, onde descobre as complexidades e contradições da humanidade.",
     "review": "Gostei, vi no mesmo de de Oppenheimer com uns amigos.",
     "rating": 4.4
-  },
-  {
-    "name": "Barry Lyndon",
-    "type": [
-      "Drama",
-      "História",
-      "Guerra"
-    ],
-    "synopsis": "A ascensão e queda de Redmond Barry, um jovem irlandês que abandona sua terra natal após um duelo e sobe na hierarquia social europeia através de casamento, manipulação e pura sorte no século XVIII.",
-    "review": "Barry Lyndon me entreteve, recomendo.",
-    "rating": 4.0
   },
   {
     "name": "Bastardos Inglorios",
@@ -704,28 +429,6 @@
     "rating": 4.8
   },
   {
-    "name": "Beasts Of No Nation",
-    "type": [
-      "Drama",
-      "Guerra",
-      "Suspense"
-    ],
-    "synopsis": "Agu, um garoto africano, é separado de sua família durante uma guerra civil e forçado a se tornar uma criança-soldado sob o comando de um comandante brutal, perdendo sua inocência em meio à violência.",
-    "review": "Beasts Of No Nation é bom, curti a experiência.",
-    "rating": 4.0
-  },
-  {
-    "name": "Beauty And The Beast",
-    "type": [
-      "Animação",
-      "Fantasia",
-      "Romance"
-    ],
-    "synopsis": "Bela, uma jovem sonhadora que adora ler, se torna prisioneira de uma Fera amaldiçoada em um castelo encantado, mas descobre que por trás da aparência monstruosa há um coração bondoso que precisa de amor verdadeiro.",
-    "review": "Beauty And The Beast é bom, curti a experiência.",
-    "rating": 4.0
-  },
-  {
     "name": "Bee Movie",
     "type": [
       "Animação",
@@ -734,116 +437,6 @@
     ],
     "synopsis": "Barry B. Benson, uma abelha recém-formada que está cansada de ter uma vida profissional predeterminada, decide processar os humanos por roubarem o mel das abelhas e aciona uma reviravolta no ecossistema global.",
     "review": "Classico",
-    "rating": 4.0
-  },
-  {
-    "name": "Before Midnight",
-    "type": [
-      "Romance",
-      "Drama",
-      "Comédia"
-    ],
-    "synopsis": "Nove anos após o reencontro, Jesse e Celine estão casados e de férias na Grécia com seus filhos, mas as conversas íntimas revelam frustrações, inseguranças e o desgaste do amor ao longo do tempo.",
-    "review": "Animação linda. Before Midnight é bom, curti a experiência.",
-    "rating": 4.0
-  },
-  {
-    "name": "Before Sunrise",
-    "type": [
-      "Romance",
-      "Drama",
-      "Comédia"
-    ],
-    "synopsis": "Jesse, um americano, e Celine, uma francesa, se conhecem em um trem e passam uma noite inesquecível caminhando por Viena, compartilhando conversas profundas sobre amor, vida e sonhos antes de se despedirem ao amanhecer.",
-    "review": "Before Sunrise é bom, curti a experiência.",
-    "rating": 4.0
-  },
-  {
-    "name": "Before Sunset",
-    "type": [
-      "Romance",
-      "Drama",
-      "Comédia"
-    ],
-    "synopsis": "Nove anos após a noite em Viena, Jesse e Celine se reencontram em Paris durante uma sessão de autógrafos e têm apenas algumas horas antes do voo de Jesse, revivendo a conexão que nunca se apagou.",
-    "review": "Animação linda. Before Sunset me agradou bastante, filme sólido.",
-    "rating": 4.0
-  },
-  {
-    "name": "Being John Malkovich",
-    "type": [
-      "Fantasia",
-      "Comédia",
-      "Drama"
-    ],
-    "synopsis": "Um titereiro frustrado descobre um portal que leva diretamente para a mente do ator John Malkovich por 15 minutos, e logo ele e seus colegas começam a explorar e comercializar essa experiência surreal.",
-    "review": "Being John Malkovich não gostei, me entediou.",
-    "rating": 3.1
-  },
-  {
-    "name": "Belle De Jour",
-    "type": [
-      "Drama",
-      "Romance",
-      "Suspense"
-    ],
-    "synopsis": "Séverine, uma jovem burguesa que não sente prazer com o marido, começa a trabalhar em um bordélio durante a tarde para explorar suas fantasias sexuais secretas, colocando sua vida dupla em risco.",
-    "review": "Belle De Jour não gostei, me entediou.",
-    "rating": 3.0
-  },
-  {
-    "name": "Bicycle Thieves",
-    "type": [
-      "Drama",
-      "Cult",
-      "Policial"
-    ],
-    "synopsis": "Na Roma do pós-guerra, um pobre trabalhador tem sua bicicleta roubada, essencial para seu emprego. Com seu filho pequeno, ele percorre a cidade em uma busca desesperada que testa sua dignidade e moralidade.",
-    "review": "Bicycle Thieves não me agradou tanto, fraquinho.",
-    "rating": 3.6
-  },
-  {
-    "name": "Big Fish",
-    "type": [
-      "Fantasia",
-      "Drama",
-      "Aventura"
-    ],
-    "synopsis": "Edward Bloom sempre contou histórias fantásticas e exageradas sobre sua vida. Quando ele adoece, seu filho Will tenta separar a verdade da ficção e redescobrir quem seu pai realmente era.",
-    "review": "Big Fish é bom, curti a experiência.",
-    "rating": 4.0
-  },
-  {
-    "name": "Birdman",
-    "type": [
-      "Drama",
-      "Comédia",
-      "Fantasia"
-    ],
-    "synopsis": "Riggan Thomson, um ator em declínio famoso por interpretar um super-herói, tenta reviver sua carreira escrevendo, dirigindo e estrelando uma peça na Broadway, enquanto luta contra seu ego e vozes internas.",
-    "review": "Birdman me agradou bastante, filme sólido.",
-    "rating": 4.0
-  },
-  {
-    "name": "Black Hawk Down",
-    "type": [
-      "Guerra",
-      "Ação",
-      "Drama"
-    ],
-    "synopsis": "Em 1993, soldados americanos são enviados em uma missão na Somália para capturar um senhor da guerra, mas a operação dá errado e eles ficam encurralados em Mogadíscio, lutando por suas vidas sob fogo intenso.",
-    "review": "Suspense legal. Black Hawk Down não me agradou tanto, fraquinho.",
-    "rating": 3.4
-  },
-  {
-    "name": "Black Kkklansman",
-    "type": [
-      "Drama",
-      "Comédia",
-      "Policial"
-    ],
-    "synopsis": "Baseado em fatos reais, o detetive negro Ron Stallworth se infiltra na Ku Klux Klan nos anos 1970 com a ajuda de um colega branco que se passa por ele nas reuniões presenciais.",
-    "review": "Black Kkklansman é bom, curti a experiência.",
     "rating": 4.0
   },
   {
@@ -876,19 +469,8 @@
       "Terror"
     ],
     "synopsis": "Nina, uma bailarina dedicada e obsessiva, consegue o papel principal em O Lago dos Cisnes, mas sua luta pela perfeição e sua rivalidade com uma dançarina mais livre desencadeiam seu mergulho na loucura.",
-    "review": "Black Swan me agradou bastante, filme sólido.",
+    "review": "Bom filme.",
     "rating": 4.0
-  },
-  {
-    "name": "Blade Ii",
-    "type": [
-      "Ação",
-      "Terror",
-      "Ficção Científica"
-    ],
-    "synopsis": "O caçador de vampiros Blade precisa formar uma aliança improvável com seus inimigos para enfrentar uma nova raça mutante de vampiros ainda mais letal e sanguinária que ameaça exterminar humanos e vampiros.",
-    "review": "Blade Ii não gostei, me entediou.",
-    "rating": 3.2
   },
   {
     "name": "Blade Runner",
@@ -913,94 +495,6 @@
     "rating": 4.0
   },
   {
-    "name": "Blazing Saddles",
-    "type": [
-      "Comédia",
-      "Faroeste",
-      "Cult"
-    ],
-    "synopsis": "Um xerife negro é nomeado para proteger uma cidade corrupta do Velho Oeste que quer expulsar todos os moradores para dar lugar a uma ferrovia, usando humor e anacronismos para satirizar o gênero faroeste.",
-    "review": "Blazing Saddles não gostei, me entediou.",
-    "rating": 3.1
-  },
-  {
-    "name": "Blood Simple",
-    "type": [
-      "Suspense",
-      "Policial",
-      "Drama"
-    ],
-    "synopsis": "Um dono de bar contrata um detetive particular para matar sua esposa infiel e o amante dela, mas o plano dá terrivelmente errado em uma espiral de desconfiança, traição e violência no Texas.",
-    "review": "Filme de ficção científica brabo. Blood Simple é bom, curti a experiência.",
-    "rating": 4.0
-  },
-  {
-    "name": "Blue Velvet",
-    "type": [
-      "Suspense",
-      "Drama",
-      "Policial"
-    ],
-    "synopsis": "Um jovem universitário retorna a sua cidade pacata e descobre um submundo de violência e perversão sexual quando encontra uma orelha humana decepada em um campo e decide investigar o crime.",
-    "review": "Blue Velvet não gostei, me entediou.",
-    "rating": 3.0
-  },
-  {
-    "name": "Body Heat",
-    "type": [
-      "Suspense",
-      "Drama",
-      "Romance"
-    ],
-    "synopsis": "Um advogado medíocre na Flórida se envolve em um caso ardente com uma mulher casada que o convence a assassinar o marido rico dela, mas o crime perfeito começa a desmoronar sob investigação.",
-    "review": "Body Heat não gostei, me entediou.",
-    "rating": 3.2
-  },
-  {
-    "name": "Bonnie And Clyde",
-    "type": [
-      "Policial",
-      "Drama",
-      "Romance"
-    ],
-    "synopsis": "Baseado na história real do casal de criminosos que aterrorizou os Estados Unidos durante a Grande Depressão, Bonnie Parker e Clyde Barrow roubam bancos e enfrentam a lei em uma fuga violenta e romântica.",
-    "review": "Bonnie And Clyde me entreteve, recomendo.",
-    "rating": 4.0
-  },
-  {
-    "name": "Boyhood",
-    "type": [
-      "Drama",
-      "Cult",
-      "Comédia"
-    ],
-    "synopsis": "Filmado ao longo de 12 anos, acompanhamos a vida de Mason dos 6 aos 18 anos, passando por divórcio dos pais, mudanças, amizades, primeiros amores e a descoberta de sua identidade em tempo real.",
-    "review": "Boyhood me agradou bastante, filme sólido.",
-    "rating": 4.0
-  },
-  {
-    "name": "Bram Stokers Dracula",
-    "type": [
-      "Terror",
-      "Romance",
-      "Fantasia"
-    ],
-    "synopsis": "O Conde Drácula viaja da Transilvânia para Londres em busca de sua amada reencarnada, enquanto o Professor Van Helsing e um grupo de jovens tentam detê-lo antes que ele espalhe sua maldição vampírica.",
-    "review": "Bram Stokers Dracula é bom, curti a experiência.",
-    "rating": 4.0
-  },
-  {
-    "name": "Branded To Kill",
-    "type": [
-      "Policial",
-      "Suspense",
-      "Cult"
-    ],
-    "synopsis": "Hanada, um assassino de aluguel obcecado por arroz, perde seu posto como número três do ranking após falhar uma missão. Caçado por seu próprio sindicato, ele mergulha em um mundo psicótico de paranoia e traição.",
-    "review": "Branded To Kill me entreteve, recomendo.",
-    "rating": 4.0
-  },
-  {
     "name": "Brave",
     "type": [
       "Animação",
@@ -1008,7 +502,7 @@
       "Aventura"
     ],
     "synopsis": "Merida, uma princesa escocesa que prefere o arco e flecha aos protocolos reais, desafia uma tradição antiga e desencadeia uma maldição sobre seu reino, precisando corrigir seus erros com coragem e determinação.",
-    "review": "Sessão da tarde esteve aqui",
+    "review": "Sessão da tarde entrou no chat",
     "rating": 3.4
   },
   {
@@ -1019,140 +513,8 @@
       "Ação"
     ],
     "synopsis": "William Wallace lidera uma revolta popular escocesa contra a opressão do rei Eduardo I da Inglaterra no século XIII, inspirando seu povo a lutar pela liberdade mesmo diante de probabilidades esmagadoras.",
-    "review": "Sessão da tarde esteve aqui 2",
+    "review": "Sessão da tarde entrou no chat 2",
     "rating": 3.4
-  },
-  {
-    "name": "Brazil",
-    "type": [
-      "Fantasia",
-      "Drama",
-      "Cult"
-    ],
-    "synopsis": "Sam Lowry, um burocrata de baixo escalão em uma distopia totalitária e surreal, escapa para um mundo de fantasia enquanto tenta salvar uma mulher misteriosa e corrigir um erro burocrático que custou uma vida.",
-    "review": "Brazil me agradou bastante, filme sólido.",
-    "rating": 4.0
-  },
-  {
-    "name": "Breakfast At Tiffanys",
-    "type": [
-      "Comédia",
-      "Romance",
-      "Drama"
-    ],
-    "synopsis": "Holly Golightly, uma jovem excêntrica que vive em Nova York e sonha em se casar com um milionário, desenvolve um relacionamento complicado com Paul, um escritor que se muda para seu prédio.",
-    "review": "Breakfast At Tiffanys não me agradou tanto, fraquinho.",
-    "rating": 3.4
-  },
-  {
-    "name": "Breathless",
-    "type": [
-      "Policial",
-      "Drama",
-      "Romance"
-    ],
-    "synopsis": "Michel, um pequeno criminoso que adora Humphrey Bogart, rouba um carro e mata um policial, depois foge para Paris onde tenta convencer sua namorada americana Patricia a fugir com ele para a Itália.",
-    "review": "Breathless me agradou bastante, filme sólido.",
-    "rating": 4.0
-  },
-  {
-    "name": "Bridesmaids",
-    "type": [
-      "Comédia",
-      "Romance",
-      "Drama"
-    ],
-    "synopsis": "Annie, uma solteirona com a vida desmoronando, é convidada para ser dama de honra no casamento de sua melhor amiga e precisa competir com o grupo de damas de honra liderado pela esnobe Helen.",
-    "review": "Bridesmaids não me agradou tanto, fraquinho.",
-    "rating": 3.5
-  },
-  {
-    "name": "Bridge To Terabithia",
-    "type": [
-      "Fantasia",
-      "Drama",
-      "Aventura"
-    ],
-    "synopsis": "Dois garotos solitários criam um reino mágico na floresta chamado Terabítia para escapar dos problemas da escola e de casa, mas uma tragédia inesperada testa sua amizade e imaginação de maneiras profundas.",
-    "review": "Bridge To Terabithia não me agradou tanto, fraquinho.",
-    "rating": 3.7
-  },
-  {
-    "name": "Bridget Jones Diary",
-    "type": [
-      "Comédia",
-      "Romance",
-      "Drama"
-    ],
-    "synopsis": "Bridget Jones, uma solteirona de 30 e poucos anos que trabalha em uma editora londrina, decide manter um diário para registrar suas tentativas de parar de fumar, emagrecer e encontrar o amor verdadeiro.",
-    "review": "Bridget Jones Diary não me agradou tanto, fraquinho.",
-    "rating": 3.7
-  },
-  {
-    "name": "Bright Star",
-    "type": [
-      "Romance",
-      "Drama",
-      "Biografia"
-    ],
-    "synopsis": "O romance proibido entre o poeta John Keats e Fanny Brawne, sua vizinha de classe social mais alta, é acompanhado pelos versos que Keats escreve inspirado por ela até sua morte prematura por tuberculose.",
-    "review": "Bright Star me agradou bastante, filme sólido.",
-    "rating": 4.0
-  },
-  {
-    "name": "Bring Me The Head Of Alfredo Garcia",
-    "type": [
-      "Policial",
-      "Drama",
-      "Suspense"
-    ],
-    "synopsis": "Um rico e poderoso mexicano oferece uma recompensa pela cabeça de Alfredo Garcia, que engravidou sua filha. Dois americanos entram na caçada e mergulham em um submundo brutal e corrupto do México.",
-    "review": "Animação linda. Bring Me The Head Of Alfredo Garcia me entreteve, recomendo.",
-    "rating": 4.0
-  },
-  {
-    "name": "Broke",
-    "type": [
-      "Documentário",
-      "Drama",
-      "Biografia"
-    ],
-    "synopsis": "Uma análise aprofundada de como atletas profissionais que ganham milhões de dólares acabam falindo e perdendo tudo, explorando as causas financeiras, emocionais e sociais por trás desse fenômeno.",
-    "review": "Broke me entreteve, recomendo.",
-    "rating": 3.8
-  },
-  {
-    "name": "Brokeback Mountain",
-    "type": [
-      "Drama",
-      "Romance",
-      "Faroeste"
-    ],
-    "synopsis": "No verão de 1963, dois vaqueiros, Ennis e Jack, se apaixonam durante um trabalho isolado nas montanhas de Wyoming, mas o medo e o preconceito os forçam a viver um amor secreto por décadas.",
-    "review": "Brokeback Mountain é bom, curti a experiência.",
-    "rating": 4.0
-  },
-  {
-    "name": "Casablanca",
-    "type": [
-      "Romance",
-      "Drama",
-      "Guerra"
-    ],
-    "synopsis": "Em Casablanca durante a Segunda Guerra Mundial, o cínico americano Rick Blaine reencontra seu grande amor, Ilsa, e precisa decidir entre o interesse pessoal e ajudar a causa aliada contra os nazistas.",
-    "review": "Casablanca me entreteve, recomendo.",
-    "rating": 4.0
-  },
-  {
-    "name": "Cast Away",
-    "type": [
-      "Drama",
-      "Aventura",
-      "Romance"
-    ],
-    "synopsis": "Chuck Noland, um analista de sistemas da FedEx, sobrevive a um acidente de avião e fica preso em uma ilha deserta por quatro anos, lutando contra a solidão, a natureza e sua própria sanidade.",
-    "review": "Cast Away me agradou bastante, filme sólido.",
-    "rating": 4.0
   },
   {
     "name": "Catch Me If You Can",
@@ -1166,17 +528,6 @@
     "rating": 4.5
   },
   {
-    "name": "Chinatown",
-    "type": [
-      "Policial",
-      "Suspense",
-      "Drama"
-    ],
-    "synopsis": "O detetive particular Jake Gittes é contratado para investigar um caso de adultério, mas descobre uma teia de corrupção, assassinato e incesto envolvendo o sistema de água da cidade de Los Angeles nos anos 1930.",
-    "review": "Animação linda. Chinatown não me agradou tanto, fraquinho.",
-    "rating": 3.3
-  },
-  {
     "name": "Cidade de Deus",
     "type": [
       "Drama",
@@ -1188,17 +539,6 @@
     "rating": 4.4
   },
   {
-    "name": "Citizen Kane",
-    "type": [
-      "Drama",
-      "Mistério",
-      "Cult"
-    ],
-    "synopsis": "Um magnata da imprensa morre solitário em seu castelo após dizer a palavra 'Rosebud', e um repórter investiga o significado dessa última palavra através das memórias fragmentadas de quem o conheceu.",
-    "review": "Animação linda. Citizen Kane não gostei, me entediou.",
-    "rating": 3.1
-  },
-  {
     "name": "Clube da Luta",
     "type": [
       "Drama",
@@ -1208,28 +548,6 @@
     "synopsis": "Um homem insone e frustrado com sua vida corporativa encontra Tyler Durden, um carismático anarquista, e juntos fundam um clube de luta clandestino que evolui para um movimento revolucionário perigoso.",
     "review": "FILMASSO, fico triste pela comunidade desse filme ter tanta gente esquisita",
     "rating": 4.8
-  },
-  {
-    "name": "Coco",
-    "type": [
-      "Animação",
-      "Fantasia",
-      "Aventura"
-    ],
-    "synopsis": "Miguel, um garoto que sonha em ser músico, é transportado para a Terra dos Mortos no Dia dos Mortos, onde descobre a história de sua família e o verdadeiro significado da memória e da tradição.",
-    "review": "Coco me agradou bastante, filme sólido.",
-    "rating": 3.9
-  },
-  {
-    "name": "Cold War",
-    "type": [
-      "Drama",
-      "Romance",
-      "Musical"
-    ],
-    "synopsis": "Na Polônia pós-Segunda Guerra, um diretor musical e uma cantora de voz rouca se apaixonam em meio à repressão política, separando-se e reunindo-se repetidamente através da Cortina de Ferro por anos.",
-    "review": "Cold War não me agradou tanto, fraquinho.",
-    "rating": 3.5
   },
   {
     "name": "Coraline",
@@ -1254,61 +572,6 @@
     "rating": 4.5
   },
   {
-    "name": "Crouching Tiger Hidden Dragon",
-    "type": [
-      "Ação",
-      "Fantasia",
-      "Aventura"
-    ],
-    "synopsis": "Na China antiga, um guerreiro mestre entrega sua lendária espada a uma amiga para que ela a dê de presente, mas a espada é roubada por uma jovem misteriosa, desencadeando uma caçada de artes marciais voadoras.",
-    "review": "Crouching Tiger Hidden Dragon me agradou bastante, filme sólido.",
-    "rating": 4.0
-  },
-  {
-    "name": "Das Boot",
-    "type": [
-      "Guerra",
-      "Drama",
-      "Ação"
-    ],
-    "synopsis": "Durante a Batalha do Atlântico na Segunda Guerra Mundial, a tripulação de um submarino alemão enfrenta a claustrofobia, o tédio e o terror das cargas de profundidade enquanto caçam navios aliados.",
-    "review": "Das Boot não me agradou tanto, fraquinho.",
-    "rating": 3.4
-  },
-  {
-    "name": "Dead Poets Society",
-    "type": [
-      "Drama",
-      "Comédia",
-      "Cult"
-    ],
-    "synopsis": "John Keating, um professor de poesia excêntrico e inspirador, incentiva seus alunos de um colégio conservador a pensarem por si mesmos e aproveitarem o dia (Carpe Diem), mudando suas vidas para sempre.",
-    "review": "Dead Poets Society me entreteve, recomendo.",
-    "rating": 4.0
-  },
-  {
-    "name": "Departures",
-    "type": [
-      "Drama",
-      "Comédia",
-      "Cult"
-    ],
-    "synopsis": "Um violoncelista desempregado aceita um emprego em uma agência de preparação de corpos para funerais, descobrindo a beleza e a dignidade no ritual de despedida enquanto enfrenta o preconceito social.",
-    "review": "Departures é bom, curti a experiência.",
-    "rating": 4.0
-  },
-  {
-    "name": "Die Hard",
-    "type": [
-      "Ação",
-      "Suspense",
-      "Policial"
-    ],
-    "synopsis": "O detetive John McClane chega a Los Angeles para passar o Natal com a esposa e se vê no meio de uma tomada de reféns no arranha-céu onde ela trabalha, precisando detonar os terroristas sozinho.",
-    "review": "Die Hard me entreteve, recomendo.",
-    "rating": 4.0
-  },
-  {
     "name": "District 9",
     "type": [
       "Ficção Científica",
@@ -1318,17 +581,6 @@
     "synopsis": "Uma nave alienígena para sobre a África do Sul e seus ocupantes são confinados em um campo de refugiados. Um burocrata encarregado de realocá-los acidentalmente se transforma em um alienígena e precisa fugir.",
     "review": "District 9 me entreteve, recomendo.",
     "rating": 4.2
-  },
-  {
-    "name": "Django Livre",
-    "type": [
-      "Faroeste",
-      "Ação",
-      "Drama"
-    ],
-    "synopsis": "Django, um escravo liberto pelo caçador de recompensas Dr. King Schultz, se torna seu parceiro e juntos partem para resgatar a esposa de Django das garras de um cruel fazendeiro no sul dos EUA.",
-    "review": "Django Livre me entreteve, recomendo.",
-    "rating": 4.0
   },
   {
     "name": "Doctor Strange",
@@ -1342,17 +594,6 @@
     "rating": 4.0
   },
   {
-    "name": "Dolores Claiborne",
-    "type": [
-      "Suspense",
-      "Drama",
-      "Mistério"
-    ],
-    "synopsis": "Dolores Claiborne é acusada de assassinar a idosa rica para quem trabalhava, mas sua filha, uma jornalista que não a vê há 15 anos, retorna à cidade e descobre segredos sombrios do passado da família.",
-    "review": "Dolores Claiborne me agradou bastante, filme sólido.",
-    "rating": 3.9
-  },
-  {
     "name": "Donnie Darko",
     "type": [
       "Ficção Científica",
@@ -1362,28 +603,6 @@
     "synopsis": "Donnie, um adolescente problemático, recebe visões de Frank, um coelho gigante que anuncia o fim do mundo em 28 dias, e começa a explorar questões de tempo, destino e livre arbítrio de forma perturbadora.",
     "review": "UM DOS MEUS FILMES FAVORITOS, AMO TANTO",
     "rating": 4.9
-  },
-  {
-    "name": "Downfall",
-    "type": [
-      "Drama",
-      "Guerra",
-      "Biografia"
-    ],
-    "synopsis": "Os últimos dias de Adolf Hitler e do Terceiro Reich dentro do bunker em Berlim, em 1945, vistos pelos olhos de sua secretária pessoal, enquanto a cidade cai sob o avanço soviético.",
-    "review": "Downfall me agradou bastante, filme sólido.",
-    "rating": 4.0
-  },
-  {
-    "name": "Dr Strangelove",
-    "type": [
-      "Comédia",
-      "Guerra",
-      "Cult"
-    ],
-    "synopsis": "Um general americano insano ordena um ataque nuclear contra a União Soviética, e o Presidente dos EUA reúne seus conselheiros no Salão de Guerra para tentar impedir uma catástrofe global.",
-    "review": "Terrorzinho bom. Dr Strangelove me agradou bastante, filme sólido.",
-    "rating": 4.0
   },
   {
     "name": "Dragon Ball Z",
@@ -1419,50 +638,6 @@
     "rating": 3.9
   },
   {
-    "name": "Eighth Grade",
-    "type": [
-      "Comédia",
-      "Drama",
-      "Romance"
-    ],
-    "synopsis": "Kayla, uma adolescente ansiosa e insegura, enfrenta sua última semana na escola antes de entrar no ensino médio, lutando contra a pressão social, as redes sociais e a necessidade de se encaixar.",
-    "review": "Eighth Grade me entreteve, recomendo.",
-    "rating": 4.0
-  },
-  {
-    "name": "Empire Of The Sun",
-    "type": [
-      "Drama",
-      "Guerra",
-      "Aventura"
-    ],
-    "synopsis": "Jim Graham, um garoto inglês rico que vive em Xangai, é separado dos pais durante a invasão japonesa na Segunda Guerra Mundial e sobrevive em campos de prisioneiros, perdendo e reencontrando sua inocência.",
-    "review": "Animação linda. Empire Of The Sun é bom, curti a experiência.",
-    "rating": 4.0
-  },
-  {
-    "name": "Encontros e Desencontros",
-    "type": [
-      "Drama",
-      "Romance",
-      "Comédia"
-    ],
-    "synopsis": "Bob Harris, um ator americano em crise de meia-idade, e Charlotte, uma jovem recém-casada, se encontram em um hotel em Tóquio e formam uma conexão íntima que transcende a solidão e o deslocamento cultural.",
-    "review": "Encontros e Desencontros é bom, curti a experiência.",
-    "rating": 4.0
-  },
-  {
-    "name": "Enter The Void",
-    "type": [
-      "Drama",
-      "Fantasia",
-      "Cult"
-    ],
-    "synopsis": "Após morrer em Tóquio, a consciência de Oscar, um jovem traficante de drogas, flutua sobre a cidade testemunhando a vida de sua irmã e revisitando memórias traumáticas de seu passado em uma viagem psicodélica.",
-    "review": "Enter The Void não gostei, me entediou.",
-    "rating": 3.1
-  },
-  {
     "name": "Era uma Vez no Oeste",
     "type": [
       "Faroeste",
@@ -1472,28 +647,6 @@
     "synopsis": "Uma viúva que herdou terras valiosas, um pistoleiro solitário e um bandido procurado se cruzam em uma teia de vingança, assassinato e ferrovias no Velho Oeste americano.",
     "review": "Era uma Vez no Oeste não gostei, me entediou.",
     "rating": 3.2
-  },
-  {
-    "name": "Eraserhead",
-    "type": [
-      "Cult",
-      "Terror",
-      "Fantasia"
-    ],
-    "synopsis": "Henry Spencer vive em um apartamento industrial decadente onde seu relacionamento com a namorada produz um ser deformado que não para de chorar, mergulhando em um pesadelo existencial de paisagens surreais.",
-    "review": "Eraserhead não me agradou tanto, fraquinho.",
-    "rating": 3.5
-  },
-  {
-    "name": "Eternal Sunshine",
-    "type": [
-      "Romance",
-      "Ficção Científica",
-      "Drama"
-    ],
-    "synopsis": "Joel submete-se a um procedimento para apagar todas as memórias de sua ex-namorada Clementine, mas durante o processo ele revive os momentos felizes e decide lutar para não perder as lembranças de seu amor.",
-    "review": "Eternal Sunshine é bom, curti a experiência.",
-    "rating": 4.0
   },
   {
     "name": "Everything Everywhere All At Once",
@@ -1507,39 +660,6 @@
     "rating": 4.8
   },
   {
-    "name": "Ex Machina",
-    "type": [
-      "Ficção Científica",
-      "Suspense",
-      "Drama"
-    ],
-    "synopsis": "Caleb, um jovem programador, é selecionado para participar de um experimento inovador na casa remota de seu CEO: testar se Ava, um androide com inteligência artificial, possui verdadeira consciência.",
-    "review": "Ex Machina me agradou bastante, filme sólido.",
-    "rating": 4.0
-  },
-  {
-    "name": "Exit Through The Gift Shop",
-    "type": [
-      "Documentário",
-      "Comédia",
-      "Cult"
-    ],
-    "synopsis": "Um documentário sobre arte de rua que começa como o registro de um cineasta amador obcecado por Banksy, mas se transforma em uma reflexão meta sobre o que é arte quando o cineasta vira artista.",
-    "review": "Exit Through The Gift Shop não me agradou tanto, fraquinho.",
-    "rating": 3.7
-  },
-  {
-    "name": "Fahrenheit 451",
-    "type": [
-      "Ficção Científica",
-      "Drama",
-      "Suspense"
-    ],
-    "synopsis": "Em um futuro distópico onde livros são proibidos e queimados por bombeiros, Guy Montag começa a questionar seu papel como queimador de livros quando conhece uma jovem que ama ler.",
-    "review": "Fahrenheit 451 não gostei, me entediou.",
-    "rating": 3.0
-  },
-  {
     "name": "Fantastic Mr Fox",
     "type": [
       "Animação",
@@ -1551,28 +671,6 @@
     "rating": 4.0
   },
   {
-    "name": "Fargo",
-    "type": [
-      "Policial",
-      "Suspense",
-      "Comédia"
-    ],
-    "synopsis": "Um vendedor de carros endividado contrata dois bandidos para sequestrar sua esposa e pedir resgate ao sogro rico, mas o plano dá errado e a policial grávida Marge Gunderson assume a investigação.",
-    "review": "Fargo não me agradou tanto, fraquinho.",
-    "rating": 3.3
-  },
-  {
-    "name": "Fight Club",
-    "type": [
-      "Drama",
-      "Suspense",
-      "Ação"
-    ],
-    "synopsis": "Um homem insone e frustrado com sua vida corporativa encontra Tyler Durden, um carismático anarquista, e juntos fundam um clube de luta clandestino que evolui para um movimento revolucionário perigoso.",
-    "review": "Fight Club não gostei, me entediou.",
-    "rating": 3.0
-  },
-  {
     "name": "Finding Nemo",
     "type": [
       "Animação",
@@ -1580,29 +678,7 @@
       "Comédia"
     ],
     "synopsis": "Marlin, um peixe-palhaço superprotetor, cruza o Oceano Pacífico para resgatar seu filho Nemo, que foi capturado por um mergulhador e colocado em um aquário de consultório odontológico em Sydney.",
-    "review": "Terrorzinho bom. Finding Nemo me agradou bastante, filme sólido.",
-    "rating": 4.0
-  },
-  {
-    "name": "Finding Neverland",
-    "type": [
-      "Drama",
-      "Biografia",
-      "Fantasia"
-    ],
-    "synopsis": "O dramaturgo J.M. Barrie se inspira em sua amizade com uma viúva e seus quatro filhos para criar a história de Peter Pan, o menino que não queria crescer, em Londres no início do século XX.",
-    "review": "Finding Neverland não gostei, me entediou.",
-    "rating": 3.1
-  },
-  {
-    "name": "Five Easy Pieces",
-    "type": [
-      "Drama",
-      "Comédia",
-      "Romance"
-    ],
-    "synopsis": "Bobby Dupea, um músico talentoso que abandonou sua carreira para trabalhar em plataformas de petróleo, retorna à sua família de elite após anos distante, confrontando as escolhas que fez e sua identidade.",
-    "review": "Five Easy Pieces me entreteve, recomendo.",
+    "review": "Continue..... a nadar.",
     "rating": 4.0
   },
   {
@@ -1613,8 +689,8 @@
       "Biografia"
     ],
     "synopsis": "O designer de carros Carroll Shelby e o piloto Ken Miles se unem para construir um Ford capaz de vencer a Ferrari nas 24 Horas de Le Mans de 1966, desafiando a lógica e a burocracia corporativa.",
-    "review": "Ford vs Ferrari me entreteve, recomendo.",
-    "rating": 4.0
+    "review": "Bom filme, mas não é meu estilo.",
+    "rating": 3.9
   },
   {
     "name": "Forrest Gump",
@@ -1626,182 +702,6 @@
     "synopsis": "Forrest Gump, um homem simples do Alabama com QI abaixo da média, testemunha e influencia eventos históricos importantes enquanto busca o amor de sua vida, Jenny, em uma jornada que inspira a todos.",
     "review": "Corre forest corre",
     "rating": 4.2
-  },
-  {
-    "name": "Frances Ha",
-    "type": [
-      "Comédia",
-      "Drama",
-      "Romance"
-    ],
-    "synopsis": "Frances, uma dançarina aspirante em Nova York, navega pelos desafios da vida adulta, relacionamentos e amizades enquanto tenta se encontrar profissionalmente e pessoalmente em meio ao caos da juventude.",
-    "review": "Frances Ha me agradou bastante, filme sólido.",
-    "rating": 4.0
-  },
-  {
-    "name": "Full Metal Jacket",
-    "type": [
-      "Guerra",
-      "Drama",
-      "Ação"
-    ],
-    "synopsis": "Dividido em duas partes, o filme mostra o brutal treinamento de fuzileiros navais sob o sargento Hartman e, em seguida, a experiência de guerra dos soldados durante a Ofensiva do Tet no Vietnã.",
-    "review": "Suspense legal. Full Metal Jacket me entreteve, recomendo.",
-    "rating": 3.9
-  },
-  {
-    "name": "Funny Games",
-    "type": [
-      "Terror",
-      "Suspense",
-      "Drama"
-    ],
-    "synopsis": "Uma família de classe alta chega em sua casa de férias no lago e é feita refém por dois jovens educados que a submetem a jogos sádicos e humilhantes em uma crítica à violência na mídia.",
-    "review": "Funny Games me agradou bastante, filme sólido.",
-    "rating": 4.0
-  },
-  {
-    "name": "Gandhi",
-    "type": [
-      "Biografia",
-      "Drama",
-      "História"
-    ],
-    "synopsis": "A vida de Mahatma Gandhi, desde sua juventude na África do Sul até sua liderança no movimento de independência indiano através da resistência pacífica e não violenta contra o domínio britânico.",
-    "review": "Gandhi não me agradou tanto, fraquinho.",
-    "rating": 3.3
-  },
-  {
-    "name": "Garota Exemplar",
-    "type": [
-      "Suspense",
-      "Drama",
-      "Mistério"
-    ],
-    "synopsis": "No dia do quinto aniversário de casamento, Amy Dunne desaparece misteriosamente, e todas as evidências apontam para seu marido Nick como principal suspeito, em um jogo de aparências e manipulação.",
-    "review": "Suspense legal. Garota Exemplar é bom, curti a experiência.",
-    "rating": 4.0
-  },
-  {
-    "name": "Gladiator",
-    "type": [
-      "Ação",
-      "Drama",
-      "Aventura"
-    ],
-    "synopsis": "O general romano Maximus é traído pelo imperador Commodus, que assassina sua família e o escraviza. Transformado em gladiador, ele sobe na arena em busca de vingança contra o tirano.",
-    "review": "Gladiator não me agradou tanto, fraquinho.",
-    "rating": 3.6
-  },
-  {
-    "name": "Godzilla Minus One",
-    "type": [
-      "Ação",
-      "Ficção Científica",
-      "Drama"
-    ],
-    "synopsis": "No Japão pós-Segunda Guerra, um piloto kamikaze falho enfrenta um monstro gigante radioativo que emerge do oceano para destruir o que resta do país, em uma luta pela sobrevivência e redenção.",
-    "review": "Suspense legal. Godzilla Minus One não me agradou tanto, fraquinho.",
-    "rating": 3.5
-  },
-  {
-    "name": "Gone Girl",
-    "type": [
-      "Suspense",
-      "Drama",
-      "Mistério"
-    ],
-    "synopsis": "No dia do quinto aniversário de casamento, Amy Dunne desaparece e seu marido Nick se torna o principal suspeito, enquanto a mídia transforma o caso em um espetáculo que expõe as entranhas do casamento.",
-    "review": "Suspense legal. Gone Girl não gostei, me entediou.",
-    "rating": 3.1
-  },
-  {
-    "name": "Gone With The Wind",
-    "type": [
-      "Romance",
-      "Drama",
-      "Guerra"
-    ],
-    "synopsis": "Scarlett O'Hara, uma jovem mimada do sul dos EUA, luta para sobreviver e proteger sua amada fazenda Tara durante e após a Guerra Civil Americana, em um épico de amor, guerra e determinação.",
-    "review": "Gone With The Wind é bom, curti a experiência.",
-    "rating": 3.9
-  },
-  {
-    "name": "Goodfellas",
-    "type": [
-      "Policial",
-      "Drama",
-      "Biografia"
-    ],
-    "synopsis": "Henry Hill cresce nos bairros italianos de Nova York fascinado pela máfia, ascendendo no crime organizado dos anos 1950 aos 1980 até que sua vida de luxo e violência começa a desmoronar.",
-    "review": "Goodfellas não gostei, me entediou.",
-    "rating": 3.0
-  },
-  {
-    "name": "Gran Torino",
-    "type": [
-      "Drama",
-      "Policial",
-      "Ação"
-    ],
-    "synopsis": "Walt Kowalski, um veterano da Guerra da Coreia rabugento e preconceituoso, desenvolve um vínculo inesperado com seus vizinhos Hmong e é forçado a confrontar seu passado para protegê-los de gangues.",
-    "review": "Diferente",
-    "rating": 4.8
-  },
-  {
-    "name": "Grave Of The Fireflies",
-    "type": [
-      "Animação",
-      "Drama",
-      "Guerra"
-    ],
-    "synopsis": "No Japão durante os últimos meses da Segunda Guerra Mundial, dois irmãos órfãos, Seita e Setsuko, lutam desesperadamente para sobreviver em meio à fome, bombardeios e indiferença dos adultos.",
-    "review": "Grave Of The Fireflies me agradou bastante, filme sólido.",
-    "rating": 4.0
-  },
-  {
-    "name": "Green Book",
-    "type": [
-      "Drama",
-      "Comédia",
-      "Biografia"
-    ],
-    "synopsis": "Nos anos 1960, Tony Vallelonga, um segurança ítalo-americano, é contratado como motorista do pianista negro Don Shirley em uma turnê pelo sul segregado dos Estados Unidos, onde ambos enfrentam o racismo.",
-    "review": "Green Book me entreteve, recomendo.",
-    "rating": 4.0
-  },
-  {
-    "name": "Groundhog Day",
-    "type": [
-      "Comédia",
-      "Romance",
-      "Fantasia"
-    ],
-    "synopsis": "Phil Connors, um meteorologista arrogante, fica preso em um loop temporal que o obriga a reviver o mesmo dia — 2 de fevereiro — repetidamente até aprender a ser uma pessoa melhor.",
-    "review": "Groundhog Day é bom, curti a experiência.",
-    "rating": 3.8
-  },
-  {
-    "name": "Growing Up",
-    "type": [
-      "Animação",
-      "Drama",
-      "Comédia"
-    ],
-    "synopsis": "Um filme de animação que acompanha diferentes fases do crescimento de uma criança, explorando as alegrias, desafios e descobertas que moldam quem nos tornamos ao longo dos anos.",
-    "review": "Animação linda. Growing Up me agradou bastante, filme sólido.",
-    "rating": 4.0
-  },
-  {
-    "name": "Guess Whos Coming To Dinner",
-    "type": [
-      "Comédia",
-      "Drama",
-      "Romance"
-    ],
-    "synopsis": "Uma jovem branca leva seu noivo negro para conhecer seus pais progressistas, que precisam confrontar seus próprios preconceitos quando o casal anuncia planos de casamento nos anos 1960.",
-    "review": "Animação linda. Guess Whos Coming To Dinner me agradou bastante, filme sólido.",
-    "rating": 4.0
   },
   {
     "name": "Hereditario",
@@ -1822,8 +722,8 @@
       "Fantasia"
     ],
     "synopsis": "Miles Morales, um adolescente do Brooklyn, ganha poderes de aranha e descobre um multiverso com outros Homens-Aranha de dimensões paralelas, que precisam se unir para salvar todas as realidades.",
-    "review": "Animação linda. Homem-Aranha no Aranhaverso é bom, curti a experiência.",
-    "rating": 4.0
+    "review": "FILMASSO",
+    "rating": 4.8
   },
   {
     "name": "Interestelar",
@@ -1837,17 +737,6 @@
     "rating": 5.0
   },
   {
-    "name": "Joias Brutas",
-    "type": [
-      "Suspense",
-      "Drama",
-      "Policial"
-    ],
-    "synopsis": "Howard Ratner, um joalheiro judeu de Nova York viciado em apostas, tenta pagar suas dívidas com uma aposta arriscada envolvendo uma pedra preciosa rara, mergulhando em um turbilhão de tensão e violência.",
-    "review": "Suspense legal. Joias Brutas não gostei, me entediou.",
-    "rating": 3.1
-  },
-  {
     "name": "Kill Bill Vol. 1",
     "type": [
       "Ação",
@@ -1855,8 +744,8 @@
       "Drama"
     ],
     "synopsis": "A Noiva, uma assassina profissional traída por sua equipe no dia do casamento, desperta do coma após quatro anos e parte em uma jornada de vingança sangrenta contra cada um dos responsáveis.",
-    "review": "Kill Bill Vol. 1 não me agradou tanto, fraquinho.",
-    "rating": 3.4
+    "review": "Irado!.",
+    "rating": 4.1
   },
   {
     "name": "La La Land",
@@ -1866,8 +755,8 @@
       "Drama"
     ],
     "synopsis": "Sebastian, um pianista de jazz dedicado, e Mia, uma atriz aspirante, se apaixonam em Los Angeles enquanto perseguem seus sonhos, mas o sucesso profissional ameaça separar o casal.",
-    "review": "La La Land me entreteve, recomendo.",
-    "rating": 4.0
+    "review": "MELHOR FILME DE TERROR QUE EU JÁ VI!",
+    "rating": 2.9
   },
   {
     "name": "Mad Max: Estrada da Furia",
@@ -1877,8 +766,8 @@
       "Aventura"
     ],
     "synopsis": "Em um futuro pós-apocalíptico, o solitário Max se une a Furiosa, uma mulher determinada a libertar as esposas de um tirano, em uma perseguição desenfreada pelo deserto em veículos modificados.",
-    "review": "Mad Max: Estrada da Furia me entreteve, recomendo.",
-    "rating": 4.0
+    "review": "Amo toda a saga",
+    "rating": 4.1
   },
   {
     "name": "Matrix",
@@ -1888,8 +777,8 @@
       "Fantasia"
     ],
     "synopsis": "O programador Thomas Neo Anderson descobre que a realidade como a conhecemos é uma simulação criada por máquinas inteligentes, e ele pode ser o Escolhido para libertar a humanidade do controle digital.",
-    "review": "Filme de ficção científica brabo. Matrix não me agradou tanto, fraquinho.",
-    "rating": 3.6
+    "review": "Pekeanu reeves",
+    "rating": 4.6
   },
   {
     "name": "Meu Amigo Totoro",
@@ -1899,8 +788,8 @@
       "Aventura"
     ],
     "synopsis": "Duas irmãs se mudam para o campo com o pai para ficar perto da mãe hospitalizada e descobrem que a floresta próxima é habitada por criaturas mágicas, incluindo o gigante e gentil Totoro.",
-    "review": "Animação linda. Meu Amigo Totoro não me agradou tanto, fraquinho.",
-    "rating": 3.5
+    "review": "Tenho uma pelucia do totoro",
+    "rating": 4.4
   },
   {
     "name": "Midsommar",
@@ -1914,39 +803,6 @@
     "rating": 4.3
   },
   {
-    "name": "Moonlight",
-    "type": [
-      "Drama",
-      "Romance",
-      "Cult"
-    ],
-    "synopsis": "A jornada de Chiron, um jovem negro e gay de Miami, é contada em três fases da vida — infância, adolescência e idade adulta — enquanto ele luta com sua identidade, sexualidade e lugar no mundo.",
-    "review": "Moonlight não me agradou tanto, fraquinho.",
-    "rating": 3.6
-  },
-  {
-    "name": "No Ritmo do Coracao",
-    "type": [
-      "Drama",
-      "Romance",
-      "Musical"
-    ],
-    "synopsis": "Ruby, a única pessoa ouvinte em uma família surda, descobre seu talento para o canto e precisa escolher entre perseguir seu sonho na música ou permanecer como intérprete e elo de sua família.",
-    "review": "No Ritmo do Coracao me entreteve, recomendo.",
-    "rating": 3.8
-  },
-  {
-    "name": "O Fabuloso Destino de Amelie",
-    "type": [
-      "Comédia",
-      "Romance",
-      "Drama"
-    ],
-    "synopsis": "Amelie, uma jovem sonhadora que trabalha em um café em Montmartre, decide mudar anonimamente a vida das pessoas ao seu redor para melhor, mas precisa enfrentar sua própria timidez para encontrar o amor.",
-    "review": "O Fabuloso Destino de Amelie não me agradou tanto, fraquinho.",
-    "rating": 3.3
-  },
-  {
     "name": "O Grande Truque",
     "type": [
       "Suspense",
@@ -1956,17 +812,6 @@
     "synopsis": "Dois mágicos rivais na Londres vitoriana, Robert Angier e Alfred Borden, levam sua competição ao extremo, sacrificando tudo em uma obsessão para criar o truque de mágica perfeito e destruir um ao outro.",
     "review": "INCRIVEL, PLOT FANTASTICO, FILME BOM DA PORR# !!",
     "rating": 4.9
-  },
-  {
-    "name": "O Lagosta",
-    "type": [
-      "Comédia",
-      "Drama",
-      "Ficção Científica"
-    ],
-    "synopsis": "Em uma sociedade distópica onde solteiros são transformados em animais se não encontrarem um parceiro em 45 dias, David foge para o exílio na floresta onde os solitários vivem sob regras opostas.",
-    "review": "O Lagosta não me agradou tanto, fraquinho.",
-    "rating": 3.3
   },
   {
     "name": "O Poderoso Chefao",
@@ -1991,39 +836,6 @@
     "rating": 4.6
   },
   {
-    "name": "O Senhor dos Aneis: A Sociedade do Anel",
-    "type": [
-      "Fantasia",
-      "Aventura",
-      "Drama"
-    ],
-    "synopsis": "Frodo Bolseiro, um humilde hobbit, herda o Um Anel de Sauron e precisa destruí-lo nas chamas da Montanha da Perdição, iniciando uma jornada épica pela Terra-Média com a Sociedade do Anel.",
-    "review": "O Senhor dos Aneis: A Sociedade do Anel não me agradou tanto, fraquinho.",
-    "rating": 3.4
-  },
-  {
-    "name": "O Senhor dos Aneis: As Duas Torres",
-    "type": [
-      "Fantasia",
-      "Aventura",
-      "Drama"
-    ],
-    "synopsis": "A Sociedade do Anel se desfaz, Frodo e Sam continuam sozinhos em direção a Mordor com Gollum como guia, enquanto Aragorn, Legolas e Gimli lutam na Batalha do Abismo de Helm contra as forças de Saruman.",
-    "review": "O Senhor dos Aneis: As Duas Torres não gostei, me entediou.",
-    "rating": 3.2
-  },
-  {
-    "name": "O Senhor dos Aneis: O Retorno do Rei",
-    "type": [
-      "Fantasia",
-      "Aventura",
-      "Drama"
-    ],
-    "synopsis": "A guerra final pela Terra-Média começa enquanto Frodo e Sam se aproximam da Montanha da Perdição, e Aragorn lidera os exércitos dos Homens na Batalha dos Campos de Pelennor contra Sauron.",
-    "review": "O Senhor dos Aneis: O Retorno do Rei é bom, curti a experiência.",
-    "rating": 3.9
-  },
-  {
     "name": "Oppenheimer",
     "type": [
       "Drama",
@@ -2033,17 +845,6 @@
     "synopsis": "A história de J. Robert Oppenheimer, o físico responsável pelo Projeto Manhattan que criou a bomba atômica, e o dilema moral que o atormentou após testemunhar o poder devastador de sua criação.",
     "review": "Vi no mesmo dia que barbie, e gostei DEMAIS",
     "rating": 4.6
-  },
-  {
-    "name": "Os Bons Companheiros",
-    "type": [
-      "Policial",
-      "Drama",
-      "Biografia"
-    ],
-    "synopsis": "Henry Hill cresce nos bairros italianos de Nova York fascinado pela máfia, ascendendo no crime organizado dos anos 1950 aos 1980 até que sua vida de luxo e violência começa a desmoronar.",
-    "review": "Os Bons Companheiros é bom, curti a experiência.",
-    "rating": 4.0
   },
   {
     "name": "Parasita",
@@ -2068,17 +869,6 @@
     "rating": 4.6
   },
   {
-    "name": "Scarface",
-    "type": [
-      "Drama",
-      "Policial",
-      "Ação"
-    ],
-    "synopsis": "Tony Montana, um imigrante cubano com ambições desmedidas, chega a Miami e constrói um império no tráfico de cocaína, mas sua paranoia e excessos o levam a uma queda violenta e trágica.",
-    "review": "Scarface me agradou bastante, filme sólido.",
-    "rating": 4.0
-  },
-  {
     "name": "Se7en",
     "type": [
       "Suspense",
@@ -2086,7 +876,7 @@
       "Drama"
     ],
     "synopsis": "Dois detetives, um veterano prestes a se aposentar e um jovem idealista, caçam um serial killer sádico que baseia seus assassinatos nos sete pecados capitais em uma cidade sombria e chuvosa.",
-    "review": "Suspense legal. Se7en me entreteve, recomendo.",
+    "review": "Suspense legal. Seven me entreteve, recomendo.",
     "rating": 4.0
   },
   {
@@ -2110,28 +900,6 @@
     "synopsis": "Travis Bickle, um veterano de guerra insone que dirige táxi à noite em Nova York, se sente cada vez mais revoltado com a podridão da cidade e planeja um ato violento para limpar as ruas.",
     "review": "Bom filme",
     "rating": 4.4
-  },
-  {
-    "name": "The Adolescence",
-    "type": [
-      "Drama",
-      "Comédia",
-      "Romance"
-    ],
-    "synopsis": "Um olhar íntimo sobre os desafios, descobertas e transformações da adolescência, acompanhando jovens navegando pelas pressões sociais, primeiros amores e a busca por identidade.",
-    "review": "The Adolescence não me agradou tanto, fraquinho.",
-    "rating": 3.5
-  },
-  {
-    "name": "The Batman",
-    "type": [
-      "Ação",
-      "Policial",
-      "Suspense"
-    ],
-    "synopsis": "No segundo ano de Bruce Wayne como Batman, um serial killer conhecido como Charada deixa uma série de enigmas ligados a corrupção em Gotham, forçando o vigilante a investigar o submundo da cidade.",
-    "review": "The Batman é bom, curti a experiência.",
-    "rating": 4.0
   },
   {
     "name": "The Truman Show",
