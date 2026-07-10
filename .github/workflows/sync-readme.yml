@@ -8,11 +8,13 @@ on:
       - 'index.html'
       - 'script.js'
       - 'professional/script.js'
+      - 'lang.js'
       - 'scripts/generate-readme.js'
+      - 'scripts/ai-extract-profile.js'
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   generate-and-push:
@@ -34,6 +36,28 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+
+      - name: AI Extract Profile from site data
+        id: ai
+        working-directory: site
+        run: node scripts/ai-extract-profile.js
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          PROFILE_FILE: ${{ github.workspace }}/site/data/profile.json
+
+      - name: Commit AI profile update to site repo
+        working-directory: site
+        run: |
+          git config user.name "MCookinho"
+          git config user.email "peuborges.dev@gmail.com"
+          git add data/profile.json
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: auto-update profile.json via AI extraction"
+            git push
+            echo "✅ profile.json updated by AI"
+          else
+            echo "ℹ️ No changes to profile.json"
+          fi
 
       - name: Generate README into profile repo
         id: generate

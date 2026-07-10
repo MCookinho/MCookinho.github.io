@@ -3,15 +3,12 @@
 
 const fs = require('fs')
 const path = require('path')
-const http = require('http')
-const https = require('https')
 
 const PROFILE_REPO = process.env.PROFILE_REPO || 'MCookinho/MCookinho'
 const SITE_URL = process.env.SITE_URL || 'https://mcookinho.github.io'
 const HISTORY_DIR = process.env.HISTORY_DIR || 'History'
 const README_FILE = process.env.README_FILE || 'README.md'
 const DATA_FILE = path.join(__dirname, '..', 'data', 'profile.json')
-const SITE_DIR = path.join(__dirname, '..')
 
 let profile = null
 let changes = []
@@ -21,91 +18,53 @@ function loadProfile() {
     profile = JSON.parse(fs.readFileSync(DATA_FILE, 'utf-8'))
     console.log('[sync] Loaded profile.json v' + (profile.version || '?'))
   } catch (e) {
-    console.warn('[sync] Warning: Could not load profile.json, falling back to HTML parsing. ' + e.message)
-    profile = extractFromSiteFiles()
+    console.error('[sync] Error: Could not load profile.json')
+    process.exit(1)
   }
 }
 
-function extractFromSiteFiles() {
-  const htmlPath = path.join(SITE_DIR, 'index.html')
-  const jsPath = path.join(SITE_DIR, 'script.js')
-  const profJsPath = path.join(SITE_DIR, 'professional', 'script.js')
-
-  let html = ''
-  let js = ''
-  let profJs = ''
-  try { html = fs.readFileSync(htmlPath, 'utf-8') } catch (e) {}
-  try { js = fs.readFileSync(jsPath, 'utf-8') } catch (e) {}
-  try { profJs = fs.readFileSync(profJsPath, 'utf-8') } catch (e) {}
-
-  console.log('[sync] Fallback: extracting data from source files')
-
-  const extract = {
-    version: 1,
-    personal: { name: 'Peu Borges', nickname: 'Peu Borges', handle: 'MisterCookie', age: 20, location: 'Salvador, BA, Brazil', bio: '', shortBio: '', email: '', funFact: '' },
-    social: {},
-    status: { currentlyLearning: [], currentlyWorkingOn: '', currentFocus: '' },
-    skills: { languages: [], tools: [] },
-    projects: [],
-    games: [],
-    experience: [],
-    education: []
-  }
-
-  const emailMatch = profJs.match(/email:\s*'([^']+)'/)
-  if (emailMatch) extract.personal.email = emailMatch[1]
-
-  const nameMatch = profJs.match(/name:\s*'([^']+)'/)
-  if (nameMatch) extract.personal.name = nameMatch[1]
-
-  const aboutMatch = profJs.match(/about:\s*'([^']+)'/)
-  if (aboutMatch) extract.personal.bio = aboutMatch[1]
-
-  const githubMatch = profJs.match(/github:\s*'([^']+)'/)
-  if (githubMatch) extract.social.github = githubMatch[1].replace('github.com/', '')
-
-  const linkedinMatch = profJs.match(/linkedin:\s*'([^']+)'/)
-  if (linkedinMatch) extract.social.linkedin = linkedinMatch[1].replace('linkedin.com/in/', '')
-
-  const skillMatches = js.matchAll(/('?\w+'?)\s*:\s*\{[^}]*desc:\s*'([^']+)'[^}]*pct:\s*(\d+)/g)
-  for (const m of skillMatches) {
-    const name = m[1].replace(/'/g, '')
-    const pct = parseInt(m[3])
-    if (['CAF\u00C9 EXTREMO', 'C\u00D3DIGO 3AM', 'TERMINAL', 'CAOS ORGANIZADO'].includes(name)) continue
-    const category = ['PYTHON', 'JAVA', 'JAVASCRIPT', 'TYPESCRIPT', 'C', 'C++', 'C#', 'BASH', 'GML', 'SQL'].includes(name) ? 'languages' : 'tools'
-    extract.skills[category].push({ name: name.replace(/_/g, ' '), pct })
-  }
-
-  const projRegex = /label:\s*'([^']+)'[^}]*desc:\s*'([^']+)'/g
-  let pm
-  while ((pm = projRegex.exec(profJs)) !== null) {
-    const name = pm[1]
-    const desc = pm[2]
-    if (['HEXFEED', 'SHELLGAME', 'MATE-HELPER', 'LETRAL', 'CATFISHING'].includes(name)) {
-      extract.projects.push({ name, desc, url: '', lang: '' })
-    }
-  }
-
-  const gameCards = html.match(/<h3>([^<]+)<\/h3>\s*<span[^>]*>([^<]+)<\/span>/g)
-  if (gameCards) {
-    for (const card of gameCards) {
-      const n = card.match(/<h3>([^<]+)<\/h3>/)
-      const d = card.match(/<span[^>]*>([^<]+)<\/span>/)
-      if (n && d) extract.games.push({ name: n[1].trim(), desc: d[1].trim(), url: '' })
-    }
-  }
-
-  return extract
+function shieldEscape(s) {
+  return String(s).replace(/-/g, '--').replace(/_/g, '__').replace(/ /g, '_')
 }
 
-function skillBar(pct) {
-  const filled = Math.round(pct / 10)
-  const empty = 10 - filled
-  return '\u2588'.repeat(filled) + '\u2591'.repeat(empty) + ' ' + pct + '%'
+function shield(label, color, logo) {
+  let url = `https://img.shields.io/badge/${shieldEscape(label)}-${color}`
+  if (logo) url += `?logo=${logo}&logoColor=white`
+  return url
 }
 
-function escapeXml(s) {
-  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+function skillBadge(name, pct, logo, color) {
+  const url = shield(`${name} ${pct}%`, color, logo)
+  return `![${name}](${url})`
+}
+
+function shieldInfo(name) {
+  const map = {
+    'Python':       ['python',       '3776AB'],
+    'JavaScript':   ['javascript',   'F7DF1E'],
+    'Bash':         ['gnubash',      '4EAA25'],
+    'TypeScript':   ['typescript',   '3178C6'],
+    'SQL':          ['mysql',        '4479A1'],
+    'C / C++':      ['c',            'A8B9CC'],
+    'C':            ['c',            'A8B9CC'],
+    'C++':          ['c%2B%2B',      '00599C'],
+    'C#':           ['csharp',       '239120'],
+    'Java':         ['openjdk',      'ED8B00'],
+    'GML':          ['',             '00C853'],
+    'Git':          ['git',          'F05032'],
+    'Linux':        ['linux',        'FCC624'],
+    'ncurses':      ['',             '00599C'],
+    'AWS':          ['amazonaws',    'FF9900'],
+    'Docker':       ['docker',       '2496ED'],
+    'FL Studio':    ['',             'FF8800'],
+    'Godot':        ['godotengine',  '478CBF'],
+    'MongoDB':      ['mongodb',      '47A248'],
+    'Unity':        ['unity',        'FFFFFF'],
+    'Arduino':      ['arduino',      '00979D'],
+    'GameMaker':    ['',             '00C853'],
+    'Google Cloud': ['googlecloud',  '4285F4'],
+  }
+  return map[name] || ['', '888888']
 }
 
 function generateReadme() {
@@ -124,36 +83,48 @@ function generateReadme() {
 
   let md = ''
 
+  // ── Header ──
   md += `<div align="center">\n\n`
-  md += `# 👋 Hey, I'm **${p.nickname || p.name.split(' ')[0]}**\n\n`
-  md += `#### ${p.title}\n\n`
-  md += `**${p.location}** · ${age} years old\n\n`
-  md += `[![Profile Views](https://komarev.com/ghpvc/?username=${s.github}&label=Views&color=0e75b6&style=flat)]()\n`
-  md += `[![GitHub](https://img.shields.io/badge/GitHub-${s.github}-181717?logo=github&style=flat)](${s.github ? 'https://github.com/' + s.github : '#'})\n`
-  md += `[![LinkedIn](https://img.shields.io/badge/LinkedIn-${s.linkedin}-0A66C2?logo=linkedin&style=flat)](${s.linkedin ? 'https://linkedin.com/in/' + s.linkedin : '#'})\n`
-  md += `[![Instagram](https://img.shields.io/badge/Instagram-${s.instagram}-E4405F?logo=instagram&style=flat)](${s.instagram ? 'https://instagram.com/' + s.instagram : '#'})\n`
-  md += `[![Twitter/X](https://img.shields.io/badge/X-${s.twitter}-000000?logo=x&style=flat)](${s.twitter ? 'https://x.com/' + s.twitter : '#'})\n`
-  md += `[![YouTube](https://img.shields.io/badge/YouTube-${s.youtube}-FF0000?logo=youtube&style=flat)](${s.youtube ? 'https://youtube.com/' + s.youtube : '#'})\n`
-  md += `[![Twitch](https://img.shields.io/badge/Twitch-${s.twitch}-9146FF?logo=twitch&style=flat)](${s.twitch ? 'https://twitch.tv/' + s.twitch : '#'})\n`
-  md += `[![Itch.io](https://img.shields.io/badge/Itch.io-${s.itchio}-FA5C5C?logo=itch.io&style=flat)](${s.itchio ? 'https://' + s.itchio + '.itch.io' : '#'})\n`
-  md += `[![Email](https://img.shields.io/badge/Email-${p.email}-EA4335?logo=gmail&style=flat)](mailto:${p.email})\n\n`
-  md += `</div>\n\n`
+  if (p.avatarUrl) {
+    md += `<img src="${p.avatarUrl}" width="140" alt="avatar"/>\n\n`
+  }
+  md += `# Hey, I'm **${p.nickname || p.name.split(' ')[0]}**\n\n`
+  md += `**${p.title}**\n\n`
+  md += `${p.location} · ${age} years old\n\n`
+
+  // Social badges
+  const socialBadges = [
+    ['Email', p.email, 'EA4335', 'gmail', `mailto:${p.email}`],
+    ['GitHub', s.github, '181717', 'github', `https://github.com/${s.github}`],
+    ['LinkedIn', s.linkedin, '0A66C2', 'linkedin', `https://linkedin.com/in/${s.linkedin}`],
+    ['Instagram', s.instagram, 'E4405F', 'instagram', `https://instagram.com/${s.instagram}`],
+    ['X', s.twitter, '000000', 'x', `https://x.com/${s.twitter}`],
+    ['Twitch', s.twitch, '9146FF', 'twitch', `https://twitch.tv/${s.twitch}`],
+    ['YouTube', s.youtube, 'FF0000', 'youtube', `https://youtube.com/${s.youtube}`],
+    ['Itch.io', s.itchio, 'FA5C5C', 'itch.io', `https://${s.itchio}.itch.io`],
+  ]
+
+  for (const [, value, color, logo, url] of socialBadges) {
+    if (!value) continue
+    md += `[![](https://img.shields.io/badge/-${color}?logo=${logo}&logoColor=white&label=${shieldEscape(value)})](${url})\n`
+  }
+  md += `\n</div>\n\n`
 
   md += `---\n\n`
 
+  // ── About Me ──
   md += `### 🚀 About Me\n\n`
+
+  md += `<img align="right" src="https://github-readme-stats.vercel.app/api?username=${s.github}&show_icons=true&theme=tokyonight&hide_border=true&locale=en" width="400"/>\n\n`
+
   md += `${p.bio || p.shortBio}\n\n`
 
-  md += `> **\"${p.funFact}\"**\n\n`
-
-
-
-
-
-
+  if (p.funFact) {
+    md += `> *"${p.funFact}"*\n\n`
+  }
 
   if (st.currentlyLearning && st.currentlyLearning.length) {
-    md += `🌱 **Currently diving into:** ${st.currentlyLearning.join(', ')}\n\n`
+    md += `🌱 **Learning:** ${st.currentlyLearning.join(', ')}\n\n`
   }
   if (st.currentlyWorkingOn) {
     md += `🔨 **Building:** ${st.currentlyWorkingOn}\n\n`
@@ -164,105 +135,91 @@ function generateReadme() {
 
   md += `---\n\n`
 
+  // ── Stack ──
   md += `### 🛠️ Stack\n\n`
-  md += `<table>\n`
-  md += `  <tr><th width="120">Category</th><th>Skill</th><th width="200">Level</th></tr>\n`
 
   if (sk.languages && sk.languages.length) {
-    md += `  <tr><td rowspan="${sk.languages.length}"><b>Languages</b></td>\n`
-    sk.languages.forEach((skill, i) => {
-      const nm = skill.name.startsWith('C') ? skill.name : skill.name
-      const icon = getIcon(nm)
-      if (i === 0) {
-        md += `    <td>${icon} ${nm}</td><td><code>${skillBar(skill.pct)}</code></td>\n`
-      } else {
-        md += `  <tr><td>${icon} ${nm}</td><td><code>${skillBar(skill.pct)}</code></td></tr>\n`
-      }
-    })
+    md += `**Languages**\n\n`
+    for (const skill of sk.languages) {
+      const [logo, color] = shieldInfo(skill.name)
+      md += skillBadge(skill.name, skill.pct, logo, color) + ' '
+    }
+    md += `\n\n`
   }
 
   if (sk.tools && sk.tools.length) {
-    md += `  <tr><td rowspan="${sk.tools.length}"><b>Tools</b></td>\n`
-    sk.tools.forEach((skill, i) => {
-      const icon = getIcon(skill.name)
-      if (i === 0) {
-        md += `    <td>${icon} ${skill.name}</td><td><code>${skillBar(skill.pct)}</code></td>\n`
-      } else {
-        md += `  <tr><td>${icon} ${skill.name}</td><td><code>${skillBar(skill.pct)}</code></td></tr>\n`
-      }
-    })
+    md += `**Tools & Frameworks**\n\n`
+    for (const skill of sk.tools) {
+      const [logo, color] = shieldInfo(skill.name)
+      md += skillBadge(skill.name, skill.pct, logo, color) + ' '
+    }
+    md += `\n\n`
   }
-
-  md += `</table>\n\n`
 
   md += `---\n\n`
 
+  // ── Projects ──
   if (pr && pr.length) {
     md += `### 📦 Open Source Projects\n\n`
-    pr.forEach(proj => {
-      const badge = proj.badge ? ` \`[ ${proj.badge} ]\`` : ''
-      md += `- **[${proj.name}](${proj.url || '#'})** ${badge} — ${proj.desc}\n`
-    })
-    md += `\n<sub>🔗 [See all on GitHub](https://github.com/${s.github}?tab=repositories)</sub>\n\n`
-    md += `\n`
+    for (const proj of pr) {
+      const langBadge = proj.lang
+        ? `![${proj.lang}](${shield(proj.lang, 'lightgrey', shieldInfo(proj.lang)[0])})`
+        : ''
+      const badge = proj.badge
+        ? `![${proj.badge}](${shield(proj.badge, 'orange')})`
+        : ''
+      md += `[**${proj.name}**](${proj.url || '#'}) ${langBadge} ${badge}— ${proj.desc}\n\n`
+    }
+    md += `<sub>🔗 [See all on GitHub](https://github.com/${s.github}?tab=repositories)</sub>\n\n`
   }
 
+  // ── Games ──
   if (g && g.length) {
-    md += `---\n\n`
     md += `### 🎮 Games I've Made\n\n`
-    g.forEach(game => {
-      md += `- **[${game.name}](${game.url || '#'})** — ${game.desc}\n`
-    })
-    md += `\n<sub>🎮 [See all on Itch.io](https://${s.itchio}.itch.io)</sub>\n\n`
+    for (const game of g) {
+      md += `[**${game.name}**](${game.url || '#'}) — ${game.desc}\n\n`
+    }
+    md += `<sub>🎮 [See all on Itch.io](https://${s.itchio}.itch.io)</sub>\n\n`
   }
 
-  md += `\n`
+  // ── Experience ──
+  if (ex.length) {
+    md += `---\n\n`
+    md += `### 💼 Experience\n\n`
+    for (const exp of ex) {
+      md += `**${exp.role}** @ ${exp.org} · ${exp.period}\n\n`
+      md += `${exp.desc}\n\n`
+    }
+  }
+
+  // ── Education ──
+  if (ed.length) {
+    md += `### 📚 Education\n\n`
+    for (const edu of ed) {
+      md += `**${edu.course}** @ ${edu.institution} · ${edu.period}\n\n`
+      md += `${edu.desc}\n\n`
+    }
+  }
+
   md += `---\n\n`
 
+  // ── GitHub Stats ──
   md += `### 📊 GitHub Stats\n\n`
   md += `<div align="center">\n\n`
-  md += `[![GitHub Stats](https://github-readme-stats.vercel.app/api?username=${s.github}&show_icons=true&theme=tokyonight&include_all_commits=true&locale=en)]()\n\n`
-  md += `[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs?username=${s.github}&layout=compact&langs_count=8&theme=tokyonight&locale=en)]()\n\n`
-  md += `[![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=${s.github}&theme=tokyonight)]()\n\n`
+  md += `<img src="https://github-readme-stats.vercel.app/api/top-langs?username=${s.github}&layout=compact&langs_count=8&theme=tokyonight&hide_border=true&locale=en" height="150"/>\n\n`
+  md += `<img src="https://github-readme-streak-stats.herokuapp.com/?user=${s.github}&theme=tokyonight&hide_border=true" height="150"/>\n\n`
   md += `</div>\n`
 
   md += `\n`
   md += `---\n\n`
 
+  // ── Footer ──
   md += `<div align="center">\n\n`
+  md += `<img src="https://komarev.com/ghpvc/?username=${s.github}&label=Profile+Views&color=0e75b6&style=flat"/>\n\n`
   md += `*⚡ ${p.funFact || 'Code, coffee, chaos.'}*\n\n`
   md += `</div>\n`
 
   return md
-}
-
-function getIcon(name) {
-  const icons = {
-    'Python': '\ud83d\udc0d',
-    'JavaScript': '\ud83d\udfe1',
-    'Bash': '\u25b6\ufe0f',
-    'TypeScript': '\ud83d\udfe6',
-    'SQL': '\ud83d\udce0',
-    'C / C++': '\u2699\ufe0f',
-    'C': '\u2699\ufe0f',
-    'C++': '\u2795',
-    'C#': '\ud83d\udd33',
-    'Java': '\u2615',
-    'GML': '\ud83c\udfae',
-    'Git': '\ud83d\udd04',
-    'Linux': '\ud83d\udc27',
-    'ncurses': '\ud83d\udd79\ufe0f',
-    'AWS': '\u2601\ufe0f',
-    'Docker': '\ud83d\udc33',
-    'FL Studio': '\ud83c\udfb5',
-    'Godot': '\ud83d\udd07',
-    'MongoDB': '\ud83c\udf33',
-    'Unity': '\ud83c\udf10',
-    'Arduino': '\u26a1',
-    'GameMaker': '\ud83c\udfae',
-    'Google Cloud': '\u2601\ufe0f',
-  }
-  return icons[name] || '\u25cf'
 }
 
 function getExistingReadme() {
@@ -322,10 +279,6 @@ async function main() {
   console.log('[sync] Target: ' + PROFILE_REPO)
 
   loadProfile()
-  if (!profile) {
-    console.error('[sync] Error: Could not load profile data from any source.')
-    process.exit(1)
-  }
 
   const newReadme = generateReadme()
 
