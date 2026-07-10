@@ -238,7 +238,7 @@ MANDATORY STRUCTURE — follow this EXACT order and style:
   📍 {location} | 📧 {email}
   <br><br>
   [ROW OF SOCIAL BADGES — use shields.io for ALL platforms from the SOCIAL data above]
-  Format: <a href="URL"><img src="https://img.shields.io/badge/Platform-COLOR?style=for-the-badge&logo=LOGO&logoColor=white" alt="Platform"/></a>
+  Format: <a href="URL"><img src="https://img.shields.io/badge/LABEL-COLOR?style=for-the-badge&logo=LOGO&logoColor=white" alt="Platform"/></a>
   Include EVERY social platform present in the data. Determine correct logo slug and brand color for each.
   If a platform logo is unknown, use a generic badge with the platform name.
   CRITICAL: Use HTML <a><img> format, NOT markdown [![alt](img)](link) format — markdown images inside links often fail to render on GitHub.
@@ -257,7 +257,8 @@ No fun fact, no tags, no fluff.
 ### 🧠 Languages
 <p align="left">
   [Row of shields.io badges — one per language, with proficiency % and logo]
-  Format: ![Name](https://img.shields.io/badge/Name-PCT%25-COLOR?style=for-the-badge&logo=LOGO&logoColor=white)
+  Format: <img src="https://img.shields.io/badge/Name-PCT%25-COLOR?style=for-the-badge&logo=LOGO&logoColor=white" alt="Name"/>
+  CRITICAL: The percentage MUST be URL-encoded — write "90%25" NOT "90%" because % in URLs is invalid.
   Determine the best logo slug and brand color for each language.
 </p>
 
