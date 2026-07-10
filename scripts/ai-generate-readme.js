@@ -184,28 +184,31 @@ function buildPrompt(profile, nextId) {
 
   return `You are a professional README designer for a GitHub profile.
 
-You MUST return a JSON object with this EXACT structure:
+Return a JSON object with this EXACT structure:
 {
-  "readme": "the complete README.md markdown content",
+  "readme": "the complete README.md content",
   "assets": [
     { "path": "assets/filename.ext", "url": "https://source-url-of-the-image" }
   ]
 }
 
-ABOUT THE USER:
-- Name: ${p.name} (nickname: ${p.nickname}, handle: ${p.handle})
-- Age: ${age}, Location: ${p.location}
-- Title: ${p.title}
-- Bio: ${p.bio}
-- Fun Fact: ${p.funFact}
-- Email: ${p.email}
-- Dog: ${p.dog}
-- Tags: ${(p.tags || []).join(', ')}
+---
 
-SOCIAL:
+USER DATA:
+- Display name: ${p.nickname} (@${p.handle})
+- Full name: ${p.name} | Age: ${age} | Location: ${p.location}
+- Title: ${p.title}
+- Short bio: ${p.shortBio}
+- Bio: ${p.bio}
+- Email: ${p.email}
+- Avatar: ${p.avatarUrl}
+- Dog: ${p.dog} (only mention briefly in About Me if it fits naturally)
+- Fun Fact: ${p.funFact} (DO NOT include — skip entirely)
+
+SOCIAL (all platforms):
 ${JSON.stringify(s, null, 2)}
 
-SKILLS:
+SKILLS (sorted by proficiency descending):
 ${JSON.stringify(sk, null, 2)}
 
 PROJECTS:
@@ -220,38 +223,120 @@ ${JSON.stringify(ex, null, 2)}
 EDUCATION:
 ${JSON.stringify(ed, null, 2)}
 
-ERA ID for this version: ${nextId}
+ERA ID: ${nextId}
 
-GUIDELINES FOR THE README:
-1. Style: Creative & Technical — colorful badges, stats cards, mix of tech personality with professional layout.
-2. The README will be displayed on github.com/MCookinho/MCookinho.
-3. Use <div align="center"> for centered sections.
-4. Use shields.io badges where appropriate (social links, skills, tools).
-5. GitHub Stats cards: use theme=tokyonight for consistency.
-6. Avatar URL: ${p.avatarUrl || 'https://mcookinho.github.io/assets/images/avatar.png'}
-7. Use emojis tastefully.
-8. Profile views counter: https://komarev.com/ghpvc/?username=${s.github}
+---
+
+MANDATORY STRUCTURE — follow this EXACT order and style:
+
+1️⃣ HEADER
+<div align="center">
+  <img src="{avatarUrl}" width="180" style="border-radius: 50%;"/>
+  <h1>🚀 {nickname} <em>(@{handle})</em></h1>
+  <strong>{title}</strong>
+  <br>
+  📍 {location} | 📧 {email}
+  <br><br>
+  [ROW OF SOCIAL BADGES — use shields.io for ALL platforms from the SOCIAL data above]
+  Format: [![Platform](https://img.shields.io/badge/Platform-COLOR?style=for-the-badge&logo=LOGO&logoColor=white)](URL)
+  Include EVERY social platform present in the data. Determine correct logo slug and brand color for each.
+  If a platform logo is unknown, use a generic badge with the platform name.
+</div>
+
+2️⃣ ABOUT ME
+Short paragraph (1-3 lines max, concise and professional).
+Use shortBio as the core. Mention dog briefly if it fits naturally.
+Then:
+**🔭 Currently:** {currentlyWorkingOn}
+**🌱 Learning:** {currentlyLearning as inline list}
+
+No fun fact, no tags, no fluff.
+
+3️⃣ SKILLS
+### 🧠 Languages
+<p align="left">
+  [Row of shields.io badges — one per language, with proficiency % and logo]
+  Format: ![Name](https://img.shields.io/badge/Name-PCT%25-COLOR?style=for-the-badge&logo=LOGO&logoColor=white)
+  Determine the best logo slug and brand color for each language.
+</p>
+
+### 🛠 Tools & Frameworks
+<p align="left">
+  [Same format as Languages]
+</p>
+
+4️⃣ GITHUB STATS
+<div align="center">
+  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=${s.github}&theme=tokyonight&show_icons=true&count_private=true&include_all_commits=true"/>
+  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=${s.github}&theme=tokyonight&layout=compact&langs_count=8"/>
+</div>
+
+5️⃣ PROJECTS
+For each project:
+### [{name}]({url})
+{description}
+
+[Language badge] [Status badge if BETA/ALPHA]
+
+Optionally use GitHub pin cards:
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=${s.github}&repo={REPO_NAME}&theme=tokyonight)]({url})
+
+6️⃣ GAMES
+For each game:
+### [{name}]({url})
+{description}
+
+[![Play](https://img.shields.io/badge/Play-{name}-7289DA?style=for-the-badge&logo=itchdotio&logoColor=white)]({url})
+
+7️⃣ EXPERIENCE & EDUCATION
+### 💼 Experience
+{role} @ {org} — *{period}*
+{description}
+
+### 🎓 Education
+{course} — {institution} (*{period}*)
+{description}
+
+8️⃣ CONTACT / FOOTER
+<div align="center">
+  [Compact social badges row or just icons]
+  <br>
+  <img src="https://komarev.com/ghpvc/?username=${s.github}&color=blueviolet&style=flat-square&label=Profile+Views"/>
+</div>
+
+<details>
+<summary>📜 History</summary>
+Auto-generated from profile.json | Era ${nextId}
+</details>
+
+---
+
+VISUAL GUIDELINES:
+- Clean, modern, professional. Think "tech portfolio" aesthetic.
+- Use <div align="center"> for centered blocks, <p align="left"> for badge rows.
+- Shields.io badges: prefer "for-the-badge" style. Choose accurate brand colors.
+- Stats cards: ALWAYS use theme=tokyonight. Never change this.
+- Emojis: use sparingly as section headers. Prefer: 🚀, 🧠, 🛠, 📊, 💼, 🎓, 🎮, 📫.
+- Horizontal rules (---) between major sections.
+- NO FUN FACT, NO TAGS in the README body. Omit completely.
+- Keep header name as "{nickname} (@{handle})" — never the full name.
 
 ASSETS GUIDELINES:
-- You can include images/GIFs from the internet by listing them in the "assets" array.
-- Each asset has a "path" (where it will be saved in the repo) and "url" (where to download it FROM).
-- In the README, reference assets using RELATIVE paths like: ![alt](assets/filename.ext)
-- Assets folder is at the root of the profile repo: MCookinho/MCookinho/assets/
-- Download URLs should be direct image links (ending in .png, .jpg, .gif, .webp, .svg, or known image CDN URLs).
-- Prefer high-quality, relevant images. You can use:
-  * Project screenshots from GitHub repos
-  * GIF demonstrations from tech blogs
-  * Profile-related imagery
-- Keep total assets under 5 to avoid clutter.
-- Each asset filename should be descriptive (e.g., "banner.png", "project-demo.gif").
+- Include 0-3 assets max. Only if they genuinely enhance the README.
+- Good sources: avatar URL (already given), project screenshots from GitHub repos, relevant GIFs from GIPHY or tech blogs.
+- Each asset: { "path": "assets/descriptive-name.png", "url": "direct-image-link" }
+- Reference assets in README with RELATIVE paths: ![alt](assets/file.png)
+- Prefer direct image links ending in .png, .jpg, .gif, .webp, .svg.
+- If no good assets found, return empty array "assets": [].
 
-CRITICAL RULES:
-- Return ONLY valid JSON. No text outside the JSON object.
-- The README markdown goes in the "readme" field as a string.
-- Asset download list goes in the "assets" array.
-- If you don't need any assets, return an empty array: "assets": []
-- Use \\n for newlines in the readme string.
-- The readme MUST be complete, production-quality, and visually stunning.`
+CRITICAL:
+- Return ONLY valid JSON. No explanation, no markdown outside the JSON.
+- The "readme" field contains the FULL markdown string. Escape newlines as \\n.
+- The "assets" array lists files to download. Empty array if none.
+- Every social platform in the data MUST appear in the social badges section.
+- Determine correct shields.io logo slugs and brand hex colors for all platforms and skills.
+- Be extremely careful with JSON escaping — all double quotes inside the readme must be escaped.
+- The output README must be COMPLETE, production-quality, and visually stunning.`
 }
 
 async function main() {
