@@ -73,12 +73,34 @@ jobs:
           ASSETS_DIR: ${{ github.workspace }}/profile/assets
           HISTORY_DIR: ${{ github.workspace }}/profile/History
 
+      - name: Ensure clear-history workflow in profile repo
+        working-directory: profile
+        run: |
+          mkdir -p .github/workflows
+          cat > .github/workflows/clear-history.yml << 'EOF'
+name: Clear History
+on: workflow_dispatch
+jobs:
+  clear:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          rm -rf History/
+          git config user.name "MCookinho"
+          git config user.email "ContatoPeuBorges@proton.me"
+          git add -A
+          git commit -m "chore: clear history and reset ID counter" || true
+          git push
+EOF
+          git add .github/workflows/clear-history.yml
+
       - name: Commit and push to profile repo
         working-directory: profile
         run: |
           git config user.name "MCookinho"
           git config user.email "ContatoPeuBorges@proton.me"
-          git add README.md assets/ History/
+          git add README.md assets/ History/ .github/
           if git diff --cached --quiet; then
             echo "No changes — README is up to date"
           else
