@@ -678,6 +678,9 @@
     { id: 'arduino',    label: 'Arduino',       pct: 50 },
     { id: 'ncurses',    label: 'ncurses',       pct: 65 },
     { id: 'sql',        label: 'SQL',           pct: 70 },
+    { id: 'mongodb',    label: 'MongoDB',       pct: 55 },
+    { id: 'aws',        label: 'AWS',           pct: 50 },
+    { id: 'googlecloud',label: 'Google Cloud',  pct: 45 },
   ]
 
   // ── Default Config ──
@@ -1120,8 +1123,8 @@
     var skillsGrid = document.getElementById('skillsGrid')
     if (skillsGrid && content.skills) {
       var cats = [
-        { title: 'LINGUAGENS', ids: ['python','javascript','typescript','c','java','bash'] },
-        { title: 'FERRAMENTAS', ids: ['git','linux','docker','godot','arduino','ncurses','sql'] },
+        { title: 'LINGUAGENS', ids: ['python','javascript','typescript','c','java','bash','sql'] },
+        { title: 'FERRAMENTAS', ids: ['git','linux','docker','godot','arduino','ncurses','mongodb','aws','googlecloud'] },
       ]
       skillsGrid.innerHTML = ''
       cats.forEach(function (cat) {
