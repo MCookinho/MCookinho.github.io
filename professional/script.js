@@ -677,7 +677,7 @@
     { id: 'godot',      label: 'Godot',         pct: 55 },
     { id: 'arduino',    label: 'Arduino',       pct: 50 },
     { id: 'ncurses',    label: 'ncurses',       pct: 65 },
-    { id: 'csharp',     label: 'C#',            pct: 55 },
+    { id: 'csharp',     label: 'C#',            pct: 40 },
     { id: 'sql',        label: 'SQL',           pct: 70 },
     { id: 'mongodb',    label: 'MongoDB',       pct: 55 },
     { id: 'aws',        label: 'AWS',           pct: 65 },
