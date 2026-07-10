@@ -5,10 +5,14 @@
   var dict = {
     pt: {
       'MCOOKINHO': 'MCOOKINHO',
+      '[ MCOOKINHO ]': '[ MCOOKINHO ]',
+      'PEU BORGES // MCOOKINHO': 'PEU BORGES // MCOOKINHO',
+      'Peu Borges aka MCookinho. Engenheiro da computação, dev, criador de jogos, e pai da golden retriever Shiva.': 'Peu Borges aka MCookinho. Engenheiro da computação, dev, criador de jogos, e pai da golden retriever Shiva.',
       'MÚSICA': 'MÚSICA',
       'ABRIR BIBLIOTECA MUSICAL': 'ABRIR BIBLIOTECA MUSICAL',
       'CONQUISTAS': 'CONQUISTAS',
       'RANKINGS': 'RANKINGS',
+      'Rankings baseados na minha opinião': 'Rankings baseados na minha opinião',
       'CONFIGURAÇÕES': 'CONFIGURAÇÕES',
       'IDIOMA / PREFERÊNCIAS': 'IDIOMA / PREFERÊNCIAS',
       'SOBRE': 'SOBRE',
@@ -78,6 +82,16 @@
       'MINHA OPINIÃO': 'MINHA OPINIÃO',
       'EPISÓDIO FAVORITO': 'EPISÓDIO FAVORITO',
       'MODO RETRO': 'MODO RETRO',
+      '← → MOVER': '← → MOVER',
+      '↑ ROTAR': '↑ ROTAR',
+      '↓ DESCER': '↓ DESCER',
+      'SPACE SOLTAR': 'SPACE SOLTAR',
+      'P PAUSA': 'P PAUSA',
+      'ENTER REINICIAR': 'ENTER REINICIAR',
+      'GAME OVER': 'GAME OVER',
+      'PRESSIONE ENTER': 'PRESSIONE ENTER',
+      'PAUSA': 'PAUSA',
+      '// KONAMI ACTIVATED': '// KONAMI ACTIVATED',
       'ATIVAR MODO NOTURNO': 'ATIVAR MODO NOTURNO',
       'ATIVAR MODO PROFISSIONAL': 'ATIVAR MODO PROFISSIONAL',
       'IDIOMA': 'IDIOMA',
@@ -115,6 +129,8 @@
       '// MINHA PLAYLIST': '// MINHA PLAYLIST',
       'MUSICAS DE JOGOS QUE EU GOSTO': 'MUSICAS DE JOGOS QUE EU GOSTO',
       'OUTRAS MUSICAS': 'OUTRAS MUSICAS',
+      'ADICIONE ARQUIVOS .MP3 EM<br/><strong>ASSETS/SOUND/PLAYLIST/</strong>': 'ADICIONE ARQUIVOS .MP3 EM<br/><strong>ASSETS/SOUND/PLAYLIST/</strong>',
+      'ERRO': 'ERRO',
       'MODO — PROFISSIONAL': 'MODO — PROFISSIONAL',
       'CONFIGURAR': 'CONFIGURAR',
       'EXPORTAR PDF': 'EXPORTAR PDF',
@@ -430,10 +446,14 @@
     },
     en: {
       'MCOOKINHO': 'MCOOKINHO',
+      '[ MCOOKINHO ]': '[ MCOOKINHO ]',
+      'PEU BORGES // MCOOKINHO': 'PEU BORGES // MCOOKINHO',
+      'Peu Borges aka MCookinho. Engenheiro da computação, dev, criador de jogos, e pai da golden retriever Shiva.': 'Peu Borges aka MCookinho. Computer engineer, dev, game creator, and golden retriever dad to Shiva.',
       'MÚSICA': 'MUSIC',
       'ABRIR BIBLIOTECA MUSICAL': 'OPEN MUSIC LIBRARY',
       'CONQUISTAS': 'ACHIEVEMENTS',
       'RANKINGS': 'RANKINGS',
+      'Rankings baseados na minha opinião': 'Rankings based on my opinion',
       'CONFIGURAÇÕES': 'SETTINGS',
       'IDIOMA / PREFERÊNCIAS': 'LANGUAGE / PREFERENCES',
       'SOBRE': 'ABOUT',
@@ -503,6 +523,16 @@
       'MINHA OPINIÃO': 'MY REVIEW',
       'EPISÓDIO FAVORITO': 'FAVORITE EPISODE',
       'MODO RETRO': 'RETRO MODE',
+      '← → MOVER': '← → MOVE',
+      '↑ ROTAR': '↑ ROTATE',
+      '↓ DESCER': '↓ DOWN',
+      'SPACE SOLTAR': 'SPACE DROP',
+      'P PAUSA': 'P PAUSE',
+      'ENTER REINICIAR': 'ENTER RESTART',
+      'GAME OVER': 'GAME OVER',
+      'PRESSIONE ENTER': 'PRESS ENTER',
+      'PAUSA': 'PAUSE',
+      '// KONAMI ACTIVATED': '// KONAMI ACTIVATED',
       'ATIVAR MODO NOTURNO': 'ENABLE NIGHT MODE',
       'ATIVAR MODO PROFISSIONAL': 'ENABLE PROFESSIONAL MODE',
       'IDIOMA': 'LANGUAGE',
@@ -540,6 +570,8 @@
       '// MINHA PLAYLIST': '// MY PLAYLIST',
       'MUSICAS DE JOGOS QUE EU GOSTO': 'GAME MUSIC I LIKE',
       'OUTRAS MUSICAS': 'OTHER MUSIC',
+      'ADICIONE ARQUIVOS .MP3 EM<br/><strong>ASSETS/SOUND/PLAYLIST/</strong>': 'ADD .MP3 FILES IN<br/><strong>ASSETS/SOUND/PLAYLIST/</strong>',
+      'ERRO': 'ERROR',
       'MODO — PROFISSIONAL': 'PROFESSIONAL — MODE',
       'CONFIGURAR': 'CONFIGURE',
       'EXPORTAR PDF': 'EXPORT PDF',
@@ -884,6 +916,10 @@
     document.querySelectorAll('[data-i18n-aria]').forEach(function (el) {
       var key = el.getAttribute('data-i18n-aria')
       el.setAttribute('aria-label', __(key))
+    })
+    document.querySelectorAll('[data-i18n-meta]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-meta')
+      el.setAttribute('content', __(key))
     })
   }
 

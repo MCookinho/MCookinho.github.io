@@ -32,7 +32,7 @@
   function flashEffect() {
     const el = document.createElement('div')
     el.className = 'konami-flash'
-    el.innerHTML = '<span>// KONAMI ACTIVATED</span>'
+    el.innerHTML = '<span>' + __('// KONAMI ACTIVATED') + '</span>'
     document.body.appendChild(el)
     el.addEventListener('animationend', () => el.remove())
   }
@@ -172,23 +172,23 @@
     </div>
   </div>
   <div class="tcontrols">
-    <span>← → MOVER</span><span>↑ ROTAR</span><span>↓ DESCER</span><span>SPACE SOLTAR</span><span>P PAUSA</span><span>ENTER REINICIAR</span>
+    <span>${__('← → MOVER')}</span><span>${__('↑ ROTAR')}</span><span>${__('↓ DESCER')}</span><span>${__('SPACE SOLTAR')}</span><span>${__('P PAUSA')}</span><span>${__('ENTER REINICIAR')}</span>
   </div>
   <div class="skills-controller tetris-controller" id="tetrisController">
     <div class="ctrl-body">
       <div class="ctrl-dpad">
-        <button class="ctrl-btn ctrl-up" data-key="ArrowUp" aria-label="Cima">▲</button>
-        <button class="ctrl-btn ctrl-left" data-key="ArrowLeft" aria-label="Esquerda">◀</button>
-        <button class="ctrl-btn ctrl-right" data-key="ArrowRight" aria-label="Direita">▶</button>
-        <button class="ctrl-btn ctrl-down" data-key="ArrowDown" aria-label="Baixo">▼</button>
+        <button class="ctrl-btn ctrl-up" data-key="ArrowUp" aria-label="${__('Cima')}">▲</button>
+        <button class="ctrl-btn ctrl-left" data-key="ArrowLeft" aria-label="${__('Esquerda')}">◀</button>
+        <button class="ctrl-btn ctrl-right" data-key="ArrowRight" aria-label="${__('Direita')}">▶</button>
+        <button class="ctrl-btn ctrl-down" data-key="ArrowDown" aria-label="${__('Baixo')}">▼</button>
       </div>
       <div class="ctrl-mid">
-        <button class="ctrl-btn ctrl-select" data-key=" " aria-label="Select">SEL</button>
-        <button class="ctrl-btn ctrl-start" data-key="Enter" aria-label="Start">STA</button>
+        <button class="ctrl-btn ctrl-select" data-key=" " aria-label="${__('Select')}">SEL</button>
+        <button class="ctrl-btn ctrl-start" data-key="Enter" aria-label="${__('Start')}">STA</button>
       </div>
       <div class="ctrl-ab">
-        <button class="ctrl-btn ctrl-b" data-key="b" aria-label="Botao B">B</button>
-        <button class="ctrl-btn ctrl-a" data-key="a" aria-label="Botao A">A</button>
+        <button class="ctrl-btn ctrl-b" data-key="b" aria-label="${__('Botao B')}">B</button>
+        <button class="ctrl-btn ctrl-a" data-key="a" aria-label="${__('Botao A')}">A</button>
       </div>
     </div>
   </div>
@@ -502,10 +502,10 @@
         ctx.fillStyle = '#ff1493'
         ctx.font = '16px "Press Start 2P"'
         ctx.textAlign = 'center'
-        ctx.fillText('GAME OVER', this.bw/2, this.bh/2-20)
+        ctx.fillText(__('GAME OVER'), this.bw/2, this.bh/2-20)
         ctx.fillStyle = '#fff'
         ctx.font = '8px "Press Start 2P"'
-        ctx.fillText('PRESSIONE ENTER', this.bw/2, this.bh/2+20)
+        ctx.fillText(__('PRESSIONE ENTER'), this.bw/2, this.bh/2+20)
       }
 
       // pause overlay
@@ -515,7 +515,7 @@
         ctx.fillStyle = '#00ffff'
         ctx.font = '16px "Press Start 2P"'
         ctx.textAlign = 'center'
-        ctx.fillText('PAUSA', this.bw/2, this.bh/2)
+        ctx.fillText(__('PAUSA'), this.bw/2, this.bh/2)
       }
 
       if (this.levelUpFlash>0) {

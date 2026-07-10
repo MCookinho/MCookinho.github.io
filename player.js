@@ -187,7 +187,7 @@
     if (songs.length === 0) {
       updateStatus(
         '<span class="music-status-icon">♪</span>' +
-        'ADICIONE ARQUIVOS .MP3 EM<br/><strong>ASSETS/SOUND/PLAYLIST/</strong>'
+        __('ADICIONE ARQUIVOS .MP3 EM<br/><strong>ASSETS/SOUND/PLAYLIST/</strong>')
       )
       return
     }
@@ -410,7 +410,7 @@
   audio.addEventListener('error', function () {
     isPlaying = false; updateUI()
     if (currentIndex >= 0 && songs[currentIndex]) {
-      songs[currentIndex].dur = 'ERRO'
+      songs[currentIndex].dur = __('ERRO')
     }
   })
 

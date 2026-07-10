@@ -194,7 +194,7 @@
   // ── Sub-overlays ──
   var subData = {
     settings: {
-      title: '// ' + __('CONFIGURAÇÕES'),
+      title: function () { return '// ' + __('CONFIGURAÇÕES') },
       icon: '\u2699',
       content: function () {
         var hidden = localStorage.getItem('mcookinho_notify_hidden') === 'true'
@@ -223,7 +223,7 @@
       }
     },
     achievements: {
-      title: '// CONQUISTAS',
+      title: function () { return '// ' + __('CONQUISTAS') },
       icon: '\u2B50',
       content: function () {
         var list = ACHIEVEMENTS.slice().sort(function (a, b) {
@@ -398,7 +398,7 @@
   function openSubOverlay(section) {
     var data = subData[section]
     if (!data) return
-    document.getElementById('subTitle').innerHTML = data.icon + ' ' + data.title
+    document.getElementById('subTitle').innerHTML = data.icon + ' ' + data.title()
     document.getElementById('subBody').innerHTML = data.content()
     subOverlay.classList.add('open')
   }
@@ -438,15 +438,13 @@
 
   // Re-render overlays on language change
   window.addEventListener('langchange', function () {
-    trAchieve()
-    // Re-render settings if open
     if (document.getElementById('subOverlay') && document.getElementById('subOverlay').classList.contains('open')) {
       var titleEl = document.getElementById('subTitle')
       if (titleEl) {
         var section = titleEl.textContent.indexOf('CONFIGURAÇÕES') !== -1 || titleEl.textContent.indexOf('SETTINGS') !== -1 ? 'settings' :
                       titleEl.textContent.indexOf('CONQUISTAS') !== -1 || titleEl.textContent.indexOf('ACHIEVEMENTS') !== -1 ? 'achievements' : null
         if (section) {
-          document.getElementById('subTitle').innerHTML = subData[section].icon + ' ' + subData[section].title
+          document.getElementById('subTitle').innerHTML = subData[section].icon + ' ' + subData[section].title()
           document.getElementById('subBody').innerHTML = subData[section].content()
         }
       }
@@ -466,8 +464,7 @@
   // Update rankings sub in dropdown
   var ndRankSub = document.getElementById('ndRankSub')
   function updateRankBadge() {
-    var hs = localStorage.getItem('tetrisHighScore')
-    ndRankSub.textContent = 'RANKINGS'
+    ndRankSub.textContent = __('Rankings baseados na minha opinião')
   }
   window.__updateRankBadge = updateRankBadge
   updateRankBadge()
