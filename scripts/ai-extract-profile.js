@@ -5,7 +5,7 @@ const fs = require('fs')
 const path = require('path')
 const https = require('https')
 
-const API_URL = 'https://models.inference.ai.azure.com/chat/completions'
+const API_URL = 'https://models.github.ai/inference/chat/completions'
 const MODEL = process.env.AI_MODEL || 'Mistral-large'
 const TOKEN = process.env.GITHUB_TOKEN
 const PROFILE_FILE = process.env.PROFILE_FILE || path.join(__dirname, '..', 'data', 'profile.json')
