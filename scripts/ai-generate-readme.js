@@ -316,12 +316,15 @@ async function main() {
     process.exit(1)
   }
 
+  // Archive old files BEFORE downloading new ones
+  const archived = archiveCurrent(nextId, createdDate, oldReadme)
+
   // Ensure assets dir exists
   if (!fs.existsSync(ASSETS_DIR)) {
     fs.mkdirSync(ASSETS_DIR, { recursive: true })
   }
 
-  // Download assets
+  // Download new assets (stays in assets/ — NOT archived until next run)
   const assets = response.assets || []
   let downloaded = 0
   for (const asset of assets) {
@@ -338,9 +341,6 @@ async function main() {
       console.warn(`[readme-ai] Failed to download ${asset.url}: ${e.message}`)
     }
   }
-
-  // Archive old files
-  const archived = archiveCurrent(nextId, createdDate, oldReadme)
 
   // Write header
   const now = new Date()
