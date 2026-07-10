@@ -1065,3 +1065,4 @@
   // NOTA: Não há MutationObserver — elementos adicionados dinamicamente
   //       usam __() diretamente + escutam o evento 'langchange'.
 })()
+
