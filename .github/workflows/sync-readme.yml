@@ -62,11 +62,13 @@ jobs:
             echo "ℹ️ No changes to profile.json"
           fi
 
-      - name: Generate README from template
+      - name: AI Generate README with assets
         id: readme
         working-directory: site
-        run: node scripts/generate-readme.js
+        run: node scripts/ai-generate-readme.js
         env:
+          GITHUB_TOKEN: ${{ github.token }}
+          AI_MODEL: mistral-ai/mistral-medium-2505
           SITE_DIR: ${{ github.workspace }}/site
           PROFILE_DIR: ${{ github.workspace }}/profile
           README_FILE: ${{ github.workspace }}/profile/README.md
