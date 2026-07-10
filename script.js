@@ -636,7 +636,7 @@
       html += '</div></div>'
       html += '<span class="rk-score-val">' + item.score + '</span>'
     } else {
-      if (item.type) html += '<span class="rk-item-type">' + item.type + '</span>'
+      if (item.type) html += '<span class="rk-item-type">' + (Array.isArray(item.type) ? item.type.join(' · ') : item.type) + '</span>'
       if (item.artist) html += '<span class="rk-item-detail">' + item.artist + '</span>'
       html += '</div></div>'
       html += '<div class="rk-stars-wrap"><div class="rk-stars">' + renderStars(item.rating) + '</div><div class="rk-rating-text">' + item.rating.toFixed(1).replace('.', ',') + '/5</div></div>'
