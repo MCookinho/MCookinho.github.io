@@ -20,7 +20,7 @@
  * ============================================================ */
 (function () {
   var LANG_KEY = 'mcookinho_lang'
-  var currentLang = localStorage.getItem(LANG_KEY) || 'pt'
+  var currentLang = localStorage.getItem(LANG_KEY) || ((navigator.language || '').startsWith('pt') ? 'pt' : 'en')
 
   var dict = {
     /* ---- PT-BR (idioma padrão / fonte) ---- */
