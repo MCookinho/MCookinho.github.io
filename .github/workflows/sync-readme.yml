@@ -45,7 +45,7 @@ jobs:
         run: node scripts/ai-extract-profile.js
         env:
           GITHUB_TOKEN: ${{ github.token }}
-          AI_MODEL: Mistral-Large-2411
+          AI_MODEL: mistral-ai/mistral-medium-2505
           PROFILE_FILE: ${{ github.workspace }}/site/data/profile.json
 
       - name: Commit AI profile update to site repo
@@ -68,7 +68,7 @@ jobs:
         run: node scripts/ai-generate-readme.js
         env:
           GITHUB_TOKEN: ${{ github.token }}
-          AI_MODEL: Mistral-Large-2411
+          AI_MODEL: mistral-ai/mistral-medium-2505
           SITE_DIR: ${{ github.workspace }}/site
           PROFILE_DIR: ${{ github.workspace }}/profile
           README_FILE: ${{ github.workspace }}/profile/README.md
