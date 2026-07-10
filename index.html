@@ -26,44 +26,44 @@
               <span class="cd-icon" id="cdIcon"></span>
             </div>
             <div class="nd-body">
-              <span class="nd-title">MÚSICA</span>
-              <span class="nd-sub cd-now-playing" id="cdNowPlaying">ABRIR BIBLIOTECA MUSICAL</span>
+              <span class="nd-title" data-i18n="MÚSICA">MÚSICA</span>
+              <span class="nd-sub cd-now-playing" id="cdNowPlaying" data-i18n="ABRIR BIBLIOTECA MUSICAL">ABRIR BIBLIOTECA MUSICAL</span>
             </div>
           </div>
           <div class="nd-divider"></div>
           <div class="nd-section" data-section="achievements">
             <div class="nd-icon">&#x2B50;</div>
             <div class="nd-body">
-              <span class="nd-title">CONQUISTAS</span>
-              <span class="nd-sub" id="ndAchieveSub">0 CONQUISTAS</span>
+              <span class="nd-title" data-i18n="CONQUISTAS">CONQUISTAS</span>
+              <span class="nd-sub" id="ndAchieveSub" data-i18n="CONQUISTAS">0 CONQUISTAS</span>
             </div>
           </div>
           <div class="nd-divider"></div>
           <div class="nd-section" data-section="rankings">
             <div class="nd-icon">&#x1F3C6;</div>
             <div class="nd-body">
-              <span class="nd-title">RANKINGS</span>
-              <span class="nd-sub" id="ndRankSub">TETRIS / PESSOAS</span>
+              <span class="nd-title" data-i18n="RANKINGS">RANKINGS</span>
+              <span class="nd-sub" id="ndRankSub">Rankings baseados na minha opinião</span>
             </div>
           </div>
           <div class="nd-divider"></div>
           <div class="nd-section" data-section="settings">
             <div class="nd-icon">&#x2699;</div>
             <div class="nd-body">
-              <span class="nd-title">CONFIGURAÇÕES</span>
-              <span class="nd-sub">IDIOMA / PREFERÊNCIAS</span>
+              <span class="nd-title" data-i18n="CONFIGURAÇÕES">CONFIGURAÇÕES</span>
+              <span class="nd-sub" data-i18n="IDIOMA / PREFERÊNCIAS">IDIOMA / PREFERÊNCIAS</span>
             </div>
           </div>
         </div>
       </div>
       <div class="nav-links" id="navLinks">
-        <a href="#about">SOBRE</a>
-        <a href="#skills">STACK</a>
-        <a href="#projetos">PROJETOS</a>
-        <a href="#jogos">JOGOS</a>
-        <a href="#galeria">GALERIA</a>
-        <a href="#blog">BLOG</a>
-        <a href="#contato">CONTATO</a>
+        <a href="#about" data-i18n="SOBRE">SOBRE</a>
+        <a href="#skills" data-i18n="STACK">STACK</a>
+        <a href="#projetos" data-i18n="PROJETOS">PROJETOS</a>
+        <a href="#jogos" data-i18n="JOGOS">JOGOS</a>
+        <a href="#galeria" data-i18n="GALERIA">GALERIA</a>
+        <a href="#blog" data-i18n="BLOG">BLOG</a>
+        <a href="#contato" data-i18n="CONTATO">CONTATO</a>
       </div>
       <button class="nav-toggle" id="navToggle">[=]</button>
     </div>
@@ -82,9 +82,9 @@
         <div class="hero-foto-border"></div>
         <img src="assets/fotominha.jpeg" alt="Peu Borges" class="hero-foto" />
       </div>
-      <h1 class="hero-nome">PEU BORGES</h1>
-      <p class="hero-sub">ENG. DA COMPUTAÇÃO // DEV // CRIADOR DE JOGOS</p>
-      <p class="hero-frase">"vivendo a vida da maneira que eu quero viver"</p>
+      <h1 class="hero-nome" data-i18n="PEU BORGES">PEU BORGES</h1>
+      <p class="hero-sub" data-i18n="ENG. DA COMPUTAÇÃO // DEV // CRIADOR DE JOGOS">ENG. DA COMPUTAÇÃO // DEV // CRIADOR DE JOGOS</p>
+      <p class="hero-frase" data-i18n="vivendo a vida da maneira que eu quero viver">"vivendo a vida da maneira que eu quero viver"</p>
       <p class="hero-idade" id="heroIdade"></p>
       <div class="hero-redes">
         <a href="https://github.com/MCookinho" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
@@ -99,7 +99,7 @@
 
   <section class="section sobre" id="about">
     <div class="container">
-      <h2 class="sec-title">// SOBRE MIM</h2>
+      <h2 class="sec-title" data-i18n="SOBRE MIM">// SOBRE MIM</h2>
       <div class="sobre-grid">
         <div class="sobre-texto">
           <p>
@@ -123,21 +123,21 @@
             <span class="tag">CAFÉ</span>
           </div>
           <div class="skills-controller" id="nesController">
-            <div class="ctrl-label">// MEU CONTROLE FAVORITO</div>
+            <div class="ctrl-label" data-i18n="// MEU CONTROLE FAVORITO">// MEU CONTROLE FAVORITO</div>
             <div class="ctrl-body">
               <div class="ctrl-dpad">
-                <button class="ctrl-btn ctrl-up" data-key="ArrowUp" aria-label="Cima">▲</button>
-                <button class="ctrl-btn ctrl-left" data-key="ArrowLeft" aria-label="Esquerda">◀</button>
-                <button class="ctrl-btn ctrl-right" data-key="ArrowRight" aria-label="Direita">▶</button>
-                <button class="ctrl-btn ctrl-down" data-key="ArrowDown" aria-label="Baixo">▼</button>
+                <button class="ctrl-btn ctrl-up" data-key="ArrowUp" data-i18n-aria="Cima" aria-label="Cima">▲</button>
+                <button class="ctrl-btn ctrl-left" data-key="ArrowLeft" data-i18n-aria="Esquerda" aria-label="Esquerda">◀</button>
+                <button class="ctrl-btn ctrl-right" data-key="ArrowRight" data-i18n-aria="Direita" aria-label="Direita">▶</button>
+                <button class="ctrl-btn ctrl-down" data-key="ArrowDown" data-i18n-aria="Baixo" aria-label="Baixo">▼</button>
               </div>
               <div class="ctrl-mid">
-                <button class="ctrl-btn ctrl-select" data-key=" " aria-label="Select">SEL</button>
-                <button class="ctrl-btn ctrl-start" data-key="Enter" aria-label="Start">STA</button>
+                <button class="ctrl-btn ctrl-select" data-key=" " data-i18n-aria="Select" aria-label="Select">SEL</button>
+                <button class="ctrl-btn ctrl-start" data-key="Enter" data-i18n-aria="Start" aria-label="Start">STA</button>
               </div>
               <div class="ctrl-ab">
-                <button class="ctrl-btn ctrl-b" data-key="b" aria-label="Botao B">B</button>
-                <button class="ctrl-btn ctrl-a" data-key="a" aria-label="Botao A">A</button>
+                <button class="ctrl-btn ctrl-b" data-key="b" data-i18n-aria="Botao B" aria-label="Botão B">B</button>
+                <button class="ctrl-btn ctrl-a" data-key="a" data-i18n-aria="Botao A" aria-label="Botão A">A</button>
               </div>
             </div>
           </div>
@@ -148,8 +148,8 @@
               <source src="assets/videos/shiva-walk.mp4" type="video/mp4" />
             </video>
             <div class="shiva-legenda">
-              <h3>★ SHIVA ★</h3>
-              <p>GOLDEN RETRIEVER, A COISA MAIS FOFA DESSE MUNDO, MINHA PARCEIRA DE CÓDIGO</p>
+              <h3 data-i18n="SHIVA">★ SHIVA ★</h3>
+              <p data-i18n="GOLDEN RETRIEVER, A COISA MAIS FOFA DESSE MUNDO, MINHA PARCEIRA DE CÓDIGO">GOLDEN RETRIEVER, A COISA MAIS FOFA DESSE MUNDO, MINHA PARCEIRA DE CÓDIGO</p>
           </div>
           <div class="shiva-chat">
             <div class="shiva-chat-box" id="shivaChat">
@@ -163,8 +163,8 @@
               </div>
             </div>
             <div class="shiva-input-row">
-              <input type="text" id="shivaInput" class="shiva-input" placeholder="escreve pra shiva..." maxlength="100" autocomplete="off" />
-              <button class="shiva-send" id="shivaSend">ENVIAR</button>
+              <input type="text" id="shivaInput" class="shiva-input" data-i18n-placeholder="escreve pra shiva..." placeholder="escreve pra shiva..." maxlength="100" autocomplete="off" />
+              <button class="shiva-send" id="shivaSend" data-i18n="ENVIAR">ENVIAR</button>
               <button class="shiva-clear" id="shivaClear">✕</button>
             </div>
           </div>
@@ -175,23 +175,23 @@
 
   <section class="section skills" id="skills">
     <div class="container">
-      <h2 class="sec-title">// SKILLS / STACK</h2>
+      <h2 class="sec-title" data-i18n="SKILLS / STACK">// SKILLS / STACK</h2>
       <div class="skills-wrapper">
         <div class="skills-lista">
           <div class="skill-bloco">
-            <h3>LINGUAGENS</h3>
+            <h3 data-i18n="LINGUAGENS">LINGUAGENS</h3>
             <div class="skill-items">
               <span>PYTHON</span><span>JAVA</span><span>JAVASCRIPT</span><span>TYPESCRIPT</span><span>C</span><span>C++</span><span>BASH</span><span>GML</span>
             </div>
           </div>
           <div class="skill-bloco">
-            <h3>FERRAMENTAS</h3>
+            <h3 data-i18n="FERRAMENTAS">FERRAMENTAS</h3>
             <div class="skill-items">
               <span>GIT</span><span>LINUX</span><span>DOCKER</span><span>GODOT</span><span>ARDUINO</span><span>NCURSES</span>
             </div>
           </div>
           <div class="skill-bloco">
-            <h3>VIDA</h3>
+            <h3 data-i18n="VIDA">VIDA</h3>
             <div class="skill-items">
               <span>CAFÉ EXTREMO</span><span>CÓDIGO 3AM</span><span>TERMINAL</span><span>CAOS ORGANIZADO</span>
             </div>
@@ -203,7 +203,7 @@
 
   <section class="section projetos" id="projetos">
     <div class="container">
-      <h2 class="sec-title">// PROJETOS OPEN SOURCE</h2>
+      <h2 class="sec-title" data-i18n="PROJETOS OPEN SOURCE">// PROJETOS OPEN SOURCE</h2>
       <div class="projetos-grid">
         <div class="projeto-card">
           <div class="projeto-header">
@@ -234,14 +234,14 @@
         </div>
       </div>
       <div class="sec-footer">
-        <a href="https://github.com/MCookinho?tab=repositories" target="_blank" rel="noopener" class="btn-pixel">VER TODOS NO GITHUB</a>
+        <a href="https://github.com/MCookinho?tab=repositories" target="_blank" rel="noopener" class="btn-pixel" data-i18n="VER TODOS NO GITHUB">VER TODOS NO GITHUB</a>
       </div>
     </div>
   </section>
 
   <section class="section jogos" id="jogos">
     <div class="container">
-      <h2 class="sec-title">// JOGOS QUE EU FIZ</h2>
+      <h2 class="sec-title" data-i18n="JOGOS QUE EU FIZ">// JOGOS QUE EU FIZ</h2>
       <div class="jogos-grid">
         <a href="https://letral.wtf" target="_blank" rel="noopener" class="jogo-card">
           <div class="jogo-img"><img src="assets/games/letral.png" alt="LETRAL" /></div>
@@ -280,14 +280,14 @@
         </a>
       </div>
       <div class="sec-footer">
-        <a href="https://mistercookinho.itch.io" target="_blank" rel="noopener" class="btn-pixel">VER NO ITCH.IO</a>
+        <a href="https://mistercookinho.itch.io" target="_blank" rel="noopener" class="btn-pixel" data-i18n="VER NO ITCH.IO">VER NO ITCH.IO</a>
       </div>
     </div>
   </section>
 
   <section class="section galeria" id="galeria">
     <div class="container">
-      <h2 class="sec-title">// GALERIA</h2>
+      <h2 class="sec-title" data-i18n="GALERIA">// GALERIA</h2>
       <div class="galeria-grid">
         <div class="galeria-item">
           <video autoplay muted loop playsinline>
@@ -313,17 +313,17 @@
 
   <section class="section blog" id="blog">
     <div class="container">
-      <h2 class="sec-title">// BLOG</h2>
+      <h2 class="sec-title" data-i18n="BLOG">// BLOG</h2>
       <div class="blog-vazio">
         <i class="fas fa-pen-fancy"></i>
-        <p>AINDA TÔ ESCREVENDO MEUS PRIMEIROS ARTIGOS<br/>AGUENTA AÍ QUE LOGO LOGO SAI TEXTO BOM</p>
+        <p data-i18n="AINDA TÔ ESCREVENDO MEUS PRIMEIROS ARTIGOS<br/>AGUENTA AÍ QUE LOGO LOGO SAI TEXTO BOM">AINDA TÔ ESCREVENDO MEUS PRIMEIROS ARTIGOS<br/>AGUENTA AÍ QUE LOGO LOGO SAI TEXTO BOM</p>
       </div>
     </div>
   </section>
 
   <section class="section contato" id="contato">
     <div class="container">
-      <h2 class="sec-title">// CONTATO</h2>
+      <h2 class="sec-title" data-i18n="CONTATO">// CONTATO</h2>
       <div class="contato-grid">
         <a href="https://github.com/MCookinho" target="_blank" rel="noopener" class="contato-card"><i class="fab fa-github"></i><span>GITHUB</span><small>@MCOOKINHO</small></a>
         <a href="https://www.linkedin.com/in/jo%C3%A3o-pedro-borges-a16321279/" target="_blank" rel="noopener" class="contato-card"><i class="fab fa-linkedin-in"></i><span>LINKEDIN</span><small>PEU BORGES</small></a>
@@ -346,7 +346,7 @@
     </div>
     <div class="footer-inner">
       <p>"vivendo a vida da maneira que eu quero viver"</p>
-      <p class="footer-copy">2026 // PEU BORGES // FEITO COM CAOS E CARINHO</p>
+      <p class="footer-copy">2026 // PEU BORGES <span data-i18n="FEITO COM CAOS E CARINHO">// FEITO COM CAOS E CARINHO</span></p>
     </div>
   </footer>
 
@@ -354,7 +354,7 @@
   <div class="skill-overlay" id="skillOverlay">
     <div class="skill-panel">
       <div class="skill-header">
-        <h2 class="skill-title">// SKILL</h2>
+        <h2 class="skill-title" data-i18n="SKILL">// SKILL</h2>
         <button class="skill-close" id="skillClose">[ X ]</button>
       </div>
       <div class="skill-body">
@@ -370,7 +370,7 @@
         <div class="skill-desc" id="skillDesc"></div>
         <div class="skill-level-wrap">
           <div class="skill-level-header">
-            <span class="skill-level-title">PROFICIÊNCIA</span>
+            <span class="skill-level-title" data-i18n="PROFICIÊNCIA">PROFICIÊNCIA</span>
             <span class="skill-level-pct" id="skillPct"></span>
           </div>
           <div class="skill-bar-track">
@@ -387,18 +387,18 @@
   <div class="rk-overlay" id="rkOverlay">
     <div class="rk-panel">
       <div class="rk-header">
-        <h2 class="rk-title">🏆 // RANKINGS</h2>
+        <h2 class="rk-title" data-i18n="RANKINGS">🏆 // RANKINGS</h2>
         <button class="rk-close" id="rkClose">[ X ]</button>
       </div>
       <div class="rk-tabs" id="rkTabs">
-        <button class="rk-tab active" data-rank="tetris">TETRIS</button>
-        <button class="rk-tab" data-rank="filmes">FILMES</button>
-        <button class="rk-tab" data-rank="jogos">JOGOS</button>
-        <button class="rk-tab" data-rank="series">SÉRIES</button>
-        <button class="rk-tab" data-rank="musicas">MÚSICAS</button>
+        <button class="rk-tab active" data-rank="tetris" data-i18n="TETRIS">TETRIS</button>
+        <button class="rk-tab" data-rank="filmes" data-i18n="FILMES">FILMES</button>
+        <button class="rk-tab" data-rank="jogos" data-i18n="JOGOS">JOGOS</button>
+        <button class="rk-tab" data-rank="series" data-i18n="SÉRIES">SÉRIES</button>
+        <button class="rk-tab" data-rank="musicas" data-i18n="MÚSICAS">MÚSICAS</button>
       </div>
       <div class="rk-body" id="rkBody">
-        <div class="rk-loading">CARREGANDO...</div>
+        <div class="rk-loading" data-i18n="CARREGANDO...">CARREGANDO...</div>
       </div>
     </div>
   </div>
@@ -407,7 +407,7 @@
   <div class="music-overlay" id="musicOverlay">
     <div class="music-panel">
       <div class="music-header">
-        <h2 class="music-title">// MINHA PLAYLIST</h2>
+        <h2 class="music-title" data-i18n="MINHA PLAYLIST">// MINHA PLAYLIST</h2>
         <button class="music-close" id="musicClose">[ X ]</button>
       </div>
       <div class="music-list" id="musicList"></div>
@@ -434,7 +434,7 @@
     </div>
     <div class="player-right">
       <div class="player-volume-wrap">
-        <button class="player-btn player-vol-btn" id="playerVolBtn" aria-label="Volume">♪</button>
+        <button class="player-btn player-vol-btn" id="playerVolBtn" data-i18n-aria="VOLUME" aria-label="Volume">♪</button>
         <div class="player-volume-slider" id="playerVolumeSlider">
           <div class="vol-slider-header">
             <span class="vol-label">VOL</span>
@@ -449,17 +449,18 @@
           </div>
         </div>
       </div>
-      <button class="player-btn" id="playerPrev" aria-label="Anterior">&lt;</button>
-      <button class="player-btn" id="playerRestart" aria-label="Reiniciar">↺</button>
-      <button class="player-btn player-play-btn" id="playerPlay" aria-label="Play/Pause">▶</button>
-      <button class="player-btn" id="playerStop" aria-label="Parar">■</button>
-      <button class="player-btn" id="playerNext" aria-label="Próxima">&gt;</button>
-      <button class="player-btn player-speed-btn" id="playerSpeed" aria-label="Velocidade">1×</button>
+      <button class="player-btn" id="playerPrev" data-i18n-aria="ANTERIOR" aria-label="Anterior">&lt;</button>
+      <button class="player-btn" id="playerRestart" data-i18n-aria="REINICIAR" aria-label="Reiniciar">↺</button>
+      <button class="player-btn player-play-btn" id="playerPlay" data-i18n-aria="PLAY/PAUSE" aria-label="Play/Pause">▶</button>
+      <button class="player-btn" id="playerStop" data-i18n-aria="PARAR" aria-label="Parar">■</button>
+      <button class="player-btn" id="playerNext" data-i18n-aria="PRÓXIMA" aria-label="Próxima">&gt;</button>
+      <button class="player-btn player-speed-btn" id="playerSpeed" data-i18n-aria="VELOCIDADE" aria-label="Velocidade">1×</button>
     </div>
   </div>
 
   <audio id="playerAudio" preload="metadata"></audio>
 
+  <script src="lang.js"></script>
   <script src="script.js"></script>
   <script src="tetris.js"></script>
   <script src="shiva.js"></script>

@@ -1348,10 +1348,10 @@
         box.className = 'config-content-item'
         box.innerHTML =
           '<div class="config-content-fields">' +
-            '<div class="config-content-row"><span class="config-content-row-label">Cargo</span><input type="text" class="config-input exp-role-input" value="' + escAttr(exp.role) + '" /></div>' +
-            '<div class="config-content-row"><span class="config-content-row-label">Empresa</span><input type="text" class="config-input exp-org-input" value="' + escAttr(exp.org) + '" /></div>' +
-            '<div class="config-content-row"><span class="config-content-row-label">Data</span><input type="text" class="config-input exp-date-input" value="' + escAttr(exp.date) + '" /></div>' +
-            '<div class="config-content-row"><span class="config-content-row-label">Descrição</span><input type="text" class="config-input exp-desc-input" value="' + escAttr(exp.desc) + '" /></div>' +
+            '<div class="config-content-row"><span class="config-content-row-label">' + __('Cargo') + '</span><input type="text" class="config-input exp-role-input" value="' + escAttr(exp.role) + '" /></div>' +
+            '<div class="config-content-row"><span class="config-content-row-label">' + __('Empresa') + '</span><input type="text" class="config-input exp-org-input" value="' + escAttr(exp.org) + '" /></div>' +
+            '<div class="config-content-row"><span class="config-content-row-label">' + __('Data') + '</span><input type="text" class="config-input exp-date-input" value="' + escAttr(exp.date) + '" /></div>' +
+            '<div class="config-content-row"><span class="config-content-row-label">' + __('Descrição') + '</span><input type="text" class="config-input exp-desc-input" value="' + escAttr(exp.desc) + '" /></div>' +
           '</div>'
         // Wire up inputs
         var inputs = box.querySelectorAll('input')
@@ -1381,10 +1381,10 @@
         box.className = 'config-content-item'
         box.innerHTML =
           '<div class="config-content-fields">' +
-            '<div class="config-content-row"><span class="config-content-row-label">Curso</span><input type="text" class="config-input edu-course-input" value="' + escAttr(edu.course) + '" /></div>' +
-            '<div class="config-content-row"><span class="config-content-row-label">Instituição</span><input type="text" class="config-input edu-inst-input" value="' + escAttr(edu.inst) + '" /></div>' +
-            '<div class="config-content-row"><span class="config-content-row-label">Data</span><input type="text" class="config-input edu-date-input" value="' + escAttr(edu.date) + '" /></div>' +
-            '<div class="config-content-row"><span class="config-content-row-label">Descrição</span><input type="text" class="config-input edu-desc-input" value="' + escAttr(edu.desc) + '" /></div>' +
+            '<div class="config-content-row"><span class="config-content-row-label">' + __('Curso') + '</span><input type="text" class="config-input edu-course-input" value="' + escAttr(edu.course) + '" /></div>' +
+            '<div class="config-content-row"><span class="config-content-row-label">' + __('Instituição') + '</span><input type="text" class="config-input edu-inst-input" value="' + escAttr(edu.inst) + '" /></div>' +
+            '<div class="config-content-row"><span class="config-content-row-label">' + __('Data') + '</span><input type="text" class="config-input edu-date-input" value="' + escAttr(edu.date) + '" /></div>' +
+            '<div class="config-content-row"><span class="config-content-row-label">' + __('Descrição') + '</span><input type="text" class="config-input edu-desc-input" value="' + escAttr(edu.desc) + '" /></div>' +
           '</div>'
         var inputs = box.querySelectorAll('input')
         inputs.forEach(function (input) {
@@ -1444,10 +1444,10 @@
         box.className = 'config-content-item'
         box.innerHTML =
           '<div class="config-content-fields">' +
-            '<div class="config-content-row"><span class="config-content-row-label">Linguagem</span><input type="text" class="config-input proj-lang-input" value="' + escAttr(proj.lang) + '" /></div>' +
-            '<div class="config-content-row"><span class="config-content-row-label">Nome</span><input type="text" class="config-input proj-name-input" value="' + escAttr(proj.label) + '" /></div>' +
-            '<div class="config-content-row"><span class="config-content-row-label">Descrição</span><input type="text" class="config-input proj-desc-input" value="' + escAttr(proj.desc) + '" /></div>' +
-            '<div class="config-content-row"><span class="config-content-row-label">URL</span><input type="text" class="config-input proj-url-input" value="' + escAttr(proj.url) + '" /></div>' +
+            '<div class="config-content-row"><span class="config-content-row-label">' + __('Linguagem') + '</span><input type="text" class="config-input proj-lang-input" value="' + escAttr(proj.lang) + '" /></div>' +
+            '<div class="config-content-row"><span class="config-content-row-label">' + __('Nome') + '</span><input type="text" class="config-input proj-name-input" value="' + escAttr(proj.label) + '" /></div>' +
+            '<div class="config-content-row"><span class="config-content-row-label">' + __('Descrição') + '</span><input type="text" class="config-input proj-desc-input" value="' + escAttr(proj.desc) + '" /></div>' +
+            '<div class="config-content-row"><span class="config-content-row-label">' + __('URL') + '</span><input type="text" class="config-input proj-url-input" value="' + escAttr(proj.url) + '" /></div>' +
           '</div>'
         var inputs = box.querySelectorAll('input')
         inputs.forEach(function (input) {
@@ -1476,11 +1476,11 @@
       box.innerHTML =
         '<div class="config-cs-header">' +
           '<span class="config-cs-number">#' + (i + 1) + '</span>' +
-          '<button class="config-cs-delete" data-index="' + i + '" title="Remover seção">✕</button>' +
+          '<button class="config-cs-delete" data-index="' + i + '" title="' + __('Remover seção') + '">✕</button>' +
         '</div>' +
         '<div class="config-cs-body">' +
-          '<div class="config-content-row"><span class="config-content-row-label">Título</span><input type="text" class="config-input cs-title-input" value="' + escAttr(cs.title) + '" placeholder="Título da seção" /></div>' +
-          '<div class="config-content-row"><span class="config-content-row-label">Conteúdo</span><textarea class="config-textarea cs-content-input" rows="4" placeholder="Escreva aqui o conteúdo da seção...">' + escAttr(cs.content) + '</textarea></div>' +
+          '<div class="config-content-row"><span class="config-content-row-label">' + __('Título') + '</span><input type="text" class="config-input cs-title-input" value="' + escAttr(cs.title) + '" placeholder="' + __('Título da seção') + '" /></div>' +
+          '<div class="config-content-row"><span class="config-content-row-label">' + __('Conteúdo') + '</span><textarea class="config-textarea cs-content-input" rows="4" placeholder="' + __('Escreva aqui o conteúdo da seção...') + '">' + escAttr(cs.content) + '</textarea></div>' +
         '</div>'
       // Wire up inputs
       var titleInput = box.querySelector('.cs-title-input')
@@ -1514,7 +1514,7 @@
       var div = document.createElement('div')
       div.className = 'theme-opt' + (cfg.theme === key ? ' active' : '')
       div.setAttribute('data-value', key)
-      div.innerHTML = '<div class="theme-swatch" style="background:' + t.primary + '"></div><div>' + t.name + '</div>'
+      div.innerHTML = '<div class="theme-swatch" style="background:' + t.primary + '"></div><div>' + __(t.name) + '</div>'
       div.addEventListener('click', function () {
         grid.querySelectorAll('.theme-opt').forEach(function (el) { el.classList.remove('active') })
         div.classList.add('active')
@@ -1536,7 +1536,7 @@
     items.forEach(function (item) {
       var btn = document.createElement('button')
       btn.className = 'config-btn-opt' + (activeId === item.id ? ' active' : '')
-      btn.textContent = item.label
+      btn.textContent = __(item.label)
       btn.addEventListener('click', function () {
         container.querySelectorAll('.config-btn-opt').forEach(function (el) { el.classList.remove('active') })
         btn.classList.add('active')
@@ -1560,7 +1560,7 @@
       item.innerHTML =
         '<span class="drag-handle">⠿</span>' +
         '<input type="checkbox" ' + (sec.visible ? 'checked' : '') + ' />' +
-        '<label>' + info.label + '</label>'
+        '<label>' + __(info.label) + '</label>'
       item.addEventListener('dragstart', function (e) {
         e.dataTransfer.setData('text/plain', i)
         item.classList.add('dragging')
@@ -1594,7 +1594,7 @@
       item.className = 'config-pdf-item'
       item.innerHTML =
         '<input type="checkbox" ' + (checked ? 'checked' : '') + ' />' +
-        '<label>' + sec.label + '</label>'
+        '<label>' + __(sec.label) + '</label>'
       var cb = item.querySelector('input[type="checkbox"]')
       cb.addEventListener('change', function () {
         var idx = currentConfig.pdf.sections.indexOf(sec.id)
@@ -1609,7 +1609,7 @@
       item.className = 'config-pdf-item'
       item.innerHTML =
         '<input type="checkbox" ' + (checked ? 'checked' : '') + ' />' +
-        '<label>' + escHtml(cs.title || 'Seção personalizada') + '</label>'
+        '<label>' + escHtml(cs.title || __('Seção personalizada')) + '</label>'
       var cb = item.querySelector('input[type="checkbox"]')
       cb.addEventListener('change', function () {
         var sid = 'custom-' + cs.id
@@ -1632,7 +1632,7 @@
       catDiv.className = 'presets-category'
       var title = document.createElement('div')
       title.className = 'presets-cat-title'
-      title.textContent = cat.label
+      title.textContent = __(cat.label)
       catDiv.appendChild(title)
       var grid = document.createElement('div')
       grid.className = 'presets-grid'
@@ -1642,8 +1642,8 @@
         card.className = 'presets-card'
         card.setAttribute('data-preset-id', p.id)
         card.innerHTML =
-          '<div class="presets-card-label">' + p.label + '</div>' +
-          '<div class="presets-card-desc">' + p.desc + '</div>'
+          '<div class="presets-card-label">' + __(p.label) + '</div>' +
+          '<div class="presets-card-desc">' + __(p.desc) + '</div>'
         var colorsDiv = document.createElement('div')
         colorsDiv.className = 'presets-card-colors'
         var tc = full.customColors
@@ -1703,7 +1703,7 @@
   // Add custom section
   document.getElementById('addCustomSection').addEventListener('click', function () {
     var id = 'cs_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6)
-    currentConfig.content.customSections.push({ id: id, title: 'Nova Seção', content: '' })
+    currentConfig.content.customSections.push({ id: id, title: __('Nova Seção'), content: '' })
     renderCustomSectionEditors(currentConfig)
   })
 
@@ -1813,11 +1813,11 @@
     cfg.layout.sectionBgColor = document.getElementById('sectionBgColor').value
 
     var encoded = encodeConfigToHash(cfg)
-    if (!encoded) { showCopyToast('Erro ao gerar link'); return }
+    if (!encoded) { showCopyToast(__('Erro ao gerar link')); return }
     var url = window.location.origin + window.location.pathname + '#' + encoded
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(url).then(function () {
-        showCopyToast('Link copiado! Envie para qualquer pessoa.')
+        showCopyToast(__('Link copiado! Envie para qualquer pessoa.'))
       }).catch(function () { fallbackCopy(url) })
     } else {
       fallbackCopy(url)
@@ -1832,12 +1832,19 @@
     ta.select()
     try {
       document.execCommand('copy')
-      showCopyToast('Link copiado! Envie para qualquer pessoa.')
+      showCopyToast(__('Link copiado! Envie para qualquer pessoa.'))
     } catch (e) {
-      showCopyToast('Erro ao copiar. Link: ' + url)
+      showCopyToast(__('Erro ao copiar. Link: ') + url)
     }
     ta.remove()
   }
+
+  // ── Re-render on language change ──
+  window.addEventListener('langchange', function () {
+    if (overlay.classList.contains('open')) {
+      renderPanel(currentConfig)
+    }
+  })
 
   // ── Export PDF ──
   document.getElementById('exportPdf').addEventListener('click', function () {

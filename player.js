@@ -355,10 +355,10 @@
       playerArtistName.textContent = song.artist || ''
       playerArtistName.style.display = song.artist ? 'inline' : 'none'
     } else {
-      cdNowPlaying.textContent = 'ABRIR BIBLIOTECA MUSICAL'
+      cdNowPlaying.textContent = __('ABRIR BIBLIOTECA MUSICAL')
       cdNowPlaying.classList.add('visible')
       cdNowPlaying.classList.remove('playing')
-      playerSongName.textContent = 'NENHUMA MÚSICA'
+      playerSongName.textContent = __('NENHUMA MÚSICA')
       playerArtistName.textContent = ''
       playerArtistName.style.display = 'none'
     }
@@ -381,18 +381,18 @@
   function closeOverlay() { overlayOpen = false; overlay.classList.remove('open') }
 
   function loadPlaylist() {
-    musicTitle.textContent = '// CARREGANDO...'
+    musicTitle.textContent = '// ' + __('CARREGANDO...')
 
     fetchDynamicPlaylist().then(function (dynamic) {
       if (dynamic && dynamic.songs && dynamic.songs.length > 0) {
         songs = dynamic.songs
         folders = dynamic.folders || []
         var total = songs.length
-        musicTitle.textContent = '// MINHA PLAYLIST (' + total + ')'
+        musicTitle.textContent = '// ' + __('MINHA PLAYLIST') + ' (' + total + ')'
       } else {
         songs = []
         folders = []
-        musicTitle.textContent = '// MINHA PLAYLIST'
+        musicTitle.textContent = '// ' + __('MINHA PLAYLIST')
       }
       renderList()
     })
@@ -492,6 +492,12 @@
   // Expose for external toggle
   window.__toggleMusic = toggleOverlay
   window.__closeMusic = closeOverlay
+
+  // Re-translate on lang change
+  window.addEventListener('langchange', function () {
+    var total = songs.length
+    musicTitle.textContent = '// ' + __('MINHA PLAYLIST') + (total > 0 ? ' (' + total + ')' : '')
+  })
 
   // Allow external stop
   window.playerAudio = audio

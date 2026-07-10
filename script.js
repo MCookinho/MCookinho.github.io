@@ -6,7 +6,7 @@
   var age = today.getFullYear() - birth.getFullYear();
   var m = today.getMonth() - birth.getMonth();
   if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) age--;
-  document.getElementById('heroIdade').textContent = age + ' ANOS // SALVADOR, BA';
+  document.getElementById('heroIdade').textContent = age + ' ' + __('ANOS') + ' // ' + __('SALVADOR, BA');
 
   // Nav scroll
   var nav = document.getElementById('nav');
@@ -194,29 +194,30 @@
   // ── Sub-overlays ──
   var subData = {
     settings: {
-      title: '// CONFIGURAÇÕES',
+      title: '// ' + __('CONFIGURAÇÕES'),
       icon: '\u2699',
       content: function () {
         var hidden = localStorage.getItem('mcookinho_notify_hidden') === 'true'
+        var curLang = window.__lang ? window.__lang() : 'pt'
         return '<div class="sub-settings">' +
           '<div class="sub-setting-row">' +
-            '<span class="sub-setting-label">IDIOMA</span>' +
+            '<span class="sub-setting-label">' + __('IDIOMA') + '</span>' +
             '<div class="sub-setting-toggle" id="subLangToggle">' +
-              '<span class="sub-toggle-opt active" data-lang="pt">PT-BR</span>' +
-              '<span class="sub-toggle-opt" data-lang="en">EN-US</span>' +
+              '<span class="sub-toggle-opt' + (curLang === 'pt' ? ' active' : '') + '" data-lang="pt">PT-BR</span>' +
+              '<span class="sub-toggle-opt' + (curLang === 'en' ? ' active' : '') + '" data-lang="en">EN-US</span>' +
             '</div>' +
           '</div>' +
           '<div class="sub-setting-row">' +
-            '<span class="sub-setting-label">NOTIFICA\u00C7\u00D5ES</span>' +
+            '<span class="sub-setting-label">' + __('NOTIFICAÇÕES') + '</span>' +
             '<div class="sub-setting-toggle" id="subNotifyToggle">' +
-              '<span class="sub-toggle-opt' + (hidden ? '' : ' active') + '" data-notify="show">MOSTRAR</span>' +
-              '<span class="sub-toggle-opt' + (hidden ? ' active' : '') + '" data-notify="hide">OCULTAR</span>' +
+              '<span class="sub-toggle-opt' + (hidden ? '' : ' active') + '" data-notify="show">' + __('MOSTRAR') + '</span>' +
+              '<span class="sub-toggle-opt' + (hidden ? ' active' : '') + '" data-notify="hide">' + __('OCULTAR') + '</span>' +
             '</div>' +
           '</div>' +
           '<div class="sub-setting-divider"></div>' +
           '<div class="sub-setting-row">' +
-            '<span class="sub-setting-label">MODO PROFISSIONAL</span>' +
-            '<a href="/professional/" class="sub-setting-link">ATIVAR</a>' +
+            '<span class="sub-setting-label">' + __('MODO PROFISSIONAL') + '</span>' +
+            '<a href="/professional/" class="sub-setting-link">' + __('ATIVAR') + '</a>' +
           '</div>' +
         '</div>'
       }
@@ -231,7 +232,7 @@
           return 0
         })
         var done = ACHIEVEMENTS.filter(function (a) { return a.done }).length
-        var html = '<div class="sub-achieve-header">' + done + ' / ' + ACHIEVEMENTS.length + ' CONQUISTAS</div>'
+        var html = '<div class="sub-achieve-header">' + done + ' / ' + ACHIEVEMENTS.length + ' ' + __('CONQUISTAS') + '</div>'
         html += '<div class="sub-achieve-list">'
         list.forEach(function (a) {
           html += '<div class="sub-achieve-item' + (a.done ? ' done' : ' locked') + '">' +
@@ -239,8 +240,8 @@
               '<span class="sub-achieve-icon">' + (a.done ? a.icon : a.lockedIcon) + '</span>' +
             '</div>' +
             '<div class="sub-achieve-body">' +
-              '<span class="sub-achieve-name">' + a.name + '</span>' +
-              '<span class="sub-achieve-desc">' + (a.done ? a.desc : a.hint) + '</span>' +
+              '<span class="sub-achieve-name">' + trAchieveName(a.id) + '</span>' +
+              '<span class="sub-achieve-desc">' + (a.done ? __(a.desc) : __(a.hint)) + '</span>' +
             '</div>' +
           '</div>'
         })
@@ -264,6 +265,10 @@
     { id:'time-2h',         name:'SEM VIDA SOCIAL',    icon:'\uD83C\uDFE0', lockedIcon:'\uD83D\uDD12', desc:'Voc\u00EA passou mais de 2 horas no site!',            hint:'Deixe o site aberto por muito tempo...',             done:false },
     { id:'tetris-15000',    name:'LENDA DO TETRIS',    icon:'\uD83D\uDC51', lockedIcon:'\uD83D\uDD12', desc:'Voc\u00EA fez 15.000+ pontos no Tetris! Lend\u00E1rio!', hint:'15.000+ pontos no Tetris... s\u00F3 os deuses!',     done:false },
   ]
+  function trAchieveName(id) {
+    var map = { 'visit-social':'EXPLORADOR DIGITAL', 'view-skill':'SABEDORIA PIXEL', 'time-5min':'PAUSA PRO CAF\u00C9', 'play-song':'MELOMANIA', 'shiva-message':'AU!', 'controller-10':'NOSTALGI-A\u00C7\u00C3O', 'enter-tetris':'BLOCO CAIU', 'enter-doghouse':'PASSEIO SOMBRIO', 'shiva-100':'MELHOR AMIGO', 'tetris-5000':'VICIADO EM TETRIS', 'time-2h':'SEM VIDA SOCIAL', 'tetris-15000':'LENDA DO TETRIS' }
+    return map[id] ? __(map[id]) : ''
+  }
 
   // ── Achievement Persistence ──
   function loadAchievements() {
@@ -310,8 +315,8 @@
         '<div class="unlock-toast-glow"></div>' +
         '<div class="unlock-toast-icon">' + a.icon + '</div>' +
         '<div class="unlock-toast-body">' +
-          '<span class="unlock-toast-label">CONQUISTA DESBLOQUEADA!</span>' +
-          '<span class="unlock-toast-name">' + a.name + '</span>' +
+          '<span class="unlock-toast-label">' + __('CONQUISTA DESBLOQUEADA!') + '</span>' +
+          '<span class="unlock-toast-name">' + trAchieveName(a.id) + '</span>' +
         '</div>' +
       '</div>'
     document.body.appendChild(toast)
@@ -411,10 +416,14 @@
   document.addEventListener('click', function (e) {
     var langToggle = e.target.closest('#subLangToggle .sub-toggle-opt')
     if (langToggle) {
+      var lang = langToggle.getAttribute('data-lang')
       document.querySelectorAll('#subLangToggle .sub-toggle-opt').forEach(function (el) {
         el.classList.remove('active')
       })
       langToggle.classList.add('active')
+      if (typeof window.__setLang === 'function') {
+        window.__setLang(lang)
+      }
     }
     var notifyToggle = e.target.closest('#subNotifyToggle .sub-toggle-opt')
     if (notifyToggle) {
@@ -427,11 +436,30 @@
     }
   })
 
+  // Re-render overlays on language change
+  window.addEventListener('langchange', function () {
+    trAchieve()
+    // Re-render settings if open
+    if (document.getElementById('subOverlay') && document.getElementById('subOverlay').classList.contains('open')) {
+      var titleEl = document.getElementById('subTitle')
+      if (titleEl) {
+        var section = titleEl.textContent.indexOf('CONFIGURAÇÕES') !== -1 || titleEl.textContent.indexOf('SETTINGS') !== -1 ? 'settings' :
+                      titleEl.textContent.indexOf('CONQUISTAS') !== -1 || titleEl.textContent.indexOf('ACHIEVEMENTS') !== -1 ? 'achievements' : null
+        if (section) {
+          document.getElementById('subTitle').innerHTML = subData[section].icon + ' ' + subData[section].title
+          document.getElementById('subBody').innerHTML = subData[section].content()
+        }
+      }
+    }
+    updateAchieveBadge()
+    updateRankBadge()
+  })
+
   // Update achievements count in dropdown
   var ndAchieveSub = document.getElementById('ndAchieveSub')
   function updateAchieveBadge() {
     var done = ACHIEVEMENTS.filter(function (a) { return a.done }).length
-    ndAchieveSub.textContent = done + ' / ' + ACHIEVEMENTS.length + ' CONQUISTAS'
+    ndAchieveSub.textContent = done + ' / ' + ACHIEVEMENTS.length + ' ' + __('CONQUISTAS')
   }
   updateAchieveBadge()
 
@@ -439,7 +467,7 @@
   var ndRankSub = document.getElementById('ndRankSub')
   function updateRankBadge() {
     var hs = localStorage.getItem('tetrisHighScore')
-    ndRankSub.textContent = 'Rankings baseados na minha opinião'
+    ndRankSub.textContent = 'RANKINGS'
   }
   window.__updateRankBadge = updateRankBadge
   updateRankBadge()
@@ -501,9 +529,9 @@
     
     if (key === 'tetris') {
       var playerScore = parseInt(localStorage.getItem('tetrisHighScore')) || 0
-      var hasPlayer = items.some(function (i) { return i.name === 'VOCÊ' })
+      var hasPlayer = items.some(function (i) { return i.name === 'VOCÊ' || i.name === 'YOU' })
       if (playerScore > 0 && !hasPlayer) {
-        items.push({name:'VOCÊ',score:playerScore,lines:0,level:0})
+        items.push({name:__('VOCÊ'),score:playerScore,lines:0,level:0})
       }
       items.sort(function (a, b) { return b.score - a.score })
     } else {
@@ -513,13 +541,13 @@
     var html = ''
     if (key === 'tetris') {
       var hs = parseInt(localStorage.getItem('tetrisHighScore')) || 0
-      html += '<div class="rk-score-header">SEU RECORDE: <strong>' + hs + '</strong> | ORDENADO POR SCORE</div>'
+      html += '<div class="rk-score-header">' + __('SEU RECORDE') + ': <strong>' + hs + '</strong> | ' + __('ORDENADO POR SCORE') + '</div>'
     } else {
-      html += '<div class="rk-score-header">ORDENADO POR AVALIAÇÃO PESSOAL</div>'
+      html += '<div class="rk-score-header">' + __('ORDENADO POR AVALIAÇÃO PESSOAL') + '</div>'
     }
 
     if (items.length === 0) {
-      html += '<div class="rk-empty">NENHUM ITEM AINDA</div>'
+      html += '<div class="rk-empty">' + __('NENHUM ITEM AINDA') + '</div>'
     } else {
       items.forEach(function (item, i) {
         html += renderRankItem(key, item, i + 1)
@@ -561,8 +589,8 @@
     html += '<div class="rk-item-meta">'
 
     if (key === 'tetris') {
-      html += '<span class="rk-item-detail">' + item.lines + ' LINES</span>'
-      html += '<span class="rk-item-detail">LEVEL ' + item.level + '</span>'
+      html += '<span class="rk-item-detail">' + item.lines + ' ' + __('LINES') + '</span>'
+      html += '<span class="rk-item-detail">' + __('LEVEL') + ' ' + item.level + '</span>'
       html += '</div></div>'
       html += '<span class="rk-score-val">' + item.score + '</span>'
     } else {
@@ -582,23 +610,23 @@
     } else if (key === 'musicas') {
       if (item.spotify) {
         hasDetail = true
-        detailHtml += '<div class="rk-detail-label">🎧 OUÇA</div>'
-        detailHtml += '<a href="' + item.spotify + '" target="_blank" class="rk-spotify-link">▶ OPEN SPOTIFY</a>'
+        detailHtml += '<div class="rk-detail-label">🎧 ' + __('OUÇA') + '</div>'
+        detailHtml += '<a href="' + item.spotify + '" target="_blank" class="rk-spotify-link">' + __('OPEN SPOTIFY') + '</a>'
       }
     } else {
       if (item.synopsis) {
         hasDetail = true
-        detailHtml += '<div class="rk-detail-label">📖 SINOPSE</div>'
+        detailHtml += '<div class="rk-detail-label">📖 ' + __('SINOPSE') + '</div>'
         detailHtml += '<div class="rk-detail-text">' + item.synopsis + '</div>'
       }
       if (item.review) {
         hasDetail = true
-        detailHtml += '<div class="rk-detail-label">💬 MINHA OPINIÃO</div>'
+        detailHtml += '<div class="rk-detail-label">💬 ' + __('MINHA OPINIÃO') + '</div>'
         detailHtml += '<div class="rk-detail-text">' + item.review + '</div>'
       }
       if (item.favoriteEpisode) {
         hasDetail = true
-        detailHtml += '<div class="rk-fav-ep">⭐ EPISÓDIO FAVORITO: <strong>' + item.favoriteEpisode + '</strong></div>'
+        detailHtml += '<div class="rk-fav-ep">⭐ ' + __('EPISÓDIO FAVORITO') + ': <strong>' + item.favoriteEpisode + '</strong></div>'
       }
     }
 
@@ -738,7 +766,7 @@
 
       var segEl = document.getElementById('skillBarSegments')
       segEl.innerHTML = ''
-      var labels = ['INICIANTE', 'INTERMEDI\u00c1RIO', 'AVAN\u00c7ADO', 'EXPERT']
+      var labels = [__('INICIANTE'), __('INTERMEDI\u00c1RIO'), __('AVAN\u00c7ADO'), __('EXPERT')]
       for (var i = 0; i < labels.length; i++) {
         var s = document.createElement('span')
         s.textContent = labels[i]

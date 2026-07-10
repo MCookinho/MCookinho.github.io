@@ -5,21 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Peu Borges — Portfolio Profissional</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="../lang.js"></script>
 </head>
 <body>
 
   <nav class="topbar" id="topbar">
     <div class="topbar-inner">
-      <span class="topbar-brand" id="infoTrigger" style="cursor:pointer">MODO — PROFISSIONAL</span>
+      <span class="topbar-brand" id="infoTrigger" style="cursor:pointer" data-i18n="MODO — PROFISSIONAL">MODO — PROFISSIONAL</span>
       <div class="topbar-links">
-        <button class="topbar-btn" id="openConfig">CONFIGURAR</button>
-        <button class="topbar-btn" id="exportPdf">EXPORTAR PDF</button>
-        <a href="https://mcookinho.github.io" class="topbar-btn topbar-btn-back">DESATIVAR</a>
-        <button class="topbar-toggle" id="topbarToggle" title="Ocultar barra">⊟</button>
+        <button class="topbar-btn" id="openConfig" data-i18n="CONFIGURAR">CONFIGURAR</button>
+        <button class="topbar-btn" id="exportPdf" data-i18n="EXPORTAR PDF">EXPORTAR PDF</button>
+        <a href="https://mcookinho.github.io" class="topbar-btn topbar-btn-back" data-i18n="DESATIVAR">DESATIVAR</a>
+        <button class="topbar-toggle" id="topbarToggle" data-i18n-title="Ocultar barra" title="Ocultar barra">⊟</button>
       </div>
     </div>
   </nav>
-  <button class="topbar-show-btn" id="topbarShowBtn" title="Mostrar barra">≡</button>
+  <button class="topbar-show-btn" id="topbarShowBtn" data-i18n-title="Mostrar barra" title="Mostrar barra">≡</button>
 
   <main class="main-content" id="mainContent">
 
@@ -37,7 +38,7 @@
     </header>
 
     <section class="prof-section" id="sec-about" data-section="about">
-      <h2 class="ps-title">SOBRE</h2>
+      <h2 class="ps-title" data-i18n="SOBRE">SOBRE</h2>
       <p class="ps-text" id="edit-about">
         Estudante de Engenharia da Computação e desenvolvedor full-stack com foco em Python, JavaScript e C.
         Construo desde ferramentas de terminal e bots até jogos e interfaces web. Apaixonado por tecnologia,
@@ -47,7 +48,7 @@
     </section>
 
     <section class="prof-section" id="sec-experience" data-section="experience">
-      <h2 class="ps-title">EXPERIÊNCIA</h2>
+      <h2 class="ps-title" data-i18n="EXPERIÊNCIA">EXPERIÊNCIA</h2>
       <div class="exp-list">
         <div class="exp-item">
           <div class="exp-head">
@@ -69,11 +70,11 @@
     </section>
 
     <section class="prof-section" id="sec-education" data-section="education">
-      <h2 class="ps-title">FORMAÇÃO</h2>
+      <h2 class="ps-title" data-i18n="FORMAÇÃO">FORMAÇÃO</h2>
     </section>
 
     <section class="prof-section" id="sec-skills" data-section="skills">
-      <h2 class="ps-title">HABILIDADES TÉCNICAS</h2>
+      <h2 class="ps-title" data-i18n="HABILIDADES TÉCNICAS">HABILIDADES TÉCNICAS</h2>
       <div class="skills-grid" id="skillsGrid">
         <div class="skill-cat">
           <h3 class="sc-title">LINGUAGENS</h3>
@@ -101,7 +102,7 @@
     </section>
 
     <section class="prof-section" id="sec-projects" data-section="projects">
-      <h2 class="ps-title">PROJETOS</h2>
+      <h2 class="ps-title" data-i18n="PROJETOS">PROJETOS</h2>
       <div class="proj-grid">
         <div class="proj-card">
           <div class="proj-head"><span class="proj-lang">Python</span><span class="proj-name">HEXFEED</span></div>
@@ -132,7 +133,7 @@
     </section>
 
     <section class="prof-section" id="sec-contact" data-section="contact">
-      <h2 class="ps-title">CONTATO</h2>
+      <h2 class="ps-title" data-i18n="CONTATO">CONTATO</h2>
       <div class="contact-links">
         <a href="mailto:peuborges.dev@gmail.com" class="contact-item" id="edit-email">peuborges.dev@gmail.com</a>
         <a href="https://github.com/MCookinho" target="_blank" class="contact-item" id="edit-github">github.com/MCookinho</a>
@@ -151,24 +152,24 @@
   <div class="config-overlay" id="configOverlay">
     <div class="config-panel">
       <div class="config-head">
-        <h2 class="config-title">CONFIGURAÇÕES</h2>
+        <h2 class="config-title" data-i18n="CONFIGURAÇÕES">CONFIGURAÇÕES</h2>
         <button class="config-close" id="configClose">✕</button>
       </div>
       <div class="config-tabs" id="configTabs">
-        <button class="config-tab active" data-tab="theme">TEMA</button>
-        <button class="config-tab" data-tab="presets">PRESETS</button>
-        <button class="config-tab" data-tab="typo">TIPOGRAFIA</button>
-        <button class="config-tab" data-tab="header">CABEÇALHO</button>
-        <button class="config-tab" data-tab="layout">LAYOUT</button>
-        <button class="config-tab" data-tab="content">CONTEÚDO</button>
-        <button class="config-tab" data-tab="pdf">PDF</button>
+        <button class="config-tab active" data-tab="theme" data-i18n="TEMA">TEMA</button>
+        <button class="config-tab" data-tab="presets" data-i18n="PRESETS">PRESETS</button>
+        <button class="config-tab" data-tab="typo" data-i18n="TIPOGRAFIA">TIPOGRAFIA</button>
+        <button class="config-tab" data-tab="header" data-i18n="CABEÇALHO">CABEÇALHO</button>
+        <button class="config-tab" data-tab="layout" data-i18n="LAYOUT">LAYOUT</button>
+        <button class="config-tab" data-tab="content" data-i18n="CONTEÚDO">CONTEÚDO</button>
+        <button class="config-tab" data-tab="pdf" data-i18n="PDF">PDF</button>
       </div>
       <div class="config-body" id="configBody">
 
         <!-- TAB: THEME -->
         <div class="config-tab-content active" id="tab-theme">
           <div class="config-group">
-            <label class="config-label">TEMA</label>
+            <label class="config-label" data-i18n="TEMA">TEMA</label>
             <p class="config-hint">Escolha um tema predefinido. As cores abaixo podem ser usadas para personalizar ainda mais.</p>
             <div class="theme-grid" id="themeGrid"></div>
           </div>
