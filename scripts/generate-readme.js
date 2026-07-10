@@ -23,14 +23,14 @@ function loadProfile() {
   }
 }
 
-function shieldEscape(s) {
-  return String(s).replace(/-/g, '--').replace(/_/g, '__').replace(/ /g, '_')
-}
-
 function shield(label, color, logo) {
-  let url = `https://img.shields.io/badge/${shieldEscape(label)}-${color}`
-  if (logo) url += `?logo=${logo}&logoColor=white`
-  return url
+  const params = new URLSearchParams()
+  params.set('label', label)
+  if (logo) {
+    params.set('logo', logo)
+    params.set('logoColor', 'white')
+  }
+  return `https://img.shields.io/badge/-${color}?${params.toString()}`
 }
 
 function skillBadge(name, pct, logo, color) {
@@ -106,7 +106,7 @@ function generateReadme() {
 
   for (const [, value, color, logo, url] of socialBadges) {
     if (!value) continue
-    md += `[![](https://img.shields.io/badge/-${color}?logo=${logo}&logoColor=white&label=${shieldEscape(value)})](${url})\n`
+    md += `[![](https://img.shields.io/badge/-${color}?logo=${logo}&logoColor=white&label=${encodeURIComponent(value)})](${url})\n`
   }
   md += `\n</div>\n\n`
 

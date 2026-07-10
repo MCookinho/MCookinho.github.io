@@ -1,13 +1,16 @@
 {
   "version": 2,
+
   "personal": {
     "name": "João Pedro Borges",
     "nickname": "Peu Borges",
     "handle": "MisterCookie",
-    "age": 20,
+
     "birthDate": "2005-04-18",
+    "age": 21,
     "location": "Salvador, BA, Brazil",
     "title": "Computer Engineering Student // Full-Stack Developer // Game Creator",
+
     "bio": "Computer Engineering student at SENAI CIMATEC, full-stack developer with a passion for Python, JavaScript, and C. I build everything from terminal tools and bots to games and web interfaces. Open source advocate, creative problem solver, and professional chaos organizer.",
     "shortBio": "Building cool stuff at the intersection of code, creativity, and caffeine.",
     "email": "ContatoPeuBorges@proton.me",
@@ -16,6 +19,7 @@
     "tags": ["CHESS", "TABLE RPG", "GAME DEV", "LINUX", "COFFEE"],
     "dog": "Shiva — Golden Retriever, the cutest coding buddy in the world"
   },
+
   "social": {
     "github": "MCookinho",
     "linkedin": "joão-pedro-borges-a16321279",
@@ -25,58 +29,124 @@
     "twitch": "mistercookinho",
     "itchio": "mistercookinho"
   },
+
   "status": {
     "currentlyLearning": ["Java", "Python", "TypeScript"],
     "currentlyWorkingOn": "Backrooms Online (multiplayer game), Mate Helper (AI desktop pet)",
     "currentFocus": "Computer Engineering at SENAI CIMATEC — Salvador, BA (2023–2027)"
   },
+
   "skills": {
     "languages": [
-      { "name": "Python", "pct": 90 },
+      { "name": "Python",     "pct": 90 },
       { "name": "JavaScript", "pct": 85 },
-      { "name": "Bash", "pct": 80 },
+      { "name": "Bash",       "pct": 80 },
       { "name": "TypeScript", "pct": 70 },
-      { "name": "SQL", "pct": 70 },
-      { "name": "C / C++", "pct": 65 },
-      { "name": "GML", "pct": 50 },
-      { "name": "Java", "pct": 45 },
-      { "name": "C#", "pct": 40 }
+      { "name": "SQL",        "pct": 70 },
+      { "name": "C / C++",    "pct": 65 },
+      { "name": "GML",        "pct": 50 },
+      { "name": "Java",       "pct": 45 },
+      { "name": "C#",         "pct": 40 }
     ],
     "tools": [
-      { "name": "Git", "pct": 85 },
-      { "name": "Linux", "pct": 85 },
-      { "name": "ncurses", "pct": 65 },
-      { "name": "AWS", "pct": 65 },
-      { "name": "Docker", "pct": 60 },
-      { "name": "FL Studio", "pct": 60 },
-      { "name": "Godot", "pct": 55 },
-      { "name": "MongoDB", "pct": 55 },
-      { "name": "Unity", "pct": 55 },
-      { "name": "Arduino", "pct": 50 },
-      { "name": "GameMaker", "pct": 50 },
+      { "name": "Git",          "pct": 85 },
+      { "name": "Linux",        "pct": 85 },
+      { "name": "ncurses",      "pct": 65 },
+      { "name": "AWS",          "pct": 65 },
+      { "name": "Docker",       "pct": 60 },
+      { "name": "FL Studio",    "pct": 60 },
+      { "name": "Godot",        "pct": 55 },
+      { "name": "MongoDB",      "pct": 55 },
+      { "name": "Unity",        "pct": 55 },
+      { "name": "Arduino",      "pct": 50 },
+      { "name": "GameMaker",    "pct": 50 },
       { "name": "Google Cloud", "pct": 45 }
     ]
   },
+
   "projects": [
-    { "name": "HEXFEED", "lang": "Python", "desc": "Private social network in the terminal. Encrypted with Tor. Minimalist TUI built with ncurses.", "url": "https://github.com/MCookinho/hexfeed", "badge": null },
-    { "name": "SHELLGAME", "lang": "C", "desc": "Collection of classic terminal games with ncurses. Includes a FNAF port.", "url": "https://github.com/MCookinho/shellgame", "badge": null },
-    { "name": "MATE-HELPER", "lang": "Python", "desc": "AI desktop pet. A smart little virtual buddy with a personality.", "url": "https://github.com/MCookinho/mate-helper", "badge": "BETA" },
-    { "name": "BACKROOMS ONLINE", "lang": "GML", "desc": "Multiplayer game set in the Backrooms. Explore, avoid entities, and try to escape with other players.", "url": "https://github.com/MCookinho/Backrooms-Online", "badge": "ALPHA" }
+    {
+      "name": "HEXFEED",
+      "lang": "Python",
+      "desc": "Private social network in the terminal. Encrypted with Tor. Minimalist TUI built with ncurses.",
+      "url": "https://github.com/MCookinho/hexfeed",
+      "badge": null
+    },
+    {
+      "name": "SHELLGAME",
+      "lang": "C",
+      "desc": "Collection of classic terminal games with ncurses. Includes a FNAF port.",
+      "url": "https://github.com/MCookinho/shellgame",
+      "badge": null
+    },
+    {
+      "name": "MATE-HELPER",
+      "lang": "Python",
+      "desc": "AI desktop pet. A smart little virtual buddy with a personality.",
+      "url": "https://github.com/MCookinho/mate-helper",
+      "badge": "BETA"
+    },
+    {
+      "name": "BACKROOMS ONLINE",
+      "lang": "GML",
+      "desc": "Multiplayer game set in the Backrooms. Explore, avoid entities, and try to escape with other players.",
+      "url": "https://github.com/MCookinho/Backrooms-Online",
+      "badge": "ALPHA"
+    }
   ],
+
   "games": [
-    { "name": "Letral", "desc": "Wordle Battle Royale. Guess the secret word before others in PT-BR, EN, ES.", "url": "https://letral.wtf" },
-    { "name": "Catfishing", "desc": "Point & Click with turn-based combat. Fish and battle against aquarium monsters.", "url": "https://codecrusaders.itch.io/catfishing" },
-    { "name": "Natureba", "desc": "Adventure game inspired by Monkey Island. Survive in the forest for 7 days.", "url": "https://codecrusaders.itch.io/natureba" },
-    { "name": "Cabra", "desc": "Puzzle game. Convert animals into creatures of the night without getting caught.", "url": "https://darukee.itch.io/cabra" },
-    { "name": "Shell Game", "desc": "Classic terminal games collection with ncurses in C.", "url": "https://github.com/MCookinho/shellgame" }
+    {
+      "name": "Letral",
+      "desc": "Wordle Battle Royale. Guess the secret word before others in PT-BR, EN, ES.",
+      "url": "https://letral.wtf"
+    },
+    {
+      "name": "Catfishing",
+      "desc": "Point & Click with turn-based combat. Fish and battle against aquarium monsters.",
+      "url": "https://codecrusaders.itch.io/catfishing"
+    },
+    {
+      "name": "Natureba",
+      "desc": "Adventure game inspired by Monkey Island. Survive in the forest for 7 days.",
+      "url": "https://codecrusaders.itch.io/natureba"
+    },
+    {
+      "name": "Cabra",
+      "desc": "Puzzle game. Convert animals into creatures of the night without getting caught.",
+      "url": "https://darukee.itch.io/cabra"
+    },
+    {
+      "name": "Shell Game",
+      "desc": "Classic terminal games collection with ncurses in C.",
+      "url": "https://github.com/MCookinho/shellgame"
+    }
   ],
+
   "experience": [
-    { "role": "Freelance Developer", "org": "Self-employed", "period": "2022 — Present", "desc": "Development of bots, automation scripts, web interfaces, and indie games using Python, JavaScript, C, and GML." },
-    { "role": "Academic Projects", "org": "SENAI CIMATEC — Computer Engineering", "period": "2023 — Present", "desc": "Distributed systems with sockets/threads in Java, game development in Godot/C++, electronics with Arduino." }
+    {
+      "role": "Freelance Developer",
+      "org": "Self-employed",
+      "period": "2022 — Present",
+      "desc": "Development of bots, automation scripts, web interfaces, and indie games using Python, JavaScript, C, and GML."
+    },
+    {
+      "role": "Academic Projects",
+      "org": "SENAI CIMATEC — Computer Engineering",
+      "period": "2023 — Present",
+      "desc": "Distributed systems with sockets/threads in Java, game development in Godot/C++, electronics with Arduino."
+    }
   ],
+
   "education": [
-    { "course": "Computer Engineering", "institution": "SENAI CIMATEC — Salvador, BA", "period": "2023 — 2027", "desc": "Focus on software development, embedded systems, and computational intelligence." }
+    {
+      "course": "Computer Engineering",
+      "institution": "SENAI CIMATEC — Salvador, BA",
+      "period": "2023 — 2027",
+      "desc": "Focus on software development, embedded systems, and computational intelligence."
+    }
   ],
+
   "rankings": {
     "movies": "data/rankings/filmes.json",
     "series": "data/rankings/series.json",
