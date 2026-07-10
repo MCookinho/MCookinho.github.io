@@ -23,18 +23,27 @@ function loadProfile() {
   }
 }
 
-function shield(label, color, logo) {
-  const params = new URLSearchParams()
-  params.set('label', label)
+function shieldPath(label, msg, color, logo) {
+  const path = `${encodeURIComponent(label)}-${encodeURIComponent(msg)}-${color}`
+  let url = `https://img.shields.io/badge/${path}`
   if (logo) {
-    params.set('logo', logo)
-    params.set('logoColor', 'white')
+    const params = new URLSearchParams({ logo, logoColor: 'white' })
+    url += '?' + params.toString()
   }
-  return `https://img.shields.io/badge/-${color}?${params.toString()}`
+  return url
+}
+
+function shieldLabel(label, color, logo) {
+  let url = `https://img.shields.io/badge/${encodeURIComponent(label)}-${color}`
+  if (logo) {
+    const params = new URLSearchParams({ logo, logoColor: 'white' })
+    url += '?' + params.toString()
+  }
+  return url
 }
 
 function skillBadge(name, pct, logo, color) {
-  const url = shield(`${name} ${pct}%`, color, logo)
+  const url = shieldPath(name, pct + '%', color, logo)
   return `![${name}](${url})`
 }
 
@@ -47,7 +56,7 @@ function shieldInfo(name) {
     'SQL':          ['mysql',        '4479A1'],
     'C / C++':      ['c',            'A8B9CC'],
     'C':            ['c',            'A8B9CC'],
-    'C++':          ['c%2B%2B',      '00599C'],
+    'C++':          ['cplusplus',    '00599C'],
     'C#':           ['csharp',       '239120'],
     'Java':         ['openjdk',      'ED8B00'],
     'GML':          ['',             '00C853'],
@@ -59,7 +68,7 @@ function shieldInfo(name) {
     'FL Studio':    ['',             'FF8800'],
     'Godot':        ['godotengine',  '478CBF'],
     'MongoDB':      ['mongodb',      '47A248'],
-    'Unity':        ['unity',        'FFFFFF'],
+    'Unity':        ['unity',        '555555'],
     'Arduino':      ['arduino',      '00979D'],
     'GameMaker':    ['',             '00C853'],
     'Google Cloud': ['googlecloud',  '4285F4'],
@@ -163,10 +172,10 @@ function generateReadme() {
     md += `### 📦 Open Source Projects\n\n`
     for (const proj of pr) {
       const langBadge = proj.lang
-        ? `![${proj.lang}](${shield(proj.lang, 'lightgrey', shieldInfo(proj.lang)[0])})`
+        ? `![${proj.lang}](${shieldLabel(proj.lang, 'lightgrey', shieldInfo(proj.lang)[0])})`
         : ''
       const badge = proj.badge
-        ? `![${proj.badge}](${shield(proj.badge, 'orange')})`
+        ? `![${proj.badge}](${shieldLabel(proj.badge, 'orange')})`
         : ''
       md += `[**${proj.name}**](${proj.url || '#'}) ${langBadge} ${badge}— ${proj.desc}\n\n`
     }
