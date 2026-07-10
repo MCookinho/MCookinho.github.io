@@ -25,6 +25,8 @@
       'GALERIA': 'GALERIA',
       'BLOG': 'BLOG',
       'CONTATO': 'CONTATO',
+      'AINDA TÔ ESCREVENDO MEUS PRIMEIROS ARTIGOS<br/>AGUENTA AÍ QUE LOGO LOGO SAI TEXTO BOM': 'AINDA TÔ ESCREVENDO MEUS PRIMEIROS ARTIGOS<br/>AGUENTA AÍ QUE LOGO LOGO SAI TEXTO BOM',
+      'FEITO COM CAOS E CARINHO': 'FEITO COM CAOS E CARINHO',
       'PEU BORGES': 'PEU BORGES',
       'ENG. DA COMPUTAÇÃO // DEV // CRIADOR DE JOGOS': 'ENG. DA COMPUTAÇÃO // DEV // CRIADOR DE JOGOS',
       'vivendo a vida da maneira que eu quero viver': 'vivendo a vida da maneira que eu quero viver',
@@ -435,6 +437,8 @@
       'GALERIA': 'GALLERY',
       'BLOG': 'BLOG',
       'CONTATO': 'CONTACT',
+      'AINDA TÔ ESCREVENDO MEUS PRIMEIROS ARTIGOS<br/>AGUENTA AÍ QUE LOGO LOGO SAI TEXTO BOM': "I'M STILL WRITING MY FIRST ARTICLES<br/>HANG IN THERE, GOOD TEXT IS COMING SOON",
+      'FEITO COM CAOS E CARINHO': 'MADE WITH CHAOS AND CARE',
       'PEU BORGES': 'PEU BORGES',
       'ENG. DA COMPUTAÇÃO // DEV // CRIADOR DE JOGOS': 'COMPUTER ENG. // DEV // GAME CREATOR',
       'vivendo a vida da maneira que eu quero viver': 'living life the way I want to live it',
@@ -841,7 +845,7 @@
   function translatePage() {
     document.querySelectorAll('[data-i18n]').forEach(function (el) {
       var key = el.getAttribute('data-i18n')
-      el.textContent = __(key)
+      el.innerHTML = __(key)
     })
     document.querySelectorAll('[data-i18n-placeholder]').forEach(function (el) {
       var key = el.getAttribute('data-i18n-placeholder')
@@ -872,9 +876,14 @@
     translatePage()
   }
 
-  // Observe for dynamically added elements
-  var mo = new MutationObserver(function () {
-    translatePage()
-  })
-  mo.observe(document.body, { childList: true, subtree: true })
+  // Observe for dynamically added elements (debounced)
+  var translateTimeout
+  function onDomMutate() {
+    clearTimeout(translateTimeout)
+    translateTimeout = setTimeout(translatePage, 50)
+  }
+  if (document.body) {
+    var mo = new MutationObserver(onDomMutate)
+    mo.observe(document.body, { childList: true, subtree: true })
+  }
 })()
