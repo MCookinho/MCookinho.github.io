@@ -1128,7 +1128,7 @@
     if (skillsGrid && content.skills) {
       var cats = [
         { title: 'LINGUAGENS', ids: ['python','javascript','bash','typescript','sql','c','java','csharp'] },
-        { title: 'FERRAMENTAS', ids: ['git','linux','ncurses','docker','flstudio','godot','mongodb','unity','arduino','aws','gamemaker','googlecloud'] },
+        { title: 'FERRAMENTAS', ids: ['git','linux','ncurses','aws','docker','flstudio','godot','mongodb','unity','arduino','gamemaker','googlecloud'] },
       ]
       skillsGrid.innerHTML = ''
       cats.forEach(function (cat) {
