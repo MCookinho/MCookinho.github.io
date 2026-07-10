@@ -669,7 +669,7 @@
     { id: 'javascript', label: 'JavaScript',    pct: 85 },
     { id: 'typescript', label: 'TypeScript',    pct: 70 },
     { id: 'c',          label: 'C / C++',       pct: 65 },
-    { id: 'java',       label: 'Java',          pct: 75 },
+    { id: 'java',       label: 'Java',          pct: 45 },
     { id: 'bash',       label: 'Bash',          pct: 80 },
     { id: 'git',        label: 'Git',           pct: 85 },
     { id: 'linux',      label: 'Linux',         pct: 85 },
@@ -1127,7 +1127,7 @@
     var skillsGrid = document.getElementById('skillsGrid')
     if (skillsGrid && content.skills) {
       var cats = [
-        { title: 'LINGUAGENS', ids: ['python','javascript','bash','java','typescript','sql','c','csharp'] },
+        { title: 'LINGUAGENS', ids: ['python','javascript','bash','typescript','sql','c','java','csharp'] },
         { title: 'FERRAMENTAS', ids: ['git','linux','ncurses','docker','flstudio','godot','mongodb','unity','arduino','aws','gamemaker','googlecloud'] },
       ]
       skillsGrid.innerHTML = ''

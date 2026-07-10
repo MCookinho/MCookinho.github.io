@@ -771,7 +771,7 @@
 
     var data = {
       PYTHON: { desc: 'Minha linguagem principal. Uso para automação, bots, scripts, back-end e ferramentas de terminal. Já fiz desde web scrapers até port de FNAF pro terminal.', pct: 90 },
-      JAVA: { desc: 'Aprendi na faculdade de engenharia. Já fiz projetos com Swing, sockets, threads e sistemas distribuídos. Confortável com OO e padrões de projeto.', pct: 75 },
+      JAVA: { desc: 'Aprendi na faculdade de engenharia. Já fiz projetos com Swing, sockets, threads e sistemas distribuídos. Confortável com OO e padrões de projeto.', pct: 45 },
       JAVASCRIPT: { desc: 'Uso no front-end e back-end (Node). Criei jogos, bots, interfaces interativas e este site. É a linguagem que mais uso no dia a dia junto com Python.', pct: 85 },
       TYPESCRIPT: { desc: 'Uso com React e Node para projetos maiores. A tipagem salva vidas em projetos complexos. Prefiro TS puro JS em projetos sérios.', pct: 70 },
       C: { desc: 'Aprendi na faculdade e por conta própria. Já implementei do zero um port do FNAF pro terminal usando ncurses, incluindo áudio e mecânicas.', pct: 65 },
