@@ -677,6 +677,7 @@
     { id: 'godot',      label: 'Godot',         pct: 55 },
     { id: 'arduino',    label: 'Arduino',       pct: 50 },
     { id: 'ncurses',    label: 'ncurses',       pct: 65 },
+    { id: 'sql',        label: 'SQL',           pct: 70 },
   ]
 
   // ── Default Config ──
@@ -1120,7 +1121,7 @@
     if (skillsGrid && content.skills) {
       var cats = [
         { title: 'LINGUAGENS', ids: ['python','javascript','typescript','c','java','bash'] },
-        { title: 'FERRAMENTAS', ids: ['git','linux','docker','godot','arduino','ncurses'] },
+        { title: 'FERRAMENTAS', ids: ['git','linux','docker','godot','arduino','ncurses','sql'] },
       ]
       skillsGrid.innerHTML = ''
       cats.forEach(function (cat) {
