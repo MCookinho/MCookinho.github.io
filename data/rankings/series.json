@@ -1,1714 +1,2284 @@
 [
   {
     "name": "After Life",
-    "type": "Suspense",
-    "synopsis": "A sobrevivência em um mundo hostil testa os limites da humanidade.",
+    "type": [
+      "Comédia",
+      "Drama",
+      "Slice of Life"
+    ],
+    "synopsis": "Um homem lida com o luto pela morte de sua esposa, usando humor negro e cinismo para navegar pela vida enquanto os amigos e familiares tentam ajudá-lo.",
     "review": "Série de suspense boa. After Life me agradou, série sólida.",
     "rating": 3.9,
     "favoriteEpisode": "T1E1"
   },
-
   {
     "name": "Alice in Borderland",
-    "type": "Acao",
-    "synopsis": "Pessoas sao transportadas para uma Tóquio alternativa.",
+    "type": [
+      "Ação",
+      "Ficção Científica",
+      "Suspense"
+    ],
+    "synopsis": "Pessoas são transportadas para uma Tóquio alternativa onde precisam participar de jogos mortais para sobreviver e tentar voltar ao mundo real.",
     "review": "Alice in Borderland me agradou, série sólida.",
     "rating": 4.0,
     "favoriteEpisode": "T4E11"
   },
-
   {
     "name": "Altered Carbon",
-    "type": "Animação",
-    "synopsis": "Personagens complexos e relacionamentos tumultuados movem esta narrativa.",
+    "type": [
+      "Ficção Científica",
+      "Ação",
+      "Suspense"
+    ],
+    "synopsis": "Em um futuro onde a consciência pode ser armazenada digitalmente, um mercenário é contratado para investigar um assassinato que remonta aos segredos mais obscuros da elite.",
     "review": "Altered Carbon me prendeu legal, recomendo.",
     "rating": 4.0,
     "favoriteEpisode": "T1E10"
   },
-
   {
     "name": "American Crime Story",
-    "type": "Ficção Científica",
-    "synopsis": "Universos paralelos, viagens no tempo e realidades alternativas se entrelaçam.",
+    "type": [
+      "Drama",
+      "Policial",
+      "Biografia"
+    ],
+    "synopsis": "Reconstitui casos criminais de grande repercussão nos EUA, mergulhando nos bastidores jurídicos e na vida dos envolvidos em cada julgamento.",
     "review": "Série de ficção científica foda. American Crime Story não me agradou tanto.",
     "rating": 3.4,
     "favoriteEpisode": "T5E8"
   },
-
   {
     "name": "American Vandal",
-    "type": "Romance",
-    "synopsis": "Conflitos familiares, traições e alianças se desenrolam em cada episódio.",
+    "type": [
+      "Comédia",
+      "Mistério",
+      "Documentário"
+    ],
+    "synopsis": "Uma paródia de true crime que investiga atos de vandalismo em uma escola, tratando piadas bobas com a seriedade de um documentário criminal.",
     "review": "American Vandal me prendeu legal, recomendo.",
     "rating": 4.0,
     "favoriteEpisode": "T1E11"
   },
-
   {
     "name": "Anne With An E",
-    "type": "Ação",
-    "synopsis": "A sobrevivência em um mundo hostil testa os limites da humanidade.",
+    "type": [
+      "Drama",
+      "Romance",
+      "Família"
+    ],
+    "synopsis": "Anne Shirley, uma órfã imaginativa e de cabelos ruivos, transforma a vida de uma pequena cidade canadense ao ser adotada por engano pelos Cuthbert.",
     "review": "Anne With An E é boa, curti maratonar.",
     "rating": 4.0,
     "favoriteEpisode": "T3E1"
   },
-
   {
     "name": "Arcane",
-    "type": "Animacao",
-    "synopsis": "Duas irmaos em lados opostos de uma guerra.",
+    "type": [
+      "Animação",
+      "Ação",
+      "Fantasia"
+    ],
+    "synopsis": "Duas irmãs em lados opostos de uma guerra descobrem que a tecnologia e a magia podem unir ou destruir a cidade de Piltover e Zaun.",
     "review": "Arcane me prendeu legal, recomendo.",
     "rating": 4.0,
     "favoriteEpisode": "T1E9"
   },
-
   {
     "name": "Arrested Development",
-    "type": "Comedia",
-    "synopsis": "Uma familia disfuncional tenta manter as aparencias.",
+    "type": [
+      "Comédia",
+      "Família",
+      "Sátira"
+    ],
+    "synopsis": "A família Bluth, que perdeu toda sua fortuna, tenta manter as aparências enquanto lida com negócios fracassados e situações absurdas do dia a dia.",
     "review": "Série de comédia leve. Arrested Development é boa, curti maratonar.",
     "rating": 3.8,
     "favoriteEpisode": "T4E11"
   },
-
   {
     "name": "Atlanta",
-    "type": "Drama",
-    "synopsis": "Dois primos navegam pelo cenario do rap em Atlanta.",
+    "type": [
+      "Drama",
+      "Comédia",
+      "Slice of Life"
+    ],
+    "synopsis": "Dois primos navegam pelo cenário do rap em Atlanta enquanto lidam com questões raciais, financeiras e a busca por uma vida melhor.",
     "review": "Série drama envolvente. Atlanta não gostei, entediante.",
     "rating": 3.2,
     "favoriteEpisode": "T2E3"
   },
-
   {
     "name": "Attack on Titan",
-    "type": "Anime",
-    "synopsis": "A humanidade luta contra titas devoradores.",
+    "type": [
+      "Anime",
+      "Ação",
+      "Fantasia"
+    ],
+    "synopsis": "A humanidade luta para sobreviver dentro de muralhas gigantes contra Titãs devoradores de homens, enquanto descobre segredos aterrorizantes sobre seu próprio mundo.",
     "review": "Attack on Titan é boa, curti maratonar.",
     "rating": 4.0,
     "favoriteEpisode": "T6E7"
   },
-
   {
     "name": "Avatar The Last Airbender",
-    "type": "Policial",
-    "synopsis": "Humor ácido e situações absurdas se encontram nesta comédia imperdível.",
+    "type": [
+      "Animação",
+      "Aventura",
+      "Fantasia"
+    ],
+    "synopsis": "Aang, o último dobrador de ar, desperta de um século de sono para dominar os quatro elementos e derrotar a Nação do Fogo que está em guerra.",
     "review": "Avatar The Last Airbender me agradou, série sólida.",
     "rating": 4.0,
     "favoriteEpisode": "T5E3"
   },
-
   {
     "name": "Babylon Berlin",
-    "type": "Comédia",
-    "synopsis": "Casos misteriosos são investigados por detetives brilhantes e excêntricos.",
+    "type": [
+      "Drama",
+      "Policial",
+      "História"
+    ],
+    "synopsis": "Na Berlim dos anos 1920, um comissário investiga uma conspiração que envolve a máfia, o exército e a ascensão do nazismo em meio ao caos social.",
     "review": "Série de comédia leve. Babylon Berlin me prendeu legal, recomendo.",
     "rating": 3.9,
     "favoriteEpisode": "T1E5"
   },
-
   {
     "name": "Band Of Brothers",
-    "type": "Policial",
-    "synopsis": "Uma jornada emocional através de gerações e escolhas difíceis.",
+    "type": [
+      "Drama",
+      "Guerra",
+      "História"
+    ],
+    "synopsis": "A história real da Companhia Easy do 506º Regimento de Infantaria Paraquedista, desde o treinamento até o fim da Segunda Guerra Mundial na Europa.",
     "review": "Band Of Brothers é boa, curti maratonar.",
     "rating": 4.0,
     "favoriteEpisode": "T5E1"
   },
-
   {
     "name": "Banshee",
-    "type": "Acao",
-    "synopsis": "Um ex-convicto assume a identidade de um xerife.",
+    "type": [
+      "Ação",
+      "Drama",
+      "Policial"
+    ],
+    "synopsis": "Um ex-presidiário assume a identidade de um xerife em uma cidade da Pensilvânia, usando seus métodos brutais para impor justiça e esconder seu passado.",
     "review": "Banshee me prendeu legal, recomendo.",
     "rating": 4.0,
     "favoriteEpisode": "T3E2"
   },
-
   {
     "name": "Barry",
-    "type": "Drama",
-    "synopsis": "Um assassino de aluguel descobre a atuacao.",
+    "type": [
+      "Comédia",
+      "Drama",
+      "Ação"
+    ],
+    "synopsis": "Um assassino de aluguel de Cleveland viaja a Los Angeles para um serviço e descobre uma nova paixão: a atuação, tentando deixar o crime para trás.",
     "review": "Série drama envolvente. Barry é boa, curti maratonar.",
     "rating": 4.0,
     "favoriteEpisode": "T2E9"
   },
-
   {
     "name": "Battlestar Galactica",
-    "type": "Ficcao Cientifica",
-    "synopsis": "A humanidade foge dos Cylons.",
+    "type": [
+      "Ficção Científica",
+      "Drama",
+      "Ação"
+    ],
+    "synopsis": "A humanidade foge dos Cylons, robôs que se rebelaram, em uma frota espacial em busca do lendário planeta Terra.",
     "review": "Série de ficção científica foda. Battlestar Galactica não me agradou tanto.",
     "rating": 3.4,
     "favoriteEpisode": "T3E6"
   },
-
   {
     "name": "Beenham",
-    "type": "Documentário",
-    "synopsis": "Uma equipe improvável se une para enfrentar ameaças que ninguém mais pode.",
+    "type": [
+      "Drama",
+      "Suspense",
+      "Mistério"
+    ],
+    "synopsis": "Em uma comunidade isolada, segredos do passado começam a emergir e ameaçar o frágil equilíbrio entre os moradores.",
     "review": "Beenham me prendeu legal, recomendo.",
     "rating": 4.0,
     "favoriteEpisode": "T1E12"
   },
-
   {
     "name": "Better Call Saul",
-    "type": "Drama",
-    "synopsis": "A origem de Saul Goodman.",
+    "type": [
+      "Drama",
+      "Comédia",
+      "Policial"
+    ],
+    "synopsis": "A origem do advogado Saul Goodman, mostrando como Jimmy McGill, um advogado bem-intencionado, se transforma no antiético conselheiro criminal de Breaking Bad.",
     "review": "MELHOR QUE BREAKING BAD? SIM, EU DISSE ISSO. O desenvolvimento do Jimmy McGill até se tornar o Saul Goodman é a melhor jornada de personagem que eu já vi numa série. A Kim Wexler é uma das personagens mais bem escritas de todos os tempos.",
     "rating": 4.9,
     "favoriteEpisode": "T4E9"
   },
-
   {
     "name": "Better Things",
-    "type": "Comédia",
-    "synopsis": "Uma história de redenção e recomeço em meio a circunstâncias adversas.",
+    "type": [
+      "Comédia",
+      "Drama",
+      "Família"
+    ],
+    "synopsis": "Sam, uma atriz e mãe solteira, equilibra sua carreira com a criação de três filhas em Los Angeles, lidando com os altos e baixos da vida cotidiana.",
     "review": "Série de comédia leve. Better Things me prendeu legal, recomendo.",
     "rating": 3.8,
     "favoriteEpisode": "T5E8"
   },
-
   {
     "name": "Big Little Lies",
-    "type": "Animação",
-    "synopsis": "Em uma cidade pequena, segredos antigos começam a emergir e mudar tudo.",
+    "type": [
+      "Drama",
+      "Mistério",
+      "Suspense"
+    ],
+    "synopsis": "Em uma cidade litorânea da Califórnia, cinco mulheres aparentemente perfeitas veem suas vidas se entrelaçarem após um assassinato durante um evento escolar.",
     "review": "Big Little Lies me prendeu legal, recomendo.",
     "rating": 4.0,
     "favoriteEpisode": "T5E2"
   },
-
   {
     "name": "Black Mirror",
-    "type": "Ficcao Cientifica",
-    "synopsis": "Historias sobre tecnologia e sociedade.",
+    "type": [
+      "Ficção Científica",
+      "Suspense",
+      "Drama"
+    ],
+    "synopsis": "Antologias que exploram os efeitos colaterais da tecnologia na sociedade, cada episódio contando uma história distópica independente e perturbadora.",
     "review": "Série de ficção científica foda. Black Mirror não gostei, entediante.",
     "rating": 3.0,
     "favoriteEpisode": "T1E4"
   },
-
   {
     "name": "Bloodline",
-    "type": "Terror",
-    "synopsis": "Em uma cidade pequena, segredos antigos começam a emergir e mudar tudo.",
+    "type": [
+      "Drama",
+      "Suspense",
+      "Mistério"
+    ],
+    "synopsis": "Os irmãos Rayburn veem seus segredos familiares virem à tona quando o filho mais velho problemático retorna à cidade, ameaçando desmoronar tudo.",
     "review": "Série de terror pesada. Bloodline não me agradou tanto.",
     "rating": 3.7,
     "favoriteEpisode": "T6E11"
   },
-
   {
     "name": "Boardwalk Empire",
-    "type": "Documentário",
-    "synopsis": "Personagens complexos e relacionamentos tumultuados movem esta narrativa.",
+    "type": [
+      "Drama",
+      "Policial",
+      "História"
+    ],
+    "synopsis": "Nucky Thompson, um político corrupto em Atlantic City dos anos 1920, comanda o contrabando de bebidas durante a Lei Seca enquanto equilibra poder e traição.",
     "review": "Boardwalk Empire me agradou, série sólida.",
     "rating": 4.0,
     "favoriteEpisode": "T1E3"
   },
-
   {
     "name": "Bodyguard",
-    "type": "Romance",
-    "synopsis": "Personagens complexos e relacionamentos tumultuados movem esta narrativa.",
+    "type": [
+      "Suspense",
+      "Drama",
+      "Ação"
+    ],
+    "synopsis": "Um veterano de guerra designado para proteger uma ministra polemica precisa navegar por ameaças terroristas enquanto lida com seus próprios traumas.",
     "review": "Bodyguard é boa, curti maratonar.",
     "rating": 4.0,
     "favoriteEpisode": "T3E11"
   },
-
   {
     "name": "BoJack Horseman",
-    "type": "Animacao",
-    "synopsis": "Um cavalo ator lidando com a fama e a depressao.",
+    "type": [
+      "Animação",
+      "Comédia",
+      "Drama"
+    ],
+    "synopsis": "Um cavalo ator que foi estrela nos anos 90 lida com a fama passada, depressão e relacionamentos em Hollywood, em uma animação surpreendentemente profunda.",
     "review": "BoJack Horseman é boa, curti maratonar.",
     "rating": 3.9,
     "favoriteEpisode": "T6E9"
   },
-
   {
     "name": "Bones",
-    "type": "Policial",
-    "synopsis": "A série acompanha um grupo de personagens lidando com situações extraordinárias.",
+    "type": [
+      "Policial",
+      "Drama",
+      "Mistério"
+    ],
+    "synopsis": "Uma antropóloga forense e um detetive do FBI formam uma dupla improvável para resolver assassinatos usando ossos e evidências científicas.",
     "review": "Bones não me agradou tanto.",
     "rating": 3.4,
     "favoriteEpisode": "T1E7"
   },
-
   {
     "name": "Bonsai",
-    "type": "Ação",
-    "synopsis": "Universos paralelos, viagens no tempo e realidades alternativas se entrelaçam.",
+    "type": [
+      "Drama",
+      "Romance",
+      "Slice of Life"
+    ],
+    "synopsis": "Um jovem escritor reflete sobre seu relacionamento passado enquanto tenta encontrar seu lugar no mundo literário chileno.",
     "review": "Bonsai me agradou, série sólida.",
     "rating": 4.0,
     "favoriteEpisode": "T2E12"
   },
-
   {
     "name": "Boo",
-    "type": "Ação",
-    "synopsis": "Uma equipe improvável se une para enfrentar ameaças que ninguém mais pode.",
+    "type": [
+      "Comédia",
+      "Terror",
+      "Suspense"
+    ],
+    "synopsis": "Um grupo de amigos se reúne para uma noite de histórias de fantasmas que se torna aterrorizantemente real.",
     "review": "Boo me prendeu legal, recomendo.",
     "rating": 4.0,
     "favoriteEpisode": "T4E9"
   },
-
   {
     "name": "Breaking Bad",
-    "type": "Drama",
-    "synopsis": "Um professor quimico se torna um fabricante de meta.",
+    "type": [
+      "Drama",
+      "Policial",
+      "Suspense"
+    ],
+    "synopsis": "Walter White, um professor de química com câncer terminal, começa a fabricar metanfetamina para garantir o futuro financeiro de sua família, descendo a uma espiral de crime.",
     "review": "CLÁSSICO ABSOLUTO. Walter White se transformando no Heisenberg é uma das melhores coisas já feitas pra TV. Cada temporada é melhor que a anterior, e a última temporada é simplesmente PERFEITA. Jesse, me desculpe por tudo.",
     "rating": 4.8,
     "favoriteEpisode": "T4E3"
   },
-
   {
     "name": "Britannia",
-    "type": "Mistério",
-    "synopsis": "Universos paralelos, viagens no tempo e realidades alternativas se entrelaçam.",
+    "type": [
+      "Fantasia",
+      "Drama",
+      "História"
+    ],
+    "synopsis": "Na Britânia do ano 43 d.C., tribos celtas lutam contra a invasão romana enquanto deuses antigos e forças místicas influenciam o destino dos mortais.",
     "review": "Britannia não me agradou tanto.",
     "rating": 3.3,
     "favoriteEpisode": "T4E11"
   },
-
   {
     "name": "Broadchurch",
-    "type": "Suspense",
-    "synopsis": "Drama intenso com atuações brilhantes e um roteiro afiadíssimo.",
+    "type": [
+      "Policial",
+      "Drama",
+      "Mistério"
+    ],
+    "synopsis": "Dois detetives investigam a morte de um garoto em uma pequena cidade litorânea, expondo segredos e tensões escondidas sob a superfície pacata.",
     "review": "Série de suspense boa. Broadchurch não gostei, entediante.",
     "rating": 3.2,
     "favoriteEpisode": "T5E10"
   },
-
   {
     "name": "Brooklyn Nine-Nine",
-    "type": "Comedia",
-    "synopsis": "O dia a dia de uma delegacia do Brooklyn.",
+    "type": [
+      "Comédia",
+      "Policial",
+      "Sitcom"
+    ],
+    "synopsis": "O dia a dia de uma delegacia do Brooklyn, com detetives excêntricos e um capitão sério, resolvendo casos e causando confusão.",
     "review": "Série de comédia leve. Brooklyn Nine-Nine me agradou, série sólida.",
     "rating": 4.0,
     "favoriteEpisode": "T5E7"
   },
-
   {
     "name": "Californication",
-    "type": "Drama",
-    "synopsis": "Casos misteriosos são investigados por detetives brilhantes e excêntricos.",
+    "type": [
+      "Comédia",
+      "Drama",
+      "Romance"
+    ],
+    "synopsis": "Hank Moody, um escritor em crise criativa e pessoal, navega pelo submundo de Los Angeles entre casos amorosos, vícios e sua relação com a ex-mulher.",
     "review": "Série drama envolvente. Californication me prendeu legal, recomendo.",
     "rating": 4.0,
     "favoriteEpisode": "T5E12"
   },
-
   {
     "name": "Carnivale",
-    "type": "Suspense",
-    "synopsis": "Mistério e suspense se combinam nesta série que vai te deixar sem fôlego.",
+    "type": [
+      "Fantasia",
+      "Drama",
+      "Mistério"
+    ],
+    "synopsis": "Na América da Grande Depressão, um jovem fugitivo se une a um circo ambulante onde percepções sobrenaturais e uma guerra entre o bem e o mal se desenrolam.",
     "review": "Série de suspense boa. Carnivale não me agradou tanto.",
     "rating": 3.5,
     "favoriteEpisode": "T4E4"
   },
-
   {
     "name": "Castle",
-    "type": "Comédia",
-    "synopsis": "Uma jornada emocional através de gerações e escolhas difíceis.",
+    "type": [
+      "Comédia",
+      "Policial",
+      "Mistério"
+    ],
+    "synopsis": "Um escritor de romances policiais acompanha uma detetive da polícia de Nova York para pesquisar seus livros, se envolvendo nas investigações.",
     "review": "Série de comédia leve. Castle me agradou, série sólida.",
     "rating": 4.0,
     "favoriteEpisode": "T3E9"
   },
-
   {
     "name": "Casts",
-    "type": "Ficção Científica",
-    "synopsis": "Universos paralelos, viagens no tempo e realidades alternativas se entrelaçam.",
+    "type": [
+      "Drama",
+      "Mistério",
+      "Suspense"
+    ],
+    "synopsis": "Um grupo de pessoas aparentemente desconectadas descobre que seus destinos estão entrelaçados de maneiras inesperadas.",
     "review": "Série de ficção científica foda. Casts me agradou, série sólida.",
     "rating": 4.0,
     "favoriteEpisode": "T5E9"
   },
-
   {
     "name": "Chaos",
-    "type": "Ficção Científica",
-    "synopsis": "A série acompanha um grupo de personagens lidando com situações extraordinárias.",
+    "type": [
+      "Ação",
+      "Comédia",
+      "Aventura"
+    ],
+    "synopsis": "Agentes da CIA desajustados tentam salvar o mundo enquanto lidam com seu chefe incompetente e missões absurdas.",
     "review": "Série de ficção científica foda. Chaos não gostei, entediante.",
     "rating": 3.2,
     "favoriteEpisode": "T3E9"
   },
-
   {
     "name": "Chernobyl",
-    "type": "Drama",
-    "synopsis": "O desastre nuclear de Chernobyl.",
+    "type": [
+      "Drama",
+      "História",
+      "Suspense"
+    ],
+    "synopsis": "A minissérie reconstitui o desastre nuclear de Chernobyl em 1986, explorando as causas, a resposta do governo e o sacrifício dos heróis que contiveram a tragédia.",
     "review": "Série drama envolvente. Chernobyl é boa, curti maratonar.",
     "rating": 4.0,
     "favoriteEpisode": "T2E10"
   },
-
   {
     "name": "Clarice",
-    "type": "Romance",
-    "synopsis": "Casos misteriosos são investigados por detetives brilhantes e excêntricos.",
+    "type": [
+      "Drama",
+      "Policial",
+      "Suspense"
+    ],
+    "synopsis": "Clarice Starling, agora uma agente do FBI, investiga crimes enquanto lida com o trauma de seu encontro com Hannibal Lecter.",
     "review": "Clarice não me agradou tanto.",
     "rating": 3.5,
     "favoriteEpisode": "T6E1"
   },
-
   {
     "name": "Class",
-    "type": "Ação",
-    "synopsis": "Humor ácido e situações absurdas se encontram nesta comédia imperdível.",
+    "type": [
+      "Drama",
+      "Romance",
+      "Slice of Life"
+    ],
+    "synopsis": "As dinâmicas sociais e relações entre alunos de diferentes classes em uma escola de elite, explorando preconceito e privilégio.",
     "review": "Class não me agradou tanto.",
     "rating": 3.5,
     "favoriteEpisode": "T2E1"
   },
-
   {
     "name": "Claws",
-    "type": "Terror",
-    "synopsis": "A luta pelo poder em um mundo corporativo cheio de jogos de interesse.",
+    "type": [
+      "Comédia",
+      "Drama",
+      "Policial"
+    ],
+    "synopsis": "Cinco manicures de uma Florida se envolvem com a máfia e o crime organizado enquanto tentam manter seus negócios e amizades.",
     "review": "Série de terror pesada. Claws não gostei, entediante.",
     "rating": 3.1,
     "favoriteEpisode": "T3E2"
   },
-
   {
     "name": "Clean",
-    "type": "Drama",
-    "synopsis": "Universos paralelos, viagens no tempo e realidades alternativas se entrelaçam.",
+    "type": [
+      "Drama",
+      "Suspense",
+      "Mistério"
+    ],
+    "synopsis": "Uma mulher que trabalha como faxineira em cenas de crime descobre segredos perturbadores que a colocam em perigo.",
     "review": "Série drama envolvente. Clean não me agradou tanto.",
     "rating": 3.7,
     "favoriteEpisode": "T3E12"
   },
-
   {
     "name": "Close",
-    "type": "Fantasia",
-    "synopsis": "Uma jornada emocional através de gerações e escolhas difíceis.",
+    "type": [
+      "Ação",
+      "Suspense",
+      "Policial"
+    ],
+    "synopsis": "Uma agente de segurança particular é contratada para proteger uma herdeira, mas a missão se torna pessoal quando ameaças do passado reaparecem.",
     "review": "Close me agradou, série sólida.",
     "rating": 4.0,
     "favoriteEpisode": "T4E6"
   },
-
   {
     "name": "Cold Case",
-    "type": "Drama",
-    "synopsis": "Casos misteriosos são investigados por detetives brilhantes e excêntricos.",
+    "type": [
+      "Policial",
+      "Drama",
+      "Mistério"
+    ],
+    "synopsis": "Detetives da Filadélfia reabrem casos não resolvidos, buscando justiça para vítimas esquecidas décadas depois.",
     "review": "Série drama envolvente. Cold Case é boa, curti maratonar.",
     "rating": 4.0,
     "favoriteEpisode": "T3E5"
   },
-
   {
     "name": "Colony",
-    "type": "Ficção Científica",
-    "synopsis": "Universos paralelos, viagens no tempo e realidades alternativas se entrelaçam.",
+    "type": [
+      "Ficção Científica",
+      "Drama",
+      "Suspense"
+    ],
+    "synopsis": "Em uma Los Angeles ocupada por uma força alienígena misteriosa, uma família luta para sobreviver sob o regime opressor dos colonizadores.",
     "review": "Série de ficção científica foda. Colony não me agradou tanto.",
     "rating": 3.4,
     "favoriteEpisode": "T1E12"
   },
-
   {
     "name": "Community",
-    "type": "Comedia",
-    "synopsis": "Um grupo de estudantes de uma faculdade comunitária.",
+    "type": [
+      "Comédia",
+      "Sitcom",
+      "Drama"
+    ],
+    "synopsis": "Um grupo excêntrico de estudantes de uma faculdade comunitária forma laços improváveis enquanto participa de aulas e aventuras absurdas.",
     "review": "Série de comédia leve. Community me agradou, série sólida.",
     "rating": 4.0,
     "favoriteEpisode": "T4E10"
   },
-
   {
     "name": "Counterpart",
-    "type": "Ficção Científica",
-    "synopsis": "Uma história de redenção e recomeço em meio a circunstâncias adversas.",
+    "type": [
+      "Ficção Científica",
+      "Suspense",
+      "Drama"
+    ],
+    "synopsis": "Um burocrata descobre a existência de uma dimensão paralela idêntica, onde cada pessoa tem uma contraparte, e uma conspiração ameaça as duas realidades.",
     "review": "Série de ficção científica foda. Counterpart não me agradou tanto.",
     "rating": 3.4,
     "favoriteEpisode": "T2E8"
   },
-
   {
     "name": "Criminal Minds",
-    "type": "Comédia",
-    "synopsis": "Universos paralelos, viagens no tempo e realidades alternativas se entrelaçam.",
+    "type": [
+      "Policial",
+      "Drama",
+      "Suspense"
+    ],
+    "synopsis": "Uma equipe de perfiladores do FBI analisa as mentes dos criminosos mais perigosos para antecipar seus movimentos e impedir novos assassinatos.",
     "review": "Série de comédia leve. Criminal Minds me agradou, série sólida.",
     "rating": 3.8,
     "favoriteEpisode": "T3E7"
   },
-
   {
     "name": "Cross",
-    "type": "Suspense",
-    "synopsis": "A série acompanha um grupo de personagens lidando com situações extraordinárias.",
+    "type": [
+      "Drama",
+      "Policial",
+      "Mistério"
+    ],
+    "synopsis": "Um detetive particular investiga uma série de crimes que expõem a corrupção no sistema judiciário de sua cidade.",
     "review": "Série de suspense boa. Cross não gostei, entediante.",
     "rating": 3.0,
     "favoriteEpisode": "T4E4"
   },
-
   {
     "name": "Crush",
-    "type": "Documentário",
-    "synopsis": "A sobrevivência em um mundo hostil testa os limites da humanidade.",
+    "type": [
+      "Romance",
+      "Comédia",
+      "Drama"
+    ],
+    "synopsis": "Uma adolescente se junta ao clube de arte da escola para se aproximar de sua crush e descobre mais sobre si mesma no processo.",
     "review": "Crush não gostei, entediante.",
     "rating": 3.0,
     "favoriteEpisode": "T1E9"
   },
-
   {
     "name": "Cursed",
-    "type": "Suspense",
-    "synopsis": "Universos paralelos, viagens no tempo e realidades alternativas se entrelaçam.",
+    "type": [
+      "Fantasia",
+      "Aventura",
+      "Drama"
+    ],
+    "synopsis": "Uma releitura da lenda do Rei Arthur contada pela perspectiva de Nimue, uma jovem destinada a se tornar a Dama do Lago.",
     "review": "Série de suspense boa. Cursed é boa, curti maratonar.",
     "rating": 4.0,
     "favoriteEpisode": "T2E7"
   },
-
   {
     "name": "Daredevil",
-    "type": "Policial",
-    "synopsis": "Casos misteriosos são investigados por detetives brilhantes e excêntricos.",
+    "type": [
+      "Ação",
+      "Policial",
+      "Drama"
+    ],
+    "synopsis": "Matt Murdock, um advogado cego com sentidos aguçados, combate o crime nas ruas de Hell's Kitchen como o vigilante Justiceiro.",
     "review": "Daredevil me agradou, série sólida.",
     "rating": 4.0,
     "favoriteEpisode": "T2E3"
   },
-
   {
     "name": "Dark",
-    "type": "Ficcao Cientifica",
-    "synopsis": "O desaparecimento de criancas revela segredos temporais.",
+    "type": [
+      "Ficção Científica",
+      "Suspense",
+      "Drama"
+    ],
+    "synopsis": "O desaparecimento de crianças em uma pequena cidade alemã revela um complexo emaranhado de viagens no tempo, segredos familiares e um loop temporal de gerações.",
     "review": "MELHOR SÉRIE QUE EU JÁ VI NA VIDA. A forma como as três linhas do tempo se conectam é genial. Cada ator interpretando os mesmos personagens em idades diferentes é um trabalho ABSURDO. A trilha sonora é PERFEITA, a fotografia é linda. Tudo é impecável.",
     "rating": 5.0,
     "favoriteEpisode": "T2E3"
   },
-
   {
     "name": "Dark Matter",
-    "type": "Terror",
-    "synopsis": "Personagens complexos e relacionamentos tumultuados movem esta narrativa.",
+    "type": [
+      "Ficção Científica",
+      "Ação",
+      "Drama"
+    ],
+    "synopsis": "A tripulação de uma nave acorda sem memórias e precisa descobrir quem são e por que foram caçados em uma galáxia dividida.",
     "review": "Série de terror pesada. Dark Matter não me agradou tanto.",
     "rating": 3.6,
     "favoriteEpisode": "T1E2"
   },
-
   {
     "name": "David",
-    "type": "Animação",
-    "synopsis": "Uma história de redenção e recomeço em meio a circunstâncias adversas.",
+    "type": [
+      "Drama",
+      "Biografia",
+      "História"
+    ],
+    "synopsis": "A história de David, um pastor que se torna o maior rei de Israel, enfrentando gigantes e desafios para unificar seu povo.",
     "review": "David não gostei, entediante.",
     "rating": 3.1,
     "favoriteEpisode": "T4E6"
   },
-
   {
     "name": "Dawn",
-    "type": "Comédia",
-    "synopsis": "Uma história de redenção e recomeço em meio a circunstâncias adversas.",
+    "type": [
+      "Drama",
+      "Suspense",
+      "Mistério"
+    ],
+    "synopsis": "O desaparecimento de uma jovem em uma cidade pequena desencadeia uma investigação que expõe segredos obscuros da comunidade.",
     "review": "Série de comédia leve. Dawn não me agradou tanto.",
     "rating": 3.7,
     "favoriteEpisode": "T4E5"
   },
-
   {
     "name": "Days",
-    "type": "Terror",
-    "synopsis": "Uma equipe improvável se une para enfrentar ameaças que ninguém mais pode.",
+    "type": [
+      "Drama",
+      "Romance",
+      "Slice of Life"
+    ],
+    "synopsis": "Os altos e baixos de um relacionamento a distância, explorando como o tempo e a distância afetam o amor.",
     "review": "Série de terror pesada. Days não me agradou tanto.",
     "rating": 3.3,
     "favoriteEpisode": "T5E4"
   },
-
   {
     "name": "Dead",
-    "type": "Mistério",
-    "synopsis": "Humor ácido e situações absurdas se encontram nesta comédia imperdível.",
+    "type": [
+      "Terror",
+      "Suspense",
+      "Drama"
+    ],
+    "synopsis": "Em um mundo pós-apocalíptico, sobreviventes lutam para se manter vivos enquanto enfrentam ameaças humanas e sobrenaturais.",
     "review": "Dead me agradou, série sólida.",
     "rating": 4.0,
     "favoriteEpisode": "T6E2"
   },
-
   {
     "name": "Dead To Me",
-    "type": "Anime",
-    "synopsis": "Universos paralelos, viagens no tempo e realidades alternativas se entrelaçam.",
+    "type": [
+      "Comédia",
+      "Drama",
+      "Romance"
+    ],
+    "synopsis": "Uma viúva e uma mulher enigmática formam uma amizade improvável em um grupo de apoio ao luto, mas segredos obscuros ameaçam destruir sua conexão.",
     "review": "Dead To Me me prendeu legal, recomendo.",
     "rating": 4.0,
     "favoriteEpisode": "T5E11"
   },
-
   {
     "name": "Deception",
-    "type": "Ficção Científica",
-    "synopsis": "Casos misteriosos são investigados por detetives brilhantes e excêntricos.",
+    "type": [
+      "Comédia",
+      "Policial",
+      "Mistério"
+    ],
+    "synopsis": "Um ilusionista famoso usa suas habilidades de mágica para ajudar o FBI a resolver crimes impossíveis.",
     "review": "Série de ficção científica foda. Deception é boa, curti maratonar.",
     "rating": 4.0,
     "favoriteEpisode": "T4E12"
   },
-
   {
     "name": "Defenders",
-    "type": "Comédia",
-    "synopsis": "Personagens complexos e relacionamentos tumultuados movem esta narrativa.",
+    "type": [
+      "Ação",
+      "Aventura",
+      "Fantasia"
+    ],
+    "synopsis": "Heróis de rua de Nova York — Demolidor, Jessica Jones, Luke Cage e Punho de Ferro — se unem para enfrentar uma organização criminosa.",
     "review": "Série de comédia leve. Defenders não me agradou tanto.",
     "rating": 3.4,
     "favoriteEpisode": "T1E4"
   },
-
   {
     "name": "Designated Survivor",
-    "type": "Ficção Científica",
-    "synopsis": "A luta pelo poder em um mundo corporativo cheio de jogos de interesse.",
+    "type": [
+      "Drama",
+      "Suspense",
+      "Policial"
+    ],
+    "synopsis": "Um secretário de habitação se torna presidente dos EUA após um ataque que mata todos à sua frente no governo, e precisa navegar por crises políticas.",
     "review": "Série de ficção científica foda. Designated Survivor é boa, curti maratonar.",
     "rating": 4.0,
     "favoriteEpisode": "T6E2"
   },
-
   {
     "name": "Dexter",
-    "type": "Drama",
-    "synopsis": "Um serial killer que so mata criminosos.",
+    "type": [
+      "Drama",
+      "Policial",
+      "Suspense"
+    ],
+    "synopsis": "Um serial killer que trabalha como analista forense para a polícia de Miami segue o código de seu pai adotivo: só matar criminosos que escaparam da justiça.",
     "review": "Série drama envolvente. Dexter me agradou, série sólida.",
     "rating": 4.0,
     "favoriteEpisode": "T4E7"
   },
-
   {
     "name": "Dirk Gently",
-    "type": "Suspense",
-    "synopsis": "Casos misteriosos são investigados por detetives brilhantes e excêntricos.",
+    "type": [
+      "Comédia",
+      "Ficção Científica",
+      "Mistério"
+    ],
+    "synopsis": "Um detetive particular excêntrico que acredita no universo interconectado resolve casos absurdos envolvendo viagem no tempo, alienígenas e conspirações.",
     "review": "Série de suspense boa. Dirk Gently me agradou, série sólida.",
     "rating": 3.9,
     "favoriteEpisode": "T4E1"
   },
-
   {
     "name": "Discovery",
-    "type": "Romance",
-    "synopsis": "Drama intenso com atuações brilhantes e um roteiro afiadíssimo.",
+    "type": [
+      "Ficção Científica",
+      "Aventura",
+      "Drama"
+    ],
+    "synopsis": "Uma nave estelar da Federação descobre um novo modo de viagem que pode mudar o equilíbrio de poder na galáxia.",
     "review": "Discovery me agradou, série sólida.",
     "rating": 4.0,
     "favoriteEpisode": "T4E7"
   },
-
   {
     "name": "Disenchantment",
-    "type": "Romance",
-    "synopsis": "Drama intenso com atuações brilhantes e um roteiro afiadíssimo.",
+    "type": [
+      "Animação",
+      "Comédia",
+      "Fantasia"
+    ],
+    "synopsis": "A princesa alcoólatra Bean e seus amigos, um elfo ingênuo e um demônio, vivem aventuras bizarras no reino medieval de Dreamland.",
     "review": "Disenchantment me agradou, série sólida.",
     "rating": 4.0,
     "favoriteEpisode": "T2E3"
   },
-
   {
     "name": "Dollhouse",
-    "type": "Terror",
-    "synopsis": "A luta pelo poder em um mundo corporativo cheio de jogos de interesse.",
+    "type": [
+      "Ficção Científica",
+      "Ação",
+      "Drama"
+    ],
+    "synopsis": "Uma organização secreta implanta personalidades em agentes programáveis para missões específicas, até que uma delas começa a desenvolver autoconsciência.",
     "review": "Série de terror pesada. Dollhouse é boa, curti maratonar.",
     "rating": 4.0,
     "favoriteEpisode": "T2E2"
   },
-
   {
     "name": "Dominion",
-    "type": "Animação",
-    "synopsis": "Mistério e suspense se combinam nesta série que vai te deixar sem fôlego.",
+    "type": [
+      "Fantasia",
+      "Ação",
+      "Drama"
+    ],
+    "synopsis": "Em um mundo pós-apocalíptico, anjos em guerra e humanos coexistem em uma cidade murada, onde soldados com asas protéticas protegem os sobreviventes.",
     "review": "Dominion não me agradou tanto.",
     "rating": 3.6,
     "favoriteEpisode": "T2E11"
   },
-
   {
     "name": "Doom Patrol",
-    "type": "Ação",
-    "synopsis": "Uma equipe improvável se une para enfrentar ameaças que ninguém mais pode.",
+    "type": [
+      "Ação",
+      "Comédia",
+      "Fantasia"
+    ],
+    "synopsis": "Um grupo de heróis rejeitados e deformados ganha superpoderes através de tragédias e precisa se unir para salvar o mundo.",
     "review": "Doom Patrol me agradou, série sólida.",
     "rating": 4.0,
     "favoriteEpisode": "T5E9"
   },
-
   {
     "name": "Dopesick",
-    "type": "Anime",
-    "synopsis": "Mistério e suspense se combinam nesta série que vai te deixar sem fôlego.",
+    "type": [
+      "Drama",
+      "Biografia",
+      "História"
+    ],
+    "synopsis": "A crise dos opioides nos EUA contada através de múltiplas perspectivas: viciados, médicos, farmacêuticas e agentes do DEA.",
     "review": "Dopesick é boa, curti maratonar.",
     "rating": 4.0,
     "favoriteEpisode": "T2E6"
   },
-
   {
     "name": "Downton Abbey",
-    "type": "Policial",
-    "synopsis": "Mistério e suspense se combinam nesta série que vai te deixar sem fôlego.",
+    "type": [
+      "Drama",
+      "Romance",
+      "História"
+    ],
+    "synopsis": "A vida da família Crawley e seus empregados na majestosa mansão de Downton Abbey na Inglaterra do início do século XX.",
     "review": "Downton Abbey me prendeu legal, recomendo.",
     "rating": 4.0,
     "favoriteEpisode": "T3E8"
   },
-
   {
     "name": "Dream",
-    "type": "Ação",
-    "synopsis": "Universos paralelos, viagens no tempo e realidades alternativas se entrelaçam.",
+    "type": [
+      "Drama",
+      "Mistério",
+      "Fantasia"
+    ],
+    "synopsis": "Uma jovem descobre que seus sonhos são portais para realidades alternativas e precisa navegar entre eles para salvar alguém que ama.",
     "review": "Dream me agradou, série sólida.",
     "rating": 4.0,
     "favoriteEpisode": "T2E3"
   },
-
   {
     "name": "Drive",
-    "type": "Ação",
-    "synopsis": "Casos misteriosos são investigados por detetives brilhantes e excêntricos.",
+    "type": [
+      "Ação",
+      "Suspense",
+      "Drama"
+    ],
+    "synopsis": "Um motorista de fuga silencioso se envolve em um assalto mal-sucedido e precisa proteger sua vizinha e seu filho de criminosos perigosos.",
     "review": "Drive me agradou, série sólida.",
     "rating": 3.9,
     "favoriteEpisode": "T1E9"
   },
-
   {
     "name": "Drop Dead Diva",
-    "type": "Drama",
-    "synopsis": "A luta pelo poder em um mundo corporativo cheio de jogos de interesse.",
+    "type": [
+      "Comédia",
+      "Drama",
+      "Romance"
+    ],
+    "synopsis": "Uma modelo superficial morre e acorda no corpo de uma advogada plus size, aprendendo a valorizar o que realmente importa.",
     "review": "Série drama envolvente. Drop Dead Diva é boa, curti maratonar.",
     "rating": 3.9,
     "favoriteEpisode": "T2E4"
   },
-
   {
     "name": "Dynasty",
-    "type": "Comédia",
-    "synopsis": "Uma história de redenção e recomeço em meio a circunstâncias adversas.",
+    "type": [
+      "Drama",
+      "Romance",
+      "Suspense"
+    ],
+    "synopsis": "A família mais rica de Atlanta luta pelo controle de seu império de energia, em meio a traições, segredos e escândalos.",
     "review": "Série de comédia leve. Dynasty não gostei, entediante.",
     "rating": 3.2,
     "favoriteEpisode": "T5E1"
   },
-
   {
     "name": "Element",
-    "type": "Anime",
-    "synopsis": "A luta pelo poder em um mundo corporativo cheio de jogos de interesse.",
+    "type": [
+      "Mistério",
+      "Drama",
+      "Policial"
+    ],
+    "synopsis": "Uma detetive com habilidades únicas investiga crimes que ninguém mais consegue resolver, enquanto lida com seu próprio passado traumático.",
     "review": "Element não me agradou tanto.",
     "rating": 3.7,
     "favoriteEpisode": "T6E8"
   },
-
   {
     "name": "Elementary",
-    "type": "Drama",
-    "synopsis": "Mistério e suspense se combinam nesta série que vai te deixar sem fôlego.",
+    "type": [
+      "Policial",
+      "Mistério",
+      "Drama"
+    ],
+    "synopsis": "Sherlock Holmes vive na Nova York moderna, resolvendo casos para a polícia com sua parceira Joan Watson após a reabilitação.",
     "review": "Série drama envolvente. Elementary não gostei, entediante.",
     "rating": 3.0,
     "favoriteEpisode": "T6E2"
   },
-
   {
     "name": "Elite",
-    "type": "Ficção Científica",
-    "synopsis": "Uma equipe improvável se une para enfrentar ameaças que ninguém mais pode.",
+    "type": [
+      "Drama",
+      "Suspense",
+      "Romance"
+    ],
+    "synopsis": "Alunos de uma escola de elite espanhola vivem entre privilégios, segredos e assassinatos quando estudantes bolsistas chegam ao colégio.",
     "review": "Série de ficção científica foda. Elite me prendeu legal, recomendo.",
     "rating": 4.0,
     "favoriteEpisode": "T5E6"
   },
-
   {
     "name": "Emerald City",
-    "type": "Comédia",
-    "synopsis": "Casos misteriosos são investigados por detetives brilhantes e excêntricos.",
+    "type": [
+      "Fantasia",
+      "Aventura",
+      "Drama"
+    ],
+    "synopsis": "Uma releitura sombria e adulta do Mágico de Oz, onde Dorothy é uma jovem assassina em um reino mágico devastado pela guerra.",
     "review": "Série de comédia leve. Emerald City não me agradou tanto.",
     "rating": 3.3,
     "favoriteEpisode": "T3E5"
   },
-
   {
     "name": "Empire",
-    "type": "Animação",
-    "synopsis": "Universos paralelos, viagens no tempo e realidades alternativas se entrelaçam.",
+    "type": [
+      "Drama",
+      "Musical",
+      "Romance"
+    ],
+    "synopsis": "O dono de um império musical com uma doença degenerativa precisa escolher um herdeiro entre seus três filhos enquanto lida com traições.",
     "review": "Empire não me agradou tanto.",
     "rating": 3.6,
     "favoriteEpisode": "T2E6"
   },
-
   {
     "name": "End",
-    "type": "Drama",
-    "synopsis": "Personagens complexos e relacionamentos tumultuados movem esta narrativa.",
+    "type": [
+      "Drama",
+      "Suspense",
+      "Mistério"
+    ],
+    "synopsis": "Um homem comum recebe um diagnóstico terminal e decide viver seus últimos dias intensamente, mas descobre um segredo que muda tudo.",
     "review": "Série drama envolvente. End é boa, curti maratonar.",
     "rating": 4.0,
     "favoriteEpisode": "T2E7"
   },
-
   {
     "name": "End Of The F Ing World",
-    "type": "Anime",
-    "synopsis": "Uma trama cheia de reviravoltas que prende o espectador do início ao fim.",
+    "type": [
+      "Comédia",
+      "Drama",
+      "Romance"
+    ],
+    "synopsis": "Um adolescente que se acredita psicopata e uma garota rebelde embarcam em uma jornada de autodescoberta cheia de violência e humor negro.",
     "review": "End Of The F Ing World é boa, curti maratonar.",
     "rating": 3.9,
     "favoriteEpisode": "T4E9"
   },
-
   {
     "name": "Enter",
-    "type": "Comédia",
-    "synopsis": "A sobrevivência em um mundo hostil testa os limites da humanidade.",
+    "type": [
+      "Drama",
+      "Suspense",
+      "Ficção Científica"
+    ],
+    "synopsis": "Uma cientista descobre uma maneira de entrar nos sonhos das pessoas e usa a tecnologia para investigar crimes não resolvidos.",
     "review": "Série de comédia leve. Enter não gostei, entediante.",
     "rating": 3.0,
     "favoriteEpisode": "T5E2"
   },
-
   {
     "name": "Euphoria",
-    "type": "Mistério",
-    "synopsis": "Universos paralelos, viagens no tempo e realidades alternativas se entrelaçam.",
+    "type": [
+      "Drama",
+      "Romance",
+      "Slice of Life"
+    ],
+    "synopsis": "Adolescentes lidam com drogas, sexualidade, violência e amizades em uma narrativa crua e visualmente estilizada sobre a juventude contemporânea.",
     "review": "Euphoria é boa, curti maratonar.",
     "rating": 3.9,
     "favoriteEpisode": "T5E10"
   },
-
   {
     "name": "Ever",
-    "type": "Anime",
-    "synopsis": "Uma jornada emocional através de gerações e escolhas difíceis.",
+    "type": [
+      "Drama",
+      "Romance",
+      "Fantasia"
+    ],
+    "synopsis": "Duas almas ligadas através do tempo tentam se encontrar em diferentes vidas, enfrentando obstáculos cósmicos para ficarem juntas.",
     "review": "Ever me agradou, série sólida.",
     "rating": 4.0,
     "favoriteEpisode": "T2E7"
   },
-
   {
     "name": "Evil",
-    "type": "Animação",
-    "synopsis": "Conflitos familiares, traições e alianças se desenrolam em cada episódio.",
+    "type": [
+      "Terror",
+      "Suspense",
+      "Drama"
+    ],
+    "synopsis": "Uma psicóloga, um padre em treinamento e um técnico investigam fenômenos sobrenaturais pela Igreja Católica, questionando ciência e fé.",
     "review": "Evil é boa, curti maratonar.",
     "rating": 4.0,
     "favoriteEpisode": "T5E6"
   },
-
   {
     "name": "Explained",
-    "type": "Policial",
-    "synopsis": "A sobrevivência em um mundo hostil testa os limites da humanidade.",
+    "type": [
+      "Documentário",
+      "Educativo",
+      "Social"
+    ],
+    "synopsis": "Episódios curtos que explicam temas complexos da sociedade moderna, da política à cultura pop, de forma acessível.",
     "review": "Explained me agradou, série sólida.",
     "rating": 4.0,
     "favoriteEpisode": "T3E2"
   },
-
   {
     "name": "Extra",
-    "type": "Comédia",
-    "synopsis": "Humor ácido e situações absurdas se encontram nesta comédia imperdível.",
+    "type": [
+      "Comédia",
+      "Romance",
+      "Drama"
+    ],
+    "synopsis": "Um extra de cinema tem sua vida virada de cabeça para baixo quando é confundido com um astro de Hollywood.",
     "review": "Série de comédia leve. Extra não me agradou tanto.",
     "rating": 3.7,
     "favoriteEpisode": "T2E2"
   },
-
   {
     "name": "Extracurricular",
-    "type": "Fantasia",
-    "synopsis": "Humor ácido e situações absurdas se encontram nesta comédia imperdível.",
+    "type": [
+      "Drama",
+      "Suspense",
+      "Policial"
+    ],
+    "synopsis": "Um estudante exemplar leva uma vida dupla como criminoso, e seu segredo começa a desmoronar quando uma colega descobre a verdade.",
     "review": "Extracurricular é boa, curti maratonar.",
     "rating": 4.0,
     "favoriteEpisode": "T3E7"
   },
-
   {
     "name": "Fargo",
-    "type": "Drama",
-    "synopsis": "Crimes violentos no meio-oeste americano.",
+    "type": [
+      "Policial",
+      "Drama",
+      "Suspense"
+    ],
+    "synopsis": "Crimes violentos no meio-oeste americano são contados em antologias que exploram o crime, acaso e a moralidade em histórias interconectadas.",
     "review": "Série drama envolvente. Fargo é boa, curti maratonar.",
     "rating": 4.0,
     "favoriteEpisode": "T5E5"
   },
-
   {
     "name": "Firefly",
-    "type": "Ficcao Cientifica",
-    "synopsis": "Uma tripulacao espacial fora da lei.",
+    "type": [
+      "Ficção Científica",
+      "Aventura",
+      "Faroeste"
+    ],
+    "synopsis": "A tripulação da nave Serenity, uma nave de carga, viaja pelos confins do espaço tentando sobreviver fora da lei após uma guerra civil.",
     "review": "Série de ficção científica foda. Firefly não gostei, entediante.",
     "rating": 3.0,
     "favoriteEpisode": "T6E4"
   },
-
   {
     "name": "Fleabag",
-    "type": "Comedia",
-    "synopsis": "Uma mulher lidando com perdas e relacoes.",
+    "type": [
+      "Comédia",
+      "Drama",
+      "Romance"
+    ],
+    "synopsis": "Uma mulher em Londres lida com perdas, relações familiares conturbadas e encontros sexuais, quebrando a quarta parede com o público.",
     "review": "Série de comédia leve. Fleabag me agradou, série sólida.",
     "rating": 4.0,
     "favoriteEpisode": "T6E3"
   },
-
   {
     "name": "Fullmetal Alchemist: Brotherhood",
-    "type": "Anime",
-    "synopsis": "Dois irmaos buscam a pedra filosofal.",
+    "type": [
+      "Anime",
+      "Aventura",
+      "Fantasia"
+    ],
+    "synopsis": "Dois irmãos alquimistas buscam a pedra filosofal para restaurar seus corpos após uma experiência proibida dar errado.",
     "review": "Fullmetal Alchemist: Brotherhood não me agradou tanto.",
     "rating": 3.5,
     "favoriteEpisode": "T2E4"
   },
-
   {
     "name": "Game of Thrones",
-    "type": "Fantasia",
-    "synopsis": "A luta pelo Trono de Ferro.",
+    "type": [
+      "Fantasia",
+      "Drama",
+      "Ação"
+    ],
+    "synopsis": "Casas nobres lutam pelo Trono de Ferro em Westeros, enquanto uma antiga ameaça desperta no Norte e ameaça todos os reinos.",
     "review": "Game of Thrones me agradou, série sólida.",
     "rating": 3.9,
     "favoriteEpisode": "T6E9"
   },
-
   {
     "name": "Gravity Falls",
-    "type": "Animacao",
-    "synopsis": "Dois gemeos passam o verao em uma cidade misteriosa.",
+    "type": [
+      "Animação",
+      "Comédia",
+      "Mistério"
+    ],
+    "synopsis": "Dois gêmeos passam o verão com o tio em uma cidade cheia de mistérios sobrenaturais, criaturas estranhas e um diário secreto.",
     "review": "Gravity Falls não gostei, entediante.",
     "rating": 3.2,
     "favoriteEpisode": "T3E8"
   },
-
   {
     "name": "Hannibal",
-    "type": "Drama",
-    "synopsis": "Um perfilador criminal e um psiquiatra canibal.",
+    "type": [
+      "Drama",
+      "Terror",
+      "Suspense"
+    ],
+    "synopsis": "Will Graham, um perfilador criminal do FBI, forma uma aliança perigosa com o psiquiatra Dr. Hannibal Lecter, um canibal genial.",
     "review": "Série drama envolvente. Hannibal me prendeu legal, recomendo.",
     "rating": 4.0,
     "favoriteEpisode": "T1E3"
   },
-
   {
     "name": "House of Cards",
-    "type": "Drama",
-    "synopsis": "Um politico sem escrupulos na Casa Branca.",
+    "type": [
+      "Drama",
+      "Policial",
+      "Suspense"
+    ],
+    "synopsis": "Frank Underwood, um político sem escrúpulos, manipula e trai para subir ao poder na Casa Branca, quebrando a quarta parede.",
     "review": "Série drama envolvente. House of Cards me prendeu legal, recomendo.",
     "rating": 4.0,
     "favoriteEpisode": "T4E9"
   },
-
   {
     "name": "How I Met Your Mother",
-    "type": "Comedia",
-    "synopsis": "Ted conta aos filhos como conheceu a mae deles.",
+    "type": [
+      "Comédia",
+      "Romance",
+      "Sitcom"
+    ],
+    "synopsis": "Ted Mosby conta aos filhos a longa história de como conheceu a mãe deles, revisitando sua juventude em Nova York com seus amigos.",
     "review": "Série de comédia leve. How I Met Your Mother me agradou, série sólida.",
     "rating": 4.0,
     "favoriteEpisode": "T1E8"
   },
-
   {
     "name": "It's Always Sunny in Philadelphia",
-    "type": "Comedia",
-    "synopsis": "Cinco amigos egocêntricos administram um bar.",
+    "type": [
+      "Comédia",
+      "Sátira",
+      "Sitcom"
+    ],
+    "synopsis": "Cinco amigos egocêntricos e moralmente falidos administram um bar em Filadélfia, causando caos em suas vidas e na cidade.",
     "review": "Série de comédia leve. It's Always Sunny in Philadelphia não me agradou tanto.",
     "rating": 3.4,
     "favoriteEpisode": "T2E9"
   },
-
   {
     "name": "Killing Eve",
-    "type": "Suspense",
-    "synopsis": "Uma agente e uma assassina em um jogo de gato e rato.",
+    "type": [
+      "Suspense",
+      "Drama",
+      "Ação"
+    ],
+    "synopsis": "Uma agente do MI5 e uma assassina psicopata se envolvem em um jogo de gato e rato que se transforma em uma obsessão mútua.",
     "review": "Série de suspense boa. Killing Eve é boa, curti maratonar.",
     "rating": 4.0,
     "favoriteEpisode": "T2E10"
   },
-
   {
     "name": "Lost",
-    "type": "Misterio",
-    "synopsis": "Sobreviventes de um acidente aereo em uma ilha misteriosa.",
+    "type": [
+      "Mistério",
+      "Aventura",
+      "Drama"
+    ],
+    "synopsis": "Sobreviventes de um acidente aéreo em uma ilha misteriosa do Pacífico precisam enfrentar perigos sobrenaturais, criaturas e seus próprios segredos.",
     "review": "Lost não me agradou tanto.",
     "rating": 3.5,
     "favoriteEpisode": "T5E10"
   },
-
   {
     "name": "Love, Death & Robots",
-    "type": "Animacao",
-    "synopsis": "Antologias de ficcao cientifica e terror.",
+    "type": [
+      "Animação",
+      "Ficção Científica",
+      "Terror"
+    ],
+    "synopsis": "Antologias animadas de ficção científica, terror e comédia, cada episódio em um estilo visual único e histórias curtas e impactantes.",
     "review": "Love, Death & Robots é boa, curti maratonar.",
     "rating": 4.0,
     "favoriteEpisode": "T1E6"
   },
-
   {
     "name": "Mandalorian",
-    "type": "Ficcao Cientifica",
-    "synopsis": "Um cacador de recompensas protege uma criatura.",
+    "type": [
+      "Ficção Científica",
+      "Aventura",
+      "Ação"
+    ],
+    "synopsis": "Um caçador de recompensas mandaloriano viaja pelos confins da galáxia protegendo uma criatura misteriosa conhecida como A Criança.",
     "review": "Série de ficção científica foda. Mandalorian me agradou, série sólida.",
     "rating": 4.0,
     "favoriteEpisode": "T3E8"
   },
-
   {
     "name": "Mindhunter",
-    "type": "Drama",
-    "synopsis": "FBI entrevista serial killers para entender suas mentes.",
+    "type": [
+      "Drama",
+      "Policial",
+      "Suspense"
+    ],
+    "synopsis": "Agentes do FBI entrevistam serial killers presos para entender suas mentes e desenvolver técnicas de perfil criminal nos anos 1970.",
     "review": "Série drama envolvente. Mindhunter não gostei, entediante.",
     "rating": 3.2,
     "favoriteEpisode": "T4E4"
   },
-
   {
     "name": "Mr. Robot",
-    "type": "Drama",
-    "synopsis": "Um engenheiro de seguranca hackeia a corporacao dele.",
+    "type": [
+      "Drama",
+      "Suspense",
+      "Ficção Científica"
+    ],
+    "synopsis": "Elliot, um engenheiro de segurança com transtorno de personalidade, é recrutado por um anarquista para derrubar a maior corporação do mundo.",
     "review": "Série drama envolvente. Mr. Robot me agradou, série sólida.",
     "rating": 4.0,
     "favoriteEpisode": "T1E5"
   },
-
   {
     "name": "Narcos",
-    "type": "Drama",
-    "synopsis": "A ascensao e queda de Pablo Escobar.",
+    "type": [
+      "Drama",
+      "Policial",
+      "Biografia"
+    ],
+    "synopsis": "A ascensão e queda de Pablo Escobar e do Cartel de Medellín, contada através de agentes da DEA e do governo colombiano.",
     "review": "Série drama envolvente. Narcos me prendeu legal, recomendo.",
     "rating": 4.0,
     "favoriteEpisode": "T1E8"
   },
-
   {
     "name": "Neon Genesis Evangelion",
-    "type": "Anime",
-    "synopsis": "Pilotos de Eva defendem a humanidade.",
+    "type": [
+      "Anime",
+      "Mech",
+      "Drama"
+    ],
+    "synopsis": "Adolescentes pilotam robôs gigantes biológicos para defender a Terra de Anjos misteriosos, enquanto lidam com traumas psicológicos profundos.",
     "review": "Neon Genesis Evangelion me agradou, série sólida.",
     "rating": 3.9,
     "favoriteEpisode": "T1E3"
   },
-
   {
     "name": "Normal People",
-    "type": "Romance",
-    "synopsis": "A relacao complicada de dois jovens irlandeses.",
+    "type": [
+      "Romance",
+      "Drama",
+      "Slice of Life"
+    ],
+    "synopsis": "A relação complicada de dois jovens irlandeses de classes sociais diferentes ao longo dos anos, explorando intimidade, poder e vulnerabilidade.",
     "review": "Normal People me agradou, série sólida.",
     "rating": 4.0,
     "favoriteEpisode": "T1E4"
   },
-
   {
     "name": "One Punch Man",
-    "type": "Anime",
-    "synopsis": "Um heroi que derrota qualquer inimigo com um soco.",
+    "type": [
+      "Anime",
+      "Ação",
+      "Comédia"
+    ],
+    "synopsis": "Saitama, um herói que derrota qualquer inimigo com um soco, busca desesperadamente um oponente à altura enquanto enfrenta o tédio.",
     "review": "One Punch Man me prendeu legal, recomendo.",
     "rating": 4.0,
     "favoriteEpisode": "T6E11"
   },
-
   {
     "name": "Peaky Blinders",
-    "type": "Drama",
-    "synopsis": "Uma gangue familiar na Inglaterra pos-guerra.",
+    "type": [
+      "Drama",
+      "Policial",
+      "História"
+    ],
+    "synopsis": "A família Shelby lidera uma gangue em Birmingham na Inglaterra pós-Primeira Guerra, subindo no crime enquanto enfrenta políticos e a lei.",
     "review": "Série drama envolvente. Peaky Blinders me agradou, série sólida.",
     "rating": 4.0,
     "favoriteEpisode": "T4E7"
   },
-
   {
     "name": "Rick and Morty",
-    "type": "Animacao",
-    "synopsis": "Um cientista e seu neto viajam por dimensoes.",
+    "type": [
+      "Animação",
+      "Comédia",
+      "Ficção Científica"
+    ],
+    "synopsis": "Um cientista alcoólatra e seu neto ansioso viajam por dimensões paralelas em aventuras que misturam humor ácido e filosofia.",
     "review": "Rick and Morty me prendeu legal, recomendo.",
     "rating": 4.0,
     "favoriteEpisode": "T5E5"
   },
-
   {
     "name": "Severance",
-    "type": "Ficcao Cientifica",
-    "synopsis": "Funcionarios tem suas memorias divididas.",
+    "type": [
+      "Ficção Científica",
+      "Suspense",
+      "Drama"
+    ],
+    "synopsis": "Funcionários da Lumon Industries têm suas memórias cirurgicamente divididas entre trabalho e vida pessoal, até que um começa a questionar o sistema.",
     "review": "Série de ficção científica foda. Severance me prendeu legal, recomendo.",
     "rating": 4.0,
     "favoriteEpisode": "T6E3"
   },
-
   {
     "name": "Sherlock",
-    "type": "Misterio",
-    "synopsis": "Sherlock Holmes na Londres moderna.",
+    "type": [
+      "Mistério",
+      "Policial",
+      "Drama"
+    ],
+    "synopsis": "Sherlock Holmes vive na Londres moderna, usando suas habilidades dedutivas para resolver casos complexos com a ajuda do Dr. Watson.",
     "review": "Sherlock não me agradou tanto.",
     "rating": 3.3,
     "favoriteEpisode": "T2E8"
   },
-
   {
     "name": "Sons of Anarchy",
-    "type": "Drama",
-    "synopsis": "Uma gangue de motoqueiros na California.",
+    "type": [
+      "Drama",
+      "Policial",
+      "Ação"
+    ],
+    "synopsis": "Jax Teller, vice-presidente de um clube de motoqueiros na Califórnia, questiona o rumo criminoso do clube enquanto honra o legado de seu pai.",
     "review": "Série drama envolvente. Sons of Anarchy é boa, curti maratonar.",
     "rating": 4.0,
     "favoriteEpisode": "T5E8"
   },
-
   {
     "name": "South Park",
-    "type": "Animacao",
-    "synopsis": "Quatro garotos vivem aventuras absurdas.",
+    "type": [
+      "Animação",
+      "Comédia",
+      "Sátira"
+    ],
+    "synopsis": "Quatro garotos de uma cidade do Colorado vivem aventuras absurdas que satirizam a cultura pop, política e sociedade contemporânea.",
     "review": "South Park me agradou, série sólida.",
     "rating": 3.8,
     "favoriteEpisode": "T1E2"
   },
-
   {
     "name": "Squid Game",
-    "type": "Drama",
-    "synopsis": "Pessoas endividadas participam de jogos mortais.",
+    "type": [
+      "Drama",
+      "Suspense",
+      "Ação"
+    ],
+    "synopsis": "Pessoas endividadas participam de jogos infantis mortais na esperança de ganhar 45 bilhões de wons, mas a única saída é vencer.",
     "review": "Série drama envolvente. Squid Game me prendeu legal, recomendo.",
     "rating": 4.0,
     "favoriteEpisode": "T3E2"
   },
-
   {
     "name": "Steins;Gate",
-    "type": "Anime",
-    "synopsis": "Um cientista descobre como enviar mensagens ao passado.",
+    "type": [
+      "Anime",
+      "Ficção Científica",
+      "Suspense"
+    ],
+    "synopsis": "Um autoproclamado cientista louco descobre como enviar mensagens ao passado através de um micro-ondas modificado, alterando a linha do tempo com consequências imprevisíveis.",
     "review": "Steins;Gate não me agradou tanto.",
     "rating": 3.4,
     "favoriteEpisode": "T2E11"
   },
-
   {
     "name": "Stranger Things",
-    "type": "Ficcao Cientifica",
-    "synopsis": "Criancas descobrem um mundo invertido.",
+    "type": [
+      "Ficção Científica",
+      "Terror",
+      "Aventura"
+    ],
+    "synopsis": "Crianças em uma pequena cidade dos anos 80 descobrem um Mundo Invertido e uma garota com poderes psíquicos enquanto enfrentam monstros e agentes do governo.",
     "review": "Série de ficção científica foda. Stranger Things é boa, curti maratonar.",
     "rating": 4.0,
     "favoriteEpisode": "T6E9"
   },
-
   {
     "name": "Succession",
-    "type": "Drama",
-    "synopsis": "A familia Roy luta pelo imperio de midia.",
+    "type": [
+      "Drama",
+      "Comédia",
+      "Sátira"
+    ],
+    "synopsis": "A família Roy, dona de um império de mídia global, luta pelo controle da empresa quando o patriarca começa a perder a saúde.",
     "review": "Série drama envolvente. Succession não me agradou tanto.",
     "rating": 3.6,
     "favoriteEpisode": "T1E9"
   },
-
   {
     "name": "Ted Lasso",
-    "type": "Comedia",
-    "synopsis": "Um tecnico americano de futebol comanda um time ingles.",
+    "type": [
+      "Comédia",
+      "Esporte",
+      "Drama"
+    ],
+    "synopsis": "Um técnico americano de futebol americano é contratado para treinar um time de futebol inglês, ganhando os corações dos céticos com otimismo contagiante.",
     "review": "Série de comédia leve. Ted Lasso me agradou, série sólida.",
     "rating": 4.0,
     "favoriteEpisode": "T4E5"
   },
-
   {
     "name": "The Bear",
-    "type": "Drama",
-    "synopsis": "Um chef assume o restaurante do irmao.",
+    "type": [
+      "Drama",
+      "Comédia",
+      "Slice of Life"
+    ],
+    "synopsis": "Um chef premiado retorna a Chicago para administrar a lanchonete do irmão falecido, lidando com dívidas, uma equipe difícil e seu próprio luto.",
     "review": "Série drama envolvente. The Bear me agradou, série sólida.",
     "rating": 4.0,
     "favoriteEpisode": "T3E2"
   },
-
   {
     "name": "The Crown",
-    "type": "Drama",
-    "synopsis": "A vida da rainha Elizabeth II.",
+    "type": [
+      "Drama",
+      "História",
+      "Biografia"
+    ],
+    "synopsis": "A vida da rainha Elizabeth II desde seu casamento, explorando os bastidores da monarquia britânica e os eventos históricos do século XX.",
     "review": "Série drama envolvente. The Crown me agradou, série sólida.",
     "rating": 4.0,
     "favoriteEpisode": "T4E11"
   },
-
   {
     "name": "The Expanse",
-    "type": "Ficcao Cientifica",
-    "synopsis": "A humanidade colonizou o sistema solar.",
+    "type": [
+      "Ficção Científica",
+      "Ação",
+      "Drama"
+    ],
+    "synopsis": "Em um futuro onde a humanidade colonizou o sistema solar, uma nave e sua tripulação descobrem uma conspiração que ameaça o frágil equilíbrio entre Terra, Marte e o Cinturão.",
     "review": "Série de ficção científica foda. The Expanse me prendeu legal, recomendo.",
     "rating": 4.0,
     "favoriteEpisode": "T6E1"
   },
-
   {
     "name": "The Falcon And The Winter Soldier",
-    "type": "Drama",
-    "synopsis": "A sobrevivência em um mundo hostil testa os limites da humanidade.",
+    "type": [
+      "Ação",
+      "Aventura",
+      "Drama"
+    ],
+    "synopsis": "Sam Wilson e Bucky Barnes, dois vingadores improváveis, se unem para enfrentar uma ameaça global enquanto lidam com o legado do Capitão América.",
     "review": "Série drama envolvente. The Falcon And The Winter Soldier não gostei, entediante.",
     "rating": 3.1,
     "favoriteEpisode": "T6E5"
   },
-
   {
     "name": "The Fall",
-    "type": "Animação",
-    "synopsis": "Personagens complexos e relacionamentos tumultuados movem esta narrativa.",
+    "type": [
+      "Suspense",
+      "Drama",
+      "Policial"
+    ],
+    "synopsis": "Uma detetive implacável caça um serial killer meticuloso em Belfast, enquanto ambos se envolvem em um jogo psicológico mortal.",
     "review": "The Fall me prendeu legal, recomendo.",
     "rating": 4.0,
     "favoriteEpisode": "T2E11"
   },
-
   {
     "name": "The Fly",
-    "type": "Comédia",
-    "synopsis": "Uma jornada emocional através de gerações e escolhas difíceis.",
+    "type": [
+      "Drama",
+      "Suspense",
+      "Mistério"
+    ],
+    "synopsis": "Uma jornalista investiga o desaparecimento de uma cientista e descobre uma teia de segredos que envolvem experimentos proibidos.",
     "review": "Série de comédia leve. The Fly é boa, curti maratonar.",
     "rating": 4.0,
     "favoriteEpisode": "T3E5"
   },
-
   {
     "name": "The Gold",
-    "type": "Comédia",
-    "synopsis": "Uma trama cheia de reviravoltas que prende o espectador do início ao fim.",
+    "type": [
+      "Drama",
+      "Policial",
+      "Suspense"
+    ],
+    "synopsis": "Baseado em fatos reais, o maior roubo de ouro da história britânica e a investigação que se seguiu expondo corrupção em todos os níveis.",
     "review": "Série de comédia leve. The Gold é boa, curti maratonar.",
     "rating": 4.0,
     "favoriteEpisode": "T4E11"
   },
-
   {
     "name": "The Good Doctor",
-    "type": "Ficção Científica",
-    "synopsis": "A luta pelo poder em um mundo corporativo cheio de jogos de interesse.",
+    "type": [
+      "Drama",
+      "Médico",
+      "Romance"
+    ],
+    "synopsis": "Shaun Murphy, um jovem cirurgião com autismo e savantismo, começa a trabalhar em um hospital de prestígio onde suas habilidades únicas são postas à prova.",
     "review": "Série de ficção científica foda. The Good Doctor não me agradou tanto.",
     "rating": 3.3,
     "favoriteEpisode": "T3E3"
   },
-
   {
     "name": "The Good Fight",
-    "type": "Mistério",
-    "synopsis": "A série acompanha um grupo de personagens lidando com situações extraordinárias.",
+    "type": [
+      "Drama",
+      "Policial",
+      "Suspense"
+    ],
+    "synopsis": "Uma advogada perde tudo em um esquema de pirâmide e recomeça em um escritório de advocacia liderado por afro-americanos, enfrentando casos atuais.",
     "review": "The Good Fight é boa, curti maratonar.",
     "rating": 3.8,
     "favoriteEpisode": "T1E10"
   },
-
   {
     "name": "The Good Place",
-    "type": "Mistério",
-    "synopsis": "A série acompanha um grupo de personagens lidando com situações extraordinárias.",
+    "type": [
+      "Comédia",
+      "Fantasia",
+      "Drama"
+    ],
+    "synopsis": "Eleanor, uma mulher que viveu uma vida moralmente questionável, é enviada por engano ao Lugar Bom, um paraíso pós-vida, e precisa esconder sua identidade.",
     "review": "The Good Place não me agradou tanto.",
     "rating": 3.4,
     "favoriteEpisode": "T2E5"
   },
-
   {
     "name": "The Great",
-    "type": "Documentário",
-    "synopsis": "Humor ácido e situações absurdas se encontram nesta comédia imperdível.",
+    "type": [
+      "Comédia",
+      "Drama",
+      "História"
+    ],
+    "synopsis": "Catarina, a Grande, uma jovem idealista, se casa com o imperador Pedro III da Rússia e planeja tomar o poder em uma comédia histórica satírica.",
     "review": "The Great não me agradou tanto.",
     "rating": 3.7,
     "favoriteEpisode": "T3E5"
   },
-
   {
     "name": "The Great British Bake Off",
-    "type": "Ação",
-    "synopsis": "Uma trama cheia de reviravoltas que prende o espectador do início ao fim.",
+    "type": [
+      "Reality",
+      "Comédia",
+      "Culinária"
+    ],
+    "synopsis": "Amadores de confeitaria competem em provas de bolos e sobremesas em uma tenda inglesa, avaliados por jurados especialistas.",
     "review": "The Great British Bake Off me agradou, série sólida.",
     "rating": 4.0,
     "favoriteEpisode": "T1E7"
   },
-
   {
     "name": "The Haunting Of Bly Manor",
-    "type": "Animação",
-    "synopsis": "Casos misteriosos são investigados por detetives brilhantes e excêntricos.",
+    "type": [
+      "Terror",
+      "Drama",
+      "Romance"
+    ],
+    "synopsis": "Uma governanta cuida de duas crianças órfãs em uma mansão inglesa assombrada por fantasmas que escondem uma trágica história de amor.",
     "review": "The Haunting Of Bly Manor não me agradou tanto.",
     "rating": 3.7,
     "favoriteEpisode": "T6E1"
   },
-
   {
     "name": "The Haunting Of Hill House",
-    "type": "Comédia",
-    "synopsis": "Em uma cidade pequena, segredos antigos começam a emergir e mudar tudo.",
+    "type": [
+      "Terror",
+      "Drama",
+      "Suspense"
+    ],
+    "synopsis": "Cinco irmãos que cresceram em uma casa assombrada precisam enfrentar os fantasmas do passado quando uma tragédia os reúne na velha mansão.",
     "review": "Série de comédia leve. The Haunting Of Hill House é boa, curti maratonar.",
     "rating": 4.0,
     "favoriteEpisode": "T1E10"
   },
-
   {
     "name": "The I Land",
-    "type": "Romance",
-    "synopsis": "Universos paralelos, viagens no tempo e realidades alternativas se entrelaçam.",
+    "type": [
+      "Ficção Científica",
+      "Suspense",
+      "Drama"
+    ],
+    "synopsis": "Um grupo de estranhos acorda em uma ilha sem memórias e precisa descobrir por que estão lá, em um experimento que testa os limites da moralidade.",
     "review": "The I Land não gostei, entediante.",
     "rating": 3.1,
     "favoriteEpisode": "T1E6"
   },
-
   {
     "name": "The Irregulars",
-    "type": "Mistério",
-    "synopsis": "Uma história de redenção e recomeço em meio a circunstâncias adversas.",
+    "type": [
+      "Mistério",
+      "Fantasia",
+      "Aventura"
+    ],
+    "synopsis": "Um grupo de adolescentes problemáticos trabalha para o Dr. Watson e Sherlock Holmes, resolvendo casos sobrenaturais na Londres vitoriana.",
     "review": "The Irregulars me prendeu legal, recomendo.",
     "rating": 4.0,
     "favoriteEpisode": "T4E7"
   },
-
   {
     "name": "The Kingdom",
-    "type": "Anime",
-    "synopsis": "Uma equipe improvável se une para enfrentar ameaças que ninguém mais pode.",
+    "type": [
+      "Anime",
+      "Ação",
+      "História"
+    ],
+    "synopsis": "Na China dos Reinos Combatentes, um órfão chamado Xin sonha em se tornar o maior general do mundo e unificar a China.",
     "review": "The Kingdom não me agradou tanto.",
     "rating": 3.6,
     "favoriteEpisode": "T6E1"
   },
-
   {
     "name": "The Last Dance",
-    "type": "Ação",
-    "synopsis": "A série acompanha um grupo de personagens lidando com situações extraordinárias.",
+    "type": [
+      "Documentário",
+      "Esporte",
+      "Biografia"
+    ],
+    "synopsis": "A história do Chicago Bulls dos anos 90 e de Michael Jordan, com imagens inéditas da última temporada da dinastia.",
     "review": "The Last Dance é boa, curti maratonar.",
     "rating": 4.0,
     "favoriteEpisode": "T5E6"
   },
-
   {
     "name": "The Last Kingdom",
-    "type": "Comédia",
-    "synopsis": "Universos paralelos, viagens no tempo e realidades alternativas se entrelaçam.",
+    "type": [
+      "Drama",
+      "Ação",
+      "História"
+    ],
+    "synopsis": "Uhtred de Bebbanburg, um nobre saxão criado por vikings, luta para recuperar seu direito de nascença enquanto a Inglaterra nasce das cinzas.",
     "review": "Série de comédia leve. The Last Kingdom não gostei, entediante.",
     "rating": 3.2,
     "favoriteEpisode": "T6E11"
   },
-
   {
     "name": "The Last Of Us",
-    "type": "Anime",
-    "synopsis": "A série acompanha um grupo de personagens lidando com situações extraordinárias.",
+    "type": [
+      "Drama",
+      "Ação",
+      "Terror"
+    ],
+    "synopsis": "Joel, um contrabandista, acompanha Ellie, uma garota imune a uma infecção fúngica, através de uma América pós-apocalíptica em busca de uma cura.",
     "review": "The Last Of Us não gostei, entediante.",
     "rating": 3.0,
     "favoriteEpisode": "T5E12"
   },
-
   {
     "name": "The Leftovers",
-    "type": "Drama",
-    "synopsis": "O mundo apos o repentino desaparecimento de pessoas.",
+    "type": [
+      "Drama",
+      "Mistério",
+      "Fantasia"
+    ],
+    "synopsis": "O mundo após o repentino desaparecimento de 2% da população, explorando como o luto, a fé e o caos transformam a sociedade.",
     "review": "Série drama envolvente. The Leftovers me prendeu legal, recomendo.",
     "rating": 4.0,
     "favoriteEpisode": "T3E1"
   },
-
   {
     "name": "The Legend Of Korra",
-    "type": "Policial",
-    "synopsis": "Uma jornada emocional através de gerações e escolhas difíceis.",
+    "type": [
+      "Animação",
+      "Aventura",
+      "Fantasia"
+    ],
+    "synopsis": "Korra, a nova Avatar, domina os quatro elementos enquanto enfrenta ameaças políticas e espirituais em uma Era industrializada.",
     "review": "The Legend Of Korra é boa, curti maratonar.",
     "rating": 3.9,
     "favoriteEpisode": "T3E3"
   },
-
   {
     "name": "The Librarian",
-    "type": "Mistério",
-    "synopsis": "A sobrevivência em um mundo hostil testa os limites da humanidade.",
+    "type": [
+      "Aventura",
+      "Comédia",
+      "Fantasia"
+    ],
+    "synopsis": "Um bibliotecário nerds assume a custódia de artefatos mágicos protegidos pela biblioteca e precisa salvar o mundo de ameaças sobrenaturais.",
     "review": "The Librarian não me agradou tanto.",
     "rating": 3.7,
     "favoriteEpisode": "T2E10"
   },
-
   {
     "name": "The Looney Tunes Show",
-    "type": "Documentário",
-    "synopsis": "Mistério e suspense se combinam nesta série que vai te deixar sem fôlego.",
+    "type": [
+      "Animação",
+      "Comédia",
+      "Família"
+    ],
+    "synopsis": "Pernalonga, Patolino e outros personagens clássicos vivem em um subúrbio moderno, recriando situações cotidianas com humor.",
     "review": "The Looney Tunes Show me prendeu legal, recomendo.",
     "rating": 4.0,
     "favoriteEpisode": "T3E11"
   },
-
   {
     "name": "The Lord Of The Rings",
-    "type": "Ação",
-    "synopsis": "Universos paralelos, viagens no tempo e realidades alternativas se entrelaçam.",
+    "type": [
+      "Fantasia",
+      "Aventura",
+      "Drama"
+    ],
+    "synopsis": "Uma série que explora eventos da Segunda Era da Terra-Média, milhares de anos antes da Sociedade do Anel, durante o surgimento de Sauron.",
     "review": "The Lord Of The Rings não me agradou tanto.",
     "rating": 3.7,
     "favoriteEpisode": "T3E9"
   },
-
   {
     "name": "The Lost Room",
-    "type": "Drama",
-    "synopsis": "Uma trama cheia de reviravoltas que prende o espectador do início ao fim.",
+    "type": [
+      "Ficção Científica",
+      "Mistério",
+      "Suspense"
+    ],
+    "synopsis": "Um detetive investiga objetos comuns com propriedades sobrenaturais que vieram de um quarto de hotel que não existe mais.",
     "review": "Série drama envolvente. The Lost Room não me agradou tanto.",
     "rating": 3.3,
     "favoriteEpisode": "T4E4"
   },
-
   {
     "name": "The Magicians",
-    "type": "Romance",
-    "synopsis": "Humor ácido e situações absurdas se encontram nesta comédia imperdível.",
+    "type": [
+      "Fantasia",
+      "Drama",
+      "Aventura"
+    ],
+    "synopsis": "Estudantes de magia em uma universidade secreta descobrem que o mundo mágico que liam nos livros é real e muito mais perigoso que imaginavam.",
     "review": "The Magicians me prendeu legal, recomendo.",
     "rating": 4.0,
     "favoriteEpisode": "T5E8"
   },
-
   {
     "name": "The Mandalorian",
-    "type": "Documentário",
-    "synopsis": "Uma jornada emocional através de gerações e escolhas difíceis.",
+    "type": [
+      "Ficção Científica",
+      "Aventura",
+      "Ação"
+    ],
+    "synopsis": "Um caçador de recompensas mandaloriano viaja pela galáxia protegendo o bebê Grogu enquanto enfrenta o que resta do Império.",
     "review": "The Mandalorian me prendeu legal, recomendo.",
     "rating": 4.0,
     "favoriteEpisode": "T3E1"
   },
-
   {
     "name": "The Marvelous Mrs Maisel",
-    "type": "Suspense",
-    "synopsis": "Mistério e suspense se combinam nesta série que vai te deixar sem fôlego.",
+    "type": [
+      "Comédia",
+      "Drama",
+      "Romance"
+    ],
+    "synopsis": "Uma dona de casa dos anos 50 descobre seu talento para stand-up comedy e decide seguir carreira como comediante, contra todas as expectativas.",
     "review": "Série de suspense boa. The Marvelous Mrs Maisel não me agradou tanto.",
     "rating": 3.4,
     "favoriteEpisode": "T3E10"
   },
-
   {
     "name": "The Mentalist",
-    "type": "Ficção Científica",
-    "synopsis": "Personagens complexos e relacionamentos tumultuados movem esta narrativa.",
+    "type": [
+      "Policial",
+      "Mistério",
+      "Drama"
+    ],
+    "synopsis": "Patrick Jane, um pseudo-mentalista, usa suas habilidades de observação para ajudar o FBI a resolver assassinatos enquanto caça o serial killer que matou sua família.",
     "review": "Série de ficção científica foda. The Mentalist não me agradou tanto.",
     "rating": 3.4,
     "favoriteEpisode": "T5E11"
   },
-
   {
     "name": "The Midnight Club",
-    "type": "Mistério",
-    "synopsis": "Humor ácido e situações absurdas se encontram nesta comédia imperdível.",
+    "type": [
+      "Terror",
+      "Drama",
+      "Mistério"
+    ],
+    "synopsis": "Adolescentes terminais em um hospital se reúnem à meia-noite para contar histórias de terror, até que uma delas começa a se tornar realidade.",
     "review": "The Midnight Club não me agradou tanto.",
     "rating": 3.7,
     "favoriteEpisode": "T6E2"
   },
-
   {
     "name": "The Mighty Boosh",
-    "type": "Policial",
-    "synopsis": "Em uma cidade pequena, segredos antigos começam a emergir e mudar tudo.",
+    "type": [
+      "Comédia",
+      "Musical",
+      "Cult"
+    ],
+    "synopsis": "Vince Noir e Howard Moon, dois excêntricos amigos, vivem aventuras surreais misturando música, humor absurdo e fantasia.",
     "review": "The Mighty Boosh não me agradou tanto.",
     "rating": 3.3,
     "favoriteEpisode": "T6E7"
   },
-
   {
     "name": "The Mist",
-    "type": "Suspense",
-    "synopsis": "Humor ácido e situações absurdas se encontram nesta comédia imperdível.",
+    "type": [
+      "Terror",
+      "Ficção Científica",
+      "Suspense"
+    ],
+    "synopsis": "Uma cidade é envolvida por uma névoa misteriosa que esconde criaturas assassinas, forçando os moradores presos a enfrentarem seus medos mais profundos.",
     "review": "Série de suspense boa. The Mist me agradou, série sólida.",
     "rating": 4.0,
     "favoriteEpisode": "T1E1"
   },
-
   {
     "name": "The Mole",
-    "type": "Policial",
-    "synopsis": "A luta pelo poder em um mundo corporativo cheio de jogos de interesse.",
+    "type": [
+      "Reality",
+      "Competição",
+      "Mistério"
+    ],
+    "synopsis": "Participantes competem em desafios para ganhar dinheiro, enquanto um deles é um sabotador infiltrado tentando arruinar a equipe.",
     "review": "The Mole me agradou, série sólida.",
     "rating": 3.8,
     "favoriteEpisode": "T1E7"
   },
-
   {
     "name": "The Movie",
-    "type": "Fantasia",
-    "synopsis": "Uma história de redenção e recomeço em meio a circunstâncias adversas.",
+    "type": [
+      "Comédia",
+      "Drama",
+      "Romance"
+    ],
+    "synopsis": "Um grupo de atores amadores decide fazer um filme independente, com consequências hilárias e tocantes.",
     "review": "The Movie é boa, curti maratonar.",
     "rating": 4.0,
     "favoriteEpisode": "T1E9"
   },
-
   {
     "name": "The Murder Of",
-    "type": "Romance",
-    "synopsis": "Humor ácido e situações absurdas se encontram nesta comédia imperdível.",
+    "type": [
+      "Policial",
+      "Mistério",
+      "Drama"
+    ],
+    "synopsis": "Um detetive investiga um assassinato brutal que expõe conexões inesperadas entre as vítimas e os suspeitos.",
     "review": "The Murder Of não me agradou tanto.",
     "rating": 3.4,
     "favoriteEpisode": "T3E7"
   },
-
   {
     "name": "The Nanny",
-    "type": "Suspense",
-    "synopsis": "Universos paralelos, viagens no tempo e realidades alternativas se entrelaçam.",
+    "type": [
+      "Comédia",
+      "Romance",
+      "Sitcom"
+    ],
+    "synopsis": "Uma vendedora de cosméticos de Queens se torna a babá das três crianças de um viúvo rico da Broadway, transformando a vida da família.",
     "review": "Série de suspense boa. The Nanny não me agradou tanto.",
     "rating": 3.4,
     "favoriteEpisode": "T3E12"
   },
-
   {
     "name": "The Newsroom",
-    "type": "Suspense",
-    "synopsis": "Mistério e suspense se combinam nesta série que vai te deixar sem fôlego.",
+    "type": [
+      "Drama",
+      "Comédia",
+      "Romance"
+    ],
+    "synopsis": "A equipe de um telejornal a cabo tenta produzir notícias de qualidade em meio a pressões corporativas e dramas pessoais.",
     "review": "Série de suspense boa. The Newsroom não me agradou tanto.",
     "rating": 3.7,
     "favoriteEpisode": "T6E4"
   },
-
   {
     "name": "The Night Manager",
-    "type": "Fantasia",
-    "synopsis": "Humor ácido e situações absurdas se encontram nesta comédia imperdível.",
+    "type": [
+      "Suspense",
+      "Drama",
+      "Ação"
+    ],
+    "synopsis": "Um ex-soldado se infiltra em uma organização criminosa liderada por um traficante de armas internacional, movido por vingança pessoal.",
     "review": "The Night Manager não gostei, entediante.",
     "rating": 3.2,
     "favoriteEpisode": "T6E4"
   },
-
   {
     "name": "The Night Of",
-    "type": "Suspense",
-    "synopsis": "Drama intenso com atuações brilhantes e um roteiro afiadíssimo.",
+    "type": [
+      "Drama",
+      "Policial",
+      "Suspense"
+    ],
+    "synopsis": "Um estudante paquistanês-americano é acusado de assassinato e precisa navegar pelo sistema judiciário de Nova York enquanto aguarda seu julgamento.",
     "review": "Série de suspense boa. The Night Of não gostei, entediante.",
     "rating": 3.2,
     "favoriteEpisode": "T4E7"
   },
-
   {
     "name": "The Oa",
-    "type": "Ficção Científica",
-    "synopsis": "Drama intenso com atuações brilhantes e um roteiro afiadíssimo.",
+    "type": [
+      "Ficção Científica",
+      "Mistério",
+      "Drama"
+    ],
+    "synopsis": "Uma jovem cega que desapareceu anos antes reaparece com a visão restaurada e afirma ter viajado para uma dimensão alternativa.",
     "review": "Série de ficção científica foda. The Oa é boa, curti maratonar.",
     "rating": 4.0,
     "favoriteEpisode": "T4E4"
   },
-
   {
     "name": "The Office (US)",
-    "type": "Comedia",
-    "synopsis": "O dia a dia de uma empresa de papel.",
+    "type": [
+      "Comédia",
+      "Sitcom",
+      "Drama"
+    ],
+    "synopsis": "O dia a dia da Dunder Mifflin, uma empresa de papel em Scranton, com funcionários excêntricos liderados pelo insuportável Michael Scott.",
     "review": "Série de comédia leve. The Office (US) não gostei, entediante.",
     "rating": 3.0,
     "favoriteEpisode": "T3E3"
   },
-
   {
     "name": "The Office Uk",
-    "type": "Ficção Científica",
-    "synopsis": "Uma jornada emocional através de gerações e escolhas difíceis.",
+    "type": [
+      "Comédia",
+      "Sitcom",
+      "Drama"
+    ],
+    "synopsis": "David Brent, um gerente incompetente e sem noção, comanda a filial de uma empresa de papel em Slough com resultados hilários e constrangedores.",
     "review": "Série de ficção científica foda. The Office Uk é boa, curti maratonar.",
     "rating": 4.0,
     "favoriteEpisode": "T6E10"
   },
-
   {
     "name": "The Orange",
-    "type": "Drama",
-    "synopsis": "Uma trama cheia de reviravoltas que prende o espectador do início ao fim.",
+    "type": [
+      "Drama",
+      "Romance",
+      "Comédia"
+    ],
+    "synopsis": "Um casal recém-casado enfrenta desafios inesperados quando o pai do noivo se muda para a casa deles.",
     "review": "Série drama envolvente. The Orange não me agradou tanto.",
     "rating": 3.3,
     "favoriteEpisode": "T3E5"
   },
-
   {
     "name": "The Orphan",
-    "type": "Ação",
-    "synopsis": "Em uma cidade pequena, segredos antigos começam a emergir e mudar tudo.",
+    "type": [
+      "Drama",
+      "Suspense",
+      "Terror"
+    ],
+    "synopsis": "Uma família adota uma garota misteriosa que esconde um segredo aterrorizante, colocando todos em perigo.",
     "review": "The Orphan é boa, curti maratonar.",
     "rating": 4.0,
     "favoriteEpisode": "T2E4"
   },
-
   {
     "name": "The Other Black Girl",
-    "type": "Fantasia",
-    "synopsis": "Uma jornada emocional através de gerações e escolhas difíceis.",
+    "type": [
+      "Drama",
+      "Suspense",
+      "Mistério"
+    ],
+    "synopsis": "Uma editora negra em uma grande editora de Nova York vê sua vida mudar quando outra funcionária negra é contratada, revelando uma conspiração sinistra.",
     "review": "The Other Black Girl me agradou, série sólida.",
     "rating": 4.0,
     "favoriteEpisode": "T2E12"
   },
-
   {
     "name": "The Outer Limits",
-    "type": "Ação",
-    "synopsis": "Uma equipe improvável se une para enfrentar ameaças que ninguém mais pode.",
+    "type": [
+      "Ficção Científica",
+      "Terror",
+      "Suspense"
+    ],
+    "synopsis": "Antologia de ficção científica e terror com episódios independentes que exploram o desconhecido e os limites da ciência.",
     "review": "The Outer Limits não gostei, entediante.",
     "rating": 3.1,
     "favoriteEpisode": "T5E2"
   },
-
   {
     "name": "The Pacific",
-    "type": "Suspense",
-    "synopsis": "Mistério e suspense se combinam nesta série que vai te deixar sem fôlego.",
+    "type": [
+      "Drama",
+      "Guerra",
+      "História"
+    ],
+    "synopsis": "A história real de três fuzileiros navais americanos lutando no teatro do Pacífico durante a Segunda Guerra Mundial.",
     "review": "Série de suspense boa. The Pacific é boa, curti maratonar.",
     "rating": 3.8,
     "favoriteEpisode": "T6E5"
   },
-
   {
     "name": "The Palace",
-    "type": "Animação",
-    "synopsis": "Uma equipe improvável se une para enfrentar ameaças que ninguém mais pode.",
+    "type": [
+      "Drama",
+      "Romance",
+      "História"
+    ],
+    "synopsis": "A vida na corte de um palácio europeu no início do século XX, com intrigas políticas e romances proibidos.",
     "review": "The Palace não me agradou tanto.",
     "rating": 3.6,
     "favoriteEpisode": "T1E3"
   },
-
   {
     "name": "The Paradise",
-    "type": "Documentário",
-    "synopsis": "Humor ácido e situações absurdas se encontram nesta comédia imperdível.",
+    "type": [
+      "Drama",
+      "Romance",
+      "História"
+    ],
+    "synopsis": "Uma jovem começa a trabalhar em uma loja de departamentos inovadora na Inglaterra vitoriana, onde classes sociais se chocam.",
     "review": "The Paradise me prendeu legal, recomendo.",
     "rating": 4.0,
     "favoriteEpisode": "T4E2"
   },
-
   {
     "name": "The Path",
-    "type": "Policial",
-    "synopsis": "Casos misteriosos são investigados por detetives brilhantes e excêntricos.",
+    "type": [
+      "Drama",
+      "Suspense",
+      "Mistério"
+    ],
+    "synopsis": "Uma família envolvida em um movimento religioso controverso começa a questionar sua fé quando verdades perturbadoras vêm à tona.",
     "review": "The Path não me agradou tanto.",
     "rating": 3.7,
     "favoriteEpisode": "T3E12"
   },
-
   {
     "name": "The Patient",
-    "type": "Terror",
-    "synopsis": "Uma história de redenção e recomeço em meio a circunstâncias adversas.",
+    "type": [
+      "Suspense",
+      "Drama",
+      "Terror"
+    ],
+    "synopsis": "Um psicanalista é sequestrado por um serial killer que quer ser curado de seus impulsos homicidas, em um jogo psicológico tenso.",
     "review": "Série de terror pesada. The Patient é boa, curti maratonar.",
     "rating": 3.9,
     "favoriteEpisode": "T5E3"
   },
-
   {
     "name": "The People V",
-    "type": "Comédia",
-    "synopsis": "Humor ácido e situações absurdas se encontram nesta comédia imperdível.",
+    "type": [
+      "Drama",
+      "Policial",
+      "Biografia"
+    ],
+    "synopsis": "Reconstitui um caso criminal de grande repercussão, focando nos bastidores do julgamento e na vida dos envolvidos.",
     "review": "Série de comédia leve. The People V me prendeu legal, recomendo.",
     "rating": 4.0,
     "favoriteEpisode": "T1E12"
   },
-
   {
     "name": "The Permanent Room",
-    "type": "Terror",
-    "synopsis": "Mistério e suspense se combinam nesta série que vai te deixar sem fôlego.",
+    "type": [
+      "Drama",
+      "Romance",
+      "Slice of Life"
+    ],
+    "synopsis": "Um estudante universitário divide um quarto com um colega excêntrico e aprende lições de vida através das diferenças.",
     "review": "Série de terror pesada. The Permanent Room me agradou, série sólida.",
     "rating": 4.0,
     "favoriteEpisode": "T2E2"
   },
-
   {
     "name": "The Pilot",
-    "type": "Policial",
-    "synopsis": "A luta pelo poder em um mundo corporativo cheio de jogos de interesse.",
+    "type": [
+      "Drama",
+      "Suspense",
+      "Ação"
+    ],
+    "synopsis": "Um piloto de caça aposentado é forçado a voltar à ativa quando seu passado como espião o alcança.",
     "review": "The Pilot me agradou, série sólida.",
     "rating": 4.0,
     "favoriteEpisode": "T4E7"
   },
-
   {
     "name": "The Plot Against America",
-    "type": "Drama",
-    "synopsis": "Uma história de redenção e recomeço em meio a circunstâncias adversas.",
+    "type": [
+      "Drama",
+      "História",
+      "Suspense"
+    ],
+    "synopsis": "Uma história alternativa onde Charles Lindbergh derrota Roosevelt e se torna presidente em 1940, implementando políticas fascistas antissemitas nos EUA.",
     "review": "Série drama envolvente. The Plot Against America é boa, curti maratonar.",
     "rating": 4.0,
     "favoriteEpisode": "T4E3"
   },
-
   {
     "name": "The Politician",
-    "type": "Documentário",
-    "synopsis": "A sobrevivência em um mundo hostil testa os limites da humanidade.",
+    "type": [
+      "Comédia",
+      "Drama",
+      "Sátira"
+    ],
+    "synopsis": "Payton, um estudante rico e obcecado em se tornar presidente, manipula tudo e todos para vencer as eleições do colégio.",
     "review": "The Politician não me agradou tanto.",
     "rating": 3.7,
     "favoriteEpisode": "T5E5"
   },
-
   {
     "name": "The Power",
-    "type": "Policial",
-    "synopsis": "Casos misteriosos são investigados por detetives brilhantes e excêntricos.",
+    "type": [
+      "Drama",
+      "Ficção Científica",
+      "Suspense"
+    ],
+    "synopsis": "Adolescentes do mundo todo desenvolvem a capacidade de gerar eletricidade, invertendo o equilíbrio de poder entre gêneros na sociedade.",
     "review": "The Power é boa, curti maratonar.",
     "rating": 4.0,
     "favoriteEpisode": "T2E1"
   },
-
   {
     "name": "The Practice",
-    "type": "Fantasia",
-    "synopsis": "Em uma cidade pequena, segredos antigos começam a emergir e mudar tudo.",
+    "type": [
+      "Drama",
+      "Policial",
+      "Romance"
+    ],
+    "synopsis": "Advogados de defesa em Boston lidam com casos éticos e moralmente complexos enquanto equilibram suas vidas pessoais.",
     "review": "The Practice me agradou, série sólida.",
     "rating": 4.0,
     "favoriteEpisode": "T2E5"
   },
-
   {
     "name": "The Pretender",
-    "type": "Mistério",
-    "synopsis": "A série acompanha um grupo de personagens lidando com situações extraordinárias.",
+    "type": [
+      "Drama",
+      "Ação",
+      "Mistério"
+    ],
+    "synopsis": "Jarod, um gênio que foi criado em segredo por uma organização misteriosa, foge e usa suas habilidades para ajudar pessoas enquanto é caçado.",
     "review": "The Pretender me agradou, série sólida.",
     "rating": 4.0,
     "favoriteEpisode": "T2E6"
   },
-
   {
     "name": "The Princess",
-    "type": "Terror",
-    "synopsis": "Casos misteriosos são investigados por detetives brilhantes e excêntricos.",
+    "type": [
+      "Fantasia",
+      "Aventura",
+      "Ação"
+    ],
+    "synopsis": "Uma princesa rebelde luta para proteger seu reino de ameaças internas e externas, recusando-se a seguir o papel tradicional que lhe foi designado.",
     "review": "Série de terror pesada. The Princess me prendeu legal, recomendo.",
     "rating": 4.0,
     "favoriteEpisode": "T6E9"
   },
-
   {
     "name": "The Prison",
-    "type": "Ação",
-    "synopsis": "Uma equipe improvável se une para enfrentar ameaças que ninguém mais pode.",
+    "type": [
+      "Drama",
+      "Suspense",
+      "Policial"
+    ],
+    "synopsis": "Um ex-policial preso injustamente precisa sobreviver no sistema prisional enquanto tenta provar sua inocência.",
     "review": "The Prison me agradou, série sólida.",
     "rating": 4.0,
     "favoriteEpisode": "T2E1"
   },
-
   {
     "name": "The Promise",
-    "type": "Suspense",
-    "synopsis": "Mistério e suspense se combinam nesta série que vai te deixar sem fôlego.",
+    "type": [
+      "Drama",
+      "Romance",
+      "História"
+    ],
+    "synopsis": "Um médico armênio e uma jornalista americana se apaixonam durante o genocídio armênio no Império Otomano.",
     "review": "Série de suspense boa. The Promise me prendeu legal, recomendo.",
     "rating": 3.9,
     "favoriteEpisode": "T2E8"
   },
-
   {
     "name": "The Protector",
-    "type": "Ficção Científica",
-    "synopsis": "A luta pelo poder em um mundo corporativo cheio de jogos de interesse.",
+    "type": [
+      "Ação",
+      "Fantasia",
+      "Drama"
+    ],
+    "synopsis": "Um jovem mercador descende de uma longa linha de protetores místicos de Istambul e precisa defender a cidade de inimigos imortais.",
     "review": "Série de ficção científica foda. The Protector me agradou, série sólida.",
     "rating": 3.8,
     "favoriteEpisode": "T2E10"
   },
-
   {
     "name": "The Punisher",
-    "type": "Anime",
-    "synopsis": "Humor ácido e situações absurdas se encontram nesta comédia imperdível.",
+    "type": [
+      "Ação",
+      "Drama",
+      "Policial"
+    ],
+    "synopsis": "Frank Castle, um ex-fuzileiro naval, faz justiça com as próprias mãos como o Justiceiro, caçando criminosos que destruíram sua família.",
     "review": "The Punisher é boa, curti maratonar.",
     "rating": 4.0,
     "favoriteEpisode": "T1E1"
   },
-
   {
     "name": "The Queen",
-    "type": "Fantasia",
-    "synopsis": "Uma história de redenção e recomeço em meio a circunstâncias adversas.",
+    "type": [
+      "Drama",
+      "Biografia",
+      "História"
+    ],
+    "synopsis": "Os eventos que se seguiram à morte da Princesa Diana, vistos pelos olhos da Rainha Elizabeth II e da família real britânica.",
     "review": "The Queen me agradou, série sólida.",
     "rating": 4.0,
     "favoriteEpisode": "T2E12"
   },
-
   {
     "name": "The Rain",
-    "type": "Animação",
-    "synopsis": "Mistério e suspense se combinam nesta série que vai te deixar sem fôlego.",
+    "type": [
+      "Ficção Científica",
+      "Suspense",
+      "Drama"
+    ],
+    "synopsis": "Um vírus transmitido pela chuva dizima a população da Escandinávia, e dois irmãos buscam abrigo enquanto tentam sobreviver.",
     "review": "The Rain me prendeu legal, recomendo.",
     "rating": 4.0,
     "favoriteEpisode": "T1E10"
   },
-
   {
     "name": "The Ranch",
-    "type": "Anime",
-    "synopsis": "A sobrevivência em um mundo hostil testa os limites da humanidade.",
+    "type": [
+      "Comédia",
+      "Drama",
+      "Família"
+    ],
+    "synopsis": "Um semi-profissional de futebol americano retorna à fazenda da família no Colorado para ajudar o irmão e o pai.",
     "review": "The Ranch me prendeu legal, recomendo.",
     "rating": 4.0,
     "favoriteEpisode": "T1E4"
   },
-
   {
     "name": "The Rebel",
-    "type": "Fantasia",
-    "synopsis": "Em uma cidade pequena, segredos antigos começam a emergir e mudar tudo.",
+    "type": [
+      "Ação",
+      "Drama",
+      "História"
+    ],
+    "synopsis": "Um soldado rebelde luta contra a opressão em um regime autoritário, inspirando uma revolução entre o povo.",
     "review": "The Rebel me agradou, série sólida.",
     "rating": 4.0,
     "favoriteEpisode": "T3E3"
   },
-
   {
     "name": "The Recruit",
-    "type": "Anime",
-    "synopsis": "A série acompanha um grupo de personagens lidando com situações extraordinárias.",
+    "type": [
+      "Ação",
+      "Suspense",
+      "Comédia"
+    ],
+    "synopsis": "Um jovem advogado da CIA é arrastado para o mundo da espionagem internacional quando um prisioneiro ameaça expor segredos da agência.",
     "review": "The Recruit não gostei, entediante.",
     "rating": 3.0,
     "favoriteEpisode": "T4E3"
   },
-
   {
     "name": "The Red Line",
     "type": "Romance",
@@ -1717,7 +2287,6 @@
     "rating": 4.0,
     "favoriteEpisode": "T6E3"
   },
-
   {
     "name": "The Refugee",
     "type": "Terror",
@@ -1726,16 +2295,18 @@
     "rating": 3.0,
     "favoriteEpisode": "T5E9"
   },
-
   {
     "name": "The Regime",
-    "type": "Mistério",
-    "synopsis": "Uma equipe improvável se une para enfrentar ameaças que ninguém mais pode.",
+    "type": [
+      "Drama",
+      "Suspense",
+      "História"
+    ],
+    "synopsis": "Uma líder autoritária de um regime instável na Europa oriental luta para manter o poder enquanto o país desmorona.",
     "review": "The Regime me prendeu legal, recomendo.",
     "rating": 4.0,
     "favoriteEpisode": "T1E2"
   },
-
   {
     "name": "The Repeat",
     "type": "Documentário",
@@ -1744,7 +2315,6 @@
     "rating": 4.0,
     "favoriteEpisode": "T3E1"
   },
-
   {
     "name": "The Resident",
     "type": "Documentário",
@@ -1753,16 +2323,18 @@
     "rating": 3.6,
     "favoriteEpisode": "T5E5"
   },
-
   {
     "name": "The Return",
-    "type": "Drama",
-    "synopsis": "Personagens complexos e relacionamentos tumultuados movem esta narrativa.",
+    "type": [
+      "Drama",
+      "Mistério",
+      "Suspense"
+    ],
+    "synopsis": "Uma mulher retorna à sua cidade natal após anos e descobre que os segredos que deixou para trás ainda estão vivos.",
     "review": "Série drama envolvente. The Return não me agradou tanto.",
     "rating": 3.4,
     "favoriteEpisode": "T3E10"
   },
-
   {
     "name": "The Reunion",
     "type": "Policial",
@@ -1771,7 +2343,6 @@
     "rating": 3.5,
     "favoriteEpisode": "T5E2"
   },
-
   {
     "name": "The Rich",
     "type": "Mistério",
@@ -1780,7 +2351,6 @@
     "rating": 3.4,
     "favoriteEpisode": "T3E6"
   },
-
   {
     "name": "The Righteous Gemstones",
     "type": "Ficção Científica",
@@ -1789,47 +2359,62 @@
     "rating": 3.6,
     "favoriteEpisode": "T2E11"
   },
-
   {
     "name": "The Sopranos",
-    "type": "Drama",
-    "synopsis": "Um chefao da mafia faz terapia.",
+    "type": [
+      "Drama",
+      "Policial",
+      "Suspense"
+    ],
+    "synopsis": "Tony Soprano, um chefe da máfia de Nova Jersey, equilibra o crime organizado com sua vida familiar e sessões de terapia.",
     "review": "Série drama envolvente. The Sopranos é boa, curti maratonar.",
     "rating": 4.0,
     "favoriteEpisode": "T1E3"
   },
-
   {
     "name": "The Wire",
-    "type": "Drama",
-    "synopsis": "O trafico de drogas em Baltimore.",
+    "type": [
+      "Drama",
+      "Policial",
+      "Suspense"
+    ],
+    "synopsis": "Cada temporada explora um aspecto diferente de Baltimore: tráfico de drogas, portos, governo, escolas e mídia.",
     "review": "Série drama envolvente. The Wire é boa, curti maratonar.",
     "rating": 4.0,
     "favoriteEpisode": "T6E3"
   },
-
   {
     "name": "Twin Peaks",
-    "type": "Misterio",
-    "synopsis": "O assassinato de uma rainha do baile.",
+    "type": [
+      "Mistério",
+      "Terror",
+      "Drama"
+    ],
+    "synopsis": "O agente do FBI Dale Cooper investiga o assassinato de Laura Palmer em uma cidade do Noroeste dos EUA cheia de segredos sobrenaturais.",
     "review": "Twin Peaks é boa, curti maratonar.",
     "rating": 4.0,
     "favoriteEpisode": "T1E2"
   },
-
   {
     "name": "Vikings",
-    "type": "Drama",
-    "synopsis": "A era viking sob o olhar de Ragnar Lothbrok.",
+    "type": [
+      "Drama",
+      "Ação",
+      "História"
+    ],
+    "synopsis": "Ragnar Lothbrok, um fazendeiro viking que se torna rei, lidera invasões à Inglaterra e à França enquanto sua família luta pelo poder.",
     "review": "Série drama envolvente. Vikings me prendeu legal, recomendo.",
     "rating": 4.0,
     "favoriteEpisode": "T6E10"
   },
-
   {
     "name": "Westworld",
-    "type": "Ficcao Cientifica",
-    "synopsis": "Um parque tematico com robos ganha consciencia.",
+    "type": [
+      "Ficção Científica",
+      "Drama",
+      "Faroeste"
+    ],
+    "synopsis": "Em um parque temático do Velho Oeste habitado por anfitriões androides, os visitantes vivem suas fantasias até que as máquinas começam a ganhar consciência.",
     "review": "Série de ficção científica foda. Westworld me prendeu legal, recomendo.",
     "rating": 4.0,
     "favoriteEpisode": "T1E6"

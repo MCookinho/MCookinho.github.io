@@ -1,1656 +1,2278 @@
 [
   {
-    "name": " Streets of Rage 4",
-    "type": "Acao",
-    "synopsis": "Luta urbana classica em estilo arcade.",
+    "name": "Streets of Rage 4",
+    "type": [
+      "Ação",
+      "Luta",
+      "Arcade"
+    ],
+    "synopsis": "Lute nas ruas da cidade em um beat-em-up clássico com gráficos modernos e trilha sonora eletrizante.",
     "review": "Legal. Streets of Rage 4 me entreteu, sem arrependimentos.",
     "rating": 4.0
   },
-
   {
     "name": "A Short Hike",
-    "type": "Sobrevivência",
-    "synopsis": "Teste sua estratégia em batalhas por turnos contra inimigos inteligentes.",
+    "type": [
+      "Aventura",
+      "Exploração",
+      "Simulação"
+    ],
+    "synopsis": "Uma curta caminhada por uma ilha nacional é a desculpa perfeita para explorar, conversar com outros visitantes e descobrir segredos no topo da montanha.",
     "review": "Não gostei. A Short Hike me entediou, não recomendo.",
     "rating": 3.1
   },
-
   {
     "name": "Age of Empires II",
-    "type": "Estrategia",
-    "synopsis": "Construa um imperio e conquiste seus inimigos.",
+    "type": [
+      "Estratégia",
+      "História",
+      "Simulação"
+    ],
+    "synopsis": "Construa um império medieval, gerencie recursos, treine exércitos e conquiste seus inimigos através de campanhas históricas ou partidas multiplayer.",
     "review": "Daora. Age of Empires II me agradou, horas bem gastas.",
     "rating": 4.0
   },
-
   {
     "name": "Alan Wake",
-    "type": "Simulação",
-    "synopsis": "Acompanhe uma história emocionante com personagens marcantes e reviravoltas.",
+    "type": [
+      "Terror",
+      "Suspense",
+      "Ação"
+    ],
+    "synopsis": "Um escritor de romances policiais vai para uma cidade isolada em busca de inspiração, mas descobre que as páginas de um manuscrito que não escreveu estão se tornando realidade.",
     "review": "Jogo maneiro. Alan Wake é sólido, curti a experiência.",
     "rating": 4.0
   },
-
   {
     "name": "Alan Wake 2",
-    "type": "Sobrevivência",
-    "synopsis": "Gerencie recursos, construa bases e enfrente ameaças neste simulador imersivo.",
+    "type": [
+      "Terror",
+      "Suspense",
+      "Aventura"
+    ],
+    "synopsis": "Saga Anderson investiga assassinatos rituais em uma pacata cidade do Noroeste dos EUA, enquanto Alan Wake tenta escapar da dimensão sombria onde está preso há 13 anos.",
     "review": "QUE JOGO É ESSE? A Remedy simplesmente entregou uma obra prima do terror. A parte da Alan na cidade é tensa DEMAIS, e a Saga com as investigações é uma mecânica muito criativa. A música no estádio... cara, eu parei e só apreciei.",
     "rating": 4.8
   },
-
   {
     "name": "Among Trees",
-    "type": "RPG",
-    "synopsis": "Um jogo de ritmo acelerado que combina música, ação e estilo visual único.",
+    "type": [
+      "Simulação",
+      "Sobrevivência",
+      "Aventura"
+    ],
+    "synopsis": "Explore uma floresta vibrante, colete recursos, construa uma cabana e sobreviva na natureza em um ambiente relaxante e colorido.",
     "review": "Jogo maneiro. Among Trees é sólido, curti a experiência.",
     "rating": 3.8
   },
-
   {
     "name": "Among Us",
-    "type": "Party",
-    "synopsis": "Descubra o impostor antes que seja tarde.",
+    "type": [
+      "Party",
+      "Estratégia",
+      "Social"
+    ],
+    "synopsis": "Trabalhe em equipe para consertar uma nave espacial, mas cuidado: um ou mais tripulantes são impostores disfarçados tentando sabotar e eliminar todos.",
     "review": "Bom jogo. Among Us é consistente e divertido.",
     "rating": 4.0
   },
-
   {
     "name": "Animal Crossing",
-    "type": "Estratégia",
-    "synopsis": "Descubra ruínas antigas, aprenda habilidades e derrote criaturas lendárias.",
+    "type": [
+      "Simulação",
+      "Social",
+      " Casual"
+    ],
+    "synopsis": "Mude-se para uma ilha deserta, personalize sua casa, pesque, plante flores e faça amizade com animais antropomórficos em tempo real.",
     "review": "Tanto faz. Animal Crossing não é horrível mas também não é bom.",
     "rating": 3.5
   },
-
   {
     "name": "Armored Core Vi",
-    "type": "Metroidvania",
-    "synopsis": "Domine mecânicas únicas e enfrente chefes poderosos em uma jornada épica.",
+    "type": [
+      "Ação",
+      "Mech",
+      "Ficção Científica"
+    ],
+    "synopsis": "Monte e pilote seu próprio mecha em batalhas intensas, personalizando armas e peças para enfrentar corporações rivais em um futuro distópico.",
     "review": "Legal. Armored Core Vi me entreteu, sem arrependimentos.",
     "rating": 4.0
   },
-
   {
     "name": "Astral Chain",
-    "type": "RPG",
-    "synopsis": "Um jogo de ritmo acelerado que combina música, ação e estilo visual único.",
+    "type": [
+      "Ação",
+      "Ficção Científica",
+      "Aventura"
+    ],
+    "synopsis": "Controle dois personagens simultaneamente — um humano e uma criatura legion — em combates estilosos para salvar a humanidade de invasores dimensionais.",
     "review": "Fraquinho. Astral Chain não me agradou tanto, esperava mais.",
     "rating": 3.4
   },
-
   {
     "name": "Baldurs Gate 3",
-    "type": "RPG",
-    "synopsis": "Uma aventura epica no universo de Dungeons & Dragons.",
+    "type": [
+      "RPG",
+      "Estratégia",
+      "Fantasia"
+    ],
+    "synopsis": "Uma aventura épica no universo de Dungeons & Dragons, onde suas escolhas moldam a história, os relacionamentos e o destino de todo um mundo.",
     "review": "RPG DO JEITO QUE DEVE SER FEITO. A liberdade que o jogo te dá é absurda, cada decisão muda tudo. Amei criar meu personagem e me perder nas histórias. A Laezel é minha rainha, dane-se.",
     "rating": 4.8
   },
-
   {
     "name": "Banjo-Kazooie",
-    "type": "Plataforma",
-    "synopsis": "Um urso e um passaro em busca de pecas de quebra-cabeca.",
+    "type": [
+      "Plataforma",
+      "Aventura",
+      "Comédia"
+    ],
+    "synopsis": "Um urso e um pássaro em uma jornada para coletar peças de quebra-cabeça e resgatar a irmã de Banjo das garras da bruxa Gruntilda.",
     "review": "Fraquinho. Banjo-Kazooie não me agradou tanto, esperava mais.",
     "rating": 3.5
   },
-
   {
     "name": "Bastion",
-    "type": "Roguelike",
-    "synopsis": "Gerencie recursos, construa bases e enfrente ameaças neste simulador imersivo.",
+    "type": [
+      "Ação",
+      "RPG",
+      "Aventura"
+    ],
+    "synopsis": "Reconstrua o mundo flutuante de Bastion enquanto ouve um narrador que reage a cada uma de suas ações em uma jornada de ação e descoberta.",
     "review": "Daora. Bastion me agradou, horas bem gastas.",
     "rating": 4.0
   },
-
   {
     "name": "Batman Arkham Asylum",
-    "type": "Roguelike",
-    "synopsis": "Construa, sobreviva e prospere em um ambiente hostil e em constante mudança.",
+    "type": [
+      "Ação",
+      "Aventura",
+      "Furtividade"
+    ],
+    "synopsis": "Batman precisa conter uma rebelião no Asilo Arkham orquestrada pelo Coringa, enfrentando seus maiores vilões em uma noite de caos.",
     "review": "Legal. Batman Arkham Asylum me entreteu, sem arrependimentos.",
     "rating": 4.0
   },
-
   {
     "name": "Batman Arkham City",
-    "type": "Ação",
-    "synopsis": "Liberte sua criatividade em um sandbox sem limites com infinitas possibilidades.",
+    "type": [
+      "Ação",
+      "Mundo Aberto",
+      "Aventura"
+    ],
+    "synopsis": "Batman é enviado para Arkham City, um distrito murado de Gotham transformado em prisão, onde precisa desmascarar os planos do Charada e do Coringa.",
     "review": "Daora. Batman Arkham City me agradou, horas bem gastas.",
     "rating": 4.0
   },
-
   {
     "name": "Batman Arkham Knight",
-    "type": "Simulação",
-    "synopsis": "Teste sua estratégia em batalhas por turnos contra inimigos inteligentes.",
+    "type": [
+      "Ação",
+      "Mundo Aberto",
+      "Furtividade"
+    ],
+    "synopsis": "O Cavaleiro Arkham ameaça Gotham com um exército, e Batman precisa usar o Batmóvel e todas as suas habilidades para impedir o maior ataque à cidade.",
     "review": "O MELHOR BATMAN QUE EXISTE. A jogabilidade é fluída, a história é envolvente e o mapa de Gotham é lindo. O Batmóvel é divertido pra caramba. O final do Arkham Knight me surpreendeu.",
     "rating": 4.5
   },
-
   {
     "name": "Bayonetta",
-    "type": "Visual Novel",
-    "synopsis": "Ação acelerada e combates intensos esperam por você neste título viciante.",
+    "type": [
+      "Ação",
+      " Hack and Slash",
+      "Fantasia"
+    ],
+    "synopsis": "Uma bruxa sensual com poderes sobre-humanos acorda após 500 anos e enfrenta exércitos de anjos em combates coreografados e estilosos.",
     "review": "AÇÃO PURA E ESTILOSA. A Bayonetta é a protagonista mais badass que existe, as lutas são cinematográficas e a trilha sonora é PERFEITA. O combate é fluído, os chefes são épicos. Jogaço da porra.",
     "rating": 4.6
   },
-
   {
     "name": "BioShock",
-    "type": "FPS",
-    "synopsis": "Explore a cidade submersa de Rapture.",
+    "type": [
+      "FPS",
+      "Ficção Científica",
+      "Terror"
+    ],
+    "synopsis": "Após um acidente de avião, você chega a Rapture, uma cidade submersa construída por um idealista onde a genética foi alterada e a sanidade, perdida.",
     "review": "UM DOS JOGOS QUE MAIS ME MARCOU. Rapture é um personagem por si só. A chegada de avião, o farol, a batismal... \"Would you kindly?\" é um dos plots twists mais geniais da história. O final me deixou reflexivo por dias.",
     "rating": 4.7
   },
-
   {
     "name": "Bioshock Infinite",
-    "type": "RPG",
-    "synopsis": "Corra, pule e desvie em plataformas precisas que testam seus reflexos.",
+    "type": [
+      "FPS",
+      "Ficção Científica",
+      "Aventura"
+    ],
+    "synopsis": "Booker DeWitt precisa resgatar uma garota misteriosa em Columbia, uma cidade flutuante nos céus, para pagar uma dívida e escapar de realidades paralelas.",
     "review": "Bacana. Bioshock Infinite é um jogo honesto que cumpre o que promete.",
     "rating": 4.0
   },
-
   {
     "name": "Blasphemous",
-    "type": "Aventura",
-    "synopsis": "Uma narrativa profunda sobre escolhas, consequências e redenção.",
+    "type": [
+      "Ação",
+      "Metroidvania",
+      "Terror"
+    ],
+    "synopsis": "O Penitente atravessa as terras de Cvstodia em uma jornada de fé e punição, enfrentando criaturas grotescas inspiradas na iconografia religiosa espanhola.",
     "review": "Não gostei. Blasphemous me entediou, não recomendo.",
     "rating": 3.2
   },
-
   {
     "name": "Bloodborne",
-    "type": "RPG",
-    "synopsis": "Cace feras nas ruas góticas de Yharnam.",
+    "type": [
+      "RPG",
+      "Ação",
+      "Terror"
+    ],
+    "synopsis": "Cace feras nas ruas góticas de Yharnam, uma cidade tomada por uma praga que transforma humanos em monstros, e desvende os segredos de pesadelos cósmicos.",
     "review": "Legal. Bloodborne me entreteu, sem arrependimentos.",
     "rating": 4.0
   },
-
   {
     "name": "Borderlands 2",
-    "type": "Aventura",
-    "synopsis": "Acompanhe uma história emocionante com personagens marcantes e reviravoltas.",
+    "type": [
+      "FPS",
+      "RPG",
+      "Comédia"
+    ],
+    "synopsis": "Caçadores da Caixa-Vault em Pandora se unem para derrotar o tirano Handsome Jack, em um mundo colorido repleto de bilhões de armas e humor ácido.",
     "review": "Jogo maneiro. Borderlands 2 é sólido, curti a experiência.",
     "rating": 4.0
   },
-
   {
     "name": "Braid",
-    "type": "Sobrevivência",
-    "synopsis": "Explore um vasto mundo repleto de segredos, inimigos e missões desafiadoras.",
+    "type": [
+      "Puzzle",
+      "Plataforma",
+      "Indie"
+    ],
+    "synopsis": "Manipule o tempo para resolver quebra-cabeças engenhosos enquanto um protagonista busca redimir seu passado em um mundo de sonho pintado à mão.",
     "review": "PUZZLE GENIAL. O tempo como mecânica principal é muito bem explorado, cada mundo é uma nova camada de complexidade. A história por trás é mais profunda do que parece. O final me deixou pensando por dias.",
     "rating": 4.5
   },
-
   {
     "name": "Burnout Paradise",
-    "type": "Visual Novel",
-    "synopsis": "Explore um vasto mundo repleto de segredos, inimigos e missões desafiadoras.",
+    "type": [
+      "Corrida",
+      "Ação",
+      "Mundo Aberto"
+    ],
+    "synopsis": "Corra em alta velocidade pelas ruas de Paradise City, realizando acrobacias, destruindo carros adversários e explorando o mundo aberto em busca de desafios.",
     "review": "Daora. Burnout Paradise me agradou, horas bem gastas.",
     "rating": 4.0
   },
-
   {
     "name": "Castlevania Sotn",
-    "type": "Terror",
-    "synopsis": "Resolva quebra-cabeças engenhosos enquanto descobre uma história cativante.",
+    "type": [
+      "Metroidvania",
+      "Ação",
+      "Fantasia"
+    ],
+    "synopsis": "Alucard desperta no castelo de Drácula para impedir que o legado de seu pai consuma o mundo, explorando cada sala e adquirindo novas habilidades.",
     "review": "CLÁSSICO ABSOLUTO. A cena inicial com o Dracula, o castelo inteiro pra explorar, as armas diferentes, a música... É o tipo de jogo que envelheceu que NEM VINHO. Melhor metroidvania da época e ainda hoje é referência.",
     "rating": 4.7
   },
-
   {
     "name": "Catherine",
-    "type": "Aventura",
-    "synopsis": "Liberte sua criatividade em um sandbox sem limites com infinitas possibilidades.",
+    "type": [
+      "Puzzle",
+      "Aventura",
+      "Drama"
+    ],
+    "synopsis": "Vincent, um homem comum, precisa subir torres de blocos enquanto decide entre sua namorada Katherine e a misteriosa Catherine, em um pesadelo de consequências.",
     "review": "MELHOR JOGO DE PUZZLE QUE EU JÁ JOGUEI NA MINHA VIDA. Sério, o conceito é genial demais. Subir blocos enquanto decide se trai ou não sua namorada? ISSO É CINEMA. A história é absurda e os puzzles são viciantes, platinei na raça.",
     "rating": 4.8
   },
-
   {
     "name": "Cave Story",
-    "type": "Estratégia",
-    "synopsis": "Descubra ruínas antigas, aprenda habilidades e derrote criaturas lendárias.",
+    "type": [
+      "Ação",
+      "Plataforma",
+      "Aventura"
+    ],
+    "synopsis": "Um robô amnésico acorda em uma caverna e precisa salvar uma raça de criaturas inocentes de um cientista louco, em um metroidvania indie clássico.",
     "review": "Bacana. Cave Story é um jogo honesto que cumpre o que promete.",
     "rating": 4.0
   },
-
   {
     "name": "Celeste",
-    "type": "Plataforma",
-    "synopsis": "Madeline sobe o Monte Celeste.",
+    "type": [
+      "Plataforma",
+      "Aventura",
+      "Drama"
+    ],
+    "synopsis": "Madeline sobe o Monte Celeste, enfrentando não apenas os desafios da montanha mas também seus próprios demônios internos, em uma jornada de superação.",
     "review": "PLATAFORMA PERFEITA. A Madeline sou eu, eu sou a Madeline. A história sobre ansiedade e auto-aceitação é linda, e os controles são os mais precisos que já vi num jogo de plataforma. Morri 5000 vezes e valeu cada uma.",
     "rating": 4.6
   },
-
   {
     "name": "Child Of Light",
-    "type": "Visual Novel",
-    "synopsis": "Domine mecânicas únicas e enfrente chefes poderosos em uma jornada épica.",
+    "type": [
+      "RPG",
+      "Plataforma",
+      "Aventura"
+    ],
+    "synopsis": "A princesa Aurora acorda em Lemúria, um mundo mágico, e precisa recuperar o sol, a lua e as estrelas que foram roubados pela Rainha Negra.",
     "review": "Daora. Child Of Light me agradou, horas bem gastas.",
     "rating": 4.0
   },
-
   {
     "name": "Chrono Trigger",
-    "type": "RPG",
-    "synopsis": "Viajantes do tempo tentam salvar o mundo.",
+    "type": [
+      "RPG",
+      "Aventura",
+      "Fantasia"
+    ],
+    "synopsis": "Cronos e seus amigos viajam por diferentes eras do tempo — passado, presente e futuro — para impedir Lavos, uma criatura que ameaça destruir o mundo.",
     "review": "Fraquinho. Chrono Trigger não me agradou tanto, esperava mais.",
     "rating": 3.5
   },
-
   {
     "name": "Control",
-    "type": "Metroidvania",
-    "synopsis": "Gerencie recursos, construa bases e enfrente ameaças neste simulador imersivo.",
+    "type": [
+      "Ação",
+      "Ficção Científica",
+      "Suspense"
+    ],
+    "synopsis": "Jesse Faden assume o controle da Agência Federal de Controle, uma agência secreta que contém fenômenos paranormais, e precisa conter uma invasão dimensional.",
     "review": "Legal. Control me entreteu, sem arrependimentos.",
     "rating": 4.0
   },
-
   {
     "name": "Crash 4",
-    "type": "Party",
-    "synopsis": "Descubra ruínas antigas, aprenda habilidades e derrote criaturas lendárias.",
+    "type": [
+      "Plataforma",
+      "Aventura",
+      "Comédia"
+    ],
+    "synopsis": "Crash Bandicoot e sua irmã Coco viajam por dimensões alternativas para impedir o Doutor Neo Cortex de destruir o multiverso.",
     "review": "Legal. Crash 4 me entreteu, sem arrependimentos.",
     "rating": 4.0
   },
-
   {
     "name": "Crash Bandicoot",
-    "type": "Plataforma",
-    "synopsis": "Um marsupial tenta salvar o mundo.",
+    "type": [
+      "Plataforma",
+      "Aventura",
+      "Comédia"
+    ],
+    "synopsis": "Um marsupial evoluído precisa salvar sua namorada Tawna e proteger as frutas Wumpa do Doutor Neo Cortex, pulando e girando por ilhas tropicais.",
     "review": "Bacana. Crash Bandicoot é um jogo honesto que cumpre o que promete.",
     "rating": 4.0
   },
-
   {
     "name": "Crypt Of The Necrodancer",
-    "type": "Racing",
-    "synopsis": "Uma narrativa profunda sobre escolhas, consequências e redenção.",
+    "type": [
+      "Roguelike",
+      "Ritmo",
+      "Ação"
+    ],
+    "synopsis": "Aventure-se por masmorras geradas proceduralmente onde cada movimento precisa estar no ritmo da música, combinando dança com combate tático.",
     "review": "Bacana. Crypt Of The Necrodancer é um jogo honesto que cumpre o que promete.",
     "rating": 4.0
   },
-
   {
     "name": "Crysis",
-    "type": "Party",
-    "synopsis": "Acompanhe uma história emocionante com personagens marcantes e reviravoltas.",
+    "type": [
+      "FPS",
+      "Ficção Científica",
+      "Ação"
+    ],
+    "synopsis": "Um soldado americano equipado com um traje nanotecnológico enfrenta invasores norte-coreanos e uma ameaça alienígena em uma ilha tropical.",
     "review": "Daora. Crysis me agradou, horas bem gastas.",
     "rating": 3.8
   },
-
   {
     "name": "Cuphead",
-    "type": "Acao",
-    "synopsis": "Dois irmaos pagam suas dividas no cassino do diabo.",
+    "type": [
+      "Ação",
+      "Plataforma",
+      "Run and Gun"
+    ],
+    "synopsis": "Dois irmãos perdem suas almas para o Diabo em uma aposta e precisam coletar contratos de outros devedores em batalhas contra chefes inspiradas nos anos 1930.",
     "review": "Tanto faz. Cuphead não é horrível mas também não é bom.",
     "rating": 3.3
   },
-
   {
     "name": "Cyberpunk 2077",
-    "type": "Visual Novel",
-    "synopsis": "Mergulhe em um universo pixelado cheio de charme, perigos e mistérios.",
+    "type": [
+      "RPG",
+      "Mundo Aberto",
+      "Ficção Científica"
+    ],
+    "synopsis": "V, um mercenário em Night City, luta pela sobrevivência após um implante de chip conter a consciência de uma lenda do crime, Johnny Silverhand.",
     "review": "DEPOIS DE TODOS OS PATCHES, O JOGO FICOU INCRÍVEL. Night City é viva, as histórias são envolventes e o Johnny Silverhand é um personagem foda demais. A trilha sonora é ABSURDA de boa.",
     "rating": 4.5
   },
-
   {
     "name": "Danganronpa",
-    "type": "Party",
-    "synopsis": "Construa, sobreviva e prospere em um ambiente hostil e em constante mudança.",
+    "type": [
+      "Visual Novel",
+      "Mistério",
+      "Aventura"
+    ],
+    "synopsis": "Estudantes talentosos são presos em uma escola e forçados a cometer assassinatos, participando de julgamentos onde precisam descobrir o culpado ou morrer.",
     "review": "QUE FRANQUIA BOA DA PORRA. Os julgamentos são tensos, os personagens são malucos e as reviravoltas são INSANAS. Cada morte me deixava mais paranóico. Monokuma é um vilão PERFEITO. Recomendo pra todo mundo.",
     "rating": 4.7
   },
-
   {
     "name": "Dark Souls",
-    "type": "RPG",
-    "synopsis": "Um morto-vivo busca quebrar a maldicao.",
+    "type": [
+      "RPG",
+      "Ação",
+      "Fantasia"
+    ],
+    "synopsis": "Um morto-vivo amaldiçoado atravessa o reino de Lordran, enfrentando inimigos colossais em um mundo interligado e sombrio, em busca de quebrar a maldição.",
     "review": "PRIMEIRO SOULS QUE EU ZEREI E ME MARCOU PRA SEMPRE. A sensação de superar um chefe depois de morrer 50 vezes é algo que nenhum outro jogo me deu. O mundo interligado é uma obra de arte do level design.",
     "rating": 4.7
   },
-
   {
     "name": "Darkest Dungeon",
-    "type": "Visual Novel",
-    "synopsis": "Teste sua estratégia em batalhas por turnos contra inimigos inteligentes.",
+    "type": [
+      "RPG",
+      "Estratégia",
+      "Terror"
+    ],
+    "synopsis": "Gerencie um grupo de heróis falhos enquanto explora masmorras sombrias, lidando com estresse, doenças e a sanidade mental de cada personagem.",
     "review": "Que jogo bom. Darkest Dungeon acerta na proposta e me divertiu pacas.",
     "rating": 4.4
   },
-
   {
     "name": "Dead Cells",
-    "type": "Roguelike",
-    "synopsis": "Fuja de uma prisao em constante mudanca.",
+    "type": [
+      "Roguelike",
+      "Ação",
+      "Plataforma"
+    ],
+    "synopsis": "Explore um castelo em constante mudança, colete armas e habilidades, e tente escapar em um loop de morte e renascimento com combate fluido e acelerado.",
     "review": "Bacana. Dead Cells é um jogo honesto que cumpre o que promete.",
     "rating": 4.0
   },
-
   {
     "name": "Dead Space",
-    "type": "Simulação",
-    "synopsis": "Explore um vasto mundo repleto de segredos, inimigos e missões desafiadoras.",
+    "type": [
+      "Terror",
+      "Ficção Científica",
+      "Ação"
+    ],
+    "synopsis": "Isaac Clarke, um engenheiro, precisa sobreviver em uma nave infestada por Necromorfos, criaturas grotescas que devem ser desmembradas para serem derrotadas.",
     "review": "Tanto faz. Dead Space não é horrível mas também não é bom.",
     "rating": 3.5
   },
-
   {
     "name": "Death Stranding",
-    "type": "Aventura",
-    "synopsis": "Entregue pacotes em um mundo pos-apocaliptico.",
+    "type": [
+      "Aventura",
+      "Ficção Científica",
+      "Simulação"
+    ],
+    "synopsis": "Sam Bridges precisa conectar uma América fragmentada entregando pacotes através de paisagens hostis, enfrentando criaturas espectrais e fenômenos sobrenaturais.",
     "review": "Que jogo bom. Death Stranding acerta na proposta e me divertiu pacas.",
     "rating": 4.3
   },
-
   {
     "name": "Deathloop",
-    "type": "Sobrevivência",
-    "synopsis": "Um jogo de ritmo acelerado que combina música, ação e estilo visual único.",
+    "type": [
+      "FPS",
+      "Ação",
+      "Ficção Científica"
+    ],
+    "synopsis": "Colt precisa assassinar oito alvos em uma ilha presa em um loop temporal antes da meia-noite, enquanto é caçado pela assassina Julianna.",
     "review": "Bom jogo. Deathloop é consistente e divertido.",
     "rating": 4.0
   },
-
   {
     "name": "Deus Ex",
-    "type": "Aventura",
-    "synopsis": "Teste sua estratégia em batalhas por turnos contra inimigos inteligentes.",
+    "type": [
+      "RPG",
+      "FPS",
+      "Ficção Científica"
+    ],
+    "synopsis": "JC Denton, um agente da UNATCO, descobre uma conspiração global envolvendo nanotecnologia, sociedades secretas e o futuro da humanidade.",
     "review": "Daora. Deus Ex me agradou, horas bem gastas.",
     "rating": 3.9
   },
-
   {
     "name": "Deus Ex Human Revolution",
-    "type": "Mundo Aberto",
-    "synopsis": "Domine mecânicas únicas e enfrente chefes poderosos em uma jornada épica.",
+    "type": [
+      "RPG",
+      "FPS",
+      "Furtividade"
+    ],
+    "synopsis": "Adam Jensen, um segurança ciberneticamente aprimorado, investiga um ataque à sua empresa que desencadeia uma conspiração sobre o avanço tecnológico humano.",
     "review": "Tanto faz. Deus Ex Human Revolution não é horrível mas também não é bom.",
     "rating": 3.4
   },
-
   {
     "name": "Devil May Cry 5",
-    "type": "Party",
-    "synopsis": "Corra, pule e desvie em plataformas precisas que testam seus reflexos.",
+    "type": [
+      "Ação",
+      "Hack and Slash",
+      "Fantasia"
+    ],
+    "synopsis": "Dante, Nero e V unem forças para enfrentar o demônio Urizen, em combates estilosos e coreografados com armas variadas e habilidades demoníacas.",
     "review": "AÇÃO PURA. O combate é o mais satisfatório que existe, cada arma é única e os estilos de luta são criativos. O Dante é simplesmente o personagem mais estiloso dos games. Motivação TOTAL.",
     "rating": 4.5
   },
-
   {
     "name": "Diablo Ii",
-    "type": "Visual Novel",
-    "synopsis": "Um RPG com sistema de combate tático e um mundo rico para explorar.",
+    "type": [
+      "RPG",
+      "Ação",
+      "Fantasia"
+    ],
+    "synopsis": "Mate demônios, colete itens lendários e evolua seu personagem em Sanctuary enquanto enfrenta as forças do Inferno lideradas por Mephisto, Diablo e Baal.",
     "review": "Jogasso. Diablo Ii é uma experiência daora que me marcou positivamente.",
     "rating": 4.3
   },
-
   {
     "name": "Disco Elysium",
-    "type": "RPG",
-    "synopsis": "Um detetive amnesico investiga um assassinato.",
+    "type": [
+      "RPG",
+      "Investigação",
+      "Drama"
+    ],
+    "synopsis": "Um detetive amnésico precisa resolver um assassinato enquanto dialoga com seu próprio subconsciente, em um RPG sem combate focado em diálogos e escolhas.",
     "review": "Não gostei. Disco Elysium me entediou, não recomendo.",
     "rating": 3.1
   },
-
   {
     "name": "Dodonpachi",
-    "type": "RPG",
-    "synopsis": "Resolva quebra-cabeças engenhosos enquanto descobre uma história cativante.",
+    "type": [
+      "Arcade",
+      "Ação",
+      "Shoot-em-up"
+    ],
+    "synopsis": "Um bullet hell frenético onde você controla naves em estágios verticais, desviando de padrões de balas cada vez mais densos e complexos.",
     "review": "Bacana. Dodonpachi é um jogo honesto que cumpre o que promete.",
     "rating": 4.0
   },
-
   {
     "name": "Doki Doki Literature Club",
-    "type": "Mundo Aberto",
-    "synopsis": "Construa, sobreviva e prospere em um ambiente hostil e em constante mudança.",
+    "type": [
+      "Visual Novel",
+      "Terror",
+      "Drama"
+    ],
+    "synopsis": "Um clube de literatura escolar parece inocente, mas bugs e glitches revelam uma realidade perturbadora onde uma personagem tem consciência própria.",
     "review": "HAHA... ha... que jogo inocente... NÃO. MONIKA ME TROUXE TRAUMAS. Todo mundo deveria jogar sem saber nada, é a experiência mais única que existe. Só não digo que é meu favorito porque me deixou maluco das ideias.",
     "rating": 4.8
   },
-
   {
     "name": "Donkey Kong Country",
-    "type": "Aventura",
-    "synopsis": "Explore um vasto mundo repleto de segredos, inimigos e missões desafiadoras.",
+    "type": [
+      "Plataforma",
+      "Aventura",
+      "Comédia"
+    ],
+    "synopsis": "Donkey Kong e Diddy Kong precisam recuperar suas bananas roubadas pelo Rei K. Rool em ilhas tropicais cheias de segredos e obstáculos.",
     "review": "Não gostei. Donkey Kong Country me entediou, não recomendo.",
     "rating": 3.1
   },
-
   {
     "name": "Doom 2016",
-    "type": "Metroidvania",
-    "synopsis": "Ação acelerada e combates intensos esperam por você neste título viciante.",
+    "type": [
+      "FPS",
+      "Ação",
+      "Ficção Científica"
+    ],
+    "synopsis": "O Doom Slayer desperta em uma instalação da UAC em Marte tomada por demônios, e precisa usar seu arsenal pesado para fechar o portal do Inferno.",
     "review": "Bacana. Doom 2016 é um jogo honesto que cumpre o que promete.",
     "rating": 3.8
   },
-
   {
     "name": "Doom Eternal",
-    "type": "FPS",
-    "synopsis": "Mate demonios em um ritmo frenetico.",
+    "type": [
+      "FPS",
+      "Ação",
+      "Ficção Científica"
+    ],
+    "synopsis": "O Doom Slayer viaja por dimensões para matar demônios em um ritmo frenético, usando novas habilidades e armas para salvar a humanidade do exército do Inferno.",
     "review": "Legal. Doom Eternal me entreteu, sem arrependimentos.",
     "rating": 4.0
   },
-
   {
     "name": "Dragon Age Origins",
-    "type": "Sandbox",
-    "synopsis": "Liberte sua criatividade em um sandbox sem limites com infinitas possibilidades.",
+    "type": [
+      "RPG",
+      "Fantasia",
+      "Estratégia"
+    ],
+    "synopsis": "Reúna um exército de aliados improváveis para enfrentar a Praga, uma horda de monstros que ameaça consumir o reino de Ferelden.",
     "review": "Fraquinho. Dragon Age Origins não me agradou tanto, esperava mais.",
     "rating": 3.3
   },
-
   {
     "name": "Dragon Quest Xi",
-    "type": "FPS",
-    "synopsis": "Explore um vasto mundo repleto de segredos, inimigos e missões desafiadoras.",
+    "type": [
+      "RPG",
+      "Aventura",
+      "Fantasia"
+    ],
+    "synopsis": "Um herói silencioso descobre que é o reencarnado de Erdwin, o lendário salvador, e precisa reunir aliados para derrotar uma ameaça que retorna a cada milênio.",
     "review": "Bom jogo. Dragon Quest Xi é consistente e divertido.",
     "rating": 3.9
   },
-
   {
     "name": "Dredge",
-    "type": "Mundo Aberto",
-    "synopsis": "Mergulhe em um universo pixelado cheio de charme, perigos e mistérios.",
+    "type": [
+      "Simulação",
+      "Terror",
+      "Aventura"
+    ],
+    "synopsis": "Pesque e explore um arquipélago à noite, mas cuidado com as criaturas abissais que espreitam nas profundezas, enquanto gerencia seu barco e sanidade.",
     "review": "Tanto faz. Dredge não é horrível mas também não é bom.",
     "rating": 3.6
   },
-
   {
     "name": "Dying Light",
-    "type": "Puzzle",
-    "synopsis": "Descubra ruínas antigas, aprenda habilidades e derrote criaturas lendárias.",
+    "type": [
+      "Ação",
+      "Terror",
+      "Mundo Aberto"
+    ],
+    "synopsis": "Sobreviva a um apocalipse zumbi em uma cidade infectada, usando parkour para se locomover e enfrentando hordas de infectados durante o dia e a noite.",
     "review": "Jogo maneiro. Dying Light é sólido, curti a experiência.",
     "rating": 4.0
   },
-
   {
     "name": "Earthbound",
-    "type": "RPG",
-    "synopsis": "Domine mecânicas únicas e enfrente chefes poderosos em uma jornada épica.",
+    "type": [
+      "RPG",
+      "Aventura",
+      "Comédia"
+    ],
+    "synopsis": "Ness, um garoto comum, une forças com amigos psíquicos para salvar o mundo de Giygas, em uma aventura bizarra e nostálgica pelos subúrbios americanos.",
     "review": "QUE JOGO BIZARRO E PERFEITO. O humor é absurdo, os inimigos são criativos e a história é mais emocionante do que parece. A ambientação é única, não existe nada igual. O final me fez chorar.",
     "rating": 4.5
   },
-
   {
     "name": "Eastward",
-    "type": "RPG",
-    "synopsis": "Domine mecânicas únicas e enfrente chefes poderosos em uma jornada épica.",
+    "type": [
+      "RPG",
+      "Aventura",
+      "Ação"
+    ],
+    "synopsis": "Um minerador silencioso e uma garota misteriosa fogem de um mundo subterrâneo e embarcam em uma jornada por paisagens vibrantes repletas de perigos.",
     "review": "Bacana. Eastward é um jogo honesto que cumpre o que promete.",
     "rating": 4.0
   },
-
   {
     "name": "Elden Ring",
-    "type": "RPG",
-    "synopsis": "Um Sem-luz busca se tornar Lorde Prístino.",
+    "type": [
+      "RPG",
+      "Mundo Aberto",
+      "Ação"
+    ],
+    "synopsis": "Um Sem-luz viaja pelas Terras Intermédias para restaurar o Anel Prístino e se tornar o Lorde Prístino, enfrentando semideuses em um mundo vasto.",
     "review": "Bacana. Elden Ring é um jogo honesto que cumpre o que promete.",
     "rating": 4.0
   },
-
   {
     "name": "Enderal",
-    "type": "Estratégia",
-    "synopsis": "Teste sua estratégia em batalhas por turnos contra inimigos inteligentes.",
+    "type": [
+      "RPG",
+      "Aventura",
+      "Fantasia"
+    ],
+    "synopsis": "Uma modificação total de Skyrim que conta uma história sombria e filosófica sobre profecias, sacrifício e a busca por um significado em um mundo moribundo.",
     "review": "Fraquinho. Enderal não me agradou tanto, esperava mais.",
     "rating": 3.6
   },
-
   {
     "name": "Enter The Gungeon",
-    "type": "Mundo Aberto",
-    "synopsis": "Teste sua estratégia em batalhas por turnos contra inimigos inteligentes.",
+    "type": [
+      "Roguelike",
+      "Ação",
+      "Bullet Hell"
+    ],
+    "synopsis": "Desça as masmorras de Gungeon em busca de uma arma que possa matar o passado, atirando em tudo que se move com um arsenal absurdo de armas.",
     "review": "Tanto faz. Enter The Gungeon não é horrível mas também não é bom.",
     "rating": 3.7
   },
-
   {
     "name": "Etrian Odyssey",
-    "type": "Party",
-    "synopsis": "Domine mecânicas únicas e enfrente chefes poderosos em uma jornada épica.",
+    "type": [
+      "RPG",
+      "Exploração",
+      "Fantasia"
+    ],
+    "synopsis": "Explore um labirinto gigantesco desenhando seu próprio mapa na tela, enfrentando monstros ferozes em batalhas por turnos e montando sua guilda de aventureiros.",
     "review": "Fraquinho. Etrian Odyssey não me agradou tanto, esperava mais.",
     "rating": 3.5
   },
-
   {
     "name": "Everhood",
-    "type": "Aventura",
-    "synopsis": "Uma narrativa profunda sobre escolhas, consequências e redenção.",
+    "type": [
+      "RPG",
+      "Ritmo",
+      "Aventura"
+    ],
+    "synopsis": "Um boneco de madeira perde seu braço e viaja por um mundo psicodélico enfrentando batalhas musicais que combinam ritmo, ação e narrativa surreal.",
     "review": "QUE JOGO PSICODÉLICO E GENIAL. A música é INCRÍVEL, as lutas são criativas e a história é uma viagem completa. Cada chefão é uma experiência única. O final me deixou tipo \"mano, o que ACABEI de jogar?\"",
     "rating": 4.7
   },
-
   {
     "name": "Fable Ii",
-    "type": "Plataforma",
-    "synopsis": "Corra, pule e desvie em plataformas precisas que testam seus reflexos.",
+    "type": [
+      "RPG",
+      "Aventura",
+      "Ação"
+    ],
+    "synopsis": "Cresça de um órfão a um herói lendário em Albion, um mundo de fantasia onde suas escolhas e ações moldam quem você se torna.",
     "review": "Bom jogo. Fable Ii é consistente e divertido.",
     "rating": 3.9
   },
-
   {
     "name": "Fallout: New Vegas",
-    "type": "RPG",
-    "synopsis": "Sobreviva no deserto pos-nuclear de Mojave.",
+    "type": [
+      "RPG",
+      "Mundo Aberto",
+      "Ficção Científica"
+    ],
+    "synopsis": "Um entregador sobrevive a um tiro na cabeça e procura vingança no deserto de Mojave, navegando por facções políticas em guerra pelo controle da represa Hoover.",
     "review": "SIMPLESMENTE O MELHOR FALLOUT. As escolhas importam de verdade, cada facção tem seus motivos e o deserto de Mojave é mais carismático que muito jogo por aí. O Mr. House é um dos melhores personagens já escritos.",
     "rating": 4.8
   },
-
   {
     "name": "Faster Than Light",
-    "type": "Sobrevivência",
-    "synopsis": "Um RPG com sistema de combate tático e um mundo rico para explorar.",
+    "type": [
+      "Simulação",
+      "Estratégia",
+      "Roguelike"
+    ],
+    "synopsis": "Comande uma nave espacial em tempo real, gerencie tripulantes, sistemas e combates enquanto foge de uma frota rebelde através da galáxia.",
     "review": "Tanto faz. Faster Than Light não é horrível mas também não é bom.",
     "rating": 3.5
   },
-
   {
     "name": "Fez",
-    "type": "Visual Novel",
-    "synopsis": "Um RPG com sistema de combate tático e um mundo rico para explorar.",
+    "type": [
+      "Puzzle",
+      "Plataforma",
+      "Aventura"
+    ],
+    "synopsis": "Gomez, uma criatura 2D, descobre um chapéu mágico que revela a terceira dimensão, permitindo girar o mundo para resolver quebra-cabeças de perspectiva.",
     "review": "QUE JOGO CHARMOSO. A mecânica de girar o mundo em 3D é simplesmente genial, os puzzles são engenhosos e a estética pixelada é linda. O Gomez é fofo, a trilha sonora é hipnotizante. Jogaço indie.",
     "rating": 4.5
   },
-
   {
     "name": "Final Fantasy Ix",
-    "type": "Visual Novel",
-    "synopsis": "Resolva quebra-cabeças engenhosos enquanto descobre uma história cativante.",
+    "type": [
+      "RPG",
+      "Aventura",
+      "Fantasia"
+    ],
+    "synopsis": "Zidane e uma trupe de personagens excêntricos embarcam em uma jornada para salvar o mundo da rainha Brahne, em uma homenagem aos clássicos da série.",
     "review": "Fraquinho. Final Fantasy Ix não me agradou tanto, esperava mais.",
     "rating": 3.4
   },
-
   {
     "name": "Final Fantasy Vi",
-    "type": "Aventura",
-    "synopsis": "Um jogo de ritmo acelerado que combina música, ação e estilo visual único.",
+    "type": [
+      "RPG",
+      "Aventura",
+      "Fantasia"
+    ],
+    "synopsis": "Um grupo de rebeldes luta contra o Império Gestahliano e o louco Kefka, que busca se tornar o deus da magia em um mundo steampunk.",
     "review": "Legal. Final Fantasy Vi me entreteu, sem arrependimentos.",
     "rating": 3.9
   },
-
   {
     "name": "Final Fantasy Vii",
-    "type": "Roguelike",
-    "synopsis": "Uma narrativa profunda sobre escolhas, consequências e redenção.",
+    "type": [
+      "RPG",
+      "Aventura",
+      "Fantasia"
+    ],
+    "synopsis": "Cloud Strife, um mercenário com um passado misterioso, se une ao grupo eco-terrorista Avalanche para impedir a corporação Shinra de sugar a vida do planeta.",
     "review": "CLÁSSICO ABSOLUTO. O Sephiroth é um dos melhores vilões da história, o Cloud é um protagonista complexo e a história é épica. A cena da Aerith... NUNCA SUPEREI. Merece todo o hype que tem.",
     "rating": 4.5
   },
-
   {
     "name": "Final Fantasy Xiv",
-    "type": "Sobrevivência",
-    "synopsis": "Ação acelerada e combates intensos esperam por você neste título viciante.",
+    "type": [
+      "MMORPG",
+      "RPG",
+      "Fantasia"
+    ],
+    "synopsis": "Um aventureiro em Eorzea precisa salvar o reino de invasões de bestas primais, mentiras políticas e a ameaça de uma guerra total entre as cidades-estado.",
     "review": "Bom jogo. Final Fantasy Xiv é consistente e divertido.",
     "rating": 4.0
   },
-
   {
     "name": "Fire Emblem: Three Houses",
-    "type": "Estrategia",
-    "synopsis": "Lidere uma casa em uma academia militar.",
+    "type": [
+      "RPG",
+      "Estratégia",
+      "Fantasia"
+    ],
+    "synopsis": "Como professor de uma academia militar, lidere uma das três casas de estudantes e conduza seus alunos em batalhas táticas por turnos com consequências emocionais.",
     "review": "RPG TÁTICO PERFEITO. Os personagens são tão bem escritos que você realmente se importa com eles. A escolha de qual casa seguir me deixou horas pensando. A Edelgard tem seus motivos, Claude é carismático, Dimitri é um trem desgovernado.",
     "rating": 4.5
   },
-
   {
     "name": "Firewatch",
-    "type": "Racing",
-    "synopsis": "Gerencie recursos, construa bases e enfrente ameaças neste simulador imersivo.",
+    "type": [
+      "Aventura",
+      "Simulação",
+      "Mistério"
+    ],
+    "synopsis": "Henry, um homem fugindo de seus problemas, aceita um trabalho como vigia florestal e descobre que não está sozinho na floresta de Shoshone.",
     "review": "Jogo maneiro. Firewatch é sólido, curti a experiência.",
     "rating": 4.0
   },
-
   {
     "name": "Forza Horizon 5",
-    "type": "Sobrevivência",
-    "synopsis": "Resolva quebra-cabeças engenhosos enquanto descobre uma história cativante.",
+    "type": [
+      "Corrida",
+      "Mundo Aberto",
+      "Simulação"
+    ],
+    "synopsis": "Corra pelos cenários deslumbrantes do México, participe de eventos de rua, off-road e festival, e personalize centenas de carros.",
     "review": "Jogo maneiro. Forza Horizon 5 é sólido, curti a experiência.",
     "rating": 4.0
   },
-
   {
     "name": "Freedom Planet",
-    "type": "Metroidvania",
-    "synopsis": "Construa, sobreviva e prospere em um ambiente hostil e em constante mudança.",
+    "type": [
+      "Ação",
+      "Plataforma",
+      "Aventura"
+    ],
+    "synopsis": "Uma drag queen, um gato velocista e um coelho mágico se unem para salvar seu planeta de invasores alienígenas em um jogo de plataforma acelerado.",
     "review": "Não gostei. Freedom Planet me entediou, não recomendo.",
     "rating": 3.1
   },
-
   {
     "name": "Ghost Of Tsushima",
-    "type": "RPG",
-    "synopsis": "Acompanhe uma história emocionante com personagens marcantes e reviravoltas.",
+    "type": [
+      "Ação",
+      "Aventura",
+      "Mundo Aberto"
+    ],
+    "synopsis": "Jin Sakai, o último samurai da ilha de Tsushima, precisa abandonar seu código de honra e se tornar o Fantasma para repelir a invasão mongol.",
     "review": "Fraquinho. Ghost Of Tsushima não me agradou tanto, esperava mais.",
     "rating": 3.4
   },
-
   {
     "name": "Ghostrunner",
-    "type": "Racing",
-    "synopsis": "Descubra ruínas antigas, aprenda habilidades e derrote criaturas lendárias.",
+    "type": [
+      "Ação",
+      "FPS",
+      "Plataforma"
+    ],
+    "synopsis": "Corra, desvie e corte inimigos em um só golpe em uma torre distópica, combinando parkour com combate letal em primeira pessoa.",
     "review": "Jogo maneiro. Ghostrunner é sólido, curti a experiência.",
     "rating": 4.0
   },
-
   {
     "name": "God of War",
-    "type": "Acao",
-    "synopsis": "Kratos e Atreus viajam pelos reinos nordicos.",
+    "type": [
+      "Ação",
+      "Aventura",
+      "RPG"
+    ],
+    "synopsis": "Kratos e seu filho Atreus viajam pelos reinos nórdicos para espalhar as cinzas da esposa de Kratos, enfrentando deuses e monstros da mitologia nórdica.",
     "review": "KRATOS É PAI AGORA E EU AMO ISSO. A relação dele com o Atreus é o coração do jogo. A jogabilidade é PESADA do jeito que tem que ser, a história é envolvente e o mundo nórdico é lindo. Jogaço absoluto.",
     "rating": 4.5
   },
-
   {
     "name": "Golf Story",
-    "type": "RPG",
-    "synopsis": "Uma narrativa profunda sobre escolhas, consequências e redenção.",
+    "type": [
+      "RPG",
+      "Esporte",
+      "Aventura"
+    ],
+    "synopsis": "Um golfista fracassado tenta reviver sua carreira enquanto desvenda mistérios em campos de golfe, com diálogos engraçados e mecânicas RPG.",
     "review": "Bacana. Golf Story é um jogo honesto que cumpre o que promete.",
     "rating": 3.9
   },
-
   {
     "name": "Gran Turismo 7",
-    "type": "Ação",
-    "synopsis": "Teste sua estratégia em batalhas por turnos contra inimigos inteligentes.",
+    "type": [
+      "Simulação",
+      "Corrida",
+      " Esporte"
+    ],
+    "synopsis": "A experiência definitiva de corrida com centenas de carros licenciados, pistas reais e um modo campanha que celebra a história do automobilismo.",
     "review": "Jogo maneiro. Gran Turismo 7 é sólido, curti a experiência.",
     "rating": 4.0
   },
-
   {
     "name": "Grand Theft Auto V",
-    "type": "Acao",
-    "synopsis": "Tres criminosos realizam grandes assaltos em Los Santos.",
+    "type": [
+      "Ação",
+      "Mundo Aberto",
+      "Aventura"
+    ],
+    "synopsis": "Três criminosos — Michael, Franklin e Trevor — realizam assaltos ousados em Los Santos, navegando pelo submundo do crime e da corrupção.",
     "review": "Fraquinho. Grand Theft Auto V não me agradou tanto, esperava mais.",
     "rating": 3.3
   },
-
   {
     "name": "Gris",
-    "type": "Plataforma",
-    "synopsis": "Uma jornada emocional em um mundo de aquarela.",
+    "type": [
+      "Plataforma",
+      "Aventura",
+      "Arte"
+    ],
+    "synopsis": "Uma jornada emocional em um mundo de aquarela, onde Gris precisa trazer cor de volta à sua vida através da música, movimento e superação da tristeza.",
     "review": "BELEZA PURA. Esse jogo é uma obra de arte em movimento. A animação, a música, as cores que vão voltando aos poucos... a jornada da Gris é sobre luto e superação e me fez chorar litros. Perfeito do começo ao fim.",
     "rating": 4.5
   },
-
   {
     "name": "Gta San Andreas",
-    "type": "Luta",
-    "synopsis": "Resolva quebra-cabeças engenhosos enquanto descobre uma história cativante.",
+    "type": [
+      "Ação",
+      "Mundo Aberto",
+      "Aventura"
+    ],
+    "synopsis": "CJ retorna a Los Santos após a morte de sua mãe e se envolve com gangues, corrupção e o submundo do crime em três cidades da Califórnia dos anos 90.",
     "review": "Jogo maneiro. Gta San Andreas é sólido, curti a experiência.",
     "rating": 4.0
   },
-
   {
     "name": "Gunpoint",
-    "type": "Estratégia",
-    "synopsis": "Construa, sobreviva e prospere em um ambiente hostil e em constante mudança.",
+    "type": [
+      "Puzzle",
+      "Furtividade",
+      "Plataforma"
+    ],
+    "synopsis": "Um detetive com luvas especiais que permitem pular entre tomadas de energia precisa se infiltrar em prédios e resolver casos de espionagem corporativa.",
     "review": "Tanto faz. Gunpoint não é horrível mas também não é bom.",
     "rating": 3.5
   },
-
   {
     "name": "Hades",
-    "type": "Roguelike",
-    "synopsis": "Fuja do submundo grego.",
+    "type": [
+      "Roguelike",
+      "Ação",
+      "RPG"
+    ],
+    "synopsis": "Zagreus, o príncipe do Submundo, tenta escapar do reino de seu pai Hades para encontrar sua mãe, morrendo e renascendo em cada tentativa.",
     "review": "ROGUELIKE PERFEITO. A história avançar a cada morte é genial, os personagens são carismáticos e o combate é viciante. Zagreus é um protagonista foda demais. Joguei até platinar e ainda queria mais.",
     "rating": 4.6
   },
-
   {
     "name": "Half-Life 2",
-    "type": "FPS",
-    "synopsis": "Gordon Freeman luta contra a Alianca.",
+    "type": [
+      "FPS",
+      "Ficção Científica",
+      "Ação"
+    ],
+    "synopsis": "Gordon Freeman acorda em uma Terra dominada pela Aliança, uma força multidimensional, e lidera uma revolução para libertar a humanidade.",
     "review": "Não gostei. Half-Life 2 me entediou, não recomendo.",
     "rating": 3.2
   },
-
   {
     "name": "Halo 3",
-    "type": "Estratégia",
-    "synopsis": "Descubra ruínas antigas, aprenda habilidades e derrote criaturas lendárias.",
+    "type": [
+      "FPS",
+      "Ficção Científica",
+      "Ação"
+    ],
+    "synopsis": "Master Chief completa sua luta contra os Flood e o Covenant, encerrando a guerra que decidirá o destino de toda a vida na galáxia.",
     "review": "Não gostei. Halo 3 me entediou, não recomendo.",
     "rating": 3.2
   },
-
   {
     "name": "Halo Infinite",
-    "type": "Terror",
-    "synopsis": "Resolva quebra-cabeças engenhosos enquanto descobre uma história cativante.",
+    "type": [
+      "FPS",
+      "Ficção Científica",
+      "Mundo Aberto"
+    ],
+    "synopsis": "Master Chief retorna para enfrentar os Banidos, uma nova ameaça ao anel Zeta Halo, em um mundo aberto com liberdade de exploração.",
     "review": "Fraquinho. Halo Infinite não me agradou tanto, esperava mais.",
     "rating": 3.5
   },
-
   {
     "name": "Hearthstone",
-    "type": "Visual Novel",
-    "synopsis": "Domine mecânicas únicas e enfrente chefes poderosos em uma jornada épica.",
+    "type": [
+      "Estratégia",
+      "Card Game",
+      "Fantasia"
+    ],
+    "synopsis": "Um jogo de cartas colecionáveis do universo Warcraft, onde você constrói decks e enfrenta oponentes em partidas táticas por turnos.",
     "review": "Bacana. Hearthstone é um jogo honesto que cumpre o que promete.",
     "rating": 4.0
   },
-
   {
     "name": "Hellblade",
-    "type": "Plataforma",
-    "synopsis": "Teste sua estratégia em batalhas por turnos contra inimigos inteligentes.",
+    "type": [
+      "Ação",
+      "Terror",
+      "Aventura"
+    ],
+    "synopsis": "Senua, uma guerreira picta que sofre de psicose, viaja ao Helheim para resgatar a alma de seu amado, enfrentando criaturas nórdicas e seus próprios demônios.",
     "review": "Bacana. Hellblade é um jogo honesto que cumpre o que promete.",
     "rating": 3.9
   },
-
   {
     "name": "Heroes Of Might And Magic Iii",
-    "type": "Racing",
-    "synopsis": "Gerencie recursos, construa bases e enfrente ameaças neste simulador imersivo.",
+    "type": [
+      "Estratégia",
+      "RPG",
+      "Fantasia"
+    ],
+    "synopsis": "Comande heróis e exércitos de criaturas míticas em batalhas táticas por turnos, conquistando castelos e recursos em um mundo de fantasia.",
     "review": "Daora. Heroes Of Might And Magic Iii me agradou, horas bem gastas.",
     "rating": 4.0
   },
-
   {
     "name": "Hi Fi Rush",
-    "type": "FPS",
-    "synopsis": "Corra, pule e desvie em plataformas precisas que testam seus reflexos.",
+    "type": [
+      "Ação",
+      "Ritmo",
+      "Aventura"
+    ],
+    "synopsis": "Chai, um roqueiro aspirante com um iPod preso no peito, luta contra corporações malignas em combates no ritmo da música, com visuais estilizados.",
     "review": "QUE JOGO ESTILOSO. A música dita o ritmo de tudo e é PERFEITO. O combate rítmico é criativo, os personagens são carismáticos e a animação é linda. Joguei com um sorriso no rosto do começo ao fim.",
     "rating": 4.5
   },
-
   {
     "name": "Hollow Knight",
-    "type": "Metroidvania",
-    "synopsis": "Um cavaleiro explora as ruinas de um reino insectoide.",
+    "type": [
+      "Metroidvania",
+      "Ação",
+      "Aventura"
+    ],
+    "synopsis": "Um cavaleiro silencioso explora as ruínas do reino insetoide de Hallownest, desvendando segredos e enfrentando chefes em uma atmosfera sombria.",
     "review": "SIMPLESMENTE O METROIDVANIA MAIS INCRÍVEL QUE JÁ FIZERAM. O mundo é enorme, a atmosfera é opressiva, os chefes são DESAFIADORES mas justos. A sensação de explorar Hallownest e descobrir cada segredo é algo que eu queria apagar da memória pra jogar de novo.",
     "rating": 4.8
   },
-
   {
     "name": "Hotline Miami",
-    "type": "Acao",
-    "synopsis": "Violencia neon em um mundo dos anos 80.",
+    "type": [
+      "Ação",
+      "Top-down",
+      "Puzzle"
+    ],
+    "synopsis": "Violência neon em um mundo dos anos 80 onde você planeja ataques rápidos contra a máfia russa, morrendo em um hit e recomeçando infinitamente.",
     "review": "Não gostei. Hotline Miami me entediou, não recomendo.",
     "rating": 3.0
   },
-
   {
     "name": "Hotline Miami 2",
-    "type": "Plataforma",
-    "synopsis": "Descubra ruínas antigas, aprenda habilidades e derrote criaturas lendárias.",
+    "type": [
+      "Ação",
+      "Top-down",
+      "Puzzle"
+    ],
+    "synopsis": "Múltiplos personagens com histórias entrelaçadas cometem atos de violência brutal em uma Miami alternativa, explorando as consequências do primeiro jogo.",
     "review": "Que jogo bom. Hotline Miami 2 acerta na proposta e me divertiu pacas.",
     "rating": 4.3
   },
-
   {
     "name": "Human Fall Flat",
-    "type": "Terror",
-    "synopsis": "Uma narrativa profunda sobre escolhas, consequências e redenção.",
+    "type": [
+      "Puzzle",
+      "Física",
+      "Plataforma"
+    ],
+    "synopsis": "Um boneco de massa de modelar precisa resolver quebra-cabeças físicos em cenários oníricos, usando seus braços moles para se agarrar e escalar.",
     "review": "Daora. Human Fall Flat me agradou, horas bem gastas.",
     "rating": 4.0
   },
-
   {
     "name": "Hyper Light Drifter",
-    "type": "Roguelike",
-    "synopsis": "Mergulhe em um universo pixelado cheio de charme, perigos e mistérios.",
+    "type": [
+      "Ação",
+      "RPG",
+      "Aventura"
+    ],
+    "synopsis": "Um andarilho com uma doença terminal viaja por ruínas de uma civilização avançada, empunhando uma espada de luz e um arsenal de armas.",
     "review": "Bacana. Hyper Light Drifter é um jogo honesto que cumpre o que promete.",
     "rating": 4.0
   },
-
   {
     "name": "I Am Bread",
-    "type": "Sobrevivência",
-    "synopsis": "Liberte sua criatividade em um sandbox sem limites com infinitas possibilidades.",
+    "type": [
+      "Simulação",
+      "Física",
+      "Comédia"
+    ],
+    "synopsis": "Um pedaço de pão tenta se tornar uma torrada perfeita, escalando e se equilibrando por uma cozinha cheia de obstáculos e perigos.",
     "review": "Fraquinho. I Am Bread não me agradou tanto, esperava mais.",
     "rating": 3.6
   },
-
   {
     "name": "Icewind Dale",
-    "type": "FPS",
-    "synopsis": "Corra, pule e desvie em plataformas precisas que testam seus reflexos.",
+    "type": [
+      "RPG",
+      "Estratégia",
+      "Fantasia"
+    ],
+    "synopsis": "Monte um grupo de aventureiros para explorar a região congelada de Icewind Dale, enfrentando monstros e desvendando uma antiga profecia.",
     "review": "Bacana. Icewind Dale é um jogo honesto que cumpre o que promete.",
     "rating": 4.0
   },
-
   {
     "name": "Ico",
-    "type": "Sandbox",
-    "synopsis": "Ação acelerada e combates intensos esperam por você neste título viciante.",
+    "type": [
+      "Aventura",
+      "Puzzle",
+      "Fantasia"
+    ],
+    "synopsis": "Um garoto com chifres e uma garota fantasmagórica precisam escapar juntos de um castelo abandonado, protegendo-se mutuamente de sombras que tentam separá-los.",
     "review": "Não gostei. Ico me entediou, não recomendo.",
     "rating": 3.0
   },
-
   {
     "name": "Iconoclasts",
-    "type": "Luta",
-    "synopsis": "Gerencie recursos, construa bases e enfrente ameaças neste simulador imersivo.",
+    "type": [
+      "Ação",
+      "Plataforma",
+      "Aventura"
+    ],
+    "synopsis": "Robin, uma mecânica em um mundo onde a tecnologia é proibida, luta contra uma igreja opressora e descobre segredos sobre a verdadeira natureza de seu mundo.",
     "review": "Não gostei. Iconoclasts me entediou, não recomendo.",
     "rating": 3.1
   },
-
   {
     "name": "Immortality",
-    "type": "Party",
-    "synopsis": "Um jogo de ritmo acelerado que combina música, ação e estilo visual único.",
+    "type": [
+      "Mistério",
+      "Interativo",
+      "Drama"
+    ],
+    "synopsis": "Investigue o desaparecimento de uma atriz navegando por filmagens de três filmes nunca lançados, em um quebra-cabeça narrativo não linear.",
     "review": "Fraquinho. Immortality não me agradou tanto, esperava mais.",
     "rating": 3.5
   },
-
   {
     "name": "In Stars And Time",
-    "type": "Party",
-    "synopsis": "Descubra ruínas antigas, aprenda habilidades e derrote criaturas lendárias.",
+    "type": [
+      "RPG",
+      "Drama",
+      "Mistério"
+    ],
+    "synopsis": "Preso em um loop temporal no mesmo dia, um grupo de aventureiros precisa reviver os mesmos eventos até encontrar uma saída, explorando relacionamentos e escolhas.",
     "review": "Jogo maneiro. In Stars And Time é sólido, curti a experiência.",
     "rating": 4.0
   },
-
   {
     "name": "Incredipede",
-    "type": "Simulação",
-    "synopsis": "Explore um vasto mundo repleto de segredos, inimigos e missões desafiadoras.",
+    "type": [
+      "Simulação",
+      "Física",
+      "Puzzle"
+    ],
+    "synopsis": "Controle uma criatura com pernas articuláveis, resolvendo quebra-cabeças de física e escalando obstáculos em um mundo colorido e criativo.",
     "review": "Não gostei. Incredipede me entediou, não recomendo.",
     "rating": 3.1
   },
-
   {
     "name": "Indiana Jones And The Fate Of Atlantis",
-    "type": "Sandbox",
-    "synopsis": "Explore um vasto mundo repleto de segredos, inimigos e missões desafiadoras.",
+    "type": [
+      "Aventura",
+      "Puzzle",
+      "Ação"
+    ],
+    "synopsis": "Indiana Jones busca o lendário poder da Atlântida, viajando pelo mundo em uma aventura point-and-click com enigmas e decisões que afetam a trama.",
     "review": "Bom jogo. Indiana Jones And The Fate Of Atlantis é consistente e divertido.",
     "rating": 4.0
   },
-
   {
     "name": "Infamous",
-    "type": "Ação",
-    "synopsis": "Teste sua estratégia em batalhas por turnos contra inimigos inteligentes.",
+    "type": [
+      "Ação",
+      "Mundo Aberto",
+      "Aventura"
+    ],
+    "synopsis": "Cole, um mensageiro comum, adquire poderes elétricos após uma explosão e precisa decidir entre usar seus novos poderes para o bem ou para o caos.",
     "review": "Jogo maneiro. Infamous é sólido, curti a experiência.",
     "rating": 4.0
   },
-
   {
     "name": "Ink",
-    "type": "Puzzle",
-    "synopsis": "Gerencie recursos, construa bases e enfrente ameaças neste simulador imersivo.",
+    "type": [
+      "Plataforma",
+      "Ação",
+      "Indie"
+    ],
+    "synopsis": "Espalhe tinta pelo mundo para revelar plataformas e caminhos invisíveis, em um jogo de plataforma minimalista com mecânica de pintura única.",
     "review": "Jogo maneiro. Ink é sólido, curti a experiência.",
     "rating": 3.8
   },
-
   {
     "name": "Inscryption",
-    "type": "Luta",
-    "synopsis": "Um jogo de ritmo acelerado que combina música, ação e estilo visual único.",
+    "type": [
+      "Card Game",
+      "Terror",
+      "Puzzle"
+    ],
+    "synopsis": "Um jogo de cartas sombrio onde as regras mudam conforme você descobre segredos na cabana de um misterioso oponente, misturando gêneros de forma genial.",
     "review": "MEU DEUS DO CÉU. Esse jogo é simplesmente a melhor experiência que eu já tive com um jogo na vida. A primeira vez que você descobre o que realmente tá rolando é uma sensação que eu nunca vou esquecer. Bagulho é genial do começo ao fim, jogo favorito disparado.",
     "rating": 5.0
   },
-
   {
     "name": "Inside",
-    "type": "Puzzle",
-    "synopsis": "Um garoto foge por um mundo sombrio.",
+    "type": [
+      "Plataforma",
+      "Puzzle",
+      "Terror"
+    ],
+    "synopsis": "Um garoto foge por um mundo sombrio e distópico, resolvendo quebra-cabeças e fugindo de perseguidores em uma atmosfera opressiva e silenciosa.",
     "review": "Não gostei. Inside me entediou, não recomendo.",
     "rating": 3.0
   },
-
   {
     "name": "Insurgency",
-    "type": "Plataforma",
-    "synopsis": "Corra, pule e desvie em plataformas precisas que testam seus reflexos.",
+    "type": [
+      "FPS",
+      "Tático",
+      "Ação"
+    ],
+    "synopsis": "Combate militar realista baseado em equipes, com foco em táticas, comunicação e baixo tempo de eliminação, sem mira ou interfaces exageradas.",
     "review": "Não gostei. Insurgency me entediou, não recomendo.",
     "rating": 3.1
   },
-
   {
     "name": "Into The Breach",
-    "type": "Estratégia",
-    "synopsis": "Um jogo de ritmo acelerado que combina música, ação e estilo visual único.",
+    "type": [
+      "Estratégia",
+      "Tático",
+      "Ficção Científica"
+    ],
+    "synopsis": "Comande mechas em batalhas por turnos contra insetos gigantes, protegendo cidades em mapas compactos onde cada movimento é crucial.",
     "review": "Jogo maneiro. Into The Breach é sólido, curti a experiência.",
     "rating": 4.0
   },
-
   {
     "name": "Invisible Inc",
-    "type": "Ação",
-    "synopsis": "Explore um vasto mundo repleto de segredos, inimigos e missões desafiadoras.",
+    "type": [
+      "Estratégia",
+      "Furtividade",
+      "Ficção Científica"
+    ],
+    "synopsis": "Gerencie agentes secretos em missões de espionagem corporativa, usando furtividade e hacking para roubar dados sem ser detectado.",
     "review": "Bom jogo. Invisible Inc é consistente e divertido.",
     "rating": 3.8
   },
-
   {
     "name": "Jak And Daxter",
-    "type": "Mundo Aberto",
-    "synopsis": "Resolva quebra-cabeças engenhosos enquanto descobre uma história cativante.",
+    "type": [
+      "Plataforma",
+      "Aventura",
+      "Comédia"
+    ],
+    "synopsis": "Jak e seu amigo Daxter (transformado em uma doninha) viajam por mundos abertos em busca de uma cura para a maldição de Daxter.",
     "review": "Jogo maneiro. Jak And Daxter é sólido, curti a experiência.",
     "rating": 4.0
   },
-
   {
     "name": "Jazzpunk",
-    "type": "Sandbox",
-    "synopsis": "Descubra ruínas antigas, aprenda habilidades e derrote criaturas lendárias.",
+    "type": [
+      "Comédia",
+      "Aventura",
+      "Indie"
+    ],
+    "synopsis": "Um jogo de humor surreal ambientado em um mundo de espionagem dos anos 50, repleto de piadas visuais, minigames absurdos e situações bizarras.",
     "review": "Não gostei. Jazzpunk me entediou, não recomendo.",
     "rating": 3.1
   },
-
   {
     "name": "Jet Set Radio",
-    "type": "Sobrevivência",
-    "synopsis": "Um jogo de ritmo acelerado que combina música, ação e estilo visual único.",
+    "type": [
+      "Ação",
+      "Plataforma",
+      "Esporte"
+    ],
+    "synopsis": "Ande de skate por Tóquio pintando grafites enquanto foge da polícia, com uma trilha sonora eletrônica e visuais cel-shaded marcantes.",
     "review": "QUE ESTILO. A vibe anos 2000, a trilha sonora, a arte cel-shaded... Tudo é PERFEITO. Andar de skate por Tóquio pintando grafite é uma das experiências mais únicas que existe. Jogaço da porra.",
     "rating": 4.5
   },
-
   {
     "name": "Journey",
-    "type": "Aventura",
-    "synopsis": "Atravesse um deserto em direcao a uma montanha.",
+    "type": [
+      "Aventura",
+      "Arte",
+      "Exploração"
+    ],
+    "synopsis": "Atravesse um vasto deserto em direção a uma montanha misteriosa, encontrando outros jogadores anônimos em uma experiência emocionante e sem palavras.",
     "review": "PURO. SIMPLES. LINDO. Não tem o que falar sobre Journey, é uma experiência que todo mundo devia ter. Joguei do começo ao fim numa sentada e passei o resto do dia refletindo. A areia, o cachecol, os outros jogadores...",
     "rating": 4.5
   },
-
   {
     "name": "Jump King",
-    "type": "Party",
-    "synopsis": "Descubra ruínas antigas, aprenda habilidades e derrote criaturas lendárias.",
+    "type": [
+      "Plataforma",
+      "Precisão",
+      "Dificuldade"
+    ],
+    "synopsis": "Um rei precisa pular para o topo de uma torre para encontrar seu amor, com controles precisos que punem cada erro impiedosamente.",
     "review": "Bacana. Jump King é um jogo honesto que cumpre o que promete.",
     "rating": 4.0
   },
-
   {
     "name": "Just Cause 3",
-    "type": "Luta",
-    "synopsis": "Explore um vasto mundo repleto de segredos, inimigos e missões desafiadoras.",
+    "type": [
+      "Ação",
+      "Mundo Aberto",
+      "Aventura"
+    ],
+    "synopsis": "Rico Rodriguez retorna à ilha natal de Medici para derrubar um ditador, usando wingsuit, gancho e explosões em uma sandbox de caos total.",
     "review": "Fraquinho. Just Cause 3 não me agradou tanto, esperava mais.",
     "rating": 3.5
   },
-
   {
     "name": "Katamari Damacy",
-    "type": "Ação",
-    "synopsis": "Resolva quebra-cabeças engenhosos enquanto descobre uma história cativante.",
+    "type": [
+      "Ação",
+      "Puzzle",
+      "Comédia"
+    ],
+    "synopsis": "Enrole tudo que encontrar em uma bolinha mágica que cresce ao coletar objetos, desde clipes de papel até montanhas e ilhas.",
     "review": "QUE JOGO ABSURDO E MARAVILHOSO. O conceito de enrolar tudo num katamari é genial, a trilha sonora é ALEATÓRIA e PERFEITA ao mesmo tempo. Não tem como ficar triste jogando Katamari.",
     "rating": 4.5
   },
-
   {
     "name": "Katana Zero",
-    "type": "Acao",
-    "synopsis": "Um samurai com controle do tempo.",
+    "type": [
+      "Ação",
+      "Plataforma",
+      "Puzzle"
+    ],
+    "synopsis": "Um samurai com a capacidade de manipular o tempo precisa completar missões de assassinato em um cenário neon, combinando combate rápido com narrativa.",
     "review": "QUE JOGO INCRÍVEL. A história é foda, o combate é satisfatório, a trilha sonora é ABSURDA. Cada nível é um quebra-cabeça que você resolve no timing perfeito. A cena do final me pegou desprevenido, bagulho é cinema. Quero mais desse universo.",
     "rating": 4.9
   },
-
   {
     "name": "Kentucky Route Zero",
-    "type": "Racing",
-    "synopsis": "Explore um vasto mundo repleto de segredos, inimigos e missões desafiadoras.",
+    "type": [
+      "Aventura",
+      "Drama",
+      "Indie"
+    ],
+    "synopsis": "Um caminhoneiro faz entregas noturnas em Kentucky, mergulhando em uma narrativa surreal sobre dívidas, solidão e o lado oculto da América.",
     "review": "Tanto faz. Kentucky Route Zero não é horrível mas também não é bom.",
     "rating": 3.5
   },
-
   {
     "name": "Kerbal Space Program",
-    "type": "Ação",
-    "synopsis": "Acompanhe uma história emocionante com personagens marcantes e reviravoltas.",
+    "type": [
+      "Simulação",
+      "Sandbox",
+      "Ciência"
+    ],
+    "synopsis": "Projete, construa e lance foguetes com uma equipe de astronautas verdes, aprendendo física orbital através de tentativa, erro e explosões espetaculares.",
     "review": "MANO, EU FIZ UM FOGUETE EXPLODIR PORQUE ESQUECI DE COLOCAR ASA. Esse jogo é genial, ensina física de forma divertida e as explosões são engraçadas demais. A satisfação de pousar na Lua é imensa.",
     "rating": 4.5
   },
-
   {
     "name": "Killer7",
-    "type": "Roguelike",
-    "synopsis": "Construa, sobreviva e prospere em um ambiente hostil e em constante mudança.",
+    "type": [
+      "Ação",
+      "FPS",
+      "Cult"
+    ],
+    "synopsis": "Harman Smith controla sete personalidades assassinas diferentes, cada uma com habilidades únicas, para derrotar uma organização terrorista global.",
     "review": "Não gostei. Killer7 me entediou, não recomendo.",
     "rating": 3.0
   },
-
   {
     "name": "Kingdom Come Deliverance",
-    "type": "Luta",
-    "synopsis": "Domine mecânicas únicas e enfrente chefes poderosos em uma jornada épica.",
+    "type": [
+      "RPG",
+      "Mundo Aberto",
+      "História"
+    ],
+    "synopsis": "Henry, um ferreiro comum, busca vingança em uma recriação realista da Boêmia medieval, com combate corpo a corpo complexo e sem elementos fantásticos.",
     "review": "Fraquinho. Kingdom Come Deliverance não me agradou tanto, esperava mais.",
     "rating": 3.6
   },
-
   {
     "name": "Kingdom Hearts",
-    "type": "Aventura",
-    "synopsis": "Ação acelerada e combates intensos esperam por você neste título viciante.",
+    "type": [
+      "RPG",
+      "Ação",
+      "Aventura"
+    ],
+    "synopsis": "Sora, Donald e Pateta viajam por mundos da Disney em uma nave Gummi para derrotar os Heartless e salvar as princesas.",
     "review": "Não gostei. Kingdom Hearts me entediou, não recomendo.",
     "rating": 3.0
   },
-
   {
     "name": "Kingdom Hearts II",
-    "type": "RPG",
-    "synopsis": "Sora viaja por mundos da Disney.",
+    "type": [
+      "RPG",
+      "Ação",
+      "Aventura"
+    ],
+    "synopsis": "Sora acorda após um ano e descobre novos mundos, novas formas de combate e uma guerra contra a Organização XIII, que manipula corações das sombras.",
     "review": "Jogo maneiro. Kingdom Hearts II é sólido, curti a experiência.",
     "rating": 4.0
   },
-
   {
     "name": "Kirby Super Star",
-    "type": "Metroidvania",
-    "synopsis": "Um jogo de ritmo acelerado que combina música, ação e estilo visual único.",
+    "type": [
+      "Plataforma",
+      "Ação",
+      "Comédia"
+    ],
+    "synopsis": "Kirby, a bolinha rosa da Nintendo, absorve inimigos para copiar suas habilidades em várias aventuras curtas e cheias de minigames.",
     "review": "KIRBY É FOFINHO E PODEROSO. As habilidades copiadas são criativas, os minigames são divertidos e a dificuldade é na medida certa. O jogo mais relaxante que existe, recomendo pra qualquer um.",
     "rating": 4.5
   },
-
   {
     "name": "Klonoa",
-    "type": "Aventura",
-    "synopsis": "Mergulhe em um universo pixelado cheio de charme, perigos e mistérios.",
+    "type": [
+      "Plataforma",
+      "Aventura",
+      "Puzzle"
+    ],
+    "synopsis": "Klonoa, um garoto orelhudo, usa um anel mágico para capturar inimigos e usá-los como projéteis em fases 2.5D de plataforma e quebra-cabeças.",
     "review": "Bacana. Klonoa é um jogo honesto que cumpre o que promete.",
     "rating": 4.0
   },
-
   {
     "name": "L.A. Noire",
-    "type": "Roguelike",
-    "synopsis": "Um RPG com sistema de combate tático e um mundo rico para explorar.",
+    "type": [
+      "Investigação",
+      "Ação",
+      "Aventura"
+    ],
+    "synopsis": "Detetive Cole Phelps investiga crimes em Los Angeles dos anos 40, interrogando suspeitos lendo expressões faciais em um mundo aberto detalhado.",
     "review": "Jogasso. L.A. Noire é uma experiência daora que me marcou positivamente.",
     "rating": 4.3
   },
-
   {
     "name": "Last Day Of June",
-    "type": "Sandbox",
-    "synopsis": "Mergulhe em um universo pixelado cheio de charme, perigos e mistérios.",
+    "type": [
+      "Aventura",
+      "Drama",
+      "Puzzle"
+    ],
+    "synopsis": "Carl precisa reviver os eventos do último dia de sua esposa June para tentar salvá-la, resolvendo quebra-cabeças em uma história emocionante sobre luto.",
     "review": "Daora. Last Day Of June me agradou, horas bem gastas.",
     "rating": 4.0
   },
-
   {
     "name": "Le Mans Ultimate",
-    "type": "Roguelike",
-    "synopsis": "Ação acelerada e combates intensos esperam por você neste título viciante.",
+    "type": [
+      "Corrida",
+      "Simulação",
+      "Esporte"
+    ],
+    "synopsis": "A simulação oficial das 24 Horas de Le Mans e do WEC, com carros de endurance e condições climáticas dinâmicas em pistas icônicas.",
     "review": "Jogo maneiro. Le Mans Ultimate é sólido, curti a experiência.",
     "rating": 4.0
   },
-
   {
     "name": "Left 4 Dead 2",
-    "type": "FPS",
-    "synopsis": "Sobreviva a um apocalipse zumbi.",
+    "type": [
+      "FPS",
+      "Ação",
+      "Terror"
+    ],
+    "synopsis": "Sobreviva a um apocalipse zumbi em campanhas cooperativas, enfrentando hordas de infectados especiais em cenários do sul dos Estados Unidos.",
     "review": "Fraquinho. Left 4 Dead 2 não me agradou tanto, esperava mais.",
     "rating": 3.5
   },
-
   {
     "name": "Lego Star Wars",
-    "type": "Mundo Aberto",
-    "synopsis": "Teste sua estratégia em batalhas por turnos contra inimigos inteligentes.",
+    "type": [
+      "Ação",
+      "Aventura",
+      "Comédia"
+    ],
+    "synopsis": "Reviva a saga Star Wars em blocos de Lego, quebrando objetos, coletando peças e resolvendo quebra-cabeças em uma versão divertida e leve.",
     "review": "Tanto faz. Lego Star Wars não é horrível mas também não é bom.",
     "rating": 3.4
   },
-
   {
     "name": "Life is Strange",
-    "type": "Aventura",
-    "synopsis": "Uma fotografia descobre que pode voltar no tempo.",
+    "type": [
+      "Aventura",
+      "Drama",
+      "Mistério"
+    ],
+    "synopsis": "Maxine Caulfield descobre que pode voltar no tempo e decide usar esse poder para salvar seu colégio e sua amiga Chloe de tragédias iminentes.",
     "review": "Jogasso. Life is Strange é uma experiência daora que me marcou positivamente.",
     "rating": 4.3
   },
-
   {
     "name": "Limbo",
-    "type": "Plataforma",
-    "synopsis": "Uma narrativa profunda sobre escolhas, consequências e redenção.",
+    "type": [
+      "Plataforma",
+      "Puzzle",
+      "Terror"
+    ],
+    "synopsis": "Um garoto acorda em uma floresta escura e precisa resolver quebra-cabeças mortais para encontrar sua irmã, em um jogo em preto e branco atmosférico.",
     "review": "QUE ATMOSFERA. O jogo é tenso do começo ao fim, os puzzles são inteligentes e o final aberto me deixou pensando por dias. A aranha gigante me deu calafrios na primeira vez. Arte pura em forma de jogo.",
     "rating": 4.6
   },
-
   {
     "name": "Little Big Planet",
-    "type": "Sandbox",
-    "synopsis": "Construa, sobreviva e prospere em um ambiente hostil e em constante mudança.",
+    "type": [
+      "Plataforma",
+      "Criativo",
+      "Aventura"
+    ],
+    "synopsis": "SackBoy viaja por mundos criativos, resolvendo quebra-cabeças e coletando itens em uma plataforma que incentiva a criatividade do jogador.",
     "review": "Daora. Little Big Planet me agradou, horas bem gastas.",
     "rating": 4.0
   },
-
   {
     "name": "Little Nightmares",
-    "type": "Terror",
-    "synopsis": "Fuja de um navio habitado por criaturas grotescas.",
+    "type": [
+      "Terror",
+      "Plataforma",
+      "Aventura"
+    ],
+    "synopsis": "Six, uma garotinha de capa amarela, tenta escapar de um navio habitado por criaturas grotescas e famintas, resolvendo quebra-cabeças furtivamente.",
     "review": "QUE JOGO PERTURBADOR E LINDO. A atmosfera é tensa, os monstros são nojentos e a sensação de ser pequeno num mundo gigante é angustiante. A banheira, o chefe de cozinha... aff, me deu até calafrio de novo.",
     "rating": 4.5
   },
-
   {
     "name": "Little Nightmares 2",
-    "type": "Luta",
-    "synopsis": "Liberte sua criatividade em um sandbox sem limites com infinitas possibilidades.",
+    "type": [
+      "Terror",
+      "Plataforma",
+      "Aventura"
+    ],
+    "synopsis": "Mono e Six fogem juntos de uma cidade distorcida, enfrentando novos monstros aterrorizantes em uma atmosfera ainda mais opressiva.",
     "review": "MELHOR QUE O PRIMEIRO. O Mono e a Six juntos são uma dupla improvável mas funcionam. A perseguição do professor de olhos arregalados me deu uma ansiedade... E aquele final? AINDA TÔ DE LUTO.",
     "rating": 4.5
   },
-
   {
     "name": "Lode Runner",
-    "type": "Sobrevivência",
-    "synopsis": "Gerencie recursos, construa bases e enfrente ameaças neste simulador imersivo.",
+    "type": [
+      "Puzzle",
+      "Plataforma",
+      "Estratégia"
+    ],
+    "synopsis": "Um clássico puzzle de plataforma onde você coleta tesouros enquanto foge de guardas, cavando buracos para prendê-los.",
     "review": "Tanto faz. Lode Runner não é horrível mas também não é bom.",
     "rating": 3.7
   },
-
   {
     "name": "Lone Echo",
-    "type": "Racing",
-    "synopsis": "Um jogo de ritmo acelerado que combina música, ação e estilo visual único.",
+    "type": [
+      "Ficção Científica",
+      "Aventura",
+      "VR"
+    ],
+    "synopsis": "Um robô em uma estação espacial orbital ajuda sua comandante humana a investigar uma anomalia no anel de Saturno, em uma experiência imersiva de realidade virtual.",
     "review": "Legal. Lone Echo me entreteu, sem arrependimentos.",
     "rating": 4.0
   },
-
   {
     "name": "Long Dark",
-    "type": "Aventura",
-    "synopsis": "Ação acelerada e combates intensos esperam por você neste título viciante.",
+    "type": [
+      "Sobrevivência",
+      "Simulação",
+      "Aventura"
+    ],
+    "synopsis": "Sobreviva ao inverno implacável do norte do Canadá após um desastre geomagnético, gerenciando fome, frio e vida selvagem.",
     "review": "Jogo maneiro. Long Dark é sólido, curti a experiência.",
     "rating": 4.0
   },
-
   {
     "name": "Lost Ark",
-    "type": "Plataforma",
-    "synopsis": "Ação acelerada e combates intensos esperam por você neste título viciante.",
+    "type": [
+      "MMORPG",
+      "Ação",
+      "Aventura"
+    ],
+    "synopsis": "Um MMORPG top-down com combate intenso, masmorras e uma vasta história para explorar, com classes variadas de personagens.",
     "review": "Não gostei. Lost Ark me entediou, não recomendo.",
     "rating": 3.1
   },
-
   {
     "name": "Lost Judgment",
-    "type": "FPS",
-    "synopsis": "Gerencie recursos, construa bases e enfrente ameaças neste simulador imersivo.",
+    "type": [
+      "Ação",
+      "Investigação",
+      "Aventura"
+    ],
+    "synopsis": "O detetive Takayuki Yagami investiga um caso de assédio sexual que se transforma em uma conspiração envolvendo o sistema judiciário e uma escola.",
     "review": "Legal. Lost Judgment me entreteu, sem arrependimentos.",
     "rating": 4.0
   },
-
   {
     "name": "Lovers In A Dangerous Spacetime",
-    "type": "Sandbox",
-    "synopsis": "Mergulhe em um universo pixelado cheio de charme, perigos e mistérios.",
+    "type": [
+      "Cooperativo",
+      "Ação",
+      "Indie"
+    ],
+    "synopsis": "Controle uma nave espacial com amigos, cada um gerenciando um sistema diferente — armas, escudos, motores — em uma galáxia cheia de perigos.",
     "review": "Bacana. Lovers In A Dangerous Spacetime é um jogo honesto que cumpre o que promete.",
     "rating": 3.9
   },
-
   {
     "name": "Luigis Mansion 3",
-    "type": "Estratégia",
-    "synopsis": "Um jogo de ritmo acelerado que combina música, ação e estilo visual único.",
+    "type": [
+      "Ação",
+      "Aventura",
+      "Comédia"
+    ],
+    "synopsis": "Luigi, o irmão medroso do Mario, precisa aspirar fantasmas e explorar um hotel mal-assombrado para resgatar seus amigos capturados.",
     "review": "Fraquinho. Luigis Mansion 3 não me agradou tanto, esperava mais.",
     "rating": 3.7
   },
-
   {
     "name": "Machinarium",
-    "type": "FPS",
-    "synopsis": "Construa, sobreviva e prospere em um ambiente hostil e em constante mudança.",
+    "type": [
+      "Puzzle",
+      "Aventura",
+      "Indie"
+    ],
+    "synopsis": "Um robô chamado Josef precisa salvar sua namorada da gangue do lixão em um mundo steampunk desenhado à mão, resolvendo quebra-cabeças engenhosos.",
     "review": "Fraquinho. Machinarium não me agradou tanto, esperava mais.",
     "rating": 3.5
   },
-
   {
     "name": "Mad Max",
-    "type": "Aventura",
-    "synopsis": "Ação acelerada e combates intensos esperam por você neste título viciante.",
+    "type": [
+      "Ação",
+      "Mundo Aberto",
+      "Aventura"
+    ],
+    "synopsis": "Max, um sobrevivente solitário, constrói um veículo de guerra e enfrenta gangues no deserto pós-apocalíptico para recuperar seu Interceptor roubado.",
     "review": "Daora. Mad Max me agradou, horas bem gastas.",
     "rating": 3.8
   },
-
   {
     "name": "Mafia",
-    "type": "RPG",
-    "synopsis": "Explore um vasto mundo repleto de segredos, inimigos e missões desafiadoras.",
+    "type": [
+      "Ação",
+      "Aventura",
+      "Mundo Aberto"
+    ],
+    "synopsis": "Tommy Angelo, um taxista, se envolve com a máfia italiana nos anos 1930, subindo na hierarquia criminosa em uma cidade inspirada em Chicago.",
     "review": "Bom jogo. Mafia é consistente e divertido.",
     "rating": 3.9
   },
-
   {
     "name": "Magic Carpet",
-    "type": "Visual Novel",
-    "synopsis": "Descubra ruínas antigas, aprenda habilidades e derrote criaturas lendárias.",
+    "type": [
+      "Ação",
+      "Simulação",
+      "Fantasia"
+    ],
+    "synopsis": "Voe em um tapete mágico sobre mundos 3D, lançando feitiços e construindo castelos enquanto defende seu território de magos inimigos.",
     "review": "Não gostei. Magic Carpet me entediou, não recomendo.",
     "rating": 3.1
   },
-
   {
     "name": "Maneater",
-    "type": "Sandbox",
-    "synopsis": "Mergulhe em um universo pixelado cheio de charme, perigos e mistérios.",
+    "type": [
+      "Ação",
+      "RPG",
+      "Simulação"
+    ],
+    "synopsis": "Um filhote de tubarão busca vingança contra um pescador que matou sua mãe, evoluindo e se tornando um predador gigante e implacável.",
     "review": "Legal. Maneater me entreteu, sem arrependimentos.",
     "rating": 3.9
   },
-
   {
     "name": "Marble It Up",
-    "type": "Sandbox",
-    "synopsis": "Teste sua estratégia em batalhas por turnos contra inimigos inteligentes.",
+    "type": [
+      "Plataforma",
+      "Física",
+      "Precisão"
+    ],
+    "synopsis": "Role uma bolinha de gude por cursos de obstáculos tridimensionais, competindo por melhores tempos em fases cada vez mais desafiadoras.",
     "review": "Daora. Marble It Up me agradou, horas bem gastas.",
     "rating": 4.2
   },
-
   {
     "name": "Marvels Guardians Of The Galaxy",
-    "type": "Mundo Aberto",
-    "synopsis": "Explore um vasto mundo repleto de segredos, inimigos e missões desafiadoras.",
+    "type": [
+      "Ação",
+      "Aventura",
+      "Comédia"
+    ],
+    "synopsis": "Peter Quill e sua equipe de desajustados precisam salvar a galáxia de uma ameaça cósmica, com diálogos engraçados e combate em equipe.",
     "review": "Legal. Marvels Guardians Of The Galaxy me entreteu, sem arrependimentos.",
     "rating": 4.0
   },
-
   {
     "name": "Marvels Midnight Suns",
-    "type": "Sobrevivência",
-    "synopsis": "Mergulhe em um universo pixelado cheio de charme, perigos e mistérios.",
+    "type": [
+      "Estratégia",
+      "RPG",
+      "Tático"
+    ],
+    "synopsis": "Heróis da Marvel se unem a caçadores de demônios para combater Lilith e seu exército das trevas, em batalhas táticas por turnos com cartas.",
     "review": "Não gostei. Marvels Midnight Suns me entediou, não recomendo.",
     "rating": 3.0
   },
-
   {
     "name": "Mass Effect",
-    "type": "Metroidvania",
-    "synopsis": "Mergulhe em um universo pixelado cheio de charme, perigos e mistérios.",
+    "type": [
+      "RPG",
+      "Ficção Científica",
+      "Ação"
+    ],
+    "synopsis": "Comandante Shepard investiga um agente traidor e descobre uma conspiração que ameaça toda a galáxia, navegando por relacionamentos política e combate.",
     "review": "Tanto faz. Mass Effect não é horrível mas também não é bom.",
     "rating": 3.5
   },
-
   {
     "name": "Mass Effect 2",
-    "type": "RPG",
-    "synopsis": "Comandante Shepard reune uma equipe para uma missao suicida.",
+    "type": [
+      "RPG",
+      "Ficção Científica",
+      "Ação"
+    ],
+    "synopsis": "Comandante Shepard forma uma equipe de especialistas para uma missão suicida contra os Coletores, em um RPG de ficção científica com escolhas de impacto.",
     "review": "Daora. Mass Effect 2 me agradou, horas bem gastas.",
     "rating": 4.0
   },
-
   {
     "name": "Mass Effect 3",
-    "type": "Mundo Aberto",
-    "synopsis": "Liberte sua criatividade em um sandbox sem limites com infinitas possibilidades.",
+    "type": [
+      "RPG",
+      "Ficção Científica",
+      "Ação"
+    ],
+    "synopsis": "Comandante Shepard une a galáxia em uma guerra total contra os Ceifadores, uma raça antiga de máquinas que ameaça exterminar toda a vida orgânica.",
     "review": "Tanto faz. Mass Effect 3 não é horrível mas também não é bom.",
     "rating": 3.5
   },
-
   {
     "name": "Master Blaster",
-    "type": "Puzzle",
-    "synopsis": "Construa, sobreviva e prospere em um ambiente hostil e em constante mudança.",
+    "type": [
+      "Ação",
+      "Plataforma",
+      "Indie"
+    ],
+    "synopsis": "Corra e atire por fases frenéticas de plataforma enquanto explora um planeta alienígena, lutando contra criaturas hostis.",
     "review": "Fraquinho. Master Blaster não me agradou tanto, esperava mais.",
     "rating": 3.3
   },
-
   {
     "name": "Max Payne",
-    "type": "Plataforma",
-    "synopsis": "Acompanhe uma história emocionante com personagens marcantes e reviravoltas.",
+    "type": [
+      "Tiro",
+      "Ação",
+      "Drama"
+    ],
+    "synopsis": "Um detetive enquadrado por um crime precisa limpar seu nome enquanto usa bullet time em cenas de ação estilizadas inspiradas em filmes noir.",
     "review": "Bacana. Max Payne é um jogo honesto que cumpre o que promete.",
     "rating": 4.0
   },
-
   {
     "name": "Max Payne 2",
-    "type": "Aventura",
-    "synopsis": "Teste sua estratégia em batalhas por turnos contra inimigos inteligentes.",
+    "type": [
+      "Tiro",
+      "Ação",
+      "Drama"
+    ],
+    "synopsis": "Max Payne se envolve com uma femme fatale enquanto investiga uma conspiração que conecta seu passado traumático ao submundo de Nova York.",
     "review": "Não gostei. Max Payne 2 me entediou, não recomendo.",
     "rating": 3.0
   },
-
   {
     "name": "Medal Of Honor",
-    "type": "Sandbox",
-    "synopsis": "Resolva quebra-cabeças engenhosos enquanto descobre uma história cativante.",
+    "type": [
+      "FPS",
+      "Ação",
+      "Guerra"
+    ],
+    "synopsis": "Um soldado americano na Segunda Guerra Mundial realiza missões baseadas em eventos históricos, infiltrando-se em bases e resgatando aliados.",
     "review": "Legal. Medal Of Honor me entreteu, sem arrependimentos.",
     "rating": 4.0
   },
-
   {
     "name": "Megaman 11",
-    "type": "Mundo Aberto",
-    "synopsis": "Acompanhe uma história emocionante com personagens marcantes e reviravoltas.",
+    "type": [
+      "Ação",
+      "Plataforma",
+      "Aventura"
+    ],
+    "synopsis": "Mega Man enfrenta oito Robot Masters para chegar ao Dr. Wiley, usando suas armas especiais contra cada inimigo em estágios de plataforma.",
     "review": "Jogo maneiro. Megaman 11 é sólido, curti a experiência.",
     "rating": 4.0
   },
-
   {
     "name": "Megaman X",
-    "type": "RPG",
-    "synopsis": "Um jogo de ritmo acelerado que combina música, ação e estilo visual único.",
+    "type": [
+      "Ação",
+      "Plataforma",
+      "Aventura"
+    ],
+    "synopsis": "X, um Reploid avançado, precisa impedir que os Mavericks dominem o mundo, evoluindo seu armor e habilidades pela cidade futurista.",
     "review": "Fraquinho. Megaman X não me agradou tanto, esperava mais.",
     "rating": 3.7
   },
-
   {
     "name": "Metal Gear Rising",
-    "type": "Metroidvania",
-    "synopsis": "Ação acelerada e combates intensos esperam por você neste título viciante.",
+    "type": [
+      "Ação",
+      "Hack and Slash",
+      "Ficção Científica"
+    ],
+    "synopsis": "Raiden, um ciborgue ninja, corta tudo em seu caminho com uma espada de alta frequência, usando o modo Blade Mode para desmembrar inimigos.",
     "review": "REGRAVARAM MINHA MÚSICA CORAÇÃO REGRAVARAM MINHA MÚSICA CORAÇÃO REGRAVARAM MINHA MÚSICA CORAÇÃO. This is a música de fundo enquanto escrevo essa review. O jogo é absurdo, a trilha é FODA e cortar tudo no estilo é terapêutico.",
     "rating": 4.6
   },
-
   {
     "name": "Metal Gear Solid 3",
-    "type": "Visual Novel",
-    "synopsis": "Uma narrativa profunda sobre escolhas, consequências e redenção.",
+    "type": [
+      "Ação",
+      "Furtividade",
+      "Drama"
+    ],
+    "synopsis": "Naked Snake, um operativo da FOX, é enviado à selva soviética nos anos 1960 para impedir um ataque nuclear e enfrentar seu mentor, The Boss.",
     "review": "QUE HISTÓRIA. A cena final com a Boss me fez chorar igual criança. O sigilo é tenso, os chefes são criativos e a ambientação na selva é incrível. O melhor MGS na minha opinião, e olha que sou fã da série.",
     "rating": 4.7
   },
-
   {
     "name": "Metroid Dread",
-    "type": "Simulação",
-    "synopsis": "Um RPG com sistema de combate tático e um mundo rico para explorar.",
+    "type": [
+      "Metroidvania",
+      "Ação",
+      "Ficção Científica"
+    ],
+    "synopsis": "Samus Aran enfrenta os robôs E.M.M.I. em ZDR, uma fonte de energia misteriosa, usando habilidades atualizadas para sobreviver e escapar.",
     "review": "Tanto faz. Metroid Dread não é horrível mas também não é bom.",
     "rating": 3.5
   },
-
   {
     "name": "Metroid Prime",
-    "type": "Puzzle",
-    "synopsis": "Domine mecânicas únicas e enfrente chefes poderosos em uma jornada épica.",
+    "type": [
+      "FPS",
+      "Aventura",
+      "Ficção Científica"
+    ],
+    "synopsis": "Samus Aran explora um planeta alienígena em primeira pessoa, caçando um parasita espacial enquanto desvenda as ruínas de uma civilização antiga.",
     "review": "Não gostei. Metroid Prime me entediou, não recomendo.",
     "rating": 3.0
   },
-
   {
     "name": "Midnight Fight Express",
-    "type": "Metroidvania",
-    "synopsis": "Resolva quebra-cabeças engenhosos enquanto descobre uma história cativante.",
+    "type": [
+      "Ação",
+      "Luta",
+      "Beat-em-up"
+    ],
+    "synopsis": "Um ex-agente é arrastado de volta ao submundo do crime para impedir uma conspiração, lutando contra ondas de capangas em combate corpo a corpo.",
     "review": "Não gostei. Midnight Fight Express me entediou, não recomendo.",
     "rating": 3.0
   },
-
   {
     "name": "Miles Morales",
-    "type": "Mundo Aberto",
-    "synopsis": "Acompanhe uma história emocionante com personagens marcantes e reviravoltas.",
+    "type": [
+      "Ação",
+      "Mundo Aberto",
+      "Aventura"
+    ],
+    "synopsis": "Miles Morales assume o manto do Homem-Aranha para proteger o Harlem de uma guerra entre uma corporação de energia e um criminoso com poderosa tecnologia.",
     "review": "Daora. Miles Morales me agradou, horas bem gastas.",
     "rating": 4.0
   },
-
   {
     "name": "Minecraft",
-    "type": "Sandbox",
-    "synopsis": "Construa, explore e sobreviva em um mundo de blocos.",
+    "type": [
+      "Sandbox",
+      "Sobrevivência",
+      "Criativo"
+    ],
+    "synopsis": "Construa, explore e sobreviva em um mundo infinito de blocos, onde sua criatividade é o único limite, minerando e combatendo monstros noturnos.",
     "review": "Mano, Minecraft é simplesmente eterno. Não tem jeito, é um jogo que eu volto a jogar todo ano e sempre descubro algo novo. A calma de minerar depois de um dia estressante é terapia pura. Melhor jogo de todos os tempos e ponto final.",
     "rating": 4.9
   },
-
   {
     "name": "Mirror Edge",
-    "type": "Aventura",
-    "synopsis": "Gerencie recursos, construa bases e enfrente ameaças neste simulador imersivo.",
+    "type": [
+      "Ação",
+      "Plataforma",
+      "Aventura"
+    ],
+    "synopsis": "Faith, uma corredora em uma cidade distópica, entrega mensagens secretas ilegais, usando parkour para fugir de autoridades e mercenários.",
     "review": "Jogasso. Mirror Edge é uma experiência daora que me marcou positivamente.",
     "rating": 4.3
   },
-
   {
     "name": "Monkey Island",
-    "type": "FPS",
-    "synopsis": "Liberte sua criatividade em um sandbox sem limites com infinitas possibilidades.",
+    "type": [
+      "Aventura",
+      "Comédia",
+      "Puzzle"
+    ],
+    "synopsis": "Guybrush Threepwood, um aspirante a pirata, precisa provar seu valor completando três desafios em uma ilha cheia de puzzles e diálogos hilários.",
     "review": "PIRATAS, PUZZLES E HUMOR ABSURDO. O Guybrush Threepwood é o protagonista mais carismático que existe. Os diálogos são engraçados, os puzzles são criativos... \"I am rubber, you are glue!\" Clássico.",
     "rating": 4.5
   },
-
   {
     "name": "Monster Hunter World",
-    "type": "Estratégia",
-    "synopsis": "Teste sua estratégia em batalhas por turnos contra inimigos inteligentes.",
+    "type": [
+      "Ação",
+      "RPG",
+      "Aventura"
+    ],
+    "synopsis": "Caçadores se aventuram no Novo Mundo para rastrear e abater monstros colossais, coletando partes para criar armas e armaduras melhores.",
     "review": "Jogo maneiro. Monster Hunter World é sólido, curti a experiência.",
     "rating": 4.0
   },
-
   {
     "name": "Monument Valley",
-    "type": "Mundo Aberto",
-    "synopsis": "Um RPG com sistema de combate tático e um mundo rico para explorar.",
+    "type": [
+      "Puzzle",
+      "Arte",
+      "Aventura"
+    ],
+    "synopsis": "A princesa Ida viaja por cenários impossíveis inspirados em Escher, manipulando a perspectiva para criar caminhos e resolver quebra-cabeças visuais.",
     "review": "Tanto faz. Monument Valley não é horrível mas também não é bom.",
     "rating": 3.5
   },
-
   {
     "name": "Mortal Kombat 11",
-    "type": "Racing",
-    "synopsis": "Construa, sobreviva e prospere em um ambiente hostil e em constante mudança.",
+    "type": [
+      "Luta",
+      "Ação",
+      "Fantasia"
+    ],
+    "synopsis": "Kombatentes de diferentes eras se enfrentam para decidir o destino do tempo, com combates sangrentos e Fatalities criativos.",
     "review": "Legal. Mortal Kombat 11 me entreteu, sem arrependimentos.",
     "rating": 4.0
   },
-
   {
     "name": "Moss",
-    "type": "FPS",
-    "synopsis": "Ação acelerada e combates intensos esperam por você neste título viciante.",
+    "type": [
+      "Aventura",
+      "Puzzle",
+      "VR"
+    ],
+    "synopsis": "Em um mundo de livros de história, um ratinho chamado Quill precisa resgatar seu tio, guiado pelo jogador em uma experiência de realidade virtual.",
     "review": "Daora. Moss me agradou, horas bem gastas.",
     "rating": 4.0
   },
-
   {
     "name": "Mother 3",
-    "type": "RPG",
-    "synopsis": "Uma familia enfrenta uma corporacao maligna.",
+    "type": [
+      "RPG",
+      "Aventura",
+      "Drama"
+    ],
+    "synopsis": "A família de Lucas é despedaçada por uma corporação maligna que tenta controlar o mundo, em uma história emocionante sobre perda, amor e esperança.",
     "review": "JOGO MAIS TRISTE QUE EU JÁ JOGUEI E AO MESMO TEMPO O MAIS ENGRAÇADO. A forma como ele lida com temas pesados usando humor é genial. Aquele final... só de pensar me arrepio. Nintendo, CADÊ O RELANÇAMENTO?",
     "rating": 4.7
   },
-
   {
     "name": "Mulaka",
-    "type": "Roguelike",
-    "synopsis": "Teste sua estratégia em batalhas por turnos contra inimigos inteligentes.",
+    "type": [
+      "Ação",
+      "Aventura",
+      "Indie"
+    ],
+    "synopsis": "Inspirado na cultura tarahumara, um xamã usa poderes animais para combater uma entidade maligna que corrompe a natureza.",
     "review": "Não gostei. Mulaka me entediou, não recomendo.",
     "rating": 3.0
   },
-
   {
     "name": "Muppets Treasure",
-    "type": "Terror",
-    "synopsis": "Uma narrativa profunda sobre escolhas, consequências e redenção.",
+    "type": [
+      "Aventura",
+      "Comédia",
+      "Musical"
+    ],
+    "synopsis": "Os Muppets embarcam em uma caça ao tesouro em alto-mar, cantando e se metendo em confusão em uma adaptação de A Ilha do Tesouro.",
     "review": "Não gostei. Muppets Treasure me entediou, não recomendo.",
     "rating": 3.1
   },
-
   {
     "name": "Mx Vs Atv",
-    "type": "Ação",
-    "synopsis": "Corra, pule e desvie em plataformas precisas que testam seus reflexos.",
+    "type": [
+      "Corrida",
+      "Esporte",
+      "Simulação"
+    ],
+    "synopsis": "Corra com motos, quadriciclos e outros veículos off-road em pistas de terra, realizando manobras e competindo em campeonatos de rally.",
     "review": "Não gostei. Mx Vs Atv me entediou, não recomendo.",
     "rating": 3.2
   },
-
   {
     "name": "My Friend Pedro",
-    "type": "Sandbox",
-    "synopsis": "Construa, sobreviva e prospere em um ambiente hostil e em constante mudança.",
+    "type": [
+      "Ação",
+      "Plataforma",
+      "Comédia"
+    ],
+    "synopsis": "Um homem guiado por um banana falante atira e acrobata por cenários cheios de inimigos, combinando tiroteio com movimentos estilosos.",
     "review": "Legal. My Friend Pedro me entreteu, sem arrependimentos.",
     "rating": 4.0
   },
-
   {
     "name": "Myst",
-    "type": "RPG",
-    "synopsis": "Ação acelerada e combates intensos esperam por você neste título viciante.",
+    "type": [
+      "Aventura",
+      "Puzzle",
+      "Mistério"
+    ],
+    "synopsis": "O jogador chega a uma ilha misteriosa e precisa explorar mundos ligados por livros, resolvendo quebra-cabeças complexos sem qualquer explicação.",
     "review": "Fraquinho. Myst não me agradou tanto, esperava mais.",
     "rating": 3.5
   },
-
   {
     "name": "Neon Genesis Evangelion",
-    "type": "Acao",
-    "synopsis": "Pilote um Eva para proteger a humanidade.",
+    "type": [
+      "Ação",
+      "Mech",
+      "Drama"
+    ],
+    "synopsis": "Pilote um Eva para proteger a humanidade de Anjos misteriosos, enquanto lida com traumas psicológicos e questões existenciais.",
     "review": "Daora. Neon Genesis Evangelion me agradou, horas bem gastas.",
     "rating": 3.9
   },
-
   {
     "name": "NieR: Automata",
-    "type": "RPG",
-    "synopsis": "Androides lutam por um futuro incerto.",
+    "type": [
+      "RPG",
+      "Ação",
+      "Ficção Científica"
+    ],
+    "synopsis": "Androides 2B e 9S lutam em nome da humanidade em uma Terra tomada por máquinas, questionando o que significa ter uma alma.",
     "review": "QUE EXPERIÊNCIA FILOSÓFICA. O que significa ser humano? O que é a vida? O jogo te faz refletir sobre tudo isso enquanto você luta com robôs em um mundo pós-apocalíptico. A trilha sonora é DEUS. O final E é uma das coisas mais lindas que já vi.",
     "rating": 4.6
   },
-
   {
     "name": "Omori",
-    "type": "RPG",
-    "synopsis": "Enfrente seus demonios internos em um mundo onírico.",
+    "type": [
+      "RPG",
+      "Terror",
+      "Drama"
+    ],
+    "synopsis": "Enfrente seus demônios internos em um mundo onírico e descubra segredos do passado de Sunny e seu grupo de amigos em uma história sobre trauma e amizade.",
     "review": "Esse jogo destruiu meu psicológico e eu agradeço por isso. A forma como ele aborda temas pesados com uma estética fofa é genial. Chorei, ri, fiquei desconfortável e no final terminei abraçado no monitor. Experiência necessária pra qualquer um.",
     "rating": 4.9
   },
-
   {
     "name": "Ori and the Blind Forest",
-    "type": "Plataforma",
-    "synopsis": "Um pequeno espirito salva sua floresta.",
+    "type": [
+      "Plataforma",
+      "Metroidvania",
+      "Aventura"
+    ],
+    "synopsis": "Ori, um pequeno espírito guardião, precisa salvar a floresta de Nibel que está morrendo, ganhando novas habilidades em uma jornada emocionante.",
     "review": "Tanto faz. Ori and the Blind Forest não é horrível mas também não é bom.",
     "rating": 3.7
   },
-
   {
     "name": "Outer Wilds",
-    "type": "Exploracao",
-    "synopsis": "Explore um sistema solar preso em um loop temporal.",
+    "type": [
+      "Exploração",
+      "Mistério",
+      "Ficção Científica"
+    ],
+    "synopsis": "Explore um sistema solar preso em um loop temporal de 22 minutos, descobrindo segredos de uma civilização antiga e o destino do universo.",
     "review": "NUNCA JOGUEI NADA PARECIDO. A curiosidade é o único motor do jogo e isso é PERFEITO. Cada descoberta, cada planeta, cada texto... a forma como tudo se conecta no final é uma das experiências mais bonitas que já tive com um jogo.",
     "rating": 4.7
   },
-
   {
     "name": "Persona 5 Royal",
-    "type": "RPG",
-    "synopsis": "Ladroes fantasma mudam os coracoes dos corruptos.",
+    "type": [
+      "RPG",
+      "Simulação",
+      "Aventura"
+    ],
+    "synopsis": "Ladrões Fantasma mudam os corações de corruptos enquanto equilibram a vida escolar e social, em um RPG estiloso com combate por turnos.",
     "review": "QUE JOGO. 200 horas que passaram voando. O estilo é o mais estiloso que existe, a trilha sonora é absurda de boa, e os personagens são tão carismáticos que você sente falta deles quando termina. Amei cada segundo.",
     "rating": 4.9
   },
-
   {
     "name": "Portal 2",
-    "type": "Puzzle",
-    "synopsis": "Resolva quebra-cabecas com a portal gun.",
+    "type": [
+      "Puzzle",
+      "Plataforma",
+      "Comédia"
+    ],
+    "synopsis": "Resolva quebra-cabeças com a Portal Gun em câmaras de teste da Aperture Science, enquanto Wheatley e GLaDOS competem pelo controle do complexo.",
     "review": "GENIAL. A GLaDOS é a melhor vilã da história dos games, as piadas são afiadíssimas e os puzzles são perfeitamente balanceados. Cada câmara é uma lição de design de jogos. O final com a Wheatley é uma das coisas mais engraçadas que eu já vi num jogo.",
     "rating": 4.9
   },
-
   {
     "name": "Psychonauts",
-    "type": "Acao",
-    "synopsis": "Entre nas mentes de personagens bizarros.",
+    "type": [
+      "Plataforma",
+      "Ação",
+      "Aventura"
+    ],
+    "synopsis": "Raz, um garoto psíquico, entra na mente de personagens bizarros em um acampamento de verão, usando poderes mentais para resolver puzzles e combater inimigos.",
     "review": "Tanto faz. Psychonauts não é horrível mas também não é bom.",
     "rating": 3.5
   },
-
   {
     "name": "Rain World",
-    "type": "Sobrevivencia",
-    "synopsis": "Sobreviva em um ecossistema hostil.",
+    "type": [
+      "Sobrevivência",
+      "Plataforma",
+      "Simulação"
+    ],
+    "synopsis": "Sobreviva em um ecossistema hostil onde criaturas agem por instintos reais, e você é apenas mais um elo na cadeia alimentar.",
     "review": "Tanto faz. Rain World não é horrível mas também não é bom.",
     "rating": 3.4
   },
-
   {
     "name": "Red Dead Redemption 2",
-    "type": "Acao",
-    "synopsis": "Arthur Morgan vive o fim do Velho Oeste.",
+    "type": [
+      "Ação",
+      "Mundo Aberto",
+      "Aventura"
+    ],
+    "synopsis": "Arthur Morgan vive o fim do Velho Oeste com a gangue Van der Linde, fugindo da lei e da modernidade enquanto questiona sua lealdade.",
     "review": "Legal. Red Dead Redemption 2 me entreteu, sem arrependimentos.",
     "rating": 4.0
   },
-
   {
     "name": "Resident Evil 4",
-    "type": "Terror",
-    "synopsis": "Leon S. Kennedy resgata a filha do presidente.",
+    "type": [
+      "Terror",
+      "Ação",
+      "Aventura"
+    ],
+    "synopsis": "Leon S. Kennedy resgata a filha do presidente de uma seita misteriosa em uma vila europeia, enfrentando aldeões infectados por um parasita.",
     "review": "CLÁSSICO DOS CLÁSSICOS. O chefe de polícia mais foda do mundo chegando numa vila na Espanha pra resgatar a filha do presidente. Os ganados, as paródias, o merchant... \"What are ya buyin?\" ICÔNICO.",
     "rating": 4.5
   },
-
   {
     "name": "Return of the Obra Dinn",
-    "type": "Investigacao",
-    "synopsis": "Descubra o que aconteceu em um navio fantasma.",
+    "type": [
+      "Investigação",
+      "Mistério",
+      "Puzzle"
+    ],
+    "synopsis": "Um inspetor de seguros investiga um navio fantasma que retornou ao porto com sua tripulação morta ou desaparecida, usando um relógio que mostra o último momento de cada pessoa.",
     "review": "Daora. Return of the Obra Dinn me agradou, horas bem gastas.",
     "rating": 4.0
   },
-
   {
     "name": "Sekiro: Shadows Die Twice",
-    "type": "Acao",
-    "synopsis": "Um shinobi busca vinganca no Japao feudal.",
+    "type": [
+      "Ação",
+      "Aventura",
+      "Furtividade"
+    ],
+    "synopsis": "Um shinobi em busca de vingança no Japão feudal, com combate preciso baseado em posturas e deflexões.",
     "review": "Tanto faz. Sekiro: Shadows Die Twice não é horrível mas também não é bom.",
     "rating": 3.4
   },
-
   {
     "name": "Shadow of the Colossus",
-    "type": "Aventura",
-    "synopsis": "Derrube colossos em um mundo desolado.",
+    "type": [
+      "Aventura",
+      "Ação",
+      "Drama"
+    ],
+    "synopsis": "Derrube colossos em um mundo desolado para trazer de volta uma garota sacrificada, enfrentando criaturas monumentais em cenários épicos.",
     "review": "Jogo maneiro. Shadow of the Colossus é sólido, curti a experiência.",
     "rating": 4.0
   },
-
   {
     "name": "Silent Hill 2",
-    "type": "Terror",
-    "synopsis": "James Sunderland busca sua esposa falecida.",
+    "type": [
+      "Terror",
+      "Drama",
+      "Puzzle"
+    ],
+    "synopsis": "James Sunderland busca sua esposa falecida em Silent Hill, enfrentando monstros que são manifestações de sua culpa e desejos reprimidos.",
     "review": "UM DOS JOGOS MAIS PESADOS QUE JÁ JOGUEI. A história do James é triste, perturbadora e linda ao mesmo tempo. A névoa, os monstros que representam seus traumas, a trilha sonora do Akira Yamaoka... OBRAPRIMA.",
     "rating": 4.6
   },
-
   {
     "name": "Spelunky 2",
-    "type": "Roguelike",
-    "synopsis": "Explore cavernas geradas proceduralmente.",
+    "type": [
+      "Roguelike",
+      "Plataforma",
+      "Aventura"
+    ],
+    "synopsis": "Explore cavernas geradas proceduralmente em busca de tesouros, fugindo de armadilhas e inimigos em uma experiência que nunca se repete.",
     "review": "Legal. Spelunky 2 me entreteu, sem arrependimentos.",
     "rating": 4.0
   },
-
   {
     "name": "Stardew Valley",
-    "type": "Simulacao",
-    "synopsis": "Viva uma vida pacata na fazenda do seu avo.",
+    "type": [
+      "Simulação",
+      "RPG",
+      "Fazenda"
+    ],
+    "synopsis": "Viva uma vida pacata na fazenda do seu avô, plantando, criando animais, minerando e fazendo amizade com os moradores de Pelican Town.",
     "review": "Fraquinho. Stardew Valley não me agradou tanto, esperava mais.",
     "rating": 3.3
   },
-
   {
     "name": "Super Mario Odyssey",
-    "type": "Plataforma",
-    "synopsis": "Mario viaja o mundo para salvar a princesa.",
+    "type": [
+      "Plataforma",
+      "Aventura",
+      "3D"
+    ],
+    "synopsis": "Mario viaja por reinos ao redor do mundo usando seu novo aliado Cappy para capturar objetos e inimigos, salvando a princesa Peach de Bowser.",
     "review": "Fraquinho. Super Mario Odyssey não me agradou tanto, esperava mais.",
     "rating": 3.7
   },
-
   {
     "name": "Terraria",
-    "type": "Sandbox",
-    "synopsis": "Explore, construa e lute em um mundo 2D.",
+    "type": [
+      "Sandbox",
+      "Aventura",
+      "Sobrevivência"
+    ],
+    "synopsis": "Explore, construa e lute em um mundo 2D gerado proceduralmente, enfrentando chefes, minerando recursos e construindo seu abrigo.",
     "review": "Legal. Terraria me entreteu, sem arrependimentos.",
     "rating": 3.8
   },
-
   {
     "name": "The Legend of Zelda: Breath of the Wild",
-    "type": "Aventura",
-    "synopsis": "Link desperta para derrotar Calamity Ganon.",
+    "type": [
+      "Aventura",
+      "Mundo Aberto",
+      "RPG"
+    ],
+    "synopsis": "Link desperta após cem anos para derrotar Calamity Ganon e salvar Hyrule, explorando um vasto mundo aberto cheio de segredos e possibilidades.",
     "review": "LIBERDADE TOTAL. Nunca me senti tão livre num jogo. Cada montanha é escalável, cada direção é uma aventura. A sensação de sair do santuário e ver Hyrule pela primeira vez é algo que eu nunca vou esquecer.",
     "rating": 4.5
   },
-
   {
     "name": "The Witcher 3",
-    "type": "RPG",
-    "synopsis": "Geralt de Rivia busca sua filha adotiva.",
+    "type": [
+      "RPG",
+      "Mundo Aberto",
+      "Aventura"
+    ],
+    "synopsis": "Geralt de Rívia, um caçador de monstros, busca sua filha adotiva Ciri enquanto navega por uma guerra devastadora entre reinos humanos e reinos élficos.",
     "review": "Fraquinho. The Witcher 3 não me agradou tanto, esperava mais.",
     "rating": 3.4
   },
-
   {
     "name": "Tunic",
-    "type": "Aventura",
-    "synopsis": "Uma raposa explora um mundo misterioso.",
+    "type": [
+      "Aventura",
+      "RPG",
+      "Mistério"
+    ],
+    "synopsis": "Uma raposa explora um mundo misterioso cheio de segredos, usando pistas de um manual de instruções em uma língua estrangeira para desvendar seus mistérios.",
     "review": "Que experiência LINDA. A forma como o jogo te trata como uma criança descobrindo um mundo novo é mágico. As mecânicas que vão se revelando aos poucos, o manual em outra língua que você precisa decifrar... O final me fez chorar igual bebê.",
     "rating": 4.9
   },
-
   {
     "name": "Undertale",
-    "type": "RPG",
-    "synopsis": "Uma criança cai no subsolo dos monstros.",
+    "type": [
+      "RPG",
+      "Aventura",
+      "Comédia"
+    ],
+    "synopsis": "Uma criança cai no subsolo dos monstros e precisa escolher entre lutar ou fazer amizade com cada criatura, onde suas decisões afetam todo o mundo.",
     "review": "UM JOGO QUE MUDA SUA VIDA. A forma como ele te conhece e reage às suas ações é algo que NUNCA foi feito antes ou depois. Toriel é minha mãe agora. Papyrus é meu melhor amigo. Sans é... bem, Sans é Sans.",
     "rating": 4.5
   },
-
   {
     "name": "What Remains of Edith Finch",
-    "type": "Aventura",
-    "synopsis": "Explore a historia da familia Finch.",
+    "type": [
+      "Aventura",
+      "Drama",
+      "Exploração"
+    ],
+    "synopsis": "Edith retorna à casa de sua família para descobrir as histórias trágicas e mágicas de cada membro dos Finch, que parecem amaldiçoados a morrer jovens.",
     "review": "QUE HISTÓRIA LINDA E TRISTE. Cada membro da família tem uma morte única e criativa. A cena do peixe é uma das coisas mais geniais que eu já vi num jogo. A narrativa é perfeita, me emocionei demais.",
     "rating": 4.5
   }
