@@ -677,6 +677,7 @@
     { id: 'godot',      label: 'Godot',         pct: 55 },
     { id: 'arduino',    label: 'Arduino',       pct: 50 },
     { id: 'ncurses',    label: 'ncurses',       pct: 65 },
+    { id: 'csharp',     label: 'C#',            pct: 55 },
     { id: 'sql',        label: 'SQL',           pct: 70 },
     { id: 'mongodb',    label: 'MongoDB',       pct: 55 },
     { id: 'aws',        label: 'AWS',           pct: 50 },
@@ -1126,7 +1127,7 @@
     var skillsGrid = document.getElementById('skillsGrid')
     if (skillsGrid && content.skills) {
       var cats = [
-        { title: 'LINGUAGENS', ids: ['python','javascript','bash','java','typescript','sql','c'] },
+        { title: 'LINGUAGENS', ids: ['python','javascript','bash','java','typescript','sql','c','csharp'] },
         { title: 'FERRAMENTAS', ids: ['git','linux','ncurses','docker','flstudio','godot','mongodb','unity','arduino','aws','gamemaker','googlecloud'] },
       ]
       skillsGrid.innerHTML = ''
