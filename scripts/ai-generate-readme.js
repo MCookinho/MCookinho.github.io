@@ -238,9 +238,10 @@ MANDATORY STRUCTURE — follow this EXACT order and style:
   📍 {location} | 📧 {email}
   <br><br>
   [ROW OF SOCIAL BADGES — use shields.io for ALL platforms from the SOCIAL data above]
-  Format: [![Platform](https://img.shields.io/badge/Platform-COLOR?style=for-the-badge&logo=LOGO&logoColor=white)](URL)
+  Format: <a href="URL"><img src="https://img.shields.io/badge/Platform-COLOR?style=for-the-badge&logo=LOGO&logoColor=white" alt="Platform"/></a>
   Include EVERY social platform present in the data. Determine correct logo slug and brand color for each.
   If a platform logo is unknown, use a generic badge with the platform name.
+  CRITICAL: Use HTML <a><img> format, NOT markdown [![alt](img)](link) format — markdown images inside links often fail to render on GitHub.
 </div>
 
 2️⃣ ABOUT ME
@@ -280,15 +281,12 @@ For each project:
 
 [Language badge] [Status badge if BETA/ALPHA]
 
-Optionally use GitHub pin cards:
-[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=${s.github}&repo={REPO_NAME}&theme=tokyonight)]({url})
-
 6️⃣ GAMES
 For each game:
 ### [{name}]({url})
 {description}
 
-[![Play](https://img.shields.io/badge/Play-{name}-7289DA?style=for-the-badge&logo=itchdotio&logoColor=white)]({url})
+<a href="{url}"><img src="https://img.shields.io/badge/Play-{name}-7289DA?style=for-the-badge&logo=itchdotio&logoColor=white" alt="Play"/></a>
 
 7️⃣ EXPERIENCE & EDUCATION
 ### 💼 Experience
@@ -318,6 +316,8 @@ VISUAL GUIDELINES:
 - Use <div align="center"> for centered blocks, <p align="left"> for badge rows.
 - Shields.io badges: prefer "for-the-badge" style. Choose accurate brand colors.
 - Stats cards: ALWAYS use github-profile-summary-cards with theme=tokyonight. Never use github-readme-stats (broken service).
+- CRITICAL: For ANY clickable badge (linked image), use HTML format: <a href="URL"><img src="BADGE_URL" alt="LABEL"/></a>
+  NEVER use markdown [![alt](img)](link) format — GitHub often fails to render images inside markdown links.
 - Emojis: use sparingly as section headers. Prefer: 🚀, 🧠, 🛠, 📊, 💼, 🎓, 🎮, 📫.
 - Horizontal rules (---) between major sections.
 - NO FUN FACT, NO TAGS in the README body. Omit completely.
