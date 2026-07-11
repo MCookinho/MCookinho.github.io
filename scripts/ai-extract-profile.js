@@ -83,7 +83,7 @@ RULES - FOLLOW THESE EXACTLY:
 11. personal.shortBio: one-line summary
 12. personal.email: from professional/script.js "email:"
 13. personal.funFact: something creative about the user
-14. personal.avatarUrl: "https://mcookinho.github.io/assets/images/avatar.png"
+14. personal.avatarUrl: "https://mcookinho.github.io/assets/fotominha.jpeg"
 15. personal.tags: extract interests from context (CHESS, GAME DEV, LINUX, etc.)
 16. personal.dog: "Shiva — Golden Retriever, the cutest coding buddy in the world"
 
