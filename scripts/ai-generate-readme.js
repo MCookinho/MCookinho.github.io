@@ -201,7 +201,6 @@ USER DATA:
 - Short bio: ${p.shortBio}
 - Bio: ${p.bio}
 - Email: ${p.email}
-- Avatar: ${p.avatarUrl}
 - Dog: ${p.dog} (only mention briefly in About Me if it fits naturally)
 - Fun Fact: ${p.funFact} (DO NOT include — skip entirely)
 
@@ -231,7 +230,6 @@ MANDATORY STRUCTURE — follow this EXACT order and style:
 
 1️⃣ HEADER
 <div align="center">
-  <img src="{avatarUrl}" width="180" style="border-radius: 50%;"/>
   <h1>🚀 {nickname} <em>(@{handle})</em></h1>
   <strong>{title}</strong>
   <br>
@@ -326,7 +324,7 @@ VISUAL GUIDELINES:
 
 ASSETS GUIDELINES:
 - Include 0-3 assets max. Only if they genuinely enhance the README.
-- Good sources: avatar URL (already given), project screenshots from GitHub repos, relevant GIFs from GIPHY or tech blogs.
+- Good sources: project screenshots from GitHub repos, relevant GIFs from GIPHY or tech blogs.
 - Each asset: { "path": "assets/descriptive-name.png", "url": "direct-image-link" }
 - Reference assets in README with RELATIVE paths: ![alt](assets/file.png)
 - Prefer direct image links ending in .png, .jpg, .gif, .webp, .svg.
