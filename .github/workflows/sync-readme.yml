@@ -109,7 +109,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes — README is up to date"
           else
-            git commit -m "chore: auto-sync profile README (AI generated)"
+            git commit -m "chore: auto-sync profile README"
             git push
             echo "✅ README synced to MCookinho/MCookinho"
           fi
