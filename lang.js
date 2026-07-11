@@ -86,6 +86,7 @@
       'Adventure game inspirado em Monkey Island. Sobreviva na floresta por 7 dias.': 'Adventure game inspirado em Monkey Island. Sobreviva na floresta por 7 dias.',
       'Puzzle game. Converta animais em criaturas da noite sem ser pego.': 'Puzzle game. Converta animais em criaturas da noite sem ser pego.',
       'Coleção de jogos clássicos no terminal com ncurses em C.': 'Coleção de jogos clássicos no terminal com ncurses em C.',
+      'Seu acervo definitivo de jogos indie brasileiro — 100% Open Source.': 'Seu acervo definitivo de jogos indie brasileiro — 100% Open Source.',
       'JOGOS QUE EU FIZ': 'JOGOS QUE EU FIZ',
 
       // Contato
@@ -563,6 +564,7 @@
       'Adventure game inspirado em Monkey Island. Sobreviva na floresta por 7 dias.': 'Adventure game inspired by Monkey Island. Survive in the forest for 7 days.',
       'Puzzle game. Converta animais em criaturas da noite sem ser pego.': 'Puzzle game. Turn animals into creatures of the night without getting caught.',
       'Coleção de jogos clássicos no terminal com ncurses em C.': 'Collection of classic games in the terminal with ncurses in C.',
+      'Seu acervo definitivo de jogos indie brasileiro — 100% Open Source.': 'Your definitive Brazilian indie game collection — 100% Open Source.',
       'JOGOS QUE EU FIZ': 'GAMES I MADE',
       'GITHUB': 'GITHUB',
       'LINKEDIN': 'LINKEDIN',

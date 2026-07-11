@@ -92,6 +92,13 @@
       "desc": "Multiplayer game set in the Backrooms. Explore, avoid entities, and try to escape with other players.",
       "url": "https://github.com/MCookinho/Backrooms-Online",
       "badge": "ALPHA"
+    },
+    {
+      "name": "ACERVO GAMER",
+      "lang": "JavaScript",
+      "desc": "O seu acervo definitivo de jogos indie brasileiro — 100% Open Source",
+      "url": "https://github.com/MCookinho/AcervoGamer",
+      "badge": null
     }
   ],
 
