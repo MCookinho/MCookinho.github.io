@@ -113,18 +113,6 @@ Controlled via `lang.js` — uses `data-i18n` attributes and the `__()` global f
 
 ---
 
-## 🚀 Running Locally
-
-Just serve the root directory:
-
-```bash
-npx serve .
-# or
-python3 -m http.server 8000
-```
-
----
-
 ## 📄 License
 
 MIT — feel free to use as inspiration (but maybe don't clone my entire identity, that'd be weird).
