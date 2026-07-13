@@ -230,7 +230,7 @@ MANDATORY STRUCTURE — follow this EXACT order and style:
 
 1️⃣ HEADER
 <div align="center">
-  <h1>🚀 {nickname} <em>(@{handle})</em></h1>
+  <h1>🍪 {nickname} <em>(@{handle})</em></h1>
   <strong>{title}</strong>
   <br>
   📍 {location} | 📧 {email}
