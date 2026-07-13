@@ -1782,8 +1782,11 @@ body {
   }
   .nav-links.open { display: flex; }
   .nav-toggle { display: block; }
-  .nav-dropdown { left: -60px; min-width: 240px; }
-  .nav-dropdown::before { left: 76px; }
+  .nav-dropdown {
+    left: 50%; margin-left: -150px;
+    min-width: unset; width: 300px;
+  }
+  .nav-dropdown::before { left: 50%; margin-left: -4px; }
 
   .hero-nome { font-size: 22px; }
   .sobre-grid { grid-template-columns: 1fr; }
