@@ -10,7 +10,7 @@
 // de terror (doghouse/index.html), interagindo com window.Horror.
 //
 // Persistência: contagem de mensagens via window.__shivaMessageSent().
-// (function () {
+(function () {
   var R = {
     happy: [
       'AU AU AU AU!! :D',
