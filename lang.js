@@ -87,6 +87,7 @@
       'Puzzle game. Converta animais em criaturas da noite sem ser pego.': 'Puzzle game. Converta animais em criaturas da noite sem ser pego.',
       'Coleção de jogos clássicos no terminal com ncurses em C.': 'Coleção de jogos clássicos no terminal com ncurses em C.',
       'Seu acervo definitivo de jogos indie brasileiro — 100% Open Source.': 'Seu acervo definitivo de jogos indie brasileiro — 100% Open Source.',
+      'Plugins para o Noctalia — ferramentas de OSINT e GoAnime direto do painel.': 'Plugins para o Noctalia — ferramentas de OSINT e GoAnime direto do painel.',
       'JOGOS QUE EU FIZ': 'JOGOS QUE EU FIZ',
 
       // Contato
@@ -565,6 +566,7 @@
       'Puzzle game. Converta animais em criaturas da noite sem ser pego.': 'Puzzle game. Turn animals into creatures of the night without getting caught.',
       'Coleção de jogos clássicos no terminal com ncurses em C.': 'Collection of classic games in the terminal with ncurses in C.',
       'Seu acervo definitivo de jogos indie brasileiro — 100% Open Source.': 'Your definitive Brazilian indie game collection — 100% Open Source.',
+      'Plugins para o Noctalia — ferramentas de OSINT e GoAnime direto do painel.': 'Plugins for Noctalia — OSINT tools and GoAnime straight from the panel.',
       'JOGOS QUE EU FIZ': 'GAMES I MADE',
       'GITHUB': 'GITHUB',
       'LINKEDIN': 'LINKEDIN',
