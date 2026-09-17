@@ -89,6 +89,7 @@
       'Seu acervo definitivo de jogos indie brasileiro — 100% Open Source.': 'Seu acervo definitivo de jogos indie brasileiro — 100% Open Source.',
       'Plugins para o Noctalia — ferramentas de OSINT e GoAnime direto do painel.': 'Plugins para o Noctalia — ferramentas de OSINT e GoAnime direto do painel.',
       'O clássico jogo Genius/Simon feito com microprocessador Arduino.': 'O clássico jogo Genius/Simon feito com microprocessador Arduino.',
+      'Extensão de navegador que desenha automaticamente em sites de desenho (Gartic, Sketch.io, etc).': 'Extensão de navegador que desenha automaticamente em sites de desenho (Gartic, Sketch.io, etc).',
       'JOGOS QUE EU FIZ': 'JOGOS QUE EU FIZ',
 
       // Contato
@@ -569,6 +570,7 @@
       'Seu acervo definitivo de jogos indie brasileiro — 100% Open Source.': 'Your definitive Brazilian indie game collection — 100% Open Source.',
       'Plugins para o Noctalia — ferramentas de OSINT e GoAnime direto do painel.': 'Plugins for Noctalia — OSINT tools and GoAnime straight from the panel.',
       'O clássico jogo Genius/Simon feito com microprocessador Arduino.': 'The classic Genius/Simon game made with an Arduino microprocessor.',
+      'Extensão de navegador que desenha automaticamente em sites de desenho (Gartic, Sketch.io, etc).': 'Browser extension that automatically draws on drawing websites (Gartic, Sketch.io, etc).',
       'JOGOS QUE EU FIZ': 'GAMES I MADE',
       'GITHUB': 'GITHUB',
       'LINKEDIN': 'LINKEDIN',
